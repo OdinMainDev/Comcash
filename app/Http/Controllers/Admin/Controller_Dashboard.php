@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class Controller_Dashboard extends Controller
 {
     public function view() {
-        return view("welcome");
+        return view("admin.pages.dashboard");
     }
 }
