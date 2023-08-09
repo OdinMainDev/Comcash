@@ -10,5 +10,5 @@ Route::get('/auth/login', [Login::class, "view"])->name("login");
 Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
 
 Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {
-    Route::get('/admin', [AdminDashboard::class, "view"])->name("adminDashboard");
+    Route::get('/panel', [AdminDashboard::class, "view"])->name("adminDashboard");
 });
