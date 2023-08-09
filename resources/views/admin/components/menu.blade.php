@@ -23,6 +23,7 @@
 					<span class="link-title">{{__("menu.return_to_site")}}</span>
 				</a>
 			</li>
+			@can("handle-currencies")
 			<li class="nav-item">
 				<a class="nav-link" data-toggle="collapse" href="#currenciessidemenu" role="button" aria-expanded="false" aria-controls="currenciessidemenu">
 				<i class="link-icon" data-feather="dollar-sign"></i>
@@ -35,12 +36,12 @@
 							<a href="pages/email/inbox.html" class="nav-link">{{__("menu.list")}}</a>
 						</li>
 						<li class="nav-item">
-							<a href="pages/email/read.html" class="nav-link">{{__("menu.add")}}</a>
+							<a href="{{route("adminCurrencyAdd")}}" class="nav-link">{{__("menu.add")}}</a>
 						</li>
 					</ul>
 				</div>
 			</li>
-			
+			@endcan
 		</ul>
 	</div>
 </nav>

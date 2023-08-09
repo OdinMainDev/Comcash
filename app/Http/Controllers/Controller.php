@@ -45,4 +45,8 @@ class Controller extends BaseController
             $this->responseError(__("common.throttle", ["seconds" => 60]));
         }
     }
+
+    public function responseErrorValidation($data){
+        throw new ValidationException($data);
+    }
 }

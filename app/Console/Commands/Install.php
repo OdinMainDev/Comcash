@@ -83,12 +83,16 @@ class Install extends Command
     }
 
     public function createPermissions(){
+        $this->line("Create Permissions");
         $permissions = [
             "view-dashboard",
-            
+            "handle-currencies",
         ];
 
+        $bar = $this->output->createProgressBar(count($permissions));
+        $bar->start();
         foreach ($permissions as $key){
+            $bar->advance();
             $permission = Permission::where('name', $key)->first();
             if($permission){
                 $this->admin_user->givePermissionTo($permission);
@@ -97,5 +101,8 @@ class Install extends Command
             $permission = Permission::create(['name' => $key]);
             $this->admin_user->givePermissionTo($permission);
         }
+        $bar->finish();
+        $this->line("");
+        $this->line("Permissions created");
     }
 }
