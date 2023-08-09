@@ -1,18 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller_Home as Home;
+use App\Http\Controllers\Controller_Login as Login;
+use App\Http\Controllers\Admin\Controller_Dashboard as AdminDashboard;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/', [Home::class, "view"])->name("index");
+Route::get('/auth/login', [Login::class, "view"])->name("login");
+Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group( ['middleware' => ['auth', 'permission:view-dashboard2']], function() {
+    Route::get('/admin', [AdminDashboard::class, "view"])->name("adminDashboard");
 });
