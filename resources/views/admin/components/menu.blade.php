@@ -33,7 +33,7 @@
 				<div class="collapse" id="currenciessidemenu">
 					<ul class="nav sub-menu">
 						<li class="nav-item">
-							<a href="pages/email/inbox.html" class="nav-link">{{__("menu.list")}}</a>
+							<a href="{{route("adminCurrencyList")}}" class="nav-link">{{__("menu.list")}}</a>
 						</li>
 						<li class="nav-item">
 							<a href="{{route("adminCurrencyAdd")}}" class="nav-link">{{__("menu.add")}}</a>

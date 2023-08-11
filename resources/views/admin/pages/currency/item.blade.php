@@ -23,10 +23,13 @@
                 @endif
 				<form class="forms-sample" action="{{route("adminCurrencyProcess")}}">
                     @csrf
+                    @if($model->id)
+                        <input type="hidden" name="id" value="{{$model->id}}">
+                    @endif
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label for="currencyCode" class="form-label">{{__("common.currencyCode")}}</label>
-                            <input type="text" class="form-control" id="currencyCode" name="currencyCode" autocomplete="off" placeholder="BTC">
+                            <input type="text" class="form-control" id="currencyCode" name="currencyCode" autocomplete="off" placeholder="BTC" value="{{$model->name}}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label" for="image">{{__("common.image")}}</label>
@@ -34,7 +37,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="currencyUnits" class="form-label">{{__("common.currencyUnits")}}</label>
-                            <input type="text" class="form-control" id="currencyUnits" name="currencyUnits" autocomplete="off" placeholder="2">
+                            <input type="text" class="form-control" id="currencyUnits" name="currencyUnits" autocomplete="off" placeholder="2" value="{{$model->units}}">
                         </div>
                     </div>
 

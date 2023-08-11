@@ -12,5 +12,9 @@ return [
     "currencyCode" => "Код валюты (ISO)",
     "translateNames" => "Переводы названий",
     "image" => "Выберите изображение",
-    "currencyUnits" => "Знаков после запятой"
+    "currencyUnits" => "Знаков после запятой",
+    "name" => "Название",
+    "createdAt" => "Дата создания",
+    "action" => "Действие",
+    "edit" => "Изменить"
 ];

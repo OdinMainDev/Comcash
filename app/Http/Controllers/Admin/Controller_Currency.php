@@ -16,6 +16,17 @@ class Controller_Currency extends Controller
         return view("admin.pages.currency.item")->with("model", new Currency);
     }
 
+    public function edit($id) {
+        if(!is_numeric($id))
+            return abort(404);
+        
+        $currency = Currency::where("id", $id)->first();
+        if(!$currency)
+            return abort(404);
+        
+        return view("admin.pages.currency.item")->with("model", $currency);
+    }
+
     public function process(Request $request){
         $validators = [
             "image" => "nullable|".echo_image_validation(),
@@ -40,9 +51,7 @@ class Controller_Currency extends Controller
         if($image)
             $model->image = $image;
         $model->data = [
-            "titles" => [
-                getLocalesNames($request)
-            ]
+            "titles" => getLocalesNames($request)
         ];
         $model->save();
         return $this->responseSuccess();
