@@ -87,6 +87,7 @@ class Install extends Command
         $permissions = [
             "view-dashboard",
             "handle-currencies",
+            "handle-merchants",
         ];
 
         $bar = $this->output->createProgressBar(count($permissions));

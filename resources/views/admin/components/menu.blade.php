@@ -42,6 +42,25 @@
 				</div>
 			</li>
 			@endcan
+			@can("handle-merchants")
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="collapse" href="#merchantssidemenu" role="button" aria-expanded="false" aria-controls="merchantssidemenu">
+					<i class="link-icon" data-feather="monitor"></i>
+						<span class="link-title">{{__("menu.merchants")}}</span>
+						<i class="link-arrow" data-feather="chevron-down"></i>
+					</a>
+					<div class="collapse" id="merchantssidemenu">
+						<ul class="nav sub-menu">
+							<li class="nav-item">
+								<a href="{{route("adminMerchantList")}}" class="nav-link">{{__("menu.list")}}</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{route("adminMerchantAdd")}}" class="nav-link">{{__("menu.add")}}</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			@endcan
 		</ul>
 	</div>
 </nav>

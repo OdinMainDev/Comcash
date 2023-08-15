@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller_Login as Login;
 use App\Http\Controllers\Admin\Controller_Dashboard as AdminDashboard;
 use App\Http\Controllers\Admin\Controller_Currency as AdminCurrency;
 use App\Http\Controllers\Admin\DataTable\Controller_Currency as DTCurrency;
+use App\Http\Controllers\Admin\Controller_Merchant as AdminMerchant;
+use App\Http\Controllers\Admin\DataTable\Controller_Merchant as DTMerchant;
 
 Route::get('/', [Home::class, "view"])->name("index");
 Route::get('/auth/login', [Login::class, "view"])->name("login");
@@ -22,4 +24,13 @@ Route::group( ['middleware' => ['auth', 'permission:handle-currencies']], functi
     Route::get('/panel/currencies/add', [AdminCurrency::class, "add"])->name("adminCurrencyAdd");
     Route::get('/panel/currencies/edit/{id}', [AdminCurrency::class, "edit"])->name("adminCurrencyEdit");
     Route::post('/panel/currencies/process', [AdminCurrency::class, "process"])->name("adminCurrencyProcess");
+});
+
+Route::group( ['middleware' => ['auth', 'permission:handle-merchants']], function() {
+    Route::get('/panel/merchants/list', [DTMerchant::class, "view"])->name("adminMerchantList");
+    Route::get('/panel/merchants/list/data', [DTMerchant::class, "process"]);
+
+    Route::get('/panel/merchants/add', [AdminMerchant::class, "add"])->name("adminMerchantAdd");
+    Route::get('/panel/merchants/edit/{id}', [AdminMerchant::class, "edit"])->name("adminMerchantEdit");
+    Route::post('/panel/merchants/process', [AdminMerchant::class, "process"])->name("adminMerchantProcess");
 });

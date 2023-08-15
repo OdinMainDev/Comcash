@@ -187,5 +187,9 @@ return [
 
 
     'languages' => ["RU", "EN"],
+    'merchants' => [
+        "garantex",
+        "mpcvip"
+    ],
 
 ];

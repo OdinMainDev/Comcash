@@ -43,7 +43,7 @@
 
                     @include("admin.components.form.multilang_names", ['mlNames' => @$model->data['titles']])
                     
-					<button type="submit" class="btn btn-primary me-2">Submit</button>
+					<button type="submit" class="btn btn-primary me-2">{{__("common.submit")}}</button>
 				</form>
 			</div>
 		</div>

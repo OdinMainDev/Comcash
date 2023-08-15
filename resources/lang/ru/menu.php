@@ -10,4 +10,5 @@ return [
     "return_to_site" => "Вернуться на сайт",
     "profile" => "Профиль",
     "logout" => "Завершить сессию",
+    "merchants" => "Мерчанты"
 ];
