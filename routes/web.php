@@ -8,6 +8,9 @@ use App\Http\Controllers\Admin\Controller_Currency as AdminCurrency;
 use App\Http\Controllers\Admin\DataTable\Controller_Currency as DTCurrency;
 use App\Http\Controllers\Admin\Controller_Merchant as AdminMerchant;
 use App\Http\Controllers\Admin\DataTable\Controller_Merchant as DTMerchant;
+use App\Http\Controllers\Admin\Controller_Profile as AdminProfile;
+use App\Http\Controllers\Admin\Controller_Role as AdminRole;
+use App\Http\Controllers\Admin\DataTable\Controller_Role as DTRole;
 
 Route::get('/', [Home::class, "view"])->name("index");
 Route::get('/auth/login', [Login::class, "view"])->name("login");
@@ -15,6 +18,10 @@ Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
 
 Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {
     Route::get('/panel', [AdminDashboard::class, "view"])->name("adminDashboard");
+
+    Route::get('/panel/profile', [AdminProfile::class, "view"])->name("adminProfile");
+    Route::post('/panel/profile', [AdminProfile::class, "process"])->name("adminProfileProcess");
+
 });
 
 Route::group( ['middleware' => ['auth', 'permission:handle-currencies']], function() {
