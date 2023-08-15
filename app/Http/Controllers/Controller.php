@@ -47,6 +47,6 @@ class Controller extends BaseController
     }
 
     public function responseErrorValidation($data){
-        throw new ValidationException($data);
+        throw ValidationException::withMessages($data);
     }
 }
