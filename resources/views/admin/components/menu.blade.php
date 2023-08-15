@@ -61,6 +61,25 @@
 					</div>
 				</li>
 			@endcan
+			@can("handle-roles")
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="collapse" href="#rolessidemenu" role="button" aria-expanded="false" aria-controls="rolessidemenu">
+					<i class="link-icon" data-feather="alert-octagon"></i>
+						<span class="link-title">{{__("menu.roles")}}</span>
+						<i class="link-arrow" data-feather="chevron-down"></i>
+					</a>
+					<div class="collapse" id="rolessidemenu">
+						<ul class="nav sub-menu">
+							<li class="nav-item">
+								<a href="{{route("adminRoleList")}}" class="nav-link">{{__("menu.list")}}</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{route("adminRoleAdd")}}" class="nav-link">{{__("menu.add")}}</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			@endcan
 		</ul>
 	</div>
 </nav>

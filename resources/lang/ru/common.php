@@ -28,5 +28,9 @@ return [
     "apiToken" => "Апи токен",
     "submit" => "Подтвердить",
     "is_auto_merchant" => "Включить автоматическую работу?",
-    "old_password_incorrect" => "Старый пароль указан не верно"
+    "old_password_incorrect" => "Старый пароль указан не верно",
+    "addRole" => "Создать роль пользователя",
+    "editRole" => "Изменить роль",
+    "choose_permissions" => "Укажите права для роли",
+    "role_name_already_exist" => "Роль с таким именем уже существует",
 ];

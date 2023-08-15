@@ -41,3 +41,12 @@ Route::group( ['middleware' => ['auth', 'permission:handle-merchants']], functio
     Route::get('/panel/merchants/edit/{id}', [AdminMerchant::class, "edit"])->name("adminMerchantEdit");
     Route::post('/panel/merchants/process', [AdminMerchant::class, "process"])->name("adminMerchantProcess");
 });
+
+Route::group( ['middleware' => ['auth', 'permission:handle-roles']], function() {
+    Route::get('/panel/roles/list', [DTRole::class, "view"])->name("adminRoleList");
+    Route::get('/panel/roles/list/data', [DTRole::class, "process"]);
+
+    Route::get('/panel/roles/add', [AdminRole::class, "add"])->name("adminRoleAdd");
+    Route::get('/panel/roles/edit/{id}', [AdminRole::class, "edit"])->name("adminRoleEdit");
+    Route::post('/panel/roles/process', [AdminRole::class, "process"])->name("adminRoleProcess");
+});
