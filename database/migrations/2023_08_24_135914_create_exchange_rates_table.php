@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("from");
             $table->string("to");
-            $table->integer("rate");
+            $table->bigInteger("rate");
 
             $table->index(["from", "to"]);
         });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasImage;
 use App\Models\Currency;
+use App\Models\ExchangeRate;
 use Illuminate\Http\Request;
 
 class Controller_Currency extends Controller
@@ -13,6 +14,7 @@ class Controller_Currency extends Controller
     use HasImage;
     
     public function add() {
+        dd(ExchangeRate::get());
         return view("admin.pages.currency.item")->with("model", new Currency);
     }
 

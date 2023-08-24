@@ -2,13 +2,15 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Traits\Misc\HasAmount;
 use App\Models\Currency;
 use App\Models\ExchangeRate;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
-class RatesParser extends Command
-{
+class RatesParser extends Command{
+    
+    use HasAmount;
     /**
      * The name and signature of the console command.
      *
@@ -35,7 +37,7 @@ class RatesParser extends Command
 
         $request_currency = [];
         foreach($currencies as $currency){
-            $request_currency[] = $currency['name'];
+            $request_currency[] = $currency->name;
         }
         $request_currency = implode(",", $request_currency);
         $api_key = env("CRYPTOCOMPARE_KEY", false);
@@ -53,10 +55,23 @@ class RatesParser extends Command
         $inserts = [];
         foreach($response as $from => $arr){
             foreach($arr as $to => $rate){
-                $inserts = [
+                if($from == $to){
+                    continue;
+                }
+                $currency = false;
+                foreach($currencies as $val){
+                    if($val->name == $to){
+                        $currency = $val;
+                        break;
+                    }
+                }
+                if(!$currency){
+                    continue;
+                }
+                $inserts[] = [
                     "from" => $from,
                     "to" => $to,
-                    "rate" => $rate,
+                    "rate" => $this->toInt($rate, $currency->units),
                 ];
             }
         }
