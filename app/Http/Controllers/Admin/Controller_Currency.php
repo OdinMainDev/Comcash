@@ -37,12 +37,18 @@ class Controller_Currency extends Controller
         $validators = appendLocalesNames($validators);
         $request->validate($validators);
 
+        $check = Currency::where("name", $request->currencyCode);
+
         $model = new Currency;
         if($request->has("id") && $request->id){
             $model = Currency::where("id", $request->id)->first();
             if(!$model){
                 return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
             }
+            $check = $check->where("id", "!=", $request->id);
+        }
+        if($check->first()){
+            return $this->responseErrorValidation(["undefined" => __("common.currency_with_code_exists")]);
         }
 
         $model->name = $request->currencyCode;
