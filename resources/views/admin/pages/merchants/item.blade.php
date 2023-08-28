@@ -14,11 +14,7 @@
                 @if(!$model->id)
                     <h5 class="mb-2">{{__("common.addMerchant")}}</h5>
                 @else
-                    <div class="d-flex align-items-start">
-                        <div>
-                            <h5 class="mb-2">{{__("common.editMerchant")}}: {{$model->name}}</h5>
-                        </div>
-                    </div>
+                    <h5 class="mb-2">{{__("common.editMerchant")}}: {{$model->name}}</h5>
                 @endif
 				<form class="forms-sample" action="{{route("adminMerchantProcess")}}">
                     @csrf

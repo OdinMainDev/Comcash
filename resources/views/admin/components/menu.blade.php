@@ -61,6 +61,25 @@
 					</div>
 				</li>
 			@endcan
+			@can("handle-directions")
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="collapse" href="#directionssidemenu" role="button" aria-expanded="false" aria-controls="directionssidemenu">
+					<i class="link-icon" data-feather="monitor"></i>
+						<span class="link-title">{{__("menu.directions")}}</span>
+						<i class="link-arrow" data-feather="chevron-down"></i>
+					</a>
+					<div class="collapse" id="directionssidemenu">
+						<ul class="nav sub-menu">
+							<li class="nav-item">
+								<a href="{{route("adminMerchantList")}}" class="nav-link">{{__("menu.list")}}</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{route("adminDirectionAdd")}}" class="nav-link">{{__("menu.add")}}</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			@endcan
 			@can("handle-roles")
 				<li class="nav-item">
 					<a class="nav-link" data-toggle="collapse" href="#rolessidemenu" role="button" aria-expanded="false" aria-controls="rolessidemenu">

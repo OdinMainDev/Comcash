@@ -12,10 +12,12 @@
         <!-- <link rel="stylesheet" href="/admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"> -->
         <link rel="stylesheet" href="/admin/assets/fonts/feather-font/css/iconfont.css">
         <link rel="stylesheet" href="/admin/assets/vendors/flag-icon-css/css/flag-icon.min.css">
-        <link rel="stylesheet" href="/admin/assets/css/demo_1/style.css">
+        
         <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
         @yield("css")
+
+        <link rel="stylesheet" href="/admin/assets/css/demo_1/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
     </head>
     <body>
         <div class="main-wrapper">

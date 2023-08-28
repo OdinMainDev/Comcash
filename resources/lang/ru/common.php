@@ -33,4 +33,10 @@ return [
     "editRole" => "Изменить роль",
     "choose_permissions" => "Укажите права для роли",
     "role_name_already_exist" => "Роль с таким именем уже существует",
+    "addDirection" => "Добавить направление",
+    "currencyFrom" => "Валюта приема",
+    "notChoosen" => "Не выбрано",
+    "merchantFrom" => "Мерчант приема",
+    "currencyTo" => "Валюта выплаты",
+    "merchantTo" => "Мерчант выплаты",
 ];

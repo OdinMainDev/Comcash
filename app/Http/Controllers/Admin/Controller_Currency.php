@@ -8,13 +8,11 @@ use App\Models\Currency;
 use App\Models\ExchangeRate;
 use Illuminate\Http\Request;
 
-class Controller_Currency extends Controller
-{
-
+class Controller_Currency extends Controller{
+    
     use HasImage;
     
     public function add() {
-        dd(ExchangeRate::get());
         return view("admin.pages.currency.item")->with("model", new Currency);
     }
 
@@ -39,7 +37,7 @@ class Controller_Currency extends Controller
         $validators = appendLocalesNames($validators);
         $request->validate($validators);
 
-        $check = Currency::where("name", $request->currencyCode);
+        // $check = Currency::where("name", $request->currencyCode);
 
         $model = new Currency;
         if($request->has("id") && $request->id){
@@ -47,11 +45,11 @@ class Controller_Currency extends Controller
             if(!$model){
                 return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
             }
-            $check = $check->where("id", "!=", $request->id);
+            // $check = $check->where("id", "!=", $request->id);
         }
-        if($check->first()){
-            return $this->responseErrorValidation(["undefined" => __("common.currency_with_code_exists")]);
-        }
+        // if($check->first()){
+        //     return $this->responseErrorValidation(["undefined" => __("common.currency_with_code_exists")]);
+        // }
 
         $model->name = $request->currencyCode;
         $model->units = $request->currencyUnits;

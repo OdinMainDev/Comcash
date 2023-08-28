@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\DataTable\Controller_Merchant as DTMerchant;
 use App\Http\Controllers\Admin\Controller_Profile as AdminProfile;
 use App\Http\Controllers\Admin\Controller_Role as AdminRole;
 use App\Http\Controllers\Admin\DataTable\Controller_Role as DTRole;
+use App\Http\Controllers\Admin\Controller_Direction as AdminDirection;
+use App\Http\Controllers\Admin\DataTable\Controller_Direction as DTDirection;
+use App\Http\Controllers\Admin\Controller_Api as AdminApi;
 
 Route::get('/', [Home::class, "view"])->name("index");
 Route::get('/auth/login', [Login::class, "view"])->name("login");
@@ -49,4 +52,22 @@ Route::group( ['middleware' => ['auth', 'permission:handle-roles']], function() 
     Route::get('/panel/roles/add', [AdminRole::class, "add"])->name("adminRoleAdd");
     Route::get('/panel/roles/edit/{id}', [AdminRole::class, "edit"])->name("adminRoleEdit");
     Route::post('/panel/roles/process', [AdminRole::class, "process"])->name("adminRoleProcess");
+});
+
+Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
+    Route::get('/panel/directions/list', [DTDirection::class, "view"])->name("adminDirectionList");
+    Route::get('/panel/directions/list/data', [DTDirection::class, "process"]);
+
+    Route::get('/panel/directions/add', [AdminDirection::class, "add"])->name("adminDirectionAdd");
+    Route::post('/panel/directions/add/process', [AdminDirection::class, "add_process"])->name("adminDirectionAddProcess");
+    Route::get('/panel/directions/edit/{id}', [AdminDirection::class, "edit"])->name("adminDirectionEdit");
+    Route::post('/panel/directions/process', [AdminDirection::class, "process"])->name("adminDirectionProcess");
+});
+
+
+
+
+Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
+    Route::get('/panel/api/get/currencies', [AdminApi::class, "currencies"]);
+    Route::get('/panel/api/get/merchants', [AdminApi::class, "merchants"]);
 });

@@ -1,8 +1,3 @@
-$(document).on('click', function(event) {
-    var text = $(event.target).text();
-    console.log(text);
-});
-
 (() => {
     function debounce(callback, ms) {
         var timer = 0;
