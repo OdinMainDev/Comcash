@@ -26,5 +26,6 @@ return [
     "check your email text" => "Мы отправили Вам письмо, пройдите верификацию",
     "forgot your password?" => "Забыли свой пароль?",
     "confirmcode_placeholder" => "Введите код отправленный на вашу почту",
-    "recover your password" => "Обновите ваш пароль"
+    "recover your password" => "Обновите ваш пароль",
+    "page temporarily not working!" => "Страница временно недоступна:("
 ];
