@@ -39,4 +39,10 @@ return [
     "merchantFrom" => "Мерчант приема",
     "currencyTo" => "Валюта выплаты",
     "merchantTo" => "Мерчант выплаты",
+    "auth_success" => "Авторизация успешна",
+    "email_already_register" => "Email уже зарегистрирован",
+    "register_success" => "Регистрация успешна",
+    "password_reset_success" => "Код восстановления пароля отправлен на вашу почту!",
+    "password_reset_code_invalid" => "Проверочный код введен не правильно или устарел!",
+    "reset_password_success" => "Пароль успешно восстановлен, идет перенаправление."
 ];

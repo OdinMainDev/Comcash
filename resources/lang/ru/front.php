@@ -1,0 +1,30 @@
+<?php 
+
+return [
+    "sign in header" => "Рады вас видеть!",
+    "first time?" => "Первый раз?",
+    "sign up now!" => "Срочно регистрируйтесь!",
+    "sign in" => "Войти",
+    "continue" => "Продолжить",
+    "forgot password?" => "Забыли пароль?",
+    "sign up header" => "Создайте свой аккаунт!",
+    "email_placeholder" => "Нам нужна Ваша почта",
+    "password_placeholder" => "Без пароля никуда!",
+    "repassword_placeholder" => "Повторите свой пароль",
+    "register by email" => "Зарегистрируйтесь используя Вашу почту!",
+    "already has account" => "Уже есть аккаунт?",
+    "why not auth?" => "Почему бы не войти?",
+    "pressing button" => "Нажимая",
+    "you are agree" => "Вы соглашаетесь с нашей",
+    "privacy policy" => "Политикой Конфиденциальности",
+    "register email subject" => "Спасибо за регистрацию!",
+    "confirm your email address" => "Подтвердите вашу почту!",
+    "register email text" => "Нажмите на кнопку ниже для подтверждения вашей почты!",
+    "register email text 2" => "Если не получается нажать на кнопку - скопируйте ссылку ниже и перейдите вручную:",
+    "cheers" => "С уважением",
+    "check your email!" => "Проверьте вашу почту!",
+    "check your email text" => "Мы отправили Вам письмо, пройдите верификацию",
+    "forgot your password?" => "Забыли свой пароль?",
+    "confirmcode_placeholder" => "Введите код отправленный на вашу почту",
+    "recover your password" => "Обновите ваш пароль"
+];
