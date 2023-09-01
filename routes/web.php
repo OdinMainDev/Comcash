@@ -43,55 +43,82 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 });
 
 
-Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {
-    Route::get('/panel', [AdminDashboard::class, "view"])->name("adminDashboard");
 
-    Route::get('/panel/profile', [AdminProfile::class, "view"])->name("adminProfile");
-    Route::post('/panel/profile', [AdminProfile::class, "process"])->name("adminProfileProcess");
+Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
+    Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {
+        Route::get('/panel', [AdminDashboard::class, "view"])->name("adminDashboard");
 
-});
+        Route::get('/panel/profile', [AdminProfile::class, "view"])->name("adminProfile");
+        Route::post('/panel/profile', [AdminProfile::class, "process"])->name("adminProfileProcess");
 
-Route::group( ['middleware' => ['auth', 'permission:handle-currencies']], function() {
-    Route::get('/panel/currencies/list', [DTCurrency::class, "view"])->name("adminCurrencyList");
-    Route::get('/panel/currencies/list/data', [DTCurrency::class, "process"]);
+    });
 
-    Route::get('/panel/currencies/add', [AdminCurrency::class, "add"])->name("adminCurrencyAdd");
-    Route::get('/panel/currencies/edit/{id}', [AdminCurrency::class, "edit"])->name("adminCurrencyEdit");
-    Route::post('/panel/currencies/process', [AdminCurrency::class, "process"])->name("adminCurrencyProcess");
-});
+    Route::group( ['middleware' => ['auth', 'permission:handle-currencies']], function() {
+        Route::get('/panel/currencies/list', [DTCurrency::class, "view"])->name("adminCurrencyList");
+        Route::get('/panel/currencies/list/data', [DTCurrency::class, "process"]);
 
-Route::group( ['middleware' => ['auth', 'permission:handle-merchants']], function() {
-    Route::get('/panel/merchants/list', [DTMerchant::class, "view"])->name("adminMerchantList");
-    Route::get('/panel/merchants/list/data', [DTMerchant::class, "process"]);
+        Route::get('/panel/currencies/add', [AdminCurrency::class, "add"])->name("adminCurrencyAdd");
+        Route::get('/panel/currencies/edit/{id}', [AdminCurrency::class, "edit"])->name("adminCurrencyEdit");
+        Route::post('/panel/currencies/process', [AdminCurrency::class, "process"])->name("adminCurrencyProcess");
+    });
 
-    Route::get('/panel/merchants/add', [AdminMerchant::class, "add"])->name("adminMerchantAdd");
-    Route::get('/panel/merchants/edit/{id}', [AdminMerchant::class, "edit"])->name("adminMerchantEdit");
-    Route::post('/panel/merchants/process', [AdminMerchant::class, "process"])->name("adminMerchantProcess");
-});
+    Route::group( ['middleware' => ['auth', 'permission:handle-merchants']], function() {
+        Route::get('/panel/merchants/list', [DTMerchant::class, "view"])->name("adminMerchantList");
+        Route::get('/panel/merchants/list/data', [DTMerchant::class, "process"]);
 
-Route::group( ['middleware' => ['auth', 'permission:handle-roles']], function() {
-    Route::get('/panel/roles/list', [DTRole::class, "view"])->name("adminRoleList");
-    Route::get('/panel/roles/list/data', [DTRole::class, "process"]);
+        Route::get('/panel/merchants/add', [AdminMerchant::class, "add"])->name("adminMerchantAdd");
+        Route::get('/panel/merchants/edit/{id}', [AdminMerchant::class, "edit"])->name("adminMerchantEdit");
+        Route::post('/panel/merchants/process', [AdminMerchant::class, "process"])->name("adminMerchantProcess");
+    });
 
-    Route::get('/panel/roles/add', [AdminRole::class, "add"])->name("adminRoleAdd");
-    Route::get('/panel/roles/edit/{id}', [AdminRole::class, "edit"])->name("adminRoleEdit");
-    Route::post('/panel/roles/process', [AdminRole::class, "process"])->name("adminRoleProcess");
-});
+    Route::group( ['middleware' => ['auth', 'permission:handle-roles']], function() {
+        Route::get('/panel/roles/list', [DTRole::class, "view"])->name("adminRoleList");
+        Route::get('/panel/roles/list/data', [DTRole::class, "process"]);
 
-Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
-    Route::get('/panel/directions/list', [DTDirection::class, "view"])->name("adminDirectionList");
-    Route::get('/panel/directions/list/data', [DTDirection::class, "process"]);
+        Route::get('/panel/roles/add', [AdminRole::class, "add"])->name("adminRoleAdd");
+        Route::get('/panel/roles/edit/{id}', [AdminRole::class, "edit"])->name("adminRoleEdit");
+        Route::post('/panel/roles/process', [AdminRole::class, "process"])->name("adminRoleProcess");
+    });
 
-    Route::get('/panel/directions/add', [AdminDirection::class, "add"])->name("adminDirectionAdd");
-    Route::post('/panel/directions/add/process', [AdminDirection::class, "add_process"])->name("adminDirectionAddProcess");
-    Route::get('/panel/directions/edit/{id}', [AdminDirection::class, "edit"])->name("adminDirectionEdit");
-    Route::post('/panel/directions/process', [AdminDirection::class, "process"])->name("adminDirectionProcess");
-});
+    Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
+        Route::get('/panel/directions/list', [DTDirection::class, "view"])->name("adminDirectionList");
+        Route::get('/panel/directions/list/data', [DTDirection::class, "process"]);
+
+        Route::get('/panel/directions/add', [AdminDirection::class, "add"])->name("adminDirectionAdd");
+        Route::post('/panel/directions/add/process', [AdminDirection::class, "add_process"])->name("adminDirectionAddProcess");
+        Route::get('/panel/directions/edit/{id}', [AdminDirection::class, "edit"])->name("adminDirectionEdit");
+        Route::post('/panel/directions/process', [AdminDirection::class, "process"])->name("adminDirectionProcess");
+    });
 
 
 
 
-Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
-    Route::get('/panel/api/get/currencies', [AdminApi::class, "currencies"]);
-    Route::get('/panel/api/get/merchants', [AdminApi::class, "merchants"]);
+    Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
+        Route::get('/panel/api/get/currencies', [AdminApi::class, "currencies"]);
+        Route::get('/panel/api/get/merchants', [AdminApi::class, "merchants"]);
+    });
+
+    Route::group(config('translation.route_group_config') + ['namespace' => 'JoeDixon\\Translation\\Http\\Controllers'], function ($router) {
+        $router->get(config('translation.ui_url'), 'LanguageController@index')
+            ->name('languages.index');
+    
+        $router->get(config('translation.ui_url').'/create', 'LanguageController@create')
+            ->name('languages.create');
+    
+        $router->post(config('translation.ui_url'), 'LanguageController@store')
+            ->name('languages.store');
+    
+        $router->get(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@index')
+            ->name('languages.translations.index');
+    
+        $router->post(config('translation.ui_url').'/{language}', 'LanguageTranslationController@update')
+            ->name('languages.translations.update');
+    
+        $router->get(config('translation.ui_url').'/{language}/translations/create', 'LanguageTranslationController@create')
+            ->name('languages.translations.create');
+    
+        $router->post(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@store')
+            ->name('languages.translations.store');
+    });
+
 });

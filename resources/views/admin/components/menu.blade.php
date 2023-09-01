@@ -99,6 +99,14 @@
 					</div>
 				</li>
 			@endcan
+			@can("handle-languages")
+				<li class="nav-item">
+					<a class="nav-link" href="{{route("languages.index")}}">
+						<i class="link-icon" data-feather="flag"></i>
+						<span class="link-title">{{__("menu.languages")}}</span>
+					</a>
+				</li>
+			@endcan
 		</ul>
 	</div>
 </nav>

@@ -89,6 +89,7 @@ class Install extends Command
             "handle-merchants",
             "handle-roles",
             "handle-directions",
+            "handle-languages",
         ];
 
         $bar = $this->output->createProgressBar(count($permissions));
