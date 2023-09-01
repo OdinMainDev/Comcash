@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller_Home as Home;
 use App\Http\Controllers\Controller_Login as Login;
+use App\Http\Controllers\Controller_Register as Register;
+use App\Http\Controllers\Controller_ResetPassword as ResetPassword;
 use App\Http\Controllers\Admin\Controller_Dashboard as AdminDashboard;
 use App\Http\Controllers\Admin\Controller_Currency as AdminCurrency;
 use App\Http\Controllers\Admin\DataTable\Controller_Currency as DTCurrency;
@@ -14,10 +16,32 @@ use App\Http\Controllers\Admin\DataTable\Controller_Role as DTRole;
 use App\Http\Controllers\Admin\Controller_Direction as AdminDirection;
 use App\Http\Controllers\Admin\DataTable\Controller_Direction as DTDirection;
 use App\Http\Controllers\Admin\Controller_Api as AdminApi;
+use Illuminate\Support\Facades\Cookie;
 
-Route::get('/', [Home::class, "view"])->name("index");
-Route::get('/auth/login', [Login::class, "view"])->name("login");
-Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
+Route::get('/', function () {
+    $lang = Cookie::get('language');
+    if(!$lang){
+        $lang = "ru";
+    }
+    return redirect("/".$lang);
+});
+
+
+
+Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
+    Route::get('/', [Home::class, "view"])->name("index");
+    Route::get('/auth/login', [Login::class, "view"])->name("login");
+    Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
+    Route::get('/auth/register', [Login::class, "view"])->name("register");
+    Route::post('/auth/register', [Register::class, "process"])->name("registerPost");
+    Route::get('/auth/reset-password', [Login::class, "view"])->name("resetPassword");
+    Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
+    Route::post('/auth/reset-password/confirm', [ResetPassword::class, "confirm_process"])->name("resetPasswordConfirmPost");
+
+
+    Route::get('/auth/email/confirm/{id}/{hash}', [Login::class, "view"])->name("verifyEmail");
+});
+
 
 Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {
     Route::get('/panel', [AdminDashboard::class, "view"])->name("adminDashboard");

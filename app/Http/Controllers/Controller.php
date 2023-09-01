@@ -8,9 +8,14 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
-class Controller extends BaseController
-{
+class Controller extends BaseController{
+
     use AuthorizesRequests, ValidatesRequests;
+
+    public $theme = "";
+    public function __construct(){
+        $this->theme = env("THEME_NAME", "comcash");
+    }
 
     public function responseError($message = false, $data = []){
         if(!$message){
@@ -34,15 +39,17 @@ class Controller extends BaseController
         ]);
     }
 
-    public function checkThrottling($key){
+    public function checkThrottling($key, $countPerMinute = 5){
         $executed = RateLimiter::attempt(
             $key,
-            $perMinute = 5,
+            $perMinute = $countPerMinute,
             function() {}
         );
 
         if(!$executed){
-            $this->responseError(__("common.throttle", ["seconds" => 60]));
+            $this->responseErrorValidation([
+                __("common.throttle", ["seconds" => 60])
+            ]);
         }
     }
 

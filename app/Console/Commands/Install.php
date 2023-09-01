@@ -72,7 +72,6 @@ class Install extends Command
             return;
         }
         $user = new User;
-        $user->name = env("INSTALL_ADMIN_EMAIL", "admin@admin.ru");
         $user->email = env("INSTALL_ADMIN_EMAIL", "admin@admin.ru");
         $user->password = Hash::make(env("INSTALL_ADMIN_PASSWORD", "admin@admin.ru"));
         $user->save();

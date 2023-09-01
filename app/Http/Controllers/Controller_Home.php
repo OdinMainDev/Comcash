@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class Controller_Home extends Controller
 {
     public function view() {
-        return view("welcome");
+        return view($this->theme.".index");
     }
 }

@@ -186,7 +186,7 @@ return [
     ])->toArray(),
 
 
-    'languages' => ["RU", "EN"],
+    'languages' => ["ru", "en"],
     'merchants' => [
         "garantex",
         "mpcvip"

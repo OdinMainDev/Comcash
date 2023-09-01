@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\URL;
 
 class SetLanguage
 {
@@ -19,26 +20,19 @@ class SetLanguage
     public function handle(Request $request, Closure $next)
     {
         $languages = Config::get("app.languages");
-        $current_language = Cookie::get('language');
+        $current_language = $request->segment(1);
         
-        if (!$current_language) {
+        if (!$current_language || !in_array($current_language, $languages)) {
             $prefer = mb_strtoupper($request->getPreferredLanguage());
             if(!in_array($prefer, $languages))
-                $prefer = "EN";
+                $prefer = "ru";
             
-            Cookie::queue('language', $prefer, 60 * 24 * 30);
-            $current_language = $prefer;
-        }
-
-        if ($request->has('language') && is_string($request->get('language')) && mb_strlen($request->get('language')) < 50) {
-            $lang = mb_strtoupper($request->get('language'));
-            if (in_array($lang, $languages)) {
-                Cookie::queue('language', $lang, 60 * 24 * 30);
-                $current_language = $lang;
-            }
+            return redirect('/'.$prefer);
         }
 
         app()->setLocale(mb_strtolower($current_language));
+        URL::defaults(['locale' => mb_strtolower($current_language)]);
+        Cookie::queue('language', mb_strtolower($current_language), 60 * 24 * 30);
         return $next($request);
     }
 }
