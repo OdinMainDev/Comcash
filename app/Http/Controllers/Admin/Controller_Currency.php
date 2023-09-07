@@ -31,12 +31,12 @@ class Controller_Currency extends Controller{
             "image" => "nullable|".echo_image_validation(),
             "currencyCode" => "required|string|max:255",
             "currencyUnits" => "required|integer|min:0",
-            "id" => "nullable|integer"
+            "enabled" => "required|boolean",
+            "id" => "nullable|integer",
+            "tag" => "required|string|max:255"
         ];
         $validators = appendLocalesNames($validators);
         $request->validate($validators);
-
-        // $check = Currency::where("name", $request->currencyCode);
 
         $model = new Currency;
         if($request->has("id") && $request->id){
@@ -44,11 +44,7 @@ class Controller_Currency extends Controller{
             if(!$model){
                 return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
             }
-            // $check = $check->where("id", "!=", $request->id);
         }
-        // if($check->first()){
-        //     return $this->responseErrorValidation(["undefined" => __("common.currency_with_code_exists")]);
-        // }
 
         $model->name = $request->currencyCode;
         $model->units = $request->currencyUnits;
@@ -58,6 +54,8 @@ class Controller_Currency extends Controller{
         $model->data = [
             "titles" => getLocalesNames($request)
         ];
+        $model->status = $request->enabled;
+        $model->tag = $request->tag;
         $model->save();
         return $this->responseSuccess();
     }
