@@ -44,5 +44,13 @@ return [
     "register_success" => "Регистрация успешна",
     "password_reset_success" => "Код восстановления пароля отправлен на вашу почту!",
     "password_reset_code_invalid" => "Проверочный код введен не правильно или устарел!",
-    "reset_password_success" => "Пароль успешно восстановлен, идет перенаправление."
+    "reset_password_success" => "Пароль успешно восстановлен, идет перенаправление.",
+    "addBlog" => "Добавить новость",
+    "editBlog" => "Изменить новость",
+    "translateTitles" => "Переводы заголовков",
+    "translateContents" => "Переводы контента",
+    "translateSeoTitles" => "Переводы SEO заголовков",
+    "translateSeoDescriptions" => "Переводы SEO описания",
+    "translateSeoKeywords" => "Переводы SEO ключей",
+    "title" => "Заголовок"
 ];

@@ -1,7 +1,7 @@
 <?php
 
 function echo_image_validation($additional = []){
-    if(count($additional) > 0)
+    if(is_array($additional) && count($additional) > 0)
         return 'file|clamav|mimes:jpeg,png,jpg,gif,svg,'.implode(",", $additional);
     return 'file|clamav|mimes:jpeg,png,jpg,gif,svg';
 }
@@ -15,12 +15,77 @@ function appendLocalesNames($array){
     return $array;
 }
 
+function appendLocalesTitles($array){
+    $config = config()->get("app.languages");
+    foreach($config as $lang){
+        $lang = mb_strtolower($lang);
+        $array['mlTitle'.$lang] = 'nullable|string|max:255';
+    }
+    return $array;
+}
+
+function appendLocalesContents($array){
+    $config = config()->get("app.languages");
+    foreach($config as $lang){
+        $lang = mb_strtolower($lang);
+        $array['mlContent'.$lang] = 'nullable|string';
+    }
+    return $array;
+}
+
+function appendLocalesSEO($array){
+    $config = config()->get("app.languages");
+    foreach($config as $lang){
+        $lang = mb_strtolower($lang);
+        $array['mlSeoTitle'.$lang] = 'nullable|string';
+        $array['mlSeoDescription'.$lang] = 'nullable|string';
+        $array['mlSeoKeyword'.$lang] = 'nullable|string';
+    }
+    return $array;
+}
+
 function getLocalesNames($request){
     $config = config()->get("app.languages");
     $respose = [];
     foreach($config as $lang){
         $lang = mb_strtolower($lang);
         $respose[$lang] = $request->{'mlName'.$lang};
+    }
+    return $respose;
+}
+
+function getLocalesTitles($request){
+    $config = config()->get("app.languages");
+    $respose = [];
+    foreach($config as $lang){
+        $lang = mb_strtolower($lang);
+        $respose[$lang] = $request->{'mlTitle'.$lang};
+    }
+    return $respose;
+}
+
+function getLocalesContents($request){
+    $config = config()->get("app.languages");
+    $respose = [];
+    foreach($config as $lang){
+        $lang = mb_strtolower($lang);
+        $respose[$lang] = $request->{'mlContent'.$lang};
+    }
+    return $respose;
+}
+
+function getLocalesSeo($request){
+    $config = config()->get("app.languages");
+    $respose = [
+        'titles' => [],
+        'descriptions' => [],
+        'keywords' => [],
+    ];
+    foreach($config as $lang){
+        $lang = mb_strtolower($lang);
+        $respose['titles'][$lang] = $request->{'mlSeoTitle'.$lang};
+        $respose['descriptions'][$lang] = $request->{'mlSeoDescription'.$lang};
+        $respose['keywords'][$lang] = $request->{'mlSeoKeyword'.$lang};
     }
     return $respose;
 }

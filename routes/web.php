@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\Controller_Direction as AdminDirection;
 use App\Http\Controllers\Admin\DataTable\Controller_Direction as DTDirection;
 use App\Http\Controllers\Admin\Controller_Api as AdminApi;
 use Illuminate\Support\Facades\Cookie;
+use App\Http\Controllers\Admin\Controller_Blog as AdminBlog;
+use App\Http\Controllers\Admin\DataTable\Controller_Blog as DTBlog;
 
 Route::get('/', function () {
     $lang = Cookie::get('language');
@@ -50,6 +52,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
         Route::get('/panel/profile', [AdminProfile::class, "view"])->name("adminProfile");
         Route::post('/panel/profile', [AdminProfile::class, "process"])->name("adminProfileProcess");
+
+        Route::post('ckeditor/upload', [AdminDashboard::class, "upload"])->name('ckeditor.image-upload');
 
     });
 
@@ -88,6 +92,15 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::post('/panel/directions/add/process', [AdminDirection::class, "add_process"])->name("adminDirectionAddProcess");
         Route::get('/panel/directions/edit/{id}', [AdminDirection::class, "edit"])->name("adminDirectionEdit");
         Route::post('/panel/directions/process', [AdminDirection::class, "process"])->name("adminDirectionProcess");
+    });
+
+    Route::group( ['middleware' => ['auth', 'permission:handle-blog']], function() {
+        Route::get('/panel/blog/list', [DTBlog::class, "view"])->name("adminBlogList");
+        Route::get('/panel/blog/list/data', [DTBlog::class, "process"]);
+
+        Route::get('/panel/blog/add', [AdminBlog::class, "add"])->name("adminBlogAdd");
+        Route::get('/panel/blog/edit/{id}', [AdminBlog::class, "edit"])->name("adminBlogEdit");
+        Route::post('/panel/blog/process', [AdminBlog::class, "process"])->name("adminBlogProcess");
     });
 
 

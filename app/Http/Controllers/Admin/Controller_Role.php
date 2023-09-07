@@ -23,7 +23,7 @@ class Controller_Role extends Controller
         ->with("choosen_permissions", []);
     }
 
-    public function edit($id) {
+    public function edit($lang, $id) {
         if(!is_numeric($id))
             return abort(404);
         

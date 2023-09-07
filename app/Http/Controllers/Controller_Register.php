@@ -32,8 +32,7 @@ class Controller_Register extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        // пока что не нужно но оно готово
-        // OnRegister::dispatch($user->id, app()->getLocale());
+        OnRegister::dispatch($user->id, app()->getLocale());
         Auth::login($user, true);
         return $this->responseSuccess(__("common.register_success"), [
             "open_modal" => 'verification-sent'

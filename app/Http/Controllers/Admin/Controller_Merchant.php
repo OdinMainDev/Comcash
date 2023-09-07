@@ -20,7 +20,7 @@ class Controller_Merchant extends Controller
         return view("admin.pages.merchants.item")->with("model", $model);
     }
 
-    public function edit($id) {
+    public function edit($lang, $id) {
         if(!is_numeric($id))
             return abort(404);
         

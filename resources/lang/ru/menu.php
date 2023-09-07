@@ -13,5 +13,6 @@ return [
     "merchants" => "Мерчанты",
     "roles" => "Роли пользователей",
     "directions" => "Направления обмена",
-    "languages" => "Языки"
+    "languages" => "Языки",
+    "blog" => "Блог"
 ];

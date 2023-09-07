@@ -34,8 +34,7 @@ class Controller_ResetPassword extends Controller{
 
         $code = $this->createConfirmCode(1, $user->id);
 
-        // пока что не нужно но оно готово
-        // OnReset::dispatch($user->id, app()->getLocale(), $code->code);
+        OnReset::dispatch($user->id, app()->getLocale(), $code->code);
         return $this->responseSuccess(__("common.password_reset_success"), [
             "open_modal" => 'recover-password',
             "hash" => $code->hash
