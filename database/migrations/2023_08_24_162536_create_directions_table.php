@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string("currency_to");
             $table->integer("merchant_from");
             $table->integer("merchant_to");
+            $table->integer("position");
             $table->boolean("status")->default(true);
             $table->timestamps();
 
-            $table->index(["merchant_from", "merchant_to", "currency_from", "currency_to"]);
+            $table->index(["position", "merchant_from", "merchant_to", "currency_from", "currency_to"]);
         });
     }
 

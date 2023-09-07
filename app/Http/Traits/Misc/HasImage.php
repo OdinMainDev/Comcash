@@ -32,7 +32,7 @@ trait HasImage {
         $log->user_id = $user ? $user->id : 0;
         $log->created_at = time();
         $log->save();
-        return $image_name;
+        return "/uploads/".$image_name;
     }
 
 }

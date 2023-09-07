@@ -25,6 +25,22 @@ class Controller_Currency extends Controller
         // ->editColumn("name", function($row){
         //     return $this->tableImage($row, @$row->data['image']);
         // })
+        ->addColumn("title", function($row){
+            $lang = mb_strtolower(app()->getLocale());
+            if(isset($row->data['titles'][$lang])){
+                return $row->data['titles'][$lang];
+            }
+
+            $config = config()->get("app.languages");
+            foreach($config as $lang){
+                $lang = mb_strtolower($lang);
+                if(isset($row->data['titles'][$lang])){
+                    return $row->data['titles'][$lang];
+                }
+            }
+
+            return "undefined";
+        })
         ->editColumn("created_at", function($row){
             return $this->tableDate($row, "created_at");
         })

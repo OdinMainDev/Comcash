@@ -11,6 +11,7 @@ class Blog extends Model
     use HasFactory;
 
     protected $casts = [
-        "data" => Json::class
+        "data" => Json::class,
+        "status" => "boolean"
     ];
 }

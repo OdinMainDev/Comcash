@@ -15,7 +15,7 @@
                     <h5 class="mb-2">{{__("common.addCurrency")}}</h5>
                 @else
                     <div class="d-flex align-items-start">
-                        <img src="/uploads/{{$model->image}}" class="wd-100 wd-sm-200 me-3">
+                        <img src="{{$model->image}}" class="wd-100 wd-sm-200 me-3">
                         <div>
                             <h5 class="mb-2">{{__("common.editCurrency")}}: {{$model->name}}</h5>
                         </div>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->integer("units");
+            $table->boolean("status")->default(true);
             $table->string("image")->nullable();
             $table->json("data");
             $table->timestamps();

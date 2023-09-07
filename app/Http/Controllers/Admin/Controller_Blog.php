@@ -23,7 +23,6 @@ class Controller_Blog extends Controller{
         if(!$model)
             return abort(404);
         
-        // dd($model);
         return view("admin.pages.blog.item")->with("model", $model);
     }
 

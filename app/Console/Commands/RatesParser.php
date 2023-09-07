@@ -30,15 +30,17 @@ class RatesParser extends Command{
      */
     public function handle()
     {
-        $currencies = Currency::get();
+        $currencies = Currency::where("status", true)->get();
         if(count($currencies) == 0){
             return;
         }
 
         $request_currency = [];
         foreach($currencies as $currency){
-            $request_currency[] = $currency->name;
+            if(!in_array($currency->name, $request_currency))
+                $request_currency[] = $currency->name;
         }
+
         $request_currency = implode(",", $request_currency);
         $api_key = env("CRYPTOCOMPARE_KEY", false);
         if(!$api_key){
