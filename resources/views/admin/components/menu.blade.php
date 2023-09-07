@@ -71,7 +71,7 @@
 					<div class="collapse" id="directionssidemenu">
 						<ul class="nav sub-menu">
 							<li class="nav-item">
-								<a href="{{route("adminMerchantList")}}" class="nav-link">{{__("menu.list")}}</a>
+								<a href="{{route("adminDirectionList")}}" class="nav-link">{{__("menu.list")}}</a>
 							</li>
 							<li class="nav-item">
 								<a href="{{route("adminDirectionAdd")}}" class="nav-link">{{__("menu.add")}}</a>

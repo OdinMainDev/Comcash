@@ -26,7 +26,7 @@ class Controller_Direction extends Controller{
         $currency_to = Currency::where("id", $request->currencyTo)->first();
 
         $model = new Direction;
-        $model->name = $currency_from->name." -> ".$currency_to->name;
+        $model->name = $currency_from->name." → ".$currency_to->name;
         $model->currency_from = $currency_from->id;
         $model->currency_to = $currency_to->id;
         $model->merchant_from = $request->merchantFrom;

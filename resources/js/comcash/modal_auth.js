@@ -21,7 +21,10 @@ $('body').on('click', ".header__btn", function () {
     window.setForm("signin");
 });
   
-const templates = Array.from(document.querySelector('.templates').children);
+var templates = [];
+if(document.querySelector('.templates')){
+    templates = Array.from(document.querySelector('.templates').children);
+}
 
 window.setForm = function(type) {
     templates.forEach(item => {

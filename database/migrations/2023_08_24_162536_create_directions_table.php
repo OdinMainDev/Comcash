@@ -20,6 +20,10 @@ return new class extends Migration
             $table->integer("merchant_to");
             $table->integer("position");
             $table->boolean("status")->default(true);
+            $table->bigInteger("total_in")->default(0);
+            $table->bigInteger("total_out")->default(0);
+            $table->float("profit_percent", 3, 2)->default(1);
+            $table->json("data");
             $table->timestamps();
 
             $table->index(["position", "merchant_from", "merchant_to", "currency_from", "currency_to"]);

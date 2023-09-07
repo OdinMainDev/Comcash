@@ -52,5 +52,6 @@ return [
     "translateSeoTitles" => "Переводы SEO заголовков",
     "translateSeoDescriptions" => "Переводы SEO описания",
     "translateSeoKeywords" => "Переводы SEO ключей",
-    "title" => "Заголовок"
+    "title" => "Заголовок",
+    "chooseTag" => "Выберите тег"
 ];

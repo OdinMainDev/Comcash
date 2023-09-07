@@ -27,5 +27,12 @@ return [
     "forgot your password?" => "Забыли свой пароль?",
     "confirmcode_placeholder" => "Введите код отправленный на вашу почту",
     "recover your password" => "Обновите ваш пароль",
-    "page temporarily not working!" => "Страница временно недоступна:("
+    "page temporarily not working!" => "Страница временно недоступна:(",
+    "comcash welcome title" => "<span>Быстрый</span> и <span>надёжный</span> криптообменник",
+    "comcash welcome 2" => "Уверьтесь сами, что обмен криптовалютой может быть простым, надежным и выгодным",
+    "exchange crypto" => "Обмен крипты",
+    "buy sell" => "Покупка/Продажа",
+    "you send" => "Ты отправишь",
+    
+
 ];
