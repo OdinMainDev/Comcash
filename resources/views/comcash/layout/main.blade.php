@@ -20,6 +20,10 @@
         @guest
             @include('comcash.component.modal_auth')
         @endguest
+
+		<script>
+			window.language = "{{mb_strtolower(app()->getLocale())}}";
+		</script>
         @vite("resources/js/comcash.js")
 
 		@yield('js')

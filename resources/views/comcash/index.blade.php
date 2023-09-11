@@ -26,23 +26,14 @@
 								<div class='label'>{{__("front.you send")}}</div>
 								<div class='input-control'>
 									<input type='number' class='input' />
-									<select class="select2" name="city" >
-										<option value=""></option>
-										<option value="ru">Абаза</option>
-										<option value="en">Абакан</option>
-										<option value="369">Абдулино</option>
-										<option value="370">Абинск</option>
-										<option value="371">Агидель</option>
-										<option value="ru">Абаза</option>
-										<option value="en">Абакан</option>
-										<option value="369">Абдулино</option>
-										<option value="370">Абинск</option>
-										<option value="371">Агидель</option>
-										<option value="ru">Абаза</option>
-										<option value="en">Абакан</option>
-										<option value="369">Абдулино</option>
-										<option value="370">Абинск</option>
-										<option value="371">Агидель</option>
+									<select class="select2 select2boxindex" name="currency_from" >
+										<?php $count = 0;?>
+										@foreach ($currencies as $key => $row)
+											@if($row->tag == "crypto")
+												<option value="{{$row->id}}" @if($count == 0) selected @endif data-image="{{$row->image}}">{{$row->name}}</option>
+												<?php $count++; ?>
+											@endif
+										@endforeach
 									</select>
 								</div>
 								<div class='label'>
@@ -52,25 +43,14 @@
 								<div class='input-control'>
 									<input type='number'
 										class='input' />
-									<select class="select2"
-										name="city"
-										placeholder="Выберите город">
-										<option value=""></option>
-										<option value="ru">Абаза</option>
-										<option value="en">Абакан</option>
-										<option value="369">Абдулино</option>
-										<option value="370">Абинск</option>
-										<option value="371">Агидель</option>
-										<option value="ru">Абаза</option>
-										<option value="en">Абакан</option>
-										<option value="369">Абдулино</option>
-										<option value="370">Абинск</option>
-										<option value="371">Агидель</option>
-										<option value="ru">Абаза</option>
-										<option value="en">Абакан</option>
-										<option value="369">Абдулино</option>
-										<option value="370">Абинск</option>
-										<option value="371">Агидель</option>
+									<select class="select2 select2boxindex" name="currency_to">
+										<?php $count = 0;?>
+										@foreach ($currencies as $key => $row)
+											@if($row->tag == "crypto")
+												<option value="{{$row->id}}" @if($count == 1) selected @endif data-image="{{$row->image}}">{{$row->name}}</option>
+												<?php $count++; ?>
+											@endif
+										@endforeach
 									</select>
 								</div>
 								<button class='button button--auto'

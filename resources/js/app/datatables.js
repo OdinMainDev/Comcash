@@ -40,8 +40,7 @@
                     extend: 'pdf',
                 },
             ],
-            dom:  "<'d-none'B><'row'f<'col-sm-12 table-responsive scrollbar mx-n1 px-1 border-top'tr>>" +
-            "<'row'<'col-12 d-inline-flex align-items-center justify-content-center'p>>",
+            dom: "<'table-responsive'tr><'row'<'col-sm-12 col-md-6'i><'col-sm-12 col-md-6 dataTables_pager'p>>",
             columns: $(this).data("columns"),
             orderCellsTop: true,
             order: [ [0, orderType] ],
@@ -62,6 +61,22 @@
             "language": {
                 search: ""
             }
+        });
+
+        $(this).find("thead tr:eq(1) th").each(function (a) {
+            if(!$(this).data("search")){
+                $(this).html(" ");
+                return;
+            }
+            $(this).removeAttr(Object.values($(this).get(0).attributes).map(attr => attr.name).join(' '));
+            $(this).removeClass("sorting");
+            $(this).addClass("sorting_disabled");
+            var t = $(this).text();
+            $(this).html('<input type="text" class="form-control" placeholder="🔍 ' + t + '" />');
+            $("input", this).keyup(debounce(function(e){
+                var val = $.fn.dataTable.util.escapeRegex(this.value);
+                dtCont.column(a).search(val ? val : '', true, false).draw();
+            }, 1000));
         });
 
         dtCont.on( 'draw', function () {
@@ -86,16 +101,16 @@
         
     });
 
-    $('.eaDatatable').each(function() {
-        var datatable = $(this);
-        // SEARCH - Add the placeholder for Search and Turn this into in-line form control
-        var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
-        search_input.attr('placeholder', '🔎.....');
-        search_input.removeClass('form-control-sm');
-        search_input.addClass('form-control')
-        // LENGTH - Inline-Form control
-        var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
-        length_sel.removeClass('form-control-sm');
-        length_sel.addClass('form-control')
-    });
+    // $('.eaDatatable').each(function() {
+    //     var datatable = $(this);
+    //     // SEARCH - Add the placeholder for Search and Turn this into in-line form control
+    //     var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
+    //     search_input.attr('placeholder', '🔎.....');
+    //     search_input.removeClass('form-control-sm');
+    //     search_input.addClass('form-control')
+    //     // LENGTH - Inline-Form control
+    //     var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
+    //     length_sel.removeClass('form-control-sm');
+    //     length_sel.addClass('form-control')
+    // });
 })()

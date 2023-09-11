@@ -53,5 +53,8 @@ return [
     "translateSeoDescriptions" => "Переводы SEO описания",
     "translateSeoKeywords" => "Переводы SEO ключей",
     "title" => "Заголовок",
-    "chooseTag" => "Выберите тег"
+    "chooseTag" => "Выберите тег",
+    "directionDescription" => "Описание обмена",
+    "position" => "Позиция ( сортировка на сайте )",
+    "profit_percent" => "Процент прибыли",
 ];

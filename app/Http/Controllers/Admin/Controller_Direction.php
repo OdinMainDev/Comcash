@@ -40,4 +40,46 @@ class Controller_Direction extends Controller{
             "redirect" => route("adminDirectionEdit", [$model->id])
         ]);
     }
+
+    public function edit($lang, $id) {
+        if(!is_numeric($id))
+            return abort(404);
+
+        $model = Direction::where("id", $id)->first();
+        if(!$model)
+            return abort(404);
+        
+        return view("admin.pages.directions.edit")->with("model", $model);
+    }
+
+    public function edit_process(Request $request){
+        $validators = [
+            "id" => "required|integer",
+            "enabled" => "required|boolean",
+            "name" => "required|string|max:255",
+            "position" => "required|integer|min:1|max:100000",
+            "profit_percent" => "required|numeric|min:0|max:100",
+        ];
+        $validators = appendLocalesNames($validators);
+        $validators = appendLocalesContents($validators);
+        $validators = appendLocalesSEO($validators);
+        $request->validate($validators);
+        
+        $model = Direction::where("id", $request->id)->first();
+        if(!$model){
+            return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
+        }
+
+        $model->name = $request->name;
+        $model->position = $request->position;
+        $model->profit_percent = $request->profit_percent;
+        $model->status = $request->enabled;
+        $model->data = [
+            "titles" => getLocalesTitles($request),
+            "content" => getLocalesContents($request),
+            "seo" => getLocalesSeo($request),
+        ];
+        $model->save();
+        return $this->responseSuccess();
+    }
 }

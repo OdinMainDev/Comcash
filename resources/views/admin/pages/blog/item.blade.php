@@ -42,7 +42,7 @@
 		<div class="card">
 			<div class="card-body">
                 @if(!$model->id)
-                <h5 class="mb-2">{{__("common.addBlog")}}</h5>
+                    <h5 class="mb-2">{{__("common.addBlog")}}</h5>
                 @else
                     <h5 class="mb-2">{{__("common.editBlog")}}</h5>
                 @endif

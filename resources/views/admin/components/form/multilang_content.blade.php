@@ -3,7 +3,11 @@
 ?>
 
 <hr>
-<h6 class="mb-2">{{__("common.translateContents")}}</h6>
+@if(!isset($label))
+    <h6 class="mb-2">{{__("common.translateContents")}}</h6>
+@else
+    <h6 class="mb-2">{{$label}}</h6>
+@endif
 <div class="mb-3">
     <ul class="nav nav-tabs" id="tabMultilangContents" role="tablist">
         @foreach($languages as $key => $lang)

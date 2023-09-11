@@ -13,12 +13,14 @@
                     {"data": "action", "name": "action", "orderable": false, "searchable": false}
                 ]'>
                     <thead>
-                        <tr>
-                            <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-sort="true" scope="col">#</th>
-                            <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-sort="true" scope="col">{{__("common.title")}}</th>
-                            <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-sort="true" scope="col">{{__("common.createdAt")}}</th>
-                            <th class="sort white-space-nowrap align-middle text-uppercase pl-1" scope="col">{{__("common.action")}}</th>
-                        </tr>
+                        @for ($i = 0; $i < 2; $i++)
+                            <tr>
+                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">#</th>
+                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.title")}}</th>
+                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.createdAt")}}</th>
+                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" scope="col">{{__("common.action")}}</th>
+                            </tr>
+                        @endfor
                     </thead>
                     <tbody class="list"></tbody>
                 </table>

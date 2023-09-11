@@ -46,7 +46,7 @@ class Controller_Blog extends Controller{
             $model->created_by = auth()->user()->id;
         }
 
-        $model->status = boolval($request->enabled);
+        $model->status = $request->enabled;
         $model->data = [
             "titles" => getLocalesTitles($request),
             "content" => getLocalesContents($request),

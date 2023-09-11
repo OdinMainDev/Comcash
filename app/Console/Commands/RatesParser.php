@@ -35,10 +35,17 @@ class RatesParser extends Command{
             return;
         }
 
-        $request_currency = [];
+        $request_currency = ["USD", "USDT", "RUB"];
         foreach($currencies as $currency){
-            if(!in_array($currency->name, $request_currency))
-                $request_currency[] = $currency->name;
+            $name = $currency->name;
+            if(in_array($name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
+                $name = "RUB";
+            }
+            if(in_array($name, ["USDTTRC20", "USDTERC20"])){
+                $name = "USDT";
+            }
+            if(!in_array($name, $request_currency))
+                $request_currency[] = $name;
         }
 
         $request_currency = implode(",", $request_currency);
@@ -50,8 +57,7 @@ class RatesParser extends Command{
         $response = Http::get($url);
         if($response->clientError() || $response->status() != 200){
             sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.");
-        }
-
+        }      
         $response = $response->json();
         ExchangeRate::truncate();
         $inserts = [];
@@ -60,20 +66,10 @@ class RatesParser extends Command{
                 if($from == $to){
                     continue;
                 }
-                $currency = false;
-                foreach($currencies as $val){
-                    if($val->name == $to){
-                        $currency = $val;
-                        break;
-                    }
-                }
-                if(!$currency){
-                    continue;
-                }
                 $inserts[] = [
                     "from" => $from,
                     "to" => $to,
-                    "rate" => $this->toInt($rate, $currency->units),
+                    "rate" => (float)$rate,
                 ];
             }
         }

@@ -10,6 +10,13 @@ class Currency extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        "status",
+        "position",
+        "created_at",
+        "updated_at",
+    ];
+
     protected $casts = [
         "data" => Json::class,
         "status" => "boolean"

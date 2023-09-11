@@ -39,9 +39,9 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::get('/auth/reset-password', [Login::class, "view"])->name("resetPassword");
     Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
     Route::post('/auth/reset-password/confirm', [ResetPassword::class, "confirm_process"])->name("resetPasswordConfirmPost");
-
-
     Route::get('/auth/email/confirm/{id}/{hash}', [Login::class, "view"])->name("verifyEmail");
+    
+    Route::get('/api/get/currencies', [Api::class, "currencies"]);
 });
 
 
@@ -91,7 +91,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/directions/add', [AdminDirection::class, "add"])->name("adminDirectionAdd");
         Route::post('/panel/directions/add/process', [AdminDirection::class, "add_process"])->name("adminDirectionAddProcess");
         Route::get('/panel/directions/edit/{id}', [AdminDirection::class, "edit"])->name("adminDirectionEdit");
-        Route::post('/panel/directions/process', [AdminDirection::class, "process"])->name("adminDirectionProcess");
+        Route::post('/panel/directions/process', [AdminDirection::class, "edit_process"])->name("adminDirectionProcess");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-blog']], function() {

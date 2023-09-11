@@ -29,7 +29,7 @@ class Controller_Direction extends Controller
             return $this->tableDate($row, "created_at");
         })
         ->addColumn('action', function ($row) {
-            return $this->tableAction($row, route("adminMerchantEdit", [$row->id]));
+            return $this->tableAction($row, route("adminDirectionEdit", [$row->id]));
         })
         ->make(true);
     }

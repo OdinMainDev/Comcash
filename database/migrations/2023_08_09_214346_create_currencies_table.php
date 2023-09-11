@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string("image")->nullable();
             $table->json("data");
             $table->string("tag");
+            $table->integer("position");
             $table->timestamps();
 
-            $table->index("name");
+            $table->index(["name", "position"]);
         });
     }
 
