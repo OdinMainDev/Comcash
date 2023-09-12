@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
 trait HasCache {
 
     public function getCacheDirections(){
-        return Cache::remember("directions-public", 360, function(){
+        return Cache::remember("directions-public", 300, function(){
             $directions = Direction::where("status", true)
                 ->with("currencyFrom")
                 ->with("currencyTo")
@@ -34,7 +34,8 @@ trait HasCache {
                     continue;
                 }
                 $data = $direction->data;
-                $data['min_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MIN_EXCHANGE_AMOUNT", 40), 0);
+                $data['min_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MIN_EXCHANGE_AMOUNT", 50), 0);
+                $data['max_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MAX_EXCHANGE_AMOUNT", 50000), 0);
                 $direction->data = $data;
                 $direction->save();
             }

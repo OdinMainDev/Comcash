@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string("currency_to");
             $table->integer("merchant_from");
             $table->integer("merchant_to");
+            $table->string("merchant_type_from");
+            $table->string("merchant_type_to");
             $table->integer("position");
             $table->boolean("status")->default(true);
             $table->bigInteger("total_in")->default(0);

@@ -380,19 +380,25 @@ class BasicFillDB extends Command
                 $name .= " → ";
                 $name .= json_decode($currency2['data'], true)['titles']['en'];
                 $merchant_from = 3;
+                $merchant_from_type = "binance";
                 if(in_array($currency['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                     $merchant_from = 1;
+                    $merchant_from_type = "garantex";
                 }
                 if(in_array($currency['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
                     $merchant_from = 2;
+                    $merchant_from_type = "mpcvip";
                 }
 
                 $merchant_to = 3;
+                $merchant_to_type = "binance";
                 if(in_array($currency2['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                     $merchant_to = 1;
+                    $merchant_to_type = "garantex";
                 }
                 if(in_array($currency2['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
                     $merchant_to = 2;
+                    $merchant_to_type = "mpcvip";
                 }
                 $directions[] = [
                     "name" => $name,
@@ -400,6 +406,8 @@ class BasicFillDB extends Command
                     "currency_to" => $currency2['id'],
                     "merchant_from" => $merchant_from,
                     "merchant_to" => $merchant_to,
+                    "merchant_type_from" => $merchant_from_type,
+                    "merchant_type_to" => $merchant_to_type,
                     "position" => $position,
                     "status" => true,
                     "profit_percent" => 5.00,
