@@ -33,6 +33,6 @@ return [
     "exchange crypto" => "Обмен крипты",
     "buy sell" => "Покупка/Продажа",
     "you send" => "Ты отправишь",
-    
+    "my profile" => "Мой профиль"
 
 ];

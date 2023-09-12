@@ -13,11 +13,13 @@ $('body').on('click', ".input-password__eye", function () {
     }
 });
 
-$('.header__btn').magnificPopup({
-    type: 'inline',
-});
+if($(".open___signin").length){
+    $('.open___signin').magnificPopup({
+        type: 'inline',
+    });
+}
 
-$('body').on('click', ".header__btn", function () {
+$('body').on('click', ".open___signin", function () {
     window.setForm("signin");
 });
   
@@ -41,6 +43,6 @@ window.setForm = function(type) {
 (function() {
     if(window.openAuthModal){
         window.setForm("signin");
-        $('.header__btn')[0].click();
+        $('.open___signin')[0].click();
     }
 })();

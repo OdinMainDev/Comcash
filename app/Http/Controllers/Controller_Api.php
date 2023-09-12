@@ -53,7 +53,7 @@ class Controller_Api extends Controller{
             return $this->responseError("bad currency pair");
         }
 
-        return $this->responseSuccess("on", $direction);
+        return $this->responseSuccess("ok", $direction);
     }
 
     public function estimate(Request $request){
@@ -98,6 +98,10 @@ class Controller_Api extends Controller{
         if(!$amount){
             return $this->responseError("bad amount");
         }
-        return $this->responseSuccess("ok", ["amount" => $amount, "min_amount" => @$direction->data['min_amount'], "exchange_rate" => sprintf("%.0f", $this->estimateGetRate($direction->currencyFrom->name, $direction->currencyTo->name))]);
+        return $this->responseSuccess("ok", [
+            "amount" => $amount, 
+            "min_amount" => @$direction->data['min_amount'], 
+            "exchange_rate" => sprintf("%.0f", $this->estimateGetRate($direction->currencyFrom->name, $direction->currencyTo->name))
+        ]);
     }
 }

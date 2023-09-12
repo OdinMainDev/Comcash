@@ -380,18 +380,18 @@ class BasicFillDB extends Command
                 $name .= " → ";
                 $name .= json_decode($currency2['data'], true)['titles']['en'];
                 $merchant_from = 3;
-                if(in_array($currency['name'], ["BTC", "ETH", "USDT", "DAI"])){
+                if(in_array($currency['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                     $merchant_from = 1;
                 }
-                if($currency['name'] == "RUB"){
+                if(in_array($currency['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
                     $merchant_from = 2;
                 }
 
                 $merchant_to = 3;
-                if(in_array($currency2['name'], ["BTC", "ETH", "USDT", "DAI"])){
+                if(in_array($currency2['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                     $merchant_to = 1;
                 }
-                if($currency2['name'] == "RUB"){
+                if(in_array($currency2['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
                     $merchant_to = 2;
                 }
                 $directions[] = [

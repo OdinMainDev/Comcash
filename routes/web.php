@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\Controller_Api as AdminApi;
 use Illuminate\Support\Facades\Cookie;
 use App\Http\Controllers\Admin\Controller_Blog as AdminBlog;
 use App\Http\Controllers\Admin\DataTable\Controller_Blog as DTBlog;
+use App\Http\Controllers\Controller_Profile as Profile;
 
 Route::get('/', function () {
     $lang = Cookie::get('language');
@@ -40,8 +41,11 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
     Route::post('/auth/reset-password/confirm', [ResetPassword::class, "confirm_process"])->name("resetPasswordConfirmPost");
     Route::get('/auth/email/confirm/{id}/{hash}', [Login::class, "view"])->name("verifyEmail");
+
+    Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {
+        Route::get('/profile', [Profile::class, "view"])->name("myprofile");
+    });
     
-    Route::get('/api/get/currencies', [Api::class, "currencies"]);
 });
 
 

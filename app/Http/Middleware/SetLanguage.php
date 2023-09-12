@@ -27,7 +27,8 @@ class SetLanguage
             if(!in_array($prefer, $languages))
                 $prefer = "ru";
             
-            return redirect('/'.$prefer);
+            $current_language = "ru";
+            // return redirect('/'.$prefer);
         }
 
         app()->setLocale(mb_strtolower($current_language));

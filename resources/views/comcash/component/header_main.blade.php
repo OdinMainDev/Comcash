@@ -43,7 +43,12 @@
             </div>
             <div class='select__current'></div>
         </div>
-        <button class='header__btn button open___signin' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
+        @guest
+            <button class='header__btn button open___signin' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
+        @endguest
+        @auth
+            <a class='header__btn button' type='button' href="{{route("myprofile")}}">{{__("front.my profile")}}</a>
+        @endauth
         <div class='header__nav-mobile'>
             <div class='accordion'>
                 <button class='accordion__button'>Профиль</button>
