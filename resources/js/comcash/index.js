@@ -3,13 +3,13 @@ import select2 from 'select2';
 select2($);
 
 $(document).ready(function () {
-    $('.select2boxindex').select2({
-        placeholder: "Выберите город",
-        maximumSelectionLength: 2,
-        language: window.language ,
-        templateResult: formatState,
-        templateSelection: formatState
-    });
+    // $('.select2boxindex').select2({
+    //     placeholder: "Выберите город",
+    //     maximumSelectionLength: 2,
+    //     language: window.language ,
+    //     templateResult: formatState,
+    //     templateSelection: formatState
+    // });
 });
 
 function formatState(state) {
