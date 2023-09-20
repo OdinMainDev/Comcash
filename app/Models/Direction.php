@@ -49,6 +49,6 @@ class Direction extends Model
     {
         $layout_from = new Handler($this->merchant_type_from);
         $layout_to = new Handler($this->merchant_type_to, true);
-        return array_merge($layout_from->getLayout(), $layout_to->getLayout());
+        return array_unique(array_merge($layout_from->getLayout(), $layout_to->getLayout()));
     }
 }
