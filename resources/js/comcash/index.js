@@ -22,3 +22,18 @@ function formatState(state) {
     );
     return $state;
 };
+
+const tabButtons = document.querySelectorAll('.welcome__tabs-btn');
+const tabsContent = document.querySelectorAll('.welcome__tabs-content');
+
+window.openIndexExchangeTab = function(e, tab) {
+  tabButtons.forEach(btn => {
+    btn.classList.remove('active');
+  });
+  e.target.classList.add('active');
+
+  tabsContent.forEach(content => {
+    content.classList.remove('active');
+    if (content.getAttribute('data-tab') === tab) content.classList.add('active');
+  });
+}

@@ -56,4 +56,64 @@ class Controller extends BaseController{
     public function responseErrorValidation($data){
         throw ValidationException::withMessages($data);
     }
+
+    public function getCurrencyByName($search_currencies = false) {
+        if(!$search_currencies){
+            return false;
+        }
+        $return = [];
+        if(!is_array($search_currencies)){
+            $search_currencies = [];
+        }
+        $currencies = $this->getCacheCurrencies();
+        foreach($search_currencies as $key => $currency_name){
+            foreach($currencies as $val){
+                if($currency_name == $val->name){
+                    $return[] = $val;
+                }
+            }
+        }
+        unset($currencies);
+        return $return;
+    }
+
+    public function getDirectionByCurrencyPair($currency_from, $currency_to){
+        $directions = $this->getCacheDirections();
+        $direction = false;
+        foreach($directions as $val){
+            if($val->currency_from != $currency_from->id){
+                continue;
+            }
+            if($val->currency_to != $currency_to->id){
+                continue;
+            }
+            $direction = $val;
+            break;
+        }
+        return $direction;
+    }
+
+    public function getEstimateDataFromRequest($request){
+        $currencies = $this->getCurrencyByName([$request->currency_from, $request->currency_to]);
+        $currency_from = @$currencies[0];
+        $currency_to = @$currencies[1];
+        unset($currencies);
+        if(!$currency_to || !$currency_from){
+            throw ValidationException::withMessages(["currency" => "currency not found"]);
+        }
+        $direction = $this->getDirectionByCurrencyPair($currency_from, $currency_to);
+        if(!$direction){
+            throw ValidationException::withMessages(["currency_from" => "bad pair", "currency_to" => "bad pair"]);
+        }
+        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_from->units, $request->amount, $direction->profit_percent);
+        if(!$amount){
+            throw ValidationException::withMessages(["currency" => "bad amount"]);
+        }
+        return [
+            "amount" => $amount,
+            "direction" => $direction,
+            "currency_from" => $currency_from,
+            "currency_to" => $currency_to,
+        ];
+    }
 }

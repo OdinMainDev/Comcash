@@ -67,8 +67,7 @@ trait HasCache {
         if(!$rate){
             return false;
         }
-        
-        return ($amount * $rate) / 100 * (100 + $profit_percent);
+        return number_format(($amount * $rate) / 100 * (100 - $profit_percent), $minor_units, ".", "");
     }
 
     public function estimateGetRate($currency_from, $currency_to){

@@ -144,7 +144,7 @@ return [
     'attributes'           => [
         'address'                  => 'адрес',
         'age'                      => 'возраст',
-        'amount'                   => 'количество',
+        'amount'                   => 'сумма',
         'area'                     => 'область',
         'available'                => 'доступно',
         'birthday'                 => 'дата рождения',

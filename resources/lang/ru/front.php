@@ -33,6 +33,9 @@ return [
     "exchange crypto" => "Обмен крипты",
     "buy sell" => "Покупка/Продажа",
     "you send" => "Ты отправишь",
-    "my profile" => "Мой профиль"
-
+    "my profile" => "Мой профиль",
+    "choose currency" => "Выберите валюту",
+    "you receive" => "Ты получишь",
+    "currency rate" => "Курс обмена",
+    "exchange" => "Обменять"
 ];

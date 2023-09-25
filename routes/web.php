@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Cookie;
 use App\Http\Controllers\Admin\Controller_Blog as AdminBlog;
 use App\Http\Controllers\Admin\DataTable\Controller_Blog as DTBlog;
 use App\Http\Controllers\Controller_Profile as Profile;
+use App\Http\Controllers\Controller_Exchange as Exchange;
 
 Route::get('/', function () {
     $lang = Cookie::get('language');
@@ -30,7 +31,7 @@ Route::get('/', function () {
 });
 
 
-
+/* AUTH ROUTES */
 Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
     Route::get('/', [Home::class, "view"])->name("index");
     Route::get('/auth/login', [Login::class, "view"])->name("login");
@@ -40,15 +41,26 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::get('/auth/reset-password', [Login::class, "view"])->name("resetPassword");
     Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
     Route::post('/auth/reset-password/confirm', [ResetPassword::class, "confirm_process"])->name("resetPasswordConfirmPost");
-    Route::get('/auth/email/confirm/{id}/{hash}', [Login::class, "view"])->name("verifyEmail");
+    Route::get('/auth/email/confirm/{id}/{hash}', [Login::class, "view"])->name("verifyEmail"); 
+});
+/* AUTH ROUTES */
 
-    Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {
+/* PUBLIC ROUTES */
+Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
+    Route::post('/exchange/redirect', [Exchange::class, "redirect"])->name("redirectToExchange");
+    Route::get('/exchange/create', [Exchange::class, "view"])->name("exchgangePage");
+});
+/* PUBLIC ROUTES */
+
+/* PRIVATE ROUTES */
+Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
+
+    Route::group( ['middleware' => ['auth']], function() {
         Route::get('/profile', [Profile::class, "view"])->name("myprofile");
     });
     
 });
-
-
+/* PRIVATE ROUTES */
 
 Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
     Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {

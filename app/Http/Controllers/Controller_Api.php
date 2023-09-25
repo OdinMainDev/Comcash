@@ -10,8 +10,16 @@ class Controller_Api extends Controller{
 
     use HasCache;
 
-    public function currencies() {
-        return $this->getCacheCurrencies();
+    public function currencies(Request $request) {
+        $currencies = $this->getCacheCurrencies();
+        if($request->has("tag") && in_array($request->tag, ["fiat", "crypto"])){
+            foreach($currencies as $key => $currency){
+                if($currency->tag != $request->tag){
+                    $currencies->forget($key);
+                }
+            }
+        }
+        return $currencies;
     }
 
     public function rates(){
@@ -23,15 +31,9 @@ class Controller_Api extends Controller{
             "currency_from" => "required|string|max:255",
             "currency_to" => "required|string|max:255",
         ]);
-        $currencies = $this->getCacheCurrencies();
-        foreach($currencies as $val){
-            if($val->name == $request->currency_from){
-                $currency_from = $val;
-            }
-            if($val->name == $request->currency_to){
-                $currency_to = $val;
-            }
-        }
+        $currencies = $this->getCurrencyByName([ $request->currency_from, $request->currency_to]);
+        $currency_from = $currencies[0];
+        $currency_to = $currencies[1];
         unset($currencies);
         if(!$currency_to || !$currency_from){
             return $this->responseError("currency not found");
@@ -62,46 +64,13 @@ class Controller_Api extends Controller{
             "currency_to" => "required|string|max:255",
             "amount" => "required|numeric",
         ]);
-        $currencies = $this->getCacheCurrencies();
-        $currency_from = false;
-        $currency_to = false;
-        foreach($currencies as $val){
-            if($val->name == $request->currency_from){
-                $currency_from = $val;
-            }
-            if($val->name == $request->currency_to){
-                $currency_to = $val;
-            }
-        }
-        unset($currencies);
-        if(!$currency_to || !$currency_from){
-            return $this->responseError("currency not found");
-        }
-
-        $directions = $this->getCacheDirections();
-        $direction = false;
-        foreach($directions as $val){
-            if($val->currency_from != $currency_from->id){
-                continue;
-            }
-            if($val->currency_to != $currency_to->id){
-                continue;
-            }
-            $direction = $val;
-            break;
-        }
-        if(!$direction){
-            return $this->responseError("bad currency pair");
-        }
-        unset($directions);
-        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_from->units, $request->amount, $direction->profit_percent);
-        if(!$amount){
-            return $this->responseError("bad amount");
-        }
+        $data = $this->getEstimateDataFromRequest($request);
+        $amount = $data['amount'];
+        $direction = $data['direction'];
         return $this->responseSuccess("ok", [
             "amount" => $amount, 
             "min_amount" => @$direction->data['min_amount'], 
-            "exchange_rate" => sprintf("%.0f", $this->estimateGetRate($direction->currencyFrom->name, $direction->currencyTo->name))
+            "exchange_rate" => floatval($this->estimateGetRate($direction->currencyFrom->name, $direction->currencyTo->name))
         ]);
     }
 }

@@ -1,0 +1,183 @@
+@extends('comcash.layout.main')
+
+@section('content')
+<div class="exchange">
+    <div class="exchange__container">
+      <p class="exchange__title-mobile">обменник</p>
+      <form action="" class="exchange__form">
+        <div id="currencyYouSend">
+          <div class='label'>
+            <span>choose currency</span>
+            <div class="exchange__limit">
+              <span class="exchange__min">Min:
+                <span>0</span>
+              </span>
+              <span class="exchange__max">Max:
+                <span>0</span>
+              </span>
+            </div>
+      
+          </div>
+          <div class='input-control'>
+            <input type='number' class='input input--large' step="any"/>
+            <img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
+            <div class="custom-select__select-container light s" data-currency="currencyYouSend">
+              <div class="custom-select__select-label">
+                Выберите крипту 
+              </div>
+              <input class="custom-select__select-label-input"/>
+              <div class="custom-select__select-list hide">
+                <div class="custom-select__search">
+                  <input class="custom-select__search-field"/>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="exchange__card-number hide" id="exchange-from_card">
+            <div class='label'>
+              <span>card number</span>
+            </div>
+            <input type="text" class="input input--large" >
+          </div>
+      
+        </div>
+      
+        <div class="exchange__info">
+          <p class="exchange__info-text">ВЫБРАННЫЙ ТАРИФ</p>
+          <p class="exchange__info-text">НИКАКИХ СКРЫТЫХ КОМИССИЙ</p>
+        </div>
+      
+        <div id="currencyYouGet">
+          <div class='label'>
+            <span>choose currency</span>
+          </div>
+          <div class='input-control'>
+            <input type='number' class='input input--large' disabled="true"/>
+            <img src="/img/loader-gray.gif" class="custom-select__select-loader"/>
+            <div class="custom-select__select-container light s" data-currency="currencyYouGet">
+              <div class="custom-select__select-label">
+                Выберите крипту 
+              </div>
+              <input class="custom-select__select-label-input"/>
+              <div class="custom-select__select-list hide">
+                <div class="custom-select__search">
+                  <input class="custom-select__search-field"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="exchange__timer-conatiner">
+            <span>Время до изменения цены:</span>
+            <span class="exchange__timer">00:00</span>
+          </div>
+          <div class="exchange__card-number hide" id="exchange-to_card">
+            <div class='label'>
+              <span>card number</span>
+            </div>
+            <input type="text" class="input input--large" >
+          </div>
+          <div class="exchange__contact">
+            <div class="exchange__contact-item hide" id="exchange-phone">
+              <div class='label'>
+                <span>Phone number</span>
+              </div>
+              <input type="text" class="input input--large" value="+">
+            </div>
+            <div class="exchange__contact-item hide" id="exchange-email">
+              <div class='label'>
+                <span>Email</span>
+              </div>
+              <input type="text" class="input input--large" >
+            </div>
+            <div class="exchange__contact-item hide" id="exchange-telegram">
+              <div class='label'>
+                <span>Telegram</span>
+              </div>
+              <input type="text" class="input input--large" >
+            </div>
+          </div>
+          <div class="exchange__name">
+            <div class="exchange__name-item hide" id="exchange-first_name">
+              <div class='label'>
+                <span>name</span>
+              </div>
+              <input name="name" type="text" class="input input--large">
+            </div>
+            <div class="exchange__name-item hide" id="exchange-last_name">
+              <div class='label'>
+                <span>surname</span>
+              </div>
+              <input name="surname" type="text" class="input input--large">
+            </div>
+            <div class="exchange__name-item hide" id="exchange-second_name">
+              <div class='label'>
+                <span>middle</span>
+              </div>
+              <input name="middle" type="text" class="input input--large">
+            </div>
+          </div>
+        </div>
+      
+        <div id="validation-modal" class="modal">
+          <div class="modal-content">
+            <div class="validation">
+              <div class="validation__container">
+                <p class="validation__title-mobile">обменник</p>
+                <p class="validation__title">Пожалуйста проверьте
+                  правильность набранных данных</p>
+                <div class='validation__label'>
+                  you send
+                </div>
+                <div class="validation__output" id="validation__you-send">
+                  <span>0,00000001 </span>
+                  <span>BTC </span>
+                </div>
+                <p class="validation__caption"></p>
+                <div class='validation__label'>
+                  you get
+                </div>
+                <div class="validation__output" id="validation__you-get">
+                  <span>0,00000001 </span>
+                  <span>BTC </span>
+                </div>
+                <p class="validation__caption"></p>
+                <div class="validation__awaiting">
+                  <p class="validation__awaiting-title">Время ожидания</p>
+                  <p class="validation__awaiting-time">30 minutes</p>
+                </div>
+                <div class="validation__controls">
+                  <button class='button button--auto validation__button'>обменять</button>
+                  <button id="validation__back" class='button button--auto button--dark validation__button'>Назад</button>
+                </div>
+                <p class='validation__bottom'>
+                  НАЖИМАЯ ПРОДОЛЖИТЬ ВЫ СОГЛАШАЕТЕСЬ С <a href=''>ПРАВИЛАМИ</a> САЙТА
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      
+        <button class='button button--auto exchange__button'>Продолжить</button>
+      
+        <p class='exchange__bottom'>
+          нАЖИМАЯ ПРОДОЛЖИТЬ ВЫ СОГЛАШАЕТЕСЬ С <a href=''>ПРАВИЛАМИ</a> САЙТА
+        </p>
+      
+      </form>    </div>
+  </div>
+@endsection
+
+@section("js")
+
+<script>
+     document.addEventListener('DOMContentLoaded', function () {
+      const headerHeight = document.querySelector('header')?.offsetHeight;
+      const footerHeight = document.querySelector('footer')?.offsetHeight;
+
+      document.documentElement.style.setProperty('--height-header', headerHeight + 'px');
+      document.documentElement.style.setProperty('--height-footer', footerHeight + 'px');
+    });
+</script>
+@endsection
