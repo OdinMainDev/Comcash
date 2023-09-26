@@ -4,22 +4,22 @@
             <img src='/comcash/img/logo.png' alt='Comcash'/>
         </a>
         <div class='header__nav'>
-            <a class='header__link' href='/pages/profile/index.html'>
+            <a class='header__link' href='/'>
                 {{__("front.ExchangeMenu")}}
             </a>
-            <a class='header__link'>
+            <a class='header__link' href='{{route("comcashPage", ["delivery"])}}'>
                 {{__("front.CashCourierMenu")}}
             </a>
-            <a class='header__link'>
+            <a class='header__link' href='{{route("comcashPage", ["faq"])}}'>
                 {{__("front.PartnerFAQMenu")}}
             </a>
-            <a class='header__link'>
+            <a class='header__link' href='{{route("comcashPage", ["reviews"])}}'>
                 {{__("front.FeedbackMenu")}}
             </a>
-            <a class='header__link'>
+            <a class='header__link' href='{{route("comcashPage", ["tariffs"])}}'>
                 {{__("front.TariffsMenu")}}
             </a>
-            <a class='header__link'>
+            <a class='header__link' href='{{route("comcashPage", ["support"])}}'>
                 {{__("front.SupportMenu")}}
             </a>
         </div>

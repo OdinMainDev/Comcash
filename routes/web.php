@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Controller_Blog as AdminBlog;
 use App\Http\Controllers\Admin\DataTable\Controller_Blog as DTBlog;
 use App\Http\Controllers\Controller_Profile as Profile;
 use App\Http\Controllers\Controller_Exchange as Exchange;
+use App\Http\Controllers\Controller_KnowledgeBase as KnowledgeBase;
 
 Route::get('/', function () {
     $lang = Cookie::get('language');
@@ -34,7 +35,6 @@ Route::get('/', function () {
 /* AUTH ROUTES */
 Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
     Route::get('/', [Home::class, "view"])->name("index");
-    Route::get('/auth/logout', [Login::class, "logout"])->name("logout");
     Route::get('/auth/login', [Login::class, "view"])->name("login");
     Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
     Route::get('/auth/register', [Login::class, "view"])->name("register");
@@ -50,6 +50,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
     Route::post('/exchange/redirect', [Exchange::class, "redirect"])->name("redirectToExchange");
     Route::get('/exchange/create', [Exchange::class, "view"])->name("exchgangePage");
+
+    Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
 });
 /* PUBLIC ROUTES */
 
@@ -57,6 +59,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
 
     Route::group( ['middleware' => ['auth']], function() {
+        Route::get('/auth/logout', [Login::class, "logout"])->name("logout");
+        
         Route::get('/profile', [Profile::class, "view"])->name("myprofile");
         Route::post('/profile/update', [Profile::class, "process_profile"])->name("myprofilePost");
 

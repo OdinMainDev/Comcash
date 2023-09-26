@@ -54,5 +54,6 @@ return [
     "email" => "Email",
     "telegram" => "Telegram",
     "save" => "Сохранить",
-    "oldpassword_placeholder" => "Введите старый пароль"
+    "oldpassword_placeholder" => "Введите старый пароль",
+    "NewsMenu" => "Новости",
 ];
