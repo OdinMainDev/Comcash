@@ -13,12 +13,16 @@ class Controller_Profile extends Controller{
         return view($this->theme.".pages.profile");
     }
 
+    public function view_password() {
+        return view($this->theme.".pages.profile_password");
+    }
+
     public function process_profile(Request $request) {
         $request->validate([
             "first_name" => "nullable|string|max:255",
             "second_name" => "nullable|string|max:255",
             "last_name" => "nullable|string|max:255",
-            "email" => "required|email|max:255",
+            // "email" => "required|email|max:255",
             "telegram" => "nullable|string|max:255",
         ]);
 
@@ -38,9 +42,9 @@ class Controller_Profile extends Controller{
             "password" => "required|string|min:6|max:255",
             "repassword" => "required|same:password|string|min:6|max:255",
         ]);
-
+        
         $user = Auth::user();
-        if(Hash::check($request->oldpassword, $user->password)){
+        if(!Hash::check($request->oldpassword, $user->password)){
             return $this->responseErrorValidation(["oldpassword" => __("common.old_password_invalid")]);
         }
 

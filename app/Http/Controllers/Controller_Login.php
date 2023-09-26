@@ -15,6 +15,11 @@ class Controller_Login extends Controller
         return view($this->theme.".index")->with("auth_modal", true);
     }
 
+    public function logout() {
+        Auth::logout();
+        return redirect('/');
+      }
+
     public function process(Request $request){
         if(Auth::check())
             return abort(404);

@@ -37,5 +37,22 @@ return [
     "choose currency" => "Выберите валюту",
     "you receive" => "Ты получишь",
     "currency rate" => "Курс обмена",
-    "exchange" => "Обменять"
+    "exchange" => "Обменять",
+    "ExchangeMenu" => "Обмен",
+    "CashCourierMenu" => "Наличные курьером", 
+    "PartnerFAQMenu" => "Партнёрский FAQ", 
+    "FeedbackMenu" => "Отзывы", 
+    "TariffsMenu" => "Тарифы", 
+    "SupportMenu" => "Поддержка", 
+    "profile" => "Профиль",
+    "client panel" => "Личный кабинет",
+    "log out" => "Выход",
+    "security" => "Безопасность",
+    "first_name" => "Имя",
+    "second_name" => "Отчество",
+    "last_name" => "Фамилия",
+    "email" => "Email",
+    "telegram" => "Telegram",
+    "save" => "Сохранить",
+    "oldpassword_placeholder" => "Введите старый пароль"
 ];

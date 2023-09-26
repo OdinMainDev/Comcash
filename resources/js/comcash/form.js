@@ -43,6 +43,12 @@ import $ from 'jquery';
                     }, 3500)
                     return;
                 }
+                if(e.data.data?.redirect){
+                    setTimeout(() => {
+                        window.location.href = e.data.data.redirect;
+                    }, 3500)
+                    return;
+                }
                 if(e.data.data?.open_modal){
                     if(e.data.data?.open_modal == "verification-sent"){
                         $(".mfp-close").remove();

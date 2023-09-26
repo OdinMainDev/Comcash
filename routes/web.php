@@ -34,6 +34,7 @@ Route::get('/', function () {
 /* AUTH ROUTES */
 Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
     Route::get('/', [Home::class, "view"])->name("index");
+    Route::get('/auth/logout', [Login::class, "logout"])->name("logout");
     Route::get('/auth/login', [Login::class, "view"])->name("login");
     Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
     Route::get('/auth/register', [Login::class, "view"])->name("register");
@@ -57,6 +58,10 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
     Route::group( ['middleware' => ['auth']], function() {
         Route::get('/profile', [Profile::class, "view"])->name("myprofile");
+        Route::post('/profile/update', [Profile::class, "process_profile"])->name("myprofilePost");
+
+        Route::get('/profile/password', [Profile::class, "view_password"])->name("myprofilePassword");
+        Route::post('/profile/password/change', [Profile::class, "process_password"])->name("myprofilePasswordPost");
     });
     
 });

@@ -170,14 +170,13 @@
 @endsection
 
 @section("js")
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const headerHeight = document.querySelector('header')?.offsetHeight;
+            const footerHeight = document.querySelector('footer')?.offsetHeight;
 
-<script>
-     document.addEventListener('DOMContentLoaded', function () {
-      const headerHeight = document.querySelector('header')?.offsetHeight;
-      const footerHeight = document.querySelector('footer')?.offsetHeight;
-
-      document.documentElement.style.setProperty('--height-header', headerHeight + 'px');
-      document.documentElement.style.setProperty('--height-footer', footerHeight + 'px');
-    });
-</script>
+            document.documentElement.style.setProperty('--height-header', headerHeight + 'px');
+            document.documentElement.style.setProperty('--height-footer', footerHeight + 'px');
+        });
+    </script>
 @endsection

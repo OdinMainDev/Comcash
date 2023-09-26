@@ -47,3 +47,7 @@
         min-width: 700px;
     }
 }
+
+.accordion__button_custom::after { 
+    display: none !important;
+}
