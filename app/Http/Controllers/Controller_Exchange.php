@@ -98,7 +98,8 @@ class Controller_Exchange extends Controller{
         if(!$direction){
             return $this->responseError("bad currency pair", ["code" => 2]);
         }
-        $request->amount = $this->format_amount($request->amount, $currency_from->units);
+
+        $request->merge(['amount' => $this->format_amount($request->amount, $currency_from->units)]);
         // валидирование доп данных от мерчанта
         $merchant_from = new Handler($direction->merchant_type_from);
         $merchant_to = new Handler($direction->merchant_type_to, true);
@@ -126,6 +127,10 @@ class Controller_Exchange extends Controller{
         $exchange->merchant_type_to = $direction->merchant_type_to;
         $exchange->data = [
             "request_data" => $request->all(),
+            "device_data" => [
+                "ip" => $request->ip(),
+                "user_agent" => $request->userAgent(),
+            ],
             "amount_data" => [
                 "amount_send" => $request->amount,
                 "amount_receive" => $amount,

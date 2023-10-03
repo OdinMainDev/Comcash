@@ -124,3 +124,9 @@ function generateRandomString($length = 12) {
     }
     return $randomString;
 }
+
+function get_current_url(){
+    if(isset($_SERVER["SERVER_NAME"]))
+        return "http".(empty($_SERVER["HTTPS"])?"":"s")."://".$_SERVER["SERVER_NAME"]."/";
+    return $_SERVER['HTTP_SCHEME']."://".parse_url($_SERVER['REQUEST_URI'], PHP_URL_HOST)."/";
+}
