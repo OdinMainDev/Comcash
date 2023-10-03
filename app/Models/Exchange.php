@@ -13,4 +13,25 @@ class Exchange extends Model
     protected $casts = [
         "data" => Json::class
     ];
+
+    protected $hidden = [
+        "id",
+        "updated_at",
+    ];
+
+    public function currencyFrom(){
+        return $this->hasOne(Currency::class, "id", "currency_from");
+    }
+
+    public function currencyTo(){
+        return $this->hasOne(Currency::class, "id", "currency_to");
+    }
+
+    public function merchantFrom(){
+        return $this->hasOne(Merchant::class, "id", "merchant_from");
+    }
+
+    public function merchantTo(){
+        return $this->hasOne(Merchant::class, "id", "merchant_to");
+    }
 }

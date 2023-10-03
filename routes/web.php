@@ -53,6 +53,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
 
     Route::post('/exchange/create', [Exchange::class, "create"]);
+    Route::get('/exchange/view/{hash}', [Exchange::class, "prepaid_view"])->name("exchgangePage2");
+
 });
 /* PUBLIC ROUTES */
 

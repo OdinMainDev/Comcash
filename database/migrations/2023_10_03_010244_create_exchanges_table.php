@@ -9,11 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+
+    /*
+        statuses
+        0 - created
+        1 - paid
+        2 - wait for withdraw
+        3 - success
+        4 - api error
+    */
     public function up(): void
     {
         Schema::create('exchanges', function (Blueprint $table) {
             $table->id();
             $table->string("hash");
+            $table->integer("user_id")->default(0);
             $table->integer("direction_id");
             $table->integer("currency_from");
             $table->integer("currency_to");
@@ -21,11 +32,11 @@ return new class extends Migration
             $table->integer("merchant_to");
             $table->string("merchant_type_from");
             $table->string("merchant_type_to");
-            $table->integer("status")->default(0);
+            $table->tinyInteger("status")->default(0);
             $table->json("data");
             $table->timestamps();
 
-            $table->index(["status", "direction_id"]);
+            $table->index(["status", "direction_id", "user_id"]);
         });
     }
 

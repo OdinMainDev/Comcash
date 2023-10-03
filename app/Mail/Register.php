@@ -16,11 +16,13 @@ class Register extends Mailable
 
     public $user_id;
     public $email;
+    public $password;
 
-    public function __construct($user_id, $email)
+    public function __construct($user_id, $email, $password = false)
     {
         $this->user_id = $user_id;
         $this->email = $email;
+        $this->password = $password;
     }
 
 
@@ -29,6 +31,7 @@ class Register extends Mailable
         return $this->subject(__("front.register email subject"))->view(env("THEME_NAME", "comcash").'.mails.register')->with("url", route("verifyEmail", [
             "id" => $this->user_id, 
             "hash" => md5($this->user_id.$this->email."VerifyCmHash")
-        ]));
+        ]))
+        ->with("password", $this->password);
     }
 }

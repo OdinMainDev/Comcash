@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\Models\HasCache;
+use App\Jobs\ExchangeStart;
 use Illuminate\Http\Request;
 use App\Merchants\Handler;
 use App\Models\Exchange;
@@ -135,13 +136,10 @@ class Controller_Exchange extends Controller{
             ]
         ];
         $exchange->save();
+        ExchangeStart::dispatch($exchange->id, app()->getLocale());
         return $this->responseSuccess(false, [
-            "redirect" => route("exchgangePage", [
-                "name" => $direction->id,
-                "direction_id" => $direction->id, 
-                "currency_from" => $currency_from->name,
-                "currency_to" => $currency_to->name,
-                "amount" => $amount,
+            "redirect" => route("exchgangePage2", [
+                $exchange->hash
             ])
         ]);
     }

@@ -165,7 +165,7 @@ class BasicFillDB extends Command
                 "created_at" => now()
             ],
         ];
-        if(env("THEME_NAME") == "comcash"){
+        if(env("THEME_NAME") == "comcash22"){
             
             $currencies[] = 
                 [

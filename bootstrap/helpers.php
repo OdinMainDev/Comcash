@@ -114,3 +114,13 @@ function sendTelegramNotification($text, $level = 1){
     curl_exec($ch);
     curl_close($ch);
 }
+
+function generateRandomString($length = 12) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[random_int(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}

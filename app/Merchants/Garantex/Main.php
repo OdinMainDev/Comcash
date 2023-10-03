@@ -21,4 +21,9 @@ class Main {
         }
         return $base;
     }
+
+    function getAddress($merchant_id, $exchange_id, $private_key, $uid, $currency){
+        $obj = new Garantex($merchant_id, $exchange_id, $private_key, $uid, env("GARANTEX_HOST_TYPE", 0));
+        return $obj->create_address($currency);
+    }
 }
