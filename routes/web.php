@@ -49,9 +49,10 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 /* PUBLIC ROUTES */
 Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
     Route::post('/exchange/redirect', [Exchange::class, "redirect"])->name("redirectToExchange");
-    Route::get('/exchange/create', [Exchange::class, "view"])->name("exchgangePage");
-
+    Route::get('/exchange/prepare', [Exchange::class, "view"])->name("exchgangePage");
     Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
+
+    Route::post('/exchange/create', [Exchange::class, "create"]);
 });
 /* PUBLIC ROUTES */
 

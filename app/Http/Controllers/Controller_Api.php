@@ -70,6 +70,7 @@ class Controller_Api extends Controller{
         return $this->responseSuccess("ok", [
             "amount" => $amount, 
             "min_amount" => @$direction->data['min_amount'], 
+            "max_amount" => @$direction->data['max_amount'], 
             "exchange_rate" => floatval($this->estimateGetRate($direction->currencyFrom->name, $direction->currencyTo->name))
         ]);
     }

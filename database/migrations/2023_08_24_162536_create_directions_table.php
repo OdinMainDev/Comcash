@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('directions', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("currency_from");
-            $table->string("currency_to");
+            $table->integer("currency_from");
+            $table->integer("currency_to");
             $table->integer("merchant_from");
             $table->integer("merchant_to");
             $table->string("merchant_type_from");

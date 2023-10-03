@@ -8,7 +8,7 @@ use App\Models\ExchangeRate;
 use Illuminate\Support\Facades\Cache;
 
 trait HasCache {
-
+    
     public function getCacheDirections(){
         return Cache::remember("directions-public", 300, function(){
             $directions = Direction::where("status", true)
@@ -95,5 +95,9 @@ trait HasCache {
         }
 
         return $rate;
+    }
+
+    public function format_amount($amount, $minor_units){
+        return number_format($amount, $minor_units, ".", "");
     }
 }

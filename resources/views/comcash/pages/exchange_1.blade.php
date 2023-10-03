@@ -1,6 +1,7 @@
 @extends('comcash.layout.main')
 
 @section('content')
+
 <div class="exchange">
     <div class="exchange__container">
       <p class="exchange__title-mobile">обменник</p>
@@ -19,13 +20,13 @@
       
           </div>
           <div class='input-control'>
-            <input type='number' class='input input--large' step="any"/>
+            <input type='text' class='input input--large' step="any" name="amount"/>
             <img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
             <div class="custom-select__select-container light s" data-currency="currencyYouSend">
               <div class="custom-select__select-label">
                 Выберите крипту 
               </div>
-              <input class="custom-select__select-label-input"/>
+              <input class="custom-select__select-label-input" name="currency_from"/>
               <div class="custom-select__select-list hide">
                 <div class="custom-select__search">
                   <input class="custom-select__search-field"/>
@@ -53,13 +54,13 @@
             <span>choose currency</span>
           </div>
           <div class='input-control'>
-            <input type='number' class='input input--large' disabled="true"/>
-            <img src="/img/loader-gray.gif" class="custom-select__select-loader"/>
+            <input type='text' class='input input--large' disabled="true"/>
+            <img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
             <div class="custom-select__select-container light s" data-currency="currencyYouGet">
               <div class="custom-select__select-label">
                 Выберите крипту 
               </div>
-              <input class="custom-select__select-label-input"/>
+              <input class="custom-select__select-label-input" name="currency_to"/>
               <div class="custom-select__select-list hide">
                 <div class="custom-select__search">
                   <input class="custom-select__search-field"/>
@@ -82,19 +83,19 @@
               <div class='label'>
                 <span>Phone number</span>
               </div>
-              <input type="text" class="input input--large" value="+">
+              <input type="text" class="input input--large" value="+" name="phone_number">
             </div>
             <div class="exchange__contact-item hide" id="exchange-email">
               <div class='label'>
                 <span>Email</span>
               </div>
-              <input type="text" class="input input--large" >
+              <input type="text" class="input input--large" name="email">
             </div>
             <div class="exchange__contact-item hide" id="exchange-telegram">
               <div class='label'>
                 <span>Telegram</span>
               </div>
-              <input type="text" class="input input--large" >
+              <input type="text" class="input input--large" name="telegram">
             </div>
           </div>
           <div class="exchange__name">
@@ -148,7 +149,7 @@
                 </div>
                 <div class="validation__controls">
                   <button class='button button--auto validation__button'>обменять</button>
-                  <button id="validation__back" class='button button--auto button--dark validation__button'>Назад</button>
+                  <a id="validation__back" class='button button--auto button--dark validation__button'>Назад</a>
                 </div>
                 <p class='validation__bottom'>
                   НАЖИМАЯ ПРОДОЛЖИТЬ ВЫ СОГЛАШАЕТЕСЬ С <a href=''>ПРАВИЛАМИ</a> САЙТА
@@ -159,7 +160,7 @@
         </div>
       
       
-        <button class='button button--auto exchange__button'>Продолжить</button>
+        <a class='button button--auto exchange__button'>Продолжить</a>
       
         <p class='exchange__bottom'>
           нАЖИМАЯ ПРОДОЛЖИТЬ ВЫ СОГЛАШАЕТЕСЬ С <a href=''>ПРАВИЛАМИ</a> САЙТА
@@ -167,6 +168,8 @@
       
       </form>    </div>
   </div>
+
+
 @endsection
 
 @section("js")

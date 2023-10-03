@@ -11,4 +11,14 @@ class Main {
         }
         return $base;
     }
+
+    function getValidation($is_withdraw){
+        $base = [
+            "email" => "required|email|string|max:255",
+        ];
+        if($is_withdraw){
+            $base[] = "to_address";
+        }
+        return $base;
+    }
 }

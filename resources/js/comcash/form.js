@@ -32,7 +32,11 @@ import $ from 'jquery';
                     "Content-Type": "multipart/form-data",
                   },
             }).then(e => {
-                Toastr.success(e.data.title, e.data.message)
+                if(!e.data.success){
+                    Toastr.error(e.data.title, e.data.message)
+                }else{
+                    Toastr.success(e.data.title, e.data.message)
+                }
                 submit.forEach(el => {
                     el.innerHTML = prevInner
                     el.disabled = false
