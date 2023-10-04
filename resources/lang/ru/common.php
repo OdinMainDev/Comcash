@@ -57,5 +57,6 @@ return [
     "directionDescription" => "Описание обмена",
     "position" => "Позиция ( сортировка на сайте )",
     "profit_percent" => "Процент прибыли",
-    "old_password_invalid" => "Старый пароль не правильный"
+    "old_password_invalid" => "Старый пароль не правильный",
+    "support message success" => "Ваше сообщение успешно отправлено"
 ];

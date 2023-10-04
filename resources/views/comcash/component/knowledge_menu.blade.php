@@ -48,7 +48,7 @@
 
     <a href='{{route("comcashPage", ["company"])}}' class='sidebar__button accordion__button_custom'>
         <img src="/comcash/img/icons/nav/company.svg" alt="">
-        <span>Компания</span>
+        <span>{{__("front.company")}}</span>
     </a>
     <div class='sidebar__content'></div>
 

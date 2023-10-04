@@ -56,4 +56,13 @@ return [
     "save" => "Сохранить",
     "oldpassword_placeholder" => "Введите старый пароль",
     "NewsMenu" => "Новости",
+    "contact us" => "Связаться с нами",
+    "support" => "Поддержка",
+    "company" => "Компания",
+    "your name" => "Ваше имя",
+    "exchange id" => "Id обмена",
+    "message" => "Сообщение",
+    "send message" => "Отправить сообщение",
+    "Would you like to contact us directly?" => "Хотите связаться с нами напрямую?",
+    "Use our contacts" => "Воспользуйтесь нашими контактами"
 ];

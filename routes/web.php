@@ -50,11 +50,11 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
     Route::post('/exchange/redirect', [Exchange::class, "redirect"])->name("redirectToExchange");
     Route::get('/exchange/prepare', [Exchange::class, "view"])->name("exchgangePage");
-    Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
-
     Route::post('/exchange/create', [Exchange::class, "create"]);
-    Route::get('/exchange/view/{hash}', [Exchange::class, "prepaid_view"])->name("exchgangePage2");
+    Route::get('/exchange/view/{hash}', [Exchange::class, "view_2"])->name("exchgangePage2");
 
+    Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
+    Route::post('/comcash-knowledgebase/support', [KnowledgeBase::class, "support"])->name("comcashSupport");
 });
 /* PUBLIC ROUTES */
 
@@ -138,28 +138,27 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/api/get/currencies', [AdminApi::class, "currencies"]);
         Route::get('/panel/api/get/merchants', [AdminApi::class, "merchants"]);
     });
+});
 
-    Route::group(config('translation.route_group_config') + ['namespace' => 'JoeDixon\\Translation\\Http\\Controllers'], function ($router) {
-        $router->get(config('translation.ui_url'), 'LanguageController@index')
-            ->name('languages.index');
-    
-        $router->get(config('translation.ui_url').'/create', 'LanguageController@create')
-            ->name('languages.create');
-    
-        $router->post(config('translation.ui_url'), 'LanguageController@store')
-            ->name('languages.store');
-    
-        $router->get(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@index')
-            ->name('languages.translations.index');
-    
-        $router->post(config('translation.ui_url').'/{language}', 'LanguageTranslationController@update')
-            ->name('languages.translations.update');
-    
-        $router->get(config('translation.ui_url').'/{language}/translations/create', 'LanguageTranslationController@create')
-            ->name('languages.translations.create');
-    
-        $router->post(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@store')
-            ->name('languages.translations.store');
-    });
+Route::group(config('translation.route_group_config') + ['namespace' => 'JoeDixon\\Translation\\Http\\Controllers'], function ($router) {
+    $router->get(config('translation.ui_url'), 'LanguageController@index')
+        ->name('languages.index');
 
+    $router->get(config('translation.ui_url').'/create', 'LanguageController@create')
+        ->name('languages.create');
+
+    $router->post(config('translation.ui_url'), 'LanguageController@store')
+        ->name('languages.store');
+
+    $router->get(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@index')
+        ->name('languages.translations.index');
+
+    $router->post(config('translation.ui_url').'/{language}', 'LanguageTranslationController@update')
+        ->name('languages.translations.update');
+
+    $router->get(config('translation.ui_url').'/{language}/translations/create', 'LanguageTranslationController@create')
+        ->name('languages.translations.create');
+
+    $router->post(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@store')
+        ->name('languages.translations.store');
 });

@@ -10,11 +10,11 @@
 				<button class='accordion__button'>
 				<img src="/comcash/img/icons/nav/profile.svg"
 					alt="" />
-				<span>Профиль</span>
+				<span>{{__("front.profile")}}</span>
 				</button>
 				<div class='accordion__content'>
 					<a href='#'
-						class='active'>Личный кабинет</a>
+						class='active'>{{__("front.client panel")}}</a>
 					<a href='#'>Мои счета</a>
 					<a href='#'>История транзации</a>
 					<a href='#'>Безопасность</a>

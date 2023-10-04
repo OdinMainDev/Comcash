@@ -6,11 +6,13 @@ const menu = document.querySelector('.header__links');
 const navMobile = document.querySelector('.header__nav-mobile');
 const header = document.querySelector('.header');
 
-button.addEventListener('click', () => {
-  button.classList.toggle('active');
-  navMobile.classList.toggle('active');
-  header.classList.toggle('active');
-});
+if(button){
+    button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        navMobile.classList.toggle('active');
+        header.classList.toggle('active');
+    });
+}
 // -----------
 
 

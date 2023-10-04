@@ -13,7 +13,9 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
-  <link rel="stylesheet" href="/comcash/assets/info.5a3d9fb9.css">
+  <script type="module" crossorigin src="/comcash/assets/exchageForm.c2228eef.js"></script>
+  <link rel="stylesheet" href="/comcash/assets/exchageForm.c2ee50f0.css">
+  <link rel="stylesheet" href="/comcash/assets/custom.css">
 </head>
 
 <body>
