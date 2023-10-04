@@ -10,6 +10,6 @@ class Controller_Home extends Controller{
     use HasCache;
 
     public function view() {
-        return view($this->theme.".index")->with("currencies", $this->getCacheCurrencies());
+        return view($this->theme.".index")->with("news", $this->getCacheNews());
     }
 }

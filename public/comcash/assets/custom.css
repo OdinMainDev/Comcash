@@ -51,3 +51,7 @@
 .accordion__button_custom::after { 
     display: none !important;
 }
+
+.news__card-footer-img {
+    object-fit: cover;
+}

@@ -1,5 +1,7 @@
 import $ from "jquery";
 import select2 from 'select2';
+import 'slick-carousel'
+window.jQuery = window.$ = $; 
 select2($);
 
 $(document).ready(function () {
@@ -37,3 +39,41 @@ window.openIndexExchangeTab = function(e, tab) {
     if (content.getAttribute('data-tab') === tab) content.classList.add('active');
   });
 }
+
+window.activateCommentsCarousel = function() {
+  console.log("start");
+  if(!$('.slider').length){
+    return;
+  }
+  console.log("start2");
+
+  $('.slider').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    dots: true,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 680,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      }
+
+    ]
+  });
+}
+window.activateCommentsCarousel();

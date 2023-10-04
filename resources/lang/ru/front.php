@@ -28,7 +28,6 @@ return [
     "confirmcode_placeholder" => "Введите код отправленный на вашу почту",
     "recover your password" => "Обновите ваш пароль",
     "page temporarily not working!" => "Страница временно недоступна:(",
-    "comcash welcome title" => "<span>Быстрый</span> и <span>надёжный</span> криптообменник",
     "comcash welcome 2" => "Уверьтесь сами, что обмен криптовалютой может быть простым, надежным и выгодным",
     "exchange crypto" => "Обмен крипты",
     "buy sell" => "Покупка/Продажа",
@@ -64,5 +63,8 @@ return [
     "message" => "Сообщение",
     "send message" => "Отправить сообщение",
     "Would you like to contact us directly?" => "Хотите связаться с нами напрямую?",
-    "Use our contacts" => "Воспользуйтесь нашими контактами"
+    "Use our contacts" => "Воспользуйтесь нашими контактами",
+    "Last Transactions" => "Последние транзации",
+    "stay tuned" => "Оставайтесь в курсе событий",
+    "read all news" => "Читать все новости"
 ];
