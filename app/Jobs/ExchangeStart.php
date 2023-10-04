@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Traits\Models\HasCache;
 use App\Models\Exchange;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -18,7 +19,7 @@ use App\Merchants\Handler;
 
 class ExchangeStart implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasCache;
 
     /**
      * Create a new job instance.
@@ -57,8 +58,8 @@ class ExchangeStart implements ShouldQueue
         $data = $this->exchange->data;
         $data['merchant_from_data'] = [
             "address" => $address,
+            "url" => null
         ];
-
         $this->exchange->data = $data;
         $this->exchange->save();
 

@@ -148,4 +148,17 @@ class Controller_Exchange extends Controller{
             ])
         ]);
     }
+
+    public function view_2(Request $request, $lang, $key){
+        if(empty($key) || !is_string($key) || mb_strlen($key) > 255){
+            return abort(404);
+        }
+
+        $exchange = Exchange::where("hash", $key)->first();
+        if(!$exchange){
+            return abort(404);
+        }
+
+        return view($this->theme.".pages.exchange_2")->with("exchange", $exchange);
+    }
 }
