@@ -21,4 +21,21 @@ class Currency extends Model
         "data" => Json::class,
         "status" => "boolean"
     ];
+
+    public function getTitle(){
+        $current_language = app()->getLocale();
+        $data = $this->data;
+        if(!isset($data['titles'])){
+            return "";
+        }
+        if(isset($data['titles'][$current_language]) && !empty($data['titles'][$current_language])){
+            return $data['titles'][$current_language];
+        }
+        foreach($data['titles'] as $value){
+            if(!empty($value)){
+                return $value;
+            }
+        }
+        return $this->name;
+    }
 }

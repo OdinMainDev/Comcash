@@ -12,4 +12,8 @@ class Controller_Home extends Controller{
     public function view() {
         return view($this->theme.".index")->with("news", $this->getCacheNews());
     }
+
+    public function export_json() {
+        return $this->getCacheExportJson();
+    }
 }

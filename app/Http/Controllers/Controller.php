@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\Models\HasCache;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -10,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 
 class Controller extends BaseController{
 
-    use AuthorizesRequests, ValidatesRequests;
+    use AuthorizesRequests, ValidatesRequests, HasCache;
 
     public $theme = "";
     public function __construct(){
@@ -63,7 +64,7 @@ class Controller extends BaseController{
         }
         $return = [];
         if(!is_array($search_currencies)){
-            $search_currencies = [];
+            $search_currencies = [$search_currencies];
         }
         $currencies = $this->getCacheCurrencies();
         foreach($search_currencies as $key => $currency_name){
@@ -116,5 +117,9 @@ class Controller extends BaseController{
             "currency_from" => $currency_from,
             "currency_to" => $currency_to,
         ];
+    }
+
+    public function getRealCurrencyCode($currency_code){
+        return $this->convertCurrencyName($currency_code);
     }
 }

@@ -92,19 +92,8 @@ trait HasCache {
     }
 
     public function estimateGetRate($currency_from, $currency_to){
-        if(in_array($currency_from, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
-            $currency_from = "RUB";
-        }
-        if(in_array($currency_from, ["USDTTRC20", "USDTERC20"])){
-            $currency_from = "USDT";
-        }
-
-        if(in_array($currency_to, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
-            $currency_to = "RUB";
-        }
-        if(in_array($currency_to, ["USDTTRC20", "USDTERC20"])){
-            $currency_to = "USDT";
-        }
+        $currency_from = $this->convertCurrencyName($currency_from);
+        $currency_to = $this->convertCurrencyName($currency_to);
 
         $rates = $this->getCacheRates();
         $rate = false;
@@ -129,5 +118,55 @@ trait HasCache {
                 ->orderBy("id", "DESC")
                 ->paginate(10);
         });
+    }
+
+    public function getCacheExportJson(){
+        return Cache::remember("export-json-public", 3600, function(){
+            $currencies = $this->getCacheCurrencies();
+            $response = [
+                "version" => "1.3",
+                "currencies" => [
+                    "list" => []
+                ],
+                "exchange" => []
+            ];
+            foreach($currencies as $currency) {
+                $response["currencies"]["list"][$currency->id] = $currency->name;
+            }
+
+            foreach($currencies as $currency){
+                $response["exchange"][$currency->id]["to"] = [];
+                foreach($currencies as $currency2){
+                    if($currency2->id == $currency->id)
+                        continue;
+
+                    $direction = $this->getDirectionByCurrencyPair($currency, $currency2);
+                    if(!$direction)
+                        continue;
+
+                    $rate = $this->estimateGetRate($currency->name, $currency2->name);
+                    if($rate < 0.001){
+                        $rate = $this->estimateGetRate($currency2->name, $currency->name); 
+                    }
+                    $response["exchange"][$currency->id]["to"][$currency2->id] = [
+                        "xr" => $rate,
+                        "min" => @$direction->data['min_amount'],
+                        "max" => @$direction->data['max_amount']
+                    ];
+                }
+            }
+            return $response;
+        });
+    }
+
+    public function convertCurrencyName($currency){
+        if(in_array($currency, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
+            $currency = "RUB";
+        }
+        if(in_array($currency, ["USDTTRC20", "USDTERC20"])){
+            $currency = "USDT";
+        }
+
+       return $currency;
     }
 }
