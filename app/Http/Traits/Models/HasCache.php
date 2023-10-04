@@ -145,7 +145,7 @@ trait HasCache {
                         continue;
 
                     $rate = $this->estimateGetRate($currency->name, $currency2->name);
-                    if($rate < 0.001){
+                    if($rate < 0.01){
                         $rate = $this->estimateGetRate($currency2->name, $currency->name); 
                     }
                     $response["exchange"][$currency->id]["to"][$currency2->id] = [

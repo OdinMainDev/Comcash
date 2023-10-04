@@ -55,7 +55,7 @@
                                 $html .= '<div class="tariffs__list-row">';
                                 $rate = $controller->estimateGetRate($currency->name, $currency2->name);
                                 $type = 1;
-                                if($rate < 0.001){
+                                if($rate < 0.01){
                                     $rate = $controller->estimateGetRate($currency2->name, $currency->name);
                                     $type = 2;
                                 }
