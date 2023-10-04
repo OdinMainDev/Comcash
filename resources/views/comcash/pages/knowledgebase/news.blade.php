@@ -16,7 +16,7 @@
             <div class="events__slider-content">
                 <div class="events__slider-card">
                     <p class="events__slider-card-date">03.03.2033</p>
-                    <p class="events__slider-card-title">Title</p>
+                    <p class="events__slider-card-title">Title1</p>
                     <p class="events__slider-card-text"> предоставляем подробную информацию о нашей политике
                         безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
                         предотвращения</p>
@@ -44,7 +44,7 @@
             <div class="events__slider-content">
                 <div class="events__slider-card">
                     <p class="events__slider-card-date">03.03.2033</p>
-                    <p class="events__slider-card-title">Title</p>
+                    <p class="events__slider-card-title">Title2</p>
                     <p class="events__slider-card-text"> предоставляем подробную информацию о нашей политике
                         безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
                         предотвращения</p>

@@ -2,6 +2,7 @@
      
 namespace App\Http\Traits\Models;
 
+use App\Models\Blog;
 use App\Models\Currency;
 use App\Models\Direction;
 use App\Models\ExchangeRate;
@@ -12,10 +13,20 @@ trait HasCache {
     public function getCacheDirections(){
         return Cache::remember("directions-public", 300, function(){
             $directions = Direction::where("status", true)
-                ->with("currencyFrom")
-                ->with("currencyTo")
+                ->whereHas("currencyFrom", function($q){
+                    $q->where("status", true);
+                })
+                ->whereHas("currencyTo", function($q){
+                    $q->where("status", true);
+                })
+                ->whereHas("merchantFrom", function($q){
+                    $q->where("status", true);
+                })
+                ->whereHas("merchantTo", function($q){
+                    $q->where("status", true);
+                })
                 ->orderBy("position", "ASC")
-                ->get();
+            ->get();
 
             $currencies = $this->getCacheCurrencies();
             foreach($directions as $direction){
@@ -40,9 +51,19 @@ trait HasCache {
                 $direction->save();
             }
             return Direction::where("status", true)
-                ->with("currencyFrom")
-                ->with("currencyTo")
+                ->whereHas("currencyFrom", function($q){
+                    $q->where("status", true);
+                })
+                ->whereHas("currencyTo", function($q){
+                    $q->where("status", true);
+                })
                 ->orderBy("position", "ASC")
+                ->whereHas("merchantFrom", function($q){
+                    $q->where("status", true);
+                })
+                ->whereHas("merchantTo", function($q){
+                    $q->where("status", true);
+                })
                 ->get();
         });
     }
@@ -99,5 +120,14 @@ trait HasCache {
 
     public function format_amount($amount, $minor_units){
         return number_format($amount, $minor_units, ".", "");
+    }
+
+    public function getCacheNews(){
+        $request = request();
+        return Cache::remember("news-public-".$request->page, 600, function(){
+            return Blog::where("status", true)
+                ->orderBy("id", "DESC")
+                ->paginate(10);
+        });
     }
 }

@@ -79,6 +79,7 @@ class Controller extends BaseController{
 
     public function getDirectionByCurrencyPair($currency_from, $currency_to){
         $directions = $this->getCacheDirections();
+
         $direction = false;
         foreach($directions as $val){
             if($val->currency_from != $currency_from->id){

@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="/admin/assets/images/favicon.png" />
         @yield("css")
 
-        <link rel="stylesheet" href="/admin/assets/css/demo_1/style.css">
+        <link rel="stylesheet" href="/admin/assets/css/demo_2/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
     </head>
     <body>

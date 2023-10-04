@@ -17,7 +17,11 @@ class Controller_KnowledgeBase extends Controller{
         if(!in_array($name, ["delivery", "tariffs", "reviews", "news", "support", "company", "faq"])){
             return abort(404);
         }
-        return view($this->theme.".pages.knowledgebase.".$name)->with("currencies", $this->getCacheCurrencies());
+        $return = view($this->theme.".pages.knowledgebase.".$name)->with("currencies", $this->getCacheCurrencies());
+        if($name == "news")
+            $return = $return->with("news", $this->getCacheNews());
+
+        return $return;
     }
 
     public function support(Request $request){
