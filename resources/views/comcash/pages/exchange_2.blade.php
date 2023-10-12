@@ -1,71 +1,109 @@
+<?php $show = false; ?>
+
 @extends('comcash.layout.main')
 
 @section('content')
 
-<div class="progress">
-    <div class="progress__container">
+	@if($exchange->currencyFrom->tag == "fiat")
+		@if(isset($exchange->data['merchant_from_data']['url']))
+			<?php $show = true; ?>
+		@endif
+	@else
+		@if(isset($exchange->data['merchant_from_data']['address']))
+			<?php $show = true; ?>
+		@endif
+	@endif
 
-      <p class="progress__title-mobile">{{__("front.exchange id")}} {{$exchange->id}}</p>
-
-      <div class="progress__box">
-        @if($exchange->currencyFrom->tag == "fiat")
-            <img src="/comcash/img/icons/socials/youtube.svg"
-                class="progress__box-img"
-                alt="qr">
-        @else
-            @if(isset($exchange->data['merchant_from_data']['address']))
-                <img src="https://chart.googleapis.com/chart?chs=224x224&cht=qr&chl={{$exchange->data['merchant_from_data']['address']}}&choe=UTF-8" class="progress__box-img" title="Link to Google.com" />
-            @endif
-        @endif
-        <div class="progress__box-right">
-          <div class='progress__box-label'>
-            amount
-          </div>
-          <div class="progress__box-text">
-            <span>0,00000001 </span>
-            <span>BTC </span>
-          </div>
-
-          <div class='progress__box-label'>
-            adress
-          </div>
-          <div class="progress__box-text">
-            123123123123213123213
-          </div>
-        </div>
-      </div>
-
-
-      <div class="progress__timeline">
-        <p class="progress__timeline-item  ">отправка вам</p>
-        <p class="progress__timeline-item   ">Ожидание депозита</p>
-        <p class="progress__timeline-item  ">обмен </p>
-        <p class="progress__timeline-item   active">подтверждение</p>
-      </div>
-
-      <div class="progress__data">
-        <p class="progress__data-label">you get</p>
-        <p class="progress__data-text"> 15.245235 ETH</p>
-      </div>
-
-      <div class="progress__data">
-        <p class="progress__data-label">receiver address</p>
-        <p class="progress__data-text">123123123123213123213
-          H</p>
-      </div>
-
-      <!-- <div class="progress__mail">
-        <p class="progress__mail-title">Время ожидания</p>
-        <div class="checkbox">
-          <input type="checkbox"
-                 id="switch"
-                 class="checkbox" />
-          <label for="switch"></label>
-        </div>
-      </div> -->
-
-    </div>
-  </div>
+	@if(!$show)
+		<div class="progress">
+			<div class="progress__container">
+				<p class="progress__timeline-item   active" id="needRefreshPageId">Подготовка обмена</p>
+			</div>
+		</div>
+	@else
+		<div class="progress">
+			<div class="progress__container">
+				<p class="progress__title-mobile">{{__("front.exchange id")}} {{$exchange->id}}</p>
+				<div class="progress__box">
+					@if($exchange->currencyFrom->tag == "crypto")
+						<img src="https://chart.googleapis.com/chart?chs=224x224&cht=qr&chl={{$exchange->data['merchant_from_data']['address']}}&choe=UTF-8" class="progress__box-img" title="Link to Google.com" />
+					@endif
+					<div class="progress__box-right">
+						<div class='progress__box-label'>
+							Сумма
+						</div>
+						<div class="progress__flex">
+							<div class="progress__box-text">
+								<span class="value">{{$exchange->data['amount_data']['amount_send']}}</span>
+								<span>{{$exchange->data['amount_data']['currency_from_name']}}</span>
+							</div>
+							<div class="progress__copy">
+								<svg fill="#FFF" xmlns="http://www.w3.org/2000/svg" 
+									viewBox="0 0 330 330">
+									<path d="M35,270h45v45c0,8.284,6.716,15,15,15h200c8.284,0,15-6.716,15-15V75c0-8.284-6.716-15-15-15h-45V15
+										c0-8.284-6.716-15-15-15H35c-8.284,0-15,6.716-15,15v240C20,263.284,26.716,270,35,270z M280,300H110V90h170V300z M50,30h170v30H95
+										c-8.284,0-15,6.716-15,15v165H50V30z"/>
+									<path d="M155,120c-8.284,0-15,6.716-15,15s6.716,15,15,15h80c8.284,0,15-6.716,15-15s-6.716-15-15-15H155z"/>
+									<path d="M235,180h-80c-8.284,0-15,6.716-15,15s6.716,15,15,15h80c8.284,0,15-6.716,15-15S243.284,180,235,180z"/>
+									<path d="M235,240h-80c-8.284,0-15,6.716-15,15c0,8.284,6.716,15,15,15h80c8.284,0,15-6.716,15-15C250,246.716,243.284,240,235,240z"/>
+								</svg>
+							</div>
+						</div>
+						@if($exchange->currencyFrom->tag == "crypto")
+							<div class='progress__box-label'>
+								Адрес
+							</div>
+							<div class="progress__flex">
+								<div class="progress__box-text">
+									<span class="value">{{$exchange->data['merchant_from_data']['address']}}</span>
+								</div>
+								<div class="progress__copy">
+									<svg fill="#FFF" xmlns="http://www.w3.org/2000/svg" 
+										viewBox="0 0 330 330">
+										<path d="M35,270h45v45c0,8.284,6.716,15,15,15h200c8.284,0,15-6.716,15-15V75c0-8.284-6.716-15-15-15h-45V15
+											c0-8.284-6.716-15-15-15H35c-8.284,0-15,6.716-15,15v240C20,263.284,26.716,270,35,270z M280,300H110V90h170V300z M50,30h170v30H95
+											c-8.284,0-15,6.716-15,15v165H50V30z"/>
+										<path d="M155,120c-8.284,0-15,6.716-15,15s6.716,15,15,15h80c8.284,0,15-6.716,15-15s-6.716-15-15-15H155z"/>
+										<path d="M235,180h-80c-8.284,0-15,6.716-15,15s6.716,15,15,15h80c8.284,0,15-6.716,15-15S243.284,180,235,180z"/>
+										<path d="M235,240h-80c-8.284,0-15,6.716-15,15c0,8.284,6.716,15,15,15h80c8.284,0,15-6.716,15-15C250,246.716,243.284,240,235,240z"/>
+									</svg>
+								</div>
+							</div>
+						@else
+							<div class='progress__box-label'>
+								<a class="button button--auto exchange__button" href="{{$exchange->data['merchant_from_data']['url']}}">Перейти к оплате</a>
+							</div>
+						@endif
+					</div>
+				</div>
+				<div class="progress__timeline">
+					<p class="progress__timeline-item active">Отправка вам</p>
+					<p class="progress__timeline-item">Ожидание депозита</p>
+					<p class="progress__timeline-item">Обмен </p>
+					<p class="progress__timeline-item">Подтверждение</p>
+				</div>
+				<div class="progress__data">
+					<p class="progress__data-label">Вы получите</p>
+					<p class="progress__data-text"> {{$exchange->data['amount_data']['amount_receive']}} {{$exchange->data['amount_data']['currency_to_name']}}</p>
+				</div>
+				@if($exchange->currencyFrom->tag == "crypto")
+					<div class="progress__data">
+						<p class="progress__data-label">Адрес получения</p>
+						<p class="progress__data-text"> {{$exchange->data['request_data']['to_address']}}</p>
+					</div>
+				@endif
+				<!-- <div class="progress__mail">
+					<p class="progress__mail-title">Время ожидания</p>
+					<div class="checkbox">
+					<input type="checkbox"
+							id="switch"
+							class="checkbox" />
+					<label for="switch"></label>
+					</div>
+					</div> -->
+			</div>
+		</div>
+	@endif
 
 @endsection
 

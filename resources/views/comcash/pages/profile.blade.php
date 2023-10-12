@@ -36,6 +36,18 @@
                         </div>
                         <input type="text" class="input input--large" name="telegram" value="{{auth()->user()->telegram}}">
                     </div>
+                    <div class="input-box">
+                        <div class='label'>
+                            <span>{{__("front.phone")}}</span>
+                        </div>
+                        <input type="text" class="input input--large" name="phone" value="{{auth()->user()->phone}}">
+                    </div>
+                    <div class="input-box">
+                        <div class='label'>
+                            <span>{{__("front.passport")}}</span>
+                        </div>
+                        <input type="text" class="input input--large" name="passport" value="{{auth()->user()->passport}}">
+                    </div>
                 </div>
                 <div class="personal__bottom">
                     <button type="submit" class='button personal__button'>{{__("front.save")}}</button>

@@ -1,0 +1,1 @@
+import{$ as t}from"./exchageForm.c2228eef.js";const s=t(".progress__copy");s.on("click",function(){const o=t(this).prev(".progress__box-text").find(".value").text();t(this).addClass("clicked");const c=t(this);setTimeout(function(){c.removeClass("clicked")},300),e(o)});const e=async o=>{try{await navigator.clipboard.writeText(o)}catch{}};

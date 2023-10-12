@@ -134,14 +134,16 @@ class Controller_Exchange extends Controller{
             "amount_data" => [
                 "amount_send" => $request->amount,
                 "amount_receive" => $amount,
-                "exchange_rate" => $this->estimateGetRate($currency_from->name, $currency_to->name)
+                "exchange_rate" => $this->estimateGetRate($currency_from->name, $currency_to->name),
+                "currency_from_name" => $this->convertCurrencyName($currency_from->name),
+                "currency_to_name" => $this->convertCurrencyName($currency_to->name)
             ],
             "recalculate" => [
                 "has_recalculation" => false
             ]
         ];
         $exchange->save();
-        ExchangeStart::dispatch($exchange->id, app()->getLocale());
+        ExchangeStart::dispatch($exchange->id, app()->getLocale(), auth()->user());
         return $this->responseSuccess(false, [
             "redirect" => route("exchgangePage2", [
                 $exchange->hash

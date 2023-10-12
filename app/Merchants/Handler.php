@@ -69,6 +69,6 @@ class Handler {
             return false;
         }
 
-        return $this->merchant->getAddress($this->merchant_data->id, $this->exchange_data->id, $this->merchant_data->secret, $this->merchant_data->key, $currency);
+        return $this->merchant->getAddress($this->merchant_data, $this->exchange_data, $currency);
     }
 }

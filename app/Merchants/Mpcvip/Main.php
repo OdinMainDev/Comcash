@@ -2,7 +2,12 @@
 
 namespace App\Merchants\Mpcvip;
 
+use App\Http\Traits\Misc\HasAmount;
+
 class Main {
+
+    use HasAmount;
+
 
     /* 
         url:https://masterprocessingvip.ru/api/payment/create_p2p_form
@@ -17,6 +22,7 @@ class Main {
         if(!$is_withdraw){
             $base[] = "from_card";
         }else{
+            $base[] = "from_card";
             $base[] = "to_card";
         }
 
@@ -31,10 +37,85 @@ class Main {
             "email" => "required|email|string|max:255",
         ];
         if(!$is_withdraw){
-            $base[] = "from_card";
+            $base["from_card"] = "required|string|max:20";
         }else{
-            $base[] = "to_card";
+            $base["to_card"] = "required|string|max:20";
         }
         return $base;
+    }
+
+    function getAddress($merchant, $exchange, $currency){
+        //alpha - 6 | sber - 3 | tinkoff - 2 | all - 1
+
+        $bankids = [1];
+        switch($exchange->currencyFrom->name){
+            case "TCSBRUB":
+                $bankids = [2];
+            break;
+            case "SBERRUB":
+                $bankids = [3];
+            break;
+        }
+        $json_data = [
+            "amount" => (int) $this->toInt($exchange->data['amount_data']['amount_send'], 2),
+            "paySource" => 1,
+            "callbackURL" => env("APP_URL")."/api/mpcvip/callback",
+            "successRedirectURL" => env("APP_URL")."/api/mpcvip/success",
+            "failedRedirectURL" => env("APP_URL")."/api/mpcvip/fail",
+            "clientIP" => $exchange->data['device_data']['ip'],
+            "userAgent" => $exchange->data['device_data']['user_agent'],
+            "cardNumber" => substr(trim($exchange->data['request_data']['from_card']), -4),
+            "clientInfo" => [
+                "client" => $exchange,
+                "email" => $exchange->data['request_data']['email'],
+                "c_from" => "RUB",
+                "c_to" => $exchange->data['amount_data']['currency_to_name'],
+                "txn" => $exchange->id,
+                "clientIP" => $exchange->data['device_data']['ip'],
+                "userAgent" => $exchange->data['device_data']['user_agent'],
+                "recipient" => trim($exchange->data['request_data']['from_card'])
+
+            ],
+            "bankIDs" => $bankids,
+        ];
+
+        $json_data = json_encode($json_data);
+
+        $signature = hash_hmac('sha512', $json_data, $merchant->secret);
+        $request = $this->sendRequest($json_data, $merchant->key, $signature, "/api/payment/create_p2p_form");
+        if(!$request['success']){
+            return false;
+        }
+
+        $request['typeMerchSys'] = "mpcvip";
+        return $request;
+    }
+
+    function sendRequest($json, $api_key, $signature, $method) {
+        $headers = array(
+            'Content-Type: application/json',
+            'API-Key: ' . $api_key,
+            'Signature: ' . $signature,
+        );
+        
+        $url = 'https://masterprocessingvip.ru/'. ltrim($method, '/');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:65.0) Gecko/20100101 Firefox/65.0');
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
+        $err  = curl_errno($ch);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        return @json_decode($result, true);
     }
 }

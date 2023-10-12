@@ -106,14 +106,14 @@ if(button){
 })();
 // -----------
 
-// select
+
 (function() {
-    // $('.select2').select2({
-    //     placeholder: "Выберите город",
-    //     maximumSelectionLength: 2,
-    //     language: "ru",
-    //     templateResult: formatState
-    // });
+    var elem = $("#needRefreshPageId");
+    if(elem.length){
+        setTimeout(() => {
+            window.location.reload();
+        }, 10000);
+    }
 })();
 
 function formatState(state) {

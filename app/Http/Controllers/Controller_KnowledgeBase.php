@@ -44,9 +44,9 @@ class Controller_KnowledgeBase extends Controller{
             $text .= "ID обмена: ".$request->exchange_id."\n";
 
         $user = auth()->user();
-        if(!$user){
-            $user = User::where('email', $request->email)->first();
-        }
+        // if(!$user){
+        //     $user = User::where('email', $request->email)->first();
+        // }
 
         if($user){
             $text .= "\n";

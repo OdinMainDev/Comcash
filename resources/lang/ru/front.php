@@ -69,4 +69,6 @@ return [
     "read all news" => "Читать все новости",
     "you sell" => "Ты продашь",
     "Buy Crypto With" => "Покупайте крипту с помощью",
+    "passport" => "Паспорт",
+    "phone" => "Телефон"
 ];

@@ -29,10 +29,11 @@ class ExchangeStart implements ShouldQueue
     public $user;
     public $exchange_id;
     public $language;
-    public function __construct($exchange_id, $language)
+    public function __construct($exchange_id, $language, $user = null)
     {
         $this->exchange_id = $exchange_id;
         $this->language = $language;
+        $this->user = $user;
     }
 
     /**
@@ -45,7 +46,8 @@ class ExchangeStart implements ShouldQueue
         if(!$this->exchange){
             return;
         }
-        $this->checkUser($this->exchange->data['request_data']['email']);
+        if(!$this->user)
+            $this->checkUser($this->exchange->data['request_data']['email']);
 
         $handler = new Handler($this->exchange->merchant_type_from, false, $this->exchange->merchantFrom, $this->exchange);
         $address = $handler->create_address($this->exchange->currencyFrom->name);
@@ -56,15 +58,24 @@ class ExchangeStart implements ShouldQueue
             return;
         }
         $data = $this->exchange->data;
-        $data['merchant_from_data'] = [
-            "address" => $address,
-            "url" => null
-        ];
+        $data['user_id'] = $this->user->id;
+        if(!is_array($address)){
+            $data['merchant_from_data'] = [
+                "address" => $address,
+                "url" => null
+            ];
+        }else{
+            $data['merchant_from_data'] = [
+                "address" => null,
+                "url" => $address['paymentURL'],
+                "externalID" => $address['externalID']
+            ];
+        }
         $this->exchange->data = $data;
         $this->exchange->save();
 
         // переделать на другое мыло и сверстать их вообще
-        Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
+        // Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
 
         $text = "🟡<b>Новая заявка на обмен</b>🟡\n";
         $text .= "ID: ".$this->exchange->id."\n";
@@ -105,8 +116,21 @@ class ExchangeStart implements ShouldQueue
             $text .= "Фамилия: ".$data['request_data']['last_name']."\n";
         }
         if(isset($data['request_data']['passport'])){
-            $text .= "Пасспорт: ".$data['request_data']['passport']."\n";
+            $text .= "Паспорт: ".$data['request_data']['passport']."\n";
         }
+
+
+
+        $text .= "\n";
+        if($this->user->first_name)
+            $text .= "Имя (привязанное к аккаунту): ".$this->user->first_name."\n";
+        if($this->user->second_name)
+            $text .= "Отчество (привязанное к аккаунту): ".$this->user->second_name."\n";
+        if($this->user->last_name)
+            $text .= "Фамилия (привязанная к аккаунту): ".$this->user->last_name."\n";
+        $text .= "Email (привязанный к аккаунту): ".$this->user->email."\n";
+        
+        
         sendTelegramNotification($text);
     }
 

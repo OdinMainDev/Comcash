@@ -24,6 +24,8 @@ class Controller_Profile extends Controller{
             "last_name" => "nullable|string|max:255",
             // "email" => "required|email|max:255",
             "telegram" => "nullable|string|max:255",
+            "phone" => "nullable|string|max:255",
+            "passport" => "nullable|string|max:255",
         ]);
 
         $user = Auth::user();
@@ -31,6 +33,8 @@ class Controller_Profile extends Controller{
         $user->second_name = $request->second_name;
         $user->last_name = $request->last_name;
         $user->telegram = $request->telegram;
+        $user->phone = $request->phone;
+        $user->passport = $request->passport;
         $user->save();
 
         return $this->responseSuccess();
