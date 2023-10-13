@@ -142,8 +142,7 @@ class Controller_Exchange extends Controller{
                 "has_recalculation" => false
             ]
         ];
-
-        dd($exchange->data);
+        
         $exchange->save();
         ExchangeStart::dispatch($exchange->id, app()->getLocale(), auth()->user());
         return $this->responseSuccess(false, [
