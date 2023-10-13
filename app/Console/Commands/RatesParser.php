@@ -16,6 +16,8 @@ class RatesParser extends Command{
      *
      * @var string
      */
+
+    // php artisan app:rates-parser
     protected $signature = 'app:rates-parser';
 
     /**

@@ -106,7 +106,7 @@ class Controller_Exchange extends Controller{
         $request->validate($merchant_from->getValidation());
         $request->validate($merchant_to->getValidation());
         // валидирование суммы
-        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_from->units, $request->amount, $direction->profit_percent);
+        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_to->units, $request->amount, $direction->profit_percent);
         if(!$amount){
             return $this->responseError("bad amount", ["code" => 3]);
         }
@@ -142,6 +142,8 @@ class Controller_Exchange extends Controller{
                 "has_recalculation" => false
             ]
         ];
+
+        dd($exchange->data);
         $exchange->save();
         ExchangeStart::dispatch($exchange->id, app()->getLocale(), auth()->user());
         return $this->responseSuccess(false, [

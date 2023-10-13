@@ -66,7 +66,7 @@ class Main {
             "userAgent" => $exchange->data['device_data']['user_agent'],
             "cardNumber" => substr(trim($exchange->data['request_data']['from_card']), -4),
             "clientInfo" => [
-                "client" => $exchange,
+                "client" => $exchange->id,
                 "email" => $exchange->data['request_data']['email'],
                 "c_from" => "RUB",
                 "c_to" => $exchange->data['amount_data']['currency_to_name'],
@@ -84,6 +84,9 @@ class Main {
         $signature = hash_hmac('sha512', $json_data, $merchant->secret);
         $request = $this->sendRequest($json_data, $merchant->key, $signature, "/api/payment/create_p2p_form");
         if(!$request['success']){
+            info("ОШИБКА ПРИ MPCVIP");
+            info($request);
+            info($json_data);
             return false;
         }
 

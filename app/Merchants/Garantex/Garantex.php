@@ -127,6 +127,10 @@ class Garantex {
                 }
             }
         }
+
+        info("ОШИБКА ПРИ GARANTEX");
+        info($res);
+        info($post_data);
         return false;
     }
 
