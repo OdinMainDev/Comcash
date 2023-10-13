@@ -50,7 +50,7 @@ class Garantex {
             "exp" => time() + 3600, // возможно стоит изменить на 1 мин
             "jti" => bin2hex(random_bytes(12))
         ];
-        $jwt = new JWT();
+        $jwt = new Jwt();
         $payload = $jwt->encode($request, base64_decode($this->private_key, true));
         $post_data = [
             "kid" => $this->uid, 
