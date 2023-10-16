@@ -26,7 +26,7 @@ class ClearExchanges extends Command
      */
     public function handle()
     {
-        Exchange::where("status", 0)->where("created_at", "<", now()->subHours(1))->chunk(10, function($exchanges) {
+        Exchange::where("status", 0)->where("created_at", "<", now()->subMinutes(30))->chunk(10, function($exchanges) {
             foreach($exchanges as $exchange){
                 $exchange->status = 13;
                 $exchange->save();

@@ -159,7 +159,7 @@ class Controller_Exchange extends Controller{
         }
 
         $exchange = Exchange::where("hash", $key)->first();
-        if(!$exchange){
+        if(!$exchange || $exchange->status == 12 || $exchange->status == 13){
             return abort(404);
         }
 

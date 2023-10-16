@@ -7,7 +7,7 @@
 	@if($exchange->status >= 10)
 		<div class="progress">
 			<div class="progress__container">
-				<p class="progress__timeline-item  ">Заявка была отменена или с ошибкой ( страницу нужно сделать )</p>
+				<p class="progress__timeline-item  ">Заявка с ошибкой ( страницу нужно сделать (ошибка либо при получении платежных данных либо при выплате))</p>
 			</div>
 		</div>
 	@else 

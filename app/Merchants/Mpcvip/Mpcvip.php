@@ -27,11 +27,11 @@ class Mpcvip {
             break;
         }
         $json_data = [
-            "amount" => round($this->exchange->data['amount_data']['amount_send']),
+            "amount" => ceil($this->exchange->data['amount_data']['amount_send']),
             "paySource" => 1,
-            "callbackURL" => env("APP_URL")."/api/mpcvip/callback",
-            "successRedirectURL" => env("APP_URL")."/api/mpcvip/success",
-            "failedRedirectURL" => env("APP_URL")."/api/mpcvip/fail",
+            "callbackURL" => route("exchgangePage2", ["locale" => $this->exchange->data['device_data']['language'], "hash" => $this->exchange->hash]),
+            "successRedirectURL" => route("exchgangePage2", ["locale" => $this->exchange->data['device_data']['language'], "hash" => $this->exchange->hash]),
+            "failedRedirectURL" => route("exchgangePage2", ["locale" => $this->exchange->data['device_data']['language'], "hash" => $this->exchange->hash]),
             "clientIP" => $this->exchange->data['device_data']['ip'],
             "userAgent" => $this->exchange->data['device_data']['user_agent'],
             "cardNumber" => substr(trim($this->exchange->data['request_data']['from_card']), -4),
