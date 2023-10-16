@@ -50,6 +50,9 @@ class ExchangeWithdraw implements ShouldQueue
             $this->exchange->status = 15;
             $this->exchange->save();
         }else{
+            $data = $this->exchange->data;
+            $data['merchant_to_data'] = $response;
+            $this->exchange->data = $data;
             $this->exchange->status = 4;
             $this->exchange->save();
         }

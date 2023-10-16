@@ -145,5 +145,14 @@ class Mpcvip {
 
         return $request;
     }
+
+    public function get_withdraws(){
+        $json_data = [
+            "UID" => "uid-".$this->exchange->id,
+        ];
+        $json_data = json_encode($json_data);
+
+        return $this->send_request($json_data, "/api/payment/get_withdraw_order_info_by_uid");
+    }
 	
 }

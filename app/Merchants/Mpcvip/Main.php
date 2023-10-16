@@ -76,4 +76,9 @@ class Main {
         }
         return $resp;
     }
+
+    function getWithdraws($merchant, $exchange){
+        $obj = new Mpcvip($merchant, $exchange);
+        return $obj->get_withdraws();
+    }
 }

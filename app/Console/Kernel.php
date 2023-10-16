@@ -17,6 +17,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:clear-exchanges')->everyMinute();
         $schedule->command('app:garantex-payment')->everyMinute();
         $schedule->command('app:garantex-withdraw')->everyMinute();
+
+        $schedule->command('app:mpcvip-payment')->everyMinute();
+        $schedule->command('app:mpcvip-withdraw')->everyMinute();
     }
 
     /**
