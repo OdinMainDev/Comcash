@@ -31,7 +31,7 @@
 			</div>
 		@endif
 	@else
-		<div class="progress">
+		<div class="progress" id="needCheckStatusExchange">
 			<div class="progress__container">
 				<p class="progress__title-mobile">{{__("front.exchange id")}} {{$exchange->id}}</p>
 				<div class="progress__box">
@@ -87,10 +87,10 @@
 					</div>
 				</div>
 				<div class="progress__timeline">
-					<p class="progress__timeline-item active">Отправка вам</p>
-					<p class="progress__timeline-item">Ожидание депозита</p>
-					<p class="progress__timeline-item">Обмен </p>
-					<p class="progress__timeline-item">Подтверждение</p>
+					<p class="progress__timeline-item @if($exchange->status < 2) active @endif">Ожидаем поступления средств</p>
+					<p class="progress__timeline-item @if($exchange->status == 2) active @endif">Проверка поступления средств</p>
+					<p class="progress__timeline-item @if($exchange->status == 3) active @endif">Старт выплаты средств</p>
+					<p class="progress__timeline-item @if($exchange->status == 4) active @endif">Подтверждение выплаты средств</p>
 				</div>
 				<div class="progress__data">
 					<p class="progress__data-label">Вы получите</p>
@@ -127,4 +127,9 @@
             document.documentElement.style.setProperty('--height-footer', footerHeight + 'px');
         });
     </script>
+
+	<script>
+		window.exchangeStatus = parseInt("{{$exchange->status}}");
+		window.exchangeHash = "{{$exchange->hash}}";
+	</script>
 @endsection

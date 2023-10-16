@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Traits\Models\HasCache;
 use App\Models\Currency;
+use App\Models\Exchange;
 use Illuminate\Http\Request;
 
 class Controller_Api extends Controller{
@@ -72,6 +73,13 @@ class Controller_Api extends Controller{
             "min_amount" => @$direction->data['min_amount'], 
             "max_amount" => @$direction->data['max_amount'], 
             "exchange_rate" => floatval($this->estimateGetRate($direction->currencyFrom->name, $direction->currencyTo->name))
+        ]);
+    }
+
+    public function exchange_status(Request $request, $hash){
+        $exch = Exchange::where("hash", $hash)->first();
+        return $this->responseSuccess("ok", [
+            "status" => $exch ? $exch->status : 15
         ]);
     }
 }

@@ -1,4 +1,5 @@
 import $ from "jquery";
+import axios from "axios";
 
 // burger logic
 const button = document.querySelector('.header__burger');
@@ -115,6 +116,29 @@ if(button){
         }, 10000);
     }
 })();
+
+(function() {
+    var elem = $("#needCheckStatusExchange");
+    if(elem.length){
+        setTimeout(() => {
+            checkId();
+        }, 5000);
+    }
+})();
+
+function checkId(){
+    axios.get("/api/get/exchange/status/"+window.exchangeHash).then(e => {
+        if(e.data.data.status > window.exchangeStatus){
+            window.location.reload();
+        }else{
+            setTimeout(() => {
+                checkId();
+            }, 5000);
+        }
+    }).catch(error => {
+       
+    })
+}
 
 function formatState(state) {
   if (!state.id) {
