@@ -35,7 +35,7 @@ class TradeBuy implements ShouldQueue
         if(!$this->exchange)
             return;
         $handler = new Handler($this->exchange->merchant_type_to, false, $this->exchange->merchantTo, $this->exchange);
-        // $response = $handler->buyCurrency($this->exchange->merchantTo, $this->exchange);
+        $response = $handler->buyCurrency($this->exchange->merchantTo, $this->exchange);
         $text = "🟢🟢<b>ПОКУПКА ВАЛЮТЫ (ТОРГОВОЕ ДЕЙСТВИЕ)</b>🟢🟢\n";
         $text .= "ID: ".$this->exchange->id."\n";
         $text .= "Направление обмена ".$this->exchange->currencyFrom->name." -> ".$this->exchange->currencyTo->name."\n";

@@ -75,7 +75,7 @@ class ExchangeStart implements ShouldQueue
         $this->exchange->save();
 
         // переделать на другое мыло и сверстать их вообще
-        // Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
+        Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
 
         $text = "🟡<b>Новая заявка на обмен</b>🟡\n";
         $text .= "ID: ".$this->exchange->id."\n";
