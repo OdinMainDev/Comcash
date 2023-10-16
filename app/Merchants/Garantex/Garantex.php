@@ -131,7 +131,20 @@ class Garantex {
         info("ОШИБКА ПРИ GARANTEX");
         info($res);
         info($post_data);
+
+        $this->createMerchantLog(
+            $this->merchant_id, 
+            $this->exchange_id, 
+            "ОШИБКА ПРИ GARANTEX", 
+            "https://".$this->hosts[$this->host_type]['auth']."/api/v1/sessions/generate_jwt",
+            $post_data, 
+            $res
+        );
         return false;
+    }
+
+    function request_deposits(){
+        return $this->request('create address', '/api/v2/deposits?limits=100', "", false);
     }
 
     function get_history_deposits($limit){
@@ -144,17 +157,19 @@ class Garantex {
         return $trans;
     }		
     
-    function request($action, $method, $post_data = []){
+    function request($action, $method, $post_data = [], $is_post = true){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:65.0) Gecko/20100101 Firefox/65.0');
         curl_setopt($ch, CURLOPT_URL, 'https://' . $this->hosts[$this->host_type]['api'] . $method);
-        if(is_array($post_data)){
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
-        }else{
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        if($is_post){
+            if(is_array($post_data)){
+                curl_setopt($ch, CURLOPT_POST, $is_post);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
+            }else{
+                curl_setopt($ch, CURLOPT_POST, $is_post);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+            }
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             "Content-Type: application/json",

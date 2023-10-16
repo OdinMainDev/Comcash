@@ -34,4 +34,8 @@ class Exchange extends Model
     public function merchantTo(){
         return $this->hasOne(Merchant::class, "id", "merchant_to");
     }
+
+    public function getDirection(){
+        return $this->hasOne(Direction::class, "id", "direction_id");
+    }
 }

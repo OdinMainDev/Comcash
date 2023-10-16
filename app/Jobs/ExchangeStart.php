@@ -52,7 +52,7 @@ class ExchangeStart implements ShouldQueue
         $handler = new Handler($this->exchange->merchant_type_from, false, $this->exchange->merchantFrom, $this->exchange);
         $address = $handler->create_address($this->exchange->currencyFrom->name);
         if(!$address){
-            $this->exchange->status = 4;
+            $this->exchange->status = 11;
             $this->exchange->save();
             sendTelegramNotification("ОШИБКА ПРИ ГЕНЕРАЦИИ ПЛАТЕЖА (id: ".$this->exchange->id.")", 0);
             return;

@@ -5,7 +5,7 @@ namespace App\Merchants\Garantex;
 class Main {
 
     function getLayout($is_withdraw){
-        $base = ["email", "from_address"];
+        $base = ["email"];
         if($is_withdraw){
             $base[] = "to_address";
         }
@@ -25,5 +25,10 @@ class Main {
     function getAddress($merchant, $exchange, $currency){
         $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
         return $obj->create_address($currency);
+    }
+
+    function getDeposits($merchant, $exchange){
+        $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
+        return $obj->request_deposits();
     }
 }

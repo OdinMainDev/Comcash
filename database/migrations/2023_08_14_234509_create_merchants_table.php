@@ -21,6 +21,8 @@ return new class extends Migration
             $table->longText("secret")->nullable();
             $table->longText("token")->nullable();
             $table->timestamps();
+
+            $table->index(["status", "is_auto", "type"]);
         });
     }
 

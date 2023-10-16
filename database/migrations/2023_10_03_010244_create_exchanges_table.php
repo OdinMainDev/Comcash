@@ -17,7 +17,10 @@ return new class extends Migration
         1 - paid
         2 - wait for withdraw
         3 - success
-        4 - api error
+        11 - api error
+        12 - cancel
+        13 - deleted
+        14 - amount error
     */
     public function up(): void
     {
@@ -36,7 +39,7 @@ return new class extends Migration
             $table->json("data");
             $table->timestamps();
 
-            $table->index(["status", "direction_id", "user_id"]);
+            $table->index(["status", "direction_id", "user_id", "merchant_from", "merchant_to"]);
         });
     }
 

@@ -4,22 +4,32 @@
 
 @section('content')
 
-	@if($exchange->currencyFrom->tag == "fiat")
-		@if(isset($exchange->data['merchant_from_data']['url']))
-			<?php $show = true; ?>
-		@endif
-	@else
-		@if(isset($exchange->data['merchant_from_data']['address']))
-			<?php $show = true; ?>
+	@if($exchange->status >= 10)
+		<div class="progress">
+			<div class="progress__container">
+				<p class="progress__timeline-item  ">Заявка была отменена или с ошибкой ( страницу нужно сделать )</p>
+			</div>
+		</div>
+	@else 
+		@if($exchange->currencyFrom->tag == "fiat")
+			@if(isset($exchange->data['merchant_from_data']['url']))
+				<?php $show = true; ?>
+			@endif
+		@else
+			@if(isset($exchange->data['merchant_from_data']['address']))
+				<?php $show = true; ?>
+			@endif
 		@endif
 	@endif
 
 	@if(!$show)
-		<div class="progress">
-			<div class="progress__container">
-				<p class="progress__timeline-item   active" id="needRefreshPageId">Подготовка обмена</p>
+		@if($exchange->status < 10)
+			<div class="progress">
+				<div class="progress__container">
+					<p class="progress__timeline-item   active" id="needRefreshPageId">Подготовка обмена</p>
+				</div>
 			</div>
-		</div>
+		@endif
 	@else
 		<div class="progress">
 			<div class="progress__container">

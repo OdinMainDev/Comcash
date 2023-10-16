@@ -45,8 +45,8 @@ trait HasCache {
                     continue;
                 }
                 $data = $direction->data;
-                $data['min_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MIN_EXCHANGE_AMOUNT", 50), 0);
-                $data['max_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MAX_EXCHANGE_AMOUNT", 50000), 0);
+                $data['min_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MIN_EXCHANGE_AMOUNT", 50), $direction->profit_percent);
+                $data['max_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MAX_EXCHANGE_AMOUNT", 50000), $direction->profit_percent);
                 $direction->data = $data;
                 $direction->save();
             }
@@ -88,6 +88,10 @@ trait HasCache {
         if(!$rate){
             return false;
         }
+        return $this->doEstimate($amount, $rate, $profit_percent, $minor_units);
+    }
+
+    public function doEstimate($amount, $rate, $profit_percent, $minor_units){
         return number_format(($amount * $rate) / 100 * (100 - $profit_percent), $minor_units, ".", "");
     }
 
@@ -168,5 +172,29 @@ trait HasCache {
         }
 
        return $currency;
+    }
+
+    public function recalculateExchange($exchange, $amount){
+        $data = $exchange->data;
+        $rate = $data['amount_data']['exchange_rate'];
+        $new_rate = $this->estimateGetRate($exchange->currencyFrom->name, $exchange->currencyTo->name);
+        if($new_rate){
+            if($new_rate < $rate) {
+                $rate = $new_rate;
+            }
+        }
+
+        $data['recalculate']['has_recalculation'] = true;
+        $data['recalculate']['old_amount_send'] = $data['amount_data']['amount_send'];
+        $data['recalculate']['old_amount_receive'] = $data['amount_data']['amount_receive'];
+        $data['recalculate']['old_exchange_rate'] = $data['amount_data']['exchange_rate'];
+
+        $data['amount_data']['exchange_rate'] = $rate;
+        $data['amount_data']['amount_send'] = $amount;
+        $data['amount_data']['amount_receive'] = $this->doEstimate($amount, $rate, $exchange->getDirection->profit_percent, $exchange->currencyTo->units);
+        $exchange->data = $data;
+        $exchange->status = 1;
+        // $exchange->save();
+        return $exchange;
     }
 }

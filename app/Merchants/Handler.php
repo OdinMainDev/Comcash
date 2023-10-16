@@ -71,4 +71,13 @@ class Handler {
 
         return $this->merchant->getAddress($this->merchant_data, $this->exchange_data, $currency);
     }
+
+    public function getDeposits(){
+        $this->merchant = $this->getMerchant();
+        if(!$this->merchant){
+            return false;
+        }
+
+        return $this->merchant->getDeposits($this->merchant_data, $this->exchange_data);
+    }
 }
