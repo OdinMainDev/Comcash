@@ -27,7 +27,7 @@ class Mpcvip {
             break;
         }
         $json_data = [
-            "amount" => $this->exchange->data['amount_data']['amount_send'],
+            "amount" => round($this->exchange->data['amount_data']['amount_send']),
             "paySource" => 1,
             "callbackURL" => env("APP_URL")."/api/mpcvip/callback",
             "successRedirectURL" => env("APP_URL")."/api/mpcvip/success",
