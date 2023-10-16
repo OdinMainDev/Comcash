@@ -130,6 +130,7 @@ class Controller_Exchange extends Controller{
             "device_data" => [
                 "ip" => $request->ip(),
                 "user_agent" => $request->userAgent(),
+                "language" => app()->getLocale()
             ],
             "amount_data" => [
                 "amount_send" => $request->amount,

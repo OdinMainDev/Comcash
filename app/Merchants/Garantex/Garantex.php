@@ -144,7 +144,7 @@ class Garantex {
     }
 
     function request_deposits(){
-        return $this->request('create address', '/api/v2/deposits?limits=100', "", false);
+        return $this->request('get deposits', '/api/v2/deposits?limits=100', "", false);
     }
 
     function get_history_deposits($limit){
@@ -193,5 +193,66 @@ class Garantex {
             $result
         );
         return @json_decode($result, true);
-    }		
+    }
+
+    function sell_currency($currency, $to_currency, $amount, $side = "sell", $ord_type = "default"){
+        $currency = trim(mb_strtoupper($currency));
+        switch($currency){
+            case "USDTERC20":
+            case "USDTTRC20":
+                $currency = "USDT";
+            break;
+        }
+
+        $to_currency = trim(mb_strtoupper($to_currency));
+        switch($to_currency){
+            case "USDTERC20":
+            case "USDTTRC20":
+                $to_currency = "USDT";
+            break;
+        }
+
+        return $this->request('sell or buy currency', '/api/v2/orders', [
+            'market' => mb_strtolower($currency.$to_currency),
+            "volume" => $amount,
+            "side" => $side,
+            "ord_type" => $ord_type
+        ]);
+    }
+
+    function make_withdraw($currency, $amount, $to_address){
+        $currency = trim(mb_strtoupper($currency));
+        switch($currency){
+            case "USDTERC20":
+                $currency = "USDT";
+            break;
+            case "USDTTRC20":
+                $currency = "USDT-TRON";
+            break;
+        }
+
+        return $this->request('withdraw', '/api/v2/withdraws/create', [
+            'currency' => mb_strtolower($currency),
+            "amount" => $amount,
+            "rid" => $to_address
+        ]);
+    }
+
+    function get_balance($currency){
+        $currency = trim(mb_strtoupper($currency));
+        switch($currency){
+            case "USDTERC20":
+            case "USDTTRC20":
+                $currency = "USDT";
+            break;
+        }
+
+        $currency = mb_strtolower($currency);
+
+        return $this->request('get balance', '/api/v2/accounts/'.$currency, "", false);
+    }
+
+    function request_withdraws(){
+        return $this->request('get withdraws', '/api/v2/withdraws?limits=100', "", false);
+    }
 }

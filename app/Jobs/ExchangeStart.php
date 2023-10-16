@@ -42,7 +42,7 @@ class ExchangeStart implements ShouldQueue
     public function handle(): void
     {
         Lang::setLocale($this->language);
-        $this->exchange = Exchange::where("id", $this->exchange_id)->first();
+        $this->exchange = Exchange::with("merchantFrom")->where("id", $this->exchange_id)->first();
         if(!$this->exchange){
             return;
         }

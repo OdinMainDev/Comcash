@@ -15,12 +15,15 @@ return new class extends Migration
         statuses
         0 - created
         1 - paid
-        2 - wait for withdraw
-        3 - success
+        2 - selled currency
+        3 - wait for withdraw
+        4 - check withdraw
+        5 - success
         11 - api error
         12 - cancel
         13 - deleted
         14 - amount error
+        15 - withdraw error
     */
     public function up(): void
     {

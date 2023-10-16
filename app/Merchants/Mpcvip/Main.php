@@ -52,4 +52,8 @@ class Main {
     function getDeposits($merchant, $exchange){
         return true;
     }
+
+    function sellCurrency($merchant, $exchange){
+        return ["success" => true];
+    }
 }

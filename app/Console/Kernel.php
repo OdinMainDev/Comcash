@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('app:rates-parser')->everyThirtySeconds();
+        $schedule->command('app:garantex-payment')->everyMinute();
+        $schedule->command('app:garantex-withdraw')->everyMinute();
     }
 
     /**

@@ -31,4 +31,29 @@ class Main {
         $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
         return $obj->request_deposits();
     }
+
+    function sellCurrency($merchant, $exchange){
+        $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
+        return $obj->sell_currency($exchange->data['amount_data']['currency_from_name'],$exchange->data['amount_data']['currency_to_name'],$exchange->data['amount_data']['amount_send']);
+    }
+
+    function buyCurrency($merchant, $exchange){
+        $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
+        return $obj->sell_currency($exchange->data['amount_data']['currency_from_name'],"USDT",$exchange->data['amount_data']['amount_receive'], "buy", "market");
+    }
+
+    function makeWithdraw($merchant, $exchange){
+        $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
+        return $obj->make_withdraw($exchange->data['amount_data']['currency_to_name'], $exchange->data['amount_data']['amount_receive'], $exchange->data['request_data']['to_address']);
+    }
+
+    function getBalance($merchant, $exchange, $currency){
+        $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
+        return $obj->get_balance($currency);
+    }
+
+    function getWithdraws($merchant, $exchange){
+        $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
+        return $obj->request_withdraws();
+    }
 }

@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Http\Traits\Models\HasCache;
+use App\Http\Traits\Models\HasLogs;
+use App\Jobs\TradeSell;
 use App\Merchants\Handler;
 use App\Models\Exchange;
 use App\Models\Merchant;
@@ -11,7 +13,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class GarantexPayment extends Command
 {
-    use HasCache;
+    use HasCache, HasLogs;
     /**
      * The name and signature of the console command.
      *
@@ -50,13 +52,13 @@ class GarantexPayment extends Command
                     if(empty($exchange->data['merchant_from_data']['address'])){
                         continue;
                     }
-                    $address = $exchange->data['merchant_from_data']['address'];
+                    $address = mb_strtolower($exchange->data['merchant_from_data']['address']);
                     $total_amount = 0;
                     foreach($deposits_resp as $row){
                         if($row['state'] != "accepted"){
                             continue;
                         }
-                        if($row['address'] != $address){
+                        if(mb_strtolower($row['address']) != $address){
                             continue;
                         }
                         $total_amount += $row['amount'];
@@ -69,8 +71,8 @@ class GarantexPayment extends Command
                     if($total_amount > 0 && $total_amount < $exchange->data['amount_data']['amount_send']){
                         $exchange = $this->recalculateExchange($exchange, $total_amount);
                     }else{
-                        // $exchange->status = 1;
-                        // $exchange->save();
+                        $exchange->status = 1;
+                        $exchange->save();
                     }
 
                     $text = "🟢<b>ЗАЯВКА ОПЛАЧЕНА ( GARANTEX )</b>🟢\n";
@@ -83,9 +85,14 @@ class GarantexPayment extends Command
                         $text .= "⚠️⚠️<b>ЗАЯВКА БЫЛА ПЕРЕРАСЧИТАНА</b>⚠️⚠️\n";
                         $text .= "Предыдущая сумма: ". @$exchange->data['recalculate']['old_amount_send']." -> ". @$exchange->data['recalculate']['old_amount_receive']."\n";
                         $text .= "Предыдущий курс обмена: ". @$exchange->data['recalculate']['old_exchange_rate'];
+                        if($exchange->status == 14){
+                            $text .= "⚠️⚠️<b>ВНИМАНИЕ ЗАЯВКУ НУЖНО ВРУЧНУЮ ОБРАБОТАТЬ</b>⚠️⚠️\n";
+                        }
                     }
                     sendTelegramNotification($text);
-                    // тут торговое действие 
+                    if($exchange->status == 1){
+                        TradeSell::dispatch($exchange->id);
+                    }
                 }
                 
             });

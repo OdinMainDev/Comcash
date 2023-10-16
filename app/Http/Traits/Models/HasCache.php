@@ -194,7 +194,12 @@ trait HasCache {
         $data['amount_data']['amount_receive'] = $this->doEstimate($amount, $rate, $exchange->getDirection->profit_percent, $exchange->currencyTo->units);
         $exchange->data = $data;
         $exchange->status = 1;
-        // $exchange->save();
+
+        if(@$exchange->getDirection->data['min_amount'] && $data['amount_data']['amount_receive'] < $exchange->getDirection->data['min_amount']){
+            $exchange->status = 14;
+        }
+
+        $exchange->save();
         return $exchange;
     }
 }

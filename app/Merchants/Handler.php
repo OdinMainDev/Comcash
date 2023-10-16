@@ -80,4 +80,49 @@ class Handler {
 
         return $this->merchant->getDeposits($this->merchant_data, $this->exchange_data);
     }
+
+    public function sellCurrency(){
+        $this->merchant = $this->getMerchant();
+        if(!$this->merchant){
+            return false;
+        }
+
+        return $this->merchant->sellCurrency($this->merchant_data, $this->exchange_data);
+    }
+
+    public function buyCurrency(){
+        $this->merchant = $this->getMerchant();
+        if(!$this->merchant){
+            return false;
+        }
+
+        return $this->merchant->buyCurrency($this->merchant_data, $this->exchange_data);
+    }
+
+    public function makeWithdraw(){
+        $this->merchant = $this->getMerchant();
+        if(!$this->merchant){
+            return false;
+        }
+
+        return $this->merchant->makeWithdraw($this->merchant_data, $this->exchange_data);
+    }
+
+    public function getBalance($currency){
+        $this->merchant = $this->getMerchant();
+        if(!$this->merchant){
+            return false;
+        }
+
+        return $this->merchant->getBalance($this->merchant_data, $this->exchange_data, $currency);
+    }
+
+    public function getWithdraws(){
+        $this->merchant = $this->getMerchant();
+        if(!$this->merchant){
+            return false;
+        }
+
+        return $this->merchant->getWithdraws($this->merchant_data, $this->exchange_data);
+    }
 }
