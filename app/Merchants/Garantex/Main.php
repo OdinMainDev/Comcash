@@ -34,12 +34,12 @@ class Main {
 
     function sellCurrency($merchant, $exchange){
         $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
-        return $obj->sell_currency($exchange->data['amount_data']['currency_from_name'],$exchange->data['amount_data']['currency_to_name'],$exchange->data['amount_data']['amount_send']);
+        return $obj->sell_currency($exchange->data['amount_data']['currency_from_name'],"USDT",$exchange->data['amount_data']['amount_send']);
     }
 
     function buyCurrency($merchant, $exchange){
         $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
-        return $obj->sell_currency($exchange->data['amount_data']['currency_from_name'],"USDT",$exchange->data['amount_data']['amount_receive'], "buy", "market");
+        return $obj->sell_currency($exchange->data['amount_data']['currency_to_name'],"USDT",$exchange->data['amount_data']['amount_receive'], "buy", "market");
     }
 
     function makeWithdraw($merchant, $exchange){

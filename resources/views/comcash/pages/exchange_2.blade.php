@@ -96,10 +96,15 @@
 					<p class="progress__data-label">Вы получите</p>
 					<p class="progress__data-text"> {{$exchange->data['amount_data']['amount_receive']}} {{$exchange->data['amount_data']['currency_to_name']}}</p>
 				</div>
-				@if($exchange->currencyFrom->tag == "crypto")
+				@if($exchange->currencyTo->tag == "crypto")
 					<div class="progress__data">
 						<p class="progress__data-label">Адрес получения</p>
 						<p class="progress__data-text"> {{$exchange->data['request_data']['to_address']}}</p>
+					</div>
+				@else
+					<div class="progress__data">
+						<p class="progress__data-label">Карта на которую поступят средства</p>
+						<p class="progress__data-text"> {{$exchange->data['request_data']['to_card']}}</p>
 					</div>
 				@endif
 				<!-- <div class="progress__mail">

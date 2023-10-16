@@ -50,10 +50,30 @@ class Main {
     }
 
     function getDeposits($merchant, $exchange){
-        return true;
+        $obj = new Mpcvip($merchant, $exchange);
+        return $obj->get_invoices();
     }
 
     function sellCurrency($merchant, $exchange){
         return ["success" => true];
+    }
+
+    function buyCurrency($merchant, $exchange){
+        return ["success" => true];
+    }
+
+    function makeWithdraw($merchant, $exchange){
+        $obj = new Mpcvip($merchant, $exchange);
+        $resp = $obj->make_withdraw();
+        if(@$resp['status'] != "Accepted"){
+            if(!is_array($resp)){
+                $resp = [];
+            }
+            $resp['error'] = [
+                "code" => @$resp['status'],
+                "message" => @$resp['cause']
+            ];
+        }
+        return $resp;
     }
 }
