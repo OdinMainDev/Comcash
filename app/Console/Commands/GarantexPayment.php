@@ -39,9 +39,7 @@ class GarantexPayment extends Command
                 $handler = new Handler("garantex", false, $merchant, $exchanges[0]);
                 $deposits_resp = $handler->getDeposits();
                 if(!$deposits_resp){
-                    sendTelegramNotification("ОШИБКА ГАРАНТЕКСА, ОТКЛЮЧЕН МЕРЧАНТ");
-                    $merchant->status = false;
-                    $merchant->save();
+                    sendTelegramNotification("ОШИБКА ГАРАНТЕКСА, ПРИ ПОПЫТКЕ ПОЛУЧИТЬ ДЕПОЗИТЫ");
                     Artisan::call('cache:clear');
                     return;
                 }

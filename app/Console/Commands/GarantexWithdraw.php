@@ -35,9 +35,7 @@ class GarantexWithdraw extends Command
                 $handler = new Handler("garantex", false, $merchant, $exchanges[0]);
                 $withdraws_resp = $handler->getWithdraws();
                 if(!$withdraws_resp){
-                    sendTelegramNotification("ОШИБКА ГАРАНТЕКСА, ОТКЛЮЧЕН МЕРЧАНТ");
-                    $merchant->status = false;
-                    $merchant->save();
+                    sendTelegramNotification("ОШИБКА ГАРАНТЕКСА, ПРИ ПОПЫТКЕ ПОЛУЧИТЬ ВЫПЛАТЫ");
                     Artisan::call('cache:clear');
                     return;
                 }
