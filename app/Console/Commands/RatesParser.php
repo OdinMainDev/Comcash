@@ -54,11 +54,13 @@ class RatesParser extends Command{
         $api_key = env("CRYPTOCOMPARE_KEY", false);
         if(!$api_key){
             sendTelegramNotification("<b>ОШИБКА!</b>\nНастройте парсер.");
+            return;
         }
         $url = "https://min-api.cryptocompare.com/data/pricemulti?api_key=$api_key&fsyms=$request_currency&tsyms=$request_currency";
         $response = Http::get($url);
         if($response->clientError() || $response->status() != 200){
             sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.");
+            return;
         }      
         $response = $response->json();
         ExchangeRate::truncate();

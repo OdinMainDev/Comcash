@@ -44,13 +44,13 @@ import $ from 'jquery';
                 if(e.data.data?.refresh){
                     setTimeout(() => {
                         window.location.reload();
-                    }, 3500)
+                    }, 100)
                     return;
                 }
                 if(e.data.data?.redirect){
                     setTimeout(() => {
                         window.location.href = e.data.data.redirect;
-                    }, 3500)
+                    }, 100)
                     return;
                 }
                 if(e.data.data?.open_modal){
@@ -67,7 +67,7 @@ import $ from 'jquery';
                 if(redirect != "false" && redirect != undefined){
                     setTimeout(() => {
                         window.location.href = redirect;
-                    }, 3500)
+                    }, 100)
                     return;
                 }
             }).catch(error => {

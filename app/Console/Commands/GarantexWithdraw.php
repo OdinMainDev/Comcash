@@ -45,6 +45,9 @@ class GarantexWithdraw extends Command
                     $address = mb_strtolower($exchange->data['request_data']['to_address']);
                     $check = false;
                     foreach($withdraws_resp as $row){
+                        if(!isset($row['rid'])){
+                            continue;
+                        }
                         if(mb_strtolower($row['rid']) != $address){
                             continue;
                         }
