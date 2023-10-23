@@ -165,7 +165,7 @@ class BasicFillDB extends Command
                 "created_at" => now()
             ],
         ];
-        if(env("THEME_NAME") == "comcash22"){
+        if(env("THEME_NAME") == "comcash"){
             
             $currencies[] = 
                 [
@@ -355,8 +355,8 @@ class BasicFillDB extends Command
             ],
             [
                 "id" => 3,
-                "name" => "Binance",
-                "type" => "binance",
+                "name" => "Okx",
+                "type" => "okx",
                 "status" => false,
                 "created_at" => now()
             ],
@@ -380,7 +380,7 @@ class BasicFillDB extends Command
                 $name .= " → ";
                 $name .= json_decode($currency2['data'], true)['titles']['en'];
                 $merchant_from = 3;
-                $merchant_from_type = "binance";
+                $merchant_from_type = "okx";
                 if(in_array($currency['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                     $merchant_from = 1;
                     $merchant_from_type = "garantex";
@@ -391,7 +391,7 @@ class BasicFillDB extends Command
                 }
 
                 $merchant_to = 3;
-                $merchant_to_type = "binance";
+                $merchant_to_type = "okx";
                 if(in_array($currency2['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                     $merchant_to = 1;
                     $merchant_to_type = "garantex";

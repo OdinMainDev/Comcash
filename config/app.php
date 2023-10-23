@@ -190,7 +190,7 @@ return [
     'merchants' => [
         "garantex",
         "mpcvip",
-        "binance"
+        "okx"
     ],
 
 ];

@@ -212,6 +212,26 @@ class Garantex {
             break;
         }
 
+        if($side == "buy"){
+            switch($to_currency){
+                case "USDT":
+                    $amount += 7;
+                break;
+
+                case "BTC":
+                    $amount += 0.00015;
+                break;
+
+                case "ETH":
+                    $amount += 0.003;
+                break;
+
+                case "DAI":
+                    $amount += 5;
+                break;
+            }
+        }
+
         return $this->request('sell or buy currency', '/api/v2/orders', [
             'market' => mb_strtolower($currency.$to_currency),
             "volume" => $amount,

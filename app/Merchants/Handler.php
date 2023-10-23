@@ -4,7 +4,7 @@ namespace App\Merchants;
 
 use App\Merchants\Garantex\Main as Garantex;
 use App\Merchants\Mpcvip\Main as MpcVip;
-use App\Merchants\Binance\Main as Binance;
+use App\Merchants\Okx\Main as Okx;
 use stdClass;
 
 class Handler {
@@ -54,8 +54,8 @@ class Handler {
                 $this->merchant = new MpcVip;
                 return $this->merchant;
             break;
-            case "binance":
-                $this->merchant = new Binance;
+            case "okx":
+                $this->merchant = new Okx;
                 return $this->merchant;
             break;
         }    
