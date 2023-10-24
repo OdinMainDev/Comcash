@@ -32,6 +32,8 @@ class TradeSell implements ShouldQueue
      */
     public function handle(): void
     {
+
+       
         $this->exchange = Exchange::where("status", 1)->where("id", $this->exchange_id)->first();
         if(!$this->exchange)
             return;

@@ -20,6 +20,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('app:mpcvip-payment')->everyMinute();
         $schedule->command('app:mpcvip-withdraw')->everyMinute();
+
+        $schedule->command('app:okx-payment')->everyMinute();
+        // $schedule->command('app:okx-withdraw')->everyMinute();
     }
 
     /**
