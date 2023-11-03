@@ -75,6 +75,9 @@ class Main {
     }
 
     function sellCurrency($merchant, $exchange){
+        if(@$exchange->data['amount_data']['currency_from_name'] == "USDT"){
+            return [];
+        }
         $obj = new okx([
             "apiKey" => $merchant->key,
             "secret" => $merchant->secret,

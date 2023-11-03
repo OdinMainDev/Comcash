@@ -383,7 +383,7 @@ class BasicFillDB extends Command
                 $merchant_from_type = "okx";
                 if(in_array($currency['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                     $merchant_from = 1;
-                    $merchant_from_type = "garantex";
+                    $merchant_from_type = "okx";
                 }
                 if(in_array($currency['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
                     $merchant_from = 2;
@@ -394,7 +394,7 @@ class BasicFillDB extends Command
                 $merchant_to_type = "okx";
                 if(in_array($currency2['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                     $merchant_to = 1;
-                    $merchant_to_type = "garantex";
+                    $merchant_to_type = "okx";
                 }
                 if(in_array($currency2['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
                     $merchant_to = 2;
@@ -420,8 +420,6 @@ class BasicFillDB extends Command
             }
         }
 
-
-        
         Direction::truncate();
         Direction::insert($directions);
     }
