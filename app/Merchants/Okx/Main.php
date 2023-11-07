@@ -33,19 +33,40 @@ class Main {
             "secret" => $merchant->secret,
             "password" => $merchant->token
         ]);
-        $result = $obj->fetch_deposit_address($currency);
-        $this->createMerchantLog(
-            $merchant->id, 
-            $exchange->id, 
-            "generate address", 
-            "",
-            [
-                "apiKey" => $merchant->key,
-                "secret" => $merchant->secret,
-                "password" => $merchant->token
-            ], 
-            $result
-        );
+        try {
+            $result = $obj->fetch_deposit_address($currency);
+            $this->createMerchantLog(
+                $merchant->id, 
+                $exchange->id, 
+                "generate address", 
+                "",
+                [
+                    "apiKey" => $merchant->key,
+                    "secret" => $merchant->secret,
+                    "password" => $merchant->token
+                ], 
+                $result
+            );
+            dd($result);
+            if(!isset($result['address'])){
+                return false;
+            }
+            return $result['address'];
+        } catch (\Throwable $th) {
+            $this->createMerchantLog(
+                $merchant->id, 
+                $exchange->id, 
+                "generate address error", 
+                "",
+                [
+                    "apiKey" => $merchant->key,
+                    "secret" => $merchant->secret,
+                    "password" => $merchant->token
+                ], 
+                $th->getMessage()
+            );
+            return false;
+        }
         if(!isset($result['address'])){
             return false;
         }
@@ -58,19 +79,36 @@ class Main {
             "secret" => $merchant->secret,
             "password" => $merchant->token
         ]);
-        $result = $obj->fetch_deposits();
-        $this->createMerchantLog(
-            $merchant->id, 
-            $exchange->id, 
-            "get deposits", 
-            "",
-            [
-                "apiKey" => $merchant->key,
-                "secret" => $merchant->secret,
-                "password" => $merchant->token
-            ], 
-            $result
-        );
+        try {
+            $result = $obj->fetch_deposits();
+            $this->createMerchantLog(
+                $merchant->id, 
+                $exchange->id, 
+                "get deposits", 
+                "",
+                [
+                    "apiKey" => $merchant->key,
+                    "secret" => $merchant->secret,
+                    "password" => $merchant->token
+                ], 
+                $result
+            );
+            return $result;
+        } catch (\Throwable $th) {
+            $this->createMerchantLog(
+                $merchant->id, 
+                $exchange->id, 
+                "generate address error", 
+                "",
+                [
+                    "apiKey" => $merchant->key,
+                    "secret" => $merchant->secret,
+                    "password" => $merchant->token
+                ], 
+                $th->getMessage()
+            );
+            return [];
+        }
         return $result;
     }
 

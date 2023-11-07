@@ -63,11 +63,11 @@ class OkxPayment extends Command
                         $total_amount += $row['amount'];
                     }
 
-                    if($total_amount == 0) {
+                    if($total_amount <= 0) {
                         continue;
                     }
 
-                    if($total_amount > 0 && $total_amount < $exchange->data['amount_data']['amount_send']){
+                    if($total_amount < $exchange->data['amount_data']['amount_send']){
                         $exchange = $this->recalculateExchange($exchange, $total_amount);
                     }else{
                         $exchange->status = 1;
