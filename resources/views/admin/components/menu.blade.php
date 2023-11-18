@@ -118,6 +118,25 @@
 					</div>
 				</li>
 			@endcan
+			@can("handle-feedback")
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="collapse" href="#feedbacksidemenu" role="button" aria-expanded="false" aria-controls="feedbacksidemenu">
+					<i class="link-icon" data-feather="alert-octagon"></i>
+						<span class="link-title">{{__("menu.feedback")}}</span>
+						<i class="link-arrow" data-feather="chevron-down"></i>
+					</a>
+					<div class="collapse" id="feedbacksidemenu">
+						<ul class="nav sub-menu">
+							<li class="nav-item">
+								<a href="{{route("adminFeedbackList")}}" class="nav-link">{{__("menu.list")}}</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{route("adminFeedbackAdd")}}" class="nav-link">{{__("menu.add")}}</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			@endcan
 			@can("handle-languages")
 				<li class="nav-item">
 					<a class="nav-link" href="{{route("languages.index")}}">

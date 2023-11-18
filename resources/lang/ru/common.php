@@ -58,5 +58,9 @@ return [
     "position" => "Позиция ( сортировка на сайте )",
     "profit_percent" => "Процент прибыли",
     "old_password_invalid" => "Старый пароль не правильный",
-    "support message success" => "Ваше сообщение успешно отправлено"
+    "support message success" => "Ваше сообщение успешно отправлено",
+    "addFeedback" => "Добавить отзыв",
+    "editFeedback" => "Изменить отзыв",
+    "fullName" => "Полное имя",
+    "text" => "Текст"
 ];

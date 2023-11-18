@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller_Home as Home;
-use App\Http\Controllers\Controller_Login as Login;
-use App\Http\Controllers\Controller_Register as Register;
-use App\Http\Controllers\Controller_ResetPassword as ResetPassword;
+
 use App\Http\Controllers\Admin\Controller_Dashboard as AdminDashboard;
 use App\Http\Controllers\Admin\Controller_Currency as AdminCurrency;
 use App\Http\Controllers\Admin\DataTable\Controller_Currency as DTCurrency;
@@ -19,6 +16,15 @@ use App\Http\Controllers\Admin\Controller_Api as AdminApi;
 use Illuminate\Support\Facades\Cookie;
 use App\Http\Controllers\Admin\Controller_Blog as AdminBlog;
 use App\Http\Controllers\Admin\DataTable\Controller_Blog as DTBlog;
+use App\Http\Controllers\Admin\Controller_Feedback as AdminFeedback;
+use App\Http\Controllers\Admin\DataTable\Controller_Feedback as DTFeedback;
+
+
+
+use App\Http\Controllers\Controller_Home as Home;
+use App\Http\Controllers\Controller_Login as Login;
+use App\Http\Controllers\Controller_Register as Register;
+use App\Http\Controllers\Controller_ResetPassword as ResetPassword;
 use App\Http\Controllers\Controller_Profile as Profile;
 use App\Http\Controllers\Controller_Exchange as Exchange;
 use App\Http\Controllers\Controller_KnowledgeBase as KnowledgeBase;
@@ -131,6 +137,16 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/blog/add', [AdminBlog::class, "add"])->name("adminBlogAdd");
         Route::get('/panel/blog/edit/{id}', [AdminBlog::class, "edit"])->name("adminBlogEdit");
         Route::post('/panel/blog/process', [AdminBlog::class, "process"])->name("adminBlogProcess");
+    });
+
+    Route::group( ['middleware' => ['auth', 'permission:handle-feedback']], function() {
+        Route::get('/panel/feedback/list', [DTFeedback::class, "view"])->name("adminFeedbackList");
+        Route::get('/panel/feedback/list/data', [DTFeedback::class, "process"]);
+
+        Route::get('/panel/feedback/add', [AdminFeedback::class, "add"])->name("adminFeedbackAdd");
+        Route::get('/panel/feedback/edit/{id}', [AdminFeedback::class, "edit"])->name("adminFeedbackEdit");
+        Route::post('/panel/feedback/process', [AdminFeedback::class, "process"])->name("adminFeedbackProcess");
+        Route::get('/panel/feedback/delete/{id}', [AdminFeedback::class, "delete"])->name("adminFeedbackDelete");
     });
 
 

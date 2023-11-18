@@ -10,7 +10,7 @@ class Controller_Home extends Controller{
     use HasCache;
 
     public function view() {
-        return view($this->theme.".index")->with("news", $this->getCacheNews());
+        return view($this->theme.".index")->with("news", $this->getCacheNews())->with("feedbacks", $this->getCacheFeedbacks());
     }
 
     public function export_json() {

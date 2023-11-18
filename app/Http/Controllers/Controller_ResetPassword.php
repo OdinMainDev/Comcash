@@ -65,7 +65,7 @@ class Controller_ResetPassword extends Controller{
         $code->delete();
 
         return $this->responseSuccess(__("common.reset_password_success"), [
-            "refresh" => true
+            "redirect" => "/"
         ]);
     }
 }

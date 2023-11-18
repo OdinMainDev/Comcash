@@ -42,7 +42,7 @@ class Controller_Login extends Controller
 
         Auth::login($user, true);
         return $this->responseSuccess(__("common.auth_success"), [
-            "refresh" => true
+            "redirect" => "/"
         ]);
     }
 }

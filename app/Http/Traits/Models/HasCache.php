@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Currency;
 use App\Models\Direction;
 use App\Models\ExchangeRate;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Cache;
 
 trait HasCache {
@@ -201,5 +202,13 @@ trait HasCache {
 
         $exchange->save();
         return $exchange;
+    }
+
+    public function getCacheFeedbacks(){
+        $request = request();
+        return Cache::remember("feedbacks-".$request->page, 600, function(){
+            return Feedback::orderBy("id", "DESC")
+                ->paginate(10);
+        });
     }
 }

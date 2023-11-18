@@ -91,6 +91,7 @@ class Install extends Command
             "handle-directions",
             "handle-languages",
             "handle-blog",
+            "handle-feedback"
         ];
 
         $bar = $this->output->createProgressBar(count($permissions));
