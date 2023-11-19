@@ -22,49 +22,47 @@ if(button){
     const selectArray = document.querySelectorAll(".select");
 
     selectArray.forEach((select) => {
-    const optionsList = select.querySelectorAll(".select__container .select__option");
-    const selected = select.querySelector('.select__current');
+        const optionsList = select.querySelectorAll(".select__container .select__option");
+        const selected = select.querySelector('.select__current');
 
-    select.addEventListener("click", (e) => {
-        if (select.classList.contains("active")) {
-          select.classList.remove("active");
-        } else {
-          select.classList.add("active");
-
-        // close on outsideclick
-          document.addEventListener('click', function cb(e) {
-              if (e.target.contains(select)) {
+        select.addEventListener("click", (e) => {
+            if (select.classList.contains("active")) {
                 select.classList.remove("active");
-                document.removeEventListener('click', cb);
-              }
-          });
-        }
-    });
-
-    optionsList.forEach((opt) => {
-        // set default option
-        if (opt.querySelector("input").checked) {
-            opt.classList.add('selected');
-            selected.innerHTML = opt.querySelector("label").innerHTML;
-        }
-
-        // set option on click
-        opt.addEventListener("click", (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            
-            var inputel = opt.querySelector("input");
-            if(inputel.name == "locale"){
-                var pathname = window.location.pathname;
-                var lang = pathname.split("/")[1];
-                if(lang == inputel.value){
-                    return;
-                }
-              
-                window.location.replace("/" + inputel.value + pathname.slice(3));
+            } else {
+                select.classList.add("active");
+                document.addEventListener('click', function cb(e) {
+                    if (e.target.contains(select)) {
+                        select.classList.remove("active");
+                        document.removeEventListener('click', cb);
+                    }
+                });
             }
         });
-    });
+
+        optionsList.forEach((opt) => {
+            // set default option
+            if (opt.querySelector("input").checked) {
+                opt.classList.add('selected');
+                selected.innerHTML = opt.querySelector("label").innerHTML;
+            }
+
+            // set option on click
+            opt.addEventListener("click", (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                
+                var inputel = opt.querySelector("input");
+                if(inputel.name == "locale"){
+                    var pathname = window.location.pathname;
+                    var lang = pathname.split("/")[1];
+                    if(lang == inputel.value){
+                        return;
+                    }
+                
+                    window.location.replace("/" + inputel.value + pathname.slice(3));
+                }
+            });
+        });
     });
 })();
 // -----------
@@ -93,17 +91,19 @@ if(button){
 (function() {
     let acc = document.querySelectorAll(".accordion__button");
     for (var i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function(){
-            this.classList.toggle("active");
-            let panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            }
-            else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        });
-    }
+        console.log(acc[i])
+        acc[i].addEventListener("click", function(){
+                this.classList.add("activeasdasdasd");
+                this.classList.toggle("active");
+                let panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                }
+                else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
 })();
 // -----------
 

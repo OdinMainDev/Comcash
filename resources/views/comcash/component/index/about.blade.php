@@ -10,10 +10,8 @@
                     <p class='about__item-text'>{{__("front.advantage_1_content")}}</p>
                 </div>
                 <div class='about__item about__item-2'>
-                <p class='about__item-title'>ОТПРАВЛЯЙТЕ И ПОЛУЧАЙТЕ</p>
-                    <p class='about__item-text'>Наш сайт оборудован дополнительной
-                        системой защиты, для максимально безопасных сделок.
-                    </p>
+                    <p class='about__item-title'>{{__("front.advantage_2_title")}}</p>
+                    <p class='about__item-text'>{{__("front.advantage_2_content")}}</p>
                 </div>
             </div>
             <div class='about__col'>

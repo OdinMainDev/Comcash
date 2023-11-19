@@ -6,30 +6,24 @@
         @include("comcash.component.knowledge_menu")
         <div class="delivery__content">
             <div class="delivery__header">
-            <p class="delivery__header-title">Доставка Наличными</p>
-            <p class="delivery__header-text">Обратившись в сервис Comcash.io, вы получаете возможность быстро и по
-                выгодному курсу обменять свою цифровую валюту на российские рубли, евро, американские доллары, японские иены
-                и многие другие национальные валюты в самых разных точках мира. В настоящий момент времени доступны
-                следующие локации для выдачи наличных:</p>
+            <p class="delivery__header-title">{{__("front.page_delivery_title")}}</p>
+            <p class="delivery__header-text">{{__("front.page_delivery_description")}}</p>
             </div>
 
             <div class='delivery__features'>
-            <p class="delivery__features-title">Почему именно мы?</p>
+            <p class="delivery__features-title">{{__("front.page_delivery_title2")}}</p>
             <div class='delivery__features-row'>
                 <div class='delivery__features-item'>
-                <p class='delivery__features-item-title'>ОТПРАВЛЯЙТЕ И ПОЛУЧАЙТЕ</p>
-                <p class='delivery__features-item-text'>Наш сайт оборудован дополнительной
-                    системой защиты, для максимально безопасных сделок.</p>
+                    <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_1_title")}}</p>
+                    <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_1_content")}}</p>
                 </div>
                 <div class='delivery__features-item'>
-                <p class='delivery__features-item-title'>ОТПРАВЛЯЙТЕ И ПОЛУЧАЙТЕ</p>
-                <p class='delivery__features-item-text'>Наш сайт оборудован дополнительной
-                    системой защиты, для максимально безопасных сделок.</p>
+                    <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_2_title")}}</p>
+                    <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_2_content")}}</p>
                 </div>
                 <div class='delivery__features-item'>
-                <p class='delivery__features-item-title'>ОТПРАВЛЯЙТЕ И ПОЛУЧАЙТЕ</p>
-                <p class='delivery__features-item-text'>Наш сайт оборудован дополнительной
-                    системой защиты, для максимально безопасных сделок.</p>
+                    <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_3_title")}}</p>
+                    <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_3_content")}}</p>
                 </div>
             </div>
             </div>
