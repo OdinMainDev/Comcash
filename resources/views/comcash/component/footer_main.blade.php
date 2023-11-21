@@ -60,6 +60,10 @@
         <div class='footer__bottom'>
             <p class='footer__copyright'>© 2023 COMCASH. All Rights Reserved.</p>
             <div class='footer__socials'>
+
+                <a href="https://freekassa.ru" target="_blank" rel="noopener noreferrer" class='footer__socials-link'>
+                    <img src="https://cdn.freekassa.ru/banners/big-dark-1.png" title="Прием платежей на сайте для физических лиц и т.д.">
+                </a>
                 <a href=''
                     class='footer__socials-link'>
                 <img src='/comcash/img/icons/socials/facebook.svg'
