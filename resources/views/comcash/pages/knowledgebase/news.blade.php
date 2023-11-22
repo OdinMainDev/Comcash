@@ -6,10 +6,10 @@
         @include("comcash.component.knowledge_menu")
         <div class="events__content">
             <div class="events__header">
-                <p class="events__header-title">Новости</p>
-                <p class="events__header-text">В этом разделе мы предоставляем подробную информацию о нашей политике
-                    безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для предотвращения
-                    мошенничества и финансовых преступлений.</p>
+                <p class="events__header-title">{{__("front.page_news_title")}}</p>
+                <p class="events__header-text">{{__("front.page_news_desc_1")}}</p>
+                <br/>
+                <p class="events__header-text">{{__("front.page_news_desc_2")}}</p>
             </div>
 
             <div class="slider events__slider">

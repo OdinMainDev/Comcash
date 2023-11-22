@@ -6,6 +6,18 @@
         @include("comcash.component.knowledge_menu")
         <div class="support__content">
             <p class="support__title">{{__("front.support")}}</p>
+            <p class="support__text">{{__("front.page_support_desc_1")}}</p>
+            <p class="support__text">{{__("front.page_support_desc_2")}}</p>
+            <br/>
+            <ul>
+                <li>{{__("front.page_support_ul_1")}}</li>
+                <li>{{__("front.page_support_ul_2")}}</li>
+                <li>{{__("front.page_support_ul_3")}}</li>
+                <li>{{__("front.page_support_ul_4")}}</li>
+            </ul>
+            <br/>
+            <p class="support__text">{{__("front.page_support_desc_3")}}</p>
+            <p class="support__text">{{__("front.page_support_desc_4")}}</p>
             <div class="support__row">
             <form class="support__form" action="{{route("comcashSupport")}}">
                 <div class="support__form-row">

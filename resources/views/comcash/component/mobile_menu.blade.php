@@ -10,15 +10,15 @@
                 <a href='{{route("logout")}}'>{{__("front.log out")}}</a>
             </div>
         @endauth
-        <a class='accordion__button accordion__button_custom'>{{__("front.TariffsMenu")}}</a>
+        <!-- <a class='accordion__button accordion__button_custom'>{{__("front.TariffsMenu")}}</a> -->
+        <!-- <div class='accordion__content'></div> -->
+        <a class='accordion__button accordion__button_custom'  href='{{route("comcashPage", ["delivery"])}}'>{{__("front.CashCourierMenu")}}</a>
         <div class='accordion__content'></div>
-        <a class='accordion__button accordion__button_custom'>{{__("front.CashCourierMenu")}}</a>
+        <a class='accordion__button accordion__button_custom'  href='{{route("comcashPage", ["faq"])}}'>{{__("front.PartnerFAQMenu")}}</a>
         <div class='accordion__content'></div>
-        <a class='accordion__button accordion__button_custom'>{{__("front.PartnerFAQMenu")}}</a>
+        <a class='accordion__button accordion__button_custom'  href='{{route("comcashPage", ["reviews"])}}'>{{__("front.FeedbackMenu")}}</a>
         <div class='accordion__content'></div>
-        <a class='accordion__button accordion__button_custom'>{{__("front.FeedbackMenu")}}</a>
-        <div class='accordion__content'></div>
-        <a class='accordion__button accordion__button_custom'>{{__("front.SupportMenu")}}</a>
+        <a class='accordion__button accordion__button_custom'  href='{{route("comcashPage", ["support"])}}'>{{__("front.SupportMenu")}}</a>
     </div>
 </div>
 <button class='header__burger button'>

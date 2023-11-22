@@ -16,9 +16,9 @@
             <a class='header__link' href='{{route("comcashPage", ["reviews"])}}'>
                 {{__("front.FeedbackMenu")}}
             </a>
-            <a class='header__link' href='{{route("comcashPage", ["tariffs"])}}'>
+            <!-- <a class='header__link' href='{{route("comcashPage", ["tariffs"])}}'>
                 {{__("front.TariffsMenu")}}
-            </a>
+            </a> -->
             <a class='header__link' href='{{route("comcashPage", ["support"])}}'>
                 {{__("front.SupportMenu")}}
             </a>

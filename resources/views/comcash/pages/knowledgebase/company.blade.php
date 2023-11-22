@@ -6,93 +6,79 @@
         @include("comcash.component.knowledge_menu")
         <div class="company__content">
             <div class="company__header">
-            <p class="company__header-title">Немного о COMCASH</p>
-            <p class="company__header-text">ComCash - ваш надежный партнер в обмене криптовалюты на реальные деньги:
-                выгодные
-                курсы, моментальная конвертация, круглосуточный доступ!</p>
+            <p class="company__header-title">{{__("front.page_about_title")}}</p>
+            <p class="company__header-text">{{__("front.page_about_desc_1")}}</p>
             </div>
 
             <div class='company__features'>
-            <p class="company__features-title">Что мы можем предложить?</p>
+            <p class="company__features-title">{{__("front.page_about_title_2")}}</p>
             <div class='company__features-row'>
                 <div class='company__features-item company__features-item-1'>
-                <p class='company__features-item-title'>ОТПРАВЛЯЙТЕ И ПОЛУЧАЙТЕ</p>
-                <p class='company__features-item-text'>Наш сайт оборудован дополнительной
-                    системой защиты, для максимально безопасных сделок.</p>
+                    <p class='company__features-item-title'>{{__("front.page_about_advantage_1_title")}}</p>
+                    <p class='company__features-item-text'>{{__("front.page_about_advantage_1_content")}}</p>
                 </div>
                 <div class='company__features-item company__features-item-2'>
-                <p class='company__features-item-title'>ОТПРАВЛЯЙТЕ И ПОЛУЧАЙТЕ</p>
-                <p class='company__features-item-text'>Наш сайт оборудован дополнительной
-                    системой защиты, для максимально безопасных сделок.</p>
+                    <p class='company__features-item-title'>{{__("front.page_about_advantage_2_title")}}</p>
+                    <p class='company__features-item-text'>{{__("front.page_about_advantage_2_content")}}</p>
                 </div>
             </div>
             <div class='company__features-row'>
                 <div class='company__features-item company__features-item-3'>
-                <p class='company__features-item-title'>ОТПРАВЛЯЙТЕ И ПОЛУЧАЙТЕ</p>
-                <p class='company__features-item-text'>Наш сайт оборудован дополнительной
-                    системой защиты, для максимально безопасных сделок.</p>
+                    <p class='company__features-item-title'>{{__("front.page_about_advantage_3_title")}}</p>
+                    <p class='company__features-item-text'>{{__("front.page_about_advantage_3_content")}}</p>
                 </div>
                 <div class='company__features-item company__features-item-4'>
-                <p class='company__features-item-title'>ОТПРАВЛЯЙТЕ И ПОЛУЧАЙТЕ</p>
-                <p class='company__features-item-text'>Наш сайт оборудован дополнительной
-                    системой защиты, для максимально безопасных сделок.</p>
+                    <p class='company__features-item-title'>{{__("front.page_about_advantage_4_title")}}</p>
+                    <p class='company__features-item-text'>{{__("front.page_about_advantage_4_content")}}</p>
                 </div>
             </div>
             </div>
 
             <div class="company__about">
-            <p class="company__about-title">Кто мы такие?</p>
+            <p class="company__about-title">{{__("front.page_about_title_3")}}</p>
             <p class="company__about-text">
-                Кто мы такие?
-                Добро пожаловать на Comcash - сервис обмена криптовалюты, за которым стоят
-                тысячи довольных клиентов!
-                Мы готовы предложить вам наилучшие
-                условия, чтобы вы могли безопасно,
-                быстро и с выгодой обменивать
-                цифровые валюты или конвертировать
-                их в фиатные наличные деньги.
-                <br><br>
-                Уже давно мы являемся надежным и проверенным партнером для тысяч людей по всему миру. Мы предлагаем нашим
-                клиентам широкий выбор криптовалют для обмена, включая Bitcoin, Ethereum, Bitcoin Cash, Dogecoin, Tether
-                ERC20 USDT, Dai, TRON и другие популярные валюты. Более того, мы предлагаем возможность перевода средств с
-                банковских карт Visa/MasterCard в криптовалюту в режиме реального времени, а также заказать наличные, если
-                это требуется.
+                {{__("front.page_about_desc_2")}}
+                <br/><br/>
+                {{__("front.page_about_desc_3")}}
             </p>
             </div>
 
             <div class="company__products">
-            <p class="company__products-title">Наши продукты</p>
+            <p class="company__products-title">{{__("front.page_about_title_4")}}</p>
             <div class="company__products-body">
 
                 <div class="company__products-item">
-                <div class="company__products-card">
-                    <p class="company__products-card-title">
-                    Крипто-Обменник</p>
-                    <p class="company__products-card-text">
-                    Быстрый, надёжный и невероятно удобный сервис, доступен на любом устройстве.
-                    </p>
-                </div>
-                <button class="company__products-btn">Попробовать &rarr;</button>
-                </div>
-                <div class="company__products-item">
-                <div class="company__products-card">
-                    <p class="company__products-card-title">
-                    Крипто-Обменник</p>
-                    <p class="company__products-card-text">
-                    Быстрый, надёжный и невероятно удобный сервис, доступен на любом устройстве.
-                    </p>
-                </div>
-                <button class="company__products-btn">Попробовать &rarr;</button>
+                    <div class="company__products-card">
+                        <p class="company__products-card-title">
+                            {{__("front.page_about_product_1_title")}}
+                        </p>
+                        <p class="company__products-card-text">
+                            {{__("front.page_about_product_1_content")}}
+                        </p>
+                    </div>
+                    <a class="company__products-btn" href="/">{{__("front.page_about_product_try_it")}} &rarr;</a>
                 </div>
                 <div class="company__products-item">
-                <div class="company__products-card">
-                    <p class="company__products-card-title">
-                    Крипто-Обменник</p>
-                    <p class="company__products-card-text">
-                    Быстрый, надёжный и невероятно удобный сервис, доступен на любом устройстве.
-                    </p>
+                    <div class="company__products-card">
+                        <p class="company__products-card-title">
+                            {{__("front.page_about_product_2_title")}}
+                        </p>
+                        <p class="company__products-card-text">
+                            {{__("front.page_about_product_2_content")}}
+                        </p>
+                    </div>
+                    <a class="company__products-btn" href="{{route("comcashPage", ["delivery"])}}">{{__("front.page_about_product_try_it")}} &rarr;</a>
                 </div>
-                <button class="company__products-btn">Попробовать &rarr;</button>
+                <div class="company__products-item">
+                    <div class="company__products-card">
+                        <p class="company__products-card-title">
+                            {{__("front.page_about_product_3_title")}}
+                        </p>
+                        <p class="company__products-card-text">
+                            {{__("front.page_about_product_3_content")}}
+                        </p>
+                    </div>
+                    <a class="company__products-btn" href="https://amlcheck.pw">{{__("front.page_about_product_try_it")}} &rarr;</a>
                 </div>
 
             </div>
