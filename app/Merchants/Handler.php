@@ -5,6 +5,9 @@ namespace App\Merchants;
 use App\Merchants\Garantex\Main as Garantex;
 use App\Merchants\Mpcvip\Main as MpcVip;
 use App\Merchants\Okx\Main as Okx;
+use App\Merchants\Freekassa\Main as Freekassa;
+use App\Merchants\Bybit\Main as Bybit;
+use App\Merchants\Aifory\Main as Aifory;
 use stdClass;
 
 class Handler {
@@ -56,6 +59,18 @@ class Handler {
             break;
             case "okx":
                 $this->merchant = new Okx;
+                return $this->merchant;
+            break;
+            case "freekassa":
+                $this->merchant = new Freekassa;
+                return $this->merchant;
+            break;
+            case "bybit":
+                $this->merchant = new Bybit;
+                return $this->merchant;
+            break;
+            case "aifory":
+                $this->merchant = new Aifory;
                 return $this->merchant;
             break;
         }    

@@ -68,7 +68,8 @@ class ExchangeStart implements ShouldQueue
             $data['merchant_from_data'] = [
                 "address" => null,
                 "url" => $address['paymentURL'],
-                "externalID" => $address['externalID']
+                "externalID" => @$address['externalID'],
+                "orderID" => @$address['orderID']
             ];
         }
         $this->exchange->data = $data;

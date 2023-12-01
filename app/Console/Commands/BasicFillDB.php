@@ -25,7 +25,7 @@ class BasicFillDB extends Command
 
     /**
      * Execute the console command.
-     */
+    */
     public function handle()
     {
         $currencies = [
@@ -165,7 +165,7 @@ class BasicFillDB extends Command
                 "created_at" => now()
             ],
         ];
-        if(env("THEME_NAME") == "comcash"){
+        if(env("THEME_NAME") == "comcash22"){
             
             $currencies[] = 
                 [
@@ -355,8 +355,15 @@ class BasicFillDB extends Command
             ],
             [
                 "id" => 3,
-                "name" => "Okx",
-                "type" => "okx",
+                "name" => "Bybit",
+                "type" => "bybit",
+                "status" => false,
+                "created_at" => now()
+            ],
+            [
+                "id" => 4,
+                "name" => "Aifory",
+                "type" => "aifory",
                 "status" => false,
                 "created_at" => now()
             ],
@@ -379,26 +386,26 @@ class BasicFillDB extends Command
                 $name =  json_decode($currency['data'], true)['titles']['en'];
                 $name .= " → ";
                 $name .= json_decode($currency2['data'], true)['titles']['en'];
-                $merchant_from = 3;
-                $merchant_from_type = "okx";
-                if(in_array($currency['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
-                    $merchant_from = 1;
-                    $merchant_from_type = "garantex";
-                }
+                $merchant_from = 1;
+                $merchant_from_type = "bybit";
+                // if(in_array($currency['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
+                //     $merchant_from = 1;
+                //     $merchant_from_type = "garantex";
+                // }
                 if(in_array($currency['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
-                    $merchant_from = 2;
-                    $merchant_from_type = "mpcvip";
+                    $merchant_from = 4;
+                    $merchant_from_type = "aifory";
                 }
 
-                $merchant_to = 3;
-                $merchant_to_type = "okx";
-                if(in_array($currency2['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
-                    $merchant_to = 1;
-                    $merchant_to_type = "garantex";
-                }
+                $merchant_to = 1;
+                $merchant_to_type = "bybit";
+                // if(in_array($currency2['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
+                //     $merchant_to = 1;
+                //     $merchant_to_type = "garantex";
+                // }
                 if(in_array($currency2['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
-                    $merchant_to = 2;
-                    $merchant_to_type = "mpcvip";
+                    $merchant_to = 4;
+                    $merchant_to_type = "aifory";
                 }
                 $directions[] = [
                     "name" => $name,

@@ -85,6 +85,7 @@ class Controller_Exchange extends Controller{
             "currency_from" => "required|string|max:255",
             "currency_to" => "required|string|max:255",
             "amount" => "required|numeric",
+            "fid" => "required|string",
         ]);
         // получение данных обмена
         $data = $this->getEstimateDataFromRequest($request);
@@ -130,7 +131,9 @@ class Controller_Exchange extends Controller{
             "device_data" => [
                 "ip" => $request->ip(),
                 "user_agent" => $request->userAgent(),
-                "language" => app()->getLocale()
+                "language" => app()->getLocale(),
+                "fid" => $request->fid,
+
             ],
             "amount_data" => [
                 "amount_send" => $request->amount,
