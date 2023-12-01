@@ -387,7 +387,7 @@ class BasicFillDB extends Command
                 $name .= " → ";
                 $name .= json_decode($currency2['data'], true)['titles']['en'];
                 $merchant_from = 1;
-                $merchant_from_type = "bybit";
+                $merchant_from_type = "garantex";
                 // if(in_array($currency['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                 //     $merchant_from = 1;
                 //     $merchant_from_type = "garantex";
@@ -398,7 +398,7 @@ class BasicFillDB extends Command
                 }
 
                 $merchant_to = 1;
-                $merchant_to_type = "bybit";
+                $merchant_to_type = "garantex";
                 // if(in_array($currency2['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
                 //     $merchant_to = 1;
                 //     $merchant_to_type = "garantex";
