@@ -52,6 +52,10 @@ class Garantex {
         ];
         $jwt = new Jwt();
         $payload = $jwt->encode($request, base64_decode($this->private_key, true));
+        if(!$payload){
+            info("ОШИБКА ПРИ GARANTEX JWT");
+            return false;
+        }
         $post_data = [
             "kid" => $this->uid, 
             "jwt_token" => $payload
@@ -106,6 +110,7 @@ class Garantex {
             'currency' => trim(mb_strtolower($currency))
         ];
         $res = $this->request('create address', '/api/v2/deposit_address', $post_data);
+
         if(isset($res['address'])){
             return $res['address'];
         }

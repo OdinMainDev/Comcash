@@ -3,31 +3,35 @@
 namespace App\Console\Commands;
 
 use App\Models\Currency;
-use App\Models\Direction;
-use App\Models\Merchant;
 use Illuminate\Console\Command;
 
-class BasicFillDB extends Command
+class FillCurrency extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:basic-fill-db';
+    protected $signature = 'app:fill-currency';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Basic fill data to database';
+    protected $description = 'Command description';
 
     /**
      * Execute the console command.
-    */
+     */
     public function handle()
     {
+        $currencies = self::getCurrencies();
+        Currency::truncate();
+        Currency::insert($currencies);
+    }
+
+    public static function getCurrencies(){
         $currencies = [
             [
                 "id" => 1,
@@ -334,100 +338,6 @@ class BasicFillDB extends Command
                     "created_at" => now()
                 ];
         }
-        Currency::truncate();
-        Currency::insert($currencies);
-
-        Merchant::truncate();
-        Merchant::insert([
-            [
-                "id" => 1,
-                "name" => "Garantex",
-                "type" => "garantex",
-                "status" => false,
-                "created_at" => now()
-            ],
-            [
-                "id" => 2,
-                "name" => "MPCVip",
-                "type" => "mpcvip",
-                "status" => false,
-                "created_at" => now()
-            ],
-            [
-                "id" => 3,
-                "name" => "Bybit",
-                "type" => "bybit",
-                "status" => false,
-                "created_at" => now()
-            ],
-            [
-                "id" => 4,
-                "name" => "Aifory",
-                "type" => "aifory",
-                "status" => false,
-                "created_at" => now()
-            ],
-        ]);
-
-        $directions = [];
-        $position = 1;
-        foreach($currencies as $currency){
-            foreach($currencies as $currency2){
-                if(in_array($currency['id'], [1, 2, 3, 4]) && in_array($currency2['id'], [1, 2, 3, 4])){
-                    continue;
-                }
-                if(in_array($currency['id'], [7, 8]) && in_array($currency2['id'], [7, 8])){
-                    continue;
-                }
-                if($currency['name'] == $currency2['name']){
-                    continue;
-                }
-                
-                $name =  json_decode($currency['data'], true)['titles']['en'];
-                $name .= " → ";
-                $name .= json_decode($currency2['data'], true)['titles']['en'];
-                $merchant_from = 1;
-                $merchant_from_type = "garantex";
-                // if(in_array($currency['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
-                //     $merchant_from = 1;
-                //     $merchant_from_type = "garantex";
-                // }
-                if(in_array($currency['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
-                    $merchant_from = 4;
-                    $merchant_from_type = "aifory";
-                }
-
-                $merchant_to = 1;
-                $merchant_to_type = "garantex";
-                // if(in_array($currency2['name'], ["BTC", "ETH", "USDTTRC20", "USDTERC20", "DAI"])){
-                //     $merchant_to = 1;
-                //     $merchant_to_type = "garantex";
-                // }
-                if(in_array($currency2['name'], ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
-                    $merchant_to = 4;
-                    $merchant_to_type = "aifory";
-                }
-                $directions[] = [
-                    "name" => $name,
-                    "currency_from" => $currency['id'],
-                    "currency_to" => $currency2['id'],
-                    "merchant_from" => $merchant_from,
-                    "merchant_to" => $merchant_to,
-                    "merchant_type_from" => $merchant_from_type,
-                    "merchant_type_to" => $merchant_to_type,
-                    "position" => $position,
-                    "status" => true,
-                    "profit_percent" => 5.00,
-                    "data" => json_encode([
-
-                    ]),
-                    "created_at" => now()
-                ];
-                $position++;
-            }
-        }
-
-        Direction::truncate();
-        Direction::insert($directions);
+        return $currencies;
     }
 }

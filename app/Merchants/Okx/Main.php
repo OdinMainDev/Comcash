@@ -47,7 +47,6 @@ class Main {
                 ], 
                 $result
             );
-            dd($result);
             if(!isset($result['address'])){
                 return false;
             }

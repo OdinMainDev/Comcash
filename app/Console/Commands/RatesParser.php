@@ -65,6 +65,13 @@ class RatesParser extends Command{
         $response = $response->json();
         ExchangeRate::truncate();
         $inserts = [];
+
+        if(@$response['Response'] == "Error"){
+            sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.\n\n".json_encode($response));
+            return;
+        }
+
+        
         foreach($response as $from => $arr){
             foreach($arr as $to => $rate){
                 if($from == $to){

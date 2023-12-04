@@ -28,20 +28,23 @@ class Jwt {
         
         if (is_bool($privateKey)) {
             $error = openssl_error_string();
-            throw new Exception($error);
+            info("ERROR JWT GARANTEX: ", $error);
+            return false;
         }
 
         $details = openssl_pkey_get_details($privateKey);
         
         if (!array_key_exists('key', $details) || $details['type'] !== $key_type) {
-            throw new Exception("Invalid key provided");
+            info("ERROR JWT GARANTEX: ", "Invalid key provided");
+            return false;
         }
         
         $signature = '';
 
         if (!openssl_sign($payload, $signature, $privateKey, $algo)) {
             $error = openssl_error_string();
-            throw new Exception($error);
+            info("ERROR JWT GARANTEX: ", $error);
+            return false;
         }
 
         return $signature;
@@ -54,7 +57,8 @@ class Jwt {
             return [];
         } 
         if ($obj === null && $input !== 'null') {
-            throw new Exception('Null result with non-null input');
+            info("ERROR JWT GARANTEX: ", "Null result with non-null input");
+            return false;
         }
         return $obj;
     }
@@ -64,7 +68,8 @@ class Jwt {
         if (function_exists('json_last_error') && $errno = json_last_error()) {
             $this->_handleJsonError($errno);
         } else if ($json === 'null' && $input !== null) {
-            throw new Exception('Null result with non-null input');
+            info("ERROR JWT GARANTEX: ", "Null result with non-null input");
+            return false;
         }
         return $json;
     }
@@ -88,10 +93,9 @@ class Jwt {
             JSON_ERROR_CTRL_CHAR => 'Unexpected control character found',
             JSON_ERROR_SYNTAX => 'Syntax error, malformed JSON'
         );
-        throw new Exception(
-            isset($messages[$errno])
-            ? $messages[$errno]
-            : 'Unknown JSON error: ' . $errno
-        );
+        info("ERROR JWT GARANTEX: ", isset($messages[$errno])
+        ? $messages[$errno]
+        : 'Unknown JSON error: ' . $errno);
+        return false;
     }
 }
