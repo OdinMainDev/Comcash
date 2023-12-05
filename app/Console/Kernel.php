@@ -15,13 +15,15 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('app:rates-parser')->everyThirtySeconds();
         $schedule->command('app:clear-exchanges')->everyMinute();
+        $schedule->command('app:bugged-withdraws')->everyMinute();
+
         $schedule->command('app:garantex-payment')->everyMinute();
         $schedule->command('app:garantex-withdraw')->everyMinute();
 
         $schedule->command('app:aifory-payment')->everyMinute();
         $schedule->command('app:aifory-withdraw')->everyMinute();
 
-        $schedule->command('app:bybit-payment')->everyMinute();
+        // $schedule->command('app:bybit-payment')->everyMinute();
         // $schedule->command('app:okx-withdraw')->everyMinute();
     }
 

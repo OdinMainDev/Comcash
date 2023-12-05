@@ -12,8 +12,8 @@ class Controller_ExchangeLog extends Controller
 {
     use HasTable;
 
-    public function process(Request $request){
-        $query = $this->constructQuery($request);
+    public function process(Request $request, $lang, $id){
+        $query = $this->constructQuery($request, $id);
         return DataTables::of($query)
         ->editColumn("request", function($row){
             return '<textarea class="form-control text-white" rows="3" disabled="">'.$row->request.'</textarea>';
@@ -27,8 +27,8 @@ class Controller_ExchangeLog extends Controller
         ->make(true);
     }
 
-    public function constructQuery($request){
-        $query = MerchantLog::query();
+    public function constructQuery($request, $id){
+        $query = MerchantLog::where("exchange_id", $id);
         // $request->validate([
         //     "filter_id" => "nullable|integer",
         //     "filter_enable" => "nullable|boolean",

@@ -42,6 +42,7 @@ class GarantexWithdraw extends Command
                 foreach($exchanges as $exchange){
                     $address = mb_strtolower($exchange->data['request_data']['to_address']);
                     $check = false;
+                    $hasError = false;
                     foreach($withdraws_resp as $row){
                         if(!isset($row['rid'])){
                             continue;
@@ -49,11 +50,28 @@ class GarantexWithdraw extends Command
                         if(mb_strtolower($row['rid']) != $address){
                             continue;
                         }
+                        if($row['state'] == "rejected"){
+                            $hasError = true;
+                            break;
+                        }
                         if($row['state'] != "succeed"){
                             continue;
                         }
                         
                         $check = true;
+                    }
+
+                    if($hasError){
+                        $exchange->status = 15;
+                        $exchange->save();
+                        $text = "❌❌❌<b>ОШИБКА В ВЫПЛАТЕ ЗАЯВКИ</b>❌❌❌\n";
+                        $text .= "ID: ".$exchange->id."\n";
+                        $text .= "Направление обмена ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name."\n";
+                        $text .= "Сумма: ". @$exchange->data['amount_data']['amount_send']." -> ". @$exchange->data['amount_data']['amount_receive']."\n";
+                        $text .= "Курс обмена:". @$exchange->data['amount_data']['exchange_rate']."\n";
+                        $text .= "Дата создания: ".$exchange->created_at."\n\n";
+                        sendTelegramNotification($text);
+                        continue;
                     }
 
                     if(!$check) {
