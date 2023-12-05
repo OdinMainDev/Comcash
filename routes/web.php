@@ -18,7 +18,9 @@ use App\Http\Controllers\Admin\Controller_Blog as AdminBlog;
 use App\Http\Controllers\Admin\DataTable\Controller_Blog as DTBlog;
 use App\Http\Controllers\Admin\Controller_Feedback as AdminFeedback;
 use App\Http\Controllers\Admin\DataTable\Controller_Feedback as DTFeedback;
-
+use App\Http\Controllers\Admin\Controller_Exchange as AdminExchange;
+use App\Http\Controllers\Admin\DataTable\Controller_Exchange as DTExchange;
+use App\Http\Controllers\Admin\DataTable\Controller_ExchangeLog as DTExchangeLog;
 
 
 use App\Http\Controllers\Controller_Home as Home;
@@ -147,6 +149,14 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/feedback/edit/{id}', [AdminFeedback::class, "edit"])->name("adminFeedbackEdit");
         Route::post('/panel/feedback/process', [AdminFeedback::class, "process"])->name("adminFeedbackProcess");
         Route::get('/panel/feedback/delete/{id}', [AdminFeedback::class, "delete"])->name("adminFeedbackDelete");
+    });
+
+    Route::group( ['middleware' => ['auth', 'permission:handle-exchanges']], function() {
+        Route::get('/panel/exchanges/list', [DTExchange::class, "view"])->name("adminExchangeList");
+        Route::get('/panel/exchanges/list/data', [DTExchange::class, "process"]);
+
+        Route::get('/panel/exchanges/edit/{id}', [AdminExchange::class, "edit"])->name("adminExchangeEdit");
+        Route::get('/panel/exchanges/logs/{id}/data', [DTExchangeLog::class, "process"])->name("adminExchangeLogs");
     });
 
 

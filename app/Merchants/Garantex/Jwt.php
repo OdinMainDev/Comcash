@@ -28,14 +28,14 @@ class Jwt {
         
         if (is_bool($privateKey)) {
             $error = openssl_error_string();
-            info("ERROR JWT GARANTEX: ". $error);
+            info("ERROR JWT GARANTEX: 1 ". $error);
             return false;
         }
 
         $details = openssl_pkey_get_details($privateKey);
         
         if (!array_key_exists('key', $details) || $details['type'] !== $key_type) {
-            info("ERROR JWT GARANTEX: ". "Invalid key provided");
+            info("ERROR JWT GARANTEX: 2 ". "Invalid key provided");
             return false;
         }
         
@@ -43,7 +43,7 @@ class Jwt {
 
         if (!openssl_sign($payload, $signature, $privateKey, $algo)) {
             $error = openssl_error_string();
-            info("ERROR JWT GARANTEX: ", $error);
+            info("ERROR JWT GARANTEX: 3 ", $error);
             return false;
         }
 
@@ -57,7 +57,7 @@ class Jwt {
             return [];
         } 
         if ($obj === null && $input !== 'null') {
-            info("ERROR JWT GARANTEX: ". "Null result with non-null input");
+            info("ERROR JWT GARANTEX: 4 ". "Null result with non-null input");
             return false;
         }
         return $obj;
@@ -68,7 +68,7 @@ class Jwt {
         if (function_exists('json_last_error') && $errno = json_last_error()) {
             $this->_handleJsonError($errno);
         } else if ($json === 'null' && $input !== null) {
-            info("ERROR JWT GARANTEX: "."Null result with non-null input");
+            info("ERROR JWT GARANTEX: 5 "."Null result with non-null input");
             return false;
         }
         return $json;
@@ -93,7 +93,7 @@ class Jwt {
             JSON_ERROR_CTRL_CHAR => 'Unexpected control character found',
             JSON_ERROR_SYNTAX => 'Syntax error, malformed JSON'
         );
-        info("ERROR JWT GARANTEX: ". isset($messages[$errno])
+        info("ERROR JWT GARANTEX: 6 ". isset($messages[$errno])
         ? $messages[$errno]
         : 'Unknown JSON error: ' . $errno);
         return false;

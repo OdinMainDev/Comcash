@@ -82,7 +82,7 @@ class ExchangeStart implements ShouldQueue
         $text .= "ID: ".$this->exchange->id."\n";
         $text .= "Направление обмена ".$this->exchange->currencyFrom->name." -> ".$this->exchange->currencyTo->name."\n";
         $text .= "Сумма: ". $data['amount_data']['amount_send']." -> ". $data['amount_data']['amount_receive']."\n";
-        $text .= "Курс обмена:". $data['amount_data']['exchange_rate']."\n";
+        $text .= "Курс обмена: ". $data['amount_data']['exchange_rate']."\n";
         $text .= "Дата создания: ".$this->exchange->created_at."\n\n";
         // остальные данные добавить сюда так же
         $text .= "<b>Данные пользователя</b>\n";

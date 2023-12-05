@@ -49,9 +49,15 @@
                 "infoEmpty":      "0 - 0",
             },
             columnDefs: [
-                { className: "align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end", targets: "_all" },
-                { className: "align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end", targets: -1 },
+                { className: "align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-start", targets: 0, "width": "5%" },
+                { className: "align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end", targets: -1, "width": "5%" },
+                { className: "align-middle white-space-nowrap ps-4 border-end", targets: "_all" },
+                { targets: "column-exch-status", "width": "10%" },
+                { targets: "column-exch-currency", "width": "8%" },
+                { targets: "column-exch-data", className:"align-middle white-space-nowrap fw-semi-bold text-1000 ps-3", "width": "25%" },
+                { targets: "column-exch-hash", "width": "15%" },
             ],
+            // autoWidth: true,
             exportOptions: {
                 modifer: {
                   page: 'all',
@@ -88,6 +94,7 @@
             $(this).on("change input keyup", debounce(function(e){
                 console.log("changed");
                 dtCont.draw();
+                // dtCont.columns.adjust().draw();
             }, 1000))
         });
 
