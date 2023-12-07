@@ -12,14 +12,14 @@ class Main {
         return $base;
     }
 
-    function getValidation($is_withdraw){
+    function getValidation($request, $is_withdraw){
         $base = [
             "email" => "required|email|string|max:255",
         ];
         if($is_withdraw){
             $base["to_address"] = "required|string|max:255";
         }
-        return $base;
+        $request->validate($base);
     }
 
     function getAddress($merchant, $exchange, $currency){

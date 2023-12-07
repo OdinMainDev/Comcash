@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\URL;
+
 function echo_image_validation($additional = []){
     if(is_array($additional) && count($additional) > 0)
         return 'file|clamav|mimes:jpeg,png,jpg,gif,svg,'.implode(",", $additional);
@@ -129,4 +132,67 @@ function get_current_url(){
     if(isset($_SERVER["SERVER_NAME"]))
         return "http".(empty($_SERVER["HTTPS"])?"":"s")."://".$_SERVER["SERVER_NAME"]."/";
     return $_SERVER['HTTP_SCHEME']."://".parse_url($_SERVER['REQUEST_URI'], PHP_URL_HOST)."/";
+}
+
+function sendTelegramKycImage($kyc, $path){
+    $bot_token = env("TELEGRAM_TOKEN", false);
+    $chat_id = env("TELEGRAM_KYC_CHAT_ID", false);
+    if(!$bot_token || !$chat_id){
+        logger()->error("TELEGRAM BOT НЕ НАСТРОЕН");
+        return;
+    }
+    $caption = "";
+    $caption .= $kyc->credential ? "credential: ".$kyc->credential."\n" : "";
+    $caption .= $kyc->address ? "address/credit card: ".$kyc->address."\n" : "";
+    $caption .= $kyc->user_id ? "user_id: ".$kyc->user_id."\n" : "";
+    $post_fields = array(
+        'chat_id'   => $chat_id,
+        'photo'     => new CURLFile(realpath($path)),
+        'caption' => $caption,
+        'parse_mode' =>  'html',
+        'reply_markup' => json_encode([
+            'inline_keyboard' => [
+                [
+                    [
+                        "text" => "Подветрдить",
+                        "url" => route("exchgangeAdminKyc", ["hash" => Crypt::encryptString("comcashengine-".$kyc->id)])
+                    ]
+                ]
+            ]
+        ]),
+    );
+
+    $ch = curl_init('https://api.telegram.org/bot' . $bot_token . '/sendPhoto?chat_id='.$chat_id);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_exec($ch);
+    curl_close($ch);
+}
+
+function sendTelegramKycSuccess($kyc){
+    $bot_token = env("TELEGRAM_TOKEN", false);
+    $chat_id = env("TELEGRAM_KYC_CHAT_ID", false);
+    if(!$bot_token || !$chat_id){
+        logger()->error("TELEGRAM BOT НЕ НАСТРОЕН");
+        return;
+    }
+    $caption = "Подтверждено\n";
+    $caption .= $kyc->credential ? "credential: ".$kyc->credential."\n" : "";
+    $caption .= $kyc->address ? "address/credit card: ".$kyc->address."\n" : "";
+    $caption .= $kyc->user_id ? "user_id: ".$kyc->user_id."\n" : "";
+    $post_fields = array(
+        'chat_id'   => $chat_id,
+        'text' => $caption,
+        'parse_mode' =>  'html',
+    );
+
+    $ch = curl_init('https://api.telegram.org/bot' . $bot_token . '/sendMessage');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_exec($ch);
+    curl_close($ch);
 }

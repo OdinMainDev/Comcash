@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('confirm_codes', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('type');
-            $table->integer("code");
-            $table->string("hash");
+            $table->tinyInteger('type')->index();
+            $table->integer("code")->index();
+            $table->string("hash")->index();
             $table->integer("user_id");
             $table->integer("created_at");
             

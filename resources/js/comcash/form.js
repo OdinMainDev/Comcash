@@ -88,6 +88,15 @@ import FingerprintJS from  "@fingerprintjs/fingerprintjs";
                     const response = error.response.data
                     var toastrErrors = [];
                     if(typeof(response.errors) === "object"){
+                        if(response?.errors["kyc_required"]?.length == 1){
+                            console.log("OPEN MODAL", $('#open-modal-btn-hidden'));
+                            window.setForm("kyc-verification");
+                            $('.magnificPopUpClassId')[0].click();
+                            window.setForm("kyc-verification");
+                            window.kycId = response.errors["kyc_required"][0];
+                            document.getElementById("kyc_id").value = window.kycId;
+                            return;
+                        } 
                         for (const input in response.errors) {
                             for(const index in response.errors[input]){
                                 var elem = element.querySelectorAll("[name='"+input+"']");

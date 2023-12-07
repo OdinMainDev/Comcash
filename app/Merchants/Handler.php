@@ -35,13 +35,13 @@ class Handler {
         return $this->merchant->getLayout($this->is_withdraw);
     }
 
-    public function getValidation(){
+    public function getValidation($request){
         $this->merchant = $this->getMerchant();
         if(!$this->merchant){
             return false;
         }
 
-        return $this->merchant->getValidation($this->is_withdraw);
+        return $this->merchant->getValidation($request, $this->is_withdraw);
     }
 
     public function getMerchant(){

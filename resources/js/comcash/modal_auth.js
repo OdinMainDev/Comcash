@@ -13,22 +13,16 @@ $('body').on('click', ".input-password__eye", function () {
     }
 });
 
-if($(".open___signin").length){
-    $('.open___signin').magnificPopup({
-        type: 'inline',
-    });
-}
-
 $('body').on('click', ".open___signin", function () {
     window.setForm("signin");
 });
-  
-var templates = [];
-if(document.querySelector('.templates')){
-    templates = Array.from(document.querySelector('.templates').children);
-}
 
 window.setForm = function(type) {
+    var templates = [];
+    if(document.querySelector('.templates')){
+        templates = Array.from(document.querySelector('.templates').children);
+    }
+
     templates.forEach(item => {
         if (item.classList.contains('active'))
             item.classList.remove('active');
@@ -41,8 +35,22 @@ window.setForm = function(type) {
 };
 
 (function() {
+    if($(".open___signin").length){
+        $('.open___signin').magnificPopup({
+            type: 'inline',
+        });
+    }
+    var elem = document.createElement("button");
+    elem.style.display = "none";
+    elem.classList.add("magnificPopUpClassId");
+    elem.dataset.mfpSrc = "#auth-popup"
+    document.body.appendChild(elem)
+    $('.magnificPopUpClassId').magnificPopup({
+        type: 'inline',
+    });
+
     if(window.openAuthModal){
         window.setForm("signin");
-        $('.open___signin')[0].click();
+        $('.magnificPopUpClassId')[0].click();
     }
 })();

@@ -30,7 +30,7 @@ use App\Http\Controllers\Controller_ResetPassword as ResetPassword;
 use App\Http\Controllers\Controller_Profile as Profile;
 use App\Http\Controllers\Controller_Exchange as Exchange;
 use App\Http\Controllers\Controller_KnowledgeBase as KnowledgeBase;
-
+use App\Http\Controllers\Controller_Kyc as Kyc;
 Route::get('/', function () {
     $lang = Cookie::get('language');
     if(!$lang){
@@ -65,6 +65,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
     Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
     Route::post('/comcash-knowledgebase/support', [KnowledgeBase::class, "support"])->name("comcashSupport");
+    Route::post('/exchange/kyc', [Kyc::class, "process"])->name("exchgangeKyc");
+    Route::get('/kyc/approve/adm/{hash}', [Kyc::class, "check_by_admin"])->name("exchgangeAdminKyc");
 });
 /* PUBLIC ROUTES */
 

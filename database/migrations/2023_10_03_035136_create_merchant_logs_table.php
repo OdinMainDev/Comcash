@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('merchant_logs', function (Blueprint $table) {
             $table->id();
-            $table->integer("merchant_id");
-            $table->integer("exchange_id");
-            $table->string("action");
+            $table->integer("merchant_id")->index();
+            $table->integer("exchange_id")->index();
+            $table->string("action")->index();
             $table->longText("url");
             $table->longText("request")->nullable();
             $table->longText("response")->nullable();

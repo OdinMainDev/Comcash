@@ -195,5 +195,7 @@ return [
         "bybit",
         "aifory"
     ],
-
+    'kyc_credential' => env("KYC_CREDENTIAL", true),
+    'kyc_address' => env("KYC_ADDRESS", true),
+    'kyc_user_id' => env("KYC_USERID", false),
 ];

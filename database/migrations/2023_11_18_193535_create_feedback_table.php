@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->integer("exhange_id")->default(0);
-            $table->integer("user_id")->default(0);
+            $table->integer("exhange_id")->default(0)->index();
+            $table->integer("user_id")->default(0)->index();
             $table->string("name");
             $table->string("text");
             $table->json("data");

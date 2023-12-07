@@ -29,16 +29,16 @@ return new class extends Migration
     {
         Schema::create('exchanges', function (Blueprint $table) {
             $table->id();
-            $table->string("hash");
-            $table->integer("user_id")->default(0);
-            $table->integer("direction_id");
-            $table->integer("currency_from");
-            $table->integer("currency_to");
-            $table->integer("merchant_from");
-            $table->integer("merchant_to");
-            $table->string("merchant_type_from");
-            $table->string("merchant_type_to");
-            $table->tinyInteger("status")->default(0);
+            $table->string("hash")->index();
+            $table->integer("user_id")->default(0)->index();
+            $table->integer("direction_id")->index();
+            $table->integer("currency_from")->index();
+            $table->integer("currency_to")->index();
+            $table->integer("merchant_from")->index();
+            $table->integer("merchant_to")->index();
+            $table->string("merchant_type_from")->index();
+            $table->string("merchant_type_to")->index();
+            $table->tinyInteger("status")->default(0)->index();
             $table->json("data");
             $table->timestamps();
 

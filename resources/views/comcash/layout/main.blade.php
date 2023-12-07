@@ -19,9 +19,8 @@
         @include('comcash.component.header_main')
 
 		@yield("content")
-        @guest
-            @include('comcash.component.modal_auth')
-        @endguest
+        
+		@include('comcash.component.modal_auth')
 
 		@include('comcash.component.footer_main')
 

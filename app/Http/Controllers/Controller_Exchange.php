@@ -104,8 +104,8 @@ class Controller_Exchange extends Controller{
         // валидирование доп данных от мерчанта
         $merchant_from = new Handler($direction->merchant_type_from);
         $merchant_to = new Handler($direction->merchant_type_to, true);
-        $request->validate($merchant_from->getValidation());
-        $request->validate($merchant_to->getValidation());
+        $merchant_from->getValidation($request);
+        $merchant_to->getValidation($request);
         // валидирование суммы
         $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_to->units, $request->amount, $direction->profit_percent);
         if(!$amount){
