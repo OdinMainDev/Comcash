@@ -41,4 +41,15 @@ class Controller_Kyc extends Controller{
         sendTelegramKycSuccess($kyc);
         return $this->responseSuccess();
     }
+
+    public function status(Request $request, $lang, $id) {
+        $kyc = KycCheck::where("id", $id)->first();
+        if(!$kyc || $kyc->check){
+            return $this->responseError();
+        }
+        return json_encode([
+            "success" => true,
+            "data" => $kyc->check,
+        ]);
+    }
 }

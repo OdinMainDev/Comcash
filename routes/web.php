@@ -66,6 +66,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
     Route::post('/comcash-knowledgebase/support', [KnowledgeBase::class, "support"])->name("comcashSupport");
     Route::post('/exchange/kyc', [Kyc::class, "process"])->name("exchgangeKyc");
+    Route::get('/exchange/kyc/status/{id}', [Kyc::class, "status"]);
     Route::get('/kyc/approve/adm/{hash}', [Kyc::class, "check_by_admin"])->name("exchgangeAdminKyc");
 });
 /* PUBLIC ROUTES */
@@ -159,6 +160,10 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
         Route::get('/panel/exchanges/edit/{id}', [AdminExchange::class, "edit"])->name("adminExchangeEdit");
         Route::get('/panel/exchanges/logs/{id}/data', [DTExchangeLog::class, "process"])->name("adminExchangeLogs");
+    });
+
+    Route::group( ['middleware' => ['auth', 'permission:handle-exchanger']], function() {
+        Route::get('/panel/clear/cache', [AdminApi::class, "clear_cache"])->name("adminClearCache");
     });
 
 

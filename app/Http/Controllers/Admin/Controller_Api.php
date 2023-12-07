@@ -7,6 +7,7 @@ use App\Http\Traits\Misc\HasImage;
 use App\Models\Currency;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 
 class Controller_Api extends Controller{
@@ -41,5 +42,10 @@ class Controller_Api extends Controller{
         }
 
         return json_encode($response);
+    }
+
+    public function clear_cache() {
+        Artisan::call('cache:clear');
+        return redirect()->back();
     }
 }
