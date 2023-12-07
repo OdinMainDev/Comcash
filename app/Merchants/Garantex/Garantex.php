@@ -247,6 +247,7 @@ class Garantex {
 
     function make_withdraw($currency, $amount, $to_address){
         $currency = trim(mb_strtoupper($currency));
+
         switch($currency){
             case "USDTERC20":
                 $currency = "USDT";

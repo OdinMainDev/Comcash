@@ -44,7 +44,7 @@ class Main {
 
     function makeWithdraw($merchant, $exchange){
         $obj = new Garantex($merchant->id, $exchange->id, $merchant->secret, $merchant->key, env("GARANTEX_HOST_TYPE", 0));
-        return $obj->make_withdraw($exchange->data['amount_data']['currency_to_name'], $exchange->data['amount_data']['amount_receive'], $exchange->data['request_data']['to_address']);
+        return $obj->make_withdraw($exchange->currencyTo->name, $exchange->data['amount_data']['amount_receive'], $exchange->data['request_data']['to_address']);
     }
 
     function getBalance($merchant, $exchange, $currency){

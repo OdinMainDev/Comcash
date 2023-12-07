@@ -55,10 +55,11 @@ class GarantexWithdraw extends Command
                             break;
                         }
                         if($row['state'] != "succeed"){
-                            continue;
+                            break;
                         }
                         
                         $check = true;
+                        break;
                     }
 
                     if($hasError){
