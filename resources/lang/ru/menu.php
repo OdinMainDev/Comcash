@@ -15,5 +15,7 @@ return [
     "directions" => "Направления обмена",
     "languages" => "Языки",
     "blog" => "Блог",
-    "feedback" => "Отзывы"
+    "feedback" => "Отзывы",
+    "exchanges" => "Обмены",
+    "clear cache" => "Очистить кеш"
 ];
