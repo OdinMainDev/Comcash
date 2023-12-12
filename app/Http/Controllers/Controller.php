@@ -107,7 +107,7 @@ class Controller extends BaseController{
         if(!$direction){
             throw ValidationException::withMessages(["currency_from" => "bad pair", "currency_to" => "bad pair"]);
         }
-        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_to->units, $request->amount, $direction->profit_percent);
+        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_to->units, $request->amount, $direction->profit_percent, $request->reverse);
         if(!$amount){
             throw ValidationException::withMessages(["currency" => "bad amount"]);
         }

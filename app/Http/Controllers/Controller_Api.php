@@ -64,6 +64,7 @@ class Controller_Api extends Controller{
             "currency_from" => "required|string|max:255",
             "currency_to" => "required|string|max:255",
             "amount" => "required|numeric",
+            "reverse" => "boolean"
         ]);
         $data = $this->getEstimateDataFromRequest($request);
         $amount = $data['amount'];

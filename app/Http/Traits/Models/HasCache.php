@@ -83,17 +83,24 @@ trait HasCache {
         });
     }
 
-    public function estimateAmount($currency_from, $currency_to, $minor_units, $amount, $profit_percent){
+    public function estimateAmount($currency_from, $currency_to, $minor_units, $amount, $profit_percent, $reverse = false){
         $rate = $this->estimateGetRate($currency_from, $currency_to);
 
         if(!$rate){
             return false;
         }
-        return $this->doEstimate($amount, $rate, $profit_percent, $minor_units);
+        if(!$reverse)
+            return $this->doEstimate($amount, $rate, $profit_percent, $minor_units);
+
+        return $this->doEstimateReverse($amount, $rate, $profit_percent, $minor_units);
     }
 
     public function doEstimate($amount, $rate, $profit_percent, $minor_units){
         return number_format(($amount * $rate) / 100 * (100 - $profit_percent), $minor_units, ".", "");
+    }
+
+    public function doEstimateReverse($amount, $rate, $profit_percent, $minor_units){
+        return number_format(($amount / $rate) / 100 * (100 - $profit_percent), $minor_units, ".", "");
     }
 
     public function estimateGetRate($currency_from, $currency_to){
