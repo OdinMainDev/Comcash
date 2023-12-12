@@ -100,7 +100,7 @@ trait HasCache {
     }
 
     public function doEstimateReverse($amount, $rate, $profit_percent, $minor_units){
-        return number_format(($amount / $rate) / 100 * (100 - $profit_percent), $minor_units, ".", "");
+        return number_format(($amount / $rate) / 100 * (100 + $profit_percent), $minor_units, ".", "");
     }
 
     public function estimateGetRate($currency_from, $currency_to){
