@@ -95,6 +95,17 @@
 				<input type='file' class='input' name="file" />
 				<button type="submit" class='button button--dark button--auto auth__btn btn__submit'>{{__("front.continue")}}</button>
 			</form>
+
+			<div id="confirm-verification" class='auth__content class active'>
+				<p class="auth__title">
+					Подлинность вашей карты проверяется...
+				</p>
+				<div class="confirm-verification__loader">
+				</div>
+				<div class="confirm-verification__status">
+					Идет проверка
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
