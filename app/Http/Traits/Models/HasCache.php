@@ -48,6 +48,7 @@ trait HasCache {
                 $data = $direction->data;
                 $data['min_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MIN_EXCHANGE_AMOUNT", 50), $direction->profit_percent);
                 $data['max_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MAX_EXCHANGE_AMOUNT", 50000), $direction->profit_percent);
+
                 $direction->data = $data;
                 $direction->save();
             }
@@ -89,6 +90,7 @@ trait HasCache {
         if(!$rate){
             return false;
         }
+        
         if(!$reverse)
             return $this->doEstimate($amount, $rate, $profit_percent, $minor_units);
 
@@ -96,12 +98,14 @@ trait HasCache {
     }
 
     public function doEstimate($amount, $rate, $profit_percent, $minor_units){
-        return number_format(($amount * $rate) / 100 * (100 - $profit_percent), $minor_units, ".", "");
+        // return number_format(($amount * $rate) / 100 * (100 - $profit_percent), $minor_units, ".", "");
+        $amount = round(fdiv(($amount * $rate), 100) * (100 - $profit_percent), $minor_units);
+        return number_format($amount, $minor_units, ".", "");
     }
 
     public function doEstimateReverse($amount, $rate, $profit_percent, $minor_units){
-        // 100.1 для того чтобы сумма была более большой и меньше разноса было
-        return number_format(fdiv($amount,$rate) / 100 * (100.1 + $profit_percent), $minor_units, ".", "");
+        $amount = round(fdiv(fdiv($amount, $rate), 100 - $profit_percent) * 100, $minor_units);
+        return number_format($amount, $minor_units, ".", "");
     }
 
     public function estimateGetRate($currency_from, $currency_to){

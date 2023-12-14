@@ -37,7 +37,7 @@ class Controller_Exchange extends Controller{
             return $this->responseError("bad amount (limit min)", ["code" => 4]);
         }
         if(@$direction->data['max_amount'] && $direction->data['max_amount'] < $request->amount){
-            return $this->responseError("bad amount (limit max)", ["code" => 5]);
+            return $this->responseError("bad amount (limit max)", ["code" => 5, $direction->data['max_amount'], $request->amount]);
         }
         return $this->responseSuccess(false, [
             "redirect" => route("exchgangePage", [
