@@ -49,6 +49,7 @@ class ExchangeStart implements ShouldQueue
         if(!$this->user)
             $this->checkUser($this->exchange->data['request_data']['email']);
 
+        $this->exchange->user_id = $this->user->id;
         $data = $this->exchange->data;
         $data['user_id'] = $this->user->id;
         $this->exchange->data = $data;
