@@ -46,8 +46,12 @@
             </div>
             <div class='select__current'></div>
         </div>
+        <a class='header__btn-aml button' href="https://amlcheck.pw/">
+            <img src="/comcash/img/aml.png" class="header__btn-image" alt="aml_bot">
+        </a>
         @guest
             <button class='header__btn button open___signin' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
+            <button class='header__btn button open___signup' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign up")}}</button>
         @endguest
         @auth
             <a class='header__btn button' type='button' href="{{route("myprofile")}}">{{__("front.profile")}}</a>

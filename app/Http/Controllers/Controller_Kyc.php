@@ -21,6 +21,7 @@ class Controller_Kyc extends Controller{
         if(!$kyc || $kyc->check){
             return $this->responseErrorValidation(["bad_data"]);
         }
+        sendTelegramKycSuccess($kyc);
         sendTelegramKycImage($kyc, $request->file("file")->getPathName());
 
         return $this->responseSuccess();

@@ -27,7 +27,6 @@
 		<script>
 			window.language = "{{mb_strtolower(app()->getLocale())}}";
 		</script>
-        @vite("resources/js/comcash.js")
 
 		@yield('js')
 	</body>

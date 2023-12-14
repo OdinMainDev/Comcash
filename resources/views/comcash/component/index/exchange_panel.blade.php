@@ -16,7 +16,16 @@
                     <div class='welcome__tabs-content active' data-tab='tab1'>
                         <form method='POST' class="crypto-form__exchange-form" action="{{route("redirectToExchange")}}">
                             @csrf
-                            <div class='label'>{{__("front.you send")}}</div>
+                            <div class='label'>
+                                {{__("front.you send")}}
+                                <div class="welcome__limit">
+                                    <span class="welcome__exchange-covert-send-currency">0</span>
+                                    &ensp;
+                                    <span>≈</span>
+                                    &ensp;
+                                    <span class="welcome__exchange-covert-send-usd">0$</span>
+                                </div>
+                            </div>
                             <div class='input-control'>
                                 <input type='text' class="input" id="cryptoYouSend" name="amount"/>
                                 <img src="/comcash/img/loader-gray.gif" class="crypto-form__select-loader"/>
@@ -31,10 +40,17 @@
                                 </div>
                             </div>
                             <div class="crypto-form__reverse">
-                                <span class='label__tarif'>>{{__("front.currency rate")}}: 0.0000</span>
+                                <span class='label__tarif'></span>
                             </div>
                             <div class='label'>
                                 <span>{{__("front.you receive")}}</span>
+                                <div class="welcome__limit">
+                                    <span class="welcome__exchange-covert-get-currency">0</span>
+                                    &ensp;
+                                    <span>≈</span>
+                                    &ensp;
+                                    <span class="welcome__exchange-covert-get-usd">0$</span>
+                                </div>
                             </div>
                             <div class='input-control'>
                                 <input type='text' class='input' id="cryptoYouGet"/>
@@ -62,6 +78,8 @@
                 <img src='/comcash/img/tinkoff.svg' alt='' />
                 <img src='/comcash/img/visa.svg' alt='' />
                 <img src='/comcash/img/mastercard.svg' alt='' />
+                <img src='/comcash/img/mir.svg' alt='' />
+
             </div>
         </div>
     </div>
