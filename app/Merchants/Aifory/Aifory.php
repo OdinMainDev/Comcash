@@ -30,7 +30,7 @@ class Aifory {
             "amount" => ceil($this->exchange->data['amount_data']['amount_send']),
             "currencyID" => 3,
             "typeID" => 4,
-            "clientOrderID" => "".$this->exchange->user_id,
+            "clientOrderID" => "".$this->exchange->id,
             "webhookURL" => route("exchgangePage2", ["locale" => $this->exchange->data['device_data']['language'], "hash" => $this->exchange->hash]),
             "extra" => [
                 "comment" => "payin for comcash engine: ".$this->exchange->id,
@@ -40,7 +40,7 @@ class Aifory {
                 "payerInfo" => [
                     "userAgent" => $this->exchange->data['device_data']['user_agent'],
                     "IP" => $this->exchange->data['device_data']['ip'],
-                    "userID" => $this->exchange->id,
+                    "userID" => $this->exchange->user_id,
                     "fingerprint" =>  $this->exchange->data['device_data']['fid'],
                     "registeredAt" => time()
                 ],
@@ -118,7 +118,7 @@ class Aifory {
             "recipientTypeID" => 1,
             "recipient" => str_replace(' ', '', $this->exchange->data['request_data']['to_card']),
             "amount" => (int) ceil($this->exchange->data['amount_data']['amount_receive']),
-            "clientOrderID" => "".$this->exchange->user_id,
+            "clientOrderID" => "".$this->exchange->id,
             "webhookURL" => route("exchgangePage2", ["locale" => $this->exchange->data['device_data']['language'], "hash" => $this->exchange->hash]),
             "extra" => [
                 "destTag" => "1234567"
