@@ -49,6 +49,9 @@ class ExchangeStart implements ShouldQueue
         if(!$this->user)
             $this->checkUser($this->exchange->data['request_data']['email']);
 
+        $data = $this->exchange->data;
+        $data['user_id'] = $this->user->id;
+        $this->exchange->data = $data;
         $handler = new Handler($this->exchange->merchant_type_from, false, $this->exchange->merchantFrom, $this->exchange);
         $address = $handler->create_address($this->exchange->currencyFrom->name);
         if(!$address){
@@ -149,6 +152,7 @@ class ExchangeStart implements ShouldQueue
         $user->password = Hash::make($password);
         $user->save();
         $this->user = $user;
+        $this->exchange->user_id = $user->id;
         Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
     }
 }
