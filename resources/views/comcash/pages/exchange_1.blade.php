@@ -58,7 +58,7 @@
 						<span>choose currency</span>
 					</div>
 					<div class='input-control' id="exchange-currency_to">
-						<input type='text' class='input input--large' disabled="true"/>
+						<input type='text' class='input input--large'/>
 						<img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
 						<div class="custom-select__select-container light" data-currency="currencyYouGet">
 							<div class="custom-select__select-label">
@@ -147,24 +147,25 @@
 						правильность набранных данных
 					</p>
 					<div class='validation__label'>
-						you send
+						Вы отправляете
 					</div>
 					<div class="validation__output" id="validation__you-send">
 						<span>0,00000001 </span>
 						<span>BTC </span>
 					</div>
-					<p class="validation__caption"></p>
+					<p class="validation__caption validation__caption_send"></p>
 					<div class='validation__label'>
-						you get
+						Вы получаете
 					</div>
 					<div class="validation__output" id="validation__you-get">
 						<span>0,00000001 </span>
 						<span>BTC </span>
 					</div>
-					<p class="validation__caption"></p>
+					
+					<p class="validation__caption validation__caption_get"></p>
 					<div class="validation__awaiting">
-						<p class="validation__awaiting-title">Время ожидания</p>
-						<p class="validation__awaiting-time">30 minutes</p>
+						<p class="validation__awaiting-title">Время на оплату</p>
+						<p class="validation__awaiting-time">30 мин</p>
 					</div>
 					<div class="validation__controls">
 						<button id="validation__send" class='button button--auto validation__button' type="submit">обменять</button>
