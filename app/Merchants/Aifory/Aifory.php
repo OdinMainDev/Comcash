@@ -40,7 +40,7 @@ class Aifory {
                 "payerInfo" => [
                     "userAgent" => $this->exchange->data['device_data']['user_agent'],
                     "IP" => $this->exchange->data['device_data']['ip'],
-                    "userID" => $this->exchange->user_id,
+                    "userID" => "".$this->exchange->user_id,
                     "fingerprint" =>  $this->exchange->data['device_data']['fid'],
                     "registeredAt" => time()
                 ],
