@@ -78,7 +78,7 @@
 			});
 			// -----------
 		</script>
-        @vite("resources/js/comcash.js")
+        @vite('resources/js/comcash/main.ts')
 
 		@yield('js')
 	</body>
