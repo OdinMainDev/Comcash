@@ -9,7 +9,7 @@
             </div>
             <div class='footer__sitemap' style="    width: 40%;">
                 <div class='footer__sitemap-col'>
-                    <p class='footer__sitemap-link'>{{__("front.footer_text")}}</p>
+                    <p class=''>{{__("front.footer_text")}}</p>
                 </div>
                 <!-- <div class='footer__sitemap-col'>
                     <p class='footer__sitemap-title'>title</p>
