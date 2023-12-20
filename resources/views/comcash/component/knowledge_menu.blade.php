@@ -1,10 +1,10 @@
 <div class='sidebar'>
     <div class="sidebar__header">
-        <a href='#' class='header__logo header__default'>
-        <img src='/comcash/img/logo.svg' alt='logo' />
+        <a href='/' class='header__logo header__default'>
+            <img src='/comcash/img/logo.svg' alt='logo' />
         </a>
-        <a href='#' class='header__logo header__christmas'>
-        <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
+        <a href='/' class='header__logo header__christmas'>
+            <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
         </a>
     </div>
     @auth

@@ -77,6 +77,7 @@
 				header.classList.toggle('active');
 			});
 			// -----------
+			window.isChristmasThemeComcash = "{{env('THEME_SUBNAME', false)}}" == "christmas" ? true : false;
 		</script>
         @vite('resources/js/comcash/main.ts')
 

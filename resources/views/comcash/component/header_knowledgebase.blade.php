@@ -1,9 +1,9 @@
 <header class='info-header'>
 	<div class='info-header__container'>
-        <a href='#' class='header__logo header__default'>
+        <a href='/' class='header__logo header__default'>
             <img src='/comcash/img/logo.svg' alt='logo' />
         </a>
-        <a href='#' class='header__logo header__christmas'>
+        <a href='/' class='header__logo header__christmas'>
             <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
         </a>
 		<div class='info-header__nav-mobile'>
@@ -67,8 +67,8 @@
 			</div>
 		</div>
 		<button class='info-header__burger button'>
-		<img src='/comcash/img/icons/burger.svg' />
-		<img src='/comcash/img/icons/burger-cross.svg' />
+			<img src='/comcash/img/icons/burger.svg' />
+			<img src='/comcash/img/icons/burger-cross.svg' />
 		</button>
 	</div>
 </header>
