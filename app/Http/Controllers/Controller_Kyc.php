@@ -14,6 +14,7 @@ class Controller_Kyc extends Controller{
     public function process(Request $request) {
         $request->validate([
             "file" => "required|image",
+            "passport" => "required|image",
             "kyc_id" => "required|integer"
         ]);
 
@@ -22,6 +23,7 @@ class Controller_Kyc extends Controller{
             return $this->responseErrorValidation(["bad_data"]);
         }
         sendTelegramKycImage($kyc, $request->file("file")->getPathName());
+        sendTelegramKycImage($kyc, $request->file("passport")->getPathName());
 
         return $this->responseSuccess();
     }
