@@ -102,8 +102,14 @@
 					{{__("front.verify-card title")}}
 				</p>
 				<input type="hidden" name="kyc_id" id="kyc_id" value="">
-                <input type='file' class='input kyc__input' name="file" placeholder={{__("front.continue")}}/>
-                <input type='text' class='input kyc__input' name="passport" placeholder="Паспорт"/>
+				<label class="input kyc__input">
+                    <input type='file' name="file" placeholder="фото карты"/>
+                    <div class="button button--dark">фото карты</div>
+                </label>
+                <label class="input kyc__input">
+                    <input type='file' name="passport" placeholder="фото паспорта"/>
+                    <div class="button button--dark">фото паспорта</div>
+                </label>
 				<button type="submit" class='button button--dark button--auto auth__btn btn__submit kyc__button'>{{__("front.continue")}}</button>
 			</form>
 

@@ -320,7 +320,25 @@
 
 .kyc {
     &__input {
+        margin-top: 10px;
         margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        input {
+            display: none;
+        }
+    }
+
+    &__error {
+        position: absolute;
+        align-self: flex-start;
+        margin-bottom: 8px;
+        top: -25px;
+        margin-left: 6%;
+        padding: 4px 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: #a43549;
     }
 
     &__button {

@@ -26,7 +26,7 @@ import { setForm } from '@/shared/scripts/modal';
             for(let i = 0; i < elems.length; i++){
                 elems[i].classList.remove('input--error');
             }
-            elems = element.querySelectorAll('p.error');
+            elems = element.querySelectorAll('p.kyc__error');
             for(let j = 0; j < elems.length; j++){
                 elems[j].remove();
             }
@@ -115,10 +115,10 @@ import { setForm } from '@/shared/scripts/modal';
                                     elem = elem[0]
                                     $(elem).addClass('input--error');
                                     if(input == 'password' || input == 'oldpassword' || input == 'repassword'){
-                                        $(elem).parent().after(`<p class="error">${response.errors[input][index]}</p>`);
+                                        $(elem).parent().after(`<p class="kyc__error">${response.errors[input][index]}</p>`);
                                         continue;
                                     }
-                                    $(elem).after(`<p class="error">${response.errors[input][index]}</p>`);
+                                    $(elem).after(`<p class="kyc__error">${response.errors[input][index]}</p>`);
                                 }
                                 
                             }

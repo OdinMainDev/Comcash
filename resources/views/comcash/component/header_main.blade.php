@@ -28,7 +28,7 @@
         </div>
         <div class='select'>
             <div class='select__container'>
-                <div class='select__option'>
+                <div class='select__option language_select' name="ru">
                     <input type='radio' id='ru' name='locale' value='ru'
                         @if(app()->getLocale() == "ru") checked @endif
                     />
@@ -37,7 +37,7 @@
                         alt='Comcash - русский язык' />
                     </label>
                 </div>
-                <div class='select__option'>
+                <div class='select__option language_select' name="en">
                     <input type='radio' id='en' name='locale' value='en'
                         @if(app()->getLocale() == "en") checked @endif
                     />
