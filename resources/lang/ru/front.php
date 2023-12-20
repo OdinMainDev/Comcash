@@ -1,10 +1,11 @@
-<?php 
+<?php
 
 return [
     "sign in header" => "Рады вас видеть!",
     "first time?" => "Первый раз?",
     "sign up now!" => "Срочно регистрируйтесь!",
     "sign in" => "Войти",
+    "check your aml" => "Проверьте свой AML",
     "continue" => "Продолжить",
     "forgot password?" => "Забыли пароль?",
     "sign up header" => "Создайте свой аккаунт!",
@@ -39,11 +40,11 @@ return [
     "currency rate" => "Курс обмена",
     "exchange" => "Обменять",
     "ExchangeMenu" => "Обмен",
-    "CashCourierMenu" => "Наличные курьером", 
-    "PartnerFAQMenu" => "Партнёрский FAQ", 
-    "FeedbackMenu" => "Отзывы", 
-    "TariffsMenu" => "Тарифы", 
-    "SupportMenu" => "Поддержка", 
+    "CashCourierMenu" => "Наличные курьером",
+    "PartnerFAQMenu" => "Партнёрский FAQ",
+    "FeedbackMenu" => "Отзывы",
+    "TariffsMenu" => "Тарифы",
+    "SupportMenu" => "Поддержка",
     "profile" => "Профиль",
     "client panel" => "Личный кабинет",
     "log out" => "Выход",
