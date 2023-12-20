@@ -21,6 +21,9 @@ class Controller_KnowledgeBase extends Controller{
         if($name == "news")
             $return = $return->with("news", $this->getCacheNews());
 
+        if($name == "reviews")
+            $return = $return->with("feedbacks", $this->getCacheFeedbacks());
+
         if($name == "tariffs")
             $return = $return->with("tariffs", $this->getCacheExportJson())->with("controller", $this);
 
