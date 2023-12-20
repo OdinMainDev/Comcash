@@ -10,7 +10,7 @@
             <p class="progress__title-mobile">Ошибка</p>
 
             <p class="progress__title">
-                К сожалению возникла кретическая ошибка
+                Ошибка
             </p>
 
             <div class="progress__box">
@@ -18,7 +18,7 @@
                     <div class="progress__error">
                         <img src="/comcash/img/icons/sad-face.svg" class="progress__error-img" alt="sad-face"/>
                         <div class="progress__error-text"/>
-                            Error!
+							При обмене произошла ошибка создайте новую заявку или обратитесь к поддержке
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="progress__box">
                     <div class="progress__box-right">
                         <div class="progress__preparation">
-                            <div class="progress__preparation-text"/>
+                            <div class="progress__preparation-text" id="needRefreshPageId">
                                 Подготовка обмена!
                             </div>
                             <div class="progress__preparation-img"></div>
