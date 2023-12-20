@@ -2,7 +2,7 @@
     <div class='footer__container'>
         <div class='footer__top'>
             <div class='footer__logo'>
-                <img src='/comcash/img/logo.png'
+                <img src='/comcash/img/logo.svg'
                     alt=''
                     class='' />
                 <p>{{__("front.slogan")}}</p>

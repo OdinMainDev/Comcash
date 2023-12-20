@@ -1,0 +1,194 @@
+.custom-select {
+  &__select {
+    &-container {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, #2a2a2a, #2a2a2a) padding-box, linear-gradient(to bottom, #5d5d5d, transparent) border-box;
+      position: relative;
+      border-radius: 40px;
+      min-height: 60px;
+      border: 1px solid transparent;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      padding-left: 8px;
+      padding-right: 20px;
+      width: 68%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      user-select: none;
+      &.active {
+        border-bottom-right-radius: 0;
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        background: url('/comcash/img/icons/arrow.svg') no-repeat;
+        width: 10px;
+        height: 6px;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+
+      }
+
+      &.light {
+        background: linear-gradient(to bottom, #36324a, #36324a) padding-box,
+        linear-gradient(to bottom, #c5c5c7, transparent) border-box;
+
+        .custom-select__select {
+          &-list {
+            background-color: #36324A;
+            &::-webkit-scrollbar {
+              background-color: #36324A;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: #3b3b3b;
+            }
+          }
+        }
+      }
+
+      &.s {
+        width: 40%;
+      }
+
+    }
+    &-label {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 58px;
+      color: #999;
+      &-input {
+        display: none;
+      }
+    }
+
+    &-list {
+      top: 60px;
+      min-height: 30px;
+      right: 0;
+      z-index: 99;
+      width: 100%;
+      position: absolute;
+      background-color: #2a2a2a;
+      border-bottom-left-radius: 22px;
+      border-bottom-right-radius: 0;
+      border-color: transparent;
+      box-shadow: -2px 7px 6px -8px #fff;
+      overflow: hidden;
+      padding: 10px 16px 0;
+      max-height: 350px;
+      overflow-y: scroll;
+      &.hide {
+        display: none;
+      }
+      &::-webkit-scrollbar {
+        background-color: #2a2a2a;
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #3b3b3b;
+      }
+    }
+
+    &-item {
+      margin-bottom: 10px;
+      padding: 12px 0px;
+      cursor: pointer;
+      border-radius: 40px;
+      font-size: 16px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      &:hover {
+        background: #3b3b3b
+      }
+      span {
+        margin-left: 10px;
+      }
+
+      img {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+      }
+      @media(max-width: 425px) {
+        font-size: 12px;
+        padding: 12px 0;
+        img {
+          width: 18px;
+          height: 18px;
+          object-fit: contain;
+        }
+      }
+    }
+
+    &-loader {
+      display: none;
+      position: absolute;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+      &.loading {
+        display: block;
+      }
+    }
+
+    &-selected {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      color: #fff;
+      img {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+      }
+      span {
+        margin-left: 10px;
+      }
+
+      @media(max-width: 425px) {
+        font-size: 12px;
+        img {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+
+  &__search {
+    position: relative;
+    margin-bottom: 10px;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 11px;
+      left: 10px;
+      display: block;
+      width: 15px;
+      height: 15px;
+      background: url('/comcash/img/icons/nav/faq.svg') no-repeat;
+      background-size: contain;
+    }
+    &-field {
+      width: 100%;
+      padding: 8px 8px 8px 35px;
+      background-color: #1b1b1b;
+      border: none;
+      border-radius: 40px;
+      color: #fff;
+    }
+  }
+}

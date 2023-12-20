@@ -1,0 +1,182 @@
+<form action="" class="exchange__form">
+  <div class="exchange__main-form">
+    <p class="exchange__title-mobile">обменник</p>
+    <div id="currencyYouSend">
+      <div class='label'>
+        <span>choose currency</span>
+        <div class="exchange__limit">
+          <span class="exchange__min">Min:
+            <span>0</span>
+          </span>
+          <span class="exchange__max">Max:
+            <span>0</span>
+          </span>
+        </div>
+      </div>
+      <div class='input-control' id="exchange-currency_from">
+        <input type='text' class='input input--large' name="amount"/>
+        <img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
+        <div class="custom-select__select-container light" data-currency="currencyYouSend">
+          <div class="custom-select__select-label">
+            Выберите крипту 
+          </div>
+          <input class="custom-select__select-label-input" name="currency_from"/>
+          <div class="custom-select__select-list hide">
+            <div class="custom-select__search">
+              <input class="custom-select__search-field"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exchange__card-number hide" id="exchange-from_card">
+        <div class='label'>
+          <span>card number</span>
+        </div>
+        <input type="text" class="input input--large" >
+      </div>
+      <div class="exchange__contact-item hide" id="exchange-from_address">
+        <div class='label'>
+          <span>from address</span>
+        </div>
+        <input type="text" class="input input--large" >
+      </div>
+    </div>
+
+    <div class="exchange__info">
+      <p class="exchange__info-text">ВЫБРАННЫЙ ТАРИФ</p>
+      <p class="exchange__info-text">НИКАКИХ СКРЫТЫХ КОМИССИЙ</p>
+    </div>
+
+    <div id="currencyYouGet">
+      <div class='label'>
+        <span>choose currency</span>
+        {{!-- <div class="exchange__limit">
+          <span class="exchange__min">Min:
+            <span>0</span>
+          </span>
+          <span class="exchange__max">Max:
+            <span>0</span>
+          </span>
+        </div> --}}
+      </div>
+      <div class='input-control' id="exchange-currency_to">
+        <input type='text' class='input input--large'/>
+        <img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
+        <div class="custom-select__select-container light" data-currency="currencyYouGet">
+          <div class="custom-select__select-label">
+            Выберите крипту 
+          </div>
+          <input class="custom-select__select-label-input" name="currency_to"/>
+          <div class="custom-select__select-list hide">
+            <div class="custom-select__search">
+              <input class="custom-select__search-field"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="exchange__timer-conatiner">
+        <span>Время до изменения цены:</span>
+        <span class="exchange__timer">00:00</span>
+      </div>
+      <div class="exchange__card-number hide" id="exchange-to_card">
+        <div class='label'>
+          <span>card number</span>
+        </div>
+        <input type="text" class="input input--large" >
+      </div>
+      <div class="exchange__contact-item hide" id="exchange-to_address">
+        <div class='label'>
+          <span>to address</span>
+        </div>
+        <input type="text" class="input input--large" >
+      </div>
+      <div class="exchange__contact-item hide" id="exchange-passport">
+        <div class='label'>
+          <span>Passport</span>
+        </div>
+        <input type="text" class="input input--large" >
+      </div>
+      <div class="exchange__contact">
+        <div class="exchange__contact-item hide" id="exchange-phone">
+          <div class='label'>
+            <span>Phone number</span>
+          </div>
+          <input type="text" class="input input--large" value="+" name="phone_number">
+        </div>
+        <div class="exchange__contact-item hide" id="exchange-email">
+          <div class='label'>
+            <span>Email</span>
+          </div>
+          <input type="text" class="input input--large" name="email">
+        </div>
+        <div class="exchange__contact-item hide" id="exchange-telegram">
+          <div class='label'>
+            <span>Telegram</span>
+          </div>
+          <input type="text" class="input input--large" name="telegram">
+        </div>
+      </div>
+      <div class="exchange__name">
+        <div class="exchange__name-item hide" id="exchange-first_name">
+          <div class='label'>
+            <span>name</span>
+          </div>
+          <input name="name" type="text" class="input input--large">
+        </div>
+        <div class="exchange__name-item hide" id="exchange-last_name">
+          <div class='label'>
+            <span>surname</span>
+          </div>
+          <input name="surname" type="text" class="input input--large">
+        </div>
+        <div class="exchange__name-item hide" id="exchange-second_name">
+          <div class='label'>
+            <span>middle</span>
+          </div>
+          <input name="middle" type="text" class="input input--large">
+        </div>
+      </div>
+    </div>
+    <a class='button button--auto exchange__button'>Продолжить</a>
+    <p class='exchange__bottom'>
+      нАЖИМАЯ ПРОДОЛЖИТЬ ВЫ СОГЛАШАЕТЕСЬ С <a href=''>ПРАВИЛАМИ</a> САЙТА
+    </p>
+  </div>
+
+  <div class="validation hide">
+    <div class="validation__container">
+      <p class="validation__title-mobile">обменник</p>
+      <p class="validation__title">Пожалуйста проверьте
+        правильность набранных данных</p>
+      <div class='validation__label'>
+        you send
+      </div>
+      <div class="validation__output" id="validation__you-send">
+        <span>0,00000001 </span>
+        <span>BTC </span>
+      </div>
+      <p class="validation__caption validation__caption_send"></p>
+      <div class='validation__label'>
+        you get
+      </div>
+      <div class="validation__output" id="validation__you-get">
+        <span>0,00000001 </span>
+        <span>BTC </span>
+      </div>
+      <p class="validation__caption validation__caption_get"></p>
+      <div class="validation__awaiting">
+        <p class="validation__awaiting-title">Время ожидания</p>
+        <p class="validation__awaiting-time">30 minutes</p>
+      </div>
+      <div class="validation__controls">
+        <button id="validation__send" class='button button--auto validation__button'>обменять</button>
+        <a id="validation__back" class='button button--auto button--dark validation__button'>Назад</a>
+      </div>
+      <p class='validation__bottom'>
+        НАЖИМАЯ ПРОДОЛЖИТЬ ВЫ СОГЛАШАЕТЕСЬ С <a href=''>ПРАВИЛАМИ</a> САЙТА
+      </p>
+    </div>
+  </div>
+
+</form>

@@ -1,0 +1,215 @@
+.crypto-form {
+  &__select {
+    &-container {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, #2a2a2a, #2a2a2a) padding-box, linear-gradient(to bottom, #5d5d5d, transparent) border-box;
+      position: relative;
+      border-radius: 40px;
+      min-height: 60px;
+      border: 1px solid transparent;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      padding-left: 8px;
+      padding-right: 20px;
+      width: 68%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      user-select: none;
+      &.active {
+        border-bottom-right-radius: 0;
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        background: url('/comcash/img/icons/arrow.svg') no-repeat;
+        width: 10px;
+        height: 6px;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+
+      }
+
+    }
+    &-label {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 58px;
+      color: #999;
+    }
+    
+    &-list {
+      top: 60px;
+      right: 0;
+      z-index: 99;
+      width: 100%;
+      position: absolute;
+      background-color: #2a2a2a;
+      border-bottom-left-radius: 22px;
+      border-bottom-right-radius: 22px;
+      border-color: transparent;
+      box-shadow: -2px 7px 6px -8px #fff;
+      overflow: hidden;
+      padding: 10px 16px 0;
+      max-height: 150px;
+      overflow-y: scroll;
+      &.hide {
+        display: none;
+      }
+      &::-webkit-scrollbar {
+        background-color: #2a2a2a;
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #3b3b3b;
+      }
+    }
+
+    &-item {
+      margin-bottom: 10px;
+      padding: 12px 24px;
+      cursor: pointer;
+      border-radius: 40px;
+      font-size: 13px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      &:hover {
+        background: #3b3b3b
+      }
+      span {
+        margin-left: 10px;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+    }
+
+    &-loader {
+      display: none;
+      position: absolute;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+      &.loading {
+        display: block;
+      }
+    }
+
+    &-selected {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      color: #fff;
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+      span {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &__reverse {
+    position: relative;
+    padding-right: 30px;
+    margin-top: 42px;
+    margin-bottom: 16px;
+    font-weight: 200;
+    color: #686868;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: right;
+    span {
+      cursor: pointer;
+    }
+  }
+
+  &__search {
+    position: relative;
+    margin-bottom: 10px;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 11px;
+      left: 10px;
+      display: block;
+      width: 15px;
+      height: 15px;
+      background: url('/comcash/img/icons/nav/faq.svg') no-repeat;
+      background-size: contain;
+    }
+    &-field {
+      width: 100%;
+      padding: 8px 8px 8px 26px;
+      background-color: #1b1b1b;
+      border: none;
+      border-radius: 40px;
+      color: #fff;
+    }
+  }
+
+  &__switch {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-color: #30303e;
+    background-color: #30303e;
+    border-radius: 9px;
+    padding: 2px;
+    input {
+      display: none;
+    }
+    &-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 13px;
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 28px;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 500;
+      color: #808086;
+      border-radius: 7px;
+      transition: background,color,ease .1s;
+      cursor: pointer;
+      &:last-child {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+      svg {
+        margin-left: 3px;
+      }
+      &.active {
+        color: #32c89e;
+        pointer-events: none;
+        background: #3e3f57;
+        box-shadow: 0 3px 8px rgba(0,0,0,.12), 0 3px 1px rgba(0,0,0,.04);
+        svg {
+          fill: #32c89e;
+        }
+      }
+    }
+  }
+}

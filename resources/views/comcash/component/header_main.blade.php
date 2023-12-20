@@ -1,7 +1,10 @@
 <header class='header'>
     <div class='header__container'>
-        <a href='/' class='header__logo'>
-            <img src='/comcash/img/logo.png' alt='Comcash'/>
+        <a href='/' class='header__logo header__default'>
+        <img src='/comcash/img/logo.svg' alt='logo' />
+        </a>
+        <a href='/' class='header__logo header__christmas'>
+        <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
         </a>
         <div class='header__nav'>
             <a class='header__link' href='/'>
@@ -26,7 +29,7 @@
         <div class='select'>
             <div class='select__container'>
                 <div class='select__option'>
-                    <input type='radio' id='ru' name='locale' value='ru' 
+                    <input type='radio' id='ru' name='locale' value='ru'
                         @if(app()->getLocale() == "ru") checked @endif
                     />
                     <label for='ru'>
@@ -47,7 +50,7 @@
             <div class='select__current'></div>
         </div>
         <a class='header__btn-aml button' href="https://amlcheck.pw/">
-            <img src="/comcash/img/aml.png" class="header__btn-image" alt="aml_bot">
+            {{__("front.check your aml")}}
         </a>
         @guest
             <button class='header__btn button open___signin' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
@@ -83,8 +86,8 @@
             </div>
         </div>
         <button class='header__burger button'>
-            <img src='/comcash/img/icons/burger.png' alt="Comcash"/>
-            <img src='/comcash/img/icons/burger-cross.png' alt="Comcash"/>
+            <img src='/comcash/img/icons/burger.svg' alt="Comcash"/>
+            <img src='/comcash/img/icons/burger-cross.svg' alt="Comcash"/>
         </button>
     </div>
 </header>

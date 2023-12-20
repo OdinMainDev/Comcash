@@ -22,6 +22,6 @@
     </div>
 </div>
 <button class='header__burger button'>
-    <img src='/comcash/img/icons/burger.png' alt="Comcash"/>
-    <img src='/comcash/img/icons/burger-cross.png' alt="Comcash"/>
+    <img src='/comcash/img/icons/burger.svg' alt="Comcash"/>
+    <img src='/comcash/img/icons/burger-cross.svg' alt="Comcash"/>
 </button>

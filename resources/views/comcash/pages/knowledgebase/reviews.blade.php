@@ -15,65 +15,78 @@
                 Ниже вы увидите самые свежие комментарии по работе нашего сервиса.
             </p>
             </div>
-
-            <div class="slider reviews__slider">
             <div class="reviews__slider-content">
                 <div class="reviews__slider-card">
-                <p class="reviews__slider-card-date">03.03.2033</p>
-                <p class="reviews__slider-card-title">Title</p>
-                <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
-                    безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
-                    предотвращения</p>
-                <p class="reviews__slider-card-name">Some name</p>
+                    <p class="reviews__slider-card-date">03.03.2033</p>
+                    <p class="reviews__slider-card-title">Title</p>
+                    <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
+                        безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
+                        предотвращения</p>
+                    <p class="reviews__slider-card-name">Some name</p>
                 </div>
 
                 <div class="reviews__slider-card">
-                <p class="reviews__slider-card-date">03.03.2033</p>
-                <p class="reviews__slider-card-title">Title</p>
-                <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
-                    безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
-                    предотвращения</p>
-                <p class="reviews__slider-card-name">Some name</p>
+                    <p class="reviews__slider-card-date">03.03.2033</p>
+                    <p class="reviews__slider-card-title">Title</p>
+                    <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
+                        безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
+                        предотвращения</p>
+                    <p class="reviews__slider-card-name">Some name</p>
                 </div>
 
                 <div class="reviews__slider-card">
-                <p class="reviews__slider-card-date">03.03.2033</p>
-                <p class="reviews__slider-card-title">Title</p>
-                <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
-                    безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
-                    предотвращения</p>
-                <p class="reviews__slider-card-name">Some name</p>
+                    <p class="reviews__slider-card-date">03.03.2033</p>
+                    <p class="reviews__slider-card-title">Title</p>
+                    <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
+                        безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
+                        предотвращения</p>
+                    <p class="reviews__slider-card-name">Some name</p>
+                </div>
+                <div class="reviews__slider-card">
+                    <p class="reviews__slider-card-date">03.03.2033</p>
+                    <p class="reviews__slider-card-title">Title</p>
+                    <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
+                        безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
+                        предотвращения</p>
+                    <p class="reviews__slider-card-name">Some name</p>
+                </div>
+
+                <div class="reviews__slider-card">
+                    <p class="reviews__slider-card-date">03.03.2033</p>
+                    <p class="reviews__slider-card-title">Title</p>
+                    <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
+                        безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
+                        предотвращения</p>
+                    <p class="reviews__slider-card-name">Some name</p>
+                </div>
+
+                <div class="reviews__slider-card">
+                    <p class="reviews__slider-card-date">03.03.2033</p>
+                    <p class="reviews__slider-card-title">Title</p>
+                    <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
+                        безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
+                        предотвращения</p>
+                    <p class="reviews__slider-card-name">Some name</p>
                 </div>
             </div>
-            <div class="reviews__slider-content">
-                <div class="reviews__slider-card">
-                <p class="reviews__slider-card-date">03.03.2033</p>
-                <p class="reviews__slider-card-title">Title</p>
-                <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
-                    безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
-                    предотвращения</p>
-                <p class="reviews__slider-card-name">Some name</p>
+            <div class="reviews__pagination">
+                <div class="pagination">
+                <div class="pagination__item pagination__prev">
+                    <img src="/comcash/img/icons/prev.svg" alt="prev"/>
                 </div>
-
-                <div class="reviews__slider-card">
-                <p class="reviews__slider-card-date">03.03.2033</p>
-                <p class="reviews__slider-card-title">Title</p>
-                <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
-                    безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
-                    предотвращения</p>
-                <p class="reviews__slider-card-name">Some name</p>
+                <div class="pagination__item active">
+                    1
                 </div>
-
-                <div class="reviews__slider-card">
-                <p class="reviews__slider-card-date">03.03.2033</p>
-                <p class="reviews__slider-card-title">Title</p>
-                <p class="reviews__slider-card-text"> предоставляем подробную информацию о нашей политике
-                    безопасности, включая нашу систему проверки личности клиентов и мониторинга транзакций для
-                    предотвращения</p>
-                <p class="reviews__slider-card-name">Some name</p>
+                <div class="pagination__item">
+                    2
                 </div>
-            </div>
-
+                <div class="pagination__item">
+                    3
+                </div>
+                <div class="pagination__item pagination__next">
+                    <img src="/comcash/img/icons/next.svg" alt="next"/>
+                </div>
+                </div>
             </div>
 
         </div>

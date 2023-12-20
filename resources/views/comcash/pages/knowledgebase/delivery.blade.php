@@ -14,14 +14,17 @@
             <p class="delivery__features-title">{{__("front.page_delivery_title2")}}</p>
             <div class='delivery__features-row'>
                 <div class='delivery__features-item'>
+                    <div class="delivery__features-item-number">1</div>
                     <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_1_title")}}</p>
                     <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_1_content")}}</p>
                 </div>
                 <div class='delivery__features-item'>
+                    <div class="delivery__features-item-number">2</div>
                     <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_2_title")}}</p>
                     <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_2_content")}}</p>
                 </div>
                 <div class='delivery__features-item'>
+                    <div class="delivery__features-item-number">3</div>
                     <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_3_title")}}</p>
                     <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_3_content")}}</p>
                 </div>
@@ -36,23 +39,28 @@
                 <span>Профиль</span>
             </button>
             <div class='accordion__content'>
-                выгодные
-                курсы, моментальная конвертация, круглосуточный доступ!
+                <div class='accordion__text'>
+                    выгодные
+                    курсы, моментальная конвертация, круглосуточный доступ!
+                </div>
+
             </div>
 
-            <button class='accordion__button'>
-                <span>Тарифы</span> </button>
+            <!-- <button class='accordion__button'>
+                <span>Тарифы</span>
+            </button>
             <div class='accordion__content'>
-                Одной из наиболее востребованных услуг нашего сервиса является обмен цифровой валюты на фиатные наличные. В
-                любой точке мира и в любой сумме вы можете быстро и легко обменять свои криптовалюты на наличные деньги в
-                широком спектре национальных валют. Мы также готовы предложить курьерскую или офисную доставку наличных
-                средств. Важной особенностью нашего сервиса является гарантия на выдачу денег и наличие депозитов на крупных
-                форумах.
-            </div>
+                <div class='accordion__text'>
+                    Одной из наиболее востребованных услуг нашего сервиса является обмен цифровой валюты на фиатные наличные. В
+                    любой точке мира и в любой сумме вы можете быстро и легко обменять свои криптовалюты на наличные деньги в
+                    широком спектре национальных валют. Мы также готовы предложить курьерскую или офисную доставку наличных
+                    средств. Важной особенностью нашего сервиса является гарантия на выдачу денег и наличие депозитов на крупных
+                    форумах.
+                </div>
+            </div> -->
 
             <button class='accordion__button'>
                 <span>Наличные курьером</span>
-
             </button>
             <div class='accordion__content'>
 

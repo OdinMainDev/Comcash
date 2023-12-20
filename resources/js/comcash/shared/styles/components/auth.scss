@@ -1,0 +1,330 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.confirm-verification {
+
+  &__title {
+    margin-top: 30px;
+    margin-bottom: 30px !important;
+    text-align: center;
+  }
+  &__loader {
+    border: 8px solid rgb(211, 211, 211);
+    border-radius: 50%;
+    border-top: 8px solid #00503E;
+    width: 70px;
+    height: 70px;
+    animation: spin 1.6s linear infinite;
+    margin-bottom: 30px;
+    @media (max-width:680px) {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+
+  }
+
+  &__status {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+    @media (max-width:680px) {
+      margin: 0 auto;
+    }
+  }
+}
+
+.mfp-bg,
+.mfp-wrap {
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.mfp-ready {
+  opacity: 1;
+}
+
+.mfp-bg {
+  background: url('/comcash/img/auth-bg.svg') center no-repeat;
+  background-color: #000;
+  background-size: cover;
+
+  @media (max-width: 680px) {
+    background: linear-gradient(to bottom, #2f2f3d, #000000);
+  }
+}
+
+.auth {
+  position: relative;
+  max-width: 795px;
+  margin: 0 auto;
+  padding: 100px 20px 100px;
+  min-height: 600px;
+  border-radius: 40px;
+  background: linear-gradient(to bottom, #2f2f3d, #000000) padding-box,
+    linear-gradient(to bottom, #ffffff, #000) border-box;
+  border: 1px solid transparent;
+
+  @media (max-width: 680px) {
+    min-height: 100vh;
+    padding: 24px 20px 100px;
+    background: none;
+    border: none;
+    border-radius: 0;
+  }
+
+  &__input {
+    margin: auto;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .mfp-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #ffffff;
+  }
+
+  &__container {
+    margin: 0 auto;
+    max-width: 530px;
+  }
+
+  &__content {
+    display: none;
+
+    &.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @media (max-width: 680px) {
+        align-items: flex-start;
+        min-height: 100vw;
+      }
+    }
+  }
+
+  &__logo {
+    display: block;
+    margin: 0 auto 40px;
+    width: 154px;
+    height: 50px;
+
+    @media (max-width: 680px) {
+      margin: 0 0 16px 0;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+
+    @media (max-width: 680px) {
+      font-size: 20px;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 26px;
+    font-size: 14px;
+
+    a {
+      color: var(--color-accent);
+      transition: all 0.5s ease;
+
+      &:hover {
+        filter: brightness(1.5);
+      }
+    }
+  }
+
+
+  .input-password {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__btn {
+    margin: 0 auto;
+  }
+
+  &__forgot {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+    &:hover {
+      font-weight: 900;
+    }
+
+    @media (max-width: 680px) {
+      font-size: 14px;
+      margin-bottom: auto;
+    }
+  }
+
+  &__signin .auth__subtitle,
+  &__signup .auth__subtitle {
+    @media (max-width: 680px) {
+      order: 1;
+      margin: 18px auto 0;
+    }
+  }
+
+  .signup-text {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+
+    a {
+      color: var(--color-accent);
+      transition: all 0.5s ease;
+
+      &:hover {
+        filter: brightness(1.5);
+      }
+    }
+  }
+
+  .verification-sent,
+  .email-recover {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 80px;
+      height: 80px;
+      top: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-size: cover;
+    }
+
+    .auth__subtitle {
+      margin-bottom: 200px;
+    }
+
+    @media (max-width: 680px) {
+      .auth__title {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .verification-sent {
+    &::after {
+      background-image: url('/comcash/img/verification-sent.svg');
+    }
+  }
+
+  .email-recover {
+    &::after {
+      background-image: url('/comcash/img/pw-recovered.svg');
+    }
+  }
+}
+
+.email-verified {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/comcash/img/bg-gradient.svg') no-repeat;
+  background-size: cover;
+
+  &__container {
+    margin: 0 auto;
+    max-width: 600px;
+    min-height: 100vh;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--color-accent);
+  }
+
+  &__subtitle {
+    margin-bottom: 40px;
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  &__text {
+    margin-bottom: 30px;
+  }
+}
+
+.not-found {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/comcash/img/bg-gradient.svg') no-repeat;
+  background-size: cover;
+
+  &__container {
+    margin: 0 auto;
+    max-width: 600px;
+    min-height: 100vh;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    font-size: 86px;
+    font-weight: 900;
+    color: var(--color-accent);
+  }
+
+  &__subtitle {
+    margin-bottom: 40px;
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  &__text {
+    margin-bottom: 30px;
+  }
+}
+
+
+.kyc {
+    &__input {
+        margin-bottom: 30px;
+    }
+
+    &__button {
+        margin-top: 100px;
+    }
+
+}

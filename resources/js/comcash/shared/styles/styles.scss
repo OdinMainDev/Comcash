@@ -1,0 +1,563 @@
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+
+.input {
+  position: relative;
+
+  background: #3a3a54;
+  border-radius: 80px;
+  width: 100%;
+  padding: 8px 40px 8px 28px;
+  outline: none;
+  border: none;
+  color: #ffffff;
+
+  &::placeholder {
+    color: #9d9da9;
+    font-size: 14px;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+
+  &.input--error {
+    background-color: #643a42;
+    animation: shake 1s;
+  }
+
+  &__warning {
+  }
+}
+
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+  user-select: none;
+}
+
+.input--large {
+  min-height: 60px;
+  padding: 16px 20px 14px;
+  background: linear-gradient(to bottom, #464652, #464652) padding-box,
+    linear-gradient(to bottom, #c5c5c7, transparent) border-box;
+  border: 1px solid transparent;
+
+  @media (max-width: 1100px) {
+    background: linear-gradient(to bottom, #2d2d2d, #2d2d2d) padding-box,
+      linear-gradient(to bottom, #c5c5c7, transparent) border-box;
+  }
+}
+
+.error {
+  position: relative;
+  align-self: flex-start;
+  margin-top: -16px;
+  margin-bottom: 8px;
+  margin-left: 6%;
+  padding: 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #a43549;
+}
+
+.input-password {
+  position: relative;
+  width: 100%;
+
+  &__eye {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    background: url('/comcash/img/icons/eye.svg') no-repeat;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+
+    &.input-password__eye--close {
+      background: url('/comcash/img/icons/eye-open.svg') no-repeat;
+    }
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+
+    @media (max-width: 680px) {
+      right: 4%;
+    }
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  height: 42px;
+  text-align: center;
+  padding: 0 10px;
+  background-color: var(--color-accent);
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 40px;
+  color: #fff;
+
+  &--round-80 {
+    border-radius: 80px;
+  }
+
+  &--auto {
+    width: 100%;
+  }
+
+  &--dark {
+    background-color: #323232;
+  }
+
+  &:hover {
+    background-color: var(--color-accent-light);
+    transition: all 0.3s;
+  }
+}
+
+// Select styles
+.select {
+  position: relative;
+  border-radius: 40px;
+  width: 240px;
+  background: linear-gradient(to bottom, #2a2a2a, #171717) padding-box,
+    linear-gradient(to bottom, #5d5d5d, #000) border-box;
+  border: 1px solid transparent;
+
+  &__container {
+    position: absolute;
+    z-index: 100;
+    background: #2a2a2a;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+    overflow: hidden;
+    margin-top: 40px;
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 22px;
+  }
+
+  &__option,
+  &__current {
+    display: flex;
+    z-index: 2;
+    align-items: center;
+    border-radius: 40px;
+    background: #2a2a2a;
+    color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__option {
+    margin-bottom: 10px;
+    padding: 12px 24px;
+
+    input {
+      display: none;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+    }
+
+    &.selected,
+    &:hover {
+      background: #3b3b3b;
+    }
+  }
+
+  &__current {
+    height: 40px;
+    min-height: 40px;
+    padding: 0 36px 0 16px;
+  }
+
+  &__current::after {
+    content: '';
+    position: absolute;
+    height: 6px;
+    width: 10px;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url('/comcash/img/icons/arrow.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.4s;
+  }
+
+  &.active {
+    .select__container {
+      max-height: 240px;
+      opacity: 1;
+      overflow-y: scroll;
+    }
+
+    .select__current,
+    .select__current::before {
+      border-radius: 22px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .select__current::after {
+      transform: rotateX(180deg);
+      top: 46%;
+    }
+  }
+}
+
+// select2 styles
+.select2-dropdown {
+  background: #2a2a2a;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+  border-color: transparent;
+  box-shadow: -2px 7px 6px -8px #fff;
+  overflow: hidden;
+}
+
+.select2-search {
+  position: relative;
+  padding: 0 10px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 11px;
+    left: 18px;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: url('/comcash/img/icons/nav/faq.svg') no-repeat;
+    background-size: contain;
+  }
+}
+
+.select2-search__field {
+  padding: 8px 8px 8px 26px !important;
+  width: 100%;
+  background-color: #1b1b1b;
+  border: none !important;
+  border-radius: 40px;
+  color: #ffffff;
+}
+
+.select2-results {
+  padding: 10px 16px 0;
+}
+
+.select2-results__option {
+  position: relative;
+  margin-bottom: 10px;
+  padding: 12px 24px;
+  border-radius: 40px;
+  background: #2a2a2a;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+
+  span {
+    padding-left: 26px;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    display: block;
+    width: 20px;
+    height: 18px;
+  }
+}
+
+.select2-results__option--highlighted,
+.select2-results__option--selected {
+  background: #3b3b3b !important;
+}
+// ---------------------------
+
+// accordion
+.accordion {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  background: #242424;
+  &__text {
+    padding: 20px;
+  }
+
+  &--secondary {
+    background: none;
+    padding: 20px 0;
+
+    .accordion__content {
+      margin-bottom: 0;
+      padding: 0;
+      color: #ffffff;
+    }
+
+    .accordion__button {
+      background: none;
+      padding: 16px 20px 16px 8px;
+      border-radius: 0;
+      border-bottom: 1px solid #444544;
+      font-weight: 900;
+      color: #ffffff;
+
+      &::before {
+        display: none;
+      }
+
+      &:hover {
+        background: #444544;
+      }
+
+      &:after {
+        content: '+';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        height: 24px;
+        background: none;
+      }
+
+      &.active {
+        background: #444544;
+
+        &:after {
+          top: 50%;
+          content: '-';
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-accordion);
+    color: #d5d5d7;
+    cursor: pointer;
+    padding: 8px 20px 8px 8px;
+    width: 100%;
+    border-radius: 8px;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.4s ease-out;
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 6px;
+      width: 10px;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: url('/comcash/img/icons/arrow.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: all 0.4s;
+    }
+
+    &.active {
+      background: #2d2f39;
+
+      &::after {
+        transform: rotateX(180deg);
+        top: 46%;
+      }
+    }
+  }
+
+  &__content {
+    padding: 10px 20px 0;
+    margin-bottom: 10px;
+    color: #aaa;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+}
+// ------------------
+
+// checkbox
+.checkbox {
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 32px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    transition: 0.5s all;
+  }
+
+  label:after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.5s all;
+  }
+
+  input:checked + label {
+    background: #009c74;
+  }
+
+  input:checked + label:after {
+    left: calc(100% - 3px);
+    transform: translateX(-100%);
+  }
+
+  label:active:after {
+    width: 46px;
+  }
+}
+// ------------------
+
+// textarea
+.textarea {
+  padding: 20px;
+  width: 100%;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #464652, #464652) padding-box,
+    linear-gradient(to bottom, #c5c5c7, transparent) border-box;
+  border: 1px solid transparent;
+  resize: none;
+  color: #fff;
+  margin-bottom: 14px;
+
+  &.input--error {
+    background-color: #643a42;
+    animation: shake 1s;
+  }
+
+  @media (max-width: 1100px) {
+    background: linear-gradient(to bottom, #2d2d2d, #2d2d2d) padding-box,
+      linear-gradient(to bottom, #c5c5c7, transparent) border-box;
+  }
+
+  @media (max-width: 680px) {
+    border-radius: 14px;
+  }
+}
+// ------------------
+
+// slick slider styles
+.slick-slide {
+  margin-right: 10px;
+  padding: 40px 42px;
+  border-radius: 40px;
+  border: 1px solid transparent;
+  background: linear-gradient(to bottom, #272727, #000000) padding-box,
+    linear-gradient(to bottom, #5d5d5d, #000) border-box;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+
+  li {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #787878;
+    border-radius: 50%;
+    margin: 0 10px;
+    cursor: pointer;
+
+    &.slick-active {
+      background-color: var(--color-accent);
+    }
+  }
+
+  button {
+    visibility: hidden;
+  }
+}
+
+.slick-arrow {
+  position: absolute;
+  bottom: -28px;
+  display: block;
+  padding: 10px;
+  background: url(/comcash/img/icons/arrow.svg) no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+  height: 10px;
+  width: 16px;
+  cursor: pointer;
+  text-indent: 100vw;
+  transition: all 0.4s ease;
+
+  &:hover {
+    filter: brightness(1.5);
+  }
+}
+
+.slick-prev {
+  left: 0;
+  transform: rotate(90deg);
+}
+
+.slick-next {
+  right: 0;
+  transform: rotate(-90deg);
+}
+// ------------------

@@ -1,10 +1,11 @@
 <header class='info-header'>
 	<div class='info-header__container'>
-		<a href='#'
-			class='info-header__logo'>
-		<img src='/comcash/img/logo.png'
-			alt='Comcash' />
-		</a>
+        <a href='#' class='header__logo header__default'>
+            <img src='/comcash/img/logo.svg' alt='logo' />
+        </a>
+        <a href='#' class='header__logo header__christmas'>
+            <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
+        </a>
 		<div class='info-header__nav-mobile'>
 			<div class='accordion'>
 				<button class='accordion__button'>
@@ -20,16 +21,17 @@
 					<a href='#'>Безопасность</a>
 				</div>
 				<button class='accordion__button'>
-				<img src="/comcash/img/icons/nav/tarifs.svg"
-					alt="" />
-				<span>Тарифы</span>
+                    <img src="/comcash/img/icons/nav/tarifs.svg"
+                        alt="" />
+                    <span>Тарифы</span>
 				</button>
 				<div class='accordion__content'>
 				</div>
 				<button class='accordion__button'>
-				<img src="/comcash/img/icons/nav/wallet.svg"
-					alt="">
-				<span>Наличные курьером</span> </button>
+                    <img src="/comcash/img/icons/nav/wallet.svg"
+                        alt="">
+                    <span>Наличные курьером</span>
+                </button>
 				<div class='accordion__content'>
 				</div>
 				<button class='accordion__button'>
@@ -65,8 +67,8 @@
 			</div>
 		</div>
 		<button class='info-header__burger button'>
-		<img src='/comcash/img/icons/burger.png' />
-		<img src='/comcash/img/icons/burger-cross.png' />
+		<img src='/comcash/img/icons/burger.svg' />
+		<img src='/comcash/img/icons/burger-cross.svg' />
 		</button>
 	</div>
 </header>

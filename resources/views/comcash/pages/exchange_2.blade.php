@@ -3,14 +3,30 @@
 @extends('comcash.layout.main')
 
 @section('content')
-
 	@if($exchange->status >= 10)
-		<div class="progress">
-			<div class="progress__container">
-				<p class="progress__timeline-item  ">Заявка с ошибкой ( страницу нужно сделать (ошибка либо при получении платежных данных либо при выплате))</p>
-			</div>
-		</div>
-	@else 
+        <div class="progress">
+            <div class="progress__container">
+
+            <p class="progress__title-mobile">Ошибка</p>
+
+            <p class="progress__title">
+                К сожалению возникла кретическая ошибка
+            </p>
+
+            <div class="progress__box">
+                <div class="progress__box-right">
+                    <div class="progress__error">
+                        <img src="/comcash/img/icons/sad-face.svg" class="progress__error-img" alt="sad-face"/>
+                        <div class="progress__error-text"/>
+                            Error!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+	@else
 		@if($exchange->currencyFrom->tag == "fiat")
 			@if(isset($exchange->data['merchant_from_data']['url']))
 				<?php $show = true; ?>
@@ -24,11 +40,22 @@
 
 	@if(!$show)
 		@if($exchange->status < 10)
-			<div class="progress">
-				<div class="progress__container">
-					<p class="progress__timeline-item   active" id="needRefreshPageId">Подготовка обмена</p>
-				</div>
-			</div>
+            <div class="progress">
+                <div class="progress__container">
+
+                <div class="progress__box">
+                    <div class="progress__box-right">
+                        <div class="progress__preparation">
+                            <div class="progress__preparation-text"/>
+                                Подготовка обмена!
+                            </div>
+                            <div class="progress__preparation-img"></div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
 		@endif
 	@else
 		<div class="progress" id="needCheckStatusExchange">
@@ -48,7 +75,7 @@
 								<span>{{$exchange->data['amount_data']['currency_from_name']}}</span>
 							</div>
 							<div class="progress__copy">
-								<svg fill="#FFF" xmlns="http://www.w3.org/2000/svg" 
+								<svg fill="#FFF" xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 330 330">
 									<path d="M35,270h45v45c0,8.284,6.716,15,15,15h200c8.284,0,15-6.716,15-15V75c0-8.284-6.716-15-15-15h-45V15
 										c0-8.284-6.716-15-15-15H35c-8.284,0-15,6.716-15,15v240C20,263.284,26.716,270,35,270z M280,300H110V90h170V300z M50,30h170v30H95
@@ -68,7 +95,7 @@
 									<span class="value">{{$exchange->data['merchant_from_data']['address']}}</span>
 								</div>
 								<div class="progress__copy">
-									<svg fill="#FFF" xmlns="http://www.w3.org/2000/svg" 
+									<svg fill="#FFF" xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 330 330">
 										<path d="M35,270h45v45c0,8.284,6.716,15,15,15h200c8.284,0,15-6.716,15-15V75c0-8.284-6.716-15-15-15h-45V15
 											c0-8.284-6.716-15-15-15H35c-8.284,0-15,6.716-15,15v240C20,263.284,26.716,270,35,270z M280,300H110V90h170V300z M50,30h170v30H95

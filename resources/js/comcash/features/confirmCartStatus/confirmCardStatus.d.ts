@@ -1,0 +1,1 @@
+export function confirmCardStatus (lang: string, id: number): void;

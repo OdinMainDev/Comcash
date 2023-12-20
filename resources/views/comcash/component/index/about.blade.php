@@ -6,6 +6,7 @@
         <div class='about__body'>
             <div class='about__col'>
                 <div class='about__item about__item-1'>
+                    <div class="about__item-christmas-toy about__item-christmas-toy_left"></div>
                     <p class='about__item-title'>{{__("front.advantage_1_title")}}</p>
                     <p class='about__item-text'>{{__("front.advantage_1_content")}}</p>
                 </div>
@@ -26,6 +27,7 @@
                     <p class='about__item-text'>{{__("front.advantage_4_content")}}</p>
                 </div>
                 <div class='about__item about__item-4'>
+                    <div class="about__item-christmas-toy about__item-christmas-toy_right"></div>
                     <p class='about__item-title'>{{__("front.advantage_5_title")}}</p>
                     <p class='about__item-text'>{{__("front.advantage_5_content")}}</p>
                 </div>

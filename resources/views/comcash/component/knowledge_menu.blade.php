@@ -1,8 +1,12 @@
 <div class='sidebar'>
-    <a href='/' class='sidebar__logo'>
-        <img src='/comcash/img/logo.png' alt='Comcash' />
-    </a>
-
+    <div class="sidebar__header">
+        <a href='#' class='header__logo header__default'>
+        <img src='/comcash/img/logo.svg' alt='logo' />
+        </a>
+        <a href='#' class='header__logo header__christmas'>
+        <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
+        </a>
+    </div>
     @auth
         <button class='sidebar__button'>
             <img src='/comcash/img/icons/nav/profile.svg' />
@@ -18,7 +22,7 @@
     @endauth
     <a href='{{route("comcashPage", ["tariffs"])}}' class='sidebar__button accordion__button_custom'>
         <img src="/comcash/img/icons/nav/tarifs.svg" alt="Comcash - {{__("front.TariffsMenu")}}" />
-        <span>{{__("front.TariffsMenu")}}</span> 
+        <span>{{__("front.TariffsMenu")}}</span>
     </a>
     <div class='sidebar__content'></div>
 

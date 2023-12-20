@@ -5,7 +5,7 @@
         <div class="safety__container">
             @include("comcash.component.profile_menu")
             <form class="safety__content" action="{{route("myprofilePasswordPost")}}">
-                <div class="input-box">
+                <div class="safety__input-box">
                     <div class='label'>
                         <span>{{__("front.oldpassword_placeholder")}}</span>
                     </div>
@@ -14,7 +14,7 @@
                         <a class='input-password__eye '></a>
                     </div>
                 </div>
-                <div class="input-box">
+                <div class="safety__input-box">
                     <div class='label'>
                         <span>{{__("front.password_placeholder")}}</span>
                     </div>
@@ -23,7 +23,7 @@
                         <a class='input-password__eye '></a>
                     </div>
                 </div>
-                <div class="input-box">
+                <div class="safety__input-box">
                     <div class='label'>
                         <span>{{__("front.repassword_placeholder")}}</span>
                     </div>
@@ -32,7 +32,7 @@
                         <a class='input-password__eye '></a>
                     </div>
                 </div>
-                
+
                 <button type="submit" class='button safety__button'>{{__("front.save")}}</button>
             </form>
         </div>

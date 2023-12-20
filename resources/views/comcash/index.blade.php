@@ -6,7 +6,7 @@
 	@include("comcash.component.index.transactions")
 	@include("comcash.component.index.feedback")
 	@include("comcash.component.index.courier")
-	@include("comcash.component.index.news")	
+	@include("comcash.component.index.news")
 @endsection
 
 

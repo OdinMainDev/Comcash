@@ -1,7 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 import * as Toastr from 'toastr';
 import $ from 'jquery';
-import FingerprintJS from  "@fingerprintjs/fingerprintjs";
+import FingerprintJS from  '@fingerprintjs/fingerprintjs';
+import { confirmCardStatus } from '../confirmCartStatus/confirmCardStatus';
+import { setForm } from '@/shared/scripts/modal';
 
 (() => {
 
@@ -20,24 +22,29 @@ import FingerprintJS from  "@fingerprintjs/fingerprintjs";
                 el.disabled = true;
                 el.innerHTML = `<div class="btn-loader"><div class="loader-bar"></div></div>${prevInner}`; 
             });
-            var elems = element.querySelectorAll(".input--error");
-            for(var i = 0; i < elems.length; i++){
-                elems[i].classList.remove("input--error");
+            let elems = element.querySelectorAll('.input--error');
+            for(let i = 0; i < elems.length; i++){
+                elems[i].classList.remove('input--error');
             }
-            elems = element.querySelectorAll("p.error");
-            for(var i = 0; i < elems.length; i++){
-                elems[i].remove();
+            elems = element.querySelectorAll('p.error');
+            for(let j = 0; j < elems.length; j++){
+                elems[j].remove();
             }
             const fpPromise = FingerprintJS.load()
             fpPromise
             .then(fp => fp.get())
             .then(result => {
-                formData.append("fid", result.visitorId)
+                formData.append('fid', result.visitorId)
                 axios.post(route, formData, {
                     headers: {
-                        "Content-Type": "multipart/form-data",
+                        'Content-Type': 'multipart/form-data',
                     },
                 }).then(e => {
+
+                    if(route.includes('/exchange/kyc')){
+                        confirmCardStatus('ru', window.kycId);
+                        // return;
+                    }
                     if(!e.data.success){
                         Toastr.error(e.data.title, e.data.message)
                     }else{
@@ -60,17 +67,17 @@ import FingerprintJS from  "@fingerprintjs/fingerprintjs";
                         return;
                     }
                     if(e.data.data?.open_modal){
-                        if(e.data.data?.open_modal == "verification-sent"){
-                            $(".mfp-close").remove();
+                        if(e.data.data?.open_modal == 'verification-sent'){
+                            $('.mfp-close').remove();
                         }
 
-                        if(e.data.data?.open_modal == "recover-password"){
-                            document.getElementById("recover-password").querySelector("[name='hash']").value = e.data.data.hash;
+                        if(e.data.data?.open_modal == 'recover-password'){
+                            document.getElementById('recover-password').querySelector("[name='hash']").value = e.data.data.hash;
                         }
-                        window.setForm(e.data.data?.open_modal);
+                        setForm(e.data.data?.open_modal);
                         return;
                     }
-                    if(redirect != "false" && redirect != undefined){
+                    if(redirect != 'false' && redirect != undefined){
                         setTimeout(() => {
                             window.location.href = redirect;
                         }, 100)
@@ -82,32 +89,32 @@ import FingerprintJS from  "@fingerprintjs/fingerprintjs";
                         el.disabled = false
                     });
                     if(!error.response){
-                        Toastr.error("undefined error...")
+                        Toastr.error('undefined error...')
                         return;
                     }
                     const response = error.response.data
-                    var toastrErrors = [];
-                    if(typeof(response.errors) === "object"){
-                        if(response?.errors["kyc_required"]?.length == 1){
-                            console.log("OPEN MODAL", $('#open-modal-btn-hidden'));
-                            window.setForm("kyc-verification");
+                    let toastrErrors = [];
+                    if(typeof(response.errors) === 'object'){
+                        if(response?.errors['kyc_required']?.length == 1){
+                            console.log('OPEN MODAL', $('#open-modal-btn-hidden'));
+                            setForm('kyc-verification');
                             $('.magnificPopUpClassId')[0].click();
-                            window.setForm("kyc-verification");
-                            window.kycId = response.errors["kyc_required"][0];
-                            document.getElementById("kyc_id").value = window.kycId;
+                            setForm('kyc-verification');
+                            window.kycId = response.errors['kyc_required'][0];
+                            document.getElementById('kyc_id').value = window.kycId;
                             return;
                         } 
                         for (const input in response.errors) {
                             for(const index in response.errors[input]){
-                                var elem = element.querySelectorAll("[name='"+input+"']");
+                                let elem = element.querySelectorAll("[name='"+input+"']");
                                 if(!toastrErrors.includes(response.errors[input][index])){
                                     Toastr.error(response.errors[input][index]);
                                     toastrErrors.push(response.errors[input][index]);
                                 }
                                 if(elem.length){
                                     elem = elem[0]
-                                    $(elem).addClass("input--error");
-                                    if(input == "password" || input == "oldpassword" || input == "repassword"){
+                                    $(elem).addClass('input--error');
+                                    if(input == 'password' || input == 'oldpassword' || input == 'repassword'){
                                         $(elem).parent().after(`<p class="error">${response.errors[input][index]}</p>`);
                                         continue;
                                     }
@@ -117,7 +124,7 @@ import FingerprintJS from  "@fingerprintjs/fingerprintjs";
                             }
                         }
                     }else{
-                        Toastr.error("undefined error...")
+                        Toastr.error('undefined error...')
                     }
                 })
             })
