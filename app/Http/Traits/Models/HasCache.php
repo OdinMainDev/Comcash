@@ -137,6 +137,16 @@ trait HasCache {
         });
     }
 
+
+    public function getCacheNewsItem($id){
+        return Cache::remember("news-public-item-".$id, 600, function() use($id){
+            return Blog::where("status", true)
+                ->orderBy("id", "DESC")
+                ->where("id", $id)
+                ->first();
+        });
+    }
+
     public function getCacheExportJson(){
         return Cache::remember("export-json-public", 3600, function(){
             $currencies = $this->getCacheCurrencies();

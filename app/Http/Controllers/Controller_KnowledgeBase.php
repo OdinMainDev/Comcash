@@ -66,4 +66,17 @@ class Controller_KnowledgeBase extends Controller{
         sendTelegramNotification($text);
         return $this->responseSuccess(__("common.support message success"));
     }
+
+    public function news_item(Request $request, $language, $id){
+        if(!is_numeric($id)){
+            return abort(404);
+        }
+
+        $newsItem = $this->getCacheNewsItem($id);
+        if(!$newsItem){
+            return abort(404);
+        }
+
+        return view($this->theme.".pages.knowledgebase.news_item")->with("news", $newsItem);
+    }
 }

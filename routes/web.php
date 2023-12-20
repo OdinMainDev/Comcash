@@ -64,6 +64,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::get('/exchange/id/{hash}', [Exchange::class, "view_2"])->name("exchgangePage2");
 
     Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
+    Route::get('/comcash-knowledgebase/news/{id}', [KnowledgeBase::class, "news_item"])->name("comcashNewsItem");
     Route::post('/comcash-knowledgebase/support', [KnowledgeBase::class, "support"])->name("comcashSupport");
     Route::post('/exchange/kyc', [Kyc::class, "process"])->name("exchgangeKyc");
     Route::get('/exchange/kyc/status/{id}', [Kyc::class, "status"]);
