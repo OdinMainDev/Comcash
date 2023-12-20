@@ -110,7 +110,7 @@
     @media (max-width: 1360px) {
       width: 100%;
       padding: 40px;
-      max-width: 600px;
+      max-width: 90%;
     }
 
     @media (max-width: 680px) {
@@ -198,6 +198,7 @@
       margin-left: 0;
       width: 100%;
       max-width: 600px;
+      height: auto;
     }
 
     @media (max-width: 680px) {
@@ -550,6 +551,12 @@
     background: linear-gradient(to bottom, #2e2e2e, #000000);
     border-radius: 40px;
 
+    &.christmas {
+        background: url(/comcash/img/new_year_img/snow.svg) center center/cover no-repeat,
+        linear-gradient(to bottom, #2e2e2e, #000000);
+    }
+
+
     &-christmas-toy {
       display: none;
       position: absolute;
@@ -807,6 +814,37 @@
     background: linear-gradient(to bottom, #272727, #000000) padding-box,
       linear-gradient(to bottom, #5d5d5d, #000) border-box;
 
+    &.christmas {
+        position: relative;
+        @media (max-width: 680px) {
+          &::before {
+            content: '';
+            height: 100px;
+            display: block;
+            width: 100px;
+            right: 35px;
+            bottom: 10px;
+            background: url('/comcash/img/new_year_img/candyCane.png') no-repeat;
+            background-size: contain;
+            position: absolute;
+          }
+  
+          // &::after {
+          //   content: '';
+          //   height: 100px;
+          //   display: block;
+          //   width: 100px;
+          //   left: 0px;
+          //   top: 10px;
+          //   opacity: 0.8;
+          //   transform: rotate(-60deg) scale(0.5);
+          //   background: url('/comcash/img/new_year_img/candyCane.png') no-repeat;
+          //   background-size: contain;
+          //   position: absolute;
+          // }
+        }
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -878,6 +916,8 @@
 
     @media (max-width: 680px) {
       display: block;
+      position: relative;
+      z-index: 1;
       width: 100%;
       margin: 0 auto 20px;
     }
@@ -1007,7 +1047,7 @@
       background: url('/comcash/img/new_year_img/snow_car.svg')  no-repeat;
       background-size: cover;
       @media (max-width: 680px) {
-        background: none;
+        background: url(/comcash/img/new_year_img/snow.svg) top center/cover no-repeat;
       }
     }
 
@@ -1052,6 +1092,17 @@
         height: 130px;
         background: url('/comcash/img/double-leaves.svg') no-repeat;
         background-size: contain;
+      }
+
+      &-snowdrift {
+        position: absolute;
+        display: none;
+        width: 100%;
+        top: -7px;
+        bottom: 0;
+        right: 0;
+        pointer-events: none;
+        background: url(/comcash/img/new_year_img/snowdrift.svg) center top/contain no-repeat;
       }
     }
   }
@@ -1168,8 +1219,8 @@
       linear-gradient(to bottom, #ffffff, #000) border-box;
     border: 1px solid transparent;
     &.сhristmas {
-        background: url(/comcash/img/new_year_img/balls.png) right 0 no-repeat, 
-                linear-gradient(to bottom, #333333, #050605) padding-box, 
+        background: url(/comcash/img/new_year_img/balls.png) right 0 no-repeat,
+                linear-gradient(to bottom, #333333, #050605) padding-box,
                 linear-gradient(to bottom, #ffffff, #000) border-box;
     }
 

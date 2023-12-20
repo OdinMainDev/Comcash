@@ -6,10 +6,12 @@ const welcome = $('.welcome');
 const toys = $('.about__item-christmas-toy');
 const courierContainer = $('.courier__container');
 const newCard = $('.news__card');
-const transactionsTable = $('.transactions__container');
+const transactionsContainer = $('.transactions__container');
 const headerLogoDefault = $('.header__default');
 const headerChristmas= $('.header__christmas');
-
+const aboutChristmas = $('.about__item');
+const courierSnowdrift = $('.courier__box-snowdrift');
+const transactionsTable = $('.transactions__table');
 
 if (isChristmas) {
   toys.show();
@@ -17,7 +19,10 @@ if (isChristmas) {
   header.addClass('сhristmas');
   welcome.addClass('сhristmas');
   newCard.addClass('сhristmas');
-  transactionsTable.addClass('сhristmas');
+  transactionsContainer.addClass('сhristmas');
+  aboutChristmas.addClass('christmas')
+  transactionsTable.addClass('christmas')
   headerLogoDefault.hide();
   headerChristmas.show();
+  courierSnowdrift.show();
 }
