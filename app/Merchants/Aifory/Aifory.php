@@ -31,6 +31,7 @@ class Aifory {
             "currencyID" => 3,
             "typeID" => 4,
             "clientOrderID" => "".$this->exchange->id,
+            "TTL" => 30 * 60,
             "webhookURL" => route("exchgangePage2", ["locale" => $this->exchange->data['device_data']['language'], "hash" => $this->exchange->hash]),
             "extra" => [
                 "comment" => "payin for comcash engine: ".$this->exchange->id,
@@ -127,7 +128,7 @@ class Aifory {
         $json_data = json_encode($json_data);
 
         $request = $this->send_request($json_data, "/payout/process");
-        if($request['status'] == "Accepted"){
+        if($request['status'] == "accepted"){
             $request['typeMerchSys'] = "aifory";
             return $request;
         }

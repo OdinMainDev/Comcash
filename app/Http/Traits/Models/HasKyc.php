@@ -15,6 +15,7 @@ trait HasKyc {
         }
         $model = KycCheck::query();
         if($credential && config("app.kyc_credential", true)){
+            $credential = mb_strtoupper($credential);
             $model = $model->where("credential", $credential);
         }
         
@@ -37,6 +38,7 @@ trait HasKyc {
         }
         $model = new KycCheck;
         if($credential && config("app.kyc_credential", true)){
+            $credential = mb_strtoupper($credential);
             $model->credential = $credential;
         }
         

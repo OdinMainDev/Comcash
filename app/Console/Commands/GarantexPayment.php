@@ -65,7 +65,7 @@ class GarantexPayment extends Command
                     if($total_amount == 0) {
                         continue;
                     }
-
+                    
                     if($total_amount > 0 && $total_amount < $exchange->data['amount_data']['amount_send']){
                         $exchange = $this->recalculateExchange($exchange, $total_amount);
                     }else{
