@@ -7,7 +7,9 @@
 		<div class="card">
 			<div class="card-body">
                 <h5 class="mb-2">{{__("common.viewExchange")}}</h5>
-                
+                @if($model->status == 15)
+                    <a href="{{route("adminExchangeRewithdraw", [$model->id])}}" class="btn btn-primary me-2">Повторить выплату</a>
+                @endif
 				<form class="forms-sample" action="{{route("adminCurrencyProcess")}}">
                     @csrf
                     @if($model->id)
