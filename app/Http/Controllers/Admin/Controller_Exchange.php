@@ -25,6 +25,15 @@ class Controller_Exchange extends Controller{
         return view("admin.pages.exchange.item")->with("model", $exchange);
     }
 
+    public function process(Request $request) {
+        $request->validate([
+            "id" => "required|integer",
+            
+        ]);
+        
+        return view("admin.pages.exchange.item");
+    }
+
     public function rewithdraw($lang, $id){
         if(!is_numeric($id))
             return abort(404);

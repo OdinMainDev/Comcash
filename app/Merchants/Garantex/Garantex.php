@@ -218,7 +218,7 @@ class Garantex {
         }
 
         if($side == "buy"){
-            switch($to_currency){
+            switch($currency){
                 case "USDT":
                     $amount += 7;
                 break;
