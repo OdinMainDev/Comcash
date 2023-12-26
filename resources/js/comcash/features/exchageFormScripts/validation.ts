@@ -27,7 +27,7 @@ export const initializeValidationModal = (selectedCurrencyYouSend: ICurrency, se
   }
 
 
-  validationBackButton.on('click', function(event) {
+  validationBackButton.on('click', function(event: { preventDefault: () => void; }) {
     event.preventDefault();
     exchangeForm.find('.exchange__main-form').removeClass('hide');
     exchangeForm.find('.validation').addClass('hide')

@@ -72,6 +72,7 @@
 						<div class="progress__flex">
 							<div class="progress__box-text">
 								<span class="value">{{$exchange->data['amount_data']['amount_send']}}</span>
+								&nbsp;
 								<span>{{$exchange->data['amount_data']['currency_from_name']}}</span>
 							</div>
 							<div class="progress__copy">
