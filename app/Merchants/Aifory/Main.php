@@ -39,7 +39,8 @@ class Main {
         $request->validate($base);
         $card = $request->from_card ? $request->from_card : $request->to_card;
         $cred = $request->first_name." ".$request->second_name." ".$request->last_name;
-        $this->checkForKyc($cred, $card);
+        if(!$is_withdraw)
+            $this->checkForKyc($cred, $card);
     }
 
     function getAddress($merchant, $exchange, $currency){
