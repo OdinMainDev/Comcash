@@ -28,10 +28,22 @@ class Controller_Exchange extends Controller{
     public function process(Request $request) {
         $request->validate([
             "id" => "required|integer",
-            
         ]);
-        
-        return view("admin.pages.exchange.item");
+
+        $exchange = Exchange::where("id", $request->id)->first();
+        if(!$exchange)
+            return abort(404);
+
+        $data = $exchange->data;
+        if($request->to_address){
+            @$data['request_data']['to_address'] = $request->to_address;
+        }
+        if($request->to_card){
+            @$data['request_data']['to_card'] = $request->to_card;
+        }
+        $exchange->data = $data;
+        $exchange->save();
+        return $this->responseSuccess();
     }
 
     public function rewithdraw($lang, $id){
