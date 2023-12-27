@@ -128,7 +128,7 @@ class Aifory {
         $json_data = json_encode($json_data);
 
         $request = $this->send_request($json_data, "/payout/process");
-        if($request['status'] == "accepted"){
+        if(str_replace(" ", "", mb_strtolower($request['status'])) == "accepted"){
             $request['typeMerchSys'] = "aifory";
             return $request;
         }

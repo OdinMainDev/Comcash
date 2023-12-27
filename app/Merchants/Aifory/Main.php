@@ -64,7 +64,7 @@ class Main {
     function makeWithdraw($merchant, $exchange){
         $obj = new Aifory($merchant, $exchange);
         $resp = $obj->make_withdraw();
-        if(@$resp['status'] != "Accepted"){
+        if(@$resp['status'] != "accepted"){
             if(!is_array($resp)){
                 $resp = [];
             }

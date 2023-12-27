@@ -47,18 +47,37 @@ class Controller_Exchange extends Controller{
     }
 
     public function rewithdraw($lang, $id){
-        if(!is_numeric($id))
-            return abort(404);
-        
-        $exchange = Exchange::where("id", $id)->first();
-        if(!$exchange || $exchange->status != 15)
-            return abort(404);
+        $exchange = $this->checkexchlocal($id);
+        if(!$exchange || $exchange->status != 15) return abort(404);
 
         $exchange->status = 3;
         $exchange->save();
         ExchangeWithdraw::dispatch($exchange->id);
-        // dd($exchange);
+        return redirect(route("adminExchangeList"));
+    }
+
+    public function checkexchlocal($id){
+        if(!is_numeric($id))
+            return false;
         
+        return Exchange::where("id", $id)->first();
+    }
+
+    public function set_withdraw($lang, $id){
+        $exchange = $this->checkexchlocal($id);
+        if(!$exchange || $exchange->status != 15) return abort(404);
+
+        $exchange->status = 4;
+        $exchange->save();
+        return redirect(route("adminExchangeList"));
+    }
+
+    public function set_withdraw_complete($lang, $id){
+        $exchange = $this->checkexchlocal($id);
+        if(!$exchange || $exchange->status != 15) return abort(404);
+
+        $exchange->status = 5;
+        $exchange->save();
         return redirect(route("adminExchangeList"));
     }
 }

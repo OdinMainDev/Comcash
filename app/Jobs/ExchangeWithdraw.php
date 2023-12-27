@@ -44,6 +44,11 @@ class ExchangeWithdraw implements ShouldQueue
         $text .= "Дата создания: ".$this->exchange->created_at."\n\n";
         if(isset($response['error']) && is_array($response['error'])){
             $text = "⚠️⚠️<b>ВЫПЛАТА НАЧАТА ОШИБКОЙ</b>⚠️⚠️\n";
+            $text .= "ID: ".$this->exchange->id."\n";
+            $text .= "Направление обмена ".$this->exchange->currencyFrom->name." -> ".$this->exchange->currencyTo->name."\n";
+            $text .= "Сумма: ". @$this->exchange->data['amount_data']['amount_send']." -> ". @$this->exchange->data['amount_data']['amount_receive']."\n";
+            $text .= "Курс обмена:". @$this->exchange->data['amount_data']['exchange_rate']."\n";
+            $text .= "Дата создания: ".$this->exchange->created_at."\n\n";
             $text .= "Код ошибки: ".@$response['error']['code']."\n";
             $text .= "Сообщение: ".@$response['error']['message']."\n";
             $text .= "⚠️⚠️<b>ДАННУЮ ЗАЯВКУ НУЖНО ЗАКРЫТЬ ВРУЧНУЮ</b>⚠️⚠️\n";
