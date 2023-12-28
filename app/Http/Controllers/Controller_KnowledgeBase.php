@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\Models\HasCache;
+use App\Models\Exchange;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -42,11 +43,21 @@ class Controller_KnowledgeBase extends Controller{
         $text .= "Имя: ".$request->name."\n";
         $text .= "Email: ".$request->email."\n";
         
-
-        if($request->exchange_id)
-            $text .= "ID обмена: ".$request->exchange_id."\n";
-
         $user = auth()->user();
+        if($request->exchange_id){
+            if($user){
+                $exchange = Exchange::where("user_id", $user->id)->where("id", $request->exchange_id)->first();
+                if($exchange){
+                    $text .= "ID обмена: ".$request->exchange_id." (Настоящий id)\n";
+                }else{
+                    $text .= "ID обмена: ".$request->exchange_id." (Внимание юзер ввел фейковый id)\n";
+                }
+            }else{
+                $text .= "ID обмена: ".$request->exchange_id." (Внимание юзер ввел (вероятно) фейковый id)\n";
+            }
+        }
+
+
         // if(!$user){
         //     $user = User::where('email', $request->email)->first();
         // }
