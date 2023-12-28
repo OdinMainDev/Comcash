@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer("position");
             $table->timestamps();
 
-            $table->index(["name", "position"]);
+            $table->index(["status", "name", "units", "position"]);
         });
     }
 

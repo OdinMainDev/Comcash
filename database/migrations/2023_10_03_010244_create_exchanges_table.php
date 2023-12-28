@@ -42,7 +42,7 @@ return new class extends Migration
             $table->json("data");
             $table->timestamps();
 
-            $table->index(["status", "direction_id", "user_id", "merchant_from", "merchant_to"]);
+            $table->index(["status", "hash", "direction_id", "user_id", "merchant_from", "merchant_to"]);
         });
     }
 

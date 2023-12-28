@@ -7,7 +7,7 @@
 		<div class="card">
 			<div class="card-body">
                 <h5 class="mb-2">{{__("common.viewExchange")}}</h5>
-                @if($model->status == 15)
+                @if(in_array($model->status, [15, 4]))
                     <a href="{{route("adminExchangeRewithdraw", [$model->id])}}" class="btn btn-primary me-2">Повторить выплату</a>
                     <a href="{{route("adminExchangeSetWithdraw", [$model->id])}}" class="btn btn-primary me-2">Установить статус выплата начата</a>
                     <a href="{{route("adminExchangeSetWithdrawComplete", [$model->id])}}" class="btn btn-primary me-2">Установить статус выплачено</a>

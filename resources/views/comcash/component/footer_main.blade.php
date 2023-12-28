@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class='footer__bottom'>
-            <p class='footer__copyright'>© 2023 COMCASH. All Rights Reserved.</p>
+            <p class='footer__copyright'>{{__("front.footercopyright")}}</p>
             <div class='footer__socials'>
 
                 <a href=''

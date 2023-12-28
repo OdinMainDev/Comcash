@@ -5,6 +5,7 @@ namespace App\Http\Traits\Models;
 use App\Models\Blog;
 use App\Models\Currency;
 use App\Models\Direction;
+use App\Models\Exchange;
 use App\Models\ExchangeRate;
 use App\Models\Feedback;
 use Illuminate\Support\Facades\Cache;
@@ -230,6 +231,20 @@ trait HasCache {
         $request = request();
         return Cache::remember("feedbacks-".$request->page, 600, function(){
             return Feedback::orderBy("id", "DESC")
+                ->paginate(10);
+        });
+    }
+
+    public function getCacheExchanges(){
+        $request = request();
+        if($request->page && !is_numeric($request->page)){
+            return abort(404);
+        }
+        if($request->page >= 10) {
+            $request->page = 10;
+        }
+        return Cache::remember("exchanges-".$request->page, 600, function(){
+            return Exchange::with("currencyFrom")->with("currencyTo")->orderBy("id", "DESC")->where("status", 5)
                 ->paginate(10);
         });
     }

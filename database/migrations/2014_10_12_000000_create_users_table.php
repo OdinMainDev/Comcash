@@ -25,6 +25,8 @@ return new class extends Migration
             $table->integer("phone_verified_at")->default(0);
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index(["email", "phone", "telegram"]);
         });
     }
 

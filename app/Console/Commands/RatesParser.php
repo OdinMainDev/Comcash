@@ -62,9 +62,6 @@ class RatesParser extends Command{
             sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.");
             return;
         }      
-        $response = $response->json();
-        ExchangeRate::truncate();
-        $inserts = [];
 
         if(@$response['Response'] == "Error"){
             sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.\n\n".json_encode($response));
@@ -84,6 +81,9 @@ class RatesParser extends Command{
                 ];
             }
         }
+        $response = $response->json();
+        ExchangeRate::truncate();
+        $inserts = [];
         ExchangeRate::insert($inserts);
         sendTelegramNotification("Курсы успешно обновлены", 4);
     }

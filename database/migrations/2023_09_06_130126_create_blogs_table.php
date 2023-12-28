@@ -17,6 +17,8 @@ return new class extends Migration
             $table->boolean("status")->default(true);
             $table->json("data");
             $table->timestamps();
+
+            $table->index(["status"]);
         });
     }
 
