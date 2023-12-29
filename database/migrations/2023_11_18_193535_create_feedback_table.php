@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string("text");
             $table->json("data");
             $table->timestamps();
+
+            $table->index(["exhange_id", "user_id"]);
         });
     }
 

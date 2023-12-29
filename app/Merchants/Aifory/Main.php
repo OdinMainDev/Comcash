@@ -39,7 +39,8 @@ class Main {
         $request->validate($base);
         $card = $request->from_card ? $request->from_card : $request->to_card;
         $cred = $request->first_name." ".$request->second_name." ".$request->last_name;
-        $this->checkForKyc($cred, $card);
+        if(!$is_withdraw)
+            $this->checkForKyc($cred, $card);
     }
 
     function getAddress($merchant, $exchange, $currency){
@@ -63,7 +64,7 @@ class Main {
     function makeWithdraw($merchant, $exchange){
         $obj = new Aifory($merchant, $exchange);
         $resp = $obj->make_withdraw();
-        if(@$resp['status'] != "Accepted"){
+        if(@$resp['status'] != "accepted"){
             if(!is_array($resp)){
                 $resp = [];
             }

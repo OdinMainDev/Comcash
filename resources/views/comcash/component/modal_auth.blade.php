@@ -43,7 +43,7 @@
                             <a class='input-password__eye'></a>
                         </div>
                     </div>
-					<a class='auth__forgot' href="#" onclick="window.setForm('forgot-password')">Забыли пароль?</a>
+					<a class='auth__forgot' href="#" onclick="window.setForm('forgot-password')">{{__("front.forgot password?")}}</a>
 					<button type="submit" class='button button--dark button--auto auth__btn btn__submit'>{{__("front.continue")}}</button>
 					<p class='signup-text'>
 						{{__("front.pressing button")}}
@@ -90,10 +90,10 @@
 				<div id='email-recover'
 					class='email-recover auth__content'>
 					<p class='auth__title'>
-						Вы успешно восстановили пароль!
+						{{__("front.successrestorepassword")}}
 					</p>
-					<p class='auth__subtitle'>Теперь Вы можете зайти в профиль!</p>
-					<button class='button button--auto auth__btn'>Продолжить</button>
+					<p class='auth__subtitle'>{{__("front.nowyoucanaccessclientpanel")}}</p>
+					<button class='button button--auto auth__btn'>{{__("front.continue")}}</button>
 				</div>
 			@endguest
 
@@ -103,24 +103,24 @@
 				</p>
 				<input type="hidden" name="kyc_id" id="kyc_id" value="">
 				<label class="input kyc__input">
-                    <input type='file' name="file" placeholder="фото карты"/>
-                    <div class="button button--dark">фото карты</div>
+                    <input type='file' name="file" placeholder="{{__("front.photoofcard")}}"/>
+                    <div class="button button--dark">{{__("front.photoofcard")}}</div>
                 </label>
                 <label class="input kyc__input">
-                    <input type='file' name="passport" placeholder="фото паспорта"/>
-                    <div class="button button--dark">фото паспорта</div>
+                    <input type='file' name="passport" placeholder="{{__("front.photoofpassport")}}"/>
+                    <div class="button button--dark">{{__("front.photoofpassport")}}</div>
                 </label>
 				<button type="submit" class='button button--dark button--auto auth__btn btn__submit kyc__button'>{{__("front.continue")}}</button>
 			</form>
 
 			<div id="confirm-verification" class='auth__content class active'>
 				<p class="auth__title confirm-verification__title">
-                    Подлинность вашей карты проверяется,  не закрывайте страницу.
+					{{__("front.validatekyctitle")}}
 				</p>
 				<div class="confirm-verification__loader">
 				</div>
 				<div class="confirm-verification__status">
-					Идет проверка
+					{{__("front.validatekycactiontext")}}
 				</div>
 			</div>
 		</div>

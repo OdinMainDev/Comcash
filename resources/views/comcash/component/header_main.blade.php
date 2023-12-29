@@ -26,7 +26,7 @@
                 {{__("front.SupportMenu")}}
             </a>
         </div>
-        <div class='select'>
+        <!-- <div class='select'>
             <div class='select__container'>
                 <div class='select__option language_select' name="ru">
                     <input type='radio' id='ru' name='locale' value='ru'
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class='select__current'></div>
-        </div>
+        </div> -->
         <a class='header__btn-aml button' href="https://t.me/amlcheckbot">
             {{__("front.check your aml")}}
         </a>
@@ -64,10 +64,10 @@
                 @auth
                     <button class='accordion__button'>{{__("front.profile")}}</button>
                     <div class='accordion__content'>
-                        <a href='#' class='active'>Личный кабинет</a>
-                        <a href='#'>Мои счета</a>
-                        <a href='#'>История транзации</a>
-                        <a href='#'>Безопасность</a>
+                        <a href='{{route("myprofile")}}' class='active'>{{__("front.client panel")}}</a>
+                        <!-- <a href='#'>{{__("front.mywallets")}}</a> -->
+                        <!-- <a href='#'>{{__("front.transactionshistory")}}</a> -->
+                        <a href='{{route("myprofilePassword")}}'>{{__("front.security")}}</a>
                     </div>
                 @endauth
                 <a class='accordion__button accordion__button_custom'>{{__("front.TariffsMenu")}}</a>

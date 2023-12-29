@@ -218,7 +218,7 @@ class Garantex {
         }
 
         if($side == "buy"){
-            switch($to_currency){
+            switch($currency){
                 case "USDT":
                     $amount += 7;
                 break;
@@ -237,7 +237,7 @@ class Garantex {
             }
         }
 
-        return $this->request('sell or buy currency', '/api/v2/orders', [
+        return $this->request($side.' currency', '/api/v2/orders', [
             'market' => mb_strtolower($currency.$to_currency),
             "volume" => $amount,
             "side" => $side,

@@ -160,6 +160,10 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/exchanges/list/data', [DTExchange::class, "process"]);
 
         Route::get('/panel/exchanges/edit/{id}', [AdminExchange::class, "edit"])->name("adminExchangeEdit");
+        Route::post('/panel/exchanges/edit', [AdminExchange::class, "process"])->name("adminExchangeEditPost");
+        Route::get('/panel/exchanges/edit/rewithdraw/{id}', [AdminExchange::class, "rewithdraw"])->name("adminExchangeRewithdraw");
+        Route::get('/panel/exchanges/edit/rewithdraw/{id}', [AdminExchange::class, "set_withdraw"])->name("adminExchangeSetWithdraw");
+        Route::get('/panel/exchanges/edit/rewithdraw/{id}', [AdminExchange::class, "set_withdraw_complete"])->name("adminExchangeSetWithdrawComplete");
         Route::get('/panel/exchanges/logs/{id}/data', [DTExchangeLog::class, "process"])->name("adminExchangeLogs");
     });
 

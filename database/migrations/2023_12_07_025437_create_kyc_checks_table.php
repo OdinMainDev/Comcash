@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer("user_id")->default(0)->index();
             $table->boolean("check")->default(false)->index();
             $table->timestamps();
+
+            $table->index(["check", "address", "credential", "user_id"]);
         });
     }
 

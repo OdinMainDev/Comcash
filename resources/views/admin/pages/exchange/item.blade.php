@@ -7,8 +7,12 @@
 		<div class="card">
 			<div class="card-body">
                 <h5 class="mb-2">{{__("common.viewExchange")}}</h5>
-                
-				<form class="forms-sample" action="{{route("adminCurrencyProcess")}}">
+                @if(in_array($model->status, [15, 4]))
+                    <a href="{{route("adminExchangeRewithdraw", [$model->id])}}" class="btn btn-primary me-2">Повторить выплату</a>
+                    <a href="{{route("adminExchangeSetWithdraw", [$model->id])}}" class="btn btn-primary me-2">Установить статус выплата начата</a>
+                    <a href="{{route("adminExchangeSetWithdrawComplete", [$model->id])}}" class="btn btn-primary me-2">Установить статус выплачено</a>
+                @endif
+				<form class="forms-sample" action="{{route("adminExchangeEditPost")}}">
                     @csrf
                     @if($model->id)
                         <input type="hidden" name="id" value="{{$model->id}}">
@@ -18,6 +22,20 @@
                             <label class="form-label">Data</label>
                             <textarea class="form-control text-white" rows="5" disabled="">{{json_encode($model->data)}}</textarea>
                         </div>
+                    </div>
+                    <div class="row">
+                        @if(@$model->data['request_data']['to_address'])
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Кошелек получения</label>
+                                <input type="text" class="form-control" id="to_address" name="to_address"  value="{{$model->data['request_data']['to_address']}}">
+                            </div>
+                        @endif
+                        @if(@$model->data['request_data']['to_card'])
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Кошелек получения</label>
+                                <input type="text" class="form-control" id="to_card" name="to_card"  value="{{$model->data['request_data']['to_card']}}">
+                            </div>
+                        @endif
                     </div>
 
                  

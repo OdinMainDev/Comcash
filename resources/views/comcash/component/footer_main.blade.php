@@ -58,8 +58,8 @@
             </div>
         </div>
         <div class='footer__bottom'>
-            <p class='footer__copyright'>© 2023 COMCASH. All Rights Reserved.</p>
-            <div class='footer__socials'>
+            <p class='footer__copyright'>{{__("front.footercopyright")}}</p>
+            <!-- <div class='footer__socials'>
 
                 <a href=''
                     class='footer__socials-link'>
@@ -76,7 +76,7 @@
                 <img src='/comcash/img/icons/socials/facebook.svg'
                     alt='' />
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </footer>
