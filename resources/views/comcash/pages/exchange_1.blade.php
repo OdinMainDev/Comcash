@@ -60,6 +60,16 @@
 					<div class='input-control' id="exchange-currency_to">
 						<input type='text' class='input input--large'/>
 						<img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
+						<div class="exchange__currency-lock">
+							<svg width="18" height="21" viewBox="0 0 18 21" xmlns="http://www.w3.org/2000/svg" fill="#BFBFC3" class="exchange__currency-lock_open">
+								<path d="M8 15V12H10V15C10 15.5523 9.55229 16 9 16C8.44771 16 8 15.5523 8 15Z"></path>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M9 0C6.23858 0 4 2.23858 4 5V7H2C0.895431 7 0 7.89543 0 9V17C0 19.2091 1.79086 21 4 21H14C16.2091 21 18 19.2091 18 17V9C18 7.89543 17.1046 7 16 7H6V5C6 3.34315 7.34315 2 9 2C10.0412 2 10.9585 2.53038 11.4965 3.3357L13.1607 2.22618C12.2641 0.883956 10.7353 0 9 0ZM2 17V9H16V17C16 18.1046 15.1046 19 14 19H4C2.89543 19 2 18.1046 2 17Z"></path>
+							</svg>
+							<svg width="18" height="21" viewBox="0 0 18 21" xmlns="http://www.w3.org/2000/svg" fill="#00C26F" class="exchange__currency-lock_close">
+								<path d="M8 15V12H10V15C10 15.5523 9.55229 16 9 16C8.44771 16 8 15.5523 8 15Z"></path>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M4 5C4 2.23858 6.23858 0 9 0C11.7614 0 14 2.23842 14 4.99988V7H16C17.1046 7 18 7.89543 18 9V17C18 19.2091 16.2091 21 14 21H4C1.79086 21 0 19.2091 0 17V9C0 7.89543 0.895431 7 2 7H4V5ZM12 7H6V5C6 3.34315 7.34315 2 9 2C10.6569 2 12 3.34307 12 4.99988V7ZM2 9V17C2 18.1046 2.89543 19 4 19H14C15.1046 19 16 18.1046 16 17V9H2Z"></path>
+							</svg>
+						</div>
 						<div class="custom-select__select-container light" data-currency="currencyYouGet">
 							<div class="custom-select__select-label">
 								Выберите крипту 

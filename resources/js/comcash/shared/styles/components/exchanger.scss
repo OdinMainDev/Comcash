@@ -76,6 +76,31 @@
     }
   }
 
+
+  &__card-number {
+    margin-bottom: 20px;
+  }
+
+  &__currency-lock {
+    position: absolute;
+    right: 43%;
+    cursor: pointer;
+    &:hover svg{
+      fill: var(--color-accent)
+    }
+
+    @media (max-width: 360px) {
+      right: 46%;
+    }
+
+    @media (max-width: 320px) {
+      right: 53%;
+    }
+    &_close {
+      display: none;
+    }
+  }
+
   &__title-mobile {
     display: none;
 
@@ -849,7 +874,6 @@
   }
 
   &__title {
-    max-width: 300px;
     margin-bottom: 20px;
     font-weight: 700;
     line-height: 1.5;

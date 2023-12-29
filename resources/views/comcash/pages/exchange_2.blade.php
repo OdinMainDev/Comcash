@@ -61,6 +61,7 @@
 		<div class="progress" id="needCheckStatusExchange">
 			<div class="progress__container">
 				<p class="progress__title-mobile">{{__("front.exchange id")}} {{$exchange->id}}</p>
+				<p class="progress__title">Выплата производится в автоматическом режиме в течении 30 минут</p>
 				<div class="progress__box">
 					@if($exchange->currencyFrom->tag == "crypto")
 						<img src="https://chart.googleapis.com/chart?chs=224x224&cht=qr&chl={{$exchange->data['merchant_from_data']['address']}}&choe=UTF-8" class="progress__box-img" title="Link to Google.com" />

@@ -49,6 +49,7 @@ $(document).ready(function () {
   const inputToAddress = exchangeForm.find('#exchange-to_address > input');
   const inputFromAddress = exchangeForm.find('#exchange-from_address > input');
   const inputPassport = exchangeForm.find('#exchange-passport > input');
+  const currencyLock = exchangeForm.find('.exchange__currency-lock');
 
   let selectedCurrencyYouSend: ICurrency = defaultCurrencyYouSend;
   let selectedCurrencyYouGet: ICurrency = defaultCurrencyYouGet;
@@ -56,6 +57,7 @@ $(document).ready(function () {
   let currencyYouSendMinAmount = 0;
   let currencyYouSendAmount = 0;
   let currencyYouGetAmount = 0;
+  let isLock = false;
 
   let impossimbleExchange = false;
   const timerInSeconds = 5;
@@ -75,11 +77,20 @@ $(document).ready(function () {
   inputEmail.on('input', removeSpaces);
   inputPhoneNumber.on('input', onChangePhoneNumber)
   openModalButton.on('click', sendData);
+  currencyLock.on('click', lockInput);
 
 
   function onChangeCardNumberInput(this: HTMLInputElement) {
     const cardNumber = $(this).val()?.toString() || '';
     $(this).val(formatCardNumber(cardNumber));
+  }
+
+  function lockInput(this: HTMLDivElement) {
+    const open = currencyLock.find('.exchange__currency-lock_open');
+    const close = currencyLock.find('.exchange__currency-lock_close');
+    isLock = !isLock;
+    open.toggle();
+    close.toggle();
   }
 
   function onChangeYouGetInput(this: HTMLInputElement) {
@@ -132,11 +143,19 @@ $(document).ready(function () {
   function startTimerUploadNewCurrency() {
     timer.text(`00:${countdown.toString().padStart(2, '0')}`);
     if (countdown === 0) {
-      changeYouSendValue()
-        .finally(() => {
-          countdown = timerInSeconds;
-          startTimerUploadNewCurrency();
-        });
+      if (isLock) {
+        changeYouGetValue()
+          .finally(() => {
+            countdown = timerInSeconds;
+            startTimerUploadNewCurrency();
+          });
+      } else {
+        changeYouSendValue()
+          .finally(() => {
+            countdown = timerInSeconds;
+            startTimerUploadNewCurrency();
+          });
+      }
     } else {
       currencyTimeout = setTimeout(startTimerUploadNewCurrency, 1000);
     }
