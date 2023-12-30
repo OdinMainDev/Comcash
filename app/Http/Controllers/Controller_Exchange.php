@@ -43,14 +43,16 @@ class Controller_Exchange extends Controller{
             "redirect" => route("exchgangePage", [
                 "name" => $direction->id,
                 "direction_id" => $direction->id, 
-                "currency_from" => $currency_from->name,
-                "currency_to" => $currency_to->name,
+                "currencyFrom" => $currency_from->name,
+                "currencyTo" => $currency_to->name,
                 "amount" => $request->amount,
             ])
         ]);
     }
 
-    public function view(Request $request) {
+    public function view(Request $request, $lang, $currencyFrom, $currencyTo) {
+        $request->merge(["currency_from" => $currencyFrom]);
+        $request->merge(["currency_to" => $currencyTo]);
         $request->validate([
             "currency_from" => "required|string|max:255",
             "currency_to" => "required|string|max:255",
@@ -64,6 +66,7 @@ class Controller_Exchange extends Controller{
         if(!$currency_to || !$currency_from){
             return abort(404);
         }
+        
         if(!$direction){
             return abort(404);
         }
@@ -156,7 +159,7 @@ class Controller_Exchange extends Controller{
         ]);
     }
 
-    public function view_2(Request $request, $lang, $key){
+    public function view_created(Request $request, $lang, $key){
         if(empty($key) || !is_string($key) || mb_strlen($key) > 255){
             return abort(404);
         }
