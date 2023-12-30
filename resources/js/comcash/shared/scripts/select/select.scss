@@ -124,10 +124,18 @@
       }
       @media(max-width: 425px) {
         font-size: 12px;
-        padding: 12px 0;
         img {
           width: 18px;
           height: 18px;
+          object-fit: contain;
+        }
+      }
+
+      @media(max-width: 375px) {
+        font-size: 12px;
+        img {
+          width: 13px;
+          height: 13px;
           object-fit: contain;
         }
       }
