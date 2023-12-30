@@ -79,7 +79,7 @@ class Controller_KnowledgeBase extends Controller{
     }
 
     public function news_item(Request $request, $language, $id){
-        if(!is_numeric($id)){
+        if(!$id || !is_numeric($id)){
             return abort(404);
         }
 

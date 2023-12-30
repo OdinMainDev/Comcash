@@ -10,19 +10,19 @@
             <a class='header__link' href='/'>
                 {{__("front.ExchangeMenu")}}
             </a>
-            <a class='header__link' href='{{route("comcashPage", ["delivery"])}}'>
+            <a class='header__link' href='{{route("comcashPage", [app()->getLocale(), "name" => "delivery"])}}'>
                 {{__("front.CashCourierMenu")}}
             </a>
-            <a class='header__link' href='{{route("comcashPage", ["faq"])}}'>
+            <a class='header__link' href='{{route("comcashPage", [app()->getLocale(), "name" => "faq"])}}'>
                 {{__("front.PartnerFAQMenu")}}
             </a>
-            <a class='header__link' href='{{route("comcashPage", ["reviews"])}}'>
+            <a class='header__link' href='{{route("comcashPage", [app()->getLocale(), "name" => "reviews"])}}'>
                 {{__("front.FeedbackMenu")}}
             </a>
-            <!-- <a class='header__link' href='{{route("comcashPage", ["tariffs"])}}'>
+            <!-- <a class='header__link' href='{{route("comcashPage", [app()->getLocale(), "name" => "tariffs"])}}'>
                 {{__("front.TariffsMenu")}}
             </a> -->
-            <a class='header__link' href='{{route("comcashPage", ["support"])}}'>
+            <a class='header__link' href='{{route("comcashPage", [app()->getLocale(), "name" => "support"])}}'>
                 {{__("front.SupportMenu")}}
             </a>
         </div>

@@ -15,10 +15,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
   <script type="module" crossorigin src="/comcash/assets/exchageForm.c2228eef.js"></script>
   <link rel="stylesheet" href="/comcash/assets/exchageForm.c2ee50f0.css">
-  <link rel="stylesheet" href="/comcash/assets/custom.css">
+
+  <link rel="apple-touch-icon" sizes="120x120" href="/comcash/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/comcash/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/comcash/favicon-16x16.png">
+  <link rel="manifest" href="/comcash/site.webmanifest">
+  <link rel="mask-icon" href="/comcash/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
+  @include('comcash.component.header_main')
   <div class="not-found">
     <div class="not-found__container">
       <p class="not-found__title">{{$status_code}}</p>
