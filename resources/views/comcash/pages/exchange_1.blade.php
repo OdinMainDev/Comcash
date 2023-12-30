@@ -11,7 +11,7 @@
 				<p class="exchange__title-mobile">обменник</p>
 				<div id="currencyYouSend">
 					<div class='label'>
-						<span>choose currency</span>
+						<span>Выберите валюту</span>
 						<div class="exchange__limit">
 							<span class="exchange__min">Min:
 							<span>0</span>
@@ -26,7 +26,7 @@
 						<img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
 						<div class="custom-select__select-container light" data-currency="currencyYouSend">
 							<div class="custom-select__select-label">
-								Выберите крипту 
+							Выберите валюту
 							</div>
 							<input class="custom-select__select-label-input" name="currency_from"/>
 							<div class="custom-select__select-list hide">

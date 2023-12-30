@@ -70,19 +70,19 @@
                         <a href='{{route("myprofilePassword")}}'>{{__("front.security")}}</a>
                     </div>
                 @endauth
-                <a class='accordion__button accordion__button_custom'>{{__("front.TariffsMenu")}}</a>
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "tariffs"])}}'>{{__("front.TariffsMenu")}}</a>
                 <div class='accordion__content'>
                 </div>
-                <a class='accordion__button accordion__button_custom'>{{__("front.CashCourierMenu")}}</a>
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "delivery"])}}'>{{__("front.CashCourierMenu")}}</a>
                 <div class='accordion__content'>
                 </div>
-                <a class='accordion__button accordion__button_custom'>{{__("front.PartnerFAQMenu")}}</a>
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "faq"])}}'>{{__("front.PartnerFAQMenu")}}</a>
                 <div class='accordion__content'>
                 </div>
-                <a class='accordion__button accordion__button_custom'>{{__("front.FeedbackMenu")}}</a>
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "reviews"])}}'>{{__("front.FeedbackMenu")}}</a>
                 <div class='accordion__content'>
                 </div>
-                <a class='accordion__button accordion__button_custom'>{{__("front.SupportMenu")}}</a>
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "support"])}}'>{{__("front.SupportMenu")}}</a>
             </div>
         </div>
         <button class='header__burger button'>
