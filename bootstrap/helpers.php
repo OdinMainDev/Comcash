@@ -167,7 +167,7 @@ function sendTelegramKycImage($kyc, $path){
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HEADER, false);
-    curl_exec($ch);
+    $resp = curl_exec($ch);
     curl_close($ch);
 }
 

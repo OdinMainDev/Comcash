@@ -25,7 +25,7 @@
                 @endif
             </div>
             
-            {{ $news->onEachSide(1)->links() }}
+            {{ $news->withPath(route("comcashPage", ["news"]))->onEachSide(1)->links() }}
         </div>
       </div>
 </div>

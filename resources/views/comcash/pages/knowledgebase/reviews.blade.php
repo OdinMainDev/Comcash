@@ -27,7 +27,7 @@
                 @endif
             </div>
 
-            {{ $feedbacks->onEachSide(1)->links() }}
+            {{ $feedbacks->withPath(route("comcashPage", ["reviews"]))->onEachSide(1)->links() }}
         </div>
       </div>
 </div>
