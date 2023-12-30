@@ -17,7 +17,7 @@
                 <div class="progress__box-right">
                     <div class="progress__error">
                         <img src="/comcash/img/icons/sad-face.svg" class="progress__error-img" alt="sad-face"/>
-                        <div class="progress__error-text"/>
+                        <div class="progress__error-text">
 							При обмене произошла ошибка создайте новую заявку или обратитесь к поддержке
                         </div>
                     </div>
@@ -113,6 +113,12 @@
 								<a class="button button--auto exchange__button" href="{{$exchange->data['merchant_from_data']['url']}}">Перейти к оплате</a>
 							</div>
 						@endif
+						<div class="progress__error">
+							<img src="/comcash/img/icons/smile-face.svg" class="progress__error-img" alt="sad-face"/>
+							<div class="progress__error-text">
+								Обмен завершен, средства отправлены
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="progress__timeline">
