@@ -166,9 +166,19 @@ $(document).ready(function () {
     try {
       const currentPageURL = window.location.href;
       const urlParams = new URLSearchParams(currentPageURL);
-      const currencyFromUrl = urlParams.get('currency_from');
-      const currencyToUrl = urlParams.get('currency_to');
       const amount = urlParams.get('amount');
+
+      const parts = currentPageURL.split('/');
+      const currencyPart = parts.find(part => part.includes('-'));
+      let currencyFromUrl = '';
+      let currencyToUrl = '';
+      if (currencyPart) {
+        const currencies = currencyPart.split('-');
+        if (currencies.length === 2) {
+          currencyFromUrl = currencies[0];
+          currencyToUrl = currencies[1];
+        }
+      }
       list.forEach(item => {
         if(item.name  === currencyFromUrl) {
           selectedCurrencyYouSend = item;
