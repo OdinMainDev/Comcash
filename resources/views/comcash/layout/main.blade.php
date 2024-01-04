@@ -34,5 +34,6 @@
 		</script>
         @vite('resources/js/comcash/main.ts')
 		@yield('js')
+		<script src="//code.jivosite.com/widget/oirWWejdYl" async></script>
 	</body>
 </html>
