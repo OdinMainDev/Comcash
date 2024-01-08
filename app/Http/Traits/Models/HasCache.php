@@ -109,7 +109,7 @@ trait HasCache {
         return number_format($amount, $minor_units, ".", "");
     }
 
-    public function estimateGetRate($currency_from, $currency_to){
+    public function estimateGetRate($currency_from, $currency_to, $with_fee = false){
         $currency_from = $this->convertCurrencyName($currency_from);
         $currency_to = $this->convertCurrencyName($currency_to);
 
@@ -120,6 +120,10 @@ trait HasCache {
                 $rate = floatval($val->rate);
                 break;
             }
+        }
+
+        if($with_fee){
+            $rate = fdiv($rate, 100) * (100 - $with_fee);
         }
 
         return $rate;
@@ -172,9 +176,9 @@ trait HasCache {
                     if(!$direction)
                         continue;
 
-                    $rate = $this->estimateGetRate($currency->name, $currency2->name);
+                    $rate = $this->estimateGetRate($currency->name, $currency2->name, $direction->profit_percent);
                     if($rate < 0.01){
-                        $rate = $this->estimateGetRate($currency2->name, $currency->name); 
+                        $rate = $this->estimateGetRate($currency2->name, $currency->name, $direction->profit_percent); 
                     }
                     $response["exchange"][$currency->id]["to"][$currency2->id] = [
                         "xr" => $rate,
@@ -263,9 +267,9 @@ trait HasCache {
                     if(!$direction)
                         continue;
 
-                    $rate = $this->estimateGetRate($currency->name, $currency2->name);
+                    $rate = $this->estimateGetRate($currency->name, $currency2->name, $direction->profit_percent);
                     if($rate < 0.01){
-                        $rate = $this->estimateGetRate($currency2->name, $currency->name); 
+                        $rate = $this->estimateGetRate($currency2->name, $currency->name, $direction->profit_percent); 
                     }
                     $xml .= "<item>";
                     $xml .= "<from>".$currency->name."</from>";
