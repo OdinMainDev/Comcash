@@ -19,4 +19,10 @@ class Controller_Home extends Controller{
     public function export_json() {
         return $this->getCacheExportJson();
     }
+
+    public function export_xml() {
+        return response($this->getCacheExportXml(), 200, [
+            'Content-Type' => 'application/xml'
+        ]);
+    }
 }

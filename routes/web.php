@@ -39,7 +39,8 @@ Route::get('/', function () {
     return redirect("/".$lang);
 });
 
-Route::get('/request-exportjson.json', [Home::class, "export_json"])->name("index");
+Route::get('/request-exportjson.json', [Home::class, "export_json"]);
+Route::get('/request-exportxml.xml', [Home::class, "export_xml"]);
 
 
 /* AUTH ROUTES */

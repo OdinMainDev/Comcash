@@ -248,4 +248,42 @@ trait HasCache {
                 ->paginate(10);
         });
     }
+
+    public function getCacheExportXml(){
+        return Cache::remember("export-xml-public", 3600, function(){
+            $xml = "<rates>";
+            $currencies = $this->getCacheCurrencies();
+
+            foreach($currencies as $currency){
+                foreach($currencies as $currency2){
+                    if($currency2->id == $currency->id)
+                        continue;
+
+                    $direction = $this->getDirectionByCurrencyPair($currency, $currency2);
+                    if(!$direction)
+                        continue;
+
+                    $rate = $this->estimateGetRate($currency->name, $currency2->name);
+                    if($rate < 0.01){
+                        $rate = $this->estimateGetRate($currency2->name, $currency->name); 
+                    }
+                    $xml .= "<item>";
+                    $xml .= "<from>".$currency->name."</from>";
+                    $xml .= "<to>".$currency2->name."</to>";
+                    $xml .= "<in>1</in>"; // CONSTANT
+                    $xml .= "<out>".$rate."</out>";
+                    $xml .= "<amount>".@$direction->data['max_amount']."</amount>"; // Max Amount 
+                    $xml .= "<minamount>".@$direction->data['min_amount']." ".$currency->name."</minamount>";
+                    $xml .= "<maxamount>".@$direction->data['max_amount']." ".$currency->name."</maxamount>";
+                    if(in_array($currency->name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
+                        $xml .= "<param>verifying, cardverify</param>";
+                    }
+                    $xml .= "</item>";
+                }
+            }
+
+            $xml .= "</rates>";
+            return $xml;
+        });
+    }
 }
