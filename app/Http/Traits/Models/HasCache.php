@@ -276,7 +276,7 @@ trait HasCache {
                     $xml .= "<to>".$currency2->name."</to>";
                     $xml .= "<in>1</in>"; // CONSTANT
                     $xml .= "<out>".$rate."</out>";
-                    $xml .= "<amount>".@$this->estimateAmount("USD", $currency->name, $currency->units, env("MAX_EXCHANGE_AMOUNT", 50000), $direction->profit_percent)."</amount>"; // РЕЗЕРВ ТИПО
+                    $xml .= "<amount>".@$this->estimateAmount("USD", $currency2->name, $currency2->units, env("MAX_EXCHANGE_AMOUNT", 50000), $direction->profit_percent)."</amount>"; // РЕЗЕРВ ТИПО
                     $xml .= "<minamount>".@$direction->data['min_amount']." ".$currency->name."</minamount>";
                     $xml .= "<maxamount>".@$direction->data['max_amount']." ".$currency->name."</maxamount>";
                     if(in_array($currency->name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
