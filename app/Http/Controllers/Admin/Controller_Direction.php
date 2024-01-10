@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasImage;
 use App\Models\Currency;
 use App\Models\Direction;
+use App\Models\Merchant;
 use Illuminate\Http\Request;
 
 class Controller_Direction extends Controller{
@@ -16,29 +17,51 @@ class Controller_Direction extends Controller{
 
     public function add_process(Request $request){
         $request->validate([
-            "currencyFrom" => "required|exists:App\Models\Currency,id",
+            "currencyFrom" => "required|array|min:1",
+            "currencyFrom.*" => "integer|exists:App\Models\Currency,id",
+            "currencyTo" => "required|array|min:1",
+            "currencyTo.*" => "integer|exists:App\Models\Currency,id",
+
+            
             "merchantFrom" => "required|exists:App\Models\Merchant,id",
-            "currencyTo" => "required|exists:App\Models\Currency,id",
             "merchantTo" => "required|exists:App\Models\Merchant,id",
+
+            "profit_percent" => "required|numeric"
         ]);
 
-        $currency_from = Currency::where("id", $request->currencyFrom)->first();
-        $currency_to = Currency::where("id", $request->currencyTo)->first();
-
-        $model = new Direction;
-        $model->name = $currency_from->name." → ".$currency_to->name;
-        $model->currency_from = $currency_from->id;
-        $model->currency_to = $currency_to->id;
-        $model->merchant_from = $request->merchantFrom;
-        $model->merchant_to = $request->merchantTo;
-        $model->save();
+        $merchant_from = Merchant::where("id", $request->merchantFrom)->first();
+        $merchant_to = Merchant::where("id", $request->merchantTo)->first();
+        foreach($request->currencyFrom as $idFrom) {
+            $currency_from = Currency::where("id", $idFrom)->first();
+            foreach($request->currencyTo as $idTo) {
+                $currency_to = Currency::where("id", $idTo)->first();
+                $model = new Direction;
+                $model->name = $currency_from->name." → ".$currency_to->name;
+                $model->currency_from = $currency_from->id;
+                $model->currency_to = $currency_to->id;
+                $model->merchant_from = $merchant_from->id;
+                $model->merchant_to = $merchant_to->id;
+                $model->merchant_type_from = $merchant_from->type;
+                $model->merchant_type_to = $merchant_to->type;
+                $model->status = true;
+                $model->profit_percent = $request->profit_percent;
+                $model->position = 100;
+                $model->data = [];
+                $model->save();
+            }
+        }
 
         return json_encode([
             "success" => true,
             "title" => __("common.action_success"),
             "data" => [],
-            "redirect" => route("adminDirectionEdit", [$model->id])
+            "redirect" => route("adminDirectionList")
         ]);
+    }
+
+    public function remove_all() {
+        Direction::truncate();
+        return redirect(route("adminDirectionList"));
     }
 
     public function edit($lang, $id) {
@@ -58,7 +81,7 @@ class Controller_Direction extends Controller{
             "enabled" => "required|boolean",
             "name" => "required|string|max:255",
             "position" => "required|integer|min:1|max:100000",
-            "profit_percent" => "required|numeric|min:0|max:100",
+            "profit_percent" => "required|numeric",
         ];
         $validators = appendLocalesNames($validators);
         $validators = appendLocalesContents($validators);
@@ -81,5 +104,115 @@ class Controller_Direction extends Controller{
         ];
         $model->save();
         return $this->responseSuccess();
+    }
+
+    public function update_by_currency() {
+        return view("admin.pages.directions.update");
+    }
+
+    public function update_by_currency_process(Request $request){
+        $request->validate([
+            "currencyFrom" => "nullable|array",
+            "currencyFrom.*" => "integer|exists:App\Models\Currency,id",
+            "currencyTo" => "nullable|array",
+            "currencyTo.*" => "integer|exists:App\Models\Currency,id",
+            
+            "merchantFrom" => "nullable|exists:App\Models\Merchant,id",
+            "merchantTo" => "nullable|exists:App\Models\Merchant,id",
+
+            "enabled" => "required|boolean",
+            "position" => "nullable|integer|min:1|max:100000",
+            "profit_percent" => "nullable|numeric",
+        ]);
+
+        // валидация на хоть какие то данные
+        if(!$request->currencyFrom || !is_array($request->currencyFrom) || count($request->currencyFrom) == 0){
+            if(!$request->currencyTo || !is_array($request->currencyTo) || count($request->currencyTo) == 0){
+                if(!$request->merchantFrom) {
+                    if(!$request->merchantTo) {
+                        return $this->responseErrorValidation([
+                            "currencyFrom[]" => __("common.needsomethingtoupdatedirections"),
+                            "currencyTo[]" => __("common.needsomethingtoupdatedirections"),
+                            "merchantFrom" => __("common.needsomethingtoupdatedirections"),
+                            "merchantTo" => __("common.needsomethingtoupdatedirections"),
+                        ]);
+                    }
+                }
+            }
+        }
+
+        $query = Direction::with("currencyFrom")->with("currencyTo");
+        if($request->currencyFrom && is_array($request->currencyFrom) && count($request->currencyFrom) > 0){
+            $query = $query->orWhereIn("currency_from", $request->currencyFrom);
+        }
+
+        if($request->currencyTo && is_array($request->currencyTo) && count($request->currencyTo) > 0){
+            $query = $query->orWhereIn("currency_to", $request->currencyTo);
+        }
+        
+        if($request->merchantFrom){
+            $query = $query->orWhere("merchant_from", $request->merchantFrom);
+        }
+
+        if($request->merchantTo){
+            $query = $query->orWhere("merchant_to", $request->merchantTo);
+        }
+
+        $data_names = getLocalesNames($request);
+        $check = false;
+        foreach($data_names as $value) {
+            if($value) $check = true;
+        }
+        if(!$check) $data_names = false;
+        $data_content = getLocalesContents($request);
+        $check = false;
+        foreach($data_content as $value) {
+            if($value) $check = true;
+        }
+        if(!$check) $data_content = false;
+        $data_seo = getLocalesSeo($request);
+        $check = false;
+        foreach($data_seo as $value) {
+            if($value) $check = true;
+        }
+        if(!$check) $data_seo = false;
+
+        $query->chunk(25, function($directions) use($request, $data_names, $data_content, $data_seo){
+            foreach($directions as $direction){
+                if(is_numeric($request->position))
+                    $direction->position = $request->position;
+                if(is_numeric($request->profit_percent))
+                    $direction->profit_percent = $request->profit_percent;
+                $direction->status = $request->enabled;
+                $data = $direction->data;
+                if($data_names)
+                    $data["titles"] = $this->replaceDirectionTags($direction, $data_names);
+                if($data_content)
+                    $data["content"] = $this->replaceDirectionTags($direction, $data_content);
+                if($data_seo)
+                    $data["seo"] = $this->replaceDirectionTags($direction, $data_seo);
+                $direction->data = $data;
+                $direction->save();
+            }
+        });
+
+        return json_encode([
+            "success" => true,
+            "title" => __("common.action_success"),
+            "data" => [],
+        ]);
+    }
+
+    public function replaceDirectionTags($direction, $texts){
+        foreach($texts as $lang => $text){
+            if(!$text) continue;
+            $text = str_replace("{{currency_from}}", $direction->currencyFrom->name, $text);
+            $text = str_replace("{{currency_to}}", $direction->currencyTo->name, $text);
+            $text = str_replace("{{currency_from_title}}", $direction->currencyFrom->getTitle(), $text);
+            $text = str_replace("{{currency_to_title}}", $direction->currencyTo->getTitle(), $text);
+            $texts[$lang] = $text;
+        }
+       
+        return $texts;
     }
 }

@@ -9,25 +9,25 @@
     <script>
         $('#currencyFrom').select2({
             ajax: {
-                url: '/panel/api/get/currencies',
+                url: '/ru/panel/api/get/currencies',
                 dataType: 'json'
             }
         });
         $('#currencyTo').select2({
             ajax: {
-                url: '/panel/api/get/currencies',
+                url: '/ru/panel/api/get/currencies',
                 dataType: 'json'
             }
         });
         $('#merchantFrom').select2({
             ajax: {
-                url: '/panel/api/get/merchants',
+                url: '/ru/panel/api/get/merchants',
                 dataType: 'json'
             }
         });
         $('#merchantTo').select2({
             ajax: {
-                url: '/panel/api/get/merchants',
+                url: '/ru/panel/api/get/merchants',
                 dataType: 'json'
             }
         });
@@ -46,8 +46,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-5">
                             <label for="currencyFrom" class="form-label">{{__("common.currencyFrom")}}</label>
-                            <select class="w-100 h-100" name="currencyFrom" id="currencyFrom">
-                                <option disabled selected>{{__("common.notChoosen")}}</option>
+                            <select class="w-100 h-100" id="currencyFrom" name="currencyFrom[]" multiple="multiple">
                             </select>
                         </div>
                         <div class="col-md-6 mb-5">
@@ -58,8 +57,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="currencyTo" class="form-label">{{__("common.currencyTo")}}</label>
-                            <select class="form-select" name="currencyTo" id="currencyTo">
-                                <option disabled selected>{{__("common.notChoosen")}}</option>
+                            <select class="form-select" id="currencyTo" name="currencyTo[]" multiple="multiple">
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
@@ -67,6 +65,10 @@
                             <select class="form-select" name="merchantTo" id="merchantTo">
                                 <option disabled selected>{{__("common.notChoosen")}}</option>
                             </select>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="name" class="form-label">{{__("common.profit_percent")}}</label>
+                            <input type="text" class="form-control" id="profit_percent" name="profit_percent" autocomplete="off" value="5.00">
                         </div>
                     </div>
                     

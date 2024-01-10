@@ -62,5 +62,8 @@ return [
     "addFeedback" => "Добавить отзыв",
     "editFeedback" => "Изменить отзыв",
     "fullName" => "Полное имя",
-    "text" => "Текст"
+    "text" => "Текст",
+    "editDirection" => "Изменить направление",
+    "updateDirections" => "Изменить направления",
+    "needsomethingtoupdatedirections" => "Нужно хотя бы одно из этих полей для обновления!"
 ];

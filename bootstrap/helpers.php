@@ -49,48 +49,48 @@ function appendLocalesSEO($array){
 
 function getLocalesNames($request){
     $config = config()->get("app.languages");
-    $respose = [];
+    $response = [];
     foreach($config as $lang){
         $lang = mb_strtolower($lang);
-        $respose[$lang] = $request->{'mlName'.$lang};
+        $response[$lang] = $request->{'mlName'.$lang};
     }
-    return $respose;
+    return $response;
 }
 
 function getLocalesTitles($request){
     $config = config()->get("app.languages");
-    $respose = [];
+    $response = [];
     foreach($config as $lang){
         $lang = mb_strtolower($lang);
-        $respose[$lang] = $request->{'mlTitle'.$lang};
+        $response[$lang] = $request->{'mlTitle'.$lang};
     }
-    return $respose;
+    return $response;
 }
 
 function getLocalesContents($request){
     $config = config()->get("app.languages");
-    $respose = [];
+    $response = [];
     foreach($config as $lang){
         $lang = mb_strtolower($lang);
-        $respose[$lang] = $request->{'mlContent'.$lang};
+        $response[$lang] = $request->{'mlContent'.$lang};
     }
-    return $respose;
+    return $response;
 }
 
 function getLocalesSeo($request){
     $config = config()->get("app.languages");
-    $respose = [
+    $response = [
         'titles' => [],
         'descriptions' => [],
         'keywords' => [],
     ];
     foreach($config as $lang){
         $lang = mb_strtolower($lang);
-        $respose['titles'][$lang] = $request->{'mlSeoTitle'.$lang};
-        $respose['descriptions'][$lang] = $request->{'mlSeoDescription'.$lang};
-        $respose['keywords'][$lang] = $request->{'mlSeoKeyword'.$lang};
+        $response['titles'][$lang] = $request->{'mlSeoTitle'.$lang};
+        $response['descriptions'][$lang] = $request->{'mlSeoDescription'.$lang};
+        $response['keywords'][$lang] = $request->{'mlSeoKeyword'.$lang};
     }
-    return $respose;
+    return $response;
 }
 
 function sendTelegramNotification($text, $level = 1){

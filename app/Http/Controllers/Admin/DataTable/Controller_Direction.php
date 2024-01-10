@@ -22,9 +22,9 @@ class Controller_Direction extends Controller
         ->editColumn("id", function($row){
             return $row->id;
         })
-        // ->editColumn("name", function($row){
-        //     return $this->tableImage($row, @$row->data['image']);
-        // })
+        ->editColumn("name", function($row){
+            return $row->name;
+        })
         ->editColumn("created_at", function($row){
             return $this->tableDate($row, "created_at");
         })

@@ -97,7 +97,6 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::post('/panel/profile', [AdminProfile::class, "process"])->name("adminProfileProcess");
 
         Route::post('ckeditor/upload', [AdminDashboard::class, "upload"])->name('ckeditor.image-upload');
-
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-currencies']], function() {
@@ -135,6 +134,9 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::post('/panel/directions/add/process', [AdminDirection::class, "add_process"])->name("adminDirectionAddProcess");
         Route::get('/panel/directions/edit/{id}', [AdminDirection::class, "edit"])->name("adminDirectionEdit");
         Route::post('/panel/directions/process', [AdminDirection::class, "edit_process"])->name("adminDirectionProcess");
+        Route::get('/panel/directions/removeAll', [AdminDirection::class, "remove_all"])->name("adminDirectionRemoveAll");
+        Route::get('/panel/directions/massUpdateByCurrency', [AdminDirection::class, "update_by_currency"])->name("adminDirectionUpdateByCurrency");
+        Route::post('/panel/directions/massUpdateByCurrency', [AdminDirection::class, "update_by_currency_process"])->name("adminDirectionUpdateByCurrencyProcess");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-blog']], function() {

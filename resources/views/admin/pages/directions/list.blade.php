@@ -6,6 +6,11 @@
 	<div class="col-12 grid-margin stretch-card">
 		<div class="card">
 			<div class="card-body">
+                <div class="row my-3">
+                    <a href="{{route("adminDirectionAdd")}}" class="btn btn-primary mx-2">Добавить новые направления</a>
+                    <a href="{{route("adminDirectionUpdateByCurrency")}}" class="btn btn-primary mx-2">Изменить массово направления</a>
+                    <a href="{{route("adminDirectionRemoveAll")}}" class="btn btn-danger mx-2" onclick="return confirm('Confirm action')">Удалить все направления</a>
+                </div>
                 <table class="table table-striped table-sm fs--1 mb-0 leads-table eaDatatable" data-list="" data-columns='[
                     {"data": "id", "name": "id"},
                     {"data": "name", "name": "name"},
