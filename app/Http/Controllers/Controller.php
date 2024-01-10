@@ -78,7 +78,7 @@ class Controller extends BaseController{
         return $return;
     }
 
-    public function getDirectionByCurrencyPair($currency_from, $currency_to){
+    public function getDirectionByCurrencyPair($currency_from, $currency_to, $with_reverse_check = false){
         $directions = $this->getCacheDirections();
 
         $direction = false;
@@ -92,10 +92,24 @@ class Controller extends BaseController{
             $direction = $val;
             break;
         }
+        if($direction) return $direction;
+        if(!$with_reverse_check) return $direction;
+
+        // проверяем обратную сторону
+        foreach($directions as $val){
+            if($val->currency_to != $currency_from->id){
+                continue;
+            }
+            if($val->currency_from != $currency_to->id){
+                continue;
+            }
+            $direction = $val;
+            break;
+        }
         return $direction;
     }
 
-    public function getEstimateDataFromRequest($request){
+    public function getEstimateDataFromRequest($request, $with_reverse_check = false){
         $currencies = $this->getCurrencyByName([$request->currency_from, $request->currency_to]);
         $currency_from = @$currencies[0];
         $currency_to = @$currencies[1];
@@ -103,7 +117,7 @@ class Controller extends BaseController{
         if(!$currency_to || !$currency_from){
             throw ValidationException::withMessages(["currency" => "currency not found"]);
         }
-        $direction = $this->getDirectionByCurrencyPair($currency_from, $currency_to);
+        $direction = $this->getDirectionByCurrencyPair($currency_from, $currency_to, $with_reverse_check);
         if(!$direction){
             throw ValidationException::withMessages(["currency_from" => "bad pair", "currency_to" => "bad pair"]);
         }
