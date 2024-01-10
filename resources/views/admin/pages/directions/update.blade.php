@@ -60,6 +60,18 @@
                 dataType: 'json'
             }
         });
+        $('#merchantChangeFrom').select2({
+            ajax: {
+                url: '/ru/panel/api/get/merchants',
+                dataType: 'json'
+            }
+        });
+        $('#merchantChangeTo').select2({
+            ajax: {
+                url: '/ru/panel/api/get/merchants',
+                dataType: 'json'
+            }
+        });
     </script>
 @endsection
 
@@ -79,6 +91,9 @@
 				<form class="forms-sample" action="{{route("adminDirectionUpdateByCurrencyProcess")}}">
                     @csrf
                     <div class="row">
+                        <div class="col-12 mb-2">
+                            <h6 class="">{{__("common.updateDirectionsFilters")}}</h6>
+                        </div>
                         <div class="col-md-6 mb-3">
                             <label for="currencyFrom" class="form-label">{{__("common.currencyFrom")}}</label>
                             <select class="w-100 h-100" id="currencyFrom" name="currencyFrom[]" multiple="multiple">

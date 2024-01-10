@@ -100,7 +100,7 @@ class Controller_Exchange extends Controller{
             return $this->responseError("currency not found", ["code" => 1]);
         }
         if(!$direction){
-            return $this->responseError("bad currency pair", ["code" => 2]);
+            return $this->responseError("bad currency pair", ["code" => 3]);
         }
 
         $request->merge(['amount' => $this->format_amount($request->amount, $currency_from->units)]);

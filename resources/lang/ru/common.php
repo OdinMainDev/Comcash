@@ -65,5 +65,7 @@ return [
     "text" => "Текст",
     "editDirection" => "Изменить направление",
     "updateDirections" => "Изменить направления",
-    "needsomethingtoupdatedirections" => "Нужно хотя бы одно из этих полей для обновления!"
+    "needsomethingtoupdatedirections" => "Нужно хотя бы одно из этих полей для обновления!",
+    "updateDirectionsFilters" => "Выберите фильтры для изменения направлений",
+    "updateDirectionsChooseMerchants" => "Заменить мерчанты"
 ];

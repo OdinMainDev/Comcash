@@ -120,6 +120,9 @@ class Controller_Direction extends Controller{
             "merchantFrom" => "nullable|exists:App\Models\Merchant,id",
             "merchantTo" => "nullable|exists:App\Models\Merchant,id",
 
+            "merchantChangeFrom" => "nullable|exists:App\Models\Merchant,id",
+            "merchantChangeTo" => "nullable|exists:App\Models\Merchant,id",
+
             "enabled" => "required|boolean",
             "position" => "nullable|integer|min:1|max:100000",
             "profit_percent" => "nullable|numeric",
@@ -158,6 +161,15 @@ class Controller_Direction extends Controller{
             $query = $query->orWhere("merchant_to", $request->merchantTo);
         }
 
+        $merchant_from = false;
+        $merchant_to = false;
+        if($request->merchantChangeFrom){
+            $merchant_from = Merchant::where("id", $request->merchantChangeFrom)->first();
+        }
+        if($request->merchantChangeTo){
+            $merchant_to = Merchant::where("id", $request->merchantChangeTo)->first();
+        }
+
         $data_names = getLocalesNames($request);
         $check = false;
         foreach($data_names as $value) {
@@ -177,13 +189,17 @@ class Controller_Direction extends Controller{
         }
         if(!$check) $data_seo = false;
 
-        $query->chunk(25, function($directions) use($request, $data_names, $data_content, $data_seo){
+        $query->chunk(25, function($directions) use($request, $data_names, $data_content, $data_seo, $merchant_from, $merchant_to){
             foreach($directions as $direction){
                 if(is_numeric($request->position))
                     $direction->position = $request->position;
                 if(is_numeric($request->profit_percent))
                     $direction->profit_percent = $request->profit_percent;
                 $direction->status = $request->enabled;
+                if($merchant_from)
+                    $direction->merchant_from = $merchant_from->id;
+                if($merchant_to)
+                    $direction->merchant_to = $merchant_to->id;
                 $data = $direction->data;
                 if($data_names)
                     $data["titles"] = $this->replaceDirectionTags($direction, $data_names);

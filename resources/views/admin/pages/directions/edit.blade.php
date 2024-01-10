@@ -33,6 +33,26 @@
             });
         }
     </script>
+
+    <script src="/admin/assets/vendors/select2/select2.min.js"></script>
+    <script>
+        $('#merchantChangeFrom').select2({
+            ajax: {
+                url: '/ru/panel/api/get/merchants',
+                dataType: 'json'
+            }
+        });
+        $('#merchantChangeTo').select2({
+            ajax: {
+                url: '/ru/panel/api/get/merchants',
+                dataType: 'json'
+            }
+        });
+    </script>
+@endsection
+
+@section("css")
+    <link rel="stylesheet" href="/admin/assets/vendors/select2/select2.min.css">
 @endsection
 
 @section("content")

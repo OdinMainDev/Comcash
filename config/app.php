@@ -193,7 +193,8 @@ return [
         "okx",
         "freekassa",
         "bybit",
-        "aifory"
+        "aifory",
+        "manualmode", // ручной режим
     ],
     'kyc_credential' => env("KYC_CREDENTIAL", true),
     'kyc_address' => env("KYC_ADDRESS", true),

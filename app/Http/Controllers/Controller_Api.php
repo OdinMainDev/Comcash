@@ -53,7 +53,7 @@ class Controller_Api extends Controller{
             break;
         }
         if(!$direction){
-            return $this->responseError("bad currency pair");
+            return $this->responseError("bad currency pair direction");
         }
 
         return $this->responseSuccess("ok", $direction);

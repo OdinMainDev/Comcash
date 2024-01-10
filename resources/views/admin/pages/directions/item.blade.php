@@ -1,4 +1,31 @@
 <div class="row">
+    @if(!isset($model))
+        <div class="col-12 mb-2">
+            <h6 class="">{{__("common.updateDirectionsChooseMerchants")}}</h6>
+        </div>
+    @endif
+    <div class="col-md-6 mb-3">
+        <label for="merchantChangeFrom" class="form-label">{{__("common.merchantFrom")}}</label>
+        <select class="form-select" name="merchantChangeFrom" id="merchantChangeFrom">
+            @if(isset($model))
+                <option value="{{$model->merchant_from}}" selected>{{"(".$model->merchant_from.") ".$model->merchantFrom->name}}</option>
+            @else
+                <option disabled selected>{{__("common.notChoosen")}}</option>
+            @endif
+        </select>
+    </div>
+    <div class="col-md-6 mb-5">
+        <label for="merchantChangeTo" class="form-label">{{__("common.merchantTo")}}</label>
+        <select class="form-select" name="merchantChangeTo" id="merchantChangeTo">
+            @if(isset($model))
+                <option value="{{$model->merchant_to}}" selected>{{"(".$model->merchant_to.") ".$model->merchantTo->name}}</option>
+            @else
+                <option disabled selected>{{__("common.notChoosen")}}</option>
+            @endif
+        </select>
+    </div>
+</div>
+<div class="row">
     @if(isset($model))
         <div class="col-md-12 mb-3">
             <label for="name" class="form-label">{{__("common.name")}}</label>
