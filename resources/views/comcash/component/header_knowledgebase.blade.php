@@ -6,69 +6,35 @@
         <a href='/' class='header__logo header__christmas'>
             <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
         </a>
-		<div class='info-header__nav-mobile'>
-			<div class='accordion'>
-				<button class='accordion__button'>
-				<img src="/comcash/img/icons/nav/profile.svg"
-					alt="" />
-				<span>{{__("front.profile")}}</span>
-				</button>
-				<div class='accordion__content'>
-					<a href='#'
-						class='active'>{{__("front.client panel")}}</a>
-					<a href='#'>Мои счета</a>
-					<a href='#'>История транзации</a>
-					<a href='#'>Безопасность</a>
-				</div>
-				<button class='accordion__button'>
-                    <img src="/comcash/img/icons/nav/tarifs.svg"
-                        alt="" />
-                    <span>Тарифы</span>
-				</button>
-				<div class='accordion__content'>
-				</div>
-				<button class='accordion__button'>
-                    <img src="/comcash/img/icons/nav/wallet.svg"
-                        alt="">
-                    <span>Наличные курьером</span>
-                </button>
-				<div class='accordion__content'>
-				</div>
-				<button class='accordion__button'>
-				<img src="/comcash/img/icons/nav/reviews.svg"
-					alt="">
-				<span>Отзывы</span></button>
-				<div class='accordion__content'>
-				</div>
-				<button class='accordion__button'>
-				<img src="/comcash/img/icons/nav/news.svg"
-					alt="">
-				<span>Новости</span></button>
-				<div class='accordion__content'>
-				</div>
-				<button class='accordion__button'>
-				<img src="/comcash/img/icons/nav/support.svg"
-					alt="">
-				<span>Поддержка</span></button>
-				<div class='accordion__content'>
-				</div>
-				<button class='accordion__button'>
-				<img src="/comcash/img/icons/nav/company.svg"
-					alt="">
-				<span>Компания</span></button>
-				<div class='accordion__content'>
-				</div>
-				<button class='accordion__button'>
-				<img src="/comcash/img/icons/nav/faq.svg"
-					alt="">
-				<span>FAQ</span></button>
-				<div class='accordion__content'>
-				</div>
-			</div>
-		</div>
-		<button class='info-header__burger button'>
-			<img src='/comcash/img/icons/burger.svg' />
-			<img src='/comcash/img/icons/burger-cross.svg' />
-		</button>
+        <div class='header__nav-mobile'>
+            <div class='accordion'>
+                @auth
+                    <button class='accordion__button'>{{__("front.profile")}}</button>
+                    <div class='accordion__content'>
+                        <a href='{{route("myprofile")}}' class='active'>{{__("front.client panel")}}</a>
+                        <!-- <a href='#'>{{__("front.mywallets")}}</a> -->
+                        <!-- <a href='#'>{{__("front.transactionshistory")}}</a> -->
+                        <a href='{{route("myprofilePassword")}}'>{{__("front.security")}}</a>
+                    </div>
+                @endauth
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "tariffs"])}}'>{{__("front.TariffsMenu")}}</a>
+                <div class='accordion__content'>
+                </div>
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "delivery"])}}'>{{__("front.CashCourierMenu")}}</a>
+                <div class='accordion__content'>
+                </div>
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "faq"])}}'>{{__("front.PartnerFAQMenu")}}</a>
+                <div class='accordion__content'>
+                </div>
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "reviews"])}}'>{{__("front.FeedbackMenu")}}</a>
+                <div class='accordion__content'>
+                </div>
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "support"])}}'>{{__("front.SupportMenu")}}</a>
+            </div>
+        </div>
+        <button class='header__burger button'>
+            <img src='/comcash/img/icons/burger.svg' alt="Comcash"/>
+            <img src='/comcash/img/icons/burger-cross.svg' alt="Comcash"/>
+        </button>
 	</div>
 </header>
