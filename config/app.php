@@ -194,7 +194,8 @@ return [
         "freekassa",
         "bybit",
         "aifory",
-        "manualmode", // ручной режим
+        "manualcrypto", // ручной режим крипта
+        "manualfiat", // ручной режим фиат
     ],
     'kyc_credential' => env("KYC_CREDENTIAL", true),
     'kyc_address' => env("KYC_ADDRESS", true),

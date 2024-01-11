@@ -63,18 +63,23 @@ class ExchangeStart implements ShouldQueue
         }
         $data = $this->exchange->data;
         $data['user_id'] = $this->user->id;
+        $isManualMode = false;
         if(!is_array($address)){
             $data['merchant_from_data'] = [
                 "address" => $address,
                 "url" => null
             ];
         }else{
-            $data['merchant_from_data'] = [
-                "address" => null,
-                "url" => $address['paymentURL'],
-                "externalID" => @$address['externalID'],
-                "orderID" => @$address['orderID']
-            ];
+            if(!@$address['is_manual_mode']){
+                $data['merchant_from_data'] = [
+                    "address" => null,
+                    "url" => $address['paymentURL'],
+                    "externalID" => @$address['externalID'],
+                    "orderID" => @$address['orderID']
+                ];
+            }else{
+                $isManualMode = true;
+            }
         }
         $this->exchange->data = $data;
         $this->exchange->save();
@@ -82,7 +87,11 @@ class ExchangeStart implements ShouldQueue
         // переделать на другое мыло и сверстать их вообще
         Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
 
-        $text = "🟡<b>Новая заявка на обмен</b>🟡\n";
+        $text = "";
+        if($isManualMode){
+            $text = "❗️⚠️⚠️<b>ВНИМАНИЕ ЗАЯВКА ДОЛЖНА БЫТЬ ОТРАБОТАНА В РУЧНОМ РЕЖИМЕ!</b>⚠️⚠️❗️\n\n";
+        }
+        $text .= "🟡<b>Новая заявка на обмен</b>🟡\n";
         $text .= "ID: ".$this->exchange->id."\n";
         $text .= "Направление обмена ".$this->exchange->currencyFrom->name." -> ".$this->exchange->currencyTo->name."\n";
         $text .= "Сумма: ". $data['amount_data']['amount_send']." -> ". $data['amount_data']['amount_receive']."\n";

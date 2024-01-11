@@ -140,4 +140,8 @@ class Controller extends BaseController{
     public function getRealCurrencyCode($currency_code){
         return $this->convertCurrencyName($currency_code);
     }
+
+    public function isRootUser() {
+        return auth()->user()->isRootAdmin();
+    }
 }

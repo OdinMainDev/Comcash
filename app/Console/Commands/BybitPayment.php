@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasCache;
 use App\Http\Traits\Models\HasLogs;
 use App\Jobs\TradeSell;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class BybitPayment extends Command
 {
-    use HasCache, HasLogs;
+    use HasCache, HasLogs, HasTelegramMessage;
     /**
      * The name and signature of the console command.
      *
@@ -74,12 +75,7 @@ class BybitPayment extends Command
                         $exchange->save();
                     }
 
-                    $text = "🟢<b>ЗАЯВКА ОПЛАЧЕНА ( BYBIT )</b>🟢\n";
-                    $text .= "ID: ".$exchange->id."\n";
-                    $text .= "Направление обмена ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name."\n";
-                    $text .= "Сумма: ". @$exchange->data['amount_data']['amount_send']." -> ". @$exchange->data['amount_data']['amount_receive']."\n";
-                    $text .= "Курс обмена:". @$exchange->data['amount_data']['exchange_rate']."\n";
-                    $text .= "Дата создания: ".$exchange->created_at."\n\n";
+                    $text = "🟢<b>ЗАЯВКА ОПЛАЧЕНА ( BYBIT )</b>🟢\n".$this->tgBasicMessage($exchange);
                     if($exchange->data['recalculate']['has_recalculation']){
                         $text .= "⚠️⚠️<b>ЗАЯВКА БЫЛА ПЕРЕРАСЧИТАНА</b>⚠️⚠️\n";
                         $text .= "Предыдущая сумма: ". @$exchange->data['recalculate']['old_amount_send']." -> ". @$exchange->data['recalculate']['old_amount_receive']."\n";

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Merchants\Handler;
 use App\Models\Exchange;
 use App\Models\Merchant;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class GarantexWithdraw extends Command
 {
+    use HasTelegramMessage;
     /**
      * The name and signature of the console command.
      *
@@ -65,12 +67,7 @@ class GarantexWithdraw extends Command
                     if($hasError){
                         $exchange->status = 15;
                         $exchange->save();
-                        $text = "❌❌❌<b>ОШИБКА В ВЫПЛАТЕ ЗАЯВКИ</b>❌❌❌\n";
-                        $text .= "ID: ".$exchange->id."\n";
-                        $text .= "Направление обмена ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name."\n";
-                        $text .= "Сумма: ". @$exchange->data['amount_data']['amount_send']." -> ". @$exchange->data['amount_data']['amount_receive']."\n";
-                        $text .= "Курс обмена:". @$exchange->data['amount_data']['exchange_rate']."\n";
-                        $text .= "Дата создания: ".$exchange->created_at."\n\n";
+                        $text = "❌❌❌<b>ОШИБКА В ВЫПЛАТЕ ЗАЯВКИ</b>❌❌❌\n".$this->tgBasicMessage($exchange);
                         sendTelegramNotification($text);
                         continue;
                     }
@@ -82,12 +79,7 @@ class GarantexWithdraw extends Command
                     $exchange->status = 5;
                     $exchange->save();
 
-                    $text = "✅✅✅<b>ЗАЯВКА ЗАВЕРШЕНА ( GARANTEX )</b>✅✅✅\n";
-                    $text .= "ID: ".$exchange->id."\n";
-                    $text .= "Направление обмена ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name."\n";
-                    $text .= "Сумма: ". @$exchange->data['amount_data']['amount_send']." -> ". @$exchange->data['amount_data']['amount_receive']."\n";
-                    $text .= "Курс обмена:". @$exchange->data['amount_data']['exchange_rate']."\n";
-                    $text .= "Дата создания: ".$exchange->created_at."\n\n";
+                    $text = "✅✅✅<b>ЗАЯВКА ЗАВЕРШЕНА ( GARANTEX )</b>✅✅✅\n".$this->tgBasicMessage($exchange);
                     if($exchange->data['recalculate']['has_recalculation']){
                         $text .= "⚠️⚠️<b>ЗАЯВКА БЫЛА ПЕРЕРАСЧИТАНА</b>⚠️⚠️\n";
                         $text .= "Предыдущая сумма: ". @$exchange->data['recalculate']['old_amount_send']." -> ". @$exchange->data['recalculate']['old_amount_receive']."\n";

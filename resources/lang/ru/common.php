@@ -67,5 +67,6 @@ return [
     "updateDirections" => "Изменить направления",
     "needsomethingtoupdatedirections" => "Нужно хотя бы одно из этих полей для обновления!",
     "updateDirectionsFilters" => "Выберите фильтры для изменения направлений",
-    "updateDirectionsChooseMerchants" => "Заменить мерчанты"
+    "updateDirectionsChooseMerchants" => "Заменить мерчанты",
+    "viewExchange" => "Просмотр обмена"
 ];

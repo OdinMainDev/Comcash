@@ -23,6 +23,11 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:aifory-payment')->everyMinute();
         $schedule->command('app:aifory-withdraw')->everyMinute();
 
+
+        // РУЧНЫЕ ЗАЯВКИ
+        $schedule->command('app:check-manual-exchanges')->everyMinute();
+        
+
         // $schedule->command('app:bybit-payment')->everyMinute();
         // $schedule->command('app:okx-withdraw')->everyMinute();
     }

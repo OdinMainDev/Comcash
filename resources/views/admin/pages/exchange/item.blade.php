@@ -8,10 +8,21 @@
 			<div class="card-body">
                 <h5 class="mb-2">{{__("common.viewExchange")}}</h5>
                 @if(in_array($model->status, [15, 4]))
-                    <a href="{{route("adminExchangeRewithdraw", [$model->id])}}" class="btn btn-primary me-2">Повторить выплату</a>
+                    @if($model->merchant_type_from != "manualcrypto" && $model->merchant_type_from != "manualfiat")
+                        <a href="{{route("adminExchangeRewithdraw", [$model->id])}}" class="btn btn-primary me-2">Повторить выплату</a>
+                    @endif
                     <a href="{{route("adminExchangeSetWithdraw", [$model->id])}}" class="btn btn-primary me-2">Установить статус выплата начата</a>
                     <a href="{{route("adminExchangeSetWithdrawComplete", [$model->id])}}" class="btn btn-primary me-2">Установить статус выплачено</a>
                 @endif
+
+                @if($model->status == 0 && ($model->merchant_type_from == "manualcrypto" || $model->merchant_type_from == "manualfiat"))
+                    <a href="{{route("adminExchangeSetPaid", [$model->id])}}" class="btn btn-primary me-2">Установить статус оплачено</a>
+                @endif
+
+                @if($model->status == 1 && ($model->merchant_type_from == "manualcrypto" || $model->merchant_type_from == "manualfiat"))
+                    <a href="{{route("adminExchangeSetWithdraw", [$model->id])}}" class="btn btn-primary me-2">Установить статус выплата начата</a>
+                @endif
+
 				<form class="forms-sample" action="{{route("adminExchangeEditPost")}}">
                     @csrf
                     @if($model->id)
@@ -37,6 +48,24 @@
                             </div>
                         @endif
                     </div>
+
+                    @if(@$model->merchant_type_from == "manualcrypto")
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Введите кошелек, на который пользователь должен отправить средства</label>
+                                <input type="text" class="form-control" id="manualcrypto" name="manualcrypto"  value="{{@$model->data['merchant_from_data']['address']}}">
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(@$model->merchant_type_from == "manualfiat")
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Введите номер карты, на который пользователь должен отправить средства</label>
+                                <input type="text" class="form-control" id="manualfiat" name="manualfiat"  value="{{@$model->data['merchant_from_data']['address']}}">
+                            </div>
+                        </div>
+                    @endif
 
                  
 					<button type="submit" class="btn btn-primary me-2">{{__("common.submit")}}</button>

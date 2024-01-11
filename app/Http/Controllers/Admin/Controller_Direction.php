@@ -196,10 +196,15 @@ class Controller_Direction extends Controller{
                 if(is_numeric($request->profit_percent))
                     $direction->profit_percent = $request->profit_percent;
                 $direction->status = $request->enabled;
-                if($merchant_from)
+                if($merchant_from){
                     $direction->merchant_from = $merchant_from->id;
-                if($merchant_to)
+                    $direction->merchant_type_from = $merchant_from->type;
+                    
+                }
+                if($merchant_to){
                     $direction->merchant_to = $merchant_to->id;
+                    $direction->merchant_type_to = $merchant_to->type;
+                }
                 $data = $direction->data;
                 if($data_names)
                     $data["titles"] = $this->replaceDirectionTags($direction, $data_names);

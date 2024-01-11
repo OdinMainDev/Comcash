@@ -168,6 +168,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/exchanges/edit/setwithdraw/{id}', [AdminExchange::class, "set_withdraw"])->name("adminExchangeSetWithdraw");
         Route::get('/panel/exchanges/edit/setcompletewithdraw/{id}', [AdminExchange::class, "set_withdraw_complete"])->name("adminExchangeSetWithdrawComplete");
         Route::get('/panel/exchanges/logs/{id}/data', [DTExchangeLog::class, "process"])->name("adminExchangeLogs");
+        Route::get('/panel/exchanges/edit/setpaid/{id}', [AdminExchange::class, "set_paid"])->name("adminExchangeSetPaid");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-exchanger']], function() {

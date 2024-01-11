@@ -8,6 +8,7 @@ use App\Merchants\Okx\Main as Okx;
 use App\Merchants\Freekassa\Main as Freekassa;
 use App\Merchants\Bybit\Main as Bybit;
 use App\Merchants\Aifory\Main as Aifory;
+use App\Merchants\ManualMode\Main as ManualMode;
 use stdClass;
 
 class Handler {
@@ -71,6 +72,14 @@ class Handler {
             break;
             case "aifory":
                 $this->merchant = new Aifory;
+                return $this->merchant;
+            break;
+            case "manualcrypto":
+                $this->merchant = new ManualMode(true);
+                return $this->merchant;
+            break;
+            case "manualfiat":
+                $this->merchant = new ManualMode;
                 return $this->merchant;
             break;
         }    

@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Models\Exchange;
 use Illuminate\Console\Command;
 
 class ClearExchanges extends Command
 {
+    use HasTelegramMessage;
     /**
      * The name and signature of the console command.
      *
@@ -30,12 +32,7 @@ class ClearExchanges extends Command
             foreach($exchanges as $exchange){
                 $exchange->status = 13;
                 $exchange->save();
-                $text = "❌❌❌<b>ЗАЯВКА УДАЛЕНА</b>❌❌❌\n";
-                $text .= "ID: ".$exchange->id."\n";
-                $text .= "Направление обмена ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name."\n";
-                $text .= "Сумма: ". @$exchange->data['amount_data']['amount_send']." -> ". @$exchange->data['amount_data']['amount_receive']."\n";
-                $text .= "Курс обмена:". @$exchange->data['amount_data']['exchange_rate']."\n";
-                $text .= "Дата создания: ".$exchange->created_at."\n\n";
+                $text = "❌❌❌<b>ЗАЯВКА УДАЛЕНА</b>❌❌❌\n".$this->tgBasicMessage($exchange);
 
                 sendTelegramNotification($text);
             }

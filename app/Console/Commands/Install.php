@@ -102,12 +102,13 @@ class Install extends Command
             $bar->advance();
             $permission = Permission::where('name', $key)->first();
             if($permission){
-                $this->admin_user->givePermissionTo($permission);
+                $this->admin_role->givePermissionTo($permission);
                 continue;
             }
             $permission = Permission::create(['name' => $key]);
-            $this->admin_user->givePermissionTo($permission);
+            $this->admin_role->givePermissionTo($permission);
         }
+        $this->admin_user->assignRole("admin");
         $bar->finish();
         $this->line("");
         $this->line("Permissions created");
