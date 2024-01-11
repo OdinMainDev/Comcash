@@ -218,9 +218,6 @@ $(document).ready(function () {
         } else {
           cryptoYouSendCurrency = currency;
         }
-        const data = await getSettings(cryptoYouGetCurrency.name, cryptoYouSendCurrency.name);
-        currencyYouGetMin.text(data.min_amount);
-        currencyYouGetMax.text(data.max_amount);
       } else {
         cryptoYouSendCurrency = currency;
       }
@@ -244,19 +241,13 @@ $(document).ready(function () {
         } else {
           cryptoYouGetCurrency = currency;
         }
-        const data = await getSettings(cryptoYouSendCurrency.name, cryptoYouGetCurrency.name);
-        cryptoYouSendAmount = Number(data.min_amount);
-        currencyYouSendMin.text(data.min_amount);
-        currencyYouSendMax.text(data.max_amount);
       } else {
         cryptoYouGetCurrency = currency;
       }
-
-
-      const data = await getSettings(cryptoYouGetCurrency.name, cryptoYouSendCurrency.name);
-      currencyYouGetMin.text(data.min_amount);
-      currencyYouGetMax.text(data.max_amount);
-      changeYouSendValue(cryptoYouSendAmount);
+      const data = await getSettings(cryptoYouSendCurrency.name, cryptoYouGetCurrency.name);
+      currencyYouSendMin.text(data.min_amount);
+      currencyYouSendMax.text(data.max_amount);
+      changeYouSendValue(Number(data.min_amount));
     } catch(e) {
       loadingYouGetCurrency(false);
       loadingYouSendCurrency(false);
@@ -286,9 +277,6 @@ $(document).ready(function () {
       currencyYouSendMax.text(sendData.max_amount);
       convertToSendValue(cryptoYouSendCurrency.name, sendData.min_amount)
       loadingYouGetCurrency(false);
-      const getData = await getSettings(cryptoYouGetCurrency.name, cryptoYouSendCurrency.name);
-      currencyYouGetMin.text(getData.min_amount);
-      currencyYouGetMax.text(getData.max_amount);
       loadingYouSendCurrency(false);
       changeYouSendValue(Number(sendData.min_amount))
     } catch(e) {

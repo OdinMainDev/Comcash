@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as Toastr from 'toastr';
 import $ from 'jquery';
 import FingerprintJS from  '@fingerprintjs/fingerprintjs';
-import { confirmCardStatus } from '../confirmCartStatus/confirmCardStatus';
+import { confirmCardStatus } from '../confirmCardStatus/confirmCardStatus';
 import { setForm } from '@/shared/scripts/modal';
 
 (() => {
