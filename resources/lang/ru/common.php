@@ -68,5 +68,19 @@ return [
     "needsomethingtoupdatedirections" => "Нужно хотя бы одно из этих полей для обновления!",
     "updateDirectionsFilters" => "Выберите фильтры для изменения направлений",
     "updateDirectionsChooseMerchants" => "Заменить мерчанты",
-    "viewExchange" => "Просмотр обмена"
+    "viewExchange" => "Просмотр обмена",
+    "currencyWallets" => "Укажите кошельки для ручного обмена",
+    "data" => "Дата",
+    "status" => "Статус",
+    "hash" => "Хеш",
+    "first_name" => "Имя",
+    "second_name" => "Отчество",
+    "last_name" => "Фамилия",
+    "passport" => "Паспорт",
+    "telegram" => "Телеграм",
+    "viewUser" => "Профиль пользователя",
+    "setUserRole" => "Установить роль пользователя",
+    "chooseRole" => "Выберите роль",
+    "data_fail" => "Ошибка данных"
+
 ];

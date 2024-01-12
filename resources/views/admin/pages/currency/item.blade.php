@@ -3,6 +3,16 @@
 @section("js")
     <script src="/admin/assets/vendors/prismjs/prism.js"></script>
     <script src="/admin/assets/vendors/clipboard/clipboard.min.js"></script>
+    <script src="/admin/assets/vendors/select2/select2.min.js"></script>
+    <script>
+        $('#currencyWallets').select2({
+            tags: true,
+        });
+    </script>
+@endsection
+
+@section("css")
+    <link rel="stylesheet" href="/admin/assets/vendors/select2/select2.min.css">
 @endsection
 
 @section("content")
@@ -56,6 +66,19 @@
                     </div>
 
                     @include("admin.components.form.multilang_names", ['mlNames' => @$model->data['titles']])
+
+                    <div class="row my-2">
+                        <div class="col-12">
+                            <label for="currencyWallets" class="form-label">{{__("common.currencyWallets")}}</label>
+                            <select class="w-100 h-100" id="currencyWallets" name="currencyWallets[]" multiple="multiple">
+                                @if(@$model->data && isset($model->data['wallets']) && is_array($model->data['wallets']))
+                                    @foreach(@$model->data['wallets'] as $wallet)
+                                        <option value="{{$wallet}}" selected>{{$wallet}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+                    </div>
                     
 					<button type="submit" class="btn btn-primary me-2">{{__("common.submit")}}</button>
 				</form>

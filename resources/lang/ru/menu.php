@@ -17,5 +17,6 @@ return [
     "blog" => "Блог",
     "feedback" => "Отзывы",
     "exchanges" => "Обмены",
-    "clear cache" => "Очистить кеш"
+    "clear cache" => "Очистить кеш",
+    "users" => "Пользователи"
 ];

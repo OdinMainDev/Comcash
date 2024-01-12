@@ -2,7 +2,7 @@
 	<div class="header-info__content">
 		<span class="header-info__contact copy">
 			<span class="header-info__contact-title">
-				Jobber:
+				Jabber:
 			</span>
 			&nbsp;
 			<span class="header-info__contact-label">
@@ -11,7 +11,7 @@
 		</span>
 		<span class="header-info__contact copy">
 			<span class="header-info__contact-title">
-				Jobber:
+				Jabber:
 			</span>
 			&nbsp;
 			<span class="header-info__contact-label">
@@ -34,7 +34,7 @@
 				</svg>
 			</span>
 			<span class="header-info__contact-label">
-				@audia6_obmen
+				@comcash_exchange
 			</span>	
 		</span>
 		<span class="header-info__contact copy">

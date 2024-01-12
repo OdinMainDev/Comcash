@@ -79,6 +79,7 @@ class ExchangeStart implements ShouldQueue
                 ];
             }else{
                 $isManualMode = true;
+                $data['merchant_from_data'] = $this->checkAvailWalletForManualExchange();
             }
         }
         $this->exchange->data = $data;
@@ -133,8 +134,6 @@ class ExchangeStart implements ShouldQueue
             $text .= "Паспорт: ".$data['request_data']['passport']."\n";
         }
 
-
-
         $text .= "\n";
         if($this->user->first_name)
             $text .= "Имя (привязанное к аккаунту): ".$this->user->first_name."\n";
@@ -143,7 +142,6 @@ class ExchangeStart implements ShouldQueue
         if($this->user->last_name)
             $text .= "Фамилия (привязанная к аккаунту): ".$this->user->last_name."\n";
         $text .= "Email (привязанный к аккаунту): ".$this->user->email."\n";
-        
         
         sendTelegramNotification($text);
     }
@@ -164,5 +162,17 @@ class ExchangeStart implements ShouldQueue
         $this->user = $user;
         $this->exchange->user_id = $user->id;
         Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
+    }
+
+    public function checkAvailWalletForManualExchange() {
+        if(!$this->exchange->currencyFrom) return ["address" => null,"url" => null];
+        if(!@$this->exchange->currencyFrom->data) return ["address" => null,"url" => null];
+        $data = $this->exchange->currencyFrom->data;
+        if(!isset($data['wallets'])) return ["address" => null,"url" => null];
+        if(!is_array($data['wallets'])) return ["address" => null,"url" => null];
+        if(count($data['wallets']) == 0) return ["address" => null,"url" => null];
+        $data = $data['wallets'];
+        shuffle($data);
+        return ["address" => $data[0], "url" => null]; 
     }
 }

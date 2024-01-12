@@ -89,7 +89,8 @@ class Controller_Exchange extends Controller{
     public function set_withdraw($lang, $id){
         $exchange = $this->checkexchlocal($id);
         if(!$exchange || !in_array($exchange->status, [15, 4, 3, 1])) return abort(404);
-        
+        if(!$this->checkUserCanUpdateExchange($exchange))  return abort(404);
+
         $exchange->status = 4;
         $exchange->save();
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ВЫПЛАТА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
@@ -100,6 +101,7 @@ class Controller_Exchange extends Controller{
     public function set_withdraw_complete($lang, $id){
         $exchange = $this->checkexchlocal($id);
         if(!$exchange || !in_array($exchange->status, [15, 4])) return abort(404);
+        if(!$this->checkUserCanUpdateExchange($exchange))  return abort(404);
 
         $exchange->status = 5;
         $exchange->save();
@@ -111,11 +113,24 @@ class Controller_Exchange extends Controller{
     public function set_paid($lang, $id){
         $exchange = $this->checkexchlocal($id);
         if(!$exchange || $exchange->status != 0) return abort(404);
+        if(!$this->checkUserCanUpdateExchange($exchange))  return abort(404);
         
         $exchange->status = 1;
         $exchange->save();
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ОПЛАЧЕНО</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
         sendTelegramNotification($text);
         return redirect(route("adminExchangeList"));
+    }
+
+    public function checkUserCanUpdateExchange($exchange) {
+        if($this->isRootUser()) return true;
+
+        if(auth()->user()->id != $exchange->admin_id && $exchange->status == false) return false;
+
+        if(!@$exchange->data || !isset($exchange->data['merchant_from_data'])) return true;
+
+        if(!@$exchange->data['merchant_from_data']['address']) return false;
+
+        return true;
     }
 }

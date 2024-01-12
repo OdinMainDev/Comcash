@@ -137,6 +137,22 @@
 					</div>
 				</li>
 			@endcan
+			@can("handle-users")
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="collapse" href="#userssidemenu" role="button" aria-expanded="false" aria-controls="userssidemenu">
+					<i class="link-icon" data-feather="alert-octagon"></i>
+						<span class="link-title">{{__("menu.users")}}</span>
+						<i class="link-arrow" data-feather="chevron-down"></i>
+					</a>
+					<div class="collapse" id="userssidemenu">
+						<ul class="nav sub-menu">
+							<li class="nav-item">
+								<a href="{{route("adminUserList")}}" class="nav-link">{{__("menu.list")}}</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			@endcan
 			@can("handle-exchanges")
 				<li class="nav-item">
 					<a class="nav-link" href="{{route("adminExchangeList")}}">

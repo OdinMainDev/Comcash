@@ -94,6 +94,8 @@ class Install extends Command
             "handle-feedback",
             "handle-exchanges",
             "handle-exchanger",
+            "handle-users",
+            "handle-user-role",
         ];
 
         $bar = $this->output->createProgressBar(count($permissions));

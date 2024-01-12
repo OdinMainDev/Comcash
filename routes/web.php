@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\Controller_Exchange as AdminExchange;
 use App\Http\Controllers\Admin\DataTable\Controller_Exchange as DTExchange;
 use App\Http\Controllers\Admin\DataTable\Controller_ExchangeLog as DTExchangeLog;
 
+use App\Http\Controllers\Admin\Controller_User as AdminUser;
+use App\Http\Controllers\Admin\DataTable\Controller_User as DTUser;
 
 use App\Http\Controllers\Controller_Home as Home;
 use App\Http\Controllers\Controller_Login as Login;
@@ -175,7 +177,17 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/clear/cache', [AdminApi::class, "clear_cache"])->name("adminClearCache");
     });
 
+    Route::group( ['middleware' => ['auth', 'permission:handle-users']], function() {
+        Route::get('/panel/users/list', [DTUser::class, "view"])->name("adminUserList");
+        Route::get('/panel/users/list/data', [DTUser::class, "process"]);
 
+        Route::get('/panel/users/edit/{id}', [AdminUser::class, "edit"])->name("adminUserEdit");
+        Route::post('/panel/users/process', [AdminUser::class, "process"])->name("adminUserProcess");
+    });
+
+    Route::group( ['middleware' => ['auth', 'permission:handle-user-role']], function() {
+        Route::post('/panel/users/role/process', [AdminUser::class, "process_role"])->name("adminUserRoleProcess");
+    });
 
 
     Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {

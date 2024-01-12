@@ -33,7 +33,9 @@ class Controller_Currency extends Controller{
             "currencyUnits" => "required|integer|min:0",
             "enabled" => "required|boolean",
             "id" => "nullable|integer",
-            "tag" => "required|string|max:255"
+            "tag" => "required|string|max:255",
+            "currencyWallets" => "nullable|array",
+            "currencyWallets.*" => "string|max:255",
         ];
         $validators = appendLocalesNames($validators);
         $request->validate($validators);
@@ -52,7 +54,8 @@ class Controller_Currency extends Controller{
         if($image)
             $model->image = $image;
         $model->data = [
-            "titles" => getLocalesNames($request)
+            "titles" => getLocalesNames($request),
+            "wallets" => $request->currencyWallets ? $request->currencyWallets : []
         ];
         $model->status = $request->enabled;
         $model->tag = $request->tag;
