@@ -89,6 +89,7 @@ class Controller_User extends Controller{
 
         if($request->roleId == 0){
             $model->syncRoles([]);
+            $model->syncPermissions([]);
             return $this->responseSuccess();
         }
 
@@ -97,6 +98,10 @@ class Controller_User extends Controller{
             return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
         }
 
+
+        foreach($role->permissions as $permission){
+            $model->givePermissionTo($permission);
+        }
         $model->assignRole($role->name);
         return $this->responseSuccess();
     }
