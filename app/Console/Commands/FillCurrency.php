@@ -169,7 +169,7 @@ class FillCurrency extends Command
                 "created_at" => now()
             ],
         ];
-        if(env("THEME_NAME") == "comcash22"){
+        if(env("THEME_NAME") == "comcash"){
             
             $currencies[] = 
                 [
@@ -185,7 +185,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 10,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 11,
@@ -200,7 +201,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 11,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 12,
@@ -215,7 +217,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 12,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 13,
@@ -230,7 +233,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 13,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 14,
@@ -245,7 +249,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 14,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 15,
@@ -260,7 +265,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 15,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 16,
@@ -275,7 +281,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 16,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 17,
@@ -290,7 +297,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 17,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 18,
@@ -305,7 +313,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 18,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 19,
@@ -320,7 +329,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 19,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
             $currencies[] =     [
                     "id" => 20,
@@ -335,7 +345,8 @@ class FillCurrency extends Command
                     ]),
                     "tag" => "crypto",
                     "position" => 20,
-                    "created_at" => now()
+                    "created_at" => now(),
+                    "status" => false
                 ];
         }
         return $currencies;
