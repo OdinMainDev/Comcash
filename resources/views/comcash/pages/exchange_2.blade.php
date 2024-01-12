@@ -124,12 +124,21 @@
 						@endif
 					</div>
 				</div>
-				<div class="progress__timeline">
-					<p class="progress__timeline-item @if($exchange->status < 2) active @endif">Ожидаем поступления средств</p>
-					<p class="progress__timeline-item @if($exchange->status == 2) active @endif">Проверка поступления средств</p>
-					<p class="progress__timeline-item @if($exchange->status == 3) active @endif">Старт выплаты средств</p>
-					<p class="progress__timeline-item @if($exchange->status == 4) active @endif">Подтверждение выплаты средств</p>
-				</div>
+				@if($exchange->merchant_type_from != "manualcrypto" && $exchange->merchant_type_from != "manualfiat")
+					<div class="progress__timeline">
+						<p class="progress__timeline-item @if($exchange->status < 2) active @endif">Ожидаем поступления средств</p>
+						<p class="progress__timeline-item @if($exchange->status == 2) active @endif">Проверка поступления средств</p>
+						<p class="progress__timeline-item @if($exchange->status == 3) active @endif">Старт выплаты средств</p>
+						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">Подтверждение выплаты средств</p>
+					</div>
+				@else
+					<div class="progress__timeline">
+						<p class="progress__timeline-item @if($exchange->status == 0) active @endif">Ожидаем поступления средств</p>
+						<p class="progress__timeline-item">Проверка поступления средств</p>
+						<p class="progress__timeline-item @if($exchange->status == 1) active @endif">Старт выплаты средств</p>
+						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">Подтверждение выплаты средств</p>
+					</div>
+				@endif
 				<div class="progress__data-container">
 					<div class="progress__data">
 						<p class="progress__data-label">Вы получите</p>

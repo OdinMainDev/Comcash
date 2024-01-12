@@ -48,18 +48,20 @@ class Controller_Exchange extends Controller{
         if($exchange->status == 0 && ($exchange->admin_id == 0 || $exchange->admin_id == auth()->user()->id || !$this->isRootUser())){
             if($request->manualcrypto){
                 $exchange->admin_id = auth()->user()->id;
-                $data['merchant_from_data'] = [
-                    "address" => $request->manualcrypto,
-                    "url" => null
-                ];
+                if(!isset($data['merchant_from_data']) || !isset($data['merchant_from_data']['address']) || !$data['merchant_from_data']['address'])
+                    $data['merchant_from_data'] = [
+                        "address" => $request->manualcrypto,
+                        "url" => null
+                    ];
             }
 
             if($request->manualfiat){
                 $exchange->admin_id = auth()->user()->id;
-                $data['merchant_from_data'] = [
-                    "address" => $request->manualfiat,
-                    "url" => null
-                ];
+                if(!isset($data['merchant_from_data']) || !isset($data['merchant_from_data']['address']) || !$data['merchant_from_data']['address'])
+                    $data['merchant_from_data'] = [
+                        "address" => $request->manualfiat,
+                        "url" => null
+                    ];
             }
         }
         $exchange->data = $data;
@@ -113,7 +115,9 @@ class Controller_Exchange extends Controller{
     public function set_paid($lang, $id){
         $exchange = $this->checkexchlocal($id);
         if(!$exchange || $exchange->status != 0) return abort(404);
-        if(!$this->checkUserCanUpdateExchange($exchange))  return abort(404);
+        if(!$this->checkUserCanUpdateExchange($exchange)) return abort(404);
+        
+        if(!isset($exchange->data['merchant_from_data']) || !isset($exchange->data['merchant_from_data']['address']) || !$exchange->data['merchant_from_data']['address']) return abort(404);
         
         $exchange->status = 1;
         $exchange->save();

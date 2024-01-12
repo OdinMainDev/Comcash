@@ -98,24 +98,13 @@ class Controller_Exchange extends Controller
 
     public function constructQuery($request){
         $query = Exchange::with("currencyFrom")->with("currencyTo");
-        // $request->validate([
-        //     "filter_id" => "nullable|integer",
-        //     "filter_enable" => "nullable|boolean",
-        //     "filter_currency" => "nullable|integer",
-        //     "filter_name" => "nullable|string|max:255",
-        //     "filter_purchase_avalible" => "nullable|boolean",
-        //     "filter_is_reuse" => "nullable|boolean",
-        //     "filter_created_from" => 'nullable|date|date_format:Y-m-d\TH:i',
-        //     "filter_created_to" => 'nullable|date|date_format:Y-m-d\TH:i',
-        // ]);
-        // if(!is_null($request->filter_id)){
-        //     $query = $query->where('id', 'like', '%' . $request->filter_id . '%');
-        // }
-        // if(!is_null($request->filter_name)){
-        //     $search = mb_strtolower($request->filter_name);
-        //     $query = $query->whereRaw('lower(name) like (?)', ["%{$search}%"]);
-        // }
-
+        if(!$this->isRootUser()){
+            $query = $query->where(function($q){
+                $q->where("admin_id", auth()->user()->id)->orWhere(function($q2){
+                    $q2->where("admin_id", 0)->where("status", 0);
+                });
+            });
+        }
         return $query;
     }
 }
