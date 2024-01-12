@@ -6,7 +6,7 @@
 			</span>
 			&nbsp;
 			<span class="header-info__contact-label">
-				obmen@audia6.online
+				obmen@comcash.io
 			</span>	
 		</span>
 		<span class="header-info__contact copy">
@@ -15,7 +15,7 @@
 			</span>
 			&nbsp;
 			<span class="header-info__contact-label">
-				obmen@audia6.online
+				obmen@comcash.io
 			</span>	
 		</span>
 	</div>
@@ -34,7 +34,7 @@
 				</svg>
 			</span>
 			<span class="header-info__contact-label">
-				@comcash_exchange
+				<a href="https://t.me/comcash_exchange">@comcash_exchange</a>
 			</span>	
 		</span>
 		<span class="header-info__contact copy">
@@ -43,7 +43,7 @@
 			</span>
 			&nbsp;
 			<span class="header-info__contact-label">
-				1F2F83AA634455DE2FF21DE1CFBF3D5963E666FCFDDA18D3071D2B5F27012F7E7DEAB2186136
+				123456
 			</span>	
 		</span>
 	</div>
