@@ -41,6 +41,7 @@ return [
     "exchange" => "Обменять",
     "ExchangeMenu" => "Обмен",
     "CashCourierMenu" => "Наличные курьером",
+    "ContactsMenu" => "Контакты",
     "PartnerFAQMenu" => "Партнёрский FAQ",
     "FeedbackMenu" => "Отзывы",
     "TariffsMenu" => "Тарифы",

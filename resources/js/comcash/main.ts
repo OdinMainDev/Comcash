@@ -22,7 +22,8 @@ import '@/shared/scripts/tabs';
 import '@/shared/scripts/accordion';
 import '@/shared/scripts/carousel';
 import '@/shared/scripts/theme';
-import '@/shared/scripts/languages'
+import '@/shared/scripts/languages';
+import '@/shared/scripts/copyButton';
 
 import '@/features/cryptoFormScripts';
 import '@/features/exchageFormScripts';

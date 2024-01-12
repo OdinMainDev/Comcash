@@ -21,6 +21,7 @@
 		@include('comcash.layout.ads')
 	</head>
 	<body>
+		@include('comcash.component.header_info')
         @include('comcash.component.header_main')
 
 		@yield("content")

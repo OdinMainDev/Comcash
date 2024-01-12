@@ -2,12 +2,16 @@
     <div class='footer__container'>
         <div class='footer__top'>
             <div class='footer__logo'>
-                <img src='/comcash/img/logo.svg'
+                <img 
+                    src='/comcash/img/logo.svg'
                     alt=''
-                    class='' />
+                    class='footer__logo-img' />
                 <p>{{__("front.slogan")}}</p>
+                <div class="footer__sponsors-list">
+                    <img class="footer__sponsors-item" src="/comcash/img/cb.png"/>
+                </div>
             </div>
-            <div class='footer__sitemap' style="    width: 40%;">
+            <div class='footer__sitemap'>
                 <div class='footer__sitemap-col'>
                     <p class=''>{{__("front.footer_text")}}</p>
                 </div>
