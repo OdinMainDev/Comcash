@@ -125,10 +125,8 @@ class Controller_Exchange extends Controller{
     public function checkUserCanUpdateExchange($exchange) {
         if($this->isRootUser()) return true;
 
-        if(auth()->user()->id != $exchange->admin_id && $exchange->status == false) return false;
-
+        if(auth()->user()->id != $exchange->admin_id && $exchange->admin_id != 0) return false;
         if(!@$exchange->data || !isset($exchange->data['merchant_from_data'])) return true;
-
         if(!@$exchange->data['merchant_from_data']['address']) return false;
 
         return true;
