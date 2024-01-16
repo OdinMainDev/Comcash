@@ -18,7 +18,7 @@
   z-index: 100;
   width: 100%;
   margin: 0 auto;
-  max-width: 1360px;
+  max-width: 1460px;
   top: 24px;
 
 
@@ -214,8 +214,15 @@
     background: linear-gradient(to bottom, #242424, #000000);
     transition: all 0.4s ease-out;
 
+    &-info {
+      padding: 20px 0;
+    }
+
     .accordion {
       background: none;
+      border-top: 2px solid #2D2F39;
+      border-bottom: 2px solid #2D2F39;
+      padding: 20px    
     }
 
     &.active {
@@ -225,6 +232,11 @@
 
     .accordion__button {
       position: relative;
+      background-color: transparent;
+      opacity: 0.7;
+      svg {
+        margin-right: 7px;
+      }
     }
 
     .accordion__content {
@@ -242,18 +254,29 @@
         }
       }
     }
+
+    &-info {
+      margin: 0 20px;
+    }
   }
 }
 
 
 .header-info {
-  max-width: 1360px;
-  margin: 0 auto;
-  display: flex;
+  background: url('/comcash/img/leaves.png') left top/contain no-repeat,
+              url('/comcash/img/leaves_circle.png') 80% 40px/contain no-repeat;
   height: 100px;
-  padding: 40px 35px 35px;
   @media (max-width: 1100px) {
     display: none;
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    margin: 0 auto;  
+    padding: 20px 35px 0 35px;
+    justify-content: space-between;
+    max-width: 1460px;
   }
 
   &__content {
@@ -266,6 +289,7 @@
 
   &__contact {
     display: flex;
+    align-items: center;
     cursor: pointer;
     margin-bottom: 10px;
     position: relative;
@@ -331,7 +355,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 5px;
 
       svg {
         width: 20px;
@@ -341,16 +364,23 @@
 
     &-label {
       color: #FFF;
-      font-weight: 500;
-      font-size: 12px;
+      font-size: 15px;
+      font-weight: 300;
       width: 100%;
-      overflow-wrap: break-word;
+      text-overflow: ellipsis;
+      overflow: hidden; 
+      @media (max-width: 1100px) {
+        opacity: 0.7;
+      }
     }
 
     &-title {
+      font-weight: 300;
       color: #FFF;
-      font-weight: 700;
-      font-size: 13px;
+      font-size: 15px;
+      @media (max-width: 1100px) {
+        opacity: 0.7;
+      }
     }
   }
 }

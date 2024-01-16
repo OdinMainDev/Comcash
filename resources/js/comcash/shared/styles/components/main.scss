@@ -60,7 +60,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    max-width: 1360px;
+    max-width: 1460px;
     margin: 0 auto;
 
     &::before {
@@ -82,12 +82,14 @@
     justify-content: space-between;
     margin-bottom: 120px;
 
-    @media (max-width: 1360px) {
+    @media (max-width: 1460px) {
       padding-top: 140px;
       flex-direction: column-reverse;
       align-items: center;
       margin-bottom: 80px;
       text-align: center;
+      padding: 0;
+
     }
 
     @media (max-width: 1100px) {
@@ -103,7 +105,7 @@
     position: relative;
     width: 50%;
 
-    @media (max-width: 1360px) {
+    @media (max-width: 1460px) {
       width: 100%;
       padding: 40px;
       max-width: 90%;
@@ -190,7 +192,7 @@
       linear-gradient(to bottom, #5d5d5d, #000) border-box;
     border: 1px solid transparent;
 
-    @media (max-width: 1360px) {
+    @media (max-width: 1460px) {
       margin-left: 0;
       width: 100%;
       max-width: 600px;
@@ -737,7 +739,7 @@
 
   &__container {
     position: relative;
-    max-width: 1360px;
+    max-width: 1460px;
     margin: 0 auto;
     padding: 78px 0 200px;
     background: url('/comcash/img/transactions-bg.svg') center no-repeat;
@@ -996,7 +998,7 @@
 
   &__container {
     position: relative;
-    max-width: 1360px;
+    max-width: 1460px;
     margin: 0 auto;
     padding: 0 20px;
 
@@ -1033,7 +1035,7 @@
 .courier {
   &__container {
     position: relative;
-    max-width: 1360px;
+    max-width: 1460px;
     padding: 121px 20px 100px;
     margin: 0 auto;
     background: url('/comcash/img/courier-up.svg') no-repeat;
@@ -1172,7 +1174,7 @@
   }
 
   &__container {
-    max-width: 1360px;
+    max-width: 1460px;
     margin: 0 auto;
     background: url('/comcash/img/courier-down.svg') no-repeat;
     background-size: cover;
@@ -1291,7 +1293,7 @@
 
 
   &__container {
-    max-width: 1360px;
+    max-width: 1460px;
     margin: 0 auto;
   }
 
