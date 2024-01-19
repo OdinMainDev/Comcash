@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Http\Traits\Misc\HasAmount;
 use App\Models\Currency;
 use App\Models\ExchangeRate;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -110,21 +111,27 @@ class RatesParser extends Command{
         foreach($currencies as $currency){
             foreach($currencies2 as $currency2){
                 $url = "https://garantex.org/api/v2/trades?market=".mb_strtolower($currency).mb_strtolower($currency2);
-                $response = Http::timeout(-1)->get($url);
-                if($response->clientError() || $response->status() != 200){
-                    sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса, кривой ответ от сервера курсов валют.");
+                try {
+                    $response = Http::timeout(-1)->get($url);
+                    if($response->clientError() || $response->status() != 200){
+                        sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса, кривой ответ от сервера курсов валют.");
+                        return [];
+                    }
+                    $response = $response->json();
+                    if(!is_array($response) || count($response) == 0){
+                        sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 2, кривой ответ от сервера курсов валют.");
+                        return [];
+                    }
+                    $inserts[] = [
+                        "from" => $currency,
+                        "to" => $currency2,
+                        "rate" => $response[0]['price'],
+                    ];
+                } catch (RequestException $ex){
+                    sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 3, кривой ответ от сервера курсов валют.\n\n".$ex->getMessage());
                     return [];
                 }
-                $response = $response->json();
-                if(!is_array($response) || count($response) == 0){
-                    sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 2, кривой ответ от сервера курсов валют.");
-                    return [];
-                }
-                $inserts[] = [
-                    "from" => $currency,
-                    "to" => $currency2,
-                    "rate" => $response[0]['price'],
-                ];
+                
             }
         }
 
