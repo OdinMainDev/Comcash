@@ -1,0 +1,95 @@
+table {
+    .datepicker {
+        background-color: transparent !important;
+    }
+}
+
+.flatpickr {
+    &-current-month {
+        display: flex;
+        .numInputWrapper {
+            color: #FFF;
+            .arrowUp, .arrowDown {
+                background-color: #FFF;;
+            }
+        }
+    }
+    &-current-month &-monthDropdown-months {
+        color: #fff;
+    }
+    &-calendar {
+        background-color: #0c1427;
+        border: 1px solid #262f43;
+        box-shadow: 3px 0 10px 0 #060b15;
+        &::before {
+            display: none;
+        }
+    }
+
+    &-weekdaycontainer {
+        .flatpickr-weekday {
+            color: #FFF;
+        }
+    }
+
+    &-day {
+        color: #FFF;
+        &.nextMonthDay {
+            color: #FFF;
+            opacity: 0.7;
+        }
+
+        &:hover {
+            color: #000;
+        }
+
+        &.selected {
+            background: #727cf5;
+            &:hover {
+                background: #727cf5;
+            }
+        }
+    }
+
+    &-prev-month, &-next-month {
+        svg {
+            opacity: 1;
+            fill: #FFF
+        }
+
+        &:hover {
+            svg {
+                fill: #000;
+                opacity: 0.6;
+            }
+        }
+    }
+
+    &-time {
+       .numInput {
+            color: #FFF;
+            &:focus {
+                background-color: transparent;
+            }
+
+            &:hover {
+                background-color: transparent;
+            }
+       } 
+
+        .flatpickr-am-pm {
+            color: #FFF;
+            opacity: 1;
+            &:hover {
+                opacity: 0.6;
+            }
+
+            &:focus {
+                background-color: transparent;
+            }
+        }
+    }
+
+    
+}
+
