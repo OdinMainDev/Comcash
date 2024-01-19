@@ -30,8 +30,7 @@ class RatesParser extends Command{
     /**
      * Execute the console command.
      */
-    public function handle()
-    {
+    public function handle(){
         $currencies = Currency::where("status", true)->get();
         if(count($currencies) == 0){
             return;
@@ -49,25 +48,34 @@ class RatesParser extends Command{
             if(!in_array($name, $request_currency))
                 $request_currency[] = $name;
         }
+        $inserts = [];
+        $inserts = array_merge($inserts, $this->parseFromGarantex());
+        $inserts = array_merge($inserts, $this->parseFromCryptocompare($request_currency, count($inserts) == 0));
+        
+        ExchangeRate::truncate();
+        ExchangeRate::insert($inserts);
+        sendTelegramNotification("Курсы успешно обновлены", 4);
+    }
 
+    public function parseFromCryptocompare($request_currency, $without_garantex_rates = false) {
         $request_currency = implode(",", $request_currency);
         $api_key = env("CRYPTOCOMPARE_KEY", false);
         if(!$api_key){
             sendTelegramNotification("<b>ОШИБКА!</b>\nНастройте парсер.");
-            return;
+            return [];
         }
         $url = "https://min-api.cryptocompare.com/data/pricemulti?api_key=$api_key&fsyms=$request_currency&tsyms=$request_currency";
         $response = Http::get($url);
         if($response->clientError() || $response->status() != 200){
             sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.");
-            return;
-        }      
+            return [];
+        }
 
         $response = $response->json();
         $inserts = [];
         if(@$response['Response'] == "Error"){
-            sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.\n\n".json_encode($response));
-            return;
+            sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов 2, кривой ответ от сервера курсов валют.\n\n".json_encode($response));
+            return [];
         }
 
         
@@ -76,6 +84,14 @@ class RatesParser extends Command{
                 if($from == $to){
                     continue;
                 }
+
+                if($without_garantex_rates){
+                    if(in_array($from, ["BTC", "ETH", "USDT", "DAI"])){
+                        if(in_array($from, ["USD", "RUB"])){
+                            continue;
+                        }
+                    }
+                }
                 $inserts[] = [
                     "from" => $from,
                     "to" => $to,
@@ -83,9 +99,35 @@ class RatesParser extends Command{
                 ];
             }
         }
-        
-        ExchangeRate::truncate();
-        ExchangeRate::insert($inserts);
-        sendTelegramNotification("Курсы успешно обновлены", 4);
+
+        return $inserts;
+    }
+
+    public function parseFromGarantex() {
+        $currencies = ["BTC", "ETH", "USDT", "DAI"];
+        $currencies2 = ["RUB", "USD"];
+        $inserts = [];
+        foreach($currencies as $currency){
+            foreach($currencies2 as $currency2){
+                $url = "https://garantex.org/api/v2/trades?market=".mb_strtolower($currency).mb_strtolower($currency2);
+                $response = Http::timeout(-1)->get($url);
+                if($response->clientError() || $response->status() != 200){
+                    sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса, кривой ответ от сервера курсов валют.");
+                    return [];
+                }
+                $response = $response->json();
+                if(!is_array($response) || count($response) == 0){
+                    sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 2, кривой ответ от сервера курсов валют.");
+                    return [];
+                }
+                $inserts[] = [
+                    "from" => $currency,
+                    "to" => $currency2,
+                    "rate" => $response[0]['price'],
+                ];
+            }
+        }
+
+        return $inserts;
     }
 }
