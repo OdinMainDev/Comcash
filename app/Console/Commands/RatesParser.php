@@ -50,7 +50,7 @@ class RatesParser extends Command{
                 $request_currency[] = $name;
         }
         $inserts = [];
-        $inserts = array_merge($inserts, $this->parseFromGarantex());
+        // $inserts = array_merge($inserts, $this->parseFromGarantex());
         $inserts = array_merge($inserts, $this->parseFromCryptocompare($request_currency, count($inserts) == 0));
         
         ExchangeRate::truncate();
