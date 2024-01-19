@@ -29,6 +29,8 @@ $(document).ready(async function() {
                 locale: match[1] === 'ru' ? Russian : English,
             });
 
+            datepicker.on('lc')
+
             select.append(selectOptionDefault);
             switch ($(this).data('select-type')) {
                 case 'code': 

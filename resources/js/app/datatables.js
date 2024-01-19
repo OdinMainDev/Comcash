@@ -95,7 +95,7 @@
                     const searchTerms = val.split(/[\s.:-]+/);
                     const regexString = searchTerms.join('|');
                     const regex = new RegExp(regexString, 'i');
-                    dtCont.column(a).search(regex ? regex : '', true, false).draw();
+                    dtCont.column(a).search(val ? regex : '', true, false).draw();
                 }, 1000));
             } else {
                 var t = $(this).text();
