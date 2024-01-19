@@ -56,9 +56,13 @@ class Controller_Exchange extends Controller{
         $request->validate([
             "currency_from" => "required|string|max:255",
             "currency_to" => "required|string|max:255",
-            "amount" => "required|numeric",
+            "amount" => "nullable|numeric",
         ]);
+
         $data = $this->getEstimateDataFromRequest($request);
+        if(!$request->has("amount")) {
+            $request->merge(['amount' => $data['amount_from']]);
+        }
         $amount = $data['amount'];
         $direction = $data['direction'];
         $currency_to = $data['currency_to'];

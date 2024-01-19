@@ -97,6 +97,9 @@ class Controller_Exchange extends Controller
     }
 
     public function constructQuery($request){
+        $request->validate([
+            "filter_created_from" => 'nullable|date|date_format:Y-m-d\TH:i',
+        ]);
         $query = Exchange::with("currencyFrom")->with("currencyTo");
         if(!$this->isRootUser()){
             $query = $query->where(function($q){
@@ -104,6 +107,11 @@ class Controller_Exchange extends Controller
                     $q2->where("admin_id", 0)->where("status", 0);
                 });
             });
+        }
+
+        if(!is_null($request->filter_created_from)){
+            $timestamp = \Carbon\Carbon::createFromTimestamp($request->filter_created_from);
+            $query = $query->where('created_at','>=',$timestamp);
         }
         return $query;
     }

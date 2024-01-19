@@ -125,11 +125,19 @@ class Controller extends BaseController{
         if(!$request->reverse){
             $units = $currency_to->units;
         }
+
+        if(!$request->amount) {
+            if(!isset($direction->data['min_amount'])){
+                throw ValidationException::withMessages(["currency" => "bad amount ( required from request )"]);
+            }
+            $request->amount = $direction->data['min_amount'];
+        }
         $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $units, $request->amount, $direction->profit_percent, $request->reverse);
         if(!$amount){
             throw ValidationException::withMessages(["currency" => "bad amount"]);
         }
         return [
+            "amount_from" => $request->amount,
             "amount" => $amount,
             "direction" => $direction,
             "currency_from" => $currency_from,
