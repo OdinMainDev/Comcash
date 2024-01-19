@@ -18,5 +18,6 @@ return [
     "feedback" => "Отзывы",
     "exchanges" => "Обмены",
     "clear cache" => "Очистить кеш",
-    "users" => "Пользователи"
+    "users" => "Пользователи",
+    "sitemap generate" => "Сгенерировать sitemap"
 ];

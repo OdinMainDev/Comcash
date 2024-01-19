@@ -175,6 +175,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
     Route::group( ['middleware' => ['auth', 'permission:handle-exchanger']], function() {
         Route::get('/panel/clear/cache', [AdminApi::class, "clear_cache"])->name("adminClearCache");
+        Route::get('/panel/sitemap/generate', [AdminApi::class, "sitemap_generate"])->name("adminSitemapGenerate");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-users']], function() {
