@@ -29,12 +29,31 @@ trait HasTable {
                 </div>';
     }
 
-    public function tableAction($row, $route_edit = false, $route_delete = false, $custom = false){
+    public function tableAction($row, $route_edit = false, $route_delete = false, $custom = false, $route_confirm = false){
         $html = '<div class="mt-3 d-flex social-links">';
         if($route_edit){
-            $html .= '<a href="'.$route_edit.'" class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon">
+            $html .= '
+            <a href="'.$route_edit.'" class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon">
                 <i data-feather="edit-2" ></i>
             </a>';
+        }
+
+        if($route_confirm) {
+            if(in_array($row -> status, [15, 4])) {
+                if ($row->merchant_type_from != "manualcrypto" && $row->merchant_type_from != "manualfiat") {
+                    $html .='<a href="' . route("adminExchangeRewithdraw", [$row->id]) . '" class="btn btn-primary me-2">Повторить выплату</a>';
+                }
+                $html .='<a href="' . route("adminExchangeSetWithdraw", [$row->id]) . '" class="btn btn-primary me-2">Установить статус выплата начата</a>';
+                $html .='<a href="' . route("adminExchangeSetWithdrawComplete", [$row->id]) . '" class="btn btn-primary me-2">Установить статус выплачено</a>';
+            }
+
+            if ($row->status == 0 && ($row->merchant_type_from == "manualcrypto" || $row->merchant_type_from == "manualfiat")) {
+                $html .='<a href="' . route("adminExchangeSetPaid", [$row->id]) . '" class="btn btn-primary me-2">Установить статус оплачено</a>';
+            }
+            
+            if ($row->status == 1 && ($row->merchant_type_from == "manualcrypto" || $row->merchant_type_from == "manualfiat")) {
+                $html .='<a href="' . route("adminExchangeSetWithdraw", [$row->id]) . '" class="btn btn-primary me-2">Установить статус выплата начата</a>';
+            }
         }
 
         if($route_delete){

@@ -91,7 +91,7 @@ class Controller_Exchange extends Controller
             return $this->tableDate($row, "created_at");
         })
         ->addColumn('action', function ($row) {
-            return $this->tableAction($row, route("adminExchangeEdit", [$row->id]));
+            return $this->tableAction($row, route("adminExchangeEdit", [$row->id]), false, false, true);
         })
         ->make(true);
     }
