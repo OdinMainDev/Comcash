@@ -1,14 +1,15 @@
+
 (() => {
     function debounce(callback, ms) {
-        var timer = 0;
+        let timer = 0;
         return function() {
-            var context = this, args = arguments;
+            const context = this, args = arguments;
             clearTimeout(timer);
-            timer = setTimeout(function () {
-            callback.apply(context, args);
-            }, ms || 0);
+            timer = setTimeout(() => callback.apply(context, args), ms || 0);
         };
     }
+
+    
     $(".eaDatatable").each(function() {
         var parent = $(this).parent();
         var pathname = window.location.pathname + '/data';
@@ -49,7 +50,7 @@
                 "infoEmpty":      "0 - 0",
             },
             columnDefs: [
-                { className: "align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-start", targets: 0, "width": "5%" },
+                { className: "align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-start", targets: 0, "width": "10%" },
                 { className: "align-middle white-space-nowrap fw-semi-bold text-1000 ps-4 border-end", targets: -1, "width": "5%" },
                 { className: "align-middle white-space-nowrap ps-4 border-end", targets: "_all" },
                 { targets: "column-exch-status", "width": "10%" },
@@ -74,15 +75,37 @@
                 $(this).html(" ");
                 return;
             }
-            $(this).removeAttr(Object.values($(this).get(0).attributes).map(attr => attr.name).join(' '));
-            $(this).removeClass("sorting");
-            $(this).addClass("sorting_disabled");
-            var t = $(this).text();
-            $(this).html('<input type="text" class="form-control" placeholder="🔍 ' + t + '" />');
-            $("input", this).keyup(debounce(function(e){
-                var val = $.fn.dataTable.util.escapeRegex(this.value);
-                dtCont.column(a).search(val ? val : '', true, false).draw();
-            }, 1000));
+            
+
+            if($(this).data('select-type')) {
+                $(this)
+                .html('<select class="form-select" id="enabled" name="enabled"></select>')
+                .find('select')
+                .on('change', debounce(function(e) {
+                  const text = $.fn.dataTable.util.escapeRegex(this.value);
+                  dtCont.column(a).search(text ? text : '', true, false).draw();
+
+                }, 1000));
+
+            } else if($(this).data('datepicker')) {
+                var t = $(this).text();
+                $(this).html('<input type="text" class="form-control datepicker" placeholder="🔍 ' + t + '" />');
+                $("input", this).keyup(debounce(function(e) {
+                    const val = this.value;
+                    const searchTerms = val.split(/[\s.:-]+/);
+                    const regexString = searchTerms.join('|');
+                    const regex = new RegExp(regexString, 'i');
+                    dtCont.column(a).search(val ? regex : '', true, false).draw();
+                }, 1000));
+            } else {
+                var t = $(this).text();
+                $(this).html('<input type="text" class="form-control" placeholder="🔍 ' + t + '" />');
+                $("input", this).keyup(debounce(function(e){
+                    var val = $.fn.dataTable.util.escapeRegex(this.value);
+                    console.log(val)
+                    dtCont.column(a).search(val ? val : '', true, false).draw();
+                }, 1000));
+            }            
         });
 
         dtCont.on( 'draw', function () {
