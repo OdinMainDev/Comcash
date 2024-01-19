@@ -48,4 +48,11 @@ class Controller_Api extends Controller{
         Artisan::call('cache:clear');
         return redirect()->back();
     }
+
+    public function sitemap_generate() {
+        dispatch(function () {
+            Artisan::call('app:fill-sitemap');
+        })->onQueue('fill-sitemap-queue');
+        return redirect()->back();
+    }
 }

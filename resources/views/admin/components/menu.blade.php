@@ -168,6 +168,12 @@
 						<span class="link-title">{{__("menu.clear cache")}}</span>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{route("adminSitemapGenerate")}}">
+						<i class="link-icon" data-feather="flag"></i>
+						<span class="link-title">{{__("menu.sitemap generate")}}</span>
+					</a>
+				</li>
 			@endcan
 			@can("handle-languages")
 				<li class="nav-item">
