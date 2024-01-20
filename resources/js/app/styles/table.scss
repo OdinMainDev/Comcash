@@ -1,6 +1,12 @@
 .admin-exchange-table {
     position: relative;
     cursor: pointer;
+    &.rotate {
+        
+        &::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+    }
 
     &.hover {
 
@@ -10,22 +16,21 @@
         display: none;
     }
 
-    &:hover {
-        .hidden-row {
-            display: table-row;
-        }
-    }
+    // &:hover {
+    //     .hidden-row {
+    //         display: table-row;
+    //     }
+    // }
     
 
     &::after {
         content: '';
-        border: solid #FFF;
-        border-width: 0 2px 2px 0;
-        display: inline-block;
-        padding: 3px;
+        background: url(/admin/assets/images/arrow.svg) no-repeat;
+        width: 13px;
+        height: 7px;
         position: absolute;
         right: -20px;
         top: 50%;
-        transform: translateY(-50%) rotate(45deg);
+        transform: translateY(-50%) rotate(0);
     }
 }

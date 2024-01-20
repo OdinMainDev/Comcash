@@ -1,8 +1,7 @@
 import $ from 'jquery';
 
-$(document).ready(async function() {
-    const table = $('.admin-exchange-table');
-    table.on('click', function() {
-        console.log('hello')
-    })
-})
+$(document).on('click', '.admin-exchange-table', function() {
+    // Ваш код здесь
+    $(this).find('.admin-exchange-table__row ').toggleClass('hidden-row');
+    $(this).toggleClass('rotate')
+});
