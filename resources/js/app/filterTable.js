@@ -36,6 +36,9 @@ $(document).ready(async function() {
                 case 'code': 
                     renderCurrenciesCode(select)
                     break;
+                case 'code_id':
+                    renderCurrenciesCodeId(select)
+                    break;
                 case 'id':
                     renderCurrenciesId(select)
                     break;
@@ -52,6 +55,13 @@ $(document).ready(async function() {
     function renderCurrenciesCode(select) {
         currenciesList.forEach(item => {
             const selectOption = `<option value=${item.name}>` + item.name + '</option>'
+            select.append(selectOption);
+        })
+    }
+
+    function renderCurrenciesCodeId(select) {
+        currenciesList.forEach(item => {
+            const selectOption = `<option value=${item.id}>` + item.name + '</option>'
             select.append(selectOption);
         })
     }
