@@ -39,20 +39,15 @@ trait HasTable {
         }
 
         if($route_confirm) {
-            if(in_array($row -> status, [15, 4])) {
-                if ($row->merchant_type_from != "manualcrypto" && $row->merchant_type_from != "manualfiat") {
-                    $html .='<a href="' . route("adminExchangeRewithdraw", [$row->id]) . '" class="btn btn-primary me-2">Повторить выплату</a>';
-                }
-                $html .='<a href="' . route("adminExchangeSetWithdraw", [$row->id]) . '" class="btn btn-primary me-2">Установить статус выплата начата</a>';
-                $html .='<a href="' . route("adminExchangeSetWithdrawComplete", [$row->id]) . '" class="btn btn-primary me-2">Установить статус выплачено</a>';
+            if ($row->status == 0 ) {
+                $html .='<a href="' . route("adminExchangeSetPaid", [$row->id]) . '" class="btn btn-primary me-2">Подтвердить оплату</a>';
             }
-
-            if ($row->status == 0 && ($row->merchant_type_from == "manualcrypto" || $row->merchant_type_from == "manualfiat")) {
-                $html .='<a href="' . route("adminExchangeSetPaid", [$row->id]) . '" class="btn btn-primary me-2">Установить статус оплачено</a>';
+            if ($row->status == 1) {
+                $html .='<a href="' . route("adminExchangeSetWithdraw", [$row->id]) . '" class="btn btn-primary me-2">Начать выплату</a>';
             }
             
-            if ($row->status == 1 && ($row->merchant_type_from == "manualcrypto" || $row->merchant_type_from == "manualfiat")) {
-                $html .='<a href="' . route("adminExchangeSetWithdraw", [$row->id]) . '" class="btn btn-primary me-2">Установить статус выплата начата</a>';
+            if ($row->status == 4) {
+                $html .='<a href="' . route("adminExchangeSetWithdrawComplete", [$row->id]) . '" class="btn btn-primary me-2">Подтвердить выплату</a>';
             }
         }
 
