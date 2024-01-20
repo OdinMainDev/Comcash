@@ -119,6 +119,7 @@ class Controller_Exchange extends Controller{
         
         if(!isset($exchange->data['merchant_from_data']) || !isset($exchange->data['merchant_from_data']['address']) || !$exchange->data['merchant_from_data']['address']) return abort(404);
         
+        $exchange->admin_id = auth()->user()->id;
         $exchange->status = 1;
         $exchange->save();
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ОПЛАЧЕНО</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
