@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasImage;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class Controller_User extends Controller{
@@ -103,6 +104,28 @@ class Controller_User extends Controller{
             $model->givePermissionTo($permission);
         }
         $model->assignRole($role->name);
+        return $this->responseSuccess();
+    }
+
+    public function password_process(Request $request){
+        $request->validate([
+            "id" => "required|integer",
+            "password" => "required|string|max:255",
+        ]);
+
+        $model = User::where("id", $request->id);
+        if(!$this->isRootUser())
+            $model = $model->doesntHave('roles', 'or', function ($query) {
+                $query->where('name', "admin");
+            });
+
+        $model = $model->first();
+        if(!$model){
+            return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
+        }
+
+        $model->password = Hash::make($request->password);
+        $model->save();
         return $this->responseSuccess();
     }
 }

@@ -184,6 +184,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
         Route::get('/panel/users/edit/{id}', [AdminUser::class, "edit"])->name("adminUserEdit");
         Route::post('/panel/users/process', [AdminUser::class, "process"])->name("adminUserProcess");
+        Route::post('/panel/users/password/process', [AdminUser::class, "password_process"])->name("adminUserPasswordProcess");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-user-role']], function() {
