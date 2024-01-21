@@ -37,6 +37,8 @@ class Controller_Exchange extends Controller
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_to:</td><td>' . @$row->merchant_to . '</td></tr>';
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_type_from:</td><td>' . @$row->merchant_type_from . '</td></tr>';
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_type_to:</td><td>' . @$row->merchant_type_to . '</td></tr>';
+            if(isset($row->data['merchant_from_data']))
+                $html .= '<tr class="admin-exchange-table__row hidden-row"><td>address:</td><td>' . @$row->data['merchant_from_data']['address'] . '</td></tr>';
             $html .= '</tbody>';
             $html .= '</table>';
             return $html;

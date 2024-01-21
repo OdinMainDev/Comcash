@@ -55,7 +55,8 @@ class Controller_Currency extends Controller{
             $model->image = $image;
         $model->data = [
             "titles" => getLocalesNames($request),
-            "wallets" => $request->currencyWallets ? $request->currencyWallets : []
+            "wallets" => $request->currencyWallets ? $request->currencyWallets : [],
+            "walletsReuse" => $request->currencyWallets ? $request->currencyWallets : [] // если заканчиваются wallets то он обновляет список из этих же адресов
         ];
         $model->status = $request->enabled;
         $model->tag = $request->tag;

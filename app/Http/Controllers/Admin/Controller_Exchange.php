@@ -8,6 +8,7 @@ use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Jobs\ExchangeWithdraw;
 use App\Models\Exchange;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class Controller_Exchange extends Controller{
     
@@ -124,6 +125,26 @@ class Controller_Exchange extends Controller{
         $exchange->save();
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ОПЛАЧЕНО</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
         sendTelegramNotification($text);
+
+        $currency = $exchange->currencyFrom;
+        $currencyData = $currency->data;
+        if(isset($currencyData['wallets']) && is_array($currencyData['wallets'])){
+            $address = $exchange->data['merchant_from_data']['address'];
+            $newWallets = [];
+            foreach($currencyData['wallets'] as $wallet){
+                if($wallet == $address){
+                    continue;
+                }
+                $newWallets[] = $wallet;
+            }
+            $currencyData['wallets'] = $newWallets;
+            if(count($currencyData['wallets']) == 0){
+                $currencyData['wallets'] = $currencyData['walletsReuse'];
+            }
+            $currency->data = $currencyData;
+            $currency->save();
+            Cache::forget("currencies-public");
+        }
         return redirect(route("adminExchangeList"));
     }
 
