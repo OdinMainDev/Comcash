@@ -46,7 +46,6 @@
 				</span>	
 			</span>
 			<span class="header-info__contact">
-
 				<span class="header-info__time header-info__time_green">
 					Часы работы с
 				</span>
