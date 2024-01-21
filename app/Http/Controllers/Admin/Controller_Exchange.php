@@ -21,7 +21,7 @@ class Controller_Exchange extends Controller{
         if(!$exchange)
             return abort(404);
         
-        return view("admin.pages.exchange.item")->with("model", $exchange);
+        return view("admin.pages.exchange.item")->with("model", $exchange)->with("isRootUser", $this->isRootUser());
     }
 
     public function process(Request $request) {
@@ -135,5 +135,32 @@ class Controller_Exchange extends Controller{
         if(!@$exchange->data['merchant_from_data']['address']) return false;
 
         return true;
+    }
+
+    public function set_deleted($lang, $id){
+        $exchange = $this->checkexchlocal($id);
+        if(!$exchange) return abort(404);
+        if(!$this->isRootUser()) return abort(404);
+        
+        $exchange->status = 13;
+        $exchange->save();
+        $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА УДАЛЕНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
+        sendTelegramNotification($text);
+        return redirect(route("adminExchangeList"));
+    }
+
+    public function set_created($lang, $id){
+        $exchange = $this->checkexchlocal($id);
+        if(!$exchange) return abort(404);
+        if(!$this->isRootUser()) return abort(404);
+        
+        $exchange->admin_id = 0;
+        $exchange->status = 0;
+        $exchange->created_at = now();
+        $exchange->updated_at = now();
+        $exchange->save();
+        $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА СОЗДАНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
+        sendTelegramNotification($text);
+        return redirect(route("adminExchangeList"));
     }
 }
