@@ -45,17 +45,17 @@ class Controller_Exchange extends Controller
             // dd($row);
             $html = "";
             switch($row->status){
-                case 0: $html = "created"; break;
-                case 1: $html = "paid"; break;
-                case 2: $html = "selled currency"; break;
-                case 3: $html = "wait for withdraw"; break;
-                case 4: $html = "check withdraw"; break;
-                case 5: $html = "success"; break;
-                case 11: $html = "api error"; break;
-                case 12: $html = "cancel"; break;
-                case 13: $html = "deleted"; break;
-                case 14: $html = "amount error"; break;
-                case 15: $html = "withdraw error"; break;
+                case 0: $html = "🆕 ".__("common.statusExchange".$row->status)." 🆕"; break;
+                case 1: $html = "⚠️ ".__("common.statusExchange".$row->status)." ⚠️"; break;
+                case 2: $html = "⚠️⚠️ ".__("common.statusExchange".$row->status)." ⚠️⚠️"; break;
+                case 3: $html = "⚠️⚠️ ".__("common.statusExchange".$row->status)." ⚠️⚠️"; break;
+                case 4: $html = "⚠️⚠️⚠️ ".__("common.statusExchange".$row->status)." ⚠️⚠️⚠️"; break;
+                case 5: $html = "✅ ".__("common.statusExchange".$row->status)." ✅"; break;
+                case 11: $html = "⛔️❗️ ".__("common.statusExchange".$row->status)." ❗️⛔️"; break;
+                case 12: $html = "🚫 ".__("common.statusExchange".$row->status)." 🚫"; break;
+                case 13: $html = "❌❌ ".__("common.statusExchange".$row->status)." ❌❌"; break;
+                case 14: $html = "⛔️❗️ ".__("common.statusExchange".$row->status)." ❗️⛔️"; break;
+                case 15: $html = "⛔️❗️ ".__("common.statusExchange".$row->status)." ❗️⛔️"; break;
             }
             return $html." (".$row->status.")";
         })
@@ -101,6 +101,7 @@ class Controller_Exchange extends Controller
     public function constructQuery($request){
         $request->validate([
             "filter_created_from" => 'nullable|date|date_format:Y-m-d\TH:i',
+            // "filter_"
         ]);
         $query = Exchange::with("currencyFrom")->with("currencyTo");
         if(!$this->isRootUser()){
@@ -112,6 +113,7 @@ class Controller_Exchange extends Controller
         }
 
         if(!is_null($request->filter_created_from)){
+            // dd($request->filter_created_from);
             $timestamp = \Carbon\Carbon::createFromTimestamp($request->filter_created_from);
             $query = $query->where('created_at','>=',$timestamp);
         }

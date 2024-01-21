@@ -82,6 +82,17 @@ return [
     "setUserRole" => "Установить роль пользователя",
     "chooseRole" => "Выберите роль",
     "data_fail" => "Ошибка данных",
-    "phone" => "Телефон"
+    "phone" => "Телефон",
+    "statusExchange0" => "Новая заявка",
+    "statusExchange1" => "Заявка оплачена",
+    "statusExchange2" => "Заявка продает валюту приема",
+    "statusExchange3" => "Заявка покупает валюту выплаты",
+    "statusExchange4" => "Заявка в процессе выплаты",
+    "statusExchange5" => "Завершенная заявка",
+    "statusExchange11" => "ОШИБКА API",
+    "statusExchange12" => "Заявка отменена",
+    "statusExchange13" => "Заявка удалена",
+    "statusExchange14" => "ОШИБКА В СУММЕ ЗАЯВКИ",
+    "statusExchange15" => "ОШИБКА ПРИ ВЫПЛАТЕ",
 
 ];

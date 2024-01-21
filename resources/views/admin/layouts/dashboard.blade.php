@@ -31,6 +31,11 @@
             </div>
         </div>
 
+
+
+        <script>
+            window.__str = JSON.parse(`{!!addslashes(json_encode(__("common")));!!}`);
+        </script>
         <script src="/admin/assets/vendors/core/core.js"></script>
         <!-- <script src="/admin/assets/vendors/chartjs/Chart.min.js"></script> -->
         <!-- <script src="/admin/assets/vendors/jquery.flot/jquery.flot.js"></script>
@@ -44,5 +49,7 @@
         <script src="/admin/assets/js/datepicker.js"></script> -->
         @vite("resources/js/app.js")
         @yield("js")
+
+       
     </body>
 </html>    
