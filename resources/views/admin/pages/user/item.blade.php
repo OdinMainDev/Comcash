@@ -48,6 +48,20 @@
                     
 					<button type="submit" class="btn btn-primary me-2">{{__("common.submit")}}</button>
 				</form>
+
+                <br><br>
+                <form class="forms-sample" action="{{route("adminUserPasswordProcess")}}">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$model->id}}">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="password" class="form-label">{{__("common.password")}}</label>
+                            <input type="text" class="form-control" id="password" name="password" autocomplete="off" placeholder="*****">
+                        </div>
+                    </div>
+                    
+					<button type="submit" class="btn btn-primary me-2">{{__("common.submit")}}</button>
+				</form>
                 
                 @can("handle-user-role")
                     <br><br><br>

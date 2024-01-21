@@ -1,46 +1,46 @@
 export const statusList = [
     {
         number: 0,
-        name: 'created'
+        name: window.__str["statusExchange0"]
     },
     {
         number: 1,
-        name: 'paid'
+        name: window.__str["statusExchange1"]
     },
     {
         number: 2,
-        name: 'selled currency'
+        name: window.__str["statusExchange2"]
     },
     {
         number: 3,
-        name: 'wait for withdraw'
+        name: window.__str["statusExchange3"]
     },
     {
         number: 4,
-        name: 'check withdraw'
+        name: window.__str["statusExchange4"]
     },
     {
         number: 5,
-        name: 'success'
+        name: window.__str["statusExchange5"]
     },
     {
         number: 11,
-        name: 'api error'
+        name: window.__str["statusExchange11"]
     },
     {
         number: 12,
-        name: 'cancel'
+        name: window.__str["statusExchange12"]
     },
     {
         number: 13,
-        name: 'deleted'
+        name: window.__str["statusExchange13"]
     },
     {
         number: 14,
-        name: 'amount error'
+        name: window.__str["statusExchange14"]
     },
     {
         number: 15,
-        name: 'withdraw error'
+        name: window.__str["statusExchange15"]
     },
 ]

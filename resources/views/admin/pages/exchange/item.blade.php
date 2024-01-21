@@ -23,6 +23,15 @@
                     <a href="{{route("adminExchangeSetWithdraw", [$model->id])}}" class="btn btn-primary me-2">Установить статус выплата начата</a>
                 @endif
 
+                @if($isRootUser)
+                    @if($model->status > 10)
+                        <a href="{{route("adminExchangeSetCreated", [$model->id])}}" class="btn btn-primary me-2">Установить статус заявка создана</a>
+                    @endif
+                    @if($model->status != 13)
+                        <a href="{{route("adminExchangeSetDeleted", [$model->id])}}" class="btn btn-danger me-2">Установить статус заявка удалена</a>
+                    @endif
+                @endif
+
 				<form class="forms-sample" action="{{route("adminExchangeEditPost")}}">
                     @csrf
                     @if($model->id)

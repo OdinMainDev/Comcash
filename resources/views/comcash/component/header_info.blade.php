@@ -77,7 +77,7 @@
 				</span>
 				&nbsp;
 				<span class="header-info__contact-label">
-					obmen@comcash.io
+					Comcash@exploit.im
 				</span>	
 			</span>
 			<span class="header-info__contact copy">
@@ -92,7 +92,7 @@
 				</span>
 				&nbsp;
 				<span class="header-info__contact-label">
-					obmen@comcash.io
+					Comcash_support@exploit.im
 				</span>	
 			</span>
 		</div>
