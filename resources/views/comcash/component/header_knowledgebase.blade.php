@@ -1,4 +1,32 @@
-<header class='info-header'>
+<header class='header info-header'>
+    <div class="header__time">
+        <span class="header-info__contact">
+            <span class="header-info__time header-info__time_green">
+                Обработка заявок в течении
+            </span>
+            &nbsp;
+            <span class="header-info__time">
+                30 минут
+            </span>	
+        </span>
+        <span class="header-info__contact">
+            <span class="header-info__time header-info__time_green">
+                Часы работы с
+            </span>
+            &nbsp;
+            <span class="header-info__time">
+                09:00
+            </span>	
+            &nbsp;
+            <span class="header-info__time header-info__time_green">
+                до
+            </span>
+            &nbsp;
+            <span class="header-info__time">
+                00:00
+            </span>	
+        </span>
+    </div>
 	<div class='info-header__container'>
         <a href='/' class='header__logo header__default'>
             <img src='/comcash/img/logo.svg' alt='logo' />
