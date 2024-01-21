@@ -74,8 +74,6 @@
 }
 
 .personal {
-  padding-top: calc(var(--height-header) + 24px);
-
   @media (max-width: 1100px) {
     height: 100vh;
     padding-top: var(--height-header-mobile);

@@ -1,6 +1,6 @@
 <div class="header-info">
 	<div class="header-info__container">
-		<div class="header-info__content">
+		<div class="header-info__content qtox">
 			<span class="header-info__contact">
 				<span class="header-info__contact-icon">
 					<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,6 +32,35 @@
 				&nbsp;
 				<span class="header-info__contact-label">
 					44F916D1AEA991BD510171AD4E48BCB80E34702A11FA9295E7C541FB67A32D762588CFCB44B9
+				</span>	
+			</span>
+		</div>
+		<div class="header-info__content">
+			<span class="header-info__contact">
+				<span class="header-info__time header-info__time_green">
+					Обработка заявок в течении
+				</span>
+				&nbsp;
+				<span class="header-info__time">
+					30 минут
+				</span>	
+			</span>
+			<span class="header-info__contact">
+
+				<span class="header-info__time header-info__time_green">
+					Часы работы с
+				</span>
+				&nbsp;
+				<span class="header-info__time">
+					09:00
+				</span>	
+				&nbsp;
+				<span class="header-info__time header-info__time_green">
+					до
+				</span>
+				&nbsp;
+				<span class="header-info__time">
+					00:00
 				</span>	
 			</span>
 		</div>

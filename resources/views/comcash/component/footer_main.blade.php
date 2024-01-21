@@ -8,7 +8,9 @@
                     class='footer__logo-img' />
                 <p>{{__("front.slogan")}}</p>
                 <div class="footer__sponsors-list">
-                    <img class="footer__sponsors-item" src="/comcash/img/cb.png"/>
+                    <a href="">
+                        <img class="footer__sponsors-item" src="/comcash/img/cb.png"/>
+                    </a>
                 </div>
             </div>
             <div class='footer__sitemap'>

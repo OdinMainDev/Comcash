@@ -64,6 +64,14 @@
         @endauth
         <div class='header__nav-mobile'>
             <div class='accordion'>
+                <!-- @guest
+                    <button class='accordion__button accordion__button_custom' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
+                    <div class='accordion__content'>
+                    </div>
+                    <button class='accordion__button accordion__button_custom' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign up")}}</button>
+                    <div class='accordion__content'>
+                    </div>
+                @endguest -->
                 @auth
                     <button class='accordion__button'>{{__("front.profile")}}</button>
                     <div class='accordion__content'>
@@ -208,9 +216,14 @@
                 </span>
             </div>
         </div>
-        <button class='header__burger button'>
-            <img src='/comcash/img/icons/burger.svg' alt="Comcash"/>
-            <img src='/comcash/img/icons/burger-cross.svg' alt="Comcash"/>
-        </button>
+        <div class="header__btn-container">
+            @guest
+                <button class='header__btn button open___signin show' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
+            @endguest
+            <button class='header__burger button'>
+                <img src='/comcash/img/icons/burger.svg' alt="Comcash"/>
+                <img src='/comcash/img/icons/burger-cross.svg' alt="Comcash"/>
+            </button>
+        </div>
     </div>
 </header>
