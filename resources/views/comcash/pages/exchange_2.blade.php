@@ -114,9 +114,13 @@
 									<a class="button button--auto exchange__button" href="{{$exchange->data['merchant_from_data']['url']}}">{{__("front.gotopay")}}</a>
 								</div>
 							@endif
-							<div class='progress__box-label'>
-								<a class="button button--auto exchange__button" href="{{ route("exchgangeIPaid", [$exchange->hash])}}">{{__("front.ipaid")}}</a>
-							</div>
+							@if($exchange->merchant_type_from == "manualcrypto" || $exchange->merchant_type_from == "manualfiat")
+								@if($exchange->status == 0)
+									<div class='progress__box-label'>
+										<a class="button button--auto exchange__button" href="{{ route("exchgangeIPaid", [$exchange->hash])}}">{{__("front.ipaid")}}</a>
+									</div>
+								@endif
+							@endif
 						@else
 							<div class="progress__error">
 								<img src="/comcash/img/icons/smile-face.svg" class="progress__error-img" alt="sad-face"/>
