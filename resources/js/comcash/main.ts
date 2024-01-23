@@ -24,6 +24,7 @@ import '@/shared/scripts/carousel';
 import '@/shared/scripts/theme';
 import '@/shared/scripts/languages';
 import '@/shared/scripts/copyButton';
+import '@/shared/scripts/banner';
 
 import '@/features/cryptoFormScripts';
 import '@/features/exchageFormScripts';

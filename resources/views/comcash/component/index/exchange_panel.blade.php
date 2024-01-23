@@ -1,16 +1,6 @@
 <div class='welcome'>
     <div class='welcome__container'>
         <div class='welcome__top'>
-            <div class='welcome__text'>
-                <p class='welcome__title'>
-                    <span>{{__("front.fast")}}</span> {{__("front.and")}} <span>{{__("front.secure")}}</span> {{__("front.cryptoexchanger")}}
-                </p>
-                <p class='welcome__subtitle'>
-                    {{__("front.comcash welcome 2")}}
-                    <br/>
-                    {{__("front.comcash welcome 3")}}
-                </p>
-            </div>
             <div class='welcome__form crypto-form'>
                 <div class='welcome__tabs-body'>
                     <div class='welcome__tabs-content active' data-tab='tab1'>
@@ -70,7 +60,56 @@
                     </div>
                 </div>
             </div>
+
+            <div class="welcome__security">
+                <img src="/comcash/img/kyc.png" class="welcome__security-image">
+                <div class="welcome__security-text">
+                    Com<span class="green">CASH</span> <span class="grey">
+                    сохраняет вашу анонимность: Мы никогда не проверяем ваш АМЛ и
+                    не запрашиваем KYC. Мы гарантируем сохранность ваших средств и выполнения 
+                    сделок вне зависимости от происхождения вашей криптовалюты
+                    </span>
+                </div>
+                <img src="/comcash/img/aml2.png" class="welcome__security-image">
+            </div>  
         </div>
+    </div>
+    <div class='welcome__banner'>
+        <div class="welcome__banner-arrow welcome__banner-arrow_left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="48" viewBox="0 0 27 48" fill="none">
+                <path d="M26.0115 5.76149C27.3295 4.44347 27.3295 2.30653 26.0115 0.988515C24.6935 -0.329505 22.5565 -0.329505 21.2385 0.988515L0.988514 21.2385C-0.329504 22.5565 -0.329504 24.6935 0.988514 26.0115L21.2385 46.2615C22.5565 47.5795 24.6935 47.5795 26.0115 46.2615C27.3295 44.9435 27.3295 42.8065 26.0115 41.4885L8.14797 23.625L26.0115 5.76149Z" fill="white"/>
+            </svg>
+        </div>
+        <div class="welcome__banner-arrow welcome__banner-arrow_right">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="48" viewBox="0 0 27 48" fill="none">
+                <path d="M26.0115 5.76149C27.3295 4.44347 27.3295 2.30653 26.0115 0.988515C24.6935 -0.329505 22.5565 -0.329505 21.2385 0.988515L0.988514 21.2385C-0.329504 22.5565 -0.329504 24.6935 0.988514 26.0115L21.2385 46.2615C22.5565 47.5795 24.6935 47.5795 26.0115 46.2615C27.3295 44.9435 27.3295 42.8065 26.0115 41.4885L8.14797 23.625L26.0115 5.76149Z" fill="white"/>
+            </svg>
+        </div>
+        <div class="welcome__banner-title">
+            Что <span>нужно</span> знать о нас ?
+        </div>
+        <div class="welcome__banner-text">
+            <div class="welcome__banner-text-item">
+                Наш обменник сохраняет Вашу анонимность
+            </div>
+            <div class="welcome__banner-text-item">
+                Мы никогда не проверяем Ваш AML и не запрашиваем KYC
+            </div>
+            <div class="welcome__banner-text-item">
+                Мы гарантируем сохранность ваших средств и выполнения сделок вне зависимости от происхождения вашей криптовалюты
+            </div>
+        </div>
+        <div class="welcome__banner-text">
+            Если вам необходимо  получить анонимно наличные от 5000$  или же 
+            сделать вашу крипту чище, убрав следы ее происхождения - пишите по контактам в шапке профиля !
+        </div>
+        <div class="welcome__banner-text">
+            Репутация, это наша главная задача!<br>
+            С уважением<br>
+            Команда Com<span>CASH</span>
+        </div>
+    </div>
+    <div class='welcome__container'>
         <div class='welcome__bottom'>
             <div class='welcome__bottom-text'>{{__("front.Buy Crypto With")}}</div>
             <div class='welcome__bottom-payments'>

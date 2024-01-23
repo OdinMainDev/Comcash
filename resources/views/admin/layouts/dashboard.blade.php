@@ -31,8 +31,6 @@
             </div>
         </div>
 
-
-
         <script>
             window.__str = JSON.parse(`{!!addslashes(json_encode(__("common")));!!}`);
         </script>
