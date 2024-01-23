@@ -12,7 +12,6 @@
             <p class="progress__title">
                 Ошибка
             </p>
-
             <div class="progress__box">
                 <div class="progress__box-right">
                     <div class="progress__error">
@@ -40,28 +39,34 @@
 
 	@if(!$show)
 		@if($exchange->status < 10)
-            <div class="progress">
-                <div class="progress__container">
-
-                <div class="progress__box">
-                    <div class="progress__box-right">
-                        <div class="progress__preparation">
-                            <div class="progress__preparation-text" id="needRefreshPageId">
-                                Подготовка обмена!
-                            </div>
-                            <div class="progress__preparation-img"></div>
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-            </div>
+			<div class="progress">
+					<div class="progress__container">
+						<div class="progress__box">
+								<div class="progress__box-right">
+										<div class="progress__preparation">
+												<div class="progress__preparation-text" id="needRefreshPageId">
+														Подготовка обмена!
+												</div>
+												<div class="progress__preparation-img"></div>
+										</div>
+								</div>
+						</div>
+					</div>
+			</div>
 		@endif
 	@else
 		<div class="progress" id="needCheckStatusExchange">
 			<div class="progress__container">
 				<p class="progress__title-mobile">{{__("front.exchange id")}} {{$exchange->id}}</p>
 				<p class="progress__title">Выплата производится в автоматическом режиме в течении 30 минут</p>
+				<div class="progress__hash">
+					<div class='progress__hash-label'>
+						Хеш
+					</div>
+					<div class="progress__hash-text">
+						0721a1d3781d783783f93875b4de32f1f3ef2855fce4af1685e52760d079454b
+					</div>
+				</div>
 				<div class="progress__box">
 					@if($exchange->currencyFrom->tag == "crypto")
 						<img src="https://chart.googleapis.com/chart?chs=224x224&cht=qr&chl={{$exchange->data['merchant_from_data']['address']}}&choe=UTF-8" class="progress__box-img" title="Link to Google.com" />

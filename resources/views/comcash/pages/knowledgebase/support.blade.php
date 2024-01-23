@@ -6,18 +6,18 @@
         @include("comcash.component.knowledge_menu")
         <div class="support__content">
             <p class="support__title">{{__("front.support")}}</p>
-            <p class="support__text">{{__("front.page_support_desc_1")}}</p>
-            <p class="support__text">{{__("front.page_support_desc_2")}}</p>
-            <br/>
-            <ul>
+            <!-- <p class="support__text">{{__("front.page_support_desc_1")}}</p>
+            <p class="support__text">{{__("front.page_support_desc_2")}}</p> -->
+            <!-- <br/> -->
+            <!-- <ul>
                 <li>{{__("front.page_support_ul_1")}}</li>
                 <li>{{__("front.page_support_ul_2")}}</li>
                 <li>{{__("front.page_support_ul_3")}}</li>
                 <li>{{__("front.page_support_ul_4")}}</li>
-            </ul>
-            <br/>
-            <p class="support__text">{{__("front.page_support_desc_3")}}</p>
-            <p class="support__text">{{__("front.page_support_desc_4")}}</p>
+            </ul> -->
+            <!-- <br/> -->
+            <!-- <p class="support__text">{{__("front.page_support_desc_3")}}</p> -->
+            <!-- <p class="support__text">{{__("front.page_support_desc_4")}}</p> -->
             <div class="support__row">
             <form class="support__form" action="{{route("comcashSupport")}}">
                 <div class="support__form-row">
@@ -51,13 +51,21 @@
             <div class="support__contacts">
                 <p class="support__contacts-title">{{__("front.Would you like to contact us directly?")}}</p>
                 <p class="support__contacts-subtitle">{{__("front.Use our contacts")}}</p>
-                <a class="support__contacts-link">
-                    <img src="/comcash/img/globus.svg" alt="">
-                    <span>support@comcash.io</span>
+                <a class="support__contacts-link" href="https://t.me/comcash_exchange">
+                    <img src="/comcash/img/icons/green-telegram.svg" alt="">
+                    <span>@comcash_exchange</span>
                 </a>
                 <a class="support__contacts-link">
-                    <img src="/comcash/img/globus.svg" alt="">
-                    <span>support@comcash.io</span>
+                    <img src="/comcash/img/icons/qtox.svg" alt="">
+                    <span>qTox: 44F916D1AEA991BD510171AD4E48BCB80E34702A11FA9295E7C541FB67A32D762588CFCB44B9</span>
+                </a>
+                <a class="support__contacts-link">
+                    <img src="/comcash/img/icons/jobber.svg" alt="">
+                    <span>Jobber: Comcash@exploit.im</span>
+                </a>
+                <a class="support__contacts-link">
+                    <img src="/comcash/img/icons/jobber.svg" alt="">
+                    <span>Jobber: Comcash_support@exploit.im</span>
                 </a>
             </div>
 

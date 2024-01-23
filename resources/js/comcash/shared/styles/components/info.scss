@@ -1809,8 +1809,13 @@
   &__row {
     display: flex;
     margin-top: 100px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     margin-bottom: 500px;
-    @media (max-width: 680px) {
+    
+    @media (max-width: 768px) {
+
       flex-direction: column;
       margin: 0 auto;
     }
@@ -1818,20 +1823,31 @@
 
   &__form {
     margin-right: 40px;
-
-    @media (max-width: 680px) {
+    min-width: 450px;
+    @media (max-width: 768px) {
       margin-right: 0;
+      padding-top: 50px;
       margin-bottom: 60px;
-
+      min-width: auto;
       textarea {
         margin-bottom: 20px;
       }
+    }
+
+
+    .input-control {
+      margin-bottom: 30px;
+    }
+
+    .textarea {
+      margin-bottom: 30px;
     }
 
     &-row {
       display: flex;
 
       .input-control {
+        margin-bottom: 30px;
         max-width: 250px;
       }
 
@@ -1862,6 +1878,8 @@
 
     &-link {
       display: flex;
+      width: 100%;
+      overflow: hidden;
       align-items: center;
       margin-bottom: 12px;
 

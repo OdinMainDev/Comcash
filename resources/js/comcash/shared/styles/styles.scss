@@ -479,6 +479,7 @@
   resize: none;
   color: #fff;
   margin-bottom: 14px;
+  min-height: 130px;
 
   &.input--error {
     background-color: #643a42;
@@ -491,7 +492,7 @@
   }
 
   @media (max-width: 680px) {
-    border-radius: 14px;
+    border-radius: 40px;
   }
 }
 // ------------------
