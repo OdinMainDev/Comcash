@@ -47,8 +47,17 @@ trait HasCache {
                     continue;
                 }
                 $data = $direction->data;
-                $data['min_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MIN_EXCHANGE_AMOUNT", 50), $direction->profit_percent);
-                $data['max_amount'] = $this->estimateAmount("USD", $currency_from, $units, env("MAX_EXCHANGE_AMOUNT", 50000), $direction->profit_percent);
+
+                $minAmount = env("MIN_EXCHANGE_AMOUNT", 50);
+                $maxAmount = env("MAX_EXCHANGE_AMOUNT", 50);
+                if(isset($data['min_amount_usd']) && $data['min_amount_usd'] && $data['min_amount_usd'] > 0){
+                    $minAmount = $data['min_amount_usd'];
+                }
+                if(isset($data['max_amount_usd']) && $data['max_amount_usd'] && $data['max_amount_usd'] > 0){
+                    $maxAmount = $data['max_amount_usd'];
+                }
+                $data['min_amount'] = $this->estimateAmount("USD", $currency_from, $units, $minAmount, $direction->profit_percent);
+                $data['max_amount'] = $this->estimateAmount("USD", $currency_from, $units, $maxAmount, $direction->profit_percent);
 
                 $direction->data = $data;
                 $direction->save();

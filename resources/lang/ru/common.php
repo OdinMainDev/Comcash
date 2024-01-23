@@ -94,5 +94,6 @@ return [
     "statusExchange13" => "Заявка удалена",
     "statusExchange14" => "ОШИБКА В СУММЕ ЗАЯВКИ",
     "statusExchange15" => "ОШИБКА ПРИ ВЫПЛАТЕ",
-
+    "min_amount_usd" => "Минимальная сумма заявки в $",
+    "max_amount_usd" => "Максимальная сумма заявки в $"
 ];
