@@ -36,6 +36,9 @@ class CheckManualExchanges extends Command
             foreach($exchanges as $exchange){
                 $status = "НЕ ОПЛАЧЕНО";
                 if($exchange->status == 1){
+                    $status = "ОПЛАЧЕНО (ПОЛЬЗОВАТЕЛЕМ)";
+                }
+                if($exchange->status == 2){
                     $status = "ОПЛАЧЕНО";
                 }
                 if($exchange->status == 4){

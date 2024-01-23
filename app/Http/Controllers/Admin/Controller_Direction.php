@@ -84,6 +84,8 @@ class Controller_Direction extends Controller{
             "name" => "required|string|max:255",
             "position" => "required|integer|min:1|max:100000",
             "profit_percent" => "required|numeric",
+            "min_amount_usd" => "nullable|numeric",
+            "max_amount_usd" => "nullable|numeric",
         ];
         $validators = appendLocalesNames($validators);
         $validators = appendLocalesContents($validators);
@@ -103,6 +105,8 @@ class Controller_Direction extends Controller{
             "titles" => getLocalesTitles($request),
             "content" => getLocalesContents($request),
             "seo" => getLocalesSeo($request),
+            "min_amount_usd" => $request->min_amount_usd,
+            "max_amount_usd" => $request->max_amount_usd
         ];
         $model->save();
         return $this->responseSuccess();
@@ -128,6 +132,9 @@ class Controller_Direction extends Controller{
             "enabled" => "required|boolean",
             "position" => "nullable|integer|min:1|max:100000",
             "profit_percent" => "nullable|numeric",
+
+            "min_amount_usd" => "nullable|numeric",
+            "max_amount_usd" => "nullable|numeric",
         ]);
 
         // валидация на хоть какие то данные
@@ -214,6 +221,12 @@ class Controller_Direction extends Controller{
                     $data["content"] = $this->replaceDirectionTags($direction, $data_content);
                 if($data_seo)
                     $data["seo"] = $this->replaceDirectionTags($direction, $data_seo);
+
+                if(is_numeric($request->min_amount_usd))
+                    $data['min_amount_usd'] = $request->min_amount_usd;
+                if(is_numeric($request->max_amount_usd))
+                    $data['max_amount_usd'] = $request->max_amount_usd;
+
                 $direction->data = $data;
                 $direction->save();
             }

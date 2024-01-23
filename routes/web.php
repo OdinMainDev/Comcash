@@ -65,6 +65,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::post('/exchange/redirect', [Exchange::class, "redirect"])->name("redirectToExchange");
     Route::post('/exchange/create', [Exchange::class, "create"])->name("exchgangeCreate");
     Route::get('/exchange/id/{hash}', [Exchange::class, "view_created"])->name("exchgangePage2");
+    Route::get('/exchange/id/{hash}/set_ipaid', [Exchange::class, "set_ipaid"])->name("exchgangeIPaid");
 
     Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
     Route::get('/comcash-knowledgebase/news/read/{id}', [KnowledgeBase::class, "news_item"])->name("comcashNewsItem");
@@ -192,7 +193,6 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::group( ['middleware' => ['auth', 'permission:handle-user-role']], function() {
         Route::post('/panel/users/role/process', [AdminUser::class, "process_role"])->name("adminUserRoleProcess");
     });
-
 
     Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
         Route::get('/panel/api/get/currencies', [AdminApi::class, "currencies"]);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasCache;
 use App\Jobs\ExchangeStart;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use App\Models\Exchange;
 
 class Controller_Exchange extends Controller{
 
-    use HasCache;
+    use HasCache, HasTelegramMessage;
 
     public function redirect(Request $request) {
         $request->validate([
@@ -174,5 +175,22 @@ class Controller_Exchange extends Controller{
         }
 
         return view($this->theme.".pages.exchange_2")->with("exchange", $exchange);
+    }
+
+    public function set_ipaid(Request $request, $lang, $key){
+        if(empty($key) || !is_string($key) || mb_strlen($key) > 255){
+            return redirect()->back();
+        }
+
+        $exchange = Exchange::where("hash", $key)->first();
+        if(!$exchange || $exchange->status != 0){
+            return redirect()->back();
+        }
+        $exchange->status = 1;
+        $exchange->created_at = now();
+        $exchange->save();
+        $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ОПЛАЧЕНА ПОЛЬЗОВАТЕЛЕМ</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
+        sendTelegramNotification($text);
+        return redirect()->back();
     }
 }

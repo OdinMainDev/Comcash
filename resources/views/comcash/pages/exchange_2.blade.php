@@ -111,14 +111,17 @@
 								</div>
 							@else
 								<div class='progress__box-label'>
-									<a class="button button--auto exchange__button" href="{{$exchange->data['merchant_from_data']['url']}}">Перейти к оплате</a>
+									<a class="button button--auto exchange__button" href="{{$exchange->data['merchant_from_data']['url']}}">{{__("front.gotopay")}}</a>
 								</div>
 							@endif
+							<div class='progress__box-label'>
+								<a class="button button--auto exchange__button" href="{{route("exchgangeIPaid", [$exchange->data['merchant_from_data']['url']])}}">{{__("front.ipaid")}}</a>
+							</div>
 						@else
 							<div class="progress__error">
 								<img src="/comcash/img/icons/smile-face.svg" class="progress__error-img" alt="sad-face"/>
 								<div class="progress__error-text">
-									Обмен завершен, средства отправлены
+									{{__("front.exchangecompletetext")}}
 								</div>
 							</div>
 						@endif
@@ -126,32 +129,32 @@
 				</div>
 				@if($exchange->merchant_type_from != "manualcrypto" && $exchange->merchant_type_from != "manualfiat")
 					<div class="progress__timeline">
-						<p class="progress__timeline-item @if($exchange->status < 2) active @endif">Ожидаем поступления средств</p>
-						<p class="progress__timeline-item @if($exchange->status == 2) active @endif">Проверка поступления средств</p>
-						<p class="progress__timeline-item @if($exchange->status == 3) active @endif">Старт выплаты средств</p>
-						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">Подтверждение выплаты средств</p>
+						<p class="progress__timeline-item @if($exchange->status < 2) active @endif">{{__("front.exchangestatus0")}}</p>
+						<p class="progress__timeline-item @if($exchange->status == 2) active @endif">{{__("front.exchangestatus2")}}</p>
+						<p class="progress__timeline-item @if($exchange->status == 3) active @endif">{{__("front.exchangestatus3")}}</p>
+						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">{{__("front.exchangestatus4)}}</p>
 					</div>
 				@else
 					<div class="progress__timeline">
-						<p class="progress__timeline-item @if($exchange->status == 0) active @endif">Ожидаем поступления средств</p>
-						<p class="progress__timeline-item">Проверка поступления средств</p>
-						<p class="progress__timeline-item @if($exchange->status == 1) active @endif">Старт выплаты средств</p>
-						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">Подтверждение выплаты средств</p>
+						<p class="progress__timeline-item @if($exchange->status == 0) active @endif">{{__("front.exchangestatus0")}}</p>
+						<p class="progress__timeline-item @if($exchange->status == 1) active @endif">{{__("front.exchangestatus2")}}</p>
+						<p class="progress__timeline-item @if($exchange->status == 1) active @endif">{{__("front.exchangestatus3")}}</p>
+						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">{{__("front.exchangestatus4)}}</p>
 					</div>
 				@endif
 				<div class="progress__data-container">
 					<div class="progress__data">
-						<p class="progress__data-label">Вы получите</p>
+						<p class="progress__data-label">{{__("front.exchangestatus0")}}</p>
 						<p class="progress__data-text"> {{$exchange->data['amount_data']['amount_receive']}} {{$exchange->data['amount_data']['currency_to_name']}}</p>
 					</div>
 					@if($exchange->currencyTo->tag == "crypto")
 						<div class="progress__data">
-							<p class="progress__data-label">Адрес получения</p>
+							<p class="progress__data-label">{{__("front.addressreceive")}}</p>
 							<p class="progress__data-text"> {{$exchange->data['request_data']['to_address']}}</p>
 						</div>
 					@else
 						<div class="progress__data">
-							<p class="progress__data-label">Карта на которую поступят средства</p>
+							<p class="progress__data-label">{{__("front.cardreceive")}}</p>
 							<p class="progress__data-text"> {{$exchange->data['request_data']['to_card']}}</p>
 						</div>
 					@endif
