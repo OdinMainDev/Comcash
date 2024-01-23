@@ -148,7 +148,7 @@
 				@endif
 				<div class="progress__data-container">
 					<div class="progress__data">
-						<p class="progress__data-label">{{__("front.exchangestatus0")}}</p>
+						<p class="progress__data-label">{{__("front.youreceive")}}</p>
 						<p class="progress__data-text"> {{$exchange->data['amount_data']['amount_receive']}} {{$exchange->data['amount_data']['currency_to_name']}}</p>
 					</div>
 					@if($exchange->currencyTo->tag == "crypto")
@@ -162,6 +162,10 @@
 							<p class="progress__data-text"> {{$exchange->data['request_data']['to_card']}}</p>
 						</div>
 					@endif
+					<div class="progress__data">
+						<p class="progress__data-label">{{__("front.idexchange")}}</p>
+						<p class="progress__data-text"> {{$exchange->hash}}</p>
+					</div>
 				</div>
 				<!-- <div class="progress__mail">
 					<p class="progress__mail-title">Время ожидания</p>
