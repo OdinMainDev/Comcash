@@ -50,11 +50,11 @@
 
     <div class="col-md-6 mb-3">
         <label for="min_amount_usd" class="form-label">{{__("common.min_amount_usd")}}</label>
-        <input type="text" class="form-control" id="min_amount_usd" name="min_amount_usd" autocomplete="off" placeholder="2.5" value="{{@$model->data['min_amount_usd']}}">
+        <input type="text" class="form-control" id="min_amount_usd" name="min_amount_usd" autocomplete="off" placeholder="50" value="{{@$model->data['min_amount_usd']}}">
     </div>
     <div class="col-md-6 mb-3">
         <label for="max_amount_usd" class="form-label">{{__("common.max_amount_usd")}}</label>
-        <input type="text" class="form-control" id="max_amount_usd" name="max_amount_usd" autocomplete="off" placeholder="2.5" value="{{@$model->data['max_amount_usd']}}">
+        <input type="text" class="form-control" id="max_amount_usd" name="max_amount_usd" autocomplete="off" placeholder="50000" value="{{@$model->data['max_amount_usd']}}">
     </div>
 </div>
 
