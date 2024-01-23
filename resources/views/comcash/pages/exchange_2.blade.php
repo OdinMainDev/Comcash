@@ -115,7 +115,7 @@
 								</div>
 							@endif
 							<div class='progress__box-label'>
-								<a class="button button--auto exchange__button" href="{{route("exchgangeIPaid", [$exchange->data['merchant_from_data']['url']])}}">{{__("front.ipaid")}}</a>
+								<a class="button button--auto exchange__button" href="{{ route("exchgangeIPaid", [$exchange->hash])}}">{{__("front.ipaid")}}</a>
 							</div>
 						@else
 							<div class="progress__error">
