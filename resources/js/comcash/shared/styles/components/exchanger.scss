@@ -12,8 +12,6 @@
 
 
 .exchange {
-  padding-top: calc(var(--height-header) + 24px);
-
   @media (max-width: 1100px) {
     padding-top: var(--height-header-mobile);
     background: url('/comcash/img/exchange-mobile-bg.svg') no-repeat;
