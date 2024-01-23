@@ -8,7 +8,7 @@
                     class='footer__logo-img' />
                 <p>{{__("front.slogan")}}</p>
                 <div class="footer__sponsors-list">
-                    <a href="https://kurs.expert/ru/obmennik/comcash-io/feedbacks.html#reputation">
+                    <a href="https://kurs.expert/ru/obmennik/comcash-io/feedbacks.html#stat" target=”_blank”>
                         <img class="footer__sponsors-item" src="/comcash/img/cb.png"/>
                     </a>
                 </div>
