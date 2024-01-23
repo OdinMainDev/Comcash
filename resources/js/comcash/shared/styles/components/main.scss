@@ -143,9 +143,7 @@
     z-index: 2;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, 
-              rgba(0, 0, 0, 0.20) 100%), 
-              radial-gradient(195.03% 83.46% at 52.68% 45.45%, #1F1F1F 0%, #050605 81.25%);    
+    background: linear-gradient(to bottom,#272727,#000000) padding-box,linear-gradient(to bottom,#5d5d5d,#000) border-box;   
     width: 650px;
     padding: 30px 100px;
     top: 100px;
