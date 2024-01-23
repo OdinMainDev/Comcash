@@ -132,14 +132,14 @@
 						<p class="progress__timeline-item @if($exchange->status < 2) active @endif">{{__("front.exchangestatus0")}}</p>
 						<p class="progress__timeline-item @if($exchange->status == 2) active @endif">{{__("front.exchangestatus2")}}</p>
 						<p class="progress__timeline-item @if($exchange->status == 3) active @endif">{{__("front.exchangestatus3")}}</p>
-						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">{{__("front.exchangestatus4)}}</p>
+						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">{{__("front.exchangestatus4")}}</p>
 					</div>
 				@else
 					<div class="progress__timeline">
 						<p class="progress__timeline-item @if($exchange->status == 0) active @endif">{{__("front.exchangestatus0")}}</p>
 						<p class="progress__timeline-item @if($exchange->status == 1) active @endif">{{__("front.exchangestatus2")}}</p>
 						<p class="progress__timeline-item @if($exchange->status == 1) active @endif">{{__("front.exchangestatus3")}}</p>
-						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">{{__("front.exchangestatus4)}}</p>
+						<p class="progress__timeline-item @if($exchange->status == 4) active @endif">{{__("front.exchangestatus4")}}</p>
 					</div>
 				@endif
 				<div class="progress__data-container">
