@@ -63,14 +63,7 @@
 
             <div class="welcome__security">
                 <img src="/comcash/img/kyc.png" class="welcome__security-image">
-                <div class="welcome__security-text">
-                    Com<span class="green">CASH</span> <span class="grey">
-                    сохраняет вашу анонимность: Мы никогда не проверяем ваш AML и
-                    не запрашиваем KYC. Мы гарантируем сохранность ваших средств и выполнения 
-                    сделок вне зависимости от происхождения вашей криптовалюты
-                    </span>
-                </div>
-                <img src="/comcash/img/aml2.png" class="welcome__security-image">
+                <img src="/comcash/img/aml.png" class="welcome__security-image">
             </div>  
         </div>
     </div>
