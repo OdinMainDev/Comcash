@@ -173,5 +173,5 @@ return [
     "youreceive" => "Вы получите",
     "addressreceive" => "Адрес получения",
     "cardreceive" => "Карта на которую поступят средства",
-    "idexchange" => "Id заявки",
+    "idexchange" => "Хеш заявки",
 ];

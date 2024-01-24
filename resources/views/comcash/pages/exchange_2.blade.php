@@ -61,10 +61,10 @@
 				<p class="progress__title">Выплата производится в автоматическом режиме в течении 30 минут</p>
 				<div class="progress__hash">
 					<div class='progress__hash-label'>
-						Хеш
+						{{__("front.idexchange")}}
 					</div>
 					<div class="progress__hash-text">
-						0721a1d3781d783783f93875b4de32f1f3ef2855fce4af1685e52760d079454b
+						{{$exchange->hash}}
 					</div>
 				</div>
 				<div class="progress__box">
