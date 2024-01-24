@@ -29,28 +29,28 @@ class FillMerchant extends Command
         Merchant::truncate();
         Merchant::insert([
             [
-                "id" => 1,
+                // "id" => 1,
                 "name" => "Garantex",
                 "type" => "garantex",
                 "status" => false,
                 "created_at" => now()
             ],
             [
-                "id" => 2,
+                // "id" => 2,
                 "name" => "MPCVip",
                 "type" => "mpcvip",
                 "status" => false,
                 "created_at" => now()
             ],
             [
-                "id" => 3,
+                // "id" => 3,
                 "name" => "Bybit",
                 "type" => "bybit",
                 "status" => false,
                 "created_at" => now()
             ],
             [
-                "id" => 4,
+                // "id" => 4,
                 "name" => "Aifory",
                 "type" => "aifory",
                 "status" => false,

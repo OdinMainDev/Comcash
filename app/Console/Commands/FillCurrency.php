@@ -34,7 +34,7 @@ class FillCurrency extends Command
     public static function getCurrencies(){
         $currencies = [
             [
-                "id" => 1,
+                // "id" => 1,
                 "name" => "CARDRUB",
                 "units" => 2,
                 "image" => "/icons/Visa-Master.png",
@@ -49,7 +49,7 @@ class FillCurrency extends Command
                 "created_at" => now()
             ],
             [
-                "id" => 2,
+                // "id" => 2,
                 "name" => "CASHRUB",
                 "units" => 2,
                 "image" => "/icons/Cash.png",
@@ -64,7 +64,7 @@ class FillCurrency extends Command
                 "created_at" => now()
             ],
             [
-                "id" => 3,
+                // "id" => 3,
                 "name" => "TCSBRUB",
                 "units" => 2,
                 "image" => "/icons/Tinkoff.png",
@@ -79,7 +79,7 @@ class FillCurrency extends Command
                 "created_at" => now()
             ],
             [
-                "id" => 4,
+                // "id" => 4,
                 "name" => "SBERRUB",
                 "units" => 2,
                 "image" => "/icons/Sberbank.png",
@@ -94,7 +94,7 @@ class FillCurrency extends Command
                 "created_at" => now()
             ],
             [
-                "id" => 5,
+                // "id" => 5,
                 "name" => "BTC",
                 "units" => 8,
                 "image" => "/icons/Bitcoin.png",
@@ -109,7 +109,7 @@ class FillCurrency extends Command
                 "created_at" => now()
             ],
             [
-                "id" => 6,
+                // "id" => 6,
                 "name" => "ETH",
                 "units" => 8,
                 "image" => "/icons/Ethereum.png",
@@ -124,7 +124,7 @@ class FillCurrency extends Command
                 "created_at" => now()
             ],
             [
-                "id" => 7,
+                // "id" => 7,
                 "name" => "USDTERC20",
                 "units" => 2,
                 "image" => "/icons/Tether.png",
@@ -139,7 +139,7 @@ class FillCurrency extends Command
                 "created_at" => now()
             ],
             [
-                "id" => 8,
+                // "id" => 8,
                 "name" => "USDTTRC20",
                 "units" => 2,
                 "image" => "/icons/Tether.png",
@@ -154,7 +154,7 @@ class FillCurrency extends Command
                 "created_at" => now()
             ],
             [
-                "id" => 9,
+                // "id" => 9,
                 "name" => "DAI",
                 "units" => 2,
                 "image" => "/icons/Dai.png",
@@ -173,7 +173,7 @@ class FillCurrency extends Command
             
             $currencies[] = 
                 [
-                    "id" => 10,
+                    // "id" => 10,
                     "name" => "ADA",
                     "units" => 8,
                     "image" => "/icons/Cardano.png",
@@ -188,7 +188,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 11,
+                    // "id" => 11,
                     "name" => "XRP",
                     "units" => 8,
                     "image" => "/icons/Ripple.png",
@@ -203,7 +203,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 12,
+                    // "id" => 12,
                     "name" => "LTC",
                     "units" => 8,
                     "image" => "/icons/Litecoin.png",
@@ -218,7 +218,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 13,
+                    // "id" => 13,
                     "name" => "LINK",
                     "units" => 8,
                     "image" => "/icons/Chainlink.png",
@@ -233,7 +233,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 14,
+                    // "id" => 14,
                     "name" => "BCH",
                     "units" => 8,
                     "image" => "/icons/Bitcoin-cash.png",
@@ -248,7 +248,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 15,
+                    // "id" => 15,
                     "name" => "XLM",
                     "units" => 8,
                     "image" => "/icons/Stellar.png",
@@ -263,7 +263,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 16,
+                    // "id" => 16,
                     "name" => "TRX",
                     "units" => 8,
                     "image" => "/icons/Tron.png",
@@ -278,7 +278,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 17,
+                    // "id" => 17,
                     "name" => "DOGE",
                     "units" => 8,
                     "image" => "/icons/Dogecoin.png",
@@ -293,7 +293,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 18,
+                    // "id" => 18,
                     "name" => "SOL",
                     "units" => 8,
                     "image" => "/icons/Solana.png",
@@ -308,7 +308,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 19,
+                    // "id" => 19,
                     "name" => "MATIC",
                     "units" => 8,
                     "image" => "/icons/Polygon.png",
@@ -323,7 +323,7 @@ class FillCurrency extends Command
                     "created_at" => now()
                 ];
             $currencies[] =     [
-                    "id" => 20,
+                    // "id" => 20,
                     "name" => "XMR",
                     "units" => 8,
                     "image" => "/icons/Monero.png",
