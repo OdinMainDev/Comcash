@@ -19,6 +19,7 @@
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="theme-color" content="#ffffff">
 		@include('comcash.layout.ads')
+		@vite('resources/js/comcash/main.ts')
 	</head>
 	<body>
 		@include('comcash.component.header_info')
@@ -34,7 +35,6 @@
 			window.language = "{{mb_strtolower(app()->getLocale())}}";
 			window.isChristmasThemeComcash = "{{env('THEME_SUBNAME', false)}}" == "christmas" ? true : false;
 		</script>
-        @vite('resources/js/comcash/main.ts')
 		@yield('js')
 		<script src="//code.jivosite.com/widget/oirWWejdYl" async></script>
 		<!-- Google Tag Manager --> 

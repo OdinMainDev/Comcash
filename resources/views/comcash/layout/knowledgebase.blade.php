@@ -19,12 +19,12 @@
 		<link rel="mask-icon" href="/comcash/safari-pinned-tab.svg" color="#5bbad5">
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="theme-color" content="#ffffff">
+        @vite('resources/js/comcash/main.ts')
 	</head>
 	<body>
         @include('comcash.component.header_knowledgebase')
 
 		@yield("content")
-        @vite('resources/js/comcash/main.ts')
 		<script>
 			window.language = "{{mb_strtolower(app()->getLocale())}}";
 
