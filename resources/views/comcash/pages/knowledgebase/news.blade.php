@@ -18,7 +18,7 @@
                         <div class="events__slider-card">
                             <p class="events__slider-card-date">{{date("H:i:s d.m.Y", $item->created_at->unix())}}</p>
                             <p class="events__slider-card-title">{{$item->getTitle()}}</p>
-                            <p class="events__slider-card-text"> {{ Str::limit(strip_tags(preg_replace('/[^a-zA-Zа-яА-Я0-9,.\s]/u', '', $item->getContent())), 100, '...') }}</p>
+                            <p class="events__slider-card-text"> {{ Str::limit(strip_tags($item->getContent()), 100, '...') }}</p>
                             <a class="button events__slider-card-btn" href="{{route('comcashNewsItem', [$item->id])}}">{{__("front.read")}}</a>
                         </div>
                     @endforeach
