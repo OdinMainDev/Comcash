@@ -192,4 +192,9 @@ return [
     "knowledge tariffs footer 1" => "Консультации доступны по электронной почте",
     "knowledge tariffs footer 2" => "в Telegram, а также через форму обратной связи на сайте.",
     "knowledge tariffs footer email" => "support@comcash.io",
+    "add affiliate campaign" => "Добавить новую рекламную кампанию",
+    "create" => "Создать",
+    "affiliate campaign name" => "Название кампании",
+    "affiliate registered_users" => "Зарегистрировалось",
+    "affiliate profitable_users" => "Принесли профит",
 ];

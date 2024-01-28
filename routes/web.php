@@ -33,6 +33,7 @@ use App\Http\Controllers\Controller_Profile as Profile;
 use App\Http\Controllers\Controller_Exchange as Exchange;
 use App\Http\Controllers\Controller_KnowledgeBase as KnowledgeBase;
 use App\Http\Controllers\Controller_Kyc as Kyc;
+use App\Http\Controllers\Controller_ProfileAffiliate as ProfileAffiliate;
 Route::get('/', function () {
     $lang = Cookie::get('language');
     if(!$lang){
@@ -48,6 +49,7 @@ Route::get('/request-exportxml.xml', [Home::class, "export_xml"]);
 /* AUTH ROUTES */
 Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
     Route::get('/', [Home::class, "view"])->name("index");
+    Route::get('/at/{hash}', [Home::class, "check_aff"])->name("checkAffiliate");
     Route::get('/auth/login', [Login::class, "view"])->name("login");
     Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
     Route::get('/auth/register', [Login::class, "view"])->name("register");
@@ -89,6 +91,9 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::post('/profile/password/change', [Profile::class, "process_password"])->name("myprofilePasswordPost");
 
         Route::get('/profile/exchanges', [Profile::class, "view_exchanges"])->name("myprofileExchanges");
+
+        Route::get('/profile/affiliate', [ProfileAffiliate::class, "view_index"])->name("myprofileAffiliate");
+        Route::post('/profile/affiliate', [ProfileAffiliate::class, "create_campaign"])->name("myprofileAffiliatePost");
     });
     
 });

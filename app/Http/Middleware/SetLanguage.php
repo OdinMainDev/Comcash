@@ -27,7 +27,7 @@ class SetLanguage
             if(!in_array($prefer, $languages))
                 $prefer = "ru";
             
-            $current_language = "ru";
+            $current_language = $prefer;
             // return redirect('/'.$prefer);
         }
 
