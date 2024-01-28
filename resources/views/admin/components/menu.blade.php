@@ -174,6 +174,12 @@
 						<span class="link-title">{{__("menu.sitemap generate")}}</span>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{route("adminLanguagesUpdate")}}">
+						<i class="link-icon" data-feather="flag"></i>
+						<span class="link-title">{{__("menu.languages update")}}</span>
+					</a>
+				</li>
 			@endcan
 			@can("handle-languages")
 				<li class="nav-item">

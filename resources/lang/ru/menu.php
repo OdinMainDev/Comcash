@@ -19,5 +19,6 @@ return [
     "exchanges" => "Обмены",
     "clear cache" => "Очистить кеш",
     "users" => "Пользователи",
-    "sitemap generate" => "Сгенерировать sitemap"
+    "sitemap generate" => "Сгенерировать sitemap",
+    "languages update" => "Обновить языки (синхронизация)"
 ];

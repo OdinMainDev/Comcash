@@ -248,7 +248,7 @@ trait HasCache {
         });
     }
 
-    public function getCacheExchanges(){
+    public function getCacheExchanges($user_id = 0){
         $request = request();
         if($request->page && !is_numeric($request->page)){
             return abort(404);
@@ -256,9 +256,15 @@ trait HasCache {
         if($request->page >= 10) {
             $request->page = 10;
         }
-        return Cache::remember("exchanges-".$request->page, 600, function(){
-            return Exchange::with("currencyFrom")->with("currencyTo")->orderBy("id", "DESC")->where("status", 5)
-                ->paginate(10);
+        return Cache::remember("exchanges-".$request->page."-".$user_id, 600, function() use($user_id){
+            $query = Exchange::with("currencyFrom")
+                ->with("currencyTo")
+                ->orderBy("id", "DESC")
+                ->where("status", 5);
+            if($user_id){
+                $query = $query->where("user_id", $user_id);
+            }
+                return $query->paginate(10);
         });
     }
 

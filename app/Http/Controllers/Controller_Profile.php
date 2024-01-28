@@ -17,6 +17,10 @@ class Controller_Profile extends Controller{
         return view($this->theme.".pages.profile_password");
     }
 
+    public function view_exchanges() {
+        return view($this->theme.".pages.profile_exchanges")->with("exchanges", $this->getCacheExchanges(auth()->user()->id));
+    }
+
     public function process_profile(Request $request) {
         $request->validate([
             "first_name" => "nullable|string|max:255",

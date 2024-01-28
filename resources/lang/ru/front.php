@@ -174,4 +174,8 @@ return [
     "addressreceive" => "Адрес получения",
     "cardreceive" => "Карта на которую поступят средства",
     "idexchange" => "Хеш заявки",
+    "exchanges history" => "Мои обмены",
+    "exchanges history label" => "История обменов",
+    "exchanges history you send" => "Вы отправили",
+    "exchanges history you receive" => "Вы получили",
 ];
