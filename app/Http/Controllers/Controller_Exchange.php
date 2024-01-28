@@ -107,7 +107,7 @@ class Controller_Exchange extends Controller{
         if(!$direction){
             return $this->responseError("bad currency pair", ["code" => 3]);
         }
-
+        $request->merge(['aff_id' => $request->cookie("aff_hash")]);
         $request->merge(['amount' => $this->format_amount($request->amount, $currency_from->units)]);
         // валидирование доп данных от мерчанта
         $merchant_from = new Handler($direction->merchant_type_from);
@@ -147,6 +147,7 @@ class Controller_Exchange extends Controller{
                 "amount_send" => $request->amount,
                 "amount_receive" => $amount,
                 "exchange_rate" => $this->estimateGetRate($currency_from->name, $currency_to->name),
+                "exchange_rate_to_usd" => $this->estimateGetRate($currency_from->name, "USD"),
                 "currency_from_name" => $this->convertCurrencyName($currency_from->name),
                 "currency_to_name" => $this->convertCurrencyName($currency_to->name)
             ],

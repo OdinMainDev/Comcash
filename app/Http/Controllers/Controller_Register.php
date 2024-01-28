@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\Models\HasAffiliate;
 use App\Jobs\OnRegister;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 
 class Controller_Register extends Controller
 {
+    use HasAffiliate;
+
     public function process(Request $request){
         if(Auth::check())
             return abort(404);
@@ -31,6 +34,11 @@ class Controller_Register extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
+
+        $aff_id = $request->cookie("aff_hash");
+        if($aff_id){
+            $this->addUserToAffiliate($user, $aff_id);
+        }
 
         OnRegister::dispatch($user->id, app()->getLocale());
         Auth::login($user, true);

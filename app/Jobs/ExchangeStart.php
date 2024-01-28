@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
 use App\Models\Exchange;
 use App\Models\User;
@@ -19,7 +20,7 @@ use App\Merchants\Handler;
 
 class ExchangeStart implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasCache;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasCache, HasAffiliate;
 
     /**
      * Create a new job instance.
@@ -46,8 +47,15 @@ class ExchangeStart implements ShouldQueue
         if(!$this->exchange){
             return;
         }
-        if(!$this->user)
-            $this->checkUser($this->exchange->data['request_data']['email']);
+        if(!$this->user){
+            $isRegistered = $this->checkUser($this->exchange->data['request_data']['email']);
+            if($isRegistered) {
+                if(isset($this->exchange->data['request_data']['aff_id'])
+                    && is_numeric($this->exchange->data['request_data']['aff_id'])){
+                    $this->addUserToAffiliate($this->user, $this->exchange->data['request_data']['aff_id']);
+                }
+            }
+        }
 
         $this->exchange->user_id = $this->user->id;
         $data = $this->exchange->data;
@@ -151,7 +159,7 @@ class ExchangeStart implements ShouldQueue
         if($user){
            $this->user = $user;
            $this->exchange->user_id = $user->id;
-           return; 
+           return false; 
         }
 
         $password = generateRandomString();
@@ -162,6 +170,7 @@ class ExchangeStart implements ShouldQueue
         $this->user = $user;
         $this->exchange->user_id = $user->id;
         Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
+        return true;
     }
 
     public function checkAvailWalletForManualExchange() {

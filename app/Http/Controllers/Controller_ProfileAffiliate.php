@@ -7,6 +7,7 @@ use App\Models\AffiliateCampaign;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 
 class Controller_ProfileAffiliate extends Controller{
@@ -23,12 +24,18 @@ class Controller_ProfileAffiliate extends Controller{
             "name" => "required|string|min:2|max:255",
         ]);
 
+        $count = AffiliateCampaign::where("user_id", auth()->user()->id)->where("status", true)->count();
+        if($count > 25){
+            return $this->responseErrorValidation(["code" => __("common.affiliate_campaigns_max")]);
+        }
+
         $model = new AffiliateCampaign;
         $model->user_id = auth()->user()->id;
         $model->hash = md5(uniqid(auth()->user()->id).time());
         $model->name = $request->name;
         $model->save();
 
+        Cache::forget("aff-campaigns-".auth()->user()->id);
         return $this->responseSuccess(false, ["refresh" => true]);
     }
 

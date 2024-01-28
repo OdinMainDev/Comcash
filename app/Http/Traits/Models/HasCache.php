@@ -309,9 +309,11 @@ trait HasCache {
 
     public function getCacheAffiliatesCampaigns($user_id){
         $request = request();
-        return Cache::remember("aff-campaigns-".$request->page."-".$user_id, 600, function() use($user_id){
-            return AffiliateCampaign::orderBy("id", "DESC")->where("user_id", $user_id)
-                ->paginate(10);
+        return Cache::remember("aff-campaigns-".$user_id, 86400, function() use($user_id){
+            return AffiliateCampaign::orderBy("id", "DESC")
+                ->where("status", true)
+                ->where("user_id", $user_id)
+                ->get();
         });
     }
 }
