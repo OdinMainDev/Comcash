@@ -6,14 +6,9 @@
         @include("comcash.component.knowledge_menu")
         <div class="tariffs__content">
             <div class="tariffs__header">
-                <p class="tariffs__header-title">Тарифы</p>
+                <p class="tariffs__header-title">{{__("front.knowledge tariffs title")}}</p>
                 <p class="tariffs__header-text">
-                    Если вас интересует обмен криптовалют, то рекомендуется обязательно изучить тарифы Comcash.io. Ниже
-                    представлен актуальный перечень цифровых валют с курсами по обмену. Задействовав наш сервис, вы сможете
-                    моментально, безопасно и выгодно обменять Bitcoin, Ethereum, Dogecoin, Bitcoin Cash, Tether ERC20, Dai, TRON
-                    и иные криптовалюты. Больше того, на нашем сайте доступна возможность по покупке электронных валют с
-                    банковских карт Visa и MasterCard. Наш сервис гарантирует защиту всех предоставленных данных,
-                    конфиденциальность и точное исполнение обязательств.
+                    {{__("front.knowledge tariffs description")}}
                 </p>
             </div>
 
@@ -36,7 +31,7 @@
                                 continue;
                             }
                             $currency = $currency[0];
-                            $html .= '<p class="tariffs__list-title">'.$currency->getTitle().'</p>';
+                            $next_html = "";
                             foreach($tariffs['currencies']['list'] as $key2 => $value2){
                                 if($value == $value2){
                                     continue;
@@ -52,7 +47,7 @@
                                     continue;
                                 }
 
-                                $html .= '<div class="tariffs__list-row">';
+                                $next_html .= '<div class="tariffs__list-row">';
                                 $rate = $controller->estimateGetRate($currency->name, $currency2->name);
                                 $type = 1;
                                 if($rate < 0.01){
@@ -62,60 +57,63 @@
 
                                 
                                 if($type == 1){
-                                    $html .= '<div class="tariffs__list-col">';
+                                    $next_html .= '<div class="tariffs__list-col">';
                                     if($count == 0){
-                                        $html .= ' <p class="tariffs__list-label">'.__("front.you sell").'</p>';
+                                        $next_html .= ' <p class="tariffs__list-label">'.__("front.you sell").'</p>';
                                     }
-                                    $html .= '<p class="tariffs__list-agent">';
-                                    $html .= '<img src="'.$currency->image.'" alt="Comcash - '.$currency->getTitle().'">';
-                                    $html .= '<span>'.$currency->getTitle().'</span>';
-                                    $html .= '</p>';
-                                    $html .= '<p class="tariffs__list-currency">'.$controller->getRealCurrencyCode($currency->name).'</p>';
-                                    $html .= '<p class="tariffs__list-value">1</p>';
-                                    $html .= '</div>';
-                                    $html .= '<div class="tariffs__list-col">';
+                                    $next_html .= '<p class="tariffs__list-agent">';
+                                    $next_html .= '<img src="'.$currency->image.'" alt="Comcash - '.$currency->getTitle().'">';
+                                    $next_html .= '<span>'.$currency->getTitle().'</span>';
+                                    $next_html .= '</p>';
+                                    $next_html .= '<p class="tariffs__list-currency">'.$controller->getRealCurrencyCode($currency->name).'</p>';
+                                    $next_html .= '<p class="tariffs__list-value">1</p>';
+                                    $next_html .= '</div>';
+                                    $next_html .= '<div class="tariffs__list-col">';
                                     if($count == 0){
-                                        $html .= ' <p class="tariffs__list-label">'.__("front.you receive").'</p>';
+                                        $next_html .= ' <p class="tariffs__list-label">'.__("front.you receive").'</p>';
                                     }
-                                    $html .= '<p class="tariffs__list-agent">';
-                                    $html .= '<img src="'.$currency2->image.'" alt="Comcash - '.$currency2->getTitle().'">';
-                                    $html .= '<span>'.$currency2->getTitle().'</span>';
-                                    $html .= '</p>';
-                                    $html .= '<p class="tariffs__list-currency">'.$controller->getRealCurrencyCode($currency2->name).'</p>';
-                                    $html .= '<p class="tariffs__list-value">'.$rate.'</p>';
-                                    $html .= '</div>';
+                                    $next_html .= '<p class="tariffs__list-agent">';
+                                    $next_html .= '<img src="'.$currency2->image.'" alt="Comcash - '.$currency2->getTitle().'">';
+                                    $next_html .= '<span>'.$currency2->getTitle().'</span>';
+                                    $next_html .= '</p>';
+                                    $next_html .= '<p class="tariffs__list-currency">'.$controller->getRealCurrencyCode($currency2->name).'</p>';
+                                    $next_html .= '<p class="tariffs__list-value">'.$rate.'</p>';
+                                    $next_html .= '</div>';
                                 }else{
-                                    $html .= '<div class="tariffs__list-col">';
+                                    $next_html .= '<div class="tariffs__list-col">';
                                     if($count == 0){
-                                        $html .= ' <p class="tariffs__list-label">'.__("front.you sell").'</p>';
+                                        $next_html .= ' <p class="tariffs__list-label">'.__("front.you sell").'</p>';
                                     }
-                                    $html .= '<p class="tariffs__list-agent">';
-                                    $html .= '<img src="'.$currency->image.'" alt="Comcash - '.$currency->getTitle().'">';
-                                    $html .= '<span>'.$currency->getTitle().'</span>';
-                                    $html .= '</p>';
-                                    $html .= '<p class="tariffs__list-currency">'.$controller->getRealCurrencyCode($currency->name).'</p>';
-                                    $html .= '<p class="tariffs__list-value">'.$rate.'</p>';
-                                    $html .= '</div>';
-                                    $html .= '<div class="tariffs__list-col">';
+                                    $next_html .= '<p class="tariffs__list-agent">';
+                                    $next_html .= '<img src="'.$currency->image.'" alt="Comcash - '.$currency->getTitle().'">';
+                                    $next_html .= '<span>'.$currency->getTitle().'</span>';
+                                    $next_html .= '</p>';
+                                    $next_html .= '<p class="tariffs__list-currency">'.$controller->getRealCurrencyCode($currency->name).'</p>';
+                                    $next_html .= '<p class="tariffs__list-value">'.$rate.'</p>';
+                                    $next_html .= '</div>';
+                                    $next_html .= '<div class="tariffs__list-col">';
                                     if($count == 0){
-                                        $html .= ' <p class="tariffs__list-label">'.__("front.you receive").'</p>';
+                                        $next_html .= ' <p class="tariffs__list-label">'.__("front.you receive").'</p>';
                                     }
-                                    $html .= '<p class="tariffs__list-agent">';
-                                    $html .= '<img src="'.$currency2->image.'" alt="Comcash - '.$currency2->getTitle().'">';
-                                    $html .= '<span>'.$currency2->getTitle().'</span>';
-                                    $html .= '</p>';
-                                    $html .= '<p class="tariffs__list-currency">'.$controller->getRealCurrencyCode($currency2->name).'</p>';
-                                    $html .= '<p class="tariffs__list-value">1</p>';
-                                    $html .= '</div>';
+                                    $next_html .= '<p class="tariffs__list-agent">';
+                                    $next_html .= '<img src="'.$currency2->image.'" alt="Comcash - '.$currency2->getTitle().'">';
+                                    $next_html .= '<span>'.$currency2->getTitle().'</span>';
+                                    $next_html .= '</p>';
+                                    $next_html .= '<p class="tariffs__list-currency">'.$controller->getRealCurrencyCode($currency2->name).'</p>';
+                                    $next_html .= '<p class="tariffs__list-value">1</p>';
+                                    $next_html .= '</div>';
                                 }
 
 
 
 
                                 $count++;
-                                $html .= '</div>';
+                                $next_html .= '</div>';
                             }
-                            
+                            if($next_html != ""){
+                                $html .= '<p class="tariffs__list-title">'.$currency->getTitle().'</p>';
+                                $html .= $next_html;
+                            }
                             
                         }
 
@@ -125,8 +123,7 @@
                 }
             ?>
             <p class='tariffs__bottom'>
-                Консультации доступны по электронной почте <a href='mailto:support@comcash.io'>support@comcash.io</a>, в
-                Telegram, а также через форму обратной связи на сайте.
+                {{__("front.knowledge tariffs footer 1")}} <a href='mailto:{{__("front.knowledge tariffs footer email")}}'>{{__("front.knowledge tariffs footer email")}}</a> {{__("front.knowledge tariffs footer 2")}}
             </p>
         </div>
       </div>

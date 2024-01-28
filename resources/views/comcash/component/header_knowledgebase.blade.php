@@ -39,10 +39,10 @@
                 @auth
                     <button class='accordion__button'>{{__("front.profile")}}</button>
                     <div class='accordion__content'>
-                        <a href='{{route("myprofile")}}' class='active'>{{__("front.client panel")}}</a>
-                        <!-- <a href='#'>{{__("front.mywallets")}}</a> -->
-                        <!-- <a href='#'>{{__("front.transactionshistory")}}</a> -->
-                        <a href='{{route("myprofilePassword")}}'>{{__("front.security")}}</a>
+                        <a href='{{route("myprofile")}}'>{{__("front.client panel")}}</a>
+                        <a href='{{route("myprofileExchanges")}}' >{{__("front.exchanges history")}}</a>
+                        <a href='{{route("myprofileAffiliate")}}' >{{__("front.profile affiliate")}}</a>
+                        <a href='{{route("myprofilePassword")}}' >{{__("front.security")}}</a>
                     </div>
                 @endauth
                 <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", [app()->getLocale(), "name" => "tariffs"])}}'>

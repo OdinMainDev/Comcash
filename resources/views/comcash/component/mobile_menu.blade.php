@@ -4,10 +4,9 @@
             <button class='accordion__button'>{{__("front.profile")}}</button>
             <div class='accordion__content'>
                 <a href='{{route("myprofile")}}'>{{__("front.client panel")}}</a>
-                <!-- <a href='#'>{{__("front.my cards")}}</a>
-                <a href='#'>{{__("front.my transactions")}}</a> -->
-                <a href='{{route("myprofilePassword")}}'>{{__("front.security")}}</a>
-                <a href='{{route("logout")}}'>{{__("front.log out")}}</a>
+                <a href='{{route("myprofileExchanges")}}' >{{__("front.exchanges history")}}</a>
+                <a href='{{route("myprofileAffiliate")}}' >{{__("front.profile affiliate")}}</a>
+                <a href='{{route("myprofilePassword")}}' >{{__("front.security")}}</a>
             </div>
         @endauth
         <!-- <a class='accordion__button accordion__button_custom'>{{__("front.TariffsMenu")}}</a> -->

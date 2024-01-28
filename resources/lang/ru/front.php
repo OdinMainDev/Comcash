@@ -178,4 +178,18 @@ return [
     "exchanges history label" => "История обменов",
     "exchanges history you send" => "Вы отправили",
     "exchanges history you receive" => "Вы получили",
+    "profile affiliate" => "Партнерская программа",
+    "affiliate my campaigns" => "Мои кампании",
+    "affiliate my affiliates" => "Мои аффилейты",
+    "affiliate my balance" => "Мой баланс",
+    "knowledge tariffs title" => "Тарифы",
+    "knowledge tariffs description" => "Если вас интересует обмен криптовалют, то рекомендуется обязательно изучить тарифы Comcash.io. Ниже
+    представлен актуальный перечень цифровых валют с курсами по обмену. Задействовав наш сервис, вы сможете
+    моментально, безопасно и выгодно обменять Bitcoin, Ethereum, Dogecoin, Bitcoin Cash, Tether ERC20, Dai, TRON
+    и иные криптовалюты. Больше того, на нашем сайте доступна возможность по покупке электронных валют с
+    банковских карт Visa и MasterCard. Наш сервис гарантирует защиту всех предоставленных данных,
+    конфиденциальность и точное исполнение обязательств.",
+    "knowledge tariffs footer 1" => "Консультации доступны по электронной почте",
+    "knowledge tariffs footer 2" => "в Telegram, а также через форму обратной связи на сайте.",
+    "knowledge tariffs footer email" => "support@comcash.io",
 ];

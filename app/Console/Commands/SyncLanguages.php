@@ -79,7 +79,6 @@ class SyncLanguages extends Command
     private function mergeTranslations($driver, $language, $translations)
     {
         $this->mergeGroupTranslations($driver, $language, $translations['group']);
-        // $this->mergeSingleTranslations($driver, $language, $translations['single']);
     }
 
     private function mergeGroupTranslations($driver, $language, $groups)
@@ -114,17 +113,4 @@ class SyncLanguages extends Command
                 ],
             );
     }
-
-    // Вероятно что DEPRECATED и удалить
-    // private function mergeSingleTranslations($driver, $language, $vendors)
-    // {
-    //     foreach ($vendors as $vendor => $translations) {
-    //         foreach ($translations as $key => $value) {
-    //             if (is_array($value)) {
-    //                 continue;
-    //             }
-    //             $driver->addSingleTranslation($language, $vendor, $key, $value);
-    //         }
-    //     }
-    // }
 }
