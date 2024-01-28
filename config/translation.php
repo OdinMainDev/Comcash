@@ -11,7 +11,7 @@ return [
     | Supported: "file", "database"
     |
     */
-    'driver' => 'file',
+    'driver' => 'database',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ return [
     | looking for missing translations.
     |
     */
-    'scan_paths' => [app_path(), resource_path()],
+    'scan_paths' => [str_replace("//", "/", resource_path()."/lang")],
 
     /*
     |--------------------------------------------------------------------------
@@ -70,8 +70,8 @@ return [
 
         'connection' => '',
 
-        'languages_table' => 'languages',
+        'languages_table' => 'internal_languages',
 
-        'translations_table' => 'translations',
+        'translations_table' => 'internal_translations',
     ],
 ];

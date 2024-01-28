@@ -55,4 +55,11 @@ class Controller_Api extends Controller{
         });
         return redirect()->back();
     }
+
+    public function languages_update() {
+        dispatch(function () {
+            Artisan::call('app:sync-languages');
+        });
+        return redirect()->back();
+    }
 }

@@ -87,6 +87,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
         Route::get('/profile/password', [Profile::class, "view_password"])->name("myprofilePassword");
         Route::post('/profile/password/change', [Profile::class, "process_password"])->name("myprofilePasswordPost");
+
+        Route::get('/profile/exchanges', [Profile::class, "view_exchanges"])->name("myprofileExchanges");
     });
     
 });
@@ -179,6 +181,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::group( ['middleware' => ['auth', 'permission:handle-exchanger']], function() {
         Route::get('/panel/clear/cache', [AdminApi::class, "clear_cache"])->name("adminClearCache");
         Route::get('/panel/sitemap/generate', [AdminApi::class, "sitemap_generate"])->name("adminSitemapGenerate");
+        Route::get('/panel/update/languages', [AdminApi::class, "languages_update"])->name("adminLanguagesUpdate");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-users']], function() {
