@@ -100,5 +100,7 @@ return [
     "user_id" => "Id пользователя",
     "editAffiliateCampaign" => "Изменить кампанию аффилейта",
     "editAffiliateSettings" => "Настройки аффилейт программы",
-    "affiliatePercent" => "Процент вознаграждения"
+    "affiliatePercent" => "Процент вознаграждения",
+    "affiliate_withdraw_not_enough" => "Недостаточно средств на балансе",
+    "affiliate_withdraw_already_created" => "У вас уже создана заявка на вывод для данной валюты"
 ];

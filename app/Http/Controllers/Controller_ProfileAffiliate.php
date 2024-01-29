@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\Models\HasCache;
+use App\Models\AffiliateBalance;
 use App\Models\AffiliateCampaign;
+use App\Models\AffiliateWithdraw;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +44,42 @@ class Controller_ProfileAffiliate extends Controller{
     public function view_exchanges() {
         return view($this->theme.".pages.profile_affiliate_exchanges")
             ->with("exchanges", $this->getCacheAffiliatesExchanges(auth()->user()->id));
+    }
+
+    public function view_balances() {
+        return view($this->theme.".pages.profile_affiliate_balance")
+            ->with("balances", $this->getCacheAffiliatesBalances(auth()->user()->id));
+    }
+
+    public function withdraw_balance(Request $request) {
+        $request->validate([
+            "currency" => "required|integer",
+            "amount" => "required|numeric|gt:0",
+        ]);
+
+        $balance = AffiliateBalance::where("currency", $request->currency)->where("user_id", auth()->user()->id)->first();
+        if(!$balance){
+            return $this->responseErrorValidation(["code" => __("common.data_fail")]);
+        }
+
+        if($balance->balance < $request->amount){
+            return $this->responseErrorValidation(["code" => __("common.affiliate_withdraw_not_enough")]);
+        }
+
+        $check = AffiliateWithdraw::where("currency", $request->currency)->where("user_id", auth()->user()->id)->where("status", 0)->first();
+        if($check){
+            return $this->responseErrorValidation(["code" => __("common.affiliate_withdraw_already_created")]);
+        }
+        
+        $withdraw = new AffiliateWithdraw;
+        $withdraw->user_id = auth()->user()->id;
+        $withdraw->currency = $request->currency;
+        $withdraw->status = 0;
+        $withdraw->amount = $request->amount;
+        $withdraw->save();
+        sendTelegramNotification("Новая заявка на выплату аффилейту");
+        
+        return $this->responseSuccess();
     }
 
 }

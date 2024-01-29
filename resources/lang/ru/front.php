@@ -200,4 +200,8 @@ return [
     "affiliate my exchanges" => "Заявки аффилейтов",
     "affiliate exchange_amount" => "Сумма заявки",
     "affiliate exchange_amount_earned" => "Прибыль",
+    "affiliate withdraw currency" => "Выберите валюту выплаты",
+    "affiliate withdraw balance" => "Укажите сумму выплаты",
+    "affiliate withdraw button" => "Создать выплату",
+    "affiliate my balances" => "Мои балансы"
 ];

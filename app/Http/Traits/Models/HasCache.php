@@ -2,6 +2,7 @@
      
 namespace App\Http\Traits\Models;
 
+use App\Models\AffiliateBalance;
 use App\Models\AffiliateCampaign;
 use App\Models\AffiliateExchange;
 use App\Models\Blog;
@@ -309,7 +310,7 @@ trait HasCache {
     }
 
     public function getCacheAffiliatesCampaigns($user_id){
-        $request = request();
+        // $request = request();
         return Cache::remember("aff-campaigns-".$user_id, 86400, function() use($user_id){
             return AffiliateCampaign::orderBy("id", "DESC")
                 ->where("status", true)
@@ -320,10 +321,19 @@ trait HasCache {
 
     public function getCacheAffiliatesExchanges($user_id){
         $request = request();
-        return Cache::remember("aff-campaigns-".$request->page."-".$user_id, 60, function() use($user_id){
+        return Cache::remember("aff-exchanges-".$request->page."-".$user_id, 60, function() use($user_id){
             return AffiliateExchange::orderBy("id", "DESC")
                 ->where("user_id", $user_id)
                 ->paginate(10);
+        });
+    }
+
+    public function getCacheAffiliatesBalances($user_id){
+        // $request = request();
+        return Cache::remember("aff-balances-".$user_id, 60, function() use($user_id){
+            return AffiliateBalance::with("getCurrency")->orderBy("id", "DESC")
+                ->where("user_id", $user_id)
+                ->get();
         });
     }
 }
