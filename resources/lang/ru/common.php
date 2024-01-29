@@ -96,5 +96,9 @@ return [
     "statusExchange15" => "ОШИБКА ПРИ ВЫПЛАТЕ",
     "min_amount_usd" => "Минимальная сумма заявки в $",
     "max_amount_usd" => "Максимальная сумма заявки в $",
-    "affiliate_campaigns_max" => "Превышено максимальное количество созданных кампаний"
+    "affiliate_campaigns_max" => "Превышено максимальное количество созданных кампаний",
+    "user_id" => "Id пользователя",
+    "editAffiliateCampaign" => "Изменить кампанию аффилейта",
+    "editAffiliateSettings" => "Настройки аффилейт программы",
+    "affiliatePercent" => "Процент вознаграждения"
 ];

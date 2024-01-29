@@ -20,5 +20,7 @@ return [
     "clear cache" => "Очистить кеш",
     "users" => "Пользователи",
     "sitemap generate" => "Сгенерировать sitemap",
-    "languages update" => "Обновить языки (синхронизация)"
+    "languages update" => "Обновить языки (синхронизация)",
+    "affiliate_campaigns" => "Кампании аффилейтов",
+    "affiliate_settings" => "Настройки аффилейтов"
 ];

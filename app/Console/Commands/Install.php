@@ -96,6 +96,8 @@ class Install extends Command
             "handle-exchanger",
             "handle-users",
             "handle-user-role",
+            "handle-affiliate",
+            "handle-affiliate-withdraws",
         ];
 
         $bar = $this->output->createProgressBar(count($permissions));

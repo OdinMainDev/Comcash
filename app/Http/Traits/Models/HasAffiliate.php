@@ -36,4 +36,16 @@ trait HasAffiliate {
         }
         return (float) $model->value;
     }
+
+    public function setAffilatePercent($percent) {
+        $model = ExchangerSettigns::where("key", "affiliate_percent")->first();
+        if(!$model){
+            $model = new ExchangerSettigns;
+            $model->key = "affiliate_percent";
+            $model->value = "0.5";
+            $model->save();
+        }
+        $model->value = $percent;
+        $model->save();
+    }
 }

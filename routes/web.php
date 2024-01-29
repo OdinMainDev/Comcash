@@ -24,6 +24,10 @@ use App\Http\Controllers\Admin\DataTable\Controller_ExchangeLog as DTExchangeLog
 
 use App\Http\Controllers\Admin\Controller_User as AdminUser;
 use App\Http\Controllers\Admin\DataTable\Controller_User as DTUser;
+use App\Http\Controllers\Admin\Controller_Affiliate as AdminAffiliate;
+use App\Http\Controllers\Admin\DataTable\Controller_Affiliate as DTAffiliate;
+use App\Http\Controllers\Admin\Controller_AffiliateWithdraw as AdminAffiliateWithdraw;
+use App\Http\Controllers\Admin\DataTable\Controller_AffiliateWithdraw as DTAffiliateWithdraw;
 
 use App\Http\Controllers\Controller_Home as Home;
 use App\Http\Controllers\Controller_Login as Login;
@@ -205,6 +209,22 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
         Route::get('/panel/api/get/currencies', [AdminApi::class, "currencies"]);
         Route::get('/panel/api/get/merchants', [AdminApi::class, "merchants"]);
+    });
+
+    Route::group( ['middleware' => ['auth', 'permission:handle-affiliate']], function() {
+        Route::get('/panel/affiliate/campaigns/list', [DTAffiliate::class, "view"])->name("adminAffiliateCampaigns");
+        Route::get('/panel/affiliate/campaigns/list/data', [DTAffiliate::class, "process"]);
+
+        Route::get('/panel/affiliate/campaigns/edit/{id}', [AdminAffiliate::class, "edit"])->name("adminAffiliateCampaignEdit");
+        Route::post('/panel/affiliate/campaigns/process', [AdminAffiliate::class, "process"])->name("adminAffiliateCampaignProcess");
+    });
+
+    Route::group( ['middleware' => ['auth', 'permission:handle-affiliate-withdraws']], function() {
+        // Route::get('/panel/affiliate/campaigns/list', [DTAffiliateWithdraw::class, "view"])->name("adminAffiliateCampaigns");
+        // Route::get('/panel/affiliate/campaigns/list/data', [DTAffiliateWithdraw::class, "process"]);
+
+        Route::get('/panel/affiliate/settings/edit', [AdminAffiliateWithdraw::class, "view_settigns"])->name("adminAffiliateSettings");
+        Route::post('/panel/affiliate/settings/process', [AdminAffiliateWithdraw::class, "settigns_process"])->name("adminAffiliateSettingsProcess");
     });
 });
 

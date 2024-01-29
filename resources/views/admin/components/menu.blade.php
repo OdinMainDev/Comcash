@@ -189,6 +189,22 @@
 					</a>
 				</li>
 			@endcan
+			@can("handle-affiliate")
+				<li class="nav-item">
+					<a class="nav-link" href="{{route("adminAffiliateCampaigns")}}">
+						<i class="link-icon" data-feather="flag"></i>
+						<span class="link-title">{{__("menu.affiliate_campaigns")}}</span>
+					</a>
+				</li>
+			@endcan
+			@can("handle-affiliate-withdraws")
+				<li class="nav-item">
+					<a class="nav-link" href="{{route("adminAffiliateSettings")}}">
+						<i class="link-icon" data-feather="flag"></i>
+						<span class="link-title">{{__("menu.affiliate_settings")}}</span>
+					</a>
+				</li>
+			@endcan
 		</ul>
 	</div>
 </nav>
