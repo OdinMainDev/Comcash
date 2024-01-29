@@ -139,7 +139,11 @@ class Controller_Exchange extends Controller{
             }
             $currencyData['wallets'] = $newWallets;
             if(count($currencyData['wallets']) == 0){
-                $currencyData['wallets'] = $currencyData['walletsReuse'];
+                if(!isset($currencyData['walletsReuse']) || !is_array($currencyData['walletsReuse'])){
+                    sendTelegramNotification("ВНИМАНИЕ ПРОИЗОШЛА ВНУТРЕННЯЯ ОШИБКА!!!! ПЕРЕЗАПОЛНИТЕ КОШЕЛЬКИ ДЛЯ ВАЛЮТЫ: ".$exchange->currencyFrom->name);
+                }else{
+                    $currencyData['wallets'] = $currencyData['walletsReuse'];
+                }
             }
             $currency->data = $currencyData;
             $currency->save();

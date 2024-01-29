@@ -145,7 +145,9 @@ class Controller_Exchange extends Controller{
             ],
             "amount_data" => [
                 "amount_send" => $request->amount,
+                "amount_send_usd" => $this->estimateAmount($currency_from->name, "USD", 2, $request->amount, $direction->profit_percent),
                 "amount_receive" => $amount,
+                "amount_receive_usd" => $this->estimateAmount($currency_to->name, "USD", 2, $amount, 0),
                 "exchange_rate" => $this->estimateGetRate($currency_from->name, $currency_to->name),
                 "exchange_rate_to_usd" => $this->estimateGetRate($currency_from->name, "USD"),
                 "currency_from_name" => $this->convertCurrencyName($currency_from->name),

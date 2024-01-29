@@ -1,0 +1,100 @@
+<?php
+
+namespace App\Jobs;
+
+use App\Http\Traits\Models\HasAffiliate;
+use App\Models\AffiliateBalance;
+use App\Models\AffiliateExchange;
+use App\Models\Exchange;
+use App\Models\Statistic;
+use App\Models\StatisticCompleteExchange;
+use App\Models\User;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+class OnExchangeComplete implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasAffiliate;
+
+    private $exchange_id;
+    private $exchange;
+    private $user;
+
+    public function __construct($exchange_id){
+        $this->exchange_id = $exchange_id;
+    }
+
+    public function handle(): void{
+        $this->exchange = Exchange::where("id", $this->exchange_id)->first();
+        if(!$this->exchange) {
+            sendTelegramNotification("СВЕРХ СТРАННАЯ ОШИБКА, ОБРАТИТЕСЬ К РАЗРАБОТЧИКУ\nexchange_id: ".$this->exchange_id."\nОшибка при OnExchangeComplete");
+            return;
+        }
+
+        $check = StatisticCompleteExchange::where("exchange_id", $this->exchange->id)->first();
+        if($check){
+            return;
+        }
+        unset($check);
+
+        // сохраняем статистику
+        $stat_complete_exchange = new StatisticCompleteExchange; 
+        $stat_complete_exchange->exchange_id = $this->exchange->id;
+        $stat_complete_exchange->save();
+
+        $today_date = strtotime(date('Y-m-d 00:00:00'));
+        $stat_today_from = Statistic::where("currency", $this->exchange->currency_from)->where("created_at", $today_date)->first();
+        if(!$stat_today_from){
+            $stat_today_from = new Statistic;
+            $stat_today_from->currency = $this->exchange->currency_from;
+            $stat_today_from->created_at = $today_date;
+            $stat_today_from->save();
+        }
+        $stat_today_from->increment("amount", $this->exchange->data['amount_data']['amount_send']);
+        $stat_today_from->increment("amount_usd", $this->exchange->data['amount_data']['amount_send_usd']);
+
+        $stat_today_to = Statistic::where("currency", $this->exchange->currency_to)->where("created_at", $today_date)->first();
+        if(!$stat_today_to){
+            $stat_today_to = new Statistic;
+            $stat_today_to->currency = $this->exchange->currency_to;
+            $stat_today_to->created_at = $today_date;
+            $stat_today_to->save();
+        }
+        $stat_today_to->decrement("amount", $this->exchange->data['amount_data']['amount_receive']);
+        $stat_today_to->decrement("amount_usd", $this->exchange->data['amount_data']['amount_receive_usd']);
+
+        $this->user = User::where("id", $this->exchange->user_id)->first();
+        if(!$this->user) {
+            sendTelegramNotification("СВЕРХ СТРАННАЯ ОШИБКА, ОБРАТИТЕСЬ К РАЗРАБОТЧИКУ\nexchange_id: ".$this->exchange_id."\nuser_id:".$this->exchange->user_id."\nОшибка при OnExchangeComplete");
+            return;
+        }
+
+        $aff_user = $this->getAffiliatedUser($this->exchange->user_id);
+        if(!$aff_user || !$aff_user->campaign || !$aff_user->campaign->status){
+            return;
+        }
+
+        $aff_balance = AffiliateBalance::where("user_id", $aff_user->campaign->user_id)->where("currency", $this->exchange->currency_from)->first();
+        if(!$aff_balance){
+            $aff_balance = new AffiliateBalance;
+            $aff_balance->user_id = $aff_user->campaign->user_id;
+            $aff_balance->currency = $this->exchange->currency_from;
+            $aff_balance->save();
+        }
+        // ДОБАВИТЬ %
+        $aff_percent = $this->getAffilatePercent();
+        $earned_amount = $this->exchange->data['amount_data']['amount_send'] / 100 * $aff_percent;
+        $aff_balance->increment("balance", $earned_amount);
+
+        $aff_exchange = new AffiliateExchange;
+        $aff_exchange->currency = $this->exchange->currency_from;
+        $aff_exchange->amount = $this->exchange->data['amount_data']['amount_send'];
+        $aff_exchange->amount_earned = $earned_amount;
+        $aff_exchange->exchange_id = $this->exchange->id;
+        $aff_exchange->user_credential = $this->user->email;
+        $aff_exchange->save();
+    }
+}

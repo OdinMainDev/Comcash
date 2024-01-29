@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('affiliate_balances', function (Blueprint $table) {
             $table->id();
+            $table->integer("user_id")->index();
+            $table->integer("currency")->index();
+            $table->float("balance", 15, 8)->default(0);
             $table->timestamps();
         });
     }
