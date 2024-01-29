@@ -3,6 +3,7 @@
 namespace App\Http\Traits\Models;
 
 use App\Models\AffiliateCampaign;
+use App\Models\AffiliateExchange;
 use App\Models\Blog;
 use App\Models\Currency;
 use App\Models\Direction;
@@ -314,6 +315,15 @@ trait HasCache {
                 ->where("status", true)
                 ->where("user_id", $user_id)
                 ->get();
+        });
+    }
+
+    public function getCacheAffiliatesExchanges($user_id){
+        $request = request();
+        return Cache::remember("aff-campaigns-".$request->page."-".$user_id, 60, function() use($user_id){
+            return AffiliateExchange::orderBy("id", "DESC")
+                ->where("user_id", $user_id)
+                ->paginate(10);
         });
     }
 }

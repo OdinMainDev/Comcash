@@ -39,4 +39,9 @@ class Controller_ProfileAffiliate extends Controller{
         return $this->responseSuccess(false, ["refresh" => true]);
     }
 
+    public function view_exchanges() {
+        return view($this->theme.".pages.profile_affiliate_exchanges")
+            ->with("exchanges", $this->getCacheAffiliatesExchanges(auth()->user()->id));
+    }
+
 }

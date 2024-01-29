@@ -2,7 +2,7 @@
     <a class="button" href="{{route("myprofileAffiliate")}}">
         {{__("front.affiliate my campaigns")}}
     </a>
-    <a class="button" href="{{route("myprofileAffiliate")}}">
+    <a class="button" href="{{route("myprofileAffiliateExchanges")}}">
         {{__("front.affiliate my affiliates")}}
     </a>
     <a class="button" href="{{route("myprofileAffiliate")}}">

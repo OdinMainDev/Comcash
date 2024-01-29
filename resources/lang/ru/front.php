@@ -180,7 +180,7 @@ return [
     "exchanges history you receive" => "Вы получили",
     "profile affiliate" => "Партнерская программа",
     "affiliate my campaigns" => "Мои кампании",
-    "affiliate my affiliates" => "Мои аффилейты",
+    "affiliate my affiliates" => "Заявки моих аффилейтов",
     "affiliate my balance" => "Мой баланс",
     "knowledge tariffs title" => "Тарифы",
     "knowledge tariffs description" => "Если вас интересует обмен криптовалют, то рекомендуется обязательно изучить тарифы Comcash.io. Ниже
@@ -197,4 +197,7 @@ return [
     "affiliate campaign name" => "Название кампании",
     "affiliate registered_users" => "Зарегистрировалось",
     "affiliate profitable_users" => "Принесли профит",
+    "affiliate my exchanges" => "Заявки аффилейтов",
+    "affiliate exchange_amount" => "Сумма заявки",
+    "affiliate exchange_amount_earned" => "Прибыль",
 ];

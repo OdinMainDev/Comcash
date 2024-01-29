@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float("amount", 15, 8)->default(0);
             $table->float("amount_earned", 15, 8)->default(0);
             $table->integer("exchange_id")->index();
+            $table->integer("user_id")->index();
             $table->string("user_credential");
             $table->timestamps();
         });
