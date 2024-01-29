@@ -78,8 +78,13 @@ class Controller_ProfileAffiliate extends Controller{
         $withdraw->amount = $request->amount;
         $withdraw->save();
         sendTelegramNotification("Новая заявка на выплату аффилейту");
-        
+
         return $this->responseSuccess();
+    }
+
+    public function view_withdraws() {
+        return view($this->theme.".pages.profile_affiliate_withdraws")
+            ->with("withdraws", $this->getCacheAffiliatesWithdraws(auth()->user()->id));
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Traits\Models;
 use App\Models\AffiliateBalance;
 use App\Models\AffiliateCampaign;
 use App\Models\AffiliateExchange;
+use App\Models\AffiliateWithdraw;
 use App\Models\Blog;
 use App\Models\Currency;
 use App\Models\Direction;
@@ -334,6 +335,15 @@ trait HasCache {
             return AffiliateBalance::with("getCurrency")->orderBy("id", "DESC")
                 ->where("user_id", $user_id)
                 ->get();
+        });
+    }
+
+    public function getCacheAffiliatesWithdraws($user_id){
+        $request = request();
+        return Cache::remember("aff-exchanges-".$request->page."-".$user_id, 60, function() use($user_id){
+            return AffiliateWithdraw::orderBy("id", "DESC")
+                ->where("user_id", $user_id)
+                ->paginate(10);
         });
     }
 }

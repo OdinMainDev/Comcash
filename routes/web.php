@@ -101,6 +101,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/profile/affiliate/exchanges', [ProfileAffiliate::class, "view_exchanges"])->name("myprofileAffiliateExchanges");
         Route::get('/profile/affiliate/balances', [ProfileAffiliate::class, "view_balances"])->name("myprofileAffiliateBalances");
         Route::post('/profile/affiliate/balances', [ProfileAffiliate::class, "withdraw_balance"])->name("myprofileAffiliateBalancesPost");
+        Route::get('/profile/affiliate/withdraws', [ProfileAffiliate::class, "view_withdraws"])->name("myprofileAffiliateWithdraws");
     });
     
 });

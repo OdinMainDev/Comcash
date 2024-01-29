@@ -8,4 +8,7 @@
     <a class="button" href="{{route("myprofileAffiliateBalances")}}">
         {{__("front.affiliate my balance")}}
     </a>
+    <a class="button" href="{{route("myprofileAffiliateWithdraws")}}">
+        {{__("front.affiliate my withdraws")}}
+    </a>
 </div>

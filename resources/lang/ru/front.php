@@ -203,5 +203,9 @@ return [
     "affiliate withdraw currency" => "Выберите валюту выплаты",
     "affiliate withdraw balance" => "Укажите сумму выплаты",
     "affiliate withdraw button" => "Создать выплату",
-    "affiliate my balances" => "Мои балансы"
+    "affiliate my balances" => "Мои балансы",
+    "affiliate my withdraws" => "Мои выплаты",
+    "affiliate_withdraw_status0" => "Модерация выплаты", 
+    "affiliate_withdraw_status1" => "Успешно", 
+    "affiliate_withdraw_status2" => "Отклонено", 
 ];
