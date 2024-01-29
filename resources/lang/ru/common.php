@@ -102,5 +102,10 @@ return [
     "editAffiliateSettings" => "Настройки аффилейт программы",
     "affiliatePercent" => "Процент вознаграждения",
     "affiliate_withdraw_not_enough" => "Недостаточно средств на балансе",
-    "affiliate_withdraw_already_created" => "У вас уже создана заявка на вывод для данной валюты"
+    "affiliate_withdraw_already_created" => "У вас уже создана заявка на вывод для данной валюты",
+    "viewWithdrawAffiliate" => "Выплата аффилейту",
+    "affstatus1" => "Выплачено",
+    "affstatus2" => "Отклонено",
+    "decline_reason" => "Причина отклонения",
+    "affiliate_withdraw_closed" => "Заявка уже обработана"
 ];

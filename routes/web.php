@@ -224,8 +224,11 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-affiliate-withdraws']], function() {
-        // Route::get('/panel/affiliate/campaigns/list', [DTAffiliateWithdraw::class, "view"])->name("adminAffiliateCampaigns");
-        // Route::get('/panel/affiliate/campaigns/list/data', [DTAffiliateWithdraw::class, "process"]);
+        Route::get('/panel/affiliate/withdraws/list', [DTAffiliateWithdraw::class, "view"])->name("adminAffiliateWithdraws");
+        Route::get('/panel/affiliate/withdraws/list/data', [DTAffiliateWithdraw::class, "process"]);
+
+        Route::get('/panel/affiliate/withdraws/edit/{id}', [AdminAffiliateWithdraw::class, "view"])->name("adminAffiliateWithdrawsEdit");
+        Route::post('/panel/affiliate/withdraws/process', [AdminAffiliateWithdraw::class, "process"])->name("adminAffiliateWithdrawsProcess");
 
         Route::get('/panel/affiliate/settings/edit', [AdminAffiliateWithdraw::class, "view_settigns"])->name("adminAffiliateSettings");
         Route::post('/panel/affiliate/settings/process', [AdminAffiliateWithdraw::class, "settigns_process"])->name("adminAffiliateSettingsProcess");

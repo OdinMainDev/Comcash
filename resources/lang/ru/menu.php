@@ -22,5 +22,6 @@ return [
     "sitemap generate" => "Сгенерировать sitemap",
     "languages update" => "Обновить языки (синхронизация)",
     "affiliate_campaigns" => "Кампании аффилейтов",
-    "affiliate_settings" => "Настройки аффилейтов"
+    "affiliate_settings" => "Настройки аффилейтов",
+    "affiliate_withdraws" => "Выплаты аффилейтам"
 ];
