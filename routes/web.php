@@ -233,6 +233,16 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/affiliate/settings/edit', [AdminAffiliateWithdraw::class, "view_settigns"])->name("adminAffiliateSettings");
         Route::post('/panel/affiliate/settings/process', [AdminAffiliateWithdraw::class, "settigns_process"])->name("adminAffiliateSettingsProcess");
     });
+
+    Route::group( ['middleware' => ['auth', 'permission:view-statistic']], function() {
+        Route::get('/panel/api/get/dashboard/registers', [AdminApi::class, "dasboard_registers"]);
+        Route::get('/panel/api/get/dashboard/exchanges', [AdminApi::class, "dasboard_exchanges"]);
+        Route::get('/panel/api/get/dashboard/exchanges-complete', [AdminApi::class, "dasboard_exchanges_complete"]);
+        Route::get('/panel/api/get/dashboard/revenue', [AdminApi::class, "dasboard_revenue"]);
+        Route::get('/panel/api/get/dashboard/popular-directions', [AdminApi::class, "dasboard_popular_directions"]);
+        Route::get('/panel/api/get/dashboard/affiliate-withdraws', [AdminApi::class, "dasboard_affiliate_withdraws"]);
+        Route::get('/panel/api/get/dashboard/fulltime-statistic', [AdminApi::class, "dasboard_fulltime_statistic"]);
+    });
 });
 
 Route::group(config('translation.route_group_config') + ['namespace' => 'JoeDixon\\Translation\\Http\\Controllers'], function ($router) {

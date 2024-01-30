@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasImage;
 use App\Http\Traits\Models\HasAffiliate;
+use App\Models\AffiliateBalance;
 use App\Models\AffiliateCampaign;
 use App\Models\AffiliateWithdraw;
 use App\Models\Currency;
@@ -54,6 +55,17 @@ class Controller_AffiliateWithdraw extends Controller{
 
         if($model->status != 0){
             return $this->responseErrorValidation(["undefined" => __("common.affiliate_withdraw_closed")]);
+        }
+
+        if($request->status == 1){
+            $balance = AffiliateBalance::where("currency", $model->currency)->where("user_id", $model->user_id)->first();
+            if(!$balance){
+                return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
+            }
+            if($model->amount > $balance->balance){
+                return $this->responseErrorValidation(["undefined" => __("common.affiliate_doesnt_have_balance")]);
+            }
+            $balance->decrement("balance", $model->amount);
         }
 
         $model->status = $request->status;
