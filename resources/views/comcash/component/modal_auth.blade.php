@@ -85,7 +85,7 @@
 						{{__("front.check your email!")}}
 					</p>
 					<p class='auth__subtitle'>{{__("front.check your email text")}}</p>
-					<a href="/" class='button button--auto auth__btn'>{{__("front.continue")}}</a>
+					<a href="{{route("index")}}" class='button button--auto auth__btn'>{{__("front.continue")}}</a>
 				</div>
 				<div id='email-recover'
 					class='email-recover auth__content'>

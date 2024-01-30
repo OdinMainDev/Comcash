@@ -56,7 +56,7 @@
                             {{__("front.page_about_product_1_content")}}
                         </p>
                     </div>
-                    <a class="company__products-btn" href="/">{{__("front.page_about_product_try_it")}} &rarr;</a>
+                    <a class="company__products-btn" href="{{route("index")}}">{{__("front.page_about_product_try_it")}} &rarr;</a>
                 </div>
                 <div class="company__products-item">
                     <div class="company__products-card">

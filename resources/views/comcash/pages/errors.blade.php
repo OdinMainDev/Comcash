@@ -31,7 +31,7 @@
     <div class="not-found__container">
       <p class="not-found__title">{{$status_code}}</p>
       <p class="not-found__subtitle">{{__("front.page temporarily not working!")}}</p>
-      <a class='button' href="/">{{__("front.continue")}}</a>
+      <a class='button' href="/ru">{{__("front.continue")}}</a>
     </div>
 
   </div>
