@@ -76,6 +76,9 @@ class Controller_Exchange extends Controller{
         if($exchange->merchant_type_from == "manualcrypto" || $exchange->merchant_type_from == "manualfiat") return abort(404);
         if($exchange->merchant_type_to == "manualfiat" || $exchange->merchant_type_to == "manualfiat") return abort(404);
 
+        if($exchange->admin_id == 0 && !$this->isRootUser()){
+            $exchange->admin_id = auth()->user()->id;
+        }
         $exchange->status = 3;
         $exchange->save();
         ExchangeWithdraw::dispatch($exchange->id);
@@ -94,6 +97,9 @@ class Controller_Exchange extends Controller{
         if(!$exchange || !in_array($exchange->status, [15, 4, 3, 1])) return abort(404);
         if(!$this->checkUserCanUpdateExchange($exchange))  return abort(404);
 
+        if($exchange->admin_id == 0 && !$this->isRootUser()){
+            $exchange->admin_id = auth()->user()->id;
+        }
         $exchange->status = 4;
         $exchange->save();
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ВЫПЛАТА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
@@ -106,6 +112,9 @@ class Controller_Exchange extends Controller{
         if(!$exchange || !in_array($exchange->status, [15, 4])) return abort(404);
         if(!$this->checkUserCanUpdateExchange($exchange))  return abort(404);
 
+        if($exchange->admin_id == 0 && !$this->isRootUser()){
+            $exchange->admin_id = auth()->user()->id;
+        }
         $exchange->status = 5;
         $exchange->save();
         $text = "✅✅✅<b>СТАТУС ЗАЯВКИ - ЗАЯВКА ЗАВЕРШЕНА</b>✅✅✅\n".$this->tgBasicMessage($exchange);
