@@ -20,6 +20,8 @@ class ParserBestchange extends Command
     protected $description = 'BestchangeParser';
 
     public function handle(){
+        ini_set('display_errors', 1);
+        error_reporting(E_ALL);
         $currencies = Currency::where("status", true)->get();
         if(count($currencies) == 0){
             return;
