@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('app:rates-parser')->everyThirtySeconds();
+        // $schedule->command('app:rates-parser')->everyThirtySeconds();
+        $schedule->command('app:parser-bestchange')->everyMinute();
         $schedule->command('app:clear-exchanges')->everyMinute();
         $schedule->command('app:bugged-withdraws')->everyMinute();
 

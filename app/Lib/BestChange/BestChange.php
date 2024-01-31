@@ -219,15 +219,37 @@ class BestChange
 
     private function loadFile($url)
     {
+        $options = array(
+            CURLOPT_TIMEOUT => self::TIMEOUT,
+            CURLOPT_CONNECTTIMEOUT => self::TIMEOUT,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_MAXREDIRS => 2,
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_AUTOREFERER => true,
+            CURLOPT_HEADER => false,
+            CURLOPT_HTTPHEADER => array(
+                'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
+                'Cache-Control: no-cache',
+                'Pragma: no-cache'
+            ),
+        );
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_TIMEOUT, self::TIMEOUT);
-        curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        $data = curl_exec($ch);
+        $curl_options = array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_REFERER => '',
+            CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36 OPR/60.0.3255.27",
+        );
+        foreach($options as $k => $v){
+            $curl_options[$k] = $v;
+        }
+        curl_setopt_array($ch, $curl_options);
+        $response = curl_exec($ch);
         curl_close($ch);
-        return $data;
+        return $response;
     }
 }
