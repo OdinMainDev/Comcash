@@ -87,7 +87,7 @@ class ParserBestchange extends Command
 
             ExchangeRate::truncate();
             ExchangeRate::insert($inserts);
-            sendTelegramNotification("Курсы успешно обновлены с бестченжа", 1);
+            sendTelegramNotification("Курсы успешно обновлены с бестченжа", 4);
         } catch (\Exception $e) {
             // Регистрация ошибки в логе
             Log::error('Error in your scheduled task: ' . $e->getMessage());
