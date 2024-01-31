@@ -137,4 +137,109 @@ class RatesParser extends Command{
 
         return $inserts;
     }
+
+    // public function parseFromGarantex() {
+    //     $response = $this->getRequest("https://garantex.org/rates");
+    //     if(!$response){
+    //         sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса, кривой ответ от сервера курсов валют.");
+    //         return [];
+    //     }
+    //     $jsonResponse = @json_decode($response, true);
+    //     if(!$jsonResponse){
+    //         sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса, кривой ответ от сервера курсов валют 2.\n".$response);
+    //         return [];
+    //     }
+    //     $inserts = [];
+    //     $currencies = ["BTC", "ETH", "USDT", "DAI"];
+    //     $currencies2 = ["RUB", "USD"];
+    //     foreach($jsonResponse as $key => $value){
+    //         foreach($currencies as $currency){
+    //             foreach($currencies2 as $currency2){
+    //                 $currency = mb_strtolower($currency);
+    //                 $currency2 = mb_strtolower($currency2);
+    //             }
+    //         }
+    //         $inserts[] = [
+    //             "from" => $currency,
+    //             "to" => $currency2,
+    //             "rate" => $response[0]['price'],
+    //         ];
+    //     }
+
+    //     dd(count($inserts));
+    //     if(count($inserts) != 8) {
+
+    //     }
+
+
+    //     $currencies = ["BTC", "ETH", "USDT", "DAI"];
+    //     $currencies2 = ["RUB", "USD"];
+    //     $inserts = [];
+    //     $url = "https://garantex.org/rates";
+    //     try {
+    //         $response = Http::timeout(-1)->get($url);
+    //         if($response->clientError() || $response->status() != 200){
+    //             sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса, кривой ответ от сервера курсов валют.");
+    //             return [];
+    //         }
+    //         $response = $response->json();
+    //         if(!is_array($response) || count($response) == 0){
+    //             sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 2, кривой ответ от сервера курсов валют.");
+    //             return [];
+    //         }
+    //         dd($response);
+    //         $inserts[] = [
+    //             "from" => $currency,
+    //             "to" => $currency2,
+    //             "rate" => $response[0]['price'],
+    //         ];
+    //     } catch (RequestException $ex){
+    //         sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 3, кривой ответ от сервера курсов валют.\n\n".$ex->getMessage());
+    //         return [];
+    //     }
+
+    //     foreach($currencies as $currency){
+    //         foreach($currencies2 as $currency2){
+                
+                
+    //         }
+    //     }
+
+    //     return $inserts;
+    // }
+
+    // public function getRequest($url) {
+    //     $options = array(
+    //         CURLOPT_TIMEOUT => 5,
+    //         CURLOPT_CONNECTTIMEOUT => 5,
+    //         CURLOPT_RETURNTRANSFER => true,
+    //         CURLOPT_FOLLOWLOCATION => true,
+    //         CURLOPT_MAXREDIRS => 2,
+    //         CURLOPT_SSL_VERIFYPEER => 0,
+    //         CURLOPT_SSL_VERIFYHOST => 0,
+    //         CURLOPT_HTTPHEADER => array(
+    //             'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
+    //             'Cache-Control: no-cache',
+    //             'Pragma: no-cache'
+    //         ),
+    //     );
+    //     $ch = curl_init();
+    //     $curl_options = array(
+    //         CURLOPT_URL => $url,
+    //         CURLOPT_RETURNTRANSFER => 1,
+    //         CURLOPT_SSL_VERIFYPEER => false,
+    //         CURLOPT_SSL_VERIFYHOST => false,
+    //         CURLOPT_REFERER => '',
+    //         CURLOPT_TIMEOUT => 20,
+    //         CURLOPT_CONNECTTIMEOUT => 20,
+    //         CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36 OPR/60.0.3255.27",
+    //     );
+    //     foreach($options as $k => $v){
+    //         $curl_options[$k] = $v;
+    //     }
+    //     curl_setopt_array($ch, $curl_options);
+    //     $response = curl_exec($ch);
+    //     curl_close($ch);
+    //     return $response;
+    // }
 }
