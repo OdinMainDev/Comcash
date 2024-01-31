@@ -23,6 +23,7 @@ class ParserBestchange extends Command
     public function handle(){
         ini_set('display_errors', 1);
         error_reporting(E_ALL);
+        ini_set('memory_limit', '-1');
         try {
             $currencies = Currency::where("status", true)->get();
             if(count($currencies) == 0){
