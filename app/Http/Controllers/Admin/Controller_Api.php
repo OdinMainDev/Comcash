@@ -168,10 +168,9 @@ class Controller_Api extends Controller{
 
     public function dasboard_popular_directions() {
         return Cache::remember("admin-dashboard-chart-popular-directions", 60, function(){
-            $startOfMonth = Carbon::now()->startOfMonth();
-            $endOfMonth = Carbon::now()->endOfMonth();
+            $startOfMonth = Carbon::now()->subDays(31);
 
-            $exchanges = Exchange::with("currencyFrom")->where("status", 5)->whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            $exchanges = Exchange::with("currencyFrom")->where("status", 5)->where('created_at', ">=", $startOfMonth)
                 ->groupBy('currency_from')
                 ->selectRaw('currency_from, COUNT(*) as count')
                 ->get();
