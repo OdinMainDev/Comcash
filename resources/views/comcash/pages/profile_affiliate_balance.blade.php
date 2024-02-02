@@ -24,6 +24,12 @@
 					</div>
 					<input type="text" class="input input--large" placeholder="..." name="amount" id="amount">
 				</div>
+				<div class="input-box">
+					<div class='label'>
+						<span>{{__("front.affiliate withdraw address")}}</span>
+					</div>
+					<input type="text" class="input input--large" placeholder="..." name="address" id="address">
+				</div>
 				<button type="submit" class='button accounts__button'>{{__("front.affiliate withdraw button")}}</button>
 			</form>
 			<div class="accounts__list">

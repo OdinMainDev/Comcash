@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
         }else{
             $schedule->command('app:parser-bestchange')->everyMinute();
         }
-        $schedule->command('app:clear-exchanges')->everyMinute();
+        // $schedule->command('app:clear-exchanges')->everyMinute();
         $schedule->command('app:bugged-withdraws')->everyMinute();
 
         $schedule->command('app:garantex-payment')->everyMinute();

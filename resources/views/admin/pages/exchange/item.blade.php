@@ -27,10 +27,11 @@
                     @if($model->status > 10)
                         <a href="{{route("adminExchangeSetCreated", [$model->id])}}" class="btn btn-primary me-2">Установить статус заявка создана</a>
                     @endif
-                    @if($model->status != 13)
-                        <a href="{{route("adminExchangeSetDeleted", [$model->id])}}" class="btn btn-danger me-2">Установить статус заявка удалена</a>
-                    @endif
                 @endif
+                @if($model->status != 13)
+                    <a href="{{route("adminExchangeSetDeleted", [$model->id])}}" class="btn btn-danger me-2">Установить статус заявка удалена</a>
+                @endif
+               
 
 				<form class="forms-sample" action="{{route("adminExchangeEditPost")}}">
                     @csrf

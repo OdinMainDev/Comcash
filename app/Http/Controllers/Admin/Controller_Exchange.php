@@ -174,7 +174,7 @@ class Controller_Exchange extends Controller{
     public function set_deleted($lang, $id){
         $exchange = $this->checkexchlocal($id);
         if(!$exchange) return abort(404);
-        if(!$this->isRootUser()) return abort(404);
+        // if(!$this->isRootUser()) return abort(404);
         
         $exchange->status = 13;
         $exchange->save();

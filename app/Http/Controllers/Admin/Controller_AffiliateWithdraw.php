@@ -17,16 +17,19 @@ class Controller_AffiliateWithdraw extends Controller{
 
     public function view_settigns() {
         $percent = $this->getAffilatePercent();
+        $minamount = $this->getAffilateMinAmount();
         
-        return view("admin.pages.affiliate.settings.item")->with("percent", $percent);
+        return view("admin.pages.affiliate.settings.item")->with("percent", $percent)->with("minamount", $minamount);
     }
 
     public function settigns_process(Request $request){
         $request->validate([
             "percent" => "required|numeric",
+            "minamount" => "required|numeric",
         ]);
 
         $this->setAffilatePercent($request->percent);
+        $this->setAffilateMinAmount($request->minamount);
         return $this->responseSuccess();
     }
 

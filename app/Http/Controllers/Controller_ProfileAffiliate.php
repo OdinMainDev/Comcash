@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
 use App\Models\AffiliateBalance;
 use App\Models\AffiliateCampaign;
 use App\Models\AffiliateWithdraw;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Hash;
 
 class Controller_ProfileAffiliate extends Controller{
 
-    use HasCache;
+    use HasCache, HasAffiliate;
 
     public function view_index() {
         return view($this->theme.".pages.profile_affiliate")
@@ -55,11 +54,17 @@ class Controller_ProfileAffiliate extends Controller{
         $request->validate([
             "currency" => "required|integer",
             "amount" => "required|numeric|gt:0",
+            "address" => "required|string|max:255"
         ]);
 
         $balance = AffiliateBalance::where("currency", $request->currency)->where("user_id", auth()->user()->id)->first();
         if(!$balance){
             return $this->responseErrorValidation(["code" => __("common.data_fail")]);
+        }
+
+        $amount = $this->estimateAmount($balance->getCurrency->name, "USD", 2, $request->amount, 0);
+        if($amount < $this->getAffilatePercent()){
+            return $this->responseErrorValidation(["code" => __("common.affiliate_withdraw_less_minimal")]);
         }
 
         if($balance->balance < $request->amount){
@@ -76,6 +81,7 @@ class Controller_ProfileAffiliate extends Controller{
         $withdraw->currency = $request->currency;
         $withdraw->status = 0;
         $withdraw->amount = $request->amount;
+        $withdraw->address = $request->address;
         $withdraw->save();
         sendTelegramNotification("Новая заявка на выплату аффилейту");
 

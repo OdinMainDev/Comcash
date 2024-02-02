@@ -141,5 +141,7 @@ return [
     "login_page" => "Страница входа",
     "register_page" => "Страница регистрации",
     "reset-password_page" => "Страница восстановления пароля",
+    "affiliate_withdraw_less_minimal" => "Сумма выплаты меньше минимально возможной",
+    "affiliateMinAmount" => "Минимальная сумма выплаты в $"
 
 ];

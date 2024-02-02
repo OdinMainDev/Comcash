@@ -129,7 +129,7 @@ class Controller_Direction extends Controller{
             "merchantChangeFrom" => "nullable|exists:App\Models\Merchant,id",
             "merchantChangeTo" => "nullable|exists:App\Models\Merchant,id",
 
-            "enabled" => "required|boolean",
+            "enabled" => "required|in:0,1,666",
             "position" => "nullable|integer|min:1|max:100000",
             "profit_percent" => "nullable|numeric",
 
@@ -204,7 +204,8 @@ class Controller_Direction extends Controller{
                     $direction->position = $request->position;
                 if(is_numeric($request->profit_percent))
                     $direction->profit_percent = $request->profit_percent;
-                $direction->status = $request->enabled;
+                if($request->enabled != "666")
+                    $direction->status = $request->enabled == "1";
                 if($merchant_from){
                     $direction->merchant_from = $merchant_from->id;
                     $direction->merchant_type_from = $merchant_from->type;

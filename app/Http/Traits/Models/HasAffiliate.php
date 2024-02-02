@@ -48,4 +48,27 @@ trait HasAffiliate {
         $model->value = $percent;
         $model->save();
     }
+
+    public function getAffilateMinAmount() {
+        $model = ExchangerSettigns::where("key", "affiliate_minamount")->first();
+        if(!$model){
+            $model = new ExchangerSettigns;
+            $model->key = "affiliate_minamount";
+            $model->value = "100";
+            $model->save();
+        }
+        return (float) $model->value;
+    }
+
+    public function setAffilateMinAmount($amount) {
+        $model = ExchangerSettigns::where("key", "affiliate_minamount")->first();
+        if(!$model){
+            $model = new ExchangerSettigns;
+            $model->key = "affiliate_minamount";
+            $model->value = "100";
+            $model->save();
+        }
+        $model->value = $amount;
+        $model->save();
+    }
 }

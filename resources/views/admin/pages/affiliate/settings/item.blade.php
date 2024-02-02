@@ -30,9 +30,13 @@
                     @csrf
                     <div class="row">
                        
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="percent" class="form-label">{{__("common.affiliatePercent")}}</label>
                             <input type="text" class="form-control" id="percent" name="percent" autocomplete="off" placeholder="0.5" value="{{$percent}}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="minamount" class="form-label">{{__("common.affiliateMinAmount")}}</label>
+                            <input type="text" class="form-control" id="minamount" name="minamount" autocomplete="off" placeholder="0.5" value="{{$minamount}}">
                         </div>
                        
                     </div>

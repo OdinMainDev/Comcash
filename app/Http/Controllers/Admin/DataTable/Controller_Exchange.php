@@ -26,19 +26,23 @@ class Controller_Exchange extends Controller
         ->editColumn("data", function($row){
             $html = '<table class="admin-exchange-table">';
             $html .= '<tbody>';
-            $html .= '<tr class=""><td>Сумма:</td><td>' . @$row->data['amount_data']['amount_send'] . ' -> ' . @$row->data['amount_data']['amount_receive'] . '</td></tr>';
+            $html .= '<tr class=""><td>Сумма получения от клиента:</td><td>' . @$row->data['amount_data']['amount_send'] . '</td></tr>';
+            $html .= '<tr class=""><td>Сумма отправления на счет клиента:</td><td>' . @$row->data['amount_data']['amount_receive'] . '</td></tr>';
             $html .= '<tr class=""><td>Курс:</td><td>' . @$row->data['amount_data']['exchange_rate'] . '</td></tr>';
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>Направление:</td><td>' . @$row->currencyFrom->name . ' -> ' . @$row->currencyTo->name . '</td></tr>';
+            if(isset($row->data['merchant_from_data']))
+                $html .= '<tr class="admin-exchange-table__row hidden-row"><td>Кошелек, на который пользователь отправляет средства:</td><td >' . @$row->data['merchant_from_data']['address'] . '</td></tr>';
+            if(isset($row->data['merchant_from_data']))
+                $html .= '<tr class="admin-exchange-table__row hidden-row"><td>Кошелек Получения:</td><td >' . @$row->data['request_data']['to_address'] . '</td></tr>';
+            
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>user_id:</td><td>' . @$row->user_id . '</td></tr>';
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>direction_id:</td><td>' . @$row->direction_id . '</td></tr>';
-            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>currency_from:</td><td>' . @$row->currency_from . '</td></tr>';
-            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>currency_to:</td><td>' . @$row->currency_to . '</td></tr>';
-            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_from:</td><td>' . @$row->merchant_from . '</td></tr>';
-            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_to:</td><td>' . @$row->merchant_to . '</td></tr>';
+            // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>currency_from:</td><td>' . @$row->currency_from . '</td></tr>';
+            // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>currency_to:</td><td>' . @$row->currency_to . '</td></tr>';
+            // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_from:</td><td>' . @$row->merchant_from . '</td></tr>';
+            // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_to:</td><td>' . @$row->merchant_to . '</td></tr>';
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_type_from:</td><td>' . @$row->merchant_type_from . '</td></tr>';
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_type_to:</td><td>' . @$row->merchant_type_to . '</td></tr>';
-            if(isset($row->data['merchant_from_data']))
-                $html .= '<tr class="admin-exchange-table__row hidden-row"><td>address:</td><td>' . @$row->data['merchant_from_data']['address'] . '</td></tr>';
             $html .= '</tbody>';
             $html .= '</table>';
             return $html;
