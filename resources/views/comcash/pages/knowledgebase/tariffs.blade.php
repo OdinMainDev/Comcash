@@ -47,7 +47,7 @@
                                     continue;
                                 }
 
-                                $next_html .= '<div class="tariffs__list-row">';
+                                $next_html .= '<a class="tariffs__list-row" href="'.route("exchgangePage", [$currency->name, $currency2->name]).'">';
                                 $rate = $controller->estimateGetRate($currency->name, $currency2->name);
                                 $type = 1;
                                 if($rate < 0.01){
@@ -108,7 +108,7 @@
 
 
                                 $count++;
-                                $next_html .= '</div>';
+                                $next_html .= '</a>';
                             }
                             if($next_html != ""){
                                 $html .= '<p class="tariffs__list-title">'.$currency->getTitle().'</p>';

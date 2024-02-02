@@ -12,6 +12,14 @@ class Controller_Login extends Controller
     public function view() {
         if(Auth::check())
             return abort(404);
+        $this->setSeoData($this->constructSeoData("login", "login", $this->getCachedSeoData()));
+        return view($this->theme.".index")->with("auth_modal", true);
+    }
+    
+    public function view_register() {
+        if(Auth::check())
+            return abort(404);
+        $this->setSeoData($this->constructSeoData("register", "register", $this->getCachedSeoData()));
         return view($this->theme.".index")->with("auth_modal", true);
     }
 

@@ -29,7 +29,8 @@ class Controller_Blog extends Controller{
     public function process(Request $request){
         $validators = [
             "id" => "nullable|integer",
-            "enabled" => "required|boolean"
+            "enabled" => "required|boolean",
+            "is_blog" => "required|boolean",
         ];
         $validators = appendLocalesTitles($validators);
         $validators = appendLocalesContents($validators);
@@ -47,6 +48,7 @@ class Controller_Blog extends Controller{
         }
 
         $model->status = $request->enabled;
+        $model->is_blog = $request->is_blog;
         $model->data = [
             "titles" => getLocalesTitles($request),
             "content" => getLocalesContents($request),

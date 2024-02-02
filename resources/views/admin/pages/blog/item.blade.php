@@ -51,12 +51,21 @@
                     @if($model->id)
                         <input type="hidden" name="id" value="{{$model->id}}">
                     @endif
-                    <div class="col-md-12 mb-3">
-                        <label for="enabled" class="form-label">{{__("common.enabled")}}</label>
-                        <select class="form-select" id="enabled" name="enabled">
-                            <option value="0" @if(!$model->status) selected @endif>{{__("common.enable0")}}</option>
-                            <option value="1" @if($model->status) selected @endif>{{__("common.enable1")}}</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="enabled" class="form-label">{{__("common.enabled")}}</label>
+                            <select class="form-select" id="enabled" name="enabled">
+                                <option value="0" @if(!$model->status) selected @endif>{{__("common.enable0")}}</option>
+                                <option value="1" @if($model->status) selected @endif>{{__("common.enable1")}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="is_blog" class="form-label">{{__("common.is_blog")}}</label>
+                            <select class="form-select" id="is_blog" name="is_blog">
+                                <option value="0" @if(!$model->is_blog) selected @endif>{{__("common.enable0")}}</option>
+                                <option value="1" @if($model->is_blog) selected @endif>{{__("common.enable1")}}</option>
+                            </select>
+                        </div>
                     </div>
                     @include("admin.components.form.multilang_titles", ['mlTitles' => @$model->data['titles']])
                     @include("admin.components.form.multilang_content", ['mlContent' => @$model->data['content']])

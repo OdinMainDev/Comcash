@@ -28,6 +28,8 @@ use App\Http\Controllers\Admin\Controller_Affiliate as AdminAffiliate;
 use App\Http\Controllers\Admin\DataTable\Controller_Affiliate as DTAffiliate;
 use App\Http\Controllers\Admin\Controller_AffiliateWithdraw as AdminAffiliateWithdraw;
 use App\Http\Controllers\Admin\DataTable\Controller_AffiliateWithdraw as DTAffiliateWithdraw;
+use App\Http\Controllers\Admin\Controller_Seo as AdminSeo;
+use App\Http\Controllers\Admin\DataTable\Controller_Seo as DTAdminSeo;
 
 use App\Http\Controllers\Controller_Home as Home;
 use App\Http\Controllers\Controller_Login as Login;
@@ -56,7 +58,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::get('/at/{hash}', [Home::class, "check_aff"])->name("checkAffiliate");
     Route::get('/auth/login', [Login::class, "view"])->name("login");
     Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
-    Route::get('/auth/register', [Login::class, "view"])->name("register");
+    Route::get('/auth/register', [Login::class, "view_register"])->name("register");
     Route::post('/auth/register', [Register::class, "process"])->name("registerPost");
     Route::get('/auth/reset-password', [Login::class, "view"])->name("resetPassword");
     Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
@@ -75,6 +77,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
     Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
     Route::get('/comcash-knowledgebase/news/read/{id}', [KnowledgeBase::class, "news_item"])->name("comcashNewsItem");
+    Route::get('/comcash-knowledgebase/blog/read/{id}', [KnowledgeBase::class, "blog_item"])->name("comcashBlogItem");
     Route::post('/comcash-knowledgebase/support', [KnowledgeBase::class, "support"])->name("comcashSupport");
     Route::post('/exchange/kyc', [Kyc::class, "process"])->name("exchgangeKyc");
     Route::get('/exchange/kyc/status/{id}', [Kyc::class, "status"]);
@@ -191,7 +194,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/exchanges/edit/setcreated/{id}', [AdminExchange::class, "set_created"])->name("adminExchangeSetCreated");
     });
 
-    Route::group( ['middleware' => ['auth', 'permission:handle-exchanger']], function() {
+    Route::group( ['middleware' => ['auth', 'permission:handle-exchanger|handle-seo']], function() {
         Route::get('/panel/clear/cache', [AdminApi::class, "clear_cache"])->name("adminClearCache");
         Route::get('/panel/sitemap/generate', [AdminApi::class, "sitemap_generate"])->name("adminSitemapGenerate");
         Route::get('/panel/update/languages', [AdminApi::class, "languages_update"])->name("adminLanguagesUpdate");
@@ -242,6 +245,19 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/api/get/dashboard/popular-directions', [AdminApi::class, "dasboard_popular_directions"]);
         Route::get('/panel/api/get/dashboard/affiliate-withdraws', [AdminApi::class, "dasboard_affiliate_withdraws"]);
         Route::get('/panel/api/get/dashboard/fulltime-statistic', [AdminApi::class, "dasboard_fulltime_statistic"]);
+    });
+
+    Route::group( ['middleware' => ['auth', 'permission:handle-seo']], function() {
+        Route::get('/panel/seo/basic/settings', [AdminSeo::class, "view_choose_page"])->name("adminSeo");
+        Route::get('/panel/seo/basic/settings/{page}', [AdminSeo::class, "view_basic_page"])->name("adminSeoPage");
+        Route::post('/panel/seo/basic/settings', [AdminSeo::class, "basic_process"])->name("adminSeoProcessing");
+
+        Route::get('/panel/seo/directions/list', [DTAdminSeo::class, "view"])->name("adminSeoDirections");
+        Route::get('/panel/seo/directions/list/data', [DTAdminSeo::class, "process"]);
+        Route::get('/panel/seo/directions/edit/{id}', [AdminSeo::class, "edit_direction"])->name("adminSeoDirectionsEdit");
+        Route::post('/panel/seo/directions/process', [AdminSeo::class, "edit_direction_process"])->name("adminSeoDirectionsProcess");
+        Route::get('/panel/seo/directions/massUpdateByCurrency', [AdminSeo::class, "update_by_currency"])->name("adminSeoDirectionUpdateByCurrency");
+        Route::post('/panel/seo/directions/massUpdateByCurrency', [AdminSeo::class, "update_by_currency_process"])->name("adminSeoDirectionUpdateByCurrencyProcess");
     });
 });
 

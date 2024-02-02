@@ -15,12 +15,15 @@ class Controller_KnowledgeBase extends Controller{
         if(!is_string($name)){
             return abort(404);
         }
-        if(!in_array($name, ["delivery", "tariffs", "reviews", "news", "support", "company", "faq"])){
+        if(!in_array($name, ["delivery", "tariffs", "reviews", "news", "support", "company", "faq", "blog"])){
             return abort(404);
         }
         $return = view($this->theme.".pages.knowledgebase.".$name)->with("currencies", $this->getCacheCurrencies());
         if($name == "news")
             $return = $return->with("news", $this->getCacheNews());
+
+        if($name == "blog")
+            $return = $return->with("news", $this->getCacheNews(true));
 
         if($name == "reviews")
             $return = $return->with("feedbacks", $this->getCacheFeedbacks());
@@ -28,6 +31,7 @@ class Controller_KnowledgeBase extends Controller{
         if($name == "tariffs")
             $return = $return->with("tariffs", $this->getCacheExportJson())->with("controller", $this);
 
+        $this->setSeoData($this->constructSeoData("comcashPage", $name, $this->getCachedSeoData()), [$name]);
         return $return;
     }
 
@@ -84,10 +88,39 @@ class Controller_KnowledgeBase extends Controller{
         }
 
         $newsItem = $this->getCacheNewsItem($id);
-        if(!$newsItem){
+        if(!$newsItem || $newsItem->is_blog){
+            return abort(404);
+        }
+        $lang = mb_strtolower(app()->getLocale());
+        $seo_data = [
+            "page" => "comcashNewsItem",
+            "title" => @$newsItem->data['seo']['titles'][$lang] ? $newsItem->data['seo']['titles'][$lang] : ucfirst($this->theme),
+            "description" => @$newsItem->data['seo']['titles'][$lang] ? $newsItem->data['seo']['titles'][$lang] : ucfirst($this->theme),
+            "keywords" => @$newsItem->data['seo']['titles'][$lang] ?  explode(",", str_replace(' ', '', $newsItem->data['seo']['titles'][$lang])) : [ucfirst($this->theme)]
+        ];
+
+        $this->setSeoData($seo_data, [$id]);
+        return view($this->theme.".pages.knowledgebase.news_item")->with("news", $newsItem);
+    }
+
+    public function blog_item(Request $request, $language, $id){
+        if(!$id || !is_numeric($id)){
             return abort(404);
         }
 
+        $newsItem = $this->getCacheNewsItem($id);
+        if(!$newsItem || !$newsItem->is_blog){
+            return abort(404);
+        }
+        $lang = mb_strtolower(app()->getLocale());
+        $seo_data = [
+            "page" => "comcashBlogItem",
+            "title" => @$newsItem->data['seo']['titles'][$lang] ? $newsItem->data['seo']['titles'][$lang] : ucfirst($this->theme),
+            "description" => @$newsItem->data['seo']['titles'][$lang] ? $newsItem->data['seo']['titles'][$lang] : ucfirst($this->theme),
+            "keywords" => @$newsItem->data['seo']['titles'][$lang] ?  explode(",", str_replace(' ', '', $newsItem->data['seo']['titles'][$lang])) : [ucfirst($this->theme)]
+        ];
+
+        $this->setSeoData($seo_data, [$id]);
         return view($this->theme.".pages.knowledgebase.news_item")->with("news", $newsItem);
     }
 }

@@ -99,6 +99,7 @@ class Install extends Command
             "handle-affiliate",
             "handle-affiliate-withdraws",
             "view-statistic",
+            "handle-seo",
         ];
 
         $bar = $this->output->createProgressBar(count($permissions));

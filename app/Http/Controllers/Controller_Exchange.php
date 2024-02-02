@@ -85,6 +85,16 @@ class Controller_Exchange extends Controller{
         if(@$direction->data['max_amount'] && $direction->data['max_amount'] < $request->amount){
             return abort(404);
         }
+
+        $lang = mb_strtolower(app()->getLocale());
+        $seo_data = [
+            "page" => "exchgangePage",
+            "title" => @$direction->data['seo']['titles'][$lang] ? $direction->data['seo']['titles'][$lang] : ucfirst($this->theme),
+            "description" => @$direction->data['seo']['titles'][$lang] ? $direction->data['seo']['titles'][$lang] : ucfirst($this->theme),
+            "keywords" => @$direction->data['seo']['titles'][$lang] ?  explode(",", str_replace(' ', '', $direction->data['seo']['titles'][$lang])) : [ucfirst($this->theme)]
+        ];
+
+        $this->setSeoData($seo_data, ["currencyFrom" => $currencyFrom, "currencyTo" => $currencyTo]);
         return view($this->theme.".pages.exchange_1");
     }
 

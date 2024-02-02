@@ -7,11 +7,14 @@ use App\Models\AffiliateCampaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
+
 class Controller_Home extends Controller{
 
     use HasCache;
 
     public function view() {
+        $this->setSeoData($this->constructSeoData("index", "index", $this->getCachedSeoData()));
+
         return view($this->theme.".index")
             ->with("news", $this->getCacheNews())
             ->with("feedbacks", $this->getCacheFeedbacks())

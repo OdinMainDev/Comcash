@@ -43,6 +43,12 @@
     </a>
     <div class='sidebar__content'></div>
 
+    <a href='{{route("comcashPage", ["blog"])}}' class='sidebar__button accordion__button_custom'>
+        <img src="/comcash/img/icons/nav/news.svg" alt="Comcash - {{__("front.BlogMenu")}}">
+        <span>{{__("front.BlogMenu")}}</span>
+    </a>
+    <div class='sidebar__content'></div>
+
     <a href='{{route("comcashPage", ["support"])}}' class='sidebar__button accordion__button_custom'>
         <img src="/comcash/img/icons/nav/support.svg" alt="Comcash - {{__("front.SupportMenu")}}">
         <span>{{__("front.SupportMenu")}}</span>

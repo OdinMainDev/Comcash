@@ -11,6 +11,7 @@ use App\Models\Currency;
 use App\Models\Direction;
 use App\Models\Exchange;
 use App\Models\ExchangeRate;
+use App\Models\ExchangerSettigns;
 use App\Models\Feedback;
 use Illuminate\Support\Facades\Cache;
 
@@ -146,10 +147,10 @@ trait HasCache {
         return number_format($amount, $minor_units, ".", "");
     }
 
-    public function getCacheNews(){
+    public function getCacheNews($is_blog = false){
         $request = request();
-        return Cache::remember("news-public-".$request->page, 600, function(){
-            return Blog::where("status", true)
+        return Cache::remember("news-public-".($is_blog ? "blog" : "")."-".$request->page, 600, function() use($is_blog){
+            return Blog::where("status", true)->where("is_blog", $is_blog)
                 ->orderBy("id", "DESC")
                 ->paginate(10);
         });
@@ -344,6 +345,15 @@ trait HasCache {
             return AffiliateWithdraw::orderBy("id", "DESC")
                 ->where("user_id", $user_id)
                 ->paginate(10);
+        });
+    }
+
+    public function getCachedSeoData(){
+        return Cache::remember("cached-seo-data", 86400, function(){
+            $data = ExchangerSettigns::where("key", "seoData")->first();
+            if(!$data)
+                return [];
+            return $data->toArray();
         });
     }
 }

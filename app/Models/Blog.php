@@ -12,7 +12,8 @@ class Blog extends Model
 
     protected $casts = [
         "data" => Json::class,
-        "status" => "boolean"
+        "status" => "boolean",
+        "is_blog" => "boolean"
     ];
 
     public function getTitle(){

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\Models\HasCache;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -151,5 +153,47 @@ class Controller extends BaseController{
 
     public function isRootUser() {
         return auth()->user()->isRootAdmin();
+    }
+
+    public function setSeoData($seo_data, $page_data = []) {
+        SEOTools::setTitle($seo_data['title']);
+        SEOTools::setDescription($seo_data['description']);
+        SEOMeta::addKeyword($seo_data['keywords']);
+        SEOTools::opengraph()->setUrl(route("index")); // STATIC
+        if(count($page_data) == 0)
+            SEOTools::setCanonical(route($seo_data['page']));
+        else
+            SEOTools::setCanonical(route($seo_data['page'], $page_data));
+        // SEOTools::opengraph()->addProperty('type', 'articles');
+        // SEOTools::twitter()->setSite('@LuizVinicius73');
+        // SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
+    }
+
+    public function constructSeoData($page, $pagename, $data) {
+        if(count($data) == 0 || !isset($data['value'])){
+            return [
+                "page" => $page,
+                "title" => ucfirst($this->theme),
+                "description" => ucfirst($this->theme),
+                "keywords" => [ucfirst($this->theme)]
+            ];
+        }
+        $data = json_decode($data['value'], true);
+        if(!isset($data[$pagename])){
+            return [
+                "page" => $page,
+                "title" => ucfirst($this->theme),
+                "description" => ucfirst($this->theme),
+                "keywords" => [ucfirst($this->theme)]
+            ];
+        }
+        $data = $data[$pagename];
+        $lang = mb_strtolower(app()->getLocale());
+        return [
+            "page" => $page,
+            "title" => $data['titles'][$lang],
+            "description" => $data['titles'][$lang],
+            "keywords" => explode(",", str_replace(' ', '',$data['titles'][$lang]))
+        ];
     }
 }

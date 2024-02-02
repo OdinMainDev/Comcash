@@ -3,16 +3,21 @@
 	<i data-feather="menu"></i>
 	</a>
 	<div class="navbar-content">
-		<!-- <form class="search-form">
+		<div class="search-form">
 			<div class="input-group">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<i data-feather="search"></i>
-					</div>
-				</div>
-				<input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+				@if(auth()->user()->can('handle-exchanger') || auth()->user()->can('handle-seo'))
+					<a href="{{route("adminClearCache")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
+						{{__("menu.clear cache")}}
+					</a>
+					<a href="{{route("adminSitemapGenerate")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
+						{{__("menu.sitemap generate")}}
+					</a>
+					<a href="{{route("adminLanguagesUpdate")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
+						{{__("menu.languages update")}}
+					</a>
+				@endif
 			</div>
-		</form> -->
+		</div>
 		<ul class="navbar-nav">
 			<li class="nav-item dropdown">
 				<?php 

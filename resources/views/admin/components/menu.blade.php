@@ -161,26 +161,6 @@
 					</a>
 				</li>
 			@endcan
-			@can("handle-exchanger")
-				<li class="nav-item">
-					<a class="nav-link" href="{{route("adminClearCache")}}">
-						<i class="link-icon" data-feather="flag"></i>
-						<span class="link-title">{{__("menu.clear cache")}}</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{route("adminSitemapGenerate")}}">
-						<i class="link-icon" data-feather="flag"></i>
-						<span class="link-title">{{__("menu.sitemap generate")}}</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{route("adminLanguagesUpdate")}}">
-						<i class="link-icon" data-feather="flag"></i>
-						<span class="link-title">{{__("menu.languages update")}}</span>
-					</a>
-				</li>
-			@endcan
 			@can("handle-languages")
 				<li class="nav-item">
 					<a class="nav-link" href="{{route("languages.index")}}">
@@ -209,6 +189,25 @@
 						<i class="link-icon" data-feather="flag"></i>
 						<span class="link-title">{{__("menu.affiliate_settings")}}</span>
 					</a>
+				</li>
+			@endcan
+			@can("handle-seo")
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="collapse" href="#seosidemenu" role="button" aria-expanded="false" aria-controls="seosidemenu">
+					<i class="link-icon" data-feather="alert-octagon"></i>
+						<span class="link-title">SEO</span>
+						<i class="link-arrow" data-feather="chevron-down"></i>
+					</a>
+					<div class="collapse" id="seosidemenu">
+						<ul class="nav sub-menu">
+							<li class="nav-item">
+								<a href="{{route("adminSeo")}}" class="nav-link">{{__("menu.seo_basics")}}</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{route("adminSeoDirections")}}" class="nav-link">{{__("menu.seo_directions")}}</a>
+							</li>
+						</ul>
+					</div>
 				</li>
 			@endcan
 		</ul>

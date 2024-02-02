@@ -23,5 +23,7 @@ return [
     "languages update" => "Обновить языки (синхронизация)",
     "affiliate_campaigns" => "Кампании аффилейтов",
     "affiliate_settings" => "Настройки аффилейтов",
-    "affiliate_withdraws" => "Выплаты аффилейтам"
+    "affiliate_withdraws" => "Выплаты аффилейтам",
+    "seo_basics" => "Основные настройки",
+    "seo_directions" => "Настройки направлений",
 ];
