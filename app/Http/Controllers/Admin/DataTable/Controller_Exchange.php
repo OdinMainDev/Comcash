@@ -27,13 +27,13 @@ class Controller_Exchange extends Controller
             $html = '<table class="admin-exchange-table">';
             $html .= '<tbody>';
             $html .= '<tr class=""><td>Сумма получения от клиента:</td><td>' . @$row->data['amount_data']['amount_send'] . '</td></tr>';
-            $html .= '<tr class="" style="background-color: green"><td>Сумма отправления на счет клиента:</td><td>' . @$row->data['amount_data']['amount_receive'] . '</td></tr>';
+            $html .= '<tr class="" style="background-color: darkseagreen"><td>Сумма отправления на счет клиента:</td><td>' . @$row->data['amount_data']['amount_receive'] . '</td></tr>';
             $html .= '<tr class=""><td>Курс:</td><td>' . @$row->data['amount_data']['exchange_rate'] . '</td></tr>';
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>Направление:</td><td>' . @$row->currencyFrom->name . ' -> ' . @$row->currencyTo->name . '</td></tr>';
             if(isset($row->data['merchant_from_data']))
                 $html .= '<tr class="admin-exchange-table__row hidden-row"><td>Кошелек, на который пользователь отправляет средства:</td><td >' . @$row->data['merchant_from_data']['address'] . '</td></tr>';
             if(isset($row->data['merchant_from_data']))
-                $html .= '<tr class="admin-exchange-table__row hidden-row"  style="background-color: green"><td>Кошелек Получения:</td><td >' . @$row->data['request_data']['to_address'] . '</td></tr>';
+                $html .= '<tr class="admin-exchange-table__row hidden-row"  style="background-color: darkseagreen"><td>Кошелек Получения:</td><td >' . @$row->data['request_data']['to_address'] . '</td></tr>';
             
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>user_id:</td><td>' . @$row->user_id . '</td></tr>';
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>direction_id:</td><td>' . @$row->direction_id . '</td></tr>';
