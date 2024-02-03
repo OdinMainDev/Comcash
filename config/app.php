@@ -188,7 +188,7 @@ return [
     ])->toArray(),
 
 
-    'languages' => ["ru"],
+    'languages' => explode(",", env("APP_LANGUAGES", "ru,en")),
     'merchants' => [
         "garantex",
         "mpcvip",
