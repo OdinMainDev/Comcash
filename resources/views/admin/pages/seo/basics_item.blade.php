@@ -8,6 +8,7 @@
 		<div class="card">
 			<div class="card-body">
 				<form class="forms-sample" action="{{route("adminSeoProcessing")}}">
+				@csrf
 					<h4 class="mb-2">{{__("common.seo_configure_page")}}: {{__("common.".$pagename."_page")}}</h4>
 					<input type="hidden" name="pagename" id="pagename" value="{{$pagename}}">
 					@include("admin.components.form.multilang_seo_title", ['mlSeoTitles' => @$model->value[$pagename]['titles']])

@@ -8,6 +8,7 @@
 		<div class="accounts__content">
             @include("comcash.component.affiliate_menu")
 			<form action="{{route("myprofileAffiliateBalancesPost")}}">
+				@csrf
 				<div class="input-box">
 					<div class='label'>
 						<span>{{__("front.affiliate withdraw currency")}}</span>

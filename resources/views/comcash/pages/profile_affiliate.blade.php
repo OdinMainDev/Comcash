@@ -8,6 +8,7 @@
 		<div class="accounts__content">
             @include("comcash.component.affiliate_menu")
 			<form action="{{route("myprofileAffiliatePost")}}">
+				@csrf
 				<div class="input-box">
 					<div class='label'>
 						<span>{{__("front.add affiliate campaign")}}</span>

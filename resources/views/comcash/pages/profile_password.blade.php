@@ -5,6 +5,7 @@
         <div class="safety__container">
             @include("comcash.component.profile_menu")
             <form class="safety__content" action="{{route("myprofilePasswordPost")}}">
+                @csrf
                 <div class="safety__input-box">
                     <div class='label'>
                         <span>{{__("front.oldpassword_placeholder")}}</span>

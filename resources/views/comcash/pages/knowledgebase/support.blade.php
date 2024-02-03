@@ -20,6 +20,7 @@
             <!-- <p class="support__text">{{__("front.page_support_desc_4")}}</p> -->
             <div class="support__row">
             <form class="support__form" action="{{route("comcashSupport")}}">
+                @csrf
                 <div class="support__form-row">
                     <div class="input-control">
                         <div class='label'>

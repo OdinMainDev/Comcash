@@ -5,6 +5,7 @@
         <div class="personal__container">
             @include("comcash.component.profile_menu")
             <form class="personal__content" action="{{route("myprofilePost")}}">
+                @csrf
                 <div class="personal__top">
                     <div class="input-box">
                         <div class='label'>
