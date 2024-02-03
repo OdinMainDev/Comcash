@@ -197,4 +197,17 @@ class Controller_Exchange extends Controller{
         sendTelegramNotification($text);
         return redirect(route("adminExchangeList"));
     }
+
+    public function set_closed_all() {
+        $query = Exchange::whereIn("status", [0, 1]);
+        if(!$this->isRootUser())
+            $query = $query->where(function($q){
+                $q->where("admin_id", 0)->orWhere("admin_id", auth()->user()->id);
+            });
+
+        $query->update([
+            "status" => 13
+        ]);
+        return redirect(route("adminExchangeList"));
+    }
 }

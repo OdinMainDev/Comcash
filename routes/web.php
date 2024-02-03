@@ -192,6 +192,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/exchanges/edit/setpaid/{id}', [AdminExchange::class, "set_paid"])->name("adminExchangeSetPaid");
         Route::get('/panel/exchanges/edit/setdeleted/{id}', [AdminExchange::class, "set_deleted"])->name("adminExchangeSetDeleted");
         Route::get('/panel/exchanges/edit/setcreated/{id}', [AdminExchange::class, "set_created"])->name("adminExchangeSetCreated");
+
+        Route::get('/panel/exchanges/setclosedall', [AdminExchange::class, "set_closed_all"])->name("adminExchangeSetClosedAll");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-exchanger|handle-seo']], function() {
