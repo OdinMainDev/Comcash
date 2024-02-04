@@ -59,13 +59,6 @@ class SyncLanguages extends Command
         $this->toDriver = $this->createDriver('database');
         $translations = $this->mergeLanguages($this->toDriver, $this->fromDriver->allTranslations());
         $this->info('Translations have been synced');
-        $octaneProcessId = file_get_contents(storage_path('octane.pid'));
-
-        if ($octaneProcessId) {
-            posix_kill($octaneProcessId, SIGTERM);
-
-            return "Sent SIGTERM signal to stop Octane server";
-        }
     }
 
     private function createDriver($driver)
