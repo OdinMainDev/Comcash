@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Observers\OctaneObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Laravel\Octane\Events\RequestReceived;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         'eloquent.updating: App\Models\Exchange' => [
             'App\Observers\ExchangeObserver@updating',
         ],
+        RequestReceived::class => [
+            OctaneObserver::class
+        ]
     ];
 
     /**
