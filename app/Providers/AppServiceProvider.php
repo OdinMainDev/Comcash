@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
         $is_octane = isset($_SERVER['LARAVEL_OCTANE']) && ((int)$_SERVER['LARAVEL_OCTANE'] === 1);
         if($is_octane){
             URL::forceScheme('https');
+
+            app()->resolving(function ($translator) {
+                $translator->registerProvider(TranslationServiceProvider::class);
+            });
         }
     }
 }
