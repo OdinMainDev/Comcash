@@ -6,7 +6,7 @@ use Illuminate\Validation\ValidationException;
 use Longman\TelegramBot\Telegram;
 use Longman\TelegramBot\Exception\TelegramException;
 
-class Register
+class RegisterWebhook
 {
 
     public $bot;

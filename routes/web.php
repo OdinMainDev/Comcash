@@ -268,11 +268,12 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-telegram']], function() {
-        Route::get('/panel/telegram/bots/list', [DTAffiliate::class, "view"])->name("adminTelegramBotList");
-        Route::get('/panel/telegram/bots/list/data', [DTAffiliate::class, "process"]);
+        Route::get('/panel/telegram/bots/list', [DTAdminTelegramBot::class, "view"])->name("adminTelegramBotList");
+        Route::get('/panel/telegram/bots/list/data', [DTAdminTelegramBot::class, "process"]);
 
         Route::get('/panel/telegram/bots/add', [AdminTelegramBot::class, "add"])->name("adminTelegramBotAdd");
         Route::get('/panel/telegram/bots/edit/{id}', [AdminTelegramBot::class, "edit"])->name("adminTelegramBotEdit");
+        Route::get('/panel/telegram/bots/delete/{id}', [AdminTelegramBot::class, "delete"])->name("adminTelegramBotDelete");
         Route::post('/panel/telegram/bots/process', [AdminTelegramBot::class, "process"])->name("adminTelegramBotProcess");
     });
 });
