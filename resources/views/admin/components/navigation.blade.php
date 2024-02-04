@@ -113,6 +113,7 @@
 						<div class="info text-center">
 							<p class="name font-weight-bold mb-0">{{auth()->user()->name}}</p>
 							<p class="email text-muted mb-3">{{auth()->user()->email}}</p>
+							<h5 class="my-3">{{app()->runningInConsole() ? "Из console" : "Из http"}}</h5>
 						</div>
 					</div>
 					<div class="dropdown-body">
