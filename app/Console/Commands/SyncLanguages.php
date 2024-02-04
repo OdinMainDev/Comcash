@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Artisan;
 use JoeDixon\Translation\Drivers\Database;
 use JoeDixon\Translation\Drivers\File;
 use JoeDixon\Translation\Drivers\Translation;
@@ -58,6 +59,8 @@ class SyncLanguages extends Command
         $this->toDriver = $this->createDriver('database');
         $translations = $this->mergeLanguages($this->toDriver, $this->fromDriver->allTranslations());
         $this->info('Translations have been synced');
+        // нужно протестить
+        Artisan::call("octane:reload");
     }
 
     private function createDriver($driver)
