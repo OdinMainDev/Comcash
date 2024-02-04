@@ -210,6 +210,25 @@
 					</div>
 				</li>
 			@endcan
+			@can("handle-telegram")
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="collapse" href="#telegramsidemenu" role="button" aria-expanded="false" aria-controls="telegramsidemenu">
+					<i class="link-icon" data-feather="monitor"></i>
+						<span class="link-title">{{__("menu.telegram")}}</span>
+						<i class="link-arrow" data-feather="chevron-down"></i>
+					</a>
+					<div class="collapse" id="telegramsidemenu">
+						<ul class="nav sub-menu">
+							<li class="nav-item">
+								<a href="{{route("adminTelegramBotList")}}" class="nav-link">{{__("menu.list")}}</a>
+							</li>
+							<li class="nav-item">
+								<a href="{{route("adminTelegramBotAdd")}}" class="nav-link">{{__("menu.add")}}</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			@endcan
 		</ul>
 	</div>
 </nav>

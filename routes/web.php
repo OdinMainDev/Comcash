@@ -30,6 +30,8 @@ use App\Http\Controllers\Admin\Controller_AffiliateWithdraw as AdminAffiliateWit
 use App\Http\Controllers\Admin\DataTable\Controller_AffiliateWithdraw as DTAffiliateWithdraw;
 use App\Http\Controllers\Admin\Controller_Seo as AdminSeo;
 use App\Http\Controllers\Admin\DataTable\Controller_Seo as DTAdminSeo;
+use App\Http\Controllers\Admin\Controller_TelegramBot as AdminTelegramBot;
+use App\Http\Controllers\Admin\DataTable\Controller_TelegramBot as DTAdminTelegramBot;
 
 use App\Http\Controllers\Controller_Home as Home;
 use App\Http\Controllers\Controller_Login as Login;
@@ -40,6 +42,8 @@ use App\Http\Controllers\Controller_Exchange as Exchange;
 use App\Http\Controllers\Controller_KnowledgeBase as KnowledgeBase;
 use App\Http\Controllers\Controller_Kyc as Kyc;
 use App\Http\Controllers\Controller_ProfileAffiliate as ProfileAffiliate;
+
+use App\Http\Controllers\Controller_TelegramBot as TelegramBot;
 Route::get('/', function () {
     $lang = Cookie::get('language');
     if(!$lang){
@@ -50,6 +54,7 @@ Route::get('/', function () {
 
 Route::get('/request-exportjson.json', [Home::class, "export_json"]);
 Route::get('/request-exportxml.xml', [Home::class, "export_xml"]);
+Route::any('/telegrambot/webhook/{id}', [TelegramBot::class, "process"])->name("telegramBotWebhook");
 
 
 /* AUTH ROUTES */
@@ -260,6 +265,15 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::post('/panel/seo/directions/process', [AdminSeo::class, "edit_direction_process"])->name("adminSeoDirectionsProcess");
         Route::get('/panel/seo/directions/massUpdateByCurrency', [AdminSeo::class, "update_by_currency"])->name("adminSeoDirectionUpdateByCurrency");
         Route::post('/panel/seo/directions/massUpdateByCurrency', [AdminSeo::class, "update_by_currency_process"])->name("adminSeoDirectionUpdateByCurrencyProcess");
+    });
+
+    Route::group( ['middleware' => ['auth', 'permission:handle-telegram']], function() {
+        Route::get('/panel/telegram/bots/list', [DTAffiliate::class, "view"])->name("adminTelegramBotList");
+        Route::get('/panel/telegram/bots/list/data', [DTAffiliate::class, "process"]);
+
+        Route::get('/panel/telegram/bots/add', [AdminTelegramBot::class, "add"])->name("adminTelegramBotAdd");
+        Route::get('/panel/telegram/bots/edit/{id}', [AdminTelegramBot::class, "edit"])->name("adminTelegramBotEdit");
+        Route::post('/panel/telegram/bots/process', [AdminTelegramBot::class, "process"])->name("adminTelegramBotProcess");
     });
 });
 

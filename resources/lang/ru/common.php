@@ -142,6 +142,10 @@ return [
     "register_page" => "Страница регистрации",
     "reset-password_page" => "Страница восстановления пароля",
     "affiliate_withdraw_less_minimal" => "Сумма выплаты меньше минимально возможной",
-    "affiliateMinAmount" => "Минимальная сумма выплаты в $"
+    "affiliateMinAmount" => "Минимальная сумма выплаты в $",
+    "addTelegramBot" => "Создать телеграм бота",
+    "telegramUsername" => "Username",
+    "telegramToken" => "Токен бота",
+    "editTelegramBot" => "Изменить телеграм бота",
 
 ];
