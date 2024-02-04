@@ -62,8 +62,9 @@ class Controller_Api extends Controller{
     }
 
     public function languages_update() {
-        Artisan::call('app:sync-languages');
-        Artisan::call('octane:reload');
+        dispatch(function () {
+            Artisan::call('app:sync-languages');
+        });
         return redirect()->back();
     }
 
