@@ -1,5 +1,6 @@
 <?php
 
+use JoeDixon\Translation\TranslationBindingsServiceProvider;
 use JoeDixon\Translation\TranslationServiceProvider;
 use Laravel\Octane\Contracts\OperationTerminated;
 use Laravel\Octane\Events\RequestHandled;
@@ -134,7 +135,8 @@ return [
 
     'flush' => [
         //
-        TranslationServiceProvider::class
+        // TranslationServiceProvider::class,
+        TranslationBindingsServiceProvider::class
     ],
 
     /*
