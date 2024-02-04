@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use JoeDixon\Translation\TranslationServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,7 +24,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::defaultView('pagination.'.env("THEME_PAGINATION_NAME", "comcash"));
         $is_octane = isset($_SERVER['LARAVEL_OCTANE']) && ((int)$_SERVER['LARAVEL_OCTANE'] === 1);
-        if($is_octane)
+        if($is_octane){
             URL::forceScheme('https');
+            $this->app->register(TranslationServiceProvider::class);
+        }
     }
 }
