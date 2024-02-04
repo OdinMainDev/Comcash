@@ -7,8 +7,8 @@ use Laravel\Octane\Events\RequestReceived;
 class OctaneObserver{
     //
 
-    public function handle(RequestReceived $event){
-       dd("TEST");
-       app()->register('JoeDixon\Translation\TranslationServiceProvider');
-    }
+    // public function handle(RequestReceived $event){
+    //    dd("TEST");
+    //    app()->register('JoeDixon\Translation\TranslationServiceProvider');
+    // }
 }

@@ -23,9 +23,9 @@ class EventServiceProvider extends ServiceProvider
         'eloquent.updating: App\Models\Exchange' => [
             'App\Observers\ExchangeObserver@updating',
         ],
-        RequestReceived::class => [
-            OctaneObserver::class
-        ]
+        // RequestReceived::class => [
+        //     OctaneObserver::class
+        // ]
     ];
 
     /**
