@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('telegram_bots', function (Blueprint $table) {
             $table->id();
             $table->string("username")->index();
-            $table->boolean("enable")->default(true);
+            $table->boolean("status")->default(true);
             $table->string("token")->index()->unique();
             $table->bigInteger("telegram_id")->index()->default(0);
             $table->timestamps();
