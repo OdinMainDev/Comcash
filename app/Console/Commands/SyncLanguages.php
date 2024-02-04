@@ -59,10 +59,6 @@ class SyncLanguages extends Command
         $this->toDriver = $this->createDriver('database');
         $translations = $this->mergeLanguages($this->toDriver, $this->fromDriver->allTranslations());
         $this->info('Translations have been synced');
-        // нужно протестить
-        Artisan::call('octane:stop');
-        sleep(2);
-        Artisan::call('octane:start');
     }
 
     private function createDriver($driver)
