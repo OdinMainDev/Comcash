@@ -28,10 +28,10 @@
         </span>
     </div>
 	<div class='info-header__container'>
-        <a href='/' class='header__logo header__default'>
+        <a href='{{route("index")}}' class='header__logo header__default'>
             <img src='/comcash/img/logo.svg' alt='logo' />
         </a>
-        <a href='/' class='header__logo header__christmas'>
+        <a href='{{route("index")}}' class='header__logo header__christmas'>
             <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
         </a>
         <div class='header__nav-mobile'>
