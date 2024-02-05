@@ -33,6 +33,7 @@ trait HasTelegramBot {
             $user = new TelegramUser;
             $user->username = $data->getUsername();
             $user->telegram_id = $data->getId();
+            $user->user_id = $exchangerUser->id;
             $user->bot_id = $bot['id'];
             $user->first_name = $data->getFirstName();
             $user->last_name = $data->getLastName();
