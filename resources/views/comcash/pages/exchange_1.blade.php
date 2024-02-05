@@ -4,14 +4,14 @@
 
 <div class="exchange">
 	<div class="exchange__container">
-		<p class="exchange__title-mobile">обменник</p>
+		<p class="exchange__title-mobile">{{__("front.exchangePageCreateNewExchange")}} {{$currencyFrom->name}} -> {{$currencyTo->name}}</p>
 		<form action="{{route("exchgangeCreate")}}" class="exchange__form">
 			@csrf
 			<div class="exchange__main-form">
-				<p class="exchange__title-mobile">обменник</p>
+				<p class="exchange__title-mobile">{{__("front.exchangePageCreateNewExchange")}} {{$currencyFrom->name}} -> {{$currencyTo->name}}</p>
 				<div id="currencyYouSend">
 					<div class='label'>
-						<span>Выберите валюту</span>
+						<span>{{__("front.exchangePageChooseCurrencyFrom")}}</span>
 						<div class="exchange__limit">
 							<span class="exchange__min">Min:
 							<span>0</span>
@@ -26,7 +26,7 @@
 						<img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
 						<div class="custom-select__select-container light" data-currency="currencyYouSend">
 							<div class="custom-select__select-label">
-							Выберите валюту
+								{{__("front.exchangePageChooseCurrencyFrom")}}
 							</div>
 							<input class="custom-select__select-label-input" name="currency_from"/>
 							<div class="custom-select__select-list hide">
@@ -38,24 +38,24 @@
 					</div>
 					<div class="exchange__card-number hide" id="exchange-from_card">
 						<div class='label'>
-							<span>Номер карты отправителя</span>
+							<span>{{__("front.exchangePageCardNumber")}}</span>
 						</div>
 						<input type="text" class="input input--large" name="from_card">
 					</div>
 					<div class="exchange__contact-item hide" id="exchange-from_address">
 						<div class='label'>
-							<span>Адрес отправителя</span>
+							<span>{{__("front.exchangePageAddress")}}</span>
 						</div>
 						<input type="text" class="input input--large" name="from_address">
 					</div>
 				</div>
 				<div class="exchange__info">
-					<p class="exchange__info-text">ВЫБРАННЫЙ ТАРИФ</p>
-					<p class="exchange__info-text">НИКАКИХ СКРЫТЫХ КОМИССИЙ</p>
+					<p class="exchange__info-text">{{__("front.exchangePageChoosenTariff")}}</p>
+					<p class="exchange__info-text">{{__("front.exchangePageNoHiddenComissions")}}</p>
 				</div>
 				<div id="currencyYouGet">
 					<div class='label'>
-						<span>choose currency</span>
+						<span>{{__("front.exchangePageChooseCurrencyTo")}}</span>
 					</div>
 					<div class='input-control' id="exchange-currency_to">
 						<input type='text' class='input input--large'/>
@@ -72,7 +72,7 @@
 						</div>
 						<div class="custom-select__select-container light" data-currency="currencyYouGet">
 							<div class="custom-select__select-label">
-								Выберите крипту 
+								{{__("front.exchangePageChooseCurrencyTo")}}
 							</div>
 							<input class="custom-select__select-label-input" name="currency_to"/>
 							<div class="custom-select__select-list hide">
@@ -83,31 +83,31 @@
 						</div>
 					</div>
 					<div class="exchange__timer-conatiner">
-						<span>Время до изменения цены:</span>
+						<span>{{__("front.exchangePageTimeUntilUpdate")}}</span>
 						<span class="exchange__timer">00:00</span>
 					</div>
 					<div class="exchange__card-number hide" id="exchange-to_card">
 						<div class='label'>
-							<span>Карта получателя</span>
+							<span>{{__("front.exchangePageCardNumberReceive")}}</span>
 						</div>
 						<input type="text" class="input input--large" name="to_card">
 					</div>
 					<div class="exchange__contact-item hide" id="exchange-to_address">
 						<div class='label'>
-							<span>Адрес получателя</span>
+							<span>{{__("front.exchangePageAddressReceive")}}</span>
 						</div>
 						<input type="text" class="input input--large" name="to_address">
 					</div>
 					<div class="exchange__contact-item hide" id="exchange-passport">
 						<div class='label'>
-							<span>Пасспорт</span>
+							<span>{{__("front.exchangePageInputPassport")}}</span>
 						</div>
 						<input type="text" class="input input--large" name="passport">
 					</div>
 					<div class="exchange__contact">
 						<div class="exchange__contact-item hide" id="exchange-phone">
 							<div class='label'>
-								<span>Phone number</span>
+								<span>{{__("front.exchangePageInputPhone")}}</span>
 							</div>
 							<input type="text" class="input input--large" value="+" name="phone">
 						</div>
@@ -127,37 +127,36 @@
 					<div class="exchange__name">
 						<div class="exchange__name-item hide" id="exchange-first_name">
 							<div class='label'>
-								<span>Имя</span>
+								<span>{{__("front.exchangePageInputFirstName")}}</span>
 							</div>
 							<input name="first_name" type="text" class="input input--large" value="{{auth()->user() ? auth()->user()->first_name : ""}}">
 						</div>
 						<div class="exchange__name-item hide" id="exchange-last_name">
 							<div class='label'>
-								<span>Фамилия</span>
+								<span>{{__("front.exchangePageInputLastName")}}</span>
 							</div>
 							<input name="last_name" type="text" class="input input--large" value="{{auth()->user() ? auth()->user()->second_name : ""}}">
 						</div>
 						<div class="exchange__name-item hide" id="exchange-second_name">
 							<div class='label'>
-								<span>Отчество</span>
+								<span>{{__("front.exchangePageInputSecondName")}}</span>
 							</div>
 							<input name="second_name" type="text" class="input input--large" value="{{auth()->user() ? auth()->user()->last_name : ""}}">
 						</div>
 					</div>
 				</div>
-				<a class='button button--auto exchange__button'>Продолжить</a>
+				<a class='button button--auto exchange__button'>{{__("front.exchangePageContinue")}}</a>
 				<p class='exchange__bottom'>
-					нАЖИМАЯ ПРОДОЛЖИТЬ ВЫ СОГЛАШАЕТЕСЬ С <a href=''>ПРАВИЛАМИ</a> САЙТА
+					{{__("front.exchangePageContinueText1")}} <a href=''>{{__("front.exchangePageContinueText2")}}</a> {{__("front.exchangePageContinueText3")}}
 				</p>
 			</div>
 			<div class="validation hide">
 				<div class="validation__container">
-					<p class="validation__title-mobile">обменник</p>
-					<p class="validation__title">Пожалуйста проверьте
-						правильность набранных данных
+					<p class="validation__title-mobile">{{__("front.exchangePageCreateNewExchange")}} {{$currencyFrom->name}} -> {{$currencyTo->name}}</p>
+					<p class="validation__title">{{__("front.exchangePageCheckYourData")}}
 					</p>
 					<div class='validation__label'>
-						Вы отправляете
+						{{__("front.exchangePageCheckYouSend")}}
 					</div>
 					<div class="validation__output" id="validation__you-send">
 						<span>0,00000001 </span>
@@ -165,7 +164,7 @@
 					</div>
 					<p class="validation__caption validation__caption_send"></p>
 					<div class='validation__label'>
-						Вы получаете
+						{{__("front.exchangePageCheckYouReceive")}}
 					</div>
 					<div class="validation__output" id="validation__you-get">
 						<span>0,00000001 </span>
@@ -174,15 +173,15 @@
 					
 					<p class="validation__caption validation__caption_get"></p>
 					<div class="validation__awaiting">
-						<p class="validation__awaiting-title">Время на оплату</p>
-						<p class="validation__awaiting-time">30 мин</p>
+						<p class="validation__awaiting-title">{{__("front.exchangePageCheckTimeForPay")}}</p>
+						<p class="validation__awaiting-time">{{__("front.exchangePageCheckTimeForPay2")}}</p>
 					</div>
 					<div class="validation__controls">
-						<button id="validation__send" class='button button--auto validation__button' type="submit">обменять</button>
-						<a id="validation__back" class='button button--auto button--dark validation__button'>Назад</a>
+						<button id="validation__send" class='button button--auto validation__button' type="submit">{{__("front.exchangePageSubmit")}}</button>
+						<a id="validation__back" class='button button--auto button--dark validation__button'>{{__("front.exchangePageBack")}}</a>
 					</div>
 					<p class='validation__bottom'>
-						НАЖИМАЯ ПРОДОЛЖИТЬ ВЫ СОГЛАШАЕТЕСЬ С <a href=''>ПРАВИЛАМИ</a> САЙТА
+						{{__("front.exchangePageContinueText1")}} <a href=''>{{__("front.exchangePageContinueText2")}}</a> {{__("front.exchangePageContinueText3")}}
 					</p>
 				</div>
 			</div>

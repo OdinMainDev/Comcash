@@ -7,17 +7,17 @@
         <div class="progress">
             <div class="progress__container">
 
-            <p class="progress__title-mobile">Ошибка</p>
+            <p class="progress__title-mobile">{{__("front.exchangePage2ErrorTitle")}}</p>
 
             <p class="progress__title">
-                Ошибка
+				{{__("front.exchangePage2ErrorDesctription")}}
             </p>
             <div class="progress__box">
                 <div class="progress__box-right">
                     <div class="progress__error">
                         <img src="/comcash/img/icons/sad-face.svg" class="progress__error-img" alt="sad-face"/>
                         <div class="progress__error-text">
-							При обмене произошла ошибка создайте новую заявку или обратитесь к поддержке
+							{{__("front.exchangePage2ErrorDesctription2")}}
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
 								<div class="progress__box-right">
 										<div class="progress__preparation">
 												<div class="progress__preparation-text" id="needRefreshPageId">
-														Подготовка обмена!
+													{{__("front.exchangePage2ExchangePreparing")}}
 												</div>
 												<div class="progress__preparation-img"></div>
 										</div>
@@ -58,13 +58,13 @@
 		<div class="progress" id="needCheckStatusExchange">
 			<div class="progress__container">
 				<p class="progress__title-mobile">{{__("front.exchange id")}} {{$exchange->id}}</p>
-				<p class="progress__title">Выплата производится в автоматическом режиме в течении 30 минут</p>
+				<p class="progress__title">{{__("front.exchangePage2Exchange30MinToWithdraw")}}</p>
 				<div class="progress__hash">
 					<div class='progress__hash-label'>
-						{{__("front.idexchange")}}
+						{{__("front.exchange id")}}
 					</div>
 					<div class="progress__hash-text">
-						{{$exchange->hash}}
+						{{$exchange->id}}
 					</div>
 				</div>
 				<div class="progress__box">
@@ -74,7 +74,7 @@
 					<div class="progress__box-right">
 						@if($exchange->status != 5)
 							<div class='progress__box-label'>
-								Сумма
+								{{__("front.exchangePage2AmountSend")}}
 							</div>
 							<div class="progress__flex">
 								<div class="progress__box-text">
@@ -96,7 +96,7 @@
 							</div>
 							@if($exchange->currencyFrom->tag == "crypto")
 								<div class='progress__box-label'>
-									Адрес
+									{{__("front.exchangePage2CryptoAddress")}}
 								</div>
 								<div class="progress__flex">
 									<div class="progress__box-text">
@@ -168,8 +168,8 @@
 						</div>
 					@endif
 					<div class="progress__data">
-						<p class="progress__data-label">{{__("front.idexchange")}}</p>
-						<p class="progress__data-text"> {{$exchange->hash}}</p>
+						<p class="progress__data-label">{{__("front.exchange id")}}</p>
+						<p class="progress__data-text"> {{$exchange->id}}</p>
 					</div>
 				</div>
 				<!-- <div class="progress__mail">

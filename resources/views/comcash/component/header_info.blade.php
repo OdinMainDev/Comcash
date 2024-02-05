@@ -9,7 +9,7 @@
 				</span>
 				&nbsp;&nbsp;
 				<span class="header-info__contact-label">
-					<a href="https://t.me/{{__("front.supportContactsTelegram")}}">%40{{__("front.supportContactsTelegram")}}</a>
+					<a href="https://t.me/{{__("front.supportContactsTelegram")}}">{{__("front.supportContactsTelegram")}}</a>
 				</span>	
 			</span>
 			<span class="header-info__contact copy">
