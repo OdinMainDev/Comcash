@@ -11,8 +11,10 @@ class KeyboardGenerator
 
         $currentIndex = 0;
         foreach($items as $key => $value) {
-            if(count($response[$keyboard_type][$currentIndex]) == $columns) {
-                $currentIndex++;
+            if(isset($response[$keyboard_type][$currentIndex])){
+                if(count($response[$keyboard_type][$currentIndex]) == $columns) {
+                    $currentIndex++;
+                }
             }
 
             $response[$keyboard_type][$currentIndex][] = [
