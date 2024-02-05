@@ -26,6 +26,7 @@ trait HasTelegramBot {
                 $exchangerUser->first_name = $data->getFirstName();
                 $exchangerUser->last_name = $data->getLastName();
                 $exchangerUser->telegram = $data->getUsername();
+                $exchangerUser->telegram_id = $data->getId();
                 $exchangerUser->save();
             }
 
@@ -36,7 +37,6 @@ trait HasTelegramBot {
             $user->first_name = $data->getFirstName();
             $user->last_name = $data->getLastName();
             $user->is_premium = boolval($data->getIsPremium());
-            $user->register_date = time();
             $user->language = $bot['language'];
             $user->is_rules_accepted = Config::get("app.telegram_has_rules");
             $user->save();
