@@ -23,12 +23,13 @@ class CallbackqueryCommand extends SystemCommand
 
     public function execute(): ServerResponse
     {
-        $user = $this->getUserBotModel($this->getMessage()->getFrom(), $this->constructBotData());
+        $callback_query = $this->getCallbackQuery();
+        $user = $this->getUserBotModel($callback_query->getFrom(), $this->constructBotData());
         $language = $user->language;
 
         $bot = $user->getBot;
 
-        $callback_query = $this->getCallbackQuery();
+        
         // $response = new Router($callback_query, $user);
         // $response->exec();
         
