@@ -3,8 +3,8 @@
 namespace App\Services\Bot\Response;
 
 use App\Http\Traits\Models\HasTelegramBot;
-use App\Services\Bot\KeyboardGenerator;
 use App\Telegram\Helpers\BotConstructor;
+use App\Telegram\Helpers\KeyboardGenerator;
 use App\Telegram\Helpers\Keyboards;
 use App\Telegram\Helpers\StaticMessages;
 use Illuminate\Support\Facades\Config;
