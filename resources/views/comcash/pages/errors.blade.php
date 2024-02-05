@@ -26,7 +26,6 @@
 </head>
 
 <body>
-  @include('comcash.component.header_main')
   <div class="not-found">
     <div class="not-found__container">
       <p class="not-found__title">{{$status_code}}</p>
