@@ -9,7 +9,7 @@
 				</span>
 				&nbsp;&nbsp;
 				<span class="header-info__contact-label">
-					<a href="https://t.me/comcash_exchange">@comcash_exchange</a>
+					<a href="https://t.me/{{__("front.supportContactsTelegram")}}">@{{__("front.supportContactsTelegram")}}</a>
 				</span>	
 			</span>
 			<span class="header-info__contact copy">
@@ -31,7 +31,7 @@
 				</span>
 				&nbsp;
 				<span class="header-info__contact-label">
-					44F916D1AEA991BD510171AD4E48BCB80E34702A11FA9295E7C541FB67A32D762588CFCB44B9
+					{{__("front.supportContactsJabber1")}}
 				</span>	
 			</span>
 		</div>
@@ -76,7 +76,7 @@
 				</span>
 				&nbsp;
 				<span class="header-info__contact-label">
-					Comcash@exploit.im
+					{{__("front.supportContactsJabber1")}}
 				</span>	
 			</span>
 			<span class="header-info__contact copy">
@@ -91,7 +91,7 @@
 				</span>
 				&nbsp;
 				<span class="header-info__contact-label">
-					Comcash_support@exploit.im
+					{{__("front.supportContactsJabber2")}}
 				</span>	
 			</span>
 		</div>

@@ -315,4 +315,8 @@ return [
     "faqPageFaqText29" => "Договор заключается между интернет сервисом по обмену титульных знаков, далее Исполнитель, — с одной стороны, и Заказчик, в лице того, кто воспользовался услугами Исполнителя, — с другой стороны.",
     "faqPageFaqText30" => "1. Стороны соглашения.",
     "faqPageFaqText31" => "Договор заключается между интернет сервисом по обмену титульных знаков, далее Исполнитель, — с одной стороны, и Заказчик, в лице того, кто воспользовался услугами Исполнителя, — с другой стороны.",
+    "supportContactsTelegram" => "comcash_exchange",
+    "supportContactsQtox" => "44F916D1AEA991BD510171AD4E48BCB80E34702A11FA9295E7C541FB67A32D762588CFCB44B9",
+    "supportContactsJabber1" => "Comcash@exploit.im",
+    "supportContactsJabber2" => "Comcash_support@exploit.im",
 ];

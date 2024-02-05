@@ -52,21 +52,21 @@
             <div class="support__contacts">
                 <p class="support__contacts-title">{{__("front.Would you like to contact us directly?")}}</p>
                 <p class="support__contacts-subtitle">{{__("front.Use our contacts")}}</p>
-                <a class="support__contacts-link" href="https://t.me/comcash_exchange">
+                <a class="support__contacts-link" href="https://t.me/{{__("front.supportContactsTelegram")}}">
                     <img src="/comcash/img/icons/green-telegram.svg" alt="">
-                    <span>@comcash_exchange</span>
+                    <span>@{{__("front.supportContactsTelegram")}}</span>
                 </a>
                 <a class="support__contacts-link">
                     <img src="/comcash/img/icons/qtox.svg" alt="">
-                    <span>qTox: 44F916D1AEA991BD510171AD4E48BCB80E34702A11FA9295E7C541FB67A32D762588CFCB44B9</span>
+                    <span>qTox: {{__("front.supportContactsQtox")}}</span>
                 </a>
                 <a class="support__contacts-link">
                     <img src="/comcash/img/icons/jobber.svg" alt="">
-                    <span>Jobber: Comcash@exploit.im</span>
+                    <span>Jabber: {{__("front.supportContactsJabber1")}}</span>
                 </a>
                 <a class="support__contacts-link">
                     <img src="/comcash/img/icons/jobber.svg" alt="">
-                    <span>Jobber: Comcash_support@exploit.im</span>
+                    <span>Jabber: {{__("front.supportContactsJabber2")}}</span>
                 </a>
             </div>
 
