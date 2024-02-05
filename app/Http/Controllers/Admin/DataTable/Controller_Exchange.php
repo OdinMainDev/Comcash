@@ -16,8 +16,8 @@ class Controller_Exchange extends Controller
         return view("admin.pages.exchange.list");
     }
 
-    public function process(Request $request){
-        $query = $this->constructQuery($request);
+    public function process(Request $request, $lang, $id){
+        $query = $this->constructQuery($request, $id);
         return DataTables::of($query)
         ->editColumn("id", function($row){
             // dd($row);
@@ -103,12 +103,15 @@ class Controller_Exchange extends Controller
         ->make(true);
     }
 
-    public function constructQuery($request){
+    public function constructQuery($request, $id){
         $request->validate([
             "filter_created_from" => 'nullable|date|date_format:Y-m-d\TH:i',
             // "filter_"
         ]);
         $query = Exchange::with("getUser")->with("currencyFrom")->with("currencyTo");
+        if(is_numeric($id) && $id > 0){
+            $query = $query->where("user_id", $id);
+        }
         if(!$this->isRootUser()){
             $query = $query->where(function($q){
                 $q->where("admin_id", auth()->user()->id)->orWhere(function($q2){

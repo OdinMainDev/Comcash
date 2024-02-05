@@ -155,7 +155,7 @@
 			@endcan
 			@can("handle-exchanges")
 				<li class="nav-item">
-					<a class="nav-link" href="{{route("adminExchangeList")}}">
+					<a class="nav-link" href="{{route("adminExchangeList", [0])}}">
 						<i class="link-icon" data-feather="flag"></i>
 						<span class="link-title">{{__("menu.exchanges")}}</span>
 					</a>

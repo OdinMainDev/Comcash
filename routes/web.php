@@ -185,8 +185,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-exchanges']], function() {
-        Route::get('/panel/exchanges/list', [DTExchange::class, "view"])->name("adminExchangeList");
-        Route::get('/panel/exchanges/list/data', [DTExchange::class, "process"]);
+        Route::get('/panel/exchanges/list/{id}', [DTExchange::class, "view"])->name("adminExchangeList");
+        Route::get('/panel/exchanges/list/{id}/data', [DTExchange::class, "process"])->name("adminExchangeListProcess");
 
         Route::get('/panel/exchanges/edit/{id}', [AdminExchange::class, "edit"])->name("adminExchangeEdit");
         Route::post('/panel/exchanges/edit', [AdminExchange::class, "process"])->name("adminExchangeEditPost");
