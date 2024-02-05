@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Bot;
+namespace App\Telegram\Helpers;
 
 class KeyboardGenerator
 {
