@@ -5,10 +5,9 @@ namespace App\Console\Commands;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Artisan;
 use JoeDixon\Translation\Drivers\Database;
 use JoeDixon\Translation\Drivers\File;
-use JoeDixon\Translation\Drivers\Translation;
+use JoeDixon\Translation\Translation;
 use JoeDixon\Translation\Language;
 use JoeDixon\Translation\Scanner;
 
@@ -43,6 +42,7 @@ class SyncLanguages extends Command
     private $translation;
     private $fromDriver;
     private $toDriver;
+    private $languages = [];
 
    
     public function __construct(Scanner $scanner, Translation $translation)
@@ -93,25 +93,25 @@ class SyncLanguages extends Command
                     $driver->addLanguage($language);
                 } catch(Exception $ex) {}
                 $this->addGroupTranslation($language, $group, $key, $value);
-                $driver->addGroupTranslation($language, $group, $key, $value);
             }
         }
     }
 
     private function addGroupTranslation($language, $group, $key, $value) {
-        Language::where('language', $language)
-            ->first()
-            ->translations()
-            ->firstOrNew(
-                [
-                    'group' => $group,
-                    'key' => $key,
-                ],
-                [
-                    'group' => $group,
-                    'key' => $key,
-                    'value' => $value,
-                ],
-            );
+        if(!isset($this->languages[$language])){
+            $this->languages[$language] = Language::where('language', $language)->first();
+        }
+        $check = Translation::where("language_id", $this->languages[$language]->id)->where("group", $group)->where("key", $key)->first();
+       
+        if($check){
+            return;
+        }
+
+        $check = new Translation;
+        $check->language_id = $this->languages[$language]->id;
+        $check->group = $group;
+        $check->key = $key;
+        $check->value = $value;
+        $check->save();
     }
 }
