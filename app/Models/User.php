@@ -47,4 +47,13 @@ class User extends Authenticatable
     public function isRootAdmin() {
         return in_array("admin", $this->roles->pluck('name')->toArray());
     }
+
+    public function getUserCredentials() {
+        if($this->email)
+            return $this->email;
+        if($this->telegram)
+            return $this->telegram;
+        
+        return "(".$this->id.") ".$this->first_name." ".$this->second_name." ".$this->last_name;
+    }
 }

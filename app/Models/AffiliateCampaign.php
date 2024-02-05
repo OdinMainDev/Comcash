@@ -12,4 +12,8 @@ class AffiliateCampaign extends Model
     protected $casts = [
         "status" => "boolean"
     ];
+
+    public function getUser(){
+        return $this->hasOne(User::class, "id", "user_id");
+    }
 }

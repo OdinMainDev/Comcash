@@ -19,8 +19,8 @@ class Controller_Affiliate extends Controller
     public function process(Request $request){
         $query = $this->constructQuery($request);
         return DataTables::of($query)
-        ->editColumn("id", function($row){
-            return $row->id;
+        ->editColumn("user_id", function($row){
+            return $row->getUser ? $row->getUser->getUserCredentials() : $row->user_id;
         })
         // ->editColumn("name", function($row){
         //     return $this->tableImage($row, @$row->data['image']);
@@ -35,7 +35,7 @@ class Controller_Affiliate extends Controller
     }
 
     public function constructQuery($request){
-        $query = AffiliateCampaign::query();
+        $query = AffiliateCampaign::with("getUser");
         // $request->validate([
         //     "filter_id" => "nullable|integer",
         //     "filter_enable" => "nullable|boolean",
