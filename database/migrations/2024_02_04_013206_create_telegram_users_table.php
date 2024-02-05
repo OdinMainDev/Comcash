@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('telegram_users', function (Blueprint $table) {
             $table->id();
             $table->string("username")->index()->nullable();
+            $table->integer("user_id")->index();
             $table->bigInteger("telegram_id")->index();
-            $table->integer("bot_id")->index();
+            $table->bigInteger("bot_id")->index();
             $table->string("action")->nullable();
             $table->boolean("is_member")->index()->default(true);
             $table->string("language");

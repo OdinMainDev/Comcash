@@ -202,4 +202,5 @@ return [
     'kyc_credential' => env("KYC_CREDENTIAL", true),
     'kyc_address' => env("KYC_ADDRESS", true),
     'kyc_user_id' => env("KYC_USERID", false),
+    'telegram_has_rules' => env("TELEGRAM_HAS_RULES", true),
 ];

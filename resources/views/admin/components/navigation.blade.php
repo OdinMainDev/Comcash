@@ -12,9 +12,11 @@
 					<a href="{{route("adminSitemapGenerate")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
 						{{__("menu.sitemap generate")}}
 					</a>
-					<a href="{{route("adminLanguagesUpdate")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
-						{{__("menu.languages update")}}
-					</a>
+					@can('handle-exchanger')
+						<a href="{{route("adminLanguagesUpdate")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
+							{{__("menu.languages update")}}
+						</a>
+					@endcan
 				@endif
 			</div>
 		</div>
@@ -113,7 +115,6 @@
 						<div class="info text-center">
 							<p class="name font-weight-bold mb-0">{{auth()->user()->name}}</p>
 							<p class="email text-muted mb-3">{{auth()->user()->email}}</p>
-							<h5 class="my-3">{{app()->runningInConsole() ? "Из console" : "Из http"}}</h5>
 						</div>
 					</div>
 					<div class="dropdown-body">
