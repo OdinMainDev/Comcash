@@ -4,11 +4,11 @@
 
 <div class="exchange">
 	<div class="exchange__container">
-		<p class="exchange__title-mobile">{{__("front.exchangePageCreateNewExchange")}} {{$currencyFrom->name}} -> {{$currencyTo->name}}</p>
+		<p class="exchange__title-mobile">{{__("front.exchangePageCreateNewExchange")}} {{$currencyFrom}} -> {{$currencyTo}}</p>
 		<form action="{{route("exchgangeCreate")}}" class="exchange__form">
 			@csrf
 			<div class="exchange__main-form">
-				<p class="exchange__title-mobile">{{__("front.exchangePageCreateNewExchange")}} {{$currencyFrom->name}} -> {{$currencyTo->name}}</p>
+				<p class="exchange__title-mobile">{{__("front.exchangePageCreateNewExchange")}} {{$currencyFrom}} -> {{$currencyTo}}</p>
 				<div id="currencyYouSend">
 					<div class='label'>
 						<span>{{__("front.exchangePageChooseCurrencyFrom")}}</span>
@@ -152,7 +152,7 @@
 			</div>
 			<div class="validation hide">
 				<div class="validation__container">
-					<p class="validation__title-mobile">{{__("front.exchangePageCreateNewExchange")}} {{$currencyFrom->name}} -> {{$currencyTo->name}}</p>
+					<p class="validation__title-mobile">{{__("front.exchangePageCreateNewExchange")}} {{$currencyFrom}} -> {{$currencyTo}}</p>
 					<p class="validation__title">{{__("front.exchangePageCheckYourData")}}
 					</p>
 					<div class='validation__label'>
