@@ -2,28 +2,28 @@
     <div class="header__time">
         <span class="header-info__contact">
             <span class="header-info__time header-info__time_green">
-                Обработка заявок в течении
+                {{__("front.headerClearExchangesTime1")}}
             </span>
             &nbsp;
             <span class="header-info__time">
-                30 минут
+                {{__("front.headerClearExchangesTime2")}}
             </span>	
         </span>
         <span class="header-info__contact">
             <span class="header-info__time header-info__time_green">
-                Часы работы с
+                {{__("front.headerWorkingTime1")}}
             </span>
             &nbsp;
             <span class="header-info__time">
-                09:00
+                {{__("front.headerWorkingTime2")}}
             </span>	
             &nbsp;
             <span class="header-info__time header-info__time_green">
-                до
+                {{__("front.headerWorkingTime3")}}
             </span>
             &nbsp;
             <span class="header-info__time">
-                00:00
+                {{__("front.headerWorkingTime4")}}
             </span>	
         </span>
     </div>

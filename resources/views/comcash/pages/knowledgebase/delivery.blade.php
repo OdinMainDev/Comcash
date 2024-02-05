@@ -11,82 +11,75 @@
             </div>
 
             <div class='delivery__features'>
-            <p class="delivery__features-title">{{__("front.page_delivery_title2")}}</p>
-            <div class='delivery__features-row'>
-                <div class='delivery__features-item'>
-                    <div class="delivery__features-item-number">1</div>
-                    <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_1_title")}}</p>
-                    <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_1_content")}}</p>
+                <p class="delivery__features-title">{{__("front.page_delivery_title2")}}</p>
+                <div class='delivery__features-row'>
+                    <div class='delivery__features-item'>
+                        <div class="delivery__features-item-number">1</div>
+                        <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_1_title")}}</p>
+                        <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_1_content")}}</p>
+                    </div>
+                    <div class='delivery__features-item'>
+                        <div class="delivery__features-item-number">2</div>
+                        <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_2_title")}}</p>
+                        <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_2_content")}}</p>
+                    </div>
+                    <div class='delivery__features-item'>
+                        <div class="delivery__features-item-number">3</div>
+                        <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_3_title")}}</p>
+                        <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_3_content")}}</p>
+                    </div>
                 </div>
-                <div class='delivery__features-item'>
-                    <div class="delivery__features-item-number">2</div>
-                    <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_2_title")}}</p>
-                    <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_2_content")}}</p>
-                </div>
-                <div class='delivery__features-item'>
-                    <div class="delivery__features-item-number">3</div>
-                    <p class='delivery__features-item-title'>{{__("front.page_delivery_advantage_3_title")}}</p>
-                    <p class='delivery__features-item-text'>{{__("front.page_delivery_advantage_3_content")}}</p>
-                </div>
-            </div>
             </div>
 
-            <p class="delivery__accordion-title">Список стран: </p>
+            <p class="delivery__accordion-title">{{__("front.deliveryFaqTitle")}} </p>
             <div class="delivery__accordion accordion accordion--secondary">
-            <button class='accordion__button'>
-                <img src="/comcash/img/icons/locales/ru.png"
-                    alt="">
-                <span>Профиль</span>
-            </button>
-            <div class='accordion__content'>
-                <div class='accordion__text'>
-                    выгодные
-                    курсы, моментальная конвертация, круглосуточный доступ!
+
+                <button class='accordion__button'>
+                    <span>{{__("front.deliveryFaqTitle1")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class='accordion__text'>
+                        {{__("front.deliveryFaqText1")}}
+                    </div>
+
                 </div>
 
-            </div>
-
-            <!-- <button class='accordion__button'>
-                <span>Тарифы</span>
-            </button>
-            <div class='accordion__content'>
-                <div class='accordion__text'>
-                    Одной из наиболее востребованных услуг нашего сервиса является обмен цифровой валюты на фиатные наличные. В
-                    любой точке мира и в любой сумме вы можете быстро и легко обменять свои криптовалюты на наличные деньги в
-                    широком спектре национальных валют. Мы также готовы предложить курьерскую или офисную доставку наличных
-                    средств. Важной особенностью нашего сервиса является гарантия на выдачу денег и наличие депозитов на крупных
-                    форумах.
+                <button class='accordion__button'>
+                    <span>{{__("front.deliveryFaqTitle2")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class='accordion__text'>
+                        {{__("front.deliveryFaqText2")}}
+                    </div>
                 </div>
-            </div> -->
 
-            <button class='accordion__button'>
-                <span>Наличные курьером</span>
-            </button>
-            <div class='accordion__content'>
+                <button class='accordion__button'>
+                    <span>{{__("front.deliveryFaqTitle3")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class='accordion__text'>
+                        {{__("front.deliveryFaqText3")}}
+                    </div>
+                </div>
 
+                <button class='accordion__button'>
+                    <span>{{__("front.deliveryFaqTitle4")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class='accordion__text'>
+                        {{__("front.deliveryFaqText4")}}
+                    </div>
+                </div>
+
+                <button class='accordion__button'>
+                    <span>{{__("front.deliveryFaqTitle5")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class='accordion__text'>
+                        {{__("front.deliveryFaqText5")}}
+                    </div>
+                </div>
             </div>
-
-            <button class='accordion__button'>
-                <span>Отзывы</span>
-            </button>
-            <div class='accordion__content'>
-
-            </div>
-
-            <button class='accordion__button'>
-                <span>Новости</span>
-            </button>
-            <div class='accordion__content'>
-
-            </div>
-
-            <button class='accordion__button'>
-                <span>Поддержка</span>
-            </button>
-            <div class='accordion__content'>
-
-            </div>
-        </div>
 
 
         <p class='delivery__bottom'>
