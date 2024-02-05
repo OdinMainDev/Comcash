@@ -21,7 +21,7 @@ trait HasTelegramBot {
             $exchangerUser = User::where("telegram_id", $data->getId())->first();
             if(!$exchangerUser){
                 $exchangerUser = new User;
-                $exchangerUser->email = "@exchanger.bot.".$data->getUsername();
+                $exchangerUser->email = "@exchanger.bot.".time().$data->getUsername();
                 $exchangerUser->password = Hash::make(time().uniqid());
                 $exchangerUser->first_name = $data->getFirstName();
                 $exchangerUser->last_name = $data->getLastName();
