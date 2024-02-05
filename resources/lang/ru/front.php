@@ -319,4 +319,15 @@ return [
     "supportContactsQtox" => "44F916D1AEA991BD510171AD4E48BCB80E34702A11FA9295E7C541FB67A32D762588CFCB44B9",
     "supportContactsJabber1" => "Comcash@exploit.im",
     "supportContactsJabber2" => "Comcash_support@exploit.im",
+    "indexSidePanelTitle1" => "Что",
+    "indexSidePanelTitle2" => "нужно",
+    "indexSidePanelTitle3" => "знать о нас?",
+    "indexSidePanelText1" => "Наш обменник сохраняет Вашу анонимность",
+    "indexSidePanelText2" => "Мы никогда не проверяем Ваш AML и не запрашиваем KYC",
+    "indexSidePanelText3" => "Мы гарантируем сохранность ваших средств и выполнения сделок вне зависимости от происхождения вашей криптовалюты",
+    "indexSidePanelText4" => "Если вам необходимо получить анонимно наличные от 5000$ или же сделать вашу крипту чище, убрав следы ее происхождения - пишите по контактам в шапке профиля !",
+    "indexSidePanelText5" => "Репутация, это наша главная задача!",
+    "indexSidePanelText6" => "С уважением",
+    "indexSidePanelText7" => "Команда",
+
 ];

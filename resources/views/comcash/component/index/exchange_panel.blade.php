@@ -79,27 +79,26 @@
             </svg>
         </div>
         <div class="welcome__banner-title">
-            Что <span>нужно</span> знать о нас ?
+            {{__("front.indexSidePanelTitle1")}} <span>{{__("front.indexSidePanelTitle2")}}</span> {{__("front.indexSidePanelTitle3")}}
         </div>
         <div class="welcome__banner-text">
             <div class="welcome__banner-text-item">
-                Наш обменник сохраняет Вашу анонимность
+                {{__("front.indexSidePanelText1")}}
             </div>
             <div class="welcome__banner-text-item">
-                Мы никогда не проверяем Ваш AML и не запрашиваем KYC
+                {{__("front.indexSidePanelText2")}}
             </div>
             <div class="welcome__banner-text-item">
-                Мы гарантируем сохранность ваших средств и выполнения сделок вне зависимости от происхождения вашей криптовалюты
+                {{__("front.indexSidePanelText3")}}
             </div>
         </div>
         <div class="welcome__banner-text">
-            Если вам необходимо  получить анонимно наличные от 5000$  или же 
-            сделать вашу крипту чище, убрав следы ее происхождения - пишите по контактам в шапке профиля !
+            {{__("front.indexSidePanelText4")}}
         </div>
         <div class="welcome__banner-text">
-            Репутация, это наша главная задача!<br>
-            С уважением<br>
-            Команда Com<span>CASH</span>
+            {{__("front.indexSidePanelText5")}}<br>
+            {{__("front.indexSidePanelText6")}}<br>
+            {{__("front.indexSidePanelText7")}} Com<span>CASH</span>
         </div>
     </div>
     <div class='welcome__container'>

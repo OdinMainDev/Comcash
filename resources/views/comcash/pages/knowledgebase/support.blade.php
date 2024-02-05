@@ -54,7 +54,7 @@
                 <p class="support__contacts-subtitle">{{__("front.Use our contacts")}}</p>
                 <a class="support__contacts-link" href="https://t.me/{{__("front.supportContactsTelegram")}}">
                     <img src="/comcash/img/icons/green-telegram.svg" alt="">
-                    <span>@{{__("front.supportContactsTelegram")}}</span>
+                    <span>%40{{__("front.supportContactsTelegram")}}</span>
                 </a>
                 <a class="support__contacts-link">
                     <img src="/comcash/img/icons/qtox.svg" alt="">
