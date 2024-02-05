@@ -14,15 +14,15 @@ trait StaticMessages {
             'reply_markup' => [
                 "keyboard" => [
                     [
-                        "text" => __("telegram.bottom_menu_1", [], $language), // новый обмен
+                        __("telegram.bottom_menu_1", [], $language), // новый обмен
                     ],
                     [
-                        "text" => __("telegram.bottom_menu_2", [], $language), // о боте
-                        "text" => __("telegram.bottom_menu_3", [], $language), // личный кабинет
+                       __("telegram.bottom_menu_2", [], $language), // о боте
+                       __("telegram.bottom_menu_3", [], $language), // личный кабинет
                     ],
                     [
-                        "text" => __("telegram.bottom_menu_4", [], $language), // поддержка
-                        "text" => __("telegram.bottom_menu_5", [], $language), // сообщество
+                        __("telegram.bottom_menu_4", [], $language), // поддержка
+                        __("telegram.bottom_menu_5", [], $language), // сообщество
                     ],
                 ]
             ],
