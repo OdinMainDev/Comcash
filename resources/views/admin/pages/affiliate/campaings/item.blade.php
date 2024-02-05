@@ -9,6 +9,7 @@
             tags: true,
         });
     </script>
+    <script src="/admin/assets/vendors/datatables.net/jquery.dataTables.js"></script>
 @endsection
 
 @section("css")
@@ -43,6 +44,22 @@
                     
 					<button type="submit" class="btn btn-primary me-2">{{__("common.submit")}}</button>
 				</form>
+			</div>
+		</div>
+	</div>
+</div>
+    
+<div class="row">
+	<div class="col-12 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+                <div class="d-flex align-items-start">
+                    <div>
+                        <h5 class="mb-2">{{__("common.viewUserAffiliateUsers")}}</h5>
+                    </div>
+                </div>
+                <?php $dtRouteOverride = route("adminAffiliateCampaignsUsers", [$model->id]); ?>
+                @include("admin.components.datatables.aff_users")
 			</div>
 		</div>
 	</div>

@@ -12,4 +12,8 @@ class AffiliateUser extends Model
     public function campaign(){
         return $this->hasOne(AffiliateCampaign::class, "id", "campaign_id");
     }
+
+    public function getUser(){
+        return $this->hasOne(User::class, "id", "user_id");
+    }
 }

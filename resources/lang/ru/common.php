@@ -157,5 +157,6 @@ return [
     "addressToSendMoney" => "Кошелек Получения:",
     "merchantTypeFrom" => "Тип мерчанта приема:",
     "merchantTypeTo" => "Тип мерчанта выплаты:",
-    "viewUserExchanges" => "Обмены пользователя"
+    "viewUserExchanges" => "Обмены пользователя",
+    "viewUserAffiliateUsers" => "Приглашенные пользователи аффилейта"
 ];

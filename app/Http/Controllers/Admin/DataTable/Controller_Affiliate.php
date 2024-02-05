@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\DataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasTable;
 use App\Models\AffiliateCampaign;
+use App\Models\AffiliateUser;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -36,6 +37,44 @@ class Controller_Affiliate extends Controller
 
     public function constructQuery($request){
         $query = AffiliateCampaign::with("getUser");
+        // $request->validate([
+        //     "filter_id" => "nullable|integer",
+        //     "filter_enable" => "nullable|boolean",
+        //     "filter_currency" => "nullable|integer",
+        //     "filter_name" => "nullable|string|max:255",
+        //     "filter_purchase_avalible" => "nullable|boolean",
+        //     "filter_is_reuse" => "nullable|boolean",
+        //     "filter_created_from" => 'nullable|date|date_format:Y-m-d\TH:i',
+        //     "filter_created_to" => 'nullable|date|date_format:Y-m-d\TH:i',
+        // ]);
+        // if(!is_null($request->filter_id)){
+        //     $query = $query->where('id', 'like', '%' . $request->filter_id . '%');
+        // }
+        // if(!is_null($request->filter_name)){
+        //     $search = mb_strtolower($request->filter_name);
+        //     $query = $query->whereRaw('lower(name) like (?)', ["%{$search}%"]);
+        // }
+
+        return $query;
+    }
+
+    public function process_users(Request $request, $lang, $id){
+        $query = $this->constructQueryUser($request, $id);
+        return DataTables::of($query)
+        ->editColumn("user_id", function($row){
+            return '<a href="'.route("adminUserEdit", [$row->user_id]).'">'.( $row->getUser ? $row->getUser->getUserCredentials() : $row->user_id ).'</a>';
+        })
+        ->editColumn("created_at", function($row){
+            return $this->tableDate($row, "created_at");
+        })
+        ->make(true);
+    }
+
+    public function constructQueryUser($request, $id){
+        $query = AffiliateUser::with("getUser");
+        if(is_numeric($id) && $id > 0){
+            $query = $query->where("campaign_id", $id);
+        }
         // $request->validate([
         //     "filter_id" => "nullable|integer",
         //     "filter_enable" => "nullable|boolean",

@@ -232,6 +232,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/affiliate/campaigns/list', [DTAffiliate::class, "view"])->name("adminAffiliateCampaigns");
         Route::get('/panel/affiliate/campaigns/list/data', [DTAffiliate::class, "process"]);
 
+        Route::get('/panel/affiliate/campaigns/{id}/list/data', [DTAffiliate::class, "process_users"])->name("adminAffiliateCampaignsUsers");
+
         Route::get('/panel/affiliate/campaigns/edit/{id}', [AdminAffiliate::class, "edit"])->name("adminAffiliateCampaignEdit");
         Route::post('/panel/affiliate/campaigns/process', [AdminAffiliate::class, "process"])->name("adminAffiliateCampaignProcess");
     });
