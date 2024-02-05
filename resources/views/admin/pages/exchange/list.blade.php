@@ -7,7 +7,7 @@
 		<div class="card">
 			<div class="card-body">
                 <div class="row my-3">
-                    <a href="{{route("adminExchangeSetClosedAll")}}" class="btn btn-danger mx-2" onclick="return confirm('Confirm action')">Удалить все открытые заявки</a>
+                    <a href="{{route("adminExchangeSetClosedAll")}}" class="btn btn-danger mx-2" onclick="return confirm('Confirm action')">{{__("common.removeAllOpenExchanges")}}</a>
                 </div>
                 <table class="table table-striped eaDatatable" data-list="" data-columns='[
                     {"data": "id", "name": "id"},

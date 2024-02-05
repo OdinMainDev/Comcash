@@ -38,4 +38,8 @@ class Exchange extends Model
     public function getDirection(){
         return $this->hasOne(Direction::class, "id", "direction_id");
     }
+
+    public function getUser(){
+        return $this->hasOne(User::class, "id", "user_id");
+    }
 }

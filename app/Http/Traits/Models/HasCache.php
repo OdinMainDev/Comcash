@@ -341,7 +341,7 @@ trait HasCache {
 
     public function getCacheAffiliatesWithdraws($user_id){
         $request = request();
-        return Cache::remember("aff-exchanges-".$request->page."-".$user_id, 60, function() use($user_id){
+        return Cache::remember("aff-withdraws-".$request->page."-".$user_id, 60, function() use($user_id){
             return AffiliateWithdraw::orderBy("id", "DESC")
                 ->where("user_id", $user_id)
                 ->paginate(10);

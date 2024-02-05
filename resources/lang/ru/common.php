@@ -147,5 +147,14 @@ return [
     "telegramUsername" => "Username",
     "telegramToken" => "Токен бота",
     "editTelegramBot" => "Изменить телеграм бота",
-
+    "user" => "Пользователь",
+    "removeAllOpenExchanges" => "Удалить все открытые заявки",
+    "amountFromClient" => "Сумма получения от клиента:",
+    "amountToClient" => "Сумма отправления на счет клиента:",
+    "rate" => "Курс:",
+    "direction" => "Направление:",
+    "addressToReceiveMoney" => "Кошелек, на который пользователь отправляет средства:",
+    "addressToSendMoney" => "Кошелек Получения:",
+    "merchantTypeFrom" => "Тип мерчанта приема:",
+    "merchantTypeTo" => "Тип мерчанта выплаты:",
 ];

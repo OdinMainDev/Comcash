@@ -33,19 +33,19 @@ class Controller_Home extends Controller{
 
     public function check_aff(Request $request, $lang, $hash) {
         if(mb_strlen($hash) != 32){
-            return abort(404);
+            return redirect(route("index"));
         }
 
         if ($request->cookie('aff_hash')) {
-            return abort(404);
+            return redirect(route("index"));
         }
 
         $check = AffiliateCampaign::where("hash", $hash)->first();
         if(!$check) {
-            return abort(404);
+            return redirect(route("index"));
         }
 
         Cookie::queue('aff_hash', $check->id, 365 * 86400 * 60);
-        return redirect('/');
+        return redirect(route("index"));
     }
 }

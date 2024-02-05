@@ -26,23 +26,22 @@ class Controller_Exchange extends Controller
         ->editColumn("data", function($row){
             $html = '<table class="admin-exchange-table">';
             $html .= '<tbody>';
-            $html .= '<tr class=""><td>Сумма получения от клиента:</td><td>' . @$row->data['amount_data']['amount_send'] . '</td></tr>';
-            $html .= '<tr class="" style="background-color: darkseagreen"><td>Сумма отправления на счет клиента:</td><td>' . @$row->data['amount_data']['amount_receive'] . '</td></tr>';
-            $html .= '<tr class=""><td>Курс:</td><td>' . @$row->data['amount_data']['exchange_rate'] . '</td></tr>';
-            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>Направление:</td><td>' . @$row->currencyFrom->name . ' -> ' . @$row->currencyTo->name . '</td></tr>';
+            $html .= '<tr class=""><td>'.__("common.amountFromClient").'</td><td>' . @$row->data['amount_data']['amount_send'] . '</td></tr>';
+            $html .= '<tr class="" style="background-color: darkseagreen"><td>'.__("common.amountToClient").'</td><td>' . @$row->data['amount_data']['amount_receive'] . '</td></tr>';
+            $html .= '<tr class=""><td>'.__("common.rate").'</td><td>' . @$row->data['amount_data']['exchange_rate'] . '</td></tr>';
+            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>'.__("common.direction").'</td><td><a href="'.route("adminDirectionEdit", [$row->direction_id]).'">' . @$row->currencyFrom->name . ' -> ' . @$row->currencyTo->name . ' (id: '.$row->direction_id.')</a></td></tr>';
             if(isset($row->data['merchant_from_data']))
-                $html .= '<tr class="admin-exchange-table__row hidden-row"><td>Кошелек, на который пользователь отправляет средства:</td><td >' . @$row->data['merchant_from_data']['address'] . '</td></tr>';
+                $html .= '<tr class="admin-exchange-table__row hidden-row"><td>'.__("common.addressToReceiveMoney").'</td><td >' . @$row->data['merchant_from_data']['address'] . '</td></tr>';
             if(isset($row->data['merchant_from_data']))
-                $html .= '<tr class="admin-exchange-table__row hidden-row"  style="background-color: darkseagreen"><td>Кошелек Получения:</td><td >' . @$row->data['request_data']['to_address'] . '</td></tr>';
+                $html .= '<tr class="admin-exchange-table__row hidden-row"  style="background-color: darkseagreen"><td>'.__("common.addressToSendMoney").'</td><td >' . @$row->data['request_data']['to_address'] . '</td></tr>';
             
-            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>user_id:</td><td>' . @$row->user_id . '</td></tr>';
-            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>direction_id:</td><td>' . @$row->direction_id . '</td></tr>';
+            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>'.__("common.user").'</td><td><a href="'.route("adminUserEdit", [$row->user_id]).'">' . ($row->getUser ? $row->getUser->getUserCredentials() : $row->user_id) . '</a></td></tr>';
             // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>currency_from:</td><td>' . @$row->currency_from . '</td></tr>';
             // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>currency_to:</td><td>' . @$row->currency_to . '</td></tr>';
             // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_from:</td><td>' . @$row->merchant_from . '</td></tr>';
             // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_to:</td><td>' . @$row->merchant_to . '</td></tr>';
-            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_type_from:</td><td>' . @$row->merchant_type_from . '</td></tr>';
-            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>merchant_type_to:</td><td>' . @$row->merchant_type_to . '</td></tr>';
+            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>'.__("common.merchantTypeFrom").'</td><td>' . @$row->merchant_type_from . '</td></tr>';
+            $html .= '<tr class="admin-exchange-table__row hidden-row"><td>'.__("common.merchantTypeTo").'</td><td>' . @$row->merchant_type_to . '</td></tr>';
             $html .= '</tbody>';
             $html .= '</table>';
             return $html;
@@ -109,7 +108,7 @@ class Controller_Exchange extends Controller
             "filter_created_from" => 'nullable|date|date_format:Y-m-d\TH:i',
             // "filter_"
         ]);
-        $query = Exchange::with("currencyFrom")->with("currencyTo");
+        $query = Exchange::with("getUser")->with("currencyFrom")->with("currencyTo");
         if(!$this->isRootUser()){
             $query = $query->where(function($q){
                 $q->where("admin_id", auth()->user()->id)->orWhere(function($q2){
