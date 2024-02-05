@@ -86,140 +86,101 @@
             </div>
 
             <div class="company__advantages">
-            <div class="company__advantages-row">
-                <div class="company__advantages-item">
-                <p class="company__advantages-title">Почему именно мы?</p>
-                <p class="company__advantages-text">Одной из наиболее востребованных услуг нашего сервиса является обмен
-                    цифровой валюты на фиатные наличные. В любой точке мира и в любой сумме вы можете быстро и легко
-                    обменять свои криптовалюты на наличные деньги в широком спектре национальных валют. Мы также готовы
-                    предложить курьерскую или офисную доставку наличных средств. Важной особенностью нашего сервиса является
-                    гарантия на выдачу денег и наличие депозитов на крупных форумах.
-                </p>
+                <div class="company__advantages-row">
+                    <div class="company__advantages-item">
+                        <p class="company__advantages-title">{{__("front.companyAdvantageTitle1")}}</p>
+                        <p class="company__advantages-text">{{__("front.companyAdvantageText1")}}</p>
+                    </div>
+                    <div class="company__advantages-item">
+                        <p class="company__advantages-title">{{__("front.companyAdvantageTitle2")}}</p>
+                        <p class="company__advantages-text">
+                            {{__("front.companyAdvantageText2_1")}}
+                            {{__("front.companyAdvantageText2_2")}}
+                            {{__("front.companyAdvantageText2_3")}}
+                            {{__("front.companyAdvantageText2_4")}}
+                        </p>
+                    </div>
                 </div>
-                <div class="company__advantages-item">
-                <p class="company__advantages-title">Партнёрская
-                    программа</p>
-                <p class="company__advantages-text">
-                    15000 — 0.5%
-                    10000 — 0.4%
-                    7500 — 0.3%
-                    5000 — 0.2%
-                </p>
+                <div class="company__advantages-row">
+                    <div class="company__advantages-item">
+                        <p class="company__advantages-title">{{__("front.companyAdvantageTitle3")}}</p>
+                        <p class="company__advantages-text">{{__("front.companyAdvantageText3")}}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="company__advantages-row">
-                <div class="company__advantages-item">
-                <p class="company__advantages-title">Сайт безопасен?</p>
-                <p class="company__advantages-text">Одной из наиболее востребованных услуг нашего сервиса является обмен
-                    цифровой валюты на фиатные наличные. В любой точке мира и в любой сумме вы можете быстро и легко
-                    обменять свои криптовалюты на наличные деньги в широком спектре национальных валют. Мы также готовы
-                    предложить курьерскую или офисную доставку наличных средств. Важной особенностью нашего сервиса является
-                    гарантия на выдачу денег и наличие депозитов на крупных форумах.
-                </p>
-                </div>
-            </div>
             </div>
 
             <div class="company__faq accordion accordion--secondary">
-            <button class='accordion__button'>
-                <span>Профиль</span>
-            </button>
-            <div class='accordion__content'>
-                <div class="accordion__text">
-                    выгодные
-                    курсы, моментальная конвертация, круглосуточный доступ!
+                <button class='accordion__button'>
+                    <span>{{__("front.companyFaqTitle1")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class="accordion__text">
+                        {{__("front.companyFaqText1")}}
+                    </div>
                 </div>
-            </div>
 
-            <button class='accordion__button'>
-                <span>Тарифы</span> </button>
-            <div class='accordion__content'>
-                <div class="accordion__text">
-                    Одной из наиболее востребованных услуг нашего сервиса является обмен цифровой валюты на фиатные наличные. В
-                    любой точке мира и в любой сумме вы можете быстро и легко обменять свои криптовалюты на наличные деньги в
-                    широком спектре национальных валют. Мы также готовы предложить курьерскую или офисную доставку наличных
-                    средств. Важной особенностью нашего сервиса является гарантия на выдачу денег и наличие депозитов на крупных
-                    форумах.
+                <button class='accordion__button'>
+                    <span>{{__("front.companyFaqTitle2")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class="accordion__text">
+                        {{__("front.companyFaqText2")}}
+                    </div>
                 </div>
-            </div>
 
-            <button class='accordion__button'>
-                <span>Наличные курьером</span>
-            </button>
-            <div class='accordion__content'>
-
-            </div>
-
-            <button class='accordion__button'>
-                <span>Отзывы</span>
-            </button>
-            <div class='accordion__content'>
-
-            </div>
-
-            <button class='accordion__button'>
-                <span>Новости</span>
-            </button>
-            <div class='accordion__content'>
-
-            </div>
-
-            <button class='accordion__button'>
-                <span>Поддержка</span>
-            </button>
-            <div class='accordion__content'>
-
-            </div>
-
-            <button class='accordion__button'>
-                <span>Компания</span>
-            </button>
-            <div class='accordion__content'>
-
-            </div>
-
-            <button class='accordion__button'>
-                <span>FAQ</span>
-            </button>
-            <div class='accordion__content'>
-
-            </div>
-            </div>
-
-            <div class="company__bottom">
-            <p class="company__bottom-title">Обратная связь</p>
-            <div class="company__bottom-socials">
-                <a href="">
-                <img src="/comcash/img/icons/socials/vk.svg"
-                    class="company__bottom-socials-item"></img>
-                </a>
-                <a href="">
-                <img src="/comcash/img/icons/socials/vk.svg"
-                    class="company__bottom-socials-item"></img>
-                </a>
-                <a href="">
-                <img src="/comcash/img/icons/socials/vk.svg"
-                    class="company__bottom-socials-item"></img>
-                </a>
-            </div>
-
-            <div class='company__bottom'>
-                <div class='company__bottom-text'>
-                ПОКУПАЙТЕ КРИПТУ С ПОМОЩЬЮ
+                <button class='accordion__button'>
+                    <span>{{__("front.companyFaqTitle3")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class="accordion__text">
+                        {{__("front.companyFaqText3")}}
+                    </div>
                 </div>
-                <div class='company__bottom-payments'>
-                <img src='/comcash/img/sber.svg'
-                    alt='' />
-                <img src='/comcash/img/tinkoff.svg'
-                    alt='' />
-                <img src='/comcash/img/visa.svg'
-                    alt='' />
-                <img src='/comcash/img/mastercard.svg'
-                    alt='' />
-                <img src='/comcash/img/mir.svg'
-                    alt='' />
+
+                <button class='accordion__button'>
+                    <span>{{__("front.companyFaqTitle4")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class="accordion__text">
+                        {{__("front.companyFaqText4")}}
+                    </div>
                 </div>
-            </div>
+
+                <button class='accordion__button'>
+                    <span>{{__("front.companyFaqTitle5")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class="accordion__text">
+                        {{__("front.companyFaqText5")}}
+                    </div>
+                </div>
+
+                <button class='accordion__button'>
+                    <span>{{__("front.companyFaqTitle6")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class="accordion__text">
+                        {{__("front.companyFaqText6")}}
+                    </div>
+                </div>
+
+                <button class='accordion__button'>
+                    <span>{{__("front.companyFaqTitle7")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class="accordion__text">
+                        {{__("front.companyFaqText7")}}
+                    </div>
+                </div>
+
+                <button class='accordion__button'>
+                    <span>{{__("front.companyFaqTitle8")}}</span>
+                </button>
+                <div class='accordion__content'>
+                    <div class="accordion__text">
+                        {{__("front.companyFaqText8")}}
+                    </div>
+                </div>
             </div>
 
         </div>

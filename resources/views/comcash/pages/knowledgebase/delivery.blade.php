@@ -83,8 +83,7 @@
 
 
         <p class='delivery__bottom'>
-          Консультации доступны по электронной почте <a href='mailto:support@comcash.io'>support@comcash.io</a>, в
-          Telegram, а также через форму обратной связи на сайте.
+            {{__("front.deliveryFooter1")}} <a href='mailto:{{__("front.deliveryFooter2")}}'>{{__("front.deliveryFooter2")}}</a> {{__("front.deliveryFooter3")}}
         </p>
       </div>
 </div>

@@ -6,13 +6,9 @@
         @include("comcash.component.knowledge_menu")
         <div class="reviews__content">
             <div class="reviews__header">
-            <p class="reviews__header-title">Отзывы</p>
+            <p class="reviews__header-title">{{__("front.reviewsPageTitle")}}</p>
             <p class="reviews__header-text">
-                Не знаете, как выбрать обменник криптовалюты? Тогда ознакомьтесь с отзывами на сервис Comcash.io. Ежедневно
-                сотни людей совершают обменные операции при помощи нашего сервиса. Мы гарантируем удобство, выгодные курсы,
-                высокую скорость операций, безопасность и полную конфиденциальность. Чтобы вы были уверены в том, что
-                сделали правильный выбор, мы рекомендуем прочитать отзывы на Comcash.io на этой странице.
-                Ниже вы увидите самые свежие комментарии по работе нашего сервиса.
+                {{__("front.reviewsPageText")}}
             </p>
             </div>
             <div class="reviews__slider-content">
