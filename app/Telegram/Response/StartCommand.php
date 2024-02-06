@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Bot\Response;
+namespace App\Telegram\Response;
 
 use App\Http\Traits\Models\HasTelegramBot;
 use App\Telegram\Helpers\BotFunctions;

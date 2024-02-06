@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Services\Bot\Response;
+namespace App\Telegram\Response;
 
 use App\Http\Traits\Models\HasTelegramBot;
 use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Entities\ServerResponse;
-use App\Services\Bot\Handlers\Handler;
-use App\Services\Bot\Translate;
-use Longman\TelegramBot\Request;
-use App\Services\Bot\Keyboard;
-use App\Services\Bot\Response\Callbackquery\Router;
 use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Helpers\Keyboards;
+use App\Telegram\Response\Callbackquery\Router;
 
 class CallbackqueryCommand extends SystemCommand
 {

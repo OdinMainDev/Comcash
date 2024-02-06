@@ -1,6 +1,6 @@
 <?php
      
-namespace App\Services\Bot\Response\Callbackquery\Handlers;
+namespace App\Telegram\Response\Callbackquery\Handlers;
 
 use Illuminate\Support\Facades\Config;
 

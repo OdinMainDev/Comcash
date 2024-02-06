@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Bot\Response\Callbackquery;
+namespace App\Telegram\Response\Callbackquery;
 
-use App\Services\Bot\Response\Callbackquery\Handlers\SetLanguage;
 use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Helpers\StaticMessages;
+use App\Telegram\Response\Callbackquery\Handlers\SetLanguage;
 use Illuminate\Support\Facades\Config;
 use Longman\TelegramBot\Request;
 
