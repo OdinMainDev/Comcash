@@ -6,17 +6,17 @@
 		<div class="search-form">
 			<div class="input-group">
 				@if(auth()->user()->can('handle-exchanger') || auth()->user()->can('handle-seo'))
-					<a href="{{route("adminClearCache")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
-						{{__("menu.clear cache")}}
-					</a>
-					<a href="{{route("adminSitemapGenerate")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
-						{{__("menu.sitemap generate")}}
-					</a>
 					@can('handle-exchanger')
+						<a href="{{route("adminClearCache")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
+							{{__("menu.clear cache")}}
+						</a>
 						<a href="{{route("adminLanguagesUpdate")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
 							{{__("menu.languages update")}}
 						</a>
 					@endcan
+					<a href="{{route("adminSitemapGenerate")}}" onclick="return confirm('Confirm action')" class="btn btn-primary mb-2 mb-md-0 mx-2">
+						{{__("menu.sitemap generate")}}
+					</a>
 				@endif
 			</div>
 		</div>

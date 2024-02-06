@@ -43,4 +43,15 @@ class KeyboardGenerator
         return $response;
     }
 
+    public static function makeFromKeyValueArray($items, $callback) {
+        $temp = [];
+        foreach($items as $key => $value) {
+            $temp[$key] = [
+                "type" => "callback_data",
+                "value" => $callback.":;:".$value,
+            ];
+        }
+        return $temp;
+    }
+
 }

@@ -22,8 +22,10 @@ class Currency extends Model
         "status" => "boolean"
     ];
 
-    public function getTitle(){
-        $current_language = app()->getLocale();
+    public function getTitle($current_language = false){
+        if(!$current_language)
+            $current_language = app()->getLocale();
+        
         $data = $this->data;
         if(!isset($data['titles'])){
             return "";

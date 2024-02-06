@@ -296,4 +296,13 @@ trait HasCache {
             return $data->toArray();
         });
     }
+
+    public function getCachedCurrencyDirectionsFrom() {
+        return Cache::remember("cached-directions-currency-from", 300, function(){
+            $ids = $this->getCacheDirections()->pluck("currency_from")->toArray();
+            return $this->getCacheCurrencies()->reject(function ($currency) use($ids) {
+                return !in_array($currency->id, $ids);
+            });
+        });
+    }
 }

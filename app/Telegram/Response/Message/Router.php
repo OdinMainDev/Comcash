@@ -4,6 +4,7 @@ namespace App\Telegram\Response\Message;
 
 use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Helpers\StaticMessages;
+use App\Telegram\Response\Callbackquery\Handlers\ExchangePage;
 use App\Telegram\Response\Callbackquery\Handlers\SetLanguage;
 use App\Telegram\Response\Callbackquery\Handlers\SetRules;
 use Illuminate\Support\Facades\Config;
@@ -11,7 +12,7 @@ use Longman\TelegramBot\Request;
 
 class Router
 {
-    use BotFunctions, StaticMessages, SetLanguage, SetRules;
+    use BotFunctions, StaticMessages, SetLanguage, SetRules, ExchangePage;
     
     public $message;
     public $messageText;
@@ -45,7 +46,8 @@ class Router
         switch($this->messageText) {
             // Новый обмен
             case __("telegram.bottom_menu_1", [], $this->user->language):
-                
+                $this->openExchangePage($this->user->telegram_id, $this->user->language);
+                return;
             break;
 
             // О боте
