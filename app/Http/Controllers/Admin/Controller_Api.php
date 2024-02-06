@@ -50,7 +50,10 @@ class Controller_Api extends Controller{
     }
 
     public function clear_cache() {
-        Artisan::call('cache:clear');
+        dispatch(function () {
+            Artisan::call('cache:clear');
+            Artisan::call('app:cache-directions');
+        });
         return redirect()->back();
     }
 

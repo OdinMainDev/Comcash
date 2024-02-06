@@ -30,6 +30,9 @@ class Kernel extends ConsoleKernel
 
         // РУЧНЫЕ ЗАЯВКИ
         $schedule->command('app:check-manual-exchanges')->everyMinute();
+
+        // Кеширование направлений
+        $schedule->command('app:cache-directions')->everyFiveMinutes();
         
 
         // $schedule->command('app:bybit-payment')->everyMinute();

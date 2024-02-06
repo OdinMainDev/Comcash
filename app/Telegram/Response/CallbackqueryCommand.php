@@ -7,6 +7,7 @@ use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Entities\ServerResponse;
 use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Response\Callbackquery\Router;
+use Longman\TelegramBot\Request;
 
 class CallbackqueryCommand extends SystemCommand
 {
@@ -23,10 +24,6 @@ class CallbackqueryCommand extends SystemCommand
         $response = new Router($callback_query, $user);
         $response->exec();
 
-        return $callback_query->answer([
-            'text'       => __("telegram.loading"),
-            'show_alert' => false,
-            'cache_time' => 5,
-        ]);
+        return Request::emptyResponse();
     }
 }
