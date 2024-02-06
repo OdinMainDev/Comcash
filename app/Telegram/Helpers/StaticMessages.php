@@ -70,7 +70,7 @@ trait StaticMessages {
         $text .= "\n";
         if($this->user->username && $this->user->username != ""){
             $text .= __("telegram.profile_username", [], $language);
-            $text .= " ".$this->user->username;
+            $text .= " @".$this->user->username;
             $text .= "\n";
         }
         $text .= __("telegram.profile_total_exchanges", [], $language);
@@ -98,6 +98,12 @@ trait StaticMessages {
                         [
                             "text" =>__("telegram.profile_open_affiliate", [], $language), 
                             "callback_data" => "openAffiliatePanel:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.profile_goto_web", [], $language), 
+                            "callback_data" => "gotoWeb:;:", 
                         ],
                     ],
                     [
