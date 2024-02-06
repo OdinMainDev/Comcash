@@ -4,6 +4,7 @@ namespace App\Telegram\Response\Callbackquery;
 
 use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Helpers\StaticMessages;
+use App\Telegram\Response\Callbackquery\Handlers\ProfileActions;
 use App\Telegram\Response\Callbackquery\Handlers\SetLanguage;
 use App\Telegram\Response\Callbackquery\Handlers\SetRules;
 use Illuminate\Support\Facades\Config;
@@ -11,7 +12,7 @@ use Longman\TelegramBot\Request;
 
 class Router
 {
-    use BotFunctions, StaticMessages, SetLanguage, SetRules;
+    use BotFunctions, StaticMessages, SetLanguage, SetRules, ProfileActions;
     
     public $query;
     public $command;
@@ -66,6 +67,16 @@ class Router
                 }
 
                 $this->sendMainMenu($this->user->telegram_id, $this->user->language);
+                return;
+            break;
+
+            case "gotoWeb":
+                $this->profileGoToWeb($this->user->telegram_id, $this->user->language, $this->user->getUser->id);
+                return;
+            break;
+
+            case "openProfile":
+                $this->sendProfileMessage($this->user->telegram_id, $this->user->language);
                 return;
             break;
         }
