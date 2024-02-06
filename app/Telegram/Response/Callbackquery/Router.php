@@ -96,7 +96,7 @@ class Router
             break;
 
             case "openExchangePageStep1":
-                $this->sendMainMenu($this->user->telegram_id, $this->user->language);
+                $this->openExchangePage($this->user->telegram_id, $this->user->language);
                 return;
             break;
         }

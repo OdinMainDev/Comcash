@@ -56,7 +56,7 @@ trait ExchangePage {
         }
         $keyboard = KeyboardGenerator::generate(KeyboardGenerator::makeFromKeyValueArray($newCurrencies, "openExchangePageStep3"), 1);
         $keyboard['inline_keyboard'][] = [[
-            "text" =>__("telegram.back_to_main_menu", [], $language), 
+            "text" =>__("telegram.back_to_exchange_step_1", [], $language), 
             "callback_data" => "openExchangePageStep1:;:", 
         ]];
 

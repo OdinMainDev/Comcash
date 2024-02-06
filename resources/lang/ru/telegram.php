@@ -34,4 +34,5 @@ return [
     "exchange_page_choose_currency_from" => "Выберите валюту, которую нужно обменять",
     "exchange_page_choose_currency_to1" => "Отдаете:",
     "exchange_page_choose_currency_to2" => "Укажите валюту, которую нужно получить",
+    "back_to_exchange_step_1" => "Вернутся к выбору валют",
 ];
