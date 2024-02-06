@@ -6,12 +6,11 @@ use App\Http\Traits\Models\HasTelegramBot;
 use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Entities\ServerResponse;
 use App\Telegram\Helpers\BotFunctions;
-use App\Telegram\Helpers\Keyboards;
 use App\Telegram\Response\Callbackquery\Router;
 
 class CallbackqueryCommand extends SystemCommand
 {
-    use HasTelegramBot, BotFunctions, Keyboards;
+    use HasTelegramBot, BotFunctions;
 
     protected $name = 'callbackquery';
     protected $description = 'Handle the callback query';

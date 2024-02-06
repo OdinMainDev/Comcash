@@ -27,6 +27,13 @@ class StartCommand extends SystemCommand
         $user = $this->getUserBotModel($this->getMessage()->getFrom(), $this->constructBotData());
         $language = $user->language;
 
+        if(Config::get("app.telegram_delete_messages")){
+            Request::deleteMessage([
+                'chat_id'    => $this->getMessage()->getFrom()->getId(),
+                'message_id' => $this->getMessage()->getMessage()->getMessageId(),
+            ]);
+        }
+
         // если пользователь только что зарегался то отправляем изначально ему кейборд с выбором языка
         if(count(Config::get("app.languages")) > 1 && $user->IsNowRegistered){
             $text = __("telegram.choose_language", [], $language);
