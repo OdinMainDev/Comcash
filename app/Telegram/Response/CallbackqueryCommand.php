@@ -25,14 +25,9 @@ class CallbackqueryCommand extends SystemCommand
     {
         $callback_query = $this->getCallbackQuery();
         $user = $this->getUserBotModel($callback_query->getFrom(), $this->constructBotData());
-        $language = $user->language;
+        $response = new Router($callback_query, $user);
+        $response->exec();
 
-        $bot = $user->getBot;
-
-        
-        // $response = new Router($callback_query, $user);
-        // $response->exec();
-        
         return $callback_query->answer([
             'text'       => __("telegram.loading"),
             'show_alert' => false,
