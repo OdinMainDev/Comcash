@@ -76,24 +76,24 @@ trait StaticMessages {
         $text .= __("telegram.profile_total_exchanges", [], $language);
         $text .= " ".$this->user->getUser->getCountExchanges();
 
+        $headerButtons = [];
+        $headerButtons[] = [
+            "text" =>__("telegram.profile_open_exchanges_history", [], $language), 
+            "callback_data" => "openExchangesHistory:;:1", 
+        ];
+        if(count(Config::get("app.languages")) > 1){
+            $headerButtons[] = [
+                "text" =>__("telegram.profile_open_change_language", [], $language), 
+                "callback_data" => "openChangeLanguage:;:", 
+            ];
+        }
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' => $text,
             'reply_markup' => [
                 "inline_keyboard" => [
-                    [
-                        [
-                            "text" =>__("telegram.profile_open_exchanges_history", [], $language), 
-                            "callback_data" => "openExchangesHistory:;:1", 
-                        ],
-                        (count(Config::get("app.languages")) > 1 ? 
-                        [
-                            "text" =>__("telegram.profile_open_change_language", [], $language), 
-                            "callback_data" => "openChangeLanguage:;:", 
-                        ]
-                        : null)
-                    ],
+                    $headerButtons,
                     [
                         [
                             "text" =>__("telegram.profile_open_affiliate", [], $language), 
