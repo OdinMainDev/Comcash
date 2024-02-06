@@ -79,6 +79,11 @@ class Router
                 $this->sendProfileMessage($this->user->telegram_id, $this->user->language);
                 return;
             break;
+
+            case "openMainMenu":
+                $this->sendMainMenu($this->user->telegram_id, $this->user->language);
+                return;
+            break;
         }
     }
 

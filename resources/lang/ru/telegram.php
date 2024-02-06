@@ -26,5 +26,8 @@ return [
     "profile_open_affiliate" => "Партнерская программа",
     "back_to_main_menu" => "В главное меню",
     "profile_goto_web" => "Перейти на сайт",
-    "goto_web_text" => "Перейдите по ссылке:"
+    "goto_web_text" => "Перейдите по ссылке:",
+    "about_menu" => "О боте",
+    "support_menu" => "Поддержка",
+    "community_menu" => "Сообщество"
 ];

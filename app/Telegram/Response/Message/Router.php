@@ -50,7 +50,8 @@ class Router
 
             // О боте
             case __("telegram.bottom_menu_2", [], $this->user->language):
-                
+                $this->sendAboutBotMessage($this->user->telegram_id, $this->user->language);
+                return;
             break;
 
             // Личный кабинет
@@ -61,12 +62,14 @@ class Router
 
             // Поддержка
             case __("telegram.bottom_menu_4", [], $this->user->language):
-                
+                $this->sendSupportBotMessage($this->user->telegram_id, $this->user->language);
+                return;
             break;
 
             // Сообщество
             case __("telegram.bottom_menu_5", [], $this->user->language):
-                
+                $this->sendCommunityBotMessage($this->user->telegram_id, $this->user->language);
+                return;
             break;
 
             default:

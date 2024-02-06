@@ -109,7 +109,61 @@ trait StaticMessages {
                     [
                         [
                             "text" =>__("telegram.back_to_main_menu", [], $language), 
-                            "callback_data" => "backToMainMenu:;:", 
+                            "callback_data" => "openMainMenu:;:", 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
+    }
+
+    public function sendAboutBotMessage($chat_id, $language){
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.about_menu", [], $language),
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_main_menu", [], $language), 
+                            "callback_data" => "openMainMenu:;:", 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
+    }
+
+    public function sendSupportBotMessage($chat_id, $language){
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.support_menu", [], $language),
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_main_menu", [], $language), 
+                            "callback_data" => "openMainMenu:;:", 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
+    }
+
+    public function sendCommunityBotMessage($chat_id, $language){
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.community_menu", [], $language),
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_main_menu", [], $language), 
+                            "callback_data" => "openMainMenu:;:", 
                         ],
                     ],
                 ]
