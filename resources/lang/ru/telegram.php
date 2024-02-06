@@ -24,5 +24,5 @@ return [
     "profile_open_exchanges_history" => "История обменов",
     "profile_open_change_language" => "Изменить язык",
     "profile_open_affiliate" => "Партнерская программа",
-    "back_to_main_menu" => "Вернутся в главное меню"
+    "back_to_main_menu" => "В главное меню"
 ];

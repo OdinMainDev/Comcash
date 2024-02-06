@@ -30,7 +30,7 @@ class StartCommand extends SystemCommand
         if(Config::get("app.telegram_delete_messages")){
             Request::deleteMessage([
                 'chat_id'    => $this->getMessage()->getFrom()->getId(),
-                'message_id' => $this->getMessage()->getMessage()->getMessageId(),
+                'message_id' => $this->getMessage()->getMessageId(),
             ]);
         }
 
