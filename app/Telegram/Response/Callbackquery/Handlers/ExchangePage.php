@@ -51,7 +51,13 @@ trait ExchangePage {
             if(!$rate){
                 continue;
             }
-            $key .= " / ".$rate." : 1";
+            if($rate < 0.01){
+                $rate = $this->estimateGetRate($currencyFrom->name, $currency->name);
+                $key .= " / 1 : ".$rate."";
+            }else{
+                $key .= " / ".$rate." : 1";
+            }
+            
             $newCurrencies[$key] = $currency->id;
         }
         $keyboard = KeyboardGenerator::generate(KeyboardGenerator::makeFromKeyValueArray($newCurrencies, "openExchangePageStep3"), 1);
