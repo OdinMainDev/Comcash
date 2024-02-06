@@ -76,7 +76,7 @@ trait HasCache {
             }
         }
 
-        if($with_fee){
+        if($with_fee && $rate){
             $rate = fdiv($rate, 100) * (100 - $with_fee);
         }
 
@@ -302,6 +302,18 @@ trait HasCache {
             $ids = $this->getCacheDirections()->pluck("currency_from")->toArray();
             return $this->getCacheCurrencies()->reject(function ($currency) use($ids) {
                 return !in_array($currency->id, $ids);
+            });
+        });
+    }
+
+    public function getCachedCurrencyDirectionsTo($fromId) {
+        return Cache::remember("cached-directions-currency-from-".$fromId, 300, function() use($fromId){
+            $ids = $this->getCacheDirections()->pluck("currency_to")->toArray();
+            return $this->getCacheCurrencies()->reject(function ($currency) use($ids, $fromId) {
+                if(!in_array($currency->id, $ids))
+                    return false;
+
+                return $currency->id != $fromId;
             });
         });
     }

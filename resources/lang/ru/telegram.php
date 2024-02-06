@@ -29,5 +29,9 @@ return [
     "goto_web_text" => "Перейдите по ссылке:",
     "about_menu" => "О боте",
     "support_menu" => "Поддержка",
-    "community_menu" => "Сообщество"
+    "community_menu" => "Сообщество",
+    "back_to_profile" => "Вернутся в профиль",
+    "exchange_page_choose_currency_from" => "Выберите валюту, которую нужно обменять",
+    "exchange_page_choose_currency_to1" => "Отдаете:",
+    "exchange_page_choose_currency_to2" => "Укажите валюту, которую нужно получить",
 ];

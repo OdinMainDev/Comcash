@@ -18,7 +18,7 @@ trait ProfileActions {
                 "inline_keyboard" => [
                     [
                         [
-                            "text" =>__("telegram.back_to_main_menu", [], $language), 
+                            "text" =>__("telegram.back_to_profile", [], $language), 
                             "callback_data" => "openProfile:;:", 
                         ],
                     ],

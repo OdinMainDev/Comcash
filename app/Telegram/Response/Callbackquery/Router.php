@@ -4,6 +4,7 @@ namespace App\Telegram\Response\Callbackquery;
 
 use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Helpers\StaticMessages;
+use App\Telegram\Response\Callbackquery\Handlers\ExchangePage;
 use App\Telegram\Response\Callbackquery\Handlers\ProfileActions;
 use App\Telegram\Response\Callbackquery\Handlers\SetLanguage;
 use App\Telegram\Response\Callbackquery\Handlers\SetRules;
@@ -12,7 +13,7 @@ use Longman\TelegramBot\Request;
 
 class Router
 {
-    use BotFunctions, StaticMessages, SetLanguage, SetRules, ProfileActions;
+    use BotFunctions, StaticMessages, SetLanguage, SetRules, ProfileActions, ExchangePage;
     
     public $query;
     public $command;
@@ -81,6 +82,20 @@ class Router
             break;
 
             case "openMainMenu":
+                $this->sendMainMenu($this->user->telegram_id, $this->user->language);
+                return;
+            break;
+
+            case "openExchangePageStep2":
+                if(!$this->validateCurrencyFrom($this->data)){
+                    $this->sendMainMenu($this->user->telegram_id, $this->user->language);
+                    return;
+                }
+                $this->openExchangePage2($this->user->telegram_id, $this->user->language, $this->data);
+                return;
+            break;
+
+            case "openExchangePageStep1":
                 $this->sendMainMenu($this->user->telegram_id, $this->user->language);
                 return;
             break;
