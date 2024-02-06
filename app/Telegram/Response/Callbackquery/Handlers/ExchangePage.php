@@ -46,7 +46,7 @@ trait ExchangePage {
         $currencies = $this->getCachedCurrencyDirectionsTo($id);
         $newCurrencies = [];
         foreach($currencies as $currency){
-            $key = $currencyFrom->getTitle();
+            $key = $currency->getTitle($language);
             $key .= " / ".$this->estimateGetRate($currencyFrom->name, $currency->name)." : 1";
             $newCurrencies[$key] = $currency->id;
         }
