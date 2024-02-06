@@ -47,7 +47,11 @@ trait ExchangePage {
         $newCurrencies = [];
         foreach($currencies as $currency){
             $key = $currency->getTitle($language);
-            $key .= " / ".$this->estimateGetRate($currencyFrom->name, $currency->name)." : 1";
+            $rate = $this->estimateGetRate($currency->name, $currencyFrom->name);
+            if(!$rate){
+                continue;
+            }
+            $key .= " / ".$rate." : 1";
             $newCurrencies[$key] = $currency->id;
         }
         $keyboard = KeyboardGenerator::generate(KeyboardGenerator::makeFromKeyValueArray($newCurrencies, "openExchangePageStep3"), 1);
