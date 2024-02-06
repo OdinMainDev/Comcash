@@ -5,19 +5,20 @@ namespace App\Telegram\Response\Callbackquery;
 use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Helpers\StaticMessages;
 use App\Telegram\Response\Callbackquery\Handlers\SetLanguage;
+use App\Telegram\Response\Callbackquery\Handlers\SetRules;
 use Illuminate\Support\Facades\Config;
 use Longman\TelegramBot\Request;
 
 class Router
 {
-    use BotFunctions, StaticMessages, SetLanguage;
+    use BotFunctions, StaticMessages, SetLanguage, SetRules;
     
     public $query;
     public $command;
     public $data;
     public $user;
     public $bot;
-    public $notCheckRoutes = ["setLanguage"];
+    public $notCheckRoutes = ["setLanguage", "setRules"];
     
     public function __construct($query, $user){
         $this->query = $query;
@@ -55,6 +56,17 @@ class Router
                     $this->sendRulesMessage($this->user->telegram_id, $this->user->language);
                     return;
                 }
+            break;
+
+            case "setRules":
+                if(!$this->setRules($this->data)){
+                    $this->sendRulesMessage($this->user->telegram_id, $this->user->language);
+                    $this->sendDeclineRulesMessage($this->user->telegram_id, $this->user->language);
+                    return;
+                }
+
+                $this->sendMainMenu($this->user->telegram_id, $this->user->language);
+                return;
             break;
         }
     }
