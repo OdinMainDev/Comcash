@@ -16,6 +16,10 @@ trait ExchangePage {
             $newCurrencies[$currency->getTitle($language)] = $currency->id;
         }
         $keyboard = KeyboardGenerator::generate(KeyboardGenerator::makeFromKeyValueArray($newCurrencies, "exchangePageStep2"));
+        $keyboard['inline_keyboard'][] = [
+            "text" =>__("telegram.back_to_main_menu", [], $language), 
+            "callback_data" => "openProfile:;:", 
+        ];
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
