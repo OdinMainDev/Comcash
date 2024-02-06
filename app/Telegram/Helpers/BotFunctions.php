@@ -4,7 +4,7 @@ namespace App\Telegram\Helpers;
  
 use Illuminate\Support\Facades\Config;
 
-trait BotConstructor {
+trait BotFunctions {
 
     public function constructBotData(){
         $language = "";
@@ -21,5 +21,12 @@ trait BotConstructor {
             "id" => $this->telegram->getBotId(),
             "language" => $language,
         ];
+    }
+
+    public function checkUserRules() {
+        if($this->user->is_rules_accepted){
+            return true;
+        }
+        return false;
     }
 }

@@ -10,12 +10,12 @@ use App\Services\Bot\Translate;
 use Longman\TelegramBot\Request;
 use App\Services\Bot\Keyboard;
 use App\Services\Bot\Response\Callbackquery\Router;
-use App\Telegram\Helpers\BotConstructor;
+use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Helpers\Keyboards;
 
 class CallbackqueryCommand extends SystemCommand
 {
-    use HasTelegramBot, BotConstructor, Keyboards;
+    use HasTelegramBot, BotFunctions, Keyboards;
 
     protected $name = 'callbackquery';
     protected $description = 'Handle the callback query';

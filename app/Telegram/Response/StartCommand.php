@@ -3,7 +3,7 @@
 namespace App\Services\Bot\Response;
 
 use App\Http\Traits\Models\HasTelegramBot;
-use App\Telegram\Helpers\BotConstructor;
+use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Helpers\KeyboardGenerator;
 use App\Telegram\Helpers\Keyboards;
 use App\Telegram\Helpers\StaticMessages;
@@ -14,7 +14,7 @@ use Longman\TelegramBot\Request;
 
 class StartCommand extends SystemCommand
 {
-    use HasTelegramBot, BotConstructor, Keyboards, StaticMessages;
+    use HasTelegramBot, BotFunctions, Keyboards, StaticMessages;
 
     protected $name = 'start';
     protected $description = 'Start command';
@@ -41,13 +41,8 @@ class StartCommand extends SystemCommand
 
         // если правила не приняты правила то отправляем их
         if(!$user->is_rules_accepted){
-            $text = __("telegram.rules", [], $language);
-            return $this->replyToChat(
-                $text,
-                [
-                    'reply_markup' => KeyboardGenerator::generate($this->keyboardRules($language)),
-                ]
-            );
+            $this->sendRulesMessage($user->telegram_id, $language);
+            return Request::emptyResponse();
         }
 
         // правил в проекте нет то тогда

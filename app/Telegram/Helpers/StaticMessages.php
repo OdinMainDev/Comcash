@@ -28,4 +28,48 @@ trait StaticMessages {
             ],
         ]);
     }
+
+    public function sendRulesMessage($chat_id, $language){
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.rules", [], $language),
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.decline_rules", [], $language), 
+                            "callback_data" => "setRules:;:false", 
+                        ],
+                        [
+                            "text" =>__("telegram.accept_rules", [], $language), 
+                            "callback_data" => "setRules:;:true", 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
+    }
+
+    public function sendLanguageMessage($chat_id, $language){
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.rules", [], $language),
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.decline_rules", [], $language), 
+                            "callback_data" => "setRules:;:false", 
+                        ],
+                        [
+                            "text" =>__("telegram.accept_rules", [], $language), 
+                            "callback_data" => "setRules:;:true", 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
+    }
 }

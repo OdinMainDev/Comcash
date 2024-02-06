@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer("user_id")->index();
             $table->bigInteger("telegram_id")->index();
             $table->bigInteger("bot_id")->index();
-            $table->string("action")->nullable();
+            $table->string("action")->default(0);
             $table->boolean("is_member")->index()->default(true);
             $table->string("language");
             $table->string("first_name")->nullable();
