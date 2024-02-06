@@ -34,7 +34,7 @@ class Router
         if(Config::get("app.telegram_delete_messages")){
             Request::deleteMessage([
                 'chat_id'    => $this->message->getFrom()->getId(),
-                'message_id' => $this->message->getMessage()->getMessageId(),
+                'message_id' => $this->message->getMessageId(),
             ]);
         }
 
