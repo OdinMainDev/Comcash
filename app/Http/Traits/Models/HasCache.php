@@ -313,7 +313,7 @@ trait HasCache {
                 if(!in_array($currency->id, $ids))
                     return false;
 
-                return $currency->id != $fromId;
+                return $currency->id == $fromId;
             });
         });
     }
