@@ -196,3 +196,18 @@ function sendTelegramKycSuccess($kyc){
     curl_exec($ch);
     curl_close($ch);
 }
+
+
+function sendTelegramBotUserMessage($text, $user, $bot){
+    $ch = curl_init('https://api.telegram.org/bot' . $bot->token . '/sendMessage');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        'chat_id' => $user->telegram_id,
+        'text' => $text,
+        'parse_mode' =>  'html'
+    ));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_exec($ch);
+    curl_close($ch);
+}

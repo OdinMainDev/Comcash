@@ -60,4 +60,8 @@ class User extends Authenticatable
     public function getCountExchanges() {
         return Exchange::where("user_id", $this->id)->where("status", 5)->count();
     }
+
+    public function getTelegramUsers() {
+        return $this->hasMany(TelegramUser::class, "telegram_id", "telegram_id")->with("getBot");
+    }
 }

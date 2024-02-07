@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
 use App\Models\Exchange;
@@ -20,7 +21,7 @@ use App\Merchants\Handler;
 
 class ExchangeStart implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasCache, HasAffiliate;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasCache, HasAffiliate, HasTelegramMessage;
 
     /**
      * Create a new job instance.
@@ -97,11 +98,19 @@ class ExchangeStart implements ShouldQueue
         if($this->user->email[0] != "@")
             Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
 
+
+        $isTelegramBotExchange = false;
+        if(isset($this->exchange->data['isTelegramExchange']) && $this->exchange->data['isTelegramExchange']){
+            $isTelegramBotExchange = true;
+        }
         $text = "";
         if($isManualMode){
             $text = "❗️⚠️⚠️<b>ВНИМАНИЕ ЗАЯВКА ДОЛЖНА БЫТЬ ОТРАБОТАНА В РУЧНОМ РЕЖИМЕ!</b>⚠️⚠️❗️\n\n";
         }
         $text .= "🟡<b>Новая заявка на обмен</b>🟡\n";
+        if($isTelegramBotExchange){
+            $text .= "🤖🤖<b>ЗАЯВКА ИЗ БОТА</b>🤖🤖\n";
+        }
         $text .= "ID: ".$this->exchange->id."\n";
         $text .= "Направление обмена ".$this->exchange->currencyFrom->name." -> ".$this->exchange->currencyTo->name."\n";
         $text .= "Сумма: ". $data['amount_data']['amount_send']." -> ". $data['amount_data']['amount_receive']."\n";
@@ -153,6 +162,18 @@ class ExchangeStart implements ShouldQueue
         $text .= "Email (привязанный к аккаунту): ".$this->user->email."\n";
         
         sendTelegramNotification($text);
+
+        if($isTelegramBotExchange){
+            if(!isset($this->exchange->data['merchant_from_data']['address']) || !$this->exchange->data['merchant_from_data']['address']){
+                return;
+            }
+            $botUsers = $this->user->getTelegramUsers;    
+            foreach($botUsers as $botUser){
+                $language = $botUser->language;
+                $text = $this->tgUserExchangeStartMessage($this->exchange, $language);
+                sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
+            }
+        }
     }
 
     public function checkUser($user_email){
