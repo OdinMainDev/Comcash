@@ -109,6 +109,16 @@ class Router
                 $this->openExchangePage3($this->user->telegram_id, $this->user->language, $directionId);
                 return;
             break;
+
+            case "exchangePageSetAmountInCurrencyTo":
+                $this->openExchangePage3Reverse($this->user->telegram_id, $this->user->language);
+                return;
+            break;
+
+            case "exchangePageSetAmountInCurrencyFrom":
+                $this->openExchangePage3($this->user->telegram_id, $this->user->language, $this->user->action_data);
+                return;
+            break;
         }
     }
 

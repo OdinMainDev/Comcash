@@ -108,6 +108,9 @@ trait ExchangePage {
         $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
             return $row->id != $directionId;
         })->first();
+        if(!$direction){
+            return;
+        }
 
         $this->user->action = config("app.telegram_actions")['exchangeSumFrom'];
         $this->user->action_dafa = $directionId;
@@ -121,7 +124,7 @@ trait ExchangePage {
                 "inline_keyboard" => [
                     [
                         [
-                            "text" =>__("telegram.exchange_page_set_amount_in_currency_to", [], $language)." ".$direction->currencyTo->getTitle($language), 
+                            "text" =>__("telegram.exchange_page_set_amount_in_currency", [], $language)." ".$direction->currencyTo->getTitle($language), 
                             "callback_data" => "exchangePageSetAmountInCurrencyTo:;:", 
                         ],
                     ],
@@ -169,7 +172,46 @@ trait ExchangePage {
         $text .= ")</b>";
         $text .= "\n";
         $text .= __("telegram.exchange_page_set_amount_4", [], $language);
-        $text .= " ".$direction->currencyFrom->getTitle($language);
+        if(!$isReverse)
+            $text .= " ".$direction->currencyFrom->getTitle($language);
+        else
+            $text .= " ".$direction->currencyTo->getTitle($language);
         return $text;
+    }
+
+    public function openExchangePage3Reverse($chat_id, $language){
+        $directionId = $this->user->action_data;
+        $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
+            return $row->id != $directionId;
+        })->first();
+        if(!$direction){
+            return;
+        }
+
+        $this->user->action = config("app.telegram_actions")['exchangeSumTo'];
+        $this->user->action_dafa = $directionId;
+        $this->user->save();
+
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $this->constructTextForExchangePage3($language, $direction, true),
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.exchange_page_set_amount_in_currency", [], $language)." ".$direction->currencyFrom->getTitle($language), 
+                            "callback_data" => "exchangePageSetAmountInCurrencyFrom:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.back_to_exchange_step_2", [], $language), 
+                            "callback_data" => "openExchangePageStep2:;:".$direction->currency_from, 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
     }
 }

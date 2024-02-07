@@ -206,5 +206,6 @@ return [
     'telegram_delete_messages' => env("TELEGRAM_DELETE_MESSAGES", true),
     'telegram_actions' => [
         "exchangeSumFrom" => 1,
+        "exchangeSumTo" => 2,
     ],
 ];

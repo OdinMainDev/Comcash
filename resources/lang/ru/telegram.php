@@ -40,5 +40,5 @@ return [
     "exchange_page_set_amount_2" => "Обмен возможен от суммы",
     "exchange_page_set_amount_3" => "до",
     "exchange_page_set_amount_4" => "Укажите сумму в валюте:",
-    "exchange_page_set_amount_in_currency_to" => "Указать сумму в валюте:"
+    "exchange_page_set_amount_in_currency" => "Указать сумму в валюте:"
 ];
