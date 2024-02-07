@@ -49,11 +49,11 @@ class Main {
                 $base[] = "to_card";
             else
                 $base[] = "to_address";
-        }
 
-        $base[] = "first_name";
-        $base[] = "second_name";
-        $base[] = "last_name";
+            $base[] = "first_name";
+            $base[] = "second_name";
+            $base[] = "last_name";
+        }
         return $base;
     }
 
