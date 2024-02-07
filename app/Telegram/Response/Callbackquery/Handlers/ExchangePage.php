@@ -186,6 +186,7 @@ trait ExchangePage {
         })->first();
         if(!$direction){
             info("OKEY 2");
+            info($directionId);
             return;
         }
         info("OKEY 3");
