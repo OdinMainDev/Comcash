@@ -86,6 +86,7 @@ trait ExchangePage {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
         }
         $fields = $direction->getLayoutTelegramAttribute();
+        info($fields);
         $this->user->action_data = $this->user->action_data."_".$text;
         
         // вычитаем 2 так как есть directionid_amount
