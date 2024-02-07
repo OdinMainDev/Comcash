@@ -134,7 +134,7 @@ trait ExchangePage {
         }
 
         
-        $text = __("telegram.exchange_check_2", [], $language);
+        $text .= __("telegram.exchange_check_2", [], $language);
         $text .= " <b>".$direction->currencyFrom->getTitle($language)." -> ".$direction->currencyTo->getTitle($language)."</b>";
         $text .= "\n";
         $text .= __("telegram.exchange_check_3", [], $language);
