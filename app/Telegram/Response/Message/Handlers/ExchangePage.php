@@ -38,7 +38,7 @@ trait ExchangePage {
         }
 
         $this->user->action = config("app.telegram_actions")["exchangeSetFields"];
-        $this->user->action_data = $directionId."_".$amount;
+        $this->user->action_data = $directionId."_".$textAmount;
         $this->user->save();
         $this->exchangeFieldMessage($chat_id, $language, 0, $direction);
     }
