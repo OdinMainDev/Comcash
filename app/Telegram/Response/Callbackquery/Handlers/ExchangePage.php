@@ -179,19 +179,41 @@ trait ExchangePage {
         return $text;
     }
 
-    public function openExchangePage3Reverse($chat_id, $language){
-        $directionId = $this->user->action_data;
+    public function openExchangePage3Reverse($chat_id, $language, $directionId){
+        info("OKEY 1");
         $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
             return $row->id != $directionId;
         })->first();
         if(!$direction){
+            info("OKEY 2");
             return;
         }
+        info("OKEY 3");
 
         $this->user->action = config("app.telegram_actions")['exchangeSumTo'];
         $this->user->action_dafa = $directionId;
         $this->user->save();
-
+        info([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $this->constructTextForExchangePage3($language, $direction, true),
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.exchange_page_set_amount_in_currency", [], $language)." ".$direction->currencyFrom->getTitle($language), 
+                            "callback_data" => "exchangePageSetAmountInCurrencyFrom:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.back_to_exchange_step_2", [], $language), 
+                            "callback_data" => "openExchangePageStep2:;:".$direction->currency_from, 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',

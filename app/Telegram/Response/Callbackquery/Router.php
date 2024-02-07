@@ -111,7 +111,7 @@ class Router
             break;
 
             case "exchangePageSetAmountInCurrencyTo":
-                $this->openExchangePage3Reverse($this->user->telegram_id, $this->user->language);
+                $this->openExchangePage3Reverse($this->user->telegram_id, $this->user->language, $this->user->action_data);
                 return;
             break;
 
