@@ -10,7 +10,7 @@ trait ExchangePage {
 
     public function exchangeSetAmount($chat_id, $language, $textAmount){
         if(!is_numeric($textAmount)){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_1", $textAmount);
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language);
         }
         $directionId = $this->user->action_data;
         $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {

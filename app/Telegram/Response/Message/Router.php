@@ -86,7 +86,7 @@ class Router
         switch($this->user->action) {
             case $config['exchangeSumFrom']:
             case $config['exchangeSumTo']:
-                $this->exchangeSetAmount($this->user->telegram_id, $this->user->language, $this->message);
+                $this->exchangeSetAmount($this->user->telegram_id, $this->user->language, $this->messageText);
                 return;
             break;
 
