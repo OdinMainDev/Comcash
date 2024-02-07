@@ -90,12 +90,15 @@ class Router
                 return;
             break;
 
+            case $config["exchangeSetFields"]:
+                $this->exchangeSetField($this->user->telegram_id, $this->user->language, $this->messageText);
+                return;
+            break;
+
             default:
                 $this->sendUnknownActionMessage($this->user->telegram_id, $this->user->language);
             break;
-        } 
-        $this->user->action = 0;
-        $this->user->save();
+        }
     }
 
 }
