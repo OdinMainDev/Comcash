@@ -94,7 +94,8 @@ class ExchangeStart implements ShouldQueue
         $this->exchange->save();
 
         // переделать на другое мыло и сверстать их вообще
-        Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
+        if($this->user->email[0] != "@")
+            Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
 
         $text = "";
         if($isManualMode){
