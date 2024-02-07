@@ -159,15 +159,15 @@ trait ExchangePage {
         $text .= " ".__("telegram.exchange_page_set_amount_3", [], $language);
         $text .= " <b>".$direction->data['min_amount'];
         $text .= " ".$direction->currencyFrom->getTitle($language);
-        $minAmountInToCurrency = $this->estimateAmount(
+        $maxAmountInToCurrency = $this->estimateAmount(
             $direction->currencyFrom->name, 
             $direction->currencyTo->name, 
             $direction->currencyTo->units, 
-            $direction->data['min_amount'], 
+            $direction->data['max_amount'], 
             $direction->profit_percent, 
             false
         );
-        $text .= " (~ ".$minAmountInToCurrency;
+        $text .= " (~ ".$maxAmountInToCurrency;
         $text .= " ".$direction->currencyTo->getTitle($language);
         $text .= ")</b>";
         $text .= "\n";
