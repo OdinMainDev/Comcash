@@ -148,6 +148,26 @@ trait ExchangePage {
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' =>  $text,
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.exchange_check_edit", [], $language), 
+                            "callback_data" => "backToExchangeSetFields:;:", 
+                        ],
+                        [
+                            "text" =>__("telegram.exchange_check_create", [], $language), 
+                            "callback_data" => "createExchange:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.exchange_check_back", [], $language), 
+                            "callback_data" => "openExchangePageStep1:;:", 
+                        ],
+                    ],
+                ]
+            ],
         ]);
     }
 }
