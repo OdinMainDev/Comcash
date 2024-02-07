@@ -164,16 +164,11 @@ class ExchangeStart implements ShouldQueue
         sendTelegramNotification($text);
 
         if($isTelegramBotExchange){
-            info(1);
-            info(isset($this->exchange->data['merchant_from_data']['address']));
-            info(@$this->exchange->data['merchant_from_data']['address']);
             if(!isset($this->exchange->data['merchant_from_data']['address']) || !$this->exchange->data['merchant_from_data']['address']){
                 return;
             }
-            info(2);
             $botUsers = $this->user->getTelegramUsers;    
             foreach($botUsers as $botUser){
-                info(3);
                 $language = $botUser->language;
                 $text = $this->tgUserExchangeStartMessage($this->exchange, $language);
                 sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);

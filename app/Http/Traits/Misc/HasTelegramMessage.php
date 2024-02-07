@@ -44,6 +44,7 @@ trait HasTelegramMessage {
         }
         $text .= "\n\n";
         $text .= __("telegram.new_exchange_10", [], $language);
+        return $text;
     }
 
 }
