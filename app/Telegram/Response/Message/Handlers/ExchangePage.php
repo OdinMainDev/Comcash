@@ -90,7 +90,8 @@ trait ExchangePage {
         
         // вычитаем 2 так как есть directionid_amount
         if(count($data) - 2 < count($fields)){
-            $fieldIndex = count($fields) - count($data) - 2;
+            // добавляем 2 + 1 из за directionid_amount + 1 новый филд
+            $fieldIndex = count($fields) + 3 - count($data);
             $this->exchangeFieldMessage($chat_id, $language, $fieldIndex, $direction);
             $this->user->save();
             return;
