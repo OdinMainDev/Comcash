@@ -26,6 +26,8 @@ class StartCommand extends SystemCommand
     {
         $user = $this->getUserBotModel($this->getMessage()->getFrom(), $this->constructBotData());
         $language = $user->language;
+        $user->action = 0;
+        $user->save();
 
         if(Config::get("app.telegram_delete_messages")){
             Request::deleteMessage([

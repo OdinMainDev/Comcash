@@ -47,6 +47,8 @@ class Router
                 'message_id' => $this->query->getMessage()->getMessageId(),
             ]);
         }
+        $this->user->action = 0;
+        $this->user->save();
         $this->doResponse();
     }
 

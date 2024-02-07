@@ -39,6 +39,20 @@ class Main {
         return $base;
     }
 
+    function getLayoutTelegram($is_withdraw){
+        $base = [];
+        if(!$is_withdraw){
+            if(!$this->isCrypto)
+                $base[] = "from_card";
+        }else{
+            if(!$this->isCrypto)
+                $base[] = "to_card";
+            else
+                $base[] = "to_address";
+        }
+        return $base;
+    }
+
     function getValidation($request, $is_withdraw){
         $base = [
             "email" => "required|email|string|max:255",
@@ -68,8 +82,8 @@ class Main {
     }
 
     function getDeposits($merchant, $exchange){
-        $obj = new Aifory($merchant, $exchange);
-        return $obj->get_invoices();
+        // $obj = new Aifory($merchant, $exchange);
+        // return $obj->get_invoices();
     }
 
     function sellCurrency($merchant, $exchange){
@@ -81,22 +95,22 @@ class Main {
     }
 
     function makeWithdraw($merchant, $exchange){
-        $obj = new Aifory($merchant, $exchange);
-        $resp = $obj->make_withdraw();
-        if(@$resp['status'] != "accepted"){
-            if(!is_array($resp)){
-                $resp = [];
-            }
-            $resp['error'] = [
-                "code" => @$resp['status'],
-                "message" => @$resp['cause']
-            ];
-        }
-        return $resp;
+        // $obj = new Aifory($merchant, $exchange);
+        // $resp = $obj->make_withdraw();
+        // if(@$resp['status'] != "accepted"){
+        //     if(!is_array($resp)){
+        //         $resp = [];
+        //     }
+        //     $resp['error'] = [
+        //         "code" => @$resp['status'],
+        //         "message" => @$resp['cause']
+        //     ];
+        // }
+        // return $resp;
     }
 
     function getWithdraws($merchant, $exchange){
-        $obj = new Aifory($merchant, $exchange);
-        return $obj->get_withdraws();
+        // $obj = new Aifory($merchant, $exchange);
+        // return $obj->get_withdraws();
     }
 }

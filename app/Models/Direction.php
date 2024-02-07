@@ -56,6 +56,13 @@ class Direction extends Model
         return array_values(array_unique(array_merge($layout_from->getLayout(), $layout_to->getLayout())));
     }
 
+    public function getLayoutTelegramAttribute()
+    {
+        $layout_from = new Handler($this->merchant_type_from);
+        $layout_to = new Handler($this->merchant_type_to, true);
+        return array_values(array_unique(array_merge($layout_from->getLayoutTelegram(), $layout_to->getLayoutTelegram())));
+    }
+
     public function merchantFrom(){
         return $this->hasOne(Merchant::class, "id", "merchant_from");
     }

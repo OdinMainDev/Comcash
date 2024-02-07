@@ -36,6 +36,15 @@ class Handler {
         return $this->merchant->getLayout($this->is_withdraw);
     }
 
+    public function getLayoutTelegram(){
+        $this->merchant = $this->getMerchant();
+        if(!$this->merchant){
+            return false;
+        }
+
+        return $this->merchant->getLayoutTelegram($this->is_withdraw);
+    }
+
     public function getValidation($request){
         $this->merchant = $this->getMerchant();
         if(!$this->merchant){

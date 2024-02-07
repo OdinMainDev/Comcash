@@ -7,12 +7,13 @@ use App\Telegram\Helpers\StaticMessages;
 use App\Telegram\Response\Callbackquery\Handlers\ExchangePage;
 use App\Telegram\Response\Callbackquery\Handlers\SetLanguage;
 use App\Telegram\Response\Callbackquery\Handlers\SetRules;
+use App\Telegram\Response\Message\Handlers\ExchangePage as MExchangePage;
 use Illuminate\Support\Facades\Config;
 use Longman\TelegramBot\Request;
 
 class Router
 {
-    use BotFunctions, StaticMessages, SetLanguage, SetRules, ExchangePage;
+    use BotFunctions, StaticMessages, SetLanguage, SetRules, ExchangePage, MExchangePage;
     
     public $message;
     public $messageText;
@@ -47,37 +48,52 @@ class Router
             // Новый обмен
             case __("telegram.bottom_menu_1", [], $this->user->language):
                 $this->openExchangePage($this->user->telegram_id, $this->user->language);
-                return;
             break;
 
             // О боте
             case __("telegram.bottom_menu_2", [], $this->user->language):
                 $this->sendAboutBotMessage($this->user->telegram_id, $this->user->language);
-                return;
             break;
 
             // Личный кабинет
             case __("telegram.bottom_menu_3", [], $this->user->language):
                 $this->sendProfileMessage($this->user->telegram_id, $this->user->language);
-                return;
             break;
 
             // Поддержка
             case __("telegram.bottom_menu_4", [], $this->user->language):
                 $this->sendSupportBotMessage($this->user->telegram_id, $this->user->language);
-                return;
             break;
 
             // Сообщество
             case __("telegram.bottom_menu_5", [], $this->user->language):
                 $this->sendCommunityBotMessage($this->user->telegram_id, $this->user->language);
-                return;
             break;
 
             default:
                 // actions
+                $this->doResponseAction();
+                return;
             break;
         }
+
+        $this->user->action = 0;
+        $this->user->save();
+    }
+
+    private function doResponseAction() {
+        $config = Config::get("app.telegram_actions");
+        switch($this->user->action) {
+            case $config['exchangeSumFrom']:
+            case $config['exchangeSumTo']:
+
+            break;
+
+            default:
+                $this->sendUnknownActionMessage($this->user->telegram_id, $this->user->language);
+                return;
+            break;
+        } 
     }
 
 }

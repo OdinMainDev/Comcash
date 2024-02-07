@@ -40,5 +40,15 @@ return [
     "exchange_page_set_amount_2" => "Обмен возможен от суммы",
     "exchange_page_set_amount_3" => "до",
     "exchange_page_set_amount_4" => "Укажите сумму в валюте:",
-    "exchange_page_set_amount_in_currency" => "Указать сумму в валюте:"
+    "exchange_page_set_amount_in_currency" => "Указать сумму в валюте:",
+    "unknown_action" => "Неизвестное действие...",
+    "exchange_create_error_1" => "Сумма указана не верно, укажите сумму в формате (123.456)",
+    "exchange_create_error_2" => "Ошибка данных, начните обмен заново!",
+    "exchange_create_error_3" => "Ошибка данных, начните обмен заново!",
+    "exchange_create_error_4" => "Ошибка, указанная сумма меньше минимально возможной",
+    "exchange_create_error_5" => "Ошибка, указанная сумма больше максимально возможной",
+    "exchange_set_field" => "Для продолжения обмена нам необходимы некоторые данные",
+    "exchange_set_field_from_card" => "Напишите номер карты с которой отправите средства",
+    "exchange_set_field_to_card" => "Напишите номер карты куда должны прийти средства",
+    "exchange_set_field_to_address" => "Напишите адрес кошелька куда должны прийти средства",
 ];

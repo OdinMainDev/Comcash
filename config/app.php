@@ -207,5 +207,6 @@ return [
     'telegram_actions' => [
         "exchangeSumFrom" => 1,
         "exchangeSumTo" => 2,
+        "exchangeSetFields" => 3,
     ],
 ];
