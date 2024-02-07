@@ -19,9 +19,9 @@ trait ExchangePage {
         if(!$direction){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
         }
-        $isReverse = $this->user->action_data != config("app.telegram_actions")['exchangeSumFrom'];
+        $isReverse = $this->user->action_data == config("app.telegram_actions")['exchangeSumFrom'] ? false : true;
         $units = $direction->currencyFrom->units;
-        if(!$isReverse){
+        if($isReverse){
             $units = $direction->currencyTo->units;
         }
         $amount = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $textAmount, $direction->profit_percent, $isReverse);
@@ -29,7 +29,7 @@ trait ExchangePage {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_3", $textAmount." ".$amount);
         }
 
-        if(@$direction->data['min_amount'] && $direction->data['min_amount'] > $amount){
+        if(!@$direction->data['min_amount'] && $direction->data['min_amount'] > $amount){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_4", $textAmount." ".$amount);
         }
         if(@$direction->data['max_amount'] && $direction->data['max_amount'] < $amount){
