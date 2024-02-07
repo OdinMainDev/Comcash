@@ -86,14 +86,16 @@ class Router
         switch($this->user->action) {
             case $config['exchangeSumFrom']:
             case $config['exchangeSumTo']:
-
+                $this->exchangeSetAmount($this->user->telegram_id, $this->user->language, $this->message);
+                return;
             break;
 
             default:
                 $this->sendUnknownActionMessage($this->user->telegram_id, $this->user->language);
-                return;
             break;
         } 
+        $this->user->action = 0;
+        $this->user->save();
     }
 
 }
