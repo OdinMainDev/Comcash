@@ -204,4 +204,7 @@ return [
     'kyc_user_id' => env("KYC_USERID", false),
     'telegram_has_rules' => env("TELEGRAM_HAS_RULES", true),
     'telegram_delete_messages' => env("TELEGRAM_DELETE_MESSAGES", true),
+    'telegram_actions' => [
+        "exchangeSumFrom" => 1,
+    ],
 ];

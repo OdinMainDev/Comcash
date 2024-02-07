@@ -99,6 +99,16 @@ class Router
                 $this->openExchangePage($this->user->telegram_id, $this->user->language);
                 return;
             break;
+
+            case "openExchangePageStep3":
+                $directionId = $this->validateExchangeDirectionByCurrencies($this->data);
+                if(!$directionId){
+                    $this->sendMainMenu($this->user->telegram_id, $this->user->language);
+                    return;
+                }
+                $this->openExchangePage3($this->user->telegram_id, $this->user->language, $directionId);
+                return;
+            break;
         }
     }
 

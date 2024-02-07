@@ -106,6 +106,37 @@ trait HasCache {
         });
     }
 
+    public function getDirectionByCurrencyPair($currency_from, $currency_to, $with_reverse_check = false){
+        $directions = $this->getCacheDirections();
+
+        $direction = false;
+        foreach($directions as $val){
+            if($val->currency_from != $currency_from->id){
+                continue;
+            }
+            if($val->currency_to != $currency_to->id){
+                continue;
+            }
+            $direction = $val;
+            break;
+        }
+        if($direction) return $direction;
+        if(!$with_reverse_check) return $direction;
+
+        // проверяем обратную сторону
+        foreach($directions as $val){
+            if($val->currency_to != $currency_from->id){
+                continue;
+            }
+            if($val->currency_from != $currency_to->id){
+                continue;
+            }
+            $direction = $val;
+            break;
+        }
+        return $direction;
+    }
+
     public function getCacheExportJson(){
         return Cache::remember("export-json-public", 3600, function(){
             $currencies = $this->getCacheCurrencies();

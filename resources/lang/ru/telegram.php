@@ -35,4 +35,9 @@ return [
     "exchange_page_choose_currency_to1" => "Отдаете:",
     "exchange_page_choose_currency_to2" => "Укажите валюту, которую нужно получить",
     "back_to_exchange_step_1" => "Вернутся к выбору валют",
+    "back_to_exchange_step_2" => "Изменить валюту получения",
+    "exchange_page_set_amount_1" => "Напишите сумму получения",
+    "exchange_page_set_amount_2" => "Обмен возможен от суммы:",
+    "exchange_page_set_amount_3" => "до",
+    "exchange_page_set_amount_4" => "Укажите сумму в валюте:",
 ];
