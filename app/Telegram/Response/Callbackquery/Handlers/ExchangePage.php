@@ -139,7 +139,7 @@ trait ExchangePage {
         $minAmountInToCurrency = $this->estimateAmount(
             $direction->currencyFrom->name, 
             $direction->currencyTo->name, 
-            $direction->currencyFrom->units, 
+            $direction->currencyTo->units, 
             $direction->data['min_amount'], 
             $direction->profit_percent, 
             false
@@ -153,7 +153,7 @@ trait ExchangePage {
         $minAmountInToCurrency = $this->estimateAmount(
             $direction->currencyFrom->name, 
             $direction->currencyTo->name, 
-            $direction->currencyFrom->units, 
+            $direction->currencyTo->units, 
             $direction->data['min_amount'], 
             $direction->profit_percent, 
             false
