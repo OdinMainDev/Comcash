@@ -3,6 +3,8 @@
 namespace App\Telegram\Response\Callbackquery\Handlers;
 
 use App\Http\Traits\Models\HasCache;
+use App\Jobs\ExchangeStart;
+use App\Models\Exchange;
 use App\Telegram\Helpers\KeyboardGenerator;
 use Longman\TelegramBot\Request;
 
@@ -221,14 +223,91 @@ trait ExchangePage {
         $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
             return $row->id != $directionId;
         })->first();
-        if(count($data) < 2 || !$directionId) {
-            
+        if(count($data) < 2 || !$directionId || !$direction) {
             return false;
         }
+
         $amount = $data[1];
         $this->user->action = config("app.telegram_actions")["exchangeSetFields"];
         $this->user->action_data = $directionId."_".$amount;
         $this->user->save();
+        
+        return true;
+    }
+    
+    public function checkCanCreateExchange() {
+        $data = $this->user->action_data;
+        $data = explode("_", $data);
+        if(count($data) <= 2) {
+            return false;
+        }
+        $directionId = $data[0];
+        $amountFrom = $data[1];
+        $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
+            return $row->id != $directionId;
+        })->first();
+        if(!$directionId) {
+            return false;
+        }
+        $fields = $direction->getLayoutTelegramAttribute();
+        if(count($data) - 2 != count($fields)){
+            return false;
+        }
+        $requestData = [];
+        foreach($data as $key => $value) {
+            if($key == 0){
+                continue;
+            }
+            if($key == 1){
+                $amountFrom = $value;
+                continue;
+            }
+            foreach($fields as $key2 => $field){
+                if($key - 2 == $key2){
+                    $requestData[$field] = $value;
+                }
+            }
+        }
+        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyFrom->units, $amountFrom, $direction->profit_percent);
+        if(!$amountTo) {
+            return false;
+        }
+        $exchange = new Exchange;
+        $exchange->hash = hash("sha256", uniqid().time()."cmcshsaltbyvio");
+        $exchange->direction_id = $direction->id;
+        $exchange->currency_from = $direction->currency_from;
+        $exchange->currency_to = $direction->currency_to;
+        $exchange->merchant_from = $direction->merchant_from;
+        $exchange->merchant_to = $direction->merchant_to;
+        $exchange->merchant_type_from = $direction->merchant_type_from;
+        $exchange->merchant_type_to = $direction->merchant_type_to;
+        $exchange->data = [
+            "request_data" => $requestData,
+            "device_data" => [
+                "ip" => "127.0.0.1",
+                "user_agent" => "telegram",
+                "language" => $this->user->language,
+                "fid" => "",
+
+            ],
+            "amount_data" => [
+                "amount_send" => $amountFrom,
+                "amount_send_usd" => $this->estimateAmount($direction->currencyFrom->name, "USD", 2, $amountFrom, $direction->profit_percent),
+                "amount_receive" => $amountTo,
+                "amount_receive_usd" => $this->estimateAmount($direction->currencyTo->name, "USD", 2, $amountFrom, 0),
+                "exchange_rate" => $this->estimateGetRate($direction->currencyFrom->name, $direction->currencyTo->name),
+                "exchange_rate_to_usd" => $this->estimateGetRate($direction->currencyFrom->name, "USD"),
+                "currency_from_name" => $this->convertCurrencyName($direction->currencyFrom->name),
+                "currency_to_name" => $this->convertCurrencyName($direction->currencyTo->name)
+            ],
+            "recalculate" => [
+                "has_recalculation" => false
+            ],
+            "isTelegramExchange" => true
+        ];
+        
+        $exchange->save();
+        ExchangeStart::dispatch($exchange->id, $this->user->language, $this->user->getUser);
         
         return true;
     }

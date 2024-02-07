@@ -64,5 +64,7 @@ return [
     "exchange_check_create" => "Создать обмен", 
     "exchange_check_edit" => "Изменить данные обмена", 
     "exchange_check_back" => "Вернуться к выбору валют", 
+    "exchange_create_error" => "Произошла ошибка во время обмена, обратитесь в поддержку или начните заново!",
+    "exchange_create_success" => "Обмен подготавливается, ожидайте сообщения от бота!"
 
 ];

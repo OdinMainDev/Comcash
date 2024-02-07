@@ -189,6 +189,32 @@ trait StaticMessages {
         ]);
     }
 
+    public function sendCreateExchangeError($chat_id, $language){
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.exchange_create_error", [], $language),
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_main_menu", [], $language), 
+                            "callback_data" => "openMainMenu:;:", 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
+    }
+
+    public function sendCreateExchangeSuccess($chat_id, $language){
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.exchange_create_success", [], $language),
+        ]);
+    }
+
     // public function sendLanguageMessage($chat_id, $language){
     //     Request::sendMessage([
     //         'chat_id' => $chat_id,

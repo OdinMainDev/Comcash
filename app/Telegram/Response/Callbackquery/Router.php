@@ -133,13 +133,12 @@ class Router
             break;
 
             case "createExchange":
-                // $directionId = $this->validateExchangeDirectionByCurrencies($this->data);
-                // if(!$directionId){
-                //     $this->sendMainMenu($this->user->telegram_id, $this->user->language);
-                //     return;
-                // }
-                // $this->openExchangePage3($this->user->telegram_id, $this->user->language, $directionId);
-                // return;
+                if(!$this->checkCanCreateExchange()){
+                    $this->sendCreateExchangeError($this->user->telegram_id, $this->user->language);
+                    return;
+                }
+                $this->sendCreateExchangeSuccess($this->user->telegram_id, $this->user->language);
+                return;
             break;
         }
     }
