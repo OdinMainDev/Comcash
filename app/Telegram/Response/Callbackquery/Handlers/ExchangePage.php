@@ -11,11 +11,11 @@ trait ExchangePage {
 
     public function openExchangePage($chat_id, $language){
         $currencies = $this->getCachedCurrencyDirectionsFrom();
-        $newCurrencies = [];
+        $keyboard = [];
         foreach($currencies as $currency){
-            $newCurrencies[$currency->getTitle($language)] = $currency->id;
+            $keyboard[$currency->getTitle($language)] = $currency->id;
         }
-        $keyboard = KeyboardGenerator::generate(KeyboardGenerator::makeFromKeyValueArray($newCurrencies, "openExchangePageStep2"));
+        $keyboard = KeyboardGenerator::generate(KeyboardGenerator::makeFromKeyValueArray($keyboard, "openExchangePageStep2"));
         $keyboard['inline_keyboard'][] = [[
             "text" =>__("telegram.back_to_main_menu", [], $language), 
             "callback_data" => "openMainMenu:;:", 
@@ -121,8 +121,14 @@ trait ExchangePage {
                 "inline_keyboard" => [
                     [
                         [
-                            "text" =>__("telegram.back_to_profile", [], $language), 
-                            "callback_data" => "openProfile:;:", 
+                            "text" =>__("telegram.exchange_page_set_amount_in_currency_to", [], $language)." ".$direction->currencyTo->getTitle($language), 
+                            "callback_data" => "exchangePageSetAmountInCurrencyTo:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.back_to_exchange_step_2", [], $language), 
+                            "callback_data" => "openExchangePageStep2:;:".$direction->currency_from, 
                         ],
                     ],
                 ]
@@ -163,6 +169,7 @@ trait ExchangePage {
         $text .= ")</b>";
         $text .= "\n";
         $text .= __("telegram.exchange_page_set_amount_4", [], $language);
+        $text .= " ".$direction->currencyFrom->getTitle($language);
         return $text;
     }
 }

@@ -37,7 +37,8 @@ return [
     "back_to_exchange_step_1" => "Вернутся к выбору валют",
     "back_to_exchange_step_2" => "Изменить валюту получения",
     "exchange_page_set_amount_1" => "Напишите сумму получения",
-    "exchange_page_set_amount_2" => "Обмен возможен от суммы:",
+    "exchange_page_set_amount_2" => "Обмен возможен от суммы",
     "exchange_page_set_amount_3" => "до",
     "exchange_page_set_amount_4" => "Укажите сумму в валюте:",
+    "exchange_page_set_amount_in_currency_to" => "Указать сумму в валюте:"
 ];
