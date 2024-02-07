@@ -113,10 +113,12 @@ trait ExchangePage {
                 $amountFrom = $value;
                 continue;
             }
-            foreach($fields as $field){
-                $appendText .= __("telegram.exchange_check_field_".$field, [], $language);
-                $appendText .= " <b>".$value."</b>";
-                $appendText .= "\n";
+            foreach($fields as $key2 => $field){
+                if($key - 2 == $key2){
+                    $appendText .= __("telegram.exchange_check_field_".$field, [], $language);
+                    $appendText .= " <b>".$value."</b>";
+                    $appendText .= "\n";
+                }
             }
         }
         $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyFrom->units, $amountFrom, $direction->profit_percent);
@@ -125,10 +127,10 @@ trait ExchangePage {
         }
 
         if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $amountFrom){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_2", $amountFrom." ".$amountTo);
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_2");
         }
         if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $amountFrom){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_3", $amountFrom." ".$amountTo);
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_3");
         }
 
         
