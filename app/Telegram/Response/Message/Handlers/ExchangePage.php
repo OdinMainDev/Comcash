@@ -62,7 +62,7 @@ trait ExchangePage {
                 return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
             }
         }
-        $field = $direction->getLayoutAttribute()[$fieldIndex];
+        $field = $direction->getLayoutTelegramAttribute()[$fieldIndex];
 
         $text = __("telegram.exchange_set_field", [], $language);
         $text .= "\n";
@@ -85,13 +85,12 @@ trait ExchangePage {
         if(!$direction){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
         }
-        $fields = $direction->getLayoutAttribute();
+        $fields = $direction->getLayoutTelegramAttribute();
         $this->user->action_data = $this->user->action_data."_".$text;
         
         // вычитаем 2 так как есть directionid_amount
         if(count($data) - 2 < count($fields)){
-            // добавляем 2 + 1 из за directionid_amount + 1 новый филд
-            $fieldIndex = count($fields) + 3 - count($data);
+            $fieldIndex = count($fields) + 2 - count($data);
             $this->exchangeFieldMessage($chat_id, $language, $fieldIndex, $direction);
             $this->user->save();
             return;
