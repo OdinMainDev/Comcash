@@ -82,20 +82,20 @@ trait ExchangePage {
             return $row->id != $directionId;
         })->first();
         if(!$direction){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_1");
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
         }
         $fields = $direction->getLayoutAttribute();
         
         if(count($data) - 2 < count($fields)){
             $this->user->action_data = $this->user->action_data."_".$text;
             $this->user->save();
-            $fieldIndex = count($fields) - count($data) - 2 + 1;
+            $fieldIndex = count($data) - count($fields) - 1;
             $this->exchangeFieldMessage($chat_id, $language, $fieldIndex, $direction);
             return;
         }
         // это последний заполненный филд
         // выдаем сообщение подтверждения
 
-        return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_1");
+        return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
     }
 }
