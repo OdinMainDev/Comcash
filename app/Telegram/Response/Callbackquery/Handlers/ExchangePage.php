@@ -157,7 +157,7 @@ trait ExchangePage {
         $text .= " ".$direction->currencyTo->getTitle($language);
         $text .= ")</b>";
         $text .= " ".__("telegram.exchange_page_set_amount_3", [], $language);
-        $text .= " <b>".$direction->data['min_amount'];
+        $text .= " <b>".$direction->data['max_amount'];
         $text .= " ".$direction->currencyFrom->getTitle($language);
         $maxAmountInToCurrency = $this->estimateAmount(
             $direction->currencyFrom->name, 
