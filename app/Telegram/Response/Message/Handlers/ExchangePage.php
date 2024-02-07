@@ -86,15 +86,17 @@ trait ExchangePage {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
         }
         $fields = $direction->getLayoutAttribute();
-        $this->user->action = 0;
         $this->user->action_data = $this->user->action_data."_".$text;
-        $this->user->save();
+        
         // вычитаем 2 так как есть directionid_amount
         if(count($data) - 2 < count($fields)){
             $fieldIndex = count($fields) - count($data) - 2;
             $this->exchangeFieldMessage($chat_id, $language, $fieldIndex, $direction);
+            $this->user->save();
             return;
         }
+        $this->user->action = 0;
+        $this->user->save();
         // это последний заполненный филд
         // выдаем сообщение подтверждения
 
