@@ -125,10 +125,10 @@ trait ExchangePage {
         }
 
         if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $amountFrom){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_2");
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_2", $amountFrom." ".$amountTo);
         }
         if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $amountFrom){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_3");
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_3", $amountFrom." ".$amountTo);
         }
 
         
