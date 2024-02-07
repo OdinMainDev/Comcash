@@ -10,7 +10,7 @@ trait ExchangePage {
 
     public function exchangeSetAmount($chat_id, $language, $textAmount){
         if(!is_numeric($textAmount)){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language);
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_1", $textAmount);
         }
         $directionId = $this->user->action_data;
         $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
@@ -42,11 +42,11 @@ trait ExchangePage {
         $this->exchangeFieldMessage($chat_id, $language, 0, $direction);
     }
 
-    public function exchangeSetAmountErrorMessage($chat_id, $language, $message = "exchange_create_error_1") {
+    public function exchangeSetAmountErrorMessage($chat_id, $language, $message = "exchange_create_error_1", $additional_data = "") {
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
-            'text' =>  __("telegram.".$message, [], $language),
+            'text' =>  __("telegram.".$message, [], $language)." ".$additional_data,
         ]);
     }
 
