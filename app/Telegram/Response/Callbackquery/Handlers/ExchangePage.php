@@ -213,4 +213,23 @@ trait ExchangePage {
             ],
         ]);
     }
+
+    public function checkCanOpenSetFieldsExchangeStep() {
+        $data = $this->user->action_data;
+        $data = explode("_", $data);
+        $directionId = $data[0];
+        $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
+            return $row->id != $directionId;
+        })->first();
+        if(count($data) < 2 || !$directionId) {
+            
+            return false;
+        }
+        $amount = $data[1];
+        $this->user->action = config("app.telegram_actions")["exchangeSetFields"];
+        $this->user->action_data = $directionId."_".$amount;
+        $this->user->save();
+        
+        return true;
+    }
 }

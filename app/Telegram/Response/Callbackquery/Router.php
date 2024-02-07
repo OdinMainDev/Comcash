@@ -124,17 +124,10 @@ class Router
             break;
 
             case "backToExchangeSetFields":
-                $data = $this->user->action_data;
-                $data = explode("_", $data);
-                $directionId = $this->validateExchangeDirectionByCurrencies($data[0]);
-                if(count($data) < 2 || !$directionId) {
+                if(!$this->checkCanOpenSetFieldsExchangeStep()){
                     $this->sendMainMenu($this->user->telegram_id, $this->user->language);
                     return;
                 }
-                $amount = $data[1];
-                $this->user->action = config("app.telegram_actions")["exchangeSetFields"];
-                $this->user->action_data = $directionId."_".$amount;
-                $this->user->save();
                 $this->exchangeFieldMessage($this->user->telegram_id, $this->user->language);
                 return;
             break;
