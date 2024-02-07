@@ -77,6 +77,7 @@ trait ExchangePage {
     public function exchangeSetField($chat_id, $language, $text){
         $data = $this->user->action_data;
         $data = explode("_", $data);
+        $data[] = $text;
         $directionId = $data[0];
         $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
             return $row->id != $directionId;
@@ -85,11 +86,12 @@ trait ExchangePage {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
         }
         $fields = $direction->getLayoutAttribute();
-        
+        $this->user->action = 0;
+        $this->user->action_data = $this->user->action_data."_".$text;
+        $this->user->save();
+        // вычитаем 2 так как есть directionid_amount
         if(count($data) - 2 < count($fields)){
-            $this->user->action_data = $this->user->action_data."_".$text;
-            $this->user->save();
-            $fieldIndex = count($data) - count($fields) - 1;
+            $fieldIndex = count($fields) - count($data) - 2;
             $this->exchangeFieldMessage($chat_id, $language, $fieldIndex, $direction);
             return;
         }

@@ -50,6 +50,10 @@ class Main {
             else
                 $base[] = "to_address";
         }
+
+        $base[] = "first_name";
+        $base[] = "second_name";
+        $base[] = "last_name";
         return $base;
     }
 
