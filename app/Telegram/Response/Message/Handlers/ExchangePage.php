@@ -24,16 +24,17 @@ trait ExchangePage {
         if($isReverse){
             $units = $direction->currencyTo->units;
         }
+
+        if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $textAmount){
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_4");
+        }
+        if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $textAmount){
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_5");
+        }
+
         $amount = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $textAmount, $direction->profit_percent, $isReverse);
         if(!$amount) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_3");
-        }
-
-        if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $amount){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_4");
-        }
-        if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $amount){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_5");
         }
 
         $this->user->action = config("app.telegram_actions")["exchangeSetFields"];
