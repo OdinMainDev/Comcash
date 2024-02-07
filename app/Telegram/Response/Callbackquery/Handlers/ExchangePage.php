@@ -113,7 +113,7 @@ trait ExchangePage {
         }
 
         $this->user->action = config("app.telegram_actions")['exchangeSumFrom'];
-        $this->user->action_action_data = $directionId;
+        $this->user->action_data = $directionId;
         $this->user->save();
 
         Request::sendMessage([
@@ -188,7 +188,7 @@ trait ExchangePage {
         }
 
         $this->user->action = config("app.telegram_actions")['exchangeSumTo'];
-        $this->user->action_action_data = $directionId;
+        $this->user->action_data = $directionId;
         $this->user->save();
         
         Request::sendMessage([
