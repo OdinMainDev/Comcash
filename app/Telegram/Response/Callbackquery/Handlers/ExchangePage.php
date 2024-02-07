@@ -134,7 +134,7 @@ trait ExchangePage {
         $text = __("telegram.exchange_page_set_amount_1", [], $language);
         $text .= "\n";
         $text .= __("telegram.exchange_page_set_amount_2", [], $language);
-        $text .= " <b>".$direction->data['min_amount']." (~";
+        $text .= " <b>".$direction->data['min_amount'];
         $text .= " ".$direction->currencyFrom->getTitle($language);
         $minAmountInToCurrency = $this->estimateAmount(
             $direction->currencyFrom->name, 
@@ -148,7 +148,7 @@ trait ExchangePage {
         $text .= " ".$direction->currencyTo->getTitle($language);
         $text .= ")</b>";
         $text .= " ".__("telegram.exchange_page_set_amount_3", [], $language);
-        $text .= " <b>".$direction->data['min_amount']." (~";
+        $text .= " <b>".$direction->data['min_amount'];
         $text .= " ".$direction->currencyFrom->getTitle($language);
         $minAmountInToCurrency = $this->estimateAmount(
             $direction->currencyFrom->name, 
