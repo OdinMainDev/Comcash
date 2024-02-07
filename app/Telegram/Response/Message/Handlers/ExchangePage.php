@@ -100,6 +100,52 @@ trait ExchangePage {
         // это последний заполненный филд
         // выдаем сообщение подтверждения
 
-        return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
+        $text = __("telegram.exchange_check_1", [], $language);
+        $text .= "\n\n";
+
+        $amountFrom = 0;
+        $appendText = "";
+        foreach($data as $key => $value) {
+            if($key == 0){
+                continue;
+            }
+            if($key == 1){
+                $amountFrom = $value;
+                continue;
+            }
+            foreach($fields as $field){
+                $appendText .= __("telegram.exchange_check_field_".$field, [], $language);
+                $appendText .= " <b>".$value."</b>";
+                $appendText .= "\n";
+            }
+        }
+        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyFrom->units, $amountFrom, $direction->profit_percent);
+        if(!$amountTo) {
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_1");
+        }
+
+        if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $amountTo){
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_2");
+        }
+        if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $amountTo){
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_3");
+        }
+
+        
+        $text = __("telegram.exchange_check_2", [], $language);
+        $text .= " <b>".$direction->currencyFrom->getTitle($language)." -> ".$direction->currencyTo->getTitle($language)."</b>";
+        $text .= "\n";
+        $text = __("telegram.exchange_check_3", [], $language);
+        $text .= " <b>".$amountFrom." ".$direction->currencyFrom->getTitle($language)."</b>";
+        $text .= "\n";
+        $text = __("telegram.exchange_check_4", [], $language);
+        $text .= " <b>".$amountTo." ".$direction->currencyTo->getTitle($language)."</b>";
+        $text .= "\n";
+        $text .= $appendText;
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' =>  $text,
+        ]);
     }
 }
