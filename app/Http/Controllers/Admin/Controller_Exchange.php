@@ -69,20 +69,21 @@ class Controller_Exchange extends Controller{
                     $needToSendMessage = true;
                 }
             }
-            if($needToSendMessage){
-                $user = $exchange->getUser;
-                $botUsers = $user->getTelegramUsers;
-                foreach($botUsers as $botUser){
-                    $language = $botUser->language;
-                    $text = $this->tgUserExchangeStartMessage($exchange, $language);
-                    sendTelegramBotUserMessage($text, $botUser, $botUser->getBot, $exchange->id);
-                    sendTelegramBotUserMessage($exchange->data['merchant_from_data']['address'], $botUser, $botUser->getBot);
-                    sendTelegramBotUserMessage($exchange->data['amount_data']['amount_send'], $botUser, $botUser->getBot);
-                }
-            }
         }
         $exchange->data = $data;
         $exchange->save();
+
+        if($needToSendMessage){
+            $user = $exchange->getUser;
+            $botUsers = $user->getTelegramUsers;
+            foreach($botUsers as $botUser){
+                $language = $botUser->language;
+                $text = $this->tgUserExchangeStartMessage($exchange, $language);
+                sendTelegramBotUserMessage($text, $botUser, $botUser->getBot, $exchange->id);
+                sendTelegramBotUserMessage($exchange->data['merchant_from_data']['address'], $botUser, $botUser->getBot);
+                sendTelegramBotUserMessage($exchange->data['amount_data']['amount_send'], $botUser, $botUser->getBot);
+            }
+        }
         return $this->responseSuccess();
     }
 

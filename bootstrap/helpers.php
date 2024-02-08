@@ -207,10 +207,10 @@ function sendTelegramBotUserMessage($text, $user, $bot, $exchangeId = false){
     if($exchangeId) {
         $postData['reply_markup'] = json_encode([
             "inline_keyboard" => [
-                [
+                [[
                     "text" => __("telegram.i_paid_button", [], $user->language),
                     "callback_data" => "exchangeIPaidButton:;:".$exchangeId, 
-                ]
+                ]]
             ]
         ]);
     }
