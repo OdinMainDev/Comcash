@@ -205,14 +205,14 @@ function sendTelegramBotUserMessage($text, $user, $bot, $exchangeId = false){
         'parse_mode' =>  'html',
     );
     if($exchangeId) {
-        $postData['reply_markup'] = [
+        $postData['reply_markup'] = json_encode([
             "inline_keyboard" => [
                 [
                     "text" => __("telegram.i_paid_button", [], $user->language),
                     "callback_data" => "exchangeIPaidButton:;:".$exchangeId, 
                 ]
             ]
-        ];
+        ]);
     }
     $ch = curl_init('https://api.telegram.org/bot' . $bot->token . '/sendMessage');
     curl_setopt($ch, CURLOPT_POST, 1);
