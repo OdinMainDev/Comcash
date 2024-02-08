@@ -99,7 +99,7 @@ class Controller_Exchange extends Controller{
         $exchange->status = 3;
         $exchange->save();
         ExchangeWithdraw::dispatch($exchange->id);
-        return redirect(route("adminExchangeList"));
+        return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
     public function checkexchlocal($id){
@@ -121,7 +121,7 @@ class Controller_Exchange extends Controller{
         $exchange->save();
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ВЫПЛАТА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
         sendTelegramNotification($text);
-        return redirect(route("adminExchangeList"));
+        return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
     public function set_withdraw_complete($lang, $id){
@@ -136,7 +136,7 @@ class Controller_Exchange extends Controller{
         $exchange->save();
         $text = "✅✅✅<b>СТАТУС ЗАЯВКИ - ЗАЯВКА ЗАВЕРШЕНА</b>✅✅✅\n".$this->tgBasicMessage($exchange);
         sendTelegramNotification($text);
-        return redirect(route("adminExchangeList"));
+        return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
     public function set_paid($lang, $id){
@@ -175,7 +175,7 @@ class Controller_Exchange extends Controller{
             $currency->save();
             Cache::forget("currencies-public");
         }
-        return redirect(route("adminExchangeList"));
+        return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
     public function checkUserCanUpdateExchange($exchange) {
@@ -197,7 +197,7 @@ class Controller_Exchange extends Controller{
         $exchange->save();
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА УДАЛЕНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
         sendTelegramNotification($text);
-        return redirect(route("adminExchangeList"));
+        return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
     public function set_created($lang, $id){
@@ -212,7 +212,7 @@ class Controller_Exchange extends Controller{
         $exchange->save();
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА СОЗДАНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
         sendTelegramNotification($text);
-        return redirect(route("adminExchangeList"));
+        return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
     public function set_closed_all() {
@@ -225,6 +225,6 @@ class Controller_Exchange extends Controller{
         $query->update([
             "status" => 13
         ]);
-        return redirect(route("adminExchangeList"));
+        return redirect(route("adminExchangeList", ["id" => 0]));
     }
 }
