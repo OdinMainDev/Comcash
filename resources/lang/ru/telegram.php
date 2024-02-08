@@ -79,6 +79,17 @@ return [
     "new_exchange_field_from_card" => "Карта с которой отправите средства:",
     "new_exchange_field_to_card" => "Карта на которую поступят средства:",
     "new_exchange_field_to_address" => "Кошелек на который поступят средства:",
+    "i_paid_button" => "Я оплатил",
+    "i_paid_message" => "Обрабатываем вашу заявку!",
+    "exchange_status_i_paid" => "Заявка помечена как оплаченная! Как поменяется статус обмена - мы отправим вам сообщение",
+    "exchange_status_start_withdraw" => "Заявка в процессе выплаты! Как поменяется статус обмена - мы отправим вам сообщение",
+    "exchange_status_complete_withdraw_1" => "Заявка:",
+    "exchange_status_complete_withdraw_2" => "успешно завершена!",
+    "exchange_status_complete_withdraw_3" => "Спасибо за то что воспользовались нашим сервисом",
+    "exchange_status_complete_withdraw_4" => "Историю заявок можете посмотреть в личном кабинете",
+    "exchange_status_delete_1" => "Заявка:",
+    "exchange_status_delete_2" => "была удалена!",
+    "exchange_status_delete_3" => "Если вы оплатили, отпишите в поддержку!",
 
 
 ];

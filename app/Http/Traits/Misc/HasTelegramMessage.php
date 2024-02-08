@@ -47,4 +47,31 @@ trait HasTelegramMessage {
         return $text;
     }
 
+    public function tgUserExchangeIPaidMessage($language){
+        $text = __("telegram.exchange_status_i_paid", [], $language);
+        return $text;
+    }
+
+    public function tgUserExchangeStartWithdrawMessage($language){
+        $text = __("telegram.exchange_status_start_withdraw", [], $language);
+        return $text;
+    }
+
+    public function tgUserExchangeCompleteWithdrawMessage($exchange, $language) {
+        $text = __("telegram.exchange_status_complete_withdraw_1", [], $language);
+        $text .= " <b>#".$exchange->id."</b>";
+        $text .= " ".__("telegram.exchange_status_complete_withdraw_2", [], $language);
+        $text .= "\n".__("telegram.exchange_status_complete_withdraw_3", [], $language);
+        $text .= "\n".__("telegram.exchange_status_complete_withdraw_4", [], $language);
+        return $text;
+    }
+
+    public function tgUserExchangeDeleteMessage($exchange, $language) {
+        $text = __("telegram.exchange_status_delete_1", [], $language);
+        $text .= " <b>#".$exchange->id."</b>";
+        $text .= " ".__("telegram.exchange_status_delete_2", [], $language);
+        $text .= "\n".__("telegram.exchange_status_delete_3", [], $language);
+        return $text;
+    }
+
 }

@@ -121,6 +121,16 @@ class Controller_Exchange extends Controller{
         $exchange->save();
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ВЫПЛАТА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
         sendTelegramNotification($text);
+
+        $user = $exchange->getUser;
+        $botUsers = $user->getTelegramUsers;
+        foreach($botUsers as $botUser){
+            $language = $botUser->language;
+            $text = $this->tgUserExchangeStartWithdrawMessage($language);
+            sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
+        }
+
+        $this->restoreWalletsAddress($exchange);
         return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
@@ -136,6 +146,15 @@ class Controller_Exchange extends Controller{
         $exchange->save();
         $text = "✅✅✅<b>СТАТУС ЗАЯВКИ - ЗАЯВКА ЗАВЕРШЕНА</b>✅✅✅\n".$this->tgBasicMessage($exchange);
         sendTelegramNotification($text);
+
+        $user = $exchange->getUser;
+        $botUsers = $user->getTelegramUsers;
+        foreach($botUsers as $botUser){
+            $language = $botUser->language;
+            $text = $this->tgUserExchangeCompleteWithdrawMessage($exchange, $language);
+            sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
+        }
+
         return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
@@ -152,6 +171,93 @@ class Controller_Exchange extends Controller{
         $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ОПЛАЧЕНО</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
         sendTelegramNotification($text);
 
+        $user = $exchange->getUser;
+        $botUsers = $user->getTelegramUsers;
+        foreach($botUsers as $botUser){
+            $language = $botUser->language;
+            $text = $this->tgUserExchangeIPaidMessage($language);
+            sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
+        }
+
+        $this->restoreWalletsAddress($exchange);
+        return redirect(route("adminExchangeList", ["id" => 0]));
+    }
+
+    public function checkUserCanUpdateExchange($exchange) {
+        if($this->isRootUser()) return true;
+
+        if(auth()->user()->id != $exchange->admin_id && $exchange->admin_id != 0) return false;
+        if(!@$exchange->data || !isset($exchange->data['merchant_from_data'])) return true;
+        if(!@$exchange->data['merchant_from_data']['address']) return false;
+
+        return true;
+    }
+
+    public function set_deleted($lang, $id){
+        $exchange = $this->checkexchlocal($id);
+        if(!$exchange) return abort(404);
+        // if(!$this->isRootUser()) return abort(404);
+        
+        $exchange->status = 13;
+        $exchange->save();
+        $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА УДАЛЕНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
+        sendTelegramNotification($text);
+
+        $user = $exchange->getUser;
+        $botUsers = $user->getTelegramUsers;
+        foreach($botUsers as $botUser){
+            $language = $botUser->language;
+            $text = $this->tgUserExchangeDeleteMessage($exchange, $language);
+            sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
+        }
+
+
+        return redirect(route("adminExchangeList", ["id" => 0]));
+    }
+
+    public function set_created($lang, $id){
+        $exchange = $this->checkexchlocal($id);
+        if(!$exchange) return abort(404);
+        if(!$this->isRootUser()) return abort(404);
+        
+        $exchange->admin_id = 0;
+        $exchange->status = 0;
+        $exchange->created_at = now();
+        $exchange->updated_at = now();
+        $exchange->save();
+        $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА СОЗДАНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
+        sendTelegramNotification($text);
+
+        return redirect(route("adminExchangeList", ["id" => 0]));
+    }
+
+    public function set_closed_all() {
+        $query = Exchange::whereIn("status", [0, 1]);
+        if(!$this->isRootUser()){
+            $query = $query->where(function($q){
+                $q->where("admin_id", 0)->orWhere("admin_id", auth()->user()->id);
+            });
+        }
+
+        $query = $query->get();
+        foreach($query as $exchange){
+            $exchange->status = 13;
+            $exchange->save();
+            $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА УДАЛЕНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
+            sendTelegramNotification($text);
+
+            $user = $exchange->getUser;
+            $botUsers = $user->getTelegramUsers;
+            foreach($botUsers as $botUser){
+                $language = $botUser->language;
+                $text = $this->tgUserExchangeDeleteMessage($exchange, $language);
+                sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
+            }
+        }
+        return redirect(route("adminExchangeList", ["id" => 0]));
+    }
+
+    public function restoreWalletsAddress($exchange) {
         $currency = $exchange->currencyFrom;
         $currencyData = $currency->data;
         if(isset($currencyData['wallets']) && is_array($currencyData['wallets'])){
@@ -175,56 +281,5 @@ class Controller_Exchange extends Controller{
             $currency->save();
             Cache::forget("currencies-public");
         }
-        return redirect(route("adminExchangeList", ["id" => 0]));
-    }
-
-    public function checkUserCanUpdateExchange($exchange) {
-        if($this->isRootUser()) return true;
-
-        if(auth()->user()->id != $exchange->admin_id && $exchange->admin_id != 0) return false;
-        if(!@$exchange->data || !isset($exchange->data['merchant_from_data'])) return true;
-        if(!@$exchange->data['merchant_from_data']['address']) return false;
-
-        return true;
-    }
-
-    public function set_deleted($lang, $id){
-        $exchange = $this->checkexchlocal($id);
-        if(!$exchange) return abort(404);
-        // if(!$this->isRootUser()) return abort(404);
-        
-        $exchange->status = 13;
-        $exchange->save();
-        $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА УДАЛЕНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
-        sendTelegramNotification($text);
-        return redirect(route("adminExchangeList", ["id" => 0]));
-    }
-
-    public function set_created($lang, $id){
-        $exchange = $this->checkexchlocal($id);
-        if(!$exchange) return abort(404);
-        if(!$this->isRootUser()) return abort(404);
-        
-        $exchange->admin_id = 0;
-        $exchange->status = 0;
-        $exchange->created_at = now();
-        $exchange->updated_at = now();
-        $exchange->save();
-        $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА СОЗДАНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
-        sendTelegramNotification($text);
-        return redirect(route("adminExchangeList", ["id" => 0]));
-    }
-
-    public function set_closed_all() {
-        $query = Exchange::whereIn("status", [0, 1]);
-        if(!$this->isRootUser())
-            $query = $query->where(function($q){
-                $q->where("admin_id", 0)->orWhere("admin_id", auth()->user()->id);
-            });
-
-        $query->update([
-            "status" => 13
-        ]);
-        return redirect(route("adminExchangeList", ["id" => 0]));
     }
 }
