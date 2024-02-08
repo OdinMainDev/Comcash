@@ -38,9 +38,6 @@
             <a class='header__link' href='{{route("index")}}'>
                 {{__("front.ClearYourCryptoMenu")}}
             </a>
-            <a class='header__link' href='{{route("index")}}'>
-                {{__("front.ExchangeMenu")}}
-            </a>
             <a class='header__link' href='{{route("comcashPage", [app()->getLocale(), "name" => "delivery"])}}'>
                 {{__("front.CashCourierMenu")}}
             </a>
