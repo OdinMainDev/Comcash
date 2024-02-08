@@ -140,6 +140,11 @@ class Router
                 $this->sendCreateExchangeSuccess($this->user->telegram_id, $this->user->language);
                 return;
             break;
+
+            case "exchangeIPaidButton":
+                $this->checkIPaidButtonAndResponse($this->data);
+                return;
+            break;
         }
     }
 

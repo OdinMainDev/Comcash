@@ -198,14 +198,25 @@ function sendTelegramKycSuccess($kyc){
 }
 
 
-function sendTelegramBotUserMessage($text, $user, $bot){
-    $ch = curl_init('https://api.telegram.org/bot' . $bot->token . '/sendMessage');
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+function sendTelegramBotUserMessage($text, $user, $bot, $exchangeId = false){
+    $postData = array(
         'chat_id' => $user->telegram_id,
         'text' => $text,
-        'parse_mode' =>  'html'
-    ));
+        'parse_mode' =>  'html',
+    );
+    if($exchangeId) {
+        $postData['reply_markup'] = [
+            "inline_keyboard" => [
+                [
+                    "text" => __("telegram.i_paid_button", [], $user->language),
+                    "callback_data" => "exchangeIPaidButton:;:".$exchangeId, 
+                ]
+            ]
+        ];
+    }
+    $ch = curl_init('https://api.telegram.org/bot' . $bot->token . '/sendMessage');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_exec($ch);

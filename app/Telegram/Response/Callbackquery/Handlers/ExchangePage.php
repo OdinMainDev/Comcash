@@ -2,6 +2,7 @@
      
 namespace App\Telegram\Response\Callbackquery\Handlers;
 
+use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasCache;
 use App\Jobs\ExchangeStart;
 use App\Models\Exchange;
@@ -9,7 +10,7 @@ use App\Telegram\Helpers\KeyboardGenerator;
 use Longman\TelegramBot\Request;
 
 trait ExchangePage {
-    use HasCache;
+    use HasCache, HasTelegramMessage;
 
     public function openExchangePage($chat_id, $language){
         $currencies = $this->getCachedCurrencyDirectionsFrom();
@@ -310,5 +311,26 @@ trait ExchangePage {
         ExchangeStart::dispatch($exchange->id, $this->user->language, $this->user->getUser);
         
         return true;
+    }
+
+    public function checkIPaidButtonAndResponse($id) {
+        if(!is_numeric($id))
+            return;
+        
+        $exchange = Exchange::where("status", 0)->where("id", $id)->where("user_id", $this->user->user_id)->first();
+        if(!$exchange)
+            return;
+
+        $exchange->status = 1;
+        $exchange->created_at = now();
+        $exchange->save();
+        $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА ОПЛАЧЕНА ПОЛЬЗОВАТЕЛЕМ</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
+        sendTelegramNotification($text);
+
+        Request::sendMessage([
+            'chat_id' => $this->user->telegram_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.i_paid_message", [], $this->user->language),
+        ]);
     }
 }

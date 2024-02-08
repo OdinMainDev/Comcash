@@ -362,5 +362,7 @@ return [
     "exchangePage2Exchange30MinToWithdraw" => "Выплата производится в автоматическом режиме в течении 30 минут",
     "exchangePage2AmountSend" => "Отправьте сумму",
     "exchangePage2CryptoAddress" => "На кошелек",
+    "i_paid_button" => "Я оплатил",
+    "i_paid_message" => "Обрабатываем вашу заявку!"
 
 ];

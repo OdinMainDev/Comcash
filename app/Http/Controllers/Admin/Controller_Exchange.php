@@ -47,22 +47,38 @@ class Controller_Exchange extends Controller{
         }
 
         if($exchange->status == 0 && ($exchange->admin_id == 0 || $exchange->admin_id == auth()->user()->id || !$this->isRootUser())){
+            $needToSendMessage = false;
             if($request->manualcrypto){
                 $exchange->admin_id = auth()->user()->id;
-                if(!isset($data['merchant_from_data']) || !isset($data['merchant_from_data']['address']) || !$data['merchant_from_data']['address'])
+                if(!isset($data['merchant_from_data']) || !isset($data['merchant_from_data']['address']) || !$data['merchant_from_data']['address']){
                     $data['merchant_from_data'] = [
                         "address" => $request->manualcrypto,
                         "url" => null
                     ];
+                    $needToSendMessage = true;
+                }
             }
 
             if($request->manualfiat){
                 $exchange->admin_id = auth()->user()->id;
-                if(!isset($data['merchant_from_data']) || !isset($data['merchant_from_data']['address']) || !$data['merchant_from_data']['address'])
+                if(!isset($data['merchant_from_data']) || !isset($data['merchant_from_data']['address']) || !$data['merchant_from_data']['address']){
                     $data['merchant_from_data'] = [
                         "address" => $request->manualfiat,
                         "url" => null
                     ];
+                    $needToSendMessage = true;
+                }
+            }
+            if($needToSendMessage){
+                $user = $exchange->getUser;
+                $botUsers = $user->getTelegramUsers;
+                foreach($botUsers as $botUser){
+                    $language = $botUser->language;
+                    $text = $this->tgUserExchangeStartMessage($exchange, $language);
+                    sendTelegramBotUserMessage($text, $botUser, $botUser->getBot, $exchange->id);
+                    sendTelegramBotUserMessage($exchange->data['merchant_from_data']['address'], $botUser, $botUser->getBot);
+                    sendTelegramBotUserMessage($exchange->data['amount_data']['amount_send'], $botUser, $botUser->getBot);
+                }
             }
         }
         $exchange->data = $data;
