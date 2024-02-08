@@ -62,7 +62,7 @@
 						{{__("front.forgot password?")}}
 					</p>
 					<input type='text' class='input' name="email" placeholder='{{__("front.email_placeholder")}}' />
-					<button type="submit" class='button button--dark button--auto auth__btn btn__submit'>{{__("front.continue")}}</button>
+					<button type="submit" class='button button--dark button--auto auth__btn btn__submit' style="margin-top: 50px">{{__("front.continue")}}</button>
 				</form>
 				<form id='recover-password' class='auth__content' action="{{route("resetPasswordConfirmPost")}}">
 					<p class='auth__title'>

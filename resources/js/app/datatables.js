@@ -8,6 +8,16 @@
             timer = setTimeout(() => callback.apply(context, args), ms || 0);
         };
     }
+    function convertToFilterObject(dataObject) {
+        const filterObject = {};
+    
+        dataObject.columns.forEach(column => {
+            const key = `filter_${column.name}`;
+            filterObject[key] = column.search.value;
+        });
+    
+        return filterObject;
+    }
 
     
     $(".eaDatatable").each(function() {
@@ -31,6 +41,11 @@
                     parent.find(".eaDTSearchInput").each(function (a) {
                         data["filter_" + $(this).attr('name')] = this.value;
                     });
+
+                    if(data.columns) {
+                        $.extend(data, convertToFilterObject(data));
+
+                    }
                 }
             },
             buttons: [

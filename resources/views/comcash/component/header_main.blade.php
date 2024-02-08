@@ -85,8 +85,8 @@
                 {{__("front.check your aml")}}
             </a>
             @guest
-                <button class='header__btn button open___signin' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
-                <button class='header__btn button open___signup' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign up")}}</button>
+                <a class='header__btn button open___signin' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</a>
+                <a class='header__btn button open___signup' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign up")}}</a>
             @endguest
             @auth
                 <a class='header__btn button' type='button' href="{{route("myprofile")}}">{{__("front.profile")}}</a>

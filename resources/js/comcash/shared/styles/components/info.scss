@@ -843,6 +843,7 @@
     }
 
     @media (max-width: 1100px) {
+      padding-top: 125px;
       margin-bottom: 29%;
     }
 
@@ -866,8 +867,9 @@
       }
 
       @media (max-width: 1100px) {
-        position: absolute;
-        top: -1px;
+        position: fixed;
+        z-index: 1;
+        top: calc(var(--height-header-mobile) + 18px);
         left: 0;
         right: 0;
         max-width: 100%;
@@ -1171,7 +1173,7 @@
     @media (max-width: 1100px) {
       min-height: 100vh;
       margin: 0 auto;
-      padding: 80px 60px 0 60px;
+      padding: 125px 60px 0 60px;
 
       background: url(/comcash/img/bg-reviews.svg) 0 -20px no-repeat;
       background-size: contain;
@@ -1202,8 +1204,9 @@
       }
 
       @media (max-width: 1100px) {
-        position: absolute;
-        top: -1px;
+        position: fixed;
+        z-index: 1;
+        top: calc(var(--height-header-mobile) + 18px);
         left: 0;
         right: 0;
         max-width: 100%;
@@ -1332,7 +1335,7 @@
 
     @media (max-width: 1100px) {
       margin: 0 auto;
-      padding: 80px 60px 0 60px;
+      padding: 125px 60px 0 60px;
     }
 
     @media (max-width: 680px) {
@@ -1360,8 +1363,9 @@
       }
 
       @media (max-width: 1100px) {
-        position: absolute;
-        top: -1px;
+        position: fixed;
+        z-index: 1;
+        top: calc(var(--height-header-mobile) + 18px);
         left: 0;
         right: 0;
         max-width: 100%;
@@ -1545,7 +1549,7 @@
 
     @media (max-width: 1100px) {
       margin: 0 auto;
-      padding: 80px 60px 0 60px;
+      padding: 125px 60px 0 60px;
       background: url(/comcash/img/bg-tariffs.svg) 0 -20px no-repeat,
         url(/comcash/img/exchange-mobile-bg.svg) bottom no-repeat;
       background-size: contain;
@@ -1574,8 +1578,9 @@
       }
 
       @media (max-width: 1100px) {
-        position: absolute;
-        top: -1px;
+        position: fixed;
+        z-index: 1;
+        top: calc(var(--height-header-mobile) + 18px);
         left: 0;
         right: 0;
         max-width: 100%;
@@ -1774,7 +1779,7 @@
 
     @media (max-width: 1100px) {
       margin: 0 auto;
-      padding: 80px 60px 0 60px;
+      padding: 125px 60px 0 60px;
     }
 
     @media (max-width: 680px) {
@@ -1800,8 +1805,9 @@
     }
 
     @media (max-width: 1100px) {
-      position: absolute;
-      top: -1px;
+      position: fixed;
+      z-index: 3;
+      top: calc(var(--height-header-mobile) + 18px);
       left: 0;
       right: 0;
       max-width: 100%;

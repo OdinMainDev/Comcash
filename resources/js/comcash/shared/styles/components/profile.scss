@@ -76,7 +76,6 @@
 .personal {
   @media (max-width: 1100px) {
     height: 100vh;
-    padding-top: var(--height-header-mobile);
     padding-bottom: 100px;
     background: url('/comcash/img/exchange-mobile-bg.svg') no-repeat;
     background-position: bottom -8% center;
@@ -134,8 +133,9 @@
 
     @media (max-width: 1100px) {
       display: block;
-      position: absolute;
-      top: 0;
+      position: fixed;
+      top: calc(var(--height-header-mobile) + 18px);
+      z-index: 1;
       left: 50%;
       transform: translateX(-50%);
       right: 0;
@@ -198,7 +198,6 @@
 }
 
 .accounts {
-  padding-top: calc(var(--height-header) + 24px);
 
   @media (max-width: 1100px) {
     height: 100vh;
@@ -392,7 +391,6 @@
 }
 
 .history {
-  padding-top: calc(var(--height-header) + 24px);
 
   @media (max-width: 1100px) {
     height: 100vh;
@@ -639,8 +637,6 @@
 }
 
 .safety {
-  padding-top: calc(var(--height-header) + 24px);
-
   &__input-box {
     margin-bottom: 25px;
   }
@@ -734,6 +730,7 @@
 
     @media (max-width: 1100px) {
       margin: 0 auto;
+      width: 80%;
       padding: 100px 20px 50px;
     }
 
