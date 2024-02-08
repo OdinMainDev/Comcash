@@ -80,7 +80,7 @@
             </div>
             <div class='select__current'></div>
         </div> -->
-        <a class='header__btn-aml button' href="https://t.me/amlcheckbot">
+        <a class='header__btn-aml button' href="https://t.me/amlchecksbot">
             {{__("front.check your aml")}}
         </a>
         @guest
