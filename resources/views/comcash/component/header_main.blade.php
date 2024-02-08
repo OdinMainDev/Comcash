@@ -35,9 +35,9 @@
         <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
         </a>
         <div class='header__nav'>
-            <a class='header__link' href='{{route("index")}}'>
+            <!-- <a class='header__link' href='{{route("index")}}'>
                 {{__("front.ClearYourCryptoMenu")}}
-            </a>
+            </a> -->
             <a class='header__link' href='{{route("index")}}'>
                 {{__("front.ExchangeMenu")}}
             </a>
@@ -80,16 +80,19 @@
             </div>
             <div class='select__current'></div>
         </div> -->
-        <a class='header__btn-aml button' href="https://t.me/amlchecksbot">
-            {{__("front.check your aml")}}
-        </a>
-        @guest
-            <button class='header__btn button open___signin' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
-            <button class='header__btn button open___signup' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign up")}}</button>
-        @endguest
-        @auth
-            <a class='header__btn button' type='button' href="{{route("myprofile")}}">{{__("front.profile")}}</a>
-        @endauth
+        <div class="haader__buttons">
+            <a class='header__btn-aml button' href="https://t.me/amlchecksbot">
+                {{__("front.check your aml")}}
+            </a>
+            @guest
+                <button class='header__btn button open___signin' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
+                <button class='header__btn button open___signup' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign up")}}</button>
+            @endguest
+            @auth
+                <a class='header__btn button' type='button' href="{{route("myprofile")}}">{{__("front.profile")}}</a>
+            @endauth
+        </div>
+
         <div class='header__nav-mobile'>
             <div class='accordion'>
                 <!-- @guest
