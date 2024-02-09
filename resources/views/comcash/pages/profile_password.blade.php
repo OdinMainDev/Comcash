@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="safety">
+        <p class="personal__title-mobile">{{__("front.client panel")}}</p>
         <div class="safety__container">
             @include("comcash.component.profile_menu")
             <form class="safety__content" action="{{route("myprofilePasswordPost")}}">

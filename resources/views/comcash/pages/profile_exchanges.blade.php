@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="history">
+    <p class="personal__title-mobile">{{__("front.client panel")}}</p>
     <div class="history__container">
         @include("comcash.component.profile_menu")
         <div class="history__content">

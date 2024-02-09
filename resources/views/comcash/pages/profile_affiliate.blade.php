@@ -3,6 +3,8 @@
 @section('content')
 
 <div class="accounts">
+	<p class="personal__title-mobile">{{__("front.client panel")}}</p>
+
 	<div class="accounts__container">
         @include("comcash.component.profile_menu")
 		<div class="accounts__content">
