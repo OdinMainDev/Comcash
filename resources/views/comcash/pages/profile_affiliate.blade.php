@@ -9,7 +9,7 @@
         @include("comcash.component.profile_menu")
 		<div class="accounts__content">
             @include("comcash.component.affiliate_menu")
-			<form action="{{route("myprofileAffiliatePost")}}">
+			<form action="{{route("myprofileAffiliatePost")}}" class="accounts__form">
 				@csrf
 				<div class="input-box">
 					<div class='label'>
@@ -24,14 +24,17 @@
 				@foreach($campaigns as $campaign)
 				<div class='accounts__list-row'>
 					<div class='accounts__list-item'>
-						<p>{{$campaign->name}}</p>
+						<span>Name: {{$campaign->name}}</span>
 						<span>{{__("front.affiliate registered_users")}}: {{$campaign->registered_users}}</span>
 						<span>{{__("front.affiliate profitable_users")}}: {{$campaign->profitable_users}}</span>
 					</div>
-					<div class='accounts__list-item'>{{route("checkAffiliate", ["hash" => $campaign->hash])}}</div>
+					<div class='accounts__list-item'>
+						<span>
+							Path: {{route("checkAffiliate", ["hash" => $campaign->hash])}}
+						</span>
+					</div>
 				</div>
 				@endforeach
-				
 			</div>
 		</div>
 	</div>
