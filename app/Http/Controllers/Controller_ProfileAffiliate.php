@@ -83,7 +83,7 @@ class Controller_ProfileAffiliate extends Controller{
         $withdraw->amount = $request->amount;
         $withdraw->address = $request->address;
         $withdraw->save();
-        sendTelegramNotification("Новая заявка на выплату аффилейту");
+        sendTelegramNotificationAffiliate("Новая заявка на выплату аффилейту");
 
         return $this->responseSuccess();
     }

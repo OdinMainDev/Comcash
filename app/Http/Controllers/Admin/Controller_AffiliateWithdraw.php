@@ -74,7 +74,7 @@ class Controller_AffiliateWithdraw extends Controller{
         $model->status = $request->status;
         $model->reason = $request->reason;
         $model->save();
-        sendTelegramNotification("Закрыта заявка на выплату аффилейту");
+        sendTelegramNotificationAffiliate("Закрыта заявка на выплату аффилейту");
         return $this->responseSuccess();
     }
 }
