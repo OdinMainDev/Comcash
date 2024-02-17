@@ -47,7 +47,7 @@
                 <option value="666" selected>------------</option>
             @endif
             <option value="0" @if(isset($model) && !$model->status) selected @endif>{{__("common.enable0")}}</option>
-            <option value="1" @if(!isset($model) || $model->status) selected @endif>{{__("common.enable1")}}</option>
+            <option value="1" @if(isset($model) && $model->status) selected @endif>{{__("common.enable1")}}</option>
         </select>
     </div>
 
