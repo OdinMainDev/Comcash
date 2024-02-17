@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use JoeDixon\Translation\TranslationBindingsServiceProvider;
+use JoeDixon\Translation\TranslationServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 
 class FlushTranslationServiceProvider
@@ -20,29 +22,8 @@ class FlushTranslationServiceProvider
 
     public function terminate($request, $response)
     {
-        $this->flushTranslationServiceProvider();
+        app()->forgetInstance(TranslationServiceProvider::class);
+        app()->forgetInstance(TranslationBindingsServiceProvider::class);
     }
 
-    protected function flushTranslationServiceProvider()
-    {
-        // JoeDixon\Translation\TranslationServiceProvider
-        $providerName = 'Joedixon\\LaravelTranslation\\TranslationServiceProvider';
-
-        if (app()->getProvider($providerName)) {
-            app()->getProvider($providerName)->unregister();
-
-            // Регистрируем сервис-провайдер заново
-            (new $providerName(app()))->register();
-        }
-
-        // JoeDixon\Translation\TranslationBindingsServiceProvider
-        $providerName = 'Joedixon\\LaravelTranslation\\TranslationBindingsServiceProvider';
-
-        if (app()->getProvider($providerName)) {
-            app()->getProvider($providerName)->unregister();
-
-            // Регистрируем сервис-провайдер заново
-            (new $providerName(app()))->register();
-        }
-    }
 }
