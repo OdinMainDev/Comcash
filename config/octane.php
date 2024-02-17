@@ -1,5 +1,6 @@
 <?php
 
+use JoeDixon\Translation\Drivers\Translation;
 use JoeDixon\Translation\TranslationBindingsServiceProvider;
 use JoeDixon\Translation\TranslationServiceProvider;
 use Laravel\Octane\Contracts\OperationTerminated;
@@ -136,9 +137,10 @@ return [
     ],
 
     'flush' => [
-        "translator",
-        "translation.loader",
+        // "translator",
+        // "translation.loader",
         // // TranslationServiceProvider::class,
+        Translation::class,
         // TranslationBindingsServiceProvider::class
     ],
 
