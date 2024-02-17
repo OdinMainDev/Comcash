@@ -219,4 +219,24 @@ class Controller_Api extends Controller{
             ];
         });
     }
+
+    public function get_users(Request $request){
+        $request->validate([
+            "query" => "required|string|max:255"
+        ]);
+
+        $search = mb_strtolower($request->query);
+        $users = User::whereRaw('lower(email) like (?)', ["%{$search}%"]);
+        $users = $users->orWhereRaw('lower(telegram) like (?)', ["%{$search}%"]);
+        $users = $users->limit(20)->get();
+        $response = [];
+        foreach($users as $user){
+            $response[] = [
+                "text" => $user->id.": ".$user->getUserCredentials(),
+                "id" => $user->id
+            ];
+        }
+
+        return $response;
+    } 
 }

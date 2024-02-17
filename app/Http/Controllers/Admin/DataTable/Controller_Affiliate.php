@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasTable;
 use App\Models\AffiliateCampaign;
 use App\Models\AffiliateUser;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -21,11 +22,8 @@ class Controller_Affiliate extends Controller
         $query = $this->constructQuery($request);
         return DataTables::of($query)
         ->editColumn("user_id", function($row){
-            return $row->getUser ? $row->getUser->getUserCredentials() : $row->user_id;
+            return '<a href="'.route("adminUserEdit", [$row->user_id]).'">'.( $row->getUser ? $row->getUser->getUserCredentials() : $row->user_id ).'</a>';
         })
-        // ->editColumn("name", function($row){
-        //     return $this->tableImage($row, @$row->data['image']);
-        // })
         ->editColumn("created_at", function($row){
             return $this->tableDate($row, "created_at");
         })
@@ -37,23 +35,32 @@ class Controller_Affiliate extends Controller
 
     public function constructQuery($request){
         $query = AffiliateCampaign::with("getUser");
-        // $request->validate([
-        //     "filter_id" => "nullable|integer",
-        //     "filter_enable" => "nullable|boolean",
-        //     "filter_currency" => "nullable|integer",
-        //     "filter_name" => "nullable|string|max:255",
-        //     "filter_purchase_avalible" => "nullable|boolean",
-        //     "filter_is_reuse" => "nullable|boolean",
-        //     "filter_created_from" => 'nullable|date|date_format:Y-m-d\TH:i',
-        //     "filter_created_to" => 'nullable|date|date_format:Y-m-d\TH:i',
-        // ]);
-        // if(!is_null($request->filter_id)){
-        //     $query = $query->where('id', 'like', '%' . $request->filter_id . '%');
-        // }
-        // if(!is_null($request->filter_name)){
-        //     $search = mb_strtolower($request->filter_name);
-        //     $query = $query->whereRaw('lower(name) like (?)', ["%{$search}%"]);
-        // }
+        $request->validate([
+            "filter_id" => "nullable|integer",
+            "filter_user_id" => "nullable|integer",
+            "filter_name" => "nullable|string|max:255",
+            "filter_hash" => "nullable|string|max:255",
+            "filter_created_at" => 'nullable|date|date_format:Y-m-d\TH:i',
+        ]);
+        if(!is_null($request->filter_id)){
+            $query = $query->where('id', 'like', $request->filter_id . '%');
+        }
+        if(!is_null($request->filter_user_id)){
+            $query = $query->where('user_id', $request->filter_user_id);
+        }
+        if(!is_null($request->filter_name)){
+            $search = mb_strtolower($request->filter_name);
+            $query = $query->whereRaw('lower(name) like (?)', ["%{$search}%"]);
+        }
+        if(!is_null($request->filter_hash)){
+            $search = mb_strtolower($request->filter_hash);
+            $query = $query->whereRaw('lower(hash) like (?)', ["%{$search}%"]);
+        }
+        if(!is_null($request->filter_created_at)){
+            $date = Carbon::createFromFormat('Y-m-d\TH:i', $request->filter_created_at);
+            $query = $query->where('created_at', '>=', $date);
+        }
+
 
         return $query;
     }
@@ -75,23 +82,17 @@ class Controller_Affiliate extends Controller
         if(is_numeric($id) && $id > 0){
             $query = $query->where("campaign_id", $id);
         }
-        // $request->validate([
-        //     "filter_id" => "nullable|integer",
-        //     "filter_enable" => "nullable|boolean",
-        //     "filter_currency" => "nullable|integer",
-        //     "filter_name" => "nullable|string|max:255",
-        //     "filter_purchase_avalible" => "nullable|boolean",
-        //     "filter_is_reuse" => "nullable|boolean",
-        //     "filter_created_from" => 'nullable|date|date_format:Y-m-d\TH:i',
-        //     "filter_created_to" => 'nullable|date|date_format:Y-m-d\TH:i',
-        // ]);
-        // if(!is_null($request->filter_id)){
-        //     $query = $query->where('id', 'like', '%' . $request->filter_id . '%');
-        // }
-        // if(!is_null($request->filter_name)){
-        //     $search = mb_strtolower($request->filter_name);
-        //     $query = $query->whereRaw('lower(name) like (?)', ["%{$search}%"]);
-        // }
+        $request->validate([
+            "filter_user_id" => "nullable|integer",
+            "filter_created_at" => 'nullable|date|date_format:Y-m-d\TH:i',
+        ]);
+        if(!is_null($request->filter_user_id)){
+            $query = $query->where('user_id', $request->filter_user_id);
+        }
+        if(!is_null($request->filter_created_at)){
+            $date = Carbon::createFromFormat('Y-m-d\TH:i', $request->filter_created_at);
+            $query = $query->where('created_at', '>=', $date);
+        }
 
         return $query;
     }

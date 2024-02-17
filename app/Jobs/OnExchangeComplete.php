@@ -97,5 +97,7 @@ class OnExchangeComplete implements ShouldQueue
         $aff_exchange->user_credential = $this->user->email;
         $aff_exchange->user_id = $aff_user->campaign->user_id;
         $aff_exchange->save();
+
+        $aff_user->campaign->increment("profitable_users", 1);
     }
 }

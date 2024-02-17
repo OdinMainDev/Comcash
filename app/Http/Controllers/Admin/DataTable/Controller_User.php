@@ -47,11 +47,22 @@ class Controller_User extends Controller
     }
 
     public function constructQuery($request){
+        $request->validate([
+            "filter_id" => "nullable|integer",
+            "filter_email" => "nullable|string|max:255",
+            "filter_created_at" => 'nullable|date|date_format:Y-m-d\TH:i',
+        ]);
         $query = User::query();
-        if(!$this->isRootUser())
+        if(!$this->isRootUser()){
             $query = $query->doesntHave('roles', 'or', function ($q) {
                 $q->where('name', "admin");
             });
+        }
+        if(!is_null($request->filter_email)){
+            $search = mb_strtolower($request->filter_email);
+            $query = $query->whereRaw('lower(email) like (?)', ["%{$search}%"]);
+        }
+        
 
         return $query;
     }

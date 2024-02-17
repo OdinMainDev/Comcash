@@ -31,7 +31,7 @@
 				</span>
 				&nbsp;
 				<span class="header-info__contact-label">
-					{{__("front.supportContactsJabber1")}}
+					{{__("front.supportContactsQtox")}}
 				</span>	
 			</span>
 		</div>

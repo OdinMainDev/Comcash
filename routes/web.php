@@ -210,6 +210,10 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/update/languages', [AdminApi::class, "languages_update"])->name("adminLanguagesUpdate");
     });
 
+    Route::group( ['middleware' => ['auth', 'permission:handle-exchanges|handle-users|handle-affiliate|handle-affiliate-withdraws']], function() {
+        Route::get('/panel/api/get/users', [AdminApi::class, "get_users"])->name("adminApiGetUsers");
+    });
+
     Route::group( ['middleware' => ['auth', 'permission:handle-users']], function() {
         Route::get('/panel/users/list', [DTUser::class, "view"])->name("adminUserList");
         Route::get('/panel/users/list/data', [DTUser::class, "process"]);

@@ -14,6 +14,8 @@
                 <table class="table table-striped table-sm fs--1 mb-0 leads-table eaDatatable" data-list="" data-columns='[
                     {"data": "id", "name": "id"},
                     {"data": "name", "name": "name"},
+                    {"data": "currency_from", "name": "currency_from"},
+                    {"data": "currency_to", "name": "currency_to"},
                     {"data": "created_at", "name": "created_at"},
                     {"data": "action", "name": "action", "orderable": false, "searchable": false}
                 ]'>
@@ -22,6 +24,8 @@
                             <tr>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">#</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.name")}}</th>
+                <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-currency" data-search="true" data-sort="true" scope="col" data-select-type="code_id">{{__("common.currencyFrom")}}</th>
+                <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-currency" data-search="true" data-sort="true" scope="col" data-select-type="code_id">{{__("common.currencyTo")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-datepicker="true">{{__("common.createdAt")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" scope="col">{{__("common.action")}}</th>
                             </tr>
