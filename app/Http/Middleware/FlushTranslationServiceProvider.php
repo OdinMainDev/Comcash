@@ -17,6 +17,8 @@ class FlushTranslationServiceProvider
      */
     public function handle(Request $request, Closure $next): Response
     {
+        app()->forgetInstance(TranslationServiceProvider::class);
+        app()->forgetInstance(TranslationBindingsServiceProvider::class);
         return $next($request);
     }
 
