@@ -362,5 +362,6 @@ return [
     "exchangePage2Exchange30MinToWithdraw" => "Выплата производится в автоматическом режиме в течении 30 минут",
     "exchangePage2AmountSend" => "Отправьте сумму",
     "exchangePage2CryptoAddress" => "На кошелек",
+    "affiliate campaign_name" => "Название"
 
 ];
