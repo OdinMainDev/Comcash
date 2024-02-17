@@ -16,7 +16,7 @@
             filterObject[key] = column.search.value;
         });
     
-        return filterObject;
+        return {...filterObject, bFilter: false};
     }
 
     
@@ -38,13 +38,8 @@
                 url: pathname,
                 type: "GET",
                 data: function(data) {
-                    parent.find(".eaDTSearchInput").each(function (a) {
-                        data["filter_" + $(this).attr('name')] = this.value;
-                    });
-
                     if(data.columns) {
                         $.extend(data, convertToFilterObject(data));
-
                     }
                 }
             },
