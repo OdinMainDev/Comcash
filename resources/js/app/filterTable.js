@@ -4,9 +4,8 @@ import 'flatpickr/dist/flatpickr.min.css'
 import { Russian } from "flatpickr/dist/l10n/ru.js";
 import { English } from "flatpickr/dist/l10n/default.js";
 import { statusList } from "./constants";
+import axios from 'axios';
 
-
-import axios from "axios";
 
 
 $(document).ready(async function() {
@@ -17,7 +16,8 @@ $(document).ready(async function() {
     table.each(function() {
         $(this).find("thead tr:eq(1) th").each(function() {
             const select = $(this).find('select.form-select');
-            const datepicker = $(this).find('input.datepicker')
+            const search = $(this).find('input.search');
+            const datepicker = $(this).find('input.datepicker');
             const url = window.location.href;
             const languagePattern = /\/(en|ru)\//;
           
@@ -28,7 +28,6 @@ $(document).ready(async function() {
                 dateFormat: "d.m.Y H:i",
                 locale: match[1] === 'ru' ? Russian : English,
             });
-
             datepicker.on('lc')
 
             select.append(selectOptionDefault);
@@ -46,11 +45,35 @@ $(document).ready(async function() {
                     renderStatus(select)
                     break;
             }
+
+            switch ($(this).data('search-type')) {
+                case 'user': 
+                    searchUser(search)
+                    break;
+            }
+
             $(this).removeAttr(Object.values($(this).get(0).attributes).map(attr => attr.name).join(' '));
             $(this).removeClass("sorting");
             $(this).addClass("sorting_disabled");
         })
     });
+
+    function searchUser(search) {
+        let timer = null;
+        search.on('input', (e) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                axios.get('/ru/panel/api/get/users', {
+                    params: {
+                        query: e.target.value
+                    }
+                })
+                .then(res => {
+                    console.log(res.data);
+                })
+            }, 2000);
+        })
+    }
 
     function renderCurrenciesCode(select) {
         currenciesList.forEach(item => {

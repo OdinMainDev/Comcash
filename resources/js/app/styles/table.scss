@@ -1,9 +1,14 @@
+.table {
+    td {
+        position: relative;
+    }
+}
+
 .admin-exchange-table {
     position: relative;
     cursor: pointer;
     &.rotate {
-        
-        &::after {
+        .admin-exchange-table__arrow {
             transform: translateY(-50%) rotate(180deg);
         }
     }
@@ -23,13 +28,12 @@
     // }
     
 
-    &::after {
-        content: '';
-        background: url(/admin/assets/images/arrow.svg) no-repeat;
-        width: 13px;
-        height: 7px;
+    &__arrow {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
         position: absolute;
-        right: -20px;
+        right: -7px;
         top: 50%;
         transform: translateY(-50%) rotate(0);
     }

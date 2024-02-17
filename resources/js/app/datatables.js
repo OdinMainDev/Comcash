@@ -114,18 +114,26 @@
                 var t = $(this).text();
                 $(this).html('<input type="text" class="form-control datepicker" placeholder="🔍 ' + t + '" />');
                 $("input", this).keyup(debounce(function(e) {
-                    const val = this.value;
-                    const searchTerms = val.split(/[\s.:-]+/);
-                    const regexString = searchTerms.join('|');
-                    const regex = new RegExp(regexString, 'i');
-                    dtCont.column(a).search(val ? regex : '', true, false).draw();
+                    const inputDate =$(this).val();
+    
+                    let parts = inputDate.split(' ');
+                    
+                    let dateParts = parts[0].split('.');
+                    let year = dateParts[2];
+                    let month = dateParts[1];
+                    let day = dateParts[0];
+                    let time = parts[1];
+                    let formattedDate = year + '-' + month + '-' + day + 'T' + time;
+                    dtCont.column(a).search(formattedDate, true, false).draw();
                 }, 1000));
+            } else if($(this).data('search-type')) {
+                var t = $(this).text();
+                $(this).html('<input type="text" class="form-control search" placeholder="🔍 ' + t + '" />');
             } else {
                 var t = $(this).text();
                 $(this).html('<input type="text" class="form-control" placeholder="🔍 ' + t + '" />');
                 $("input", this).keyup(debounce(function(e){
                     var val = $.fn.dataTable.util.escapeRegex(this.value);
-                    console.log(val)
                     dtCont.column(a).search(val ? val : '', true, false).draw();
                 }, 1000));
             }            
