@@ -136,8 +136,8 @@ return [
     ],
 
     'flush' => [
-        // "translator",
-        // "translation.loader",
+        "translator",
+        "translation.loader",
         // // TranslationServiceProvider::class,
         // TranslationBindingsServiceProvider::class
     ],
