@@ -20,7 +20,7 @@ import { setForm } from '@/shared/scripts/modal';
             const prevInner = submit[0].innerHTML;
             submit.forEach(el => {
                 el.disabled = true;
-                el.innerHTML = `<div class="btn-loader"><div class="loader-bar"></div></div>${prevInner}`; 
+                el.innerHTML = `<div class="btn-loader"></div>${prevInner}`; 
             });
             let elems = element.querySelectorAll('.input--error');
             for(let i = 0; i < elems.length; i++){

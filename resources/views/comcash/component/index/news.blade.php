@@ -19,7 +19,7 @@
                     @endif
                 @endforeach
             </div>
-            <a href="{{route("comcashPage", ["news"])}}" class='news__button button'>{{__("front.read all news")}}</a>
+            <a href="{{route("comcashPage", ["news"])}}" class='news__button button button_big'>{{__("front.read all news")}}</a>
         </div>
     </div>
 @endif
