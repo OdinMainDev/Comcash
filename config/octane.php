@@ -139,7 +139,7 @@ return [
         "translator",
         "translation.loader",
         // TranslationServiceProvider::class,
-        // TranslationBindingsServiceProvider::class
+        TranslationBindingsServiceProvider::class
     ],
 
     /*
