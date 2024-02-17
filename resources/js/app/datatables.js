@@ -51,10 +51,8 @@
                 url: pathname,
                 type: "GET",
                 data: function(data) {
-
                     if(data.columns) {
                         $.extend(data, convertToFilterObject(data), cleanDataFilter(data));
-                        console.log(data)
                     }
                 }
             },
