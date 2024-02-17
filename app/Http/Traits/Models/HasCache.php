@@ -262,18 +262,62 @@ trait HasCache {
                     if($rate < 0.01){
                         $rate = $this->estimateGetRate($currency2->name, $currency->name, $direction->profit_percent); 
                     }
-                    $xml .= "<item>";
-                    $xml .= "<from>".$currency->name."</from>";
-                    $xml .= "<to>".$currency2->name."</to>";
-                    $xml .= "<in>1</in>"; // CONSTANT
-                    $xml .= "<out>".$rate."</out>";
-                    $xml .= "<amount>".@$this->estimateAmount("USD", $currency2->name, $currency2->units, env("MAX_EXCHANGE_AMOUNT", 50000), $direction->profit_percent)."</amount>"; // РЕЗЕРВ ТИПО
-                    $xml .= "<minamount>".@$direction->data['min_amount']." ".$currency->name."</minamount>";
-                    $xml .= "<maxamount>".@$direction->data['max_amount']." ".$currency->name."</maxamount>";
-                    if(in_array($currency->name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
-                        $xml .= "<param>verifying, cardverify</param>";
+
+                    $citiesForCash = [
+                        "MSK",
+                        "MOSCOW",
+                        "SPB",
+                        "STPETERSBURG",
+                        "KAZAN",
+                        "KZN",
+                        "NSK",
+                        "SIMF",
+                        "SMF",
+                        "KRASN",
+                        "KRD",
+                        "KRASNODAR",
+                        "EKB",
+                        "CHEL",
+                        "CHELYABINSK",
+                        "OREN",
+                        "ORENBURG",
+                        "UFA",
+                        "SOCHI",
+                        "RND",
+                        "RSTV",
+                        "ROSTOV",
+                        "RSND",
+                        "ROSTOV-NA-DONU",
+                        "SAMARA",
+                        "SMR",
+                        "IRK",
+                        "OMSK",
+                        "PERM",
+                        "IZHV",
+                        "VORON",
+                        "VORONEZH",
+                    ];
+                    $countOfIterations = 1;
+                    if(in_array($currency2->name, ["CASHRUB"])){
+                        $countOfIterations = count($citiesForCash);
                     }
-                    $xml .= "</item>";
+                    for($i = 0; $i < $countOfIterations; $i++){
+                        $xml .= "<item>";
+                        $xml .= "<from>".$currency->name."</from>";
+                        $xml .= "<to>".$currency2->name."</to>";
+                        $xml .= "<in>1</in>"; // CONSTANT
+                        $xml .= "<out>".$rate."</out>";
+                        $xml .= "<amount>".@$this->estimateAmount("USD", $currency2->name, $currency2->units, env("MAX_EXCHANGE_AMOUNT", 50000), $direction->profit_percent)."</amount>"; // РЕЗЕРВ ТИПО
+                        $xml .= "<minamount>".@$direction->data['min_amount']." ".$currency->name."</minamount>";
+                        $xml .= "<maxamount>".@$direction->data['max_amount']." ".$currency->name."</maxamount>";
+                        // if(in_array($currency->name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
+                        //     $xml .= "<param>verifying, cardverify</param>";
+                        // }
+                        if(in_array($currency2->name, ["CASHRUB"])){
+                            $xml .= "<city>".$citiesForCash[$i]."</city>";
+                        }
+                        $xml .= "</item>";
+                    }
                 }
             }
 
