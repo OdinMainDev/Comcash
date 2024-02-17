@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function($table) {
-            $table->bigInteger('telegram_id')->nullable()->index();
-        });
+        if (!Schema::hasColumn('users', 'telegram_id')) {
+            Schema::table('users', function($table) {
+                $table->bigInteger('telegram_id')->nullable()->index();
+            });
+        }
     }
 
     /**
