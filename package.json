@@ -7,7 +7,7 @@
     },
     "devDependencies": {
         "@types/jquery": "^3.5.29",
-        "axios": "^1.1.2",
+        "axios": "^1.6.7",
         "laravel-vite-plugin": "^0.7.5",
         "sass": "^1.69.5",
         "vite": "^4.0.0"
