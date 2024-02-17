@@ -8,7 +8,7 @@
 			<div class="card-body">
                 <table class="table table-striped eaDatatable" data-list="" data-columns='[
                     {"data": "id", "name": "id"},
-                    {"data": "title", "name": "title", "orderable": false, "searchable": false},
+                    {"data": "title", "name": "title"},
                     {"data": "name", "name": "name"},
                     {"data": "created_at", "name": "created_at"},
                     {"data": "action", "name": "action", "orderable": false, "searchable": false}
@@ -17,8 +17,8 @@
                         @for ($i = 0; $i < 2; $i++)
                             <tr>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">#</th>
-                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1">{{__("common.name")}}</th>
-                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-select-type="code">{{__("common.currencyCode")}}</th>
+                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.name")}}</th>
+                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.currencyCode")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-datepicker="true">{{__("common.createdAt")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" scope="col">{{__("common.action")}}</th>
                             </tr>

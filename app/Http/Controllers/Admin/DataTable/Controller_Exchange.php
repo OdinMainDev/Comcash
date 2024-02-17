@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\DataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasTable;
 use App\Models\Exchange;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -105,8 +106,12 @@ class Controller_Exchange extends Controller
 
     public function constructQuery($request, $id){
         $request->validate([
-            "filter_created_from" => 'nullable|date|date_format:Y-m-d\TH:i',
-            // "filter_"
+            "filter_id" => "nullable|integer",
+            "filter_status" => "nullable|integer",
+            "filter_currency_from" => "nullable|integer",
+            "filter_currency_to" => "nullable|integer",
+            "filter_hash" => "nullable|string|max:255",
+            "filter_created_at" => 'nullable|date|date_format:Y-m-d\TH:i',
         ]);
         $query = Exchange::with("getUser")->with("currencyFrom")->with("currencyTo");
         if(is_numeric($id) && $id > 0){
@@ -120,10 +125,25 @@ class Controller_Exchange extends Controller
             });
         }
 
-        if(!is_null($request->filter_created_from)){
-            // dd($request->filter_created_from);
-            $timestamp = \Carbon\Carbon::createFromTimestamp($request->filter_created_from);
-            $query = $query->where('created_at','>=',$timestamp);
+        if(!is_null($request->filter_id)){
+            $query = $query->where('id', 'like', $request->filter_id . '%');
+        }
+        if(!is_null($request->filter_status)){
+            $query = $query->where('status', $request->filter_status);
+        }
+        if(!is_null($request->filter_currency_from)){
+            $query = $query->where('currency_from', $request->filter_currency_from);
+        }
+        if(!is_null($request->filter_currency_to)){
+            $query = $query->where('currency_to', $request->filter_currency_to);
+        }
+        if(!is_null($request->filter_hash)){
+            $search = mb_strtolower($request->filter_hash);
+            $query = $query->whereRaw('lower(hash) like (?)', ["%{$search}%"]);
+        }
+        if(!is_null($request->filter_created_at)){
+            $date = Carbon::createFromFormat('Y-m-d\TH:i', $request->filter_created_at);
+            $query = $query->where('created_at', '>=', $date);
         }
         return $query;
     }
