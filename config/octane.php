@@ -136,8 +136,8 @@ return [
     ],
 
     'flush' => [
-        TranslationServiceProvider::class,
-        TranslationBindingsServiceProvider::class
+        // TranslationServiceProvider::class,
+        // TranslationBindingsServiceProvider::class
     ],
 
     /*
