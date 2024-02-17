@@ -62,7 +62,7 @@ class Controller_AffiliateWithdraw extends Controller
             $query = $query->whereRaw('lower(hash) like (?)', ["%{$search}%"]);
         }
         if(!is_null($request->filter_amount)){
-            $query = $query->where('amount', ">=", $request->filter_currency);
+            $query = $query->where('amount', ">=", $request->filter_amount);
         }
         if(!is_null($request->filter_created_at)){
             $date = Carbon::createFromFormat('Y-m-d\TH:i', $request->filter_created_at);
