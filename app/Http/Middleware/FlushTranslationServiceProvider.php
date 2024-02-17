@@ -21,8 +21,6 @@ class FlushTranslationServiceProvider
     public function terminate($request, $response)
     {
         $this->flushTranslationServiceProvider();
-
-        parent::terminate($request, $response);
     }
 
     protected function flushTranslationServiceProvider()
