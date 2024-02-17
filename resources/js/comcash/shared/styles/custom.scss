@@ -5,48 +5,26 @@
 
 .btn-loader {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    left: 48%;
+    width: 50px;
+    height: 50px;
+    background: url('/comcash/img/green-loader.png') center center/cover no-repeat;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
 }
 
-.btn-loader .loader-bar {
-    background-color: rgb(164, 164, 252);
-    min-width: 100%;
-    min-height: 5px;
-    position: relative;
-    overflow: hidden;
-}
 
-.btn-loader .loader-bar::after {
-    content: "";
-    min-height: 5px;
-    position: absolute;
-    background: #fff;
-    transform: translateX(-100%);
-    animation: loader-animation 2s infinite;
-}
-
-.btn-loader .loader-bar::before {
-    content: "";
-    min-height: 5px;
-    position: absolute;
-    background: #fff;
-    transform: translateX(-100%);
-    animation: loader-animation 2s infinite;
-    animation-delay: 1s;
-}
-
-@keyframes loader-animation {
+@keyframes rotation {
     0% {
-        transform: translateX(-150%);
-        min-width: 400px;
+        transform: rotate(0deg);
     }
     100% {
-        transform: translateX(300%);
-        min-width: 700px;
+        transform: rotate(360deg);
     }
-}
+    } 
 
 .accordion__button_custom::after {
     display: none !important;

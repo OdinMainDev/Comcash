@@ -124,9 +124,17 @@
   border: 0;
   border-radius: 40px;
   color: #fff;
+  &[disabled] {
+    opacity: 0.5;
+  }
 
   &--round-80 {
     border-radius: 80px;
+  }
+
+  &_big {
+    font-size: 15px;
+    padding: 30px 15px;
   }
 
   &--auto {

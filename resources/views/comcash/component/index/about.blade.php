@@ -33,6 +33,6 @@
                 </div>
             </div>
         </div>
-        <a class='about__btn button' href='{{route("comcashPage", ["tariffs"])}}'>{{__("front.view tariffs")}}</a>
+        <a class='about__btn button button_big' href='{{route("comcashPage", ["tariffs"])}}'>{{__("front.view tariffs")}}</a>
     </div>
 </div>

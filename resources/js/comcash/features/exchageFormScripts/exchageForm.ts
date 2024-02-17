@@ -193,6 +193,10 @@ $(document).ready(function () {
       const data = await getCurrencySettings(selectedCurrencyYouSend.name, selectedCurrencyYouGet.name);
       currencyYouSendMaxAmount = data.data.max_amount;
       currencyYouSendMinAmount = data.data.min_amount;
+      if(!currencyYouSendAmount) {
+        currencyYouSendAmount = Number(amount);
+        inputCurrencyYouSend.val(currencyYouSendMinAmount);
+      }
       currencyYouSendMin.text(currencyYouSendMinAmount);
       currencyYouSendMax.text(currencyYouSendMaxAmount);
       settingsLayout = data.layout;
