@@ -15,8 +15,21 @@
             const key = `filter_${column.name}`;
             filterObject[key] = column.search.value;
         });
-    
-        return {...filterObject, bFilter: false};
+        return filterObject;
+    }
+
+    function cleanDataFilter(dataObject) {   
+        const columns = dataObject.columns
+        const mappedColums = columns.map(item => {
+            return {
+                ...item,
+                search: {
+                    ...item.search,
+                    value: ''
+                }
+            }
+        })
+        return {...dataObject, columns: mappedColums}
     }
 
     
@@ -38,8 +51,10 @@
                 url: pathname,
                 type: "GET",
                 data: function(data) {
+
                     if(data.columns) {
-                        $.extend(data, convertToFilterObject(data));
+                        $.extend(data, convertToFilterObject(data), cleanDataFilter(data));
+                        console.log(data)
                     }
                 }
             },
