@@ -24,13 +24,13 @@
 				@foreach($campaigns as $campaign)
 				<div class='accounts__list-row'>
 					<div class='accounts__list-item'>
-						<span>Name: {{$campaign->name}}</span>
+						<span>{{__("front.affiliate campaign_name")}}: {{$campaign->name}}</span>
 						<span>{{__("front.affiliate registered_users")}}: {{$campaign->registered_users}}</span>
 						<span>{{__("front.affiliate profitable_users")}}: {{$campaign->profitable_users}}</span>
 					</div>
 					<div class='accounts__list-item'>
 						<span>
-							Path: {{route("checkAffiliate", ["hash" => $campaign->hash])}}
+							Url: {{route("checkAffiliate", ["hash" => $campaign->hash])}}
 						</span>
 					</div>
 				</div>
