@@ -100,5 +100,11 @@ return [
     "my_affiliate_exchanges_title" => "Заголовок аффилейт страницы",
     "my_affiliate_exchanges_registered_users" => "Всего зарегистрировано партнеров:",
     "my_affiliate_exchanges_profitable_transactions" => "Всего завершенных у партнеров сделок:",
+    "my_affiliate_balances_title" => "Заголовок аффилейт балансов",
+    "my_affiliate_balances_text" => "Текст аффилейт балансов",
+    "do_affiliate_withdraw" => "Выплатить средства",
+    "my_affiliate_balance_withraw_title" => "Заголовок аффилейт выплаты",
+    "my_affiliate_balance_withraw_text" => "Текст аффилейт выплаты",
+    "back_to_affiliate_panel" => "Вернутся к партнеркой программе",
 
 ];

@@ -22,7 +22,7 @@ class Router
     public $user;
     public $bot;
     public $notCheckRoutes = ["setLanguage", "setRules"];
-    public $notDeleteRoutes = ["withoutAction"];
+    public $notDeleteRoutes = ["withoutAction", "sendAffiliateUrl"];
     
     public function __construct($query, $user){
         $this->query = $query;
@@ -170,8 +170,17 @@ class Router
             break;
 
             case "sendAffiliateUrl":
-                $this->sendUserAffiliatePanelMessage($this->user->telegram_id, $this->user->language);
                 $this->sendUserAffiliateUrlMessage($this->user->telegram_id, $this->user->language);
+                return;
+            break;
+
+            case "openAffiliateBalances":
+                $this->sendUserAffiliateBalancePanelMessage($this->user->telegram_id, $this->user->language);
+                return;
+            break;
+
+            case "openCreateAffiliateWithdraw":
+                $this->sendCreateAffiliateWithdrawMessage($this->user->telegram_id, $this->user->language);
                 return;
             break;
         }

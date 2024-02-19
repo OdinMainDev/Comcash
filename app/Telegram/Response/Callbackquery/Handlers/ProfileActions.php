@@ -143,4 +143,88 @@ trait ProfileActions {
             'text' => $text,
         ]);
     }
+
+    public function sendUserAffiliateBalancePanelMessage($chat_id, $language) {
+        $text = __("telegram.my_affiliate_balances_title", [], $language);
+        $text .= "\n\n";
+        $text .= __("telegram.my_affiliate_balances_text", [], $language);
+        $text .= "\n\n";
+        $balances = $this->getCacheAffiliatesBalances($this->user->user_id);
+        foreach($balances as $balance){
+            $text .= "<b>".$balance->getCurrency->getTitle($language)."</b>\n";
+        }
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.my_affiliate_url", [], $language), 
+                            "callback_data" => "sendAffiliateUrl:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.do_affiliate_withdraw", [], $language), 
+                            "callback_data" => "openCreateAffiliateWithdraw:;:", 
+                        ],
+                        [
+                            "text" =>__("telegram.my_affiliate_withdraws", [], $language), 
+                            "callback_data" => "openAffiliateWithdraws:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.my_affiliate_exchanges", [], $language), 
+                            "callback_data" => "openAffiliateExchanges:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.back_to_profile", [], $language), 
+                            "callback_data" => "openProfile:;:", 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
+    }
+
+    public function sendCreateAffiliateWithdrawMessage($chat_id, $language) {
+        $text = __("telegram.my_affiliate_balance_withraw_title", [], $language);
+        $text .= "\n\n";
+        $text .= __("telegram.my_affiliate_balance_withraw_text", [], $language);
+        $balances = $this->getCacheAffiliatesBalances($this->user->user_id);
+        $keyboards = [];
+        foreach($balances as $balance){
+            $keyboards[] = [
+                [
+                    "text" => $balance->getCurrency->getTitle($language).": ".$balance->balance, 
+                    "callback_data" => "doCreateAffiliateWithdraw:;:".$balance->currency, 
+                ],
+            ];
+        }
+        $keyboards[] = [
+            [
+                "text" =>__("telegram.back_to_affiliate_panel", [], $language), 
+                "callback_data" => "openAffiliatePanel:;:", 
+            ]
+        ];
+        $keyboards[] = [
+            [
+                "text" =>__("telegram.back_to_profile", [], $language), 
+                "callback_data" => "openProfile:;:", 
+            ]
+        ];
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
+            'reply_markup' => [
+                "inline_keyboard" => $keyboards
+            ],
+        ]);
+    }
 }
