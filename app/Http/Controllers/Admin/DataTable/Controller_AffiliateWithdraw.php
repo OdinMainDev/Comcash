@@ -23,6 +23,15 @@ class Controller_AffiliateWithdraw extends Controller
         ->editColumn("id", function($row){
             return $row->id;
         })
+        ->editColumn("user_id", function($row){
+            return '<a href="'.route("adminUserEdit", [$row->user_id]).'">'.( $row->getUser ? $row->getUser->getUserCredentials() : $row->user_id ).'</a>';
+        })
+        ->editColumn("status", function($row){
+            return __("common.affstatus".$row->status);
+        })
+        ->editColumn("currency", function($row){
+            return @$row->getCurrency->name;
+        })
         ->editColumn("amount", function($row){
             return sprintf("%.12f", $row->amount);
         })
@@ -36,7 +45,7 @@ class Controller_AffiliateWithdraw extends Controller
     }
 
     public function constructQuery($request){
-        $query = AffiliateWithdraw::query();
+        $query = AffiliateWithdraw::with("getUser")->with("getCurrency");
         $request->validate([
             "filter_id" => "nullable|integer",
             "filter_user_id" => "nullable|integer",

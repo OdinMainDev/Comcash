@@ -104,6 +104,7 @@ return [
     "affiliate_withdraw_not_enough" => "Недостаточно средств на балансе",
     "affiliate_withdraw_already_created" => "У вас уже создана заявка на вывод для данной валюты",
     "viewWithdrawAffiliate" => "Выплата аффилейту",
+    "affstatus0" => "Ожидает решения",
     "affstatus1" => "Выплачено",
     "affstatus2" => "Отклонено",
     "decline_reason" => "Причина отклонения",
