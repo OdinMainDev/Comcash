@@ -88,7 +88,7 @@ trait ProfileActions {
     }
 
     public function sendUserAffiliatePanelMessage($chat_id, $language) {
-        $campaign = $this->getTelegramUserCampaign($this->user);
+        $campaign = $this->getTelegramUserCampaign($this->user->getUser);
         $text = __("telegram.my_affiliate_exchanges_title", [], $language);
         $text .= "\n\n";
         $text .= __("telegram.my_affiliate_exchanges_registered_users", [], $language);
@@ -135,7 +135,7 @@ trait ProfileActions {
     }
 
     public function sendUserAffiliateUrlMessage($chat_id) {
-        $campaign = $this->getTelegramUserCampaign($this->user);
+        $campaign = $this->getTelegramUserCampaign($this->user->getUser);
         $text = "https://t.me/".$this->bot->username."?start=".$campaign->hash;
         Request::sendMessage([
             'chat_id' => $chat_id,
