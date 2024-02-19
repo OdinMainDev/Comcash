@@ -16,13 +16,15 @@ trait HasTelegramMessage {
     public function tgUserExchangeStartMessage($exchange, $language) {
         $text = __("telegram.new_exchange_1", [], $language);
         $text .= " <b>#".$exchange->id."</b>";
-        $text .= "\n".__("telegram.new_exchange_2", [], $language);
-        $text .= "\n\n";
-        $text .= __("telegram.new_exchange_3", [], $language);
-        $text .= " <b>".$exchange->data['amount_data']['amount_send']." ".$exchange->currencyFrom->name."</b>";
-        $text .= "\n".__("telegram.new_exchange_4", [], $language);
-        $text .= " <b>".$exchange->data['merchant_from_data']['address']." ".$exchange->currencyFrom->name."</b>";
-        $text .= "\n".__("telegram.new_exchange_5", [], $language);
+        if($exchange->status != 5){
+            $text .= "\n".__("telegram.new_exchange_2", [], $language);
+            $text .= "\n\n";
+            $text .= __("telegram.new_exchange_3", [], $language);
+            $text .= " <b>".$exchange->data['amount_data']['amount_send']." ".$exchange->currencyFrom->name."</b>";
+            $text .= "\n".__("telegram.new_exchange_4", [], $language);
+            $text .= " <b>".$exchange->data['merchant_from_data']['address']." ".$exchange->currencyFrom->name."</b>";
+            $text .= "\n".__("telegram.new_exchange_5", [], $language);
+        }
         $text .= "\n\n".__("telegram.new_exchange_6", [], $language);
         $text .= "\n".__("telegram.new_exchange_7", [], $language);
         $text .= " <b>".$exchange->currencyFrom->getTitle($language)." -> ".$exchange->currencyTo->getTitle($language)."</b>";
@@ -43,7 +45,8 @@ trait HasTelegramMessage {
             $text .= " <b>".$exchange->data['request_data']['to_card']."</b>";
         }
         $text .= "\n\n";
-        $text .= __("telegram.new_exchange_10", [], $language);
+        if($exchange->status != 5)
+            $text .= __("telegram.new_exchange_10", [], $language);
         return $text;
     }
 

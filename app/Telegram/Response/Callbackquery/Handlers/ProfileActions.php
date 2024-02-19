@@ -3,6 +3,7 @@
 namespace App\Telegram\Response\Callbackquery\Handlers;
 
 use App\Http\Traits\Misc\HasTelegramMessage;
+use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
 use App\Models\Exchange;
 use App\Telegram\Helpers\KeyboardGenerator;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Config;
 use Longman\TelegramBot\Request;
 
 trait ProfileActions {
-    use HasCache, HasTelegramMessage;
+    use HasCache, HasTelegramMessage, HasAffiliate;
     
     public function profileGoToWeb($chat_id, $language, $exchanger_user_id){
         $text = __("telegram.goto_web_text", [], $language);
@@ -81,20 +82,65 @@ trait ProfileActions {
                             "callback_data" => "openExchangesHistory:;:".$data[1], 
                         ],
                     ],
+                ]
+            ],
+        ]);
+    }
+
+    public function sendUserAffiliatePanelMessage($chat_id, $language) {
+        $campaign = $this->getTelegramUserCampaign($this->user);
+        $text = __("telegram.my_affiliate_exchanges_title", [], $language);
+        $text .= "\n\n";
+        $text .= __("telegram.my_affiliate_exchanges_registered_users", [], $language);
+        $text .= " ".$campaign->registered_users."\n";
+        $text .= __("telegram.my_affiliate_exchanges_profitable_transactions", [], $language);
+        $text .= " ".$campaign->profitable_transactions."\n";
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.my_affiliate_url", [], $language), 
+                            "callback_data" => "sendAffiliateUrl:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.my_affiliate_balances", [], $language), 
+                            "callback_data" => "openAffiliateBalances:;:", 
+                        ],
+                        [
+                            "text" =>__("telegram.my_affiliate_withdraws", [], $language), 
+                            "callback_data" => "openAffiliateWithdraws:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.my_affiliate_exchanges", [], $language), 
+                            "callback_data" => "openAffiliateExchanges:;:", 
+                        ],
+                    ],
                     [
                         [
                             "text" =>__("telegram.back_to_profile", [], $language), 
                             "callback_data" => "openProfile:;:", 
                         ],
                     ],
-                    [
-                        [
-                            "text" =>__("telegram.back_to_main_menu", [], $language), 
-                            "callback_data" => "openMainMenu:;:", 
-                        ],
-                    ],
                 ]
             ],
+        ]);
+    }
+
+    public function sendUserAffiliateUrlMessage($chat_id) {
+        $campaign = $this->getTelegramUserCampaign($this->user);
+        $text = "https://t.me/".$this->bot->username."?start=".$campaign->hash;
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
         ]);
     }
 }

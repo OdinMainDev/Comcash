@@ -95,6 +95,10 @@ return [
     "exchanges_history_description" => "Дополнительный текст",
     "page_number" => "Текущая страница",
     "on_this_page" => "На этой странице",
-    "back_to_exchanges_history" => "Вернутся в историю обменов"
+    "back_to_exchanges_history" => "Вернутся в историю обменов",
+    "my_affiliate_exchanges" => "Обмены моих партнеров",
+    "my_affiliate_exchanges_title" => "Заголовок аффилейт страницы",
+    "my_affiliate_exchanges_registered_users" => "Всего зарегистрировано партнеров:",
+    "my_affiliate_exchanges_profitable_transactions" => "Всего завершенных у партнеров сделок:",
 
 ];

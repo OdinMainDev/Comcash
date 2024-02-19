@@ -71,4 +71,20 @@ trait HasAffiliate {
         $model->value = $amount;
         $model->save();
     }
+
+    public function getTelegramUserCampaign($user){
+        $aff_campaign = AffiliateCampaign::where("user_id", $user->id)->where("status", true)->where("name", "telegramBotCampaign")->first();
+        if($aff_campaign){
+            return $aff_campaign;
+        }
+        $aff_campaign = new AffiliateCampaign;
+        $aff_campaign->user_Id = $user->id;
+        $aff_campaign->status = true;
+        $aff_campaign->name = "telegramBotCampaign";
+        $aff_campaign->registered_users = 0;
+        $aff_campaign->profitable_transactions = 0;
+        $aff_campaign->hash = md5(uniqid($user->id).time());
+        $aff_campaign->save();
+        return $aff_campaign;
+    }
 }
