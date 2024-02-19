@@ -63,7 +63,7 @@ class Controller_ProfileAffiliate extends Controller{
         }
 
         $amount = $this->estimateAmount($balance->getCurrency->name, "USD", 2, $request->amount, 0);
-        if($amount < $this->getAffilatePercent()){
+        if($amount < $this->getAffilateMinAmount()){
             return $this->responseErrorValidation(["code" => __("common.affiliate_withdraw_less_minimal")]);
         }
 

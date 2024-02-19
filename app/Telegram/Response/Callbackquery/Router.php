@@ -183,6 +183,11 @@ class Router
                 $this->sendCreateAffiliateWithdrawMessage($this->user->telegram_id, $this->user->language);
                 return;
             break;
+
+            case "doCreateAffiliateWithdraw":
+                $this->openDoCreateAffiliateWithdrawPage($this->user->telegram_id, $this->user->language, $this->data);
+                return;
+            break;
         }
     }
 

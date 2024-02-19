@@ -106,5 +106,20 @@ return [
     "my_affiliate_balance_withraw_title" => "Заголовок аффилейт выплаты",
     "my_affiliate_balance_withraw_text" => "Текст аффилейт выплаты",
     "back_to_affiliate_panel" => "Вернутся к партнеркой программе",
+    "back_to_affiliate_balances_panel" => "Вернутся к выбору баланса",
+    "aff_withdraw_error_1" => "Укажите сумму корректно в виде числа",
+    "aff_withdraw_error_2" => "Ошибка данных",
+    "aff_withdraw_error_3" => "У вас меньше баланса чем вы запршиваете",
+    "aff_withdraw_error_4" => "Вывод партнерских средств с такой суммы не может быть произведен",
+    "aff_withdraw_set_amount" => "Тайтл aff_withdraw_set_amount",
+    "aff_withdraw_set_amount_2" => "Текст aff_withdraw_set_amount",
+    "aff_withdraw_set_address" =>"Тайтл aff_withdraw_set_address",
+    "aff_withdraw_set_address_2" => "Текст aff_withdraw_set_address",
+    "aff_withdraw_error_5" => "Указанные вами платежные данные не корректны",
+    "aff_withdraw_error_6" => "У вас уже есть созданная заявка на выплату средств",
+    "aff_withdraw_set_complete" => "Подтвердите создание заявки на выплату средств",
+    "aff_withdraw_do_withdraw_yes" => "Подтверждаю",
+    "aff_withdraw_do_withdraw_no" => "Отклоняю",
+    "aff_withdraw_success_create_withdraw" => "Заявка на выплату успешно создана"
 
 ];

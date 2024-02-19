@@ -208,5 +208,7 @@ return [
         "exchangeSumFrom" => 1,
         "exchangeSumTo" => 2,
         "exchangeSetFields" => 3,
+        "affiliateCreateWithdrawSetAmount" => 4,
+        "affiliateCreateWithdrawSetAddress" => 5,
     ],
 ];

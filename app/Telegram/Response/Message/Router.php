@@ -8,12 +8,13 @@ use App\Telegram\Response\Callbackquery\Handlers\ExchangePage;
 use App\Telegram\Response\Callbackquery\Handlers\SetLanguage;
 use App\Telegram\Response\Callbackquery\Handlers\SetRules;
 use App\Telegram\Response\Message\Handlers\ExchangePage as MExchangePage;
+use App\Telegram\Response\Message\Handlers\AffiliatePage as MAffiliatePage;
 use Illuminate\Support\Facades\Config;
 use Longman\TelegramBot\Request;
 
 class Router
 {
-    use BotFunctions, StaticMessages, SetLanguage, SetRules, ExchangePage, MExchangePage;
+    use BotFunctions, StaticMessages, SetLanguage, SetRules, ExchangePage, MExchangePage, MAffiliatePage;
     
     public $message;
     public $messageText;
@@ -95,10 +96,23 @@ class Router
                 return;
             break;
 
+            case $config["affiliateCreateWithdrawSetAmount"]:
+                $this->affWithdrawSetAmount($this->user->telegram_id, $this->user->language, $this->messageText);
+                return;
+            break;
+
+            case $config["affiliateCreateWithdrawSetAddress"]:
+                $this->affWithdrawSetAddress($this->user->telegram_id, $this->user->language, $this->messageText);
+                return;
+            break;
+
             default:
                 $this->sendUnknownActionMessage($this->user->telegram_id, $this->user->language);
             break;
         }
+
+        $this->user->action = 0;
+        $this->user->save();
     }
 
 }

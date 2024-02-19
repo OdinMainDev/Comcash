@@ -5,6 +5,8 @@ namespace App\Telegram\Response\Callbackquery\Handlers;
 use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
+use App\Models\AffiliateBalance;
+use App\Models\Currency;
 use App\Models\Exchange;
 use App\Telegram\Helpers\KeyboardGenerator;
 use Illuminate\Support\Facades\Config;
@@ -151,7 +153,7 @@ trait ProfileActions {
         $text .= "\n\n";
         $balances = $this->getCacheAffiliatesBalances($this->user->user_id);
         foreach($balances as $balance){
-            $text .= "<b>".$balance->getCurrency->getTitle($language)."</b>\n";
+            $text .= "<b>".$balance->getCurrency->getTitle($language).":</b> ".$balance->balance."\n";
         }
         Request::sendMessage([
             'chat_id' => $chat_id,
@@ -222,6 +224,43 @@ trait ProfileActions {
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' => $text,
+            'reply_markup' => [
+                "inline_keyboard" => $keyboards
+            ],
+        ]);
+    }
+
+    public function openDoCreateAffiliateWithdrawPage($chat_id, $language, $currencyId) {
+        $balance = AffiliateBalance::where("currency", $currencyId)->where("user_id", $this->user->user_id)->first();
+        if(!$balance){
+            return;
+        }
+
+        $this->user->action = config("app.telegram_actions")['affiliateCreateWithdrawSetAmount'];
+        $this->user->action_data = $balance->id;
+        $this->user->save();
+        $text = __("telegram.aff_withdraw_set_amount", [], $language);
+        $text .= $balance->getCurrency->getTitle($language).": ".$balance->balance."\n";
+        $text = __("telegram.aff_withdraw_set_amount_2", [], $language);
+        $keyboards = [];
+        
+        $keyboards[] = [
+            [
+                "text" =>__("telegram.back_to_affiliate_balances_panel", [], $language), 
+                "callback_data" => "openCreateAffiliateWithdraw:;:", 
+            ]
+        ];
+        $keyboards[] = [
+            [
+                "text" =>__("telegram.back_to_affiliate_panel", [], $language), 
+                "callback_data" => "openAffiliatePanel:;:", 
+            ]
+        ];
+
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' =>  $text,
             'reply_markup' => [
                 "inline_keyboard" => $keyboards
             ],
