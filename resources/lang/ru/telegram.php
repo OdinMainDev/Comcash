@@ -90,7 +90,10 @@ return [
     "exchange_status_delete_1" => "Заявка:",
     "exchange_status_delete_2" => "была удалена!",
     "exchange_status_delete_3" => "Если вы оплатили, отпишите в поддержку!",
-    "choose_language_success" => "Язык применен"
-
+    "choose_language_success" => "Язык применен",
+    "exchanges_history_title" => "История ваших обменов",
+    "exchanges_history_description" => "Дополнительный текст",
+    "page_number" => "Текущая страница",
+    "on_this_page" => "На этой странице",
 
 ];

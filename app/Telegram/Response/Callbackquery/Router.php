@@ -3,8 +3,6 @@
 namespace App\Telegram\Response\Callbackquery;
 
 use App\Telegram\Helpers\BotFunctions;
-use App\Telegram\Helpers\KeyboardGenerator;
-use App\Telegram\Helpers\Keyboards;
 use App\Telegram\Helpers\StaticMessages;
 use App\Telegram\Response\Callbackquery\Handlers\ExchangePage;
 use App\Telegram\Response\Callbackquery\Handlers\ProfileActions;
@@ -16,7 +14,7 @@ use App\Telegram\Response\Message\Handlers\ExchangePage as MExchangePage;
 
 class Router
 {
-    use BotFunctions, StaticMessages, SetLanguage, SetRules, ProfileActions, ExchangePage, MExchangePage, Keyboards;
+    use BotFunctions, StaticMessages, SetLanguage, SetRules, ProfileActions, ExchangePage, MExchangePage;
     
     public $query;
     public $command;
@@ -24,6 +22,7 @@ class Router
     public $user;
     public $bot;
     public $notCheckRoutes = ["setLanguage", "setRules"];
+    public $notDeleteRoutes = ["withoutAction"];
     
     public function __construct($query, $user){
         $this->query = $query;
@@ -44,7 +43,7 @@ class Router
                 return;
             }
         }
-        if(Config::get("app.telegram_delete_messages")){
+        if(Config::get("app.telegram_delete_messages") && !in_array($this->command, $this->notDeleteRoutes)){
             Request::deleteMessage([
                 'chat_id'    => $this->query->getFrom()->getId(),
                 'message_id' => $this->query->getMessage()->getMessageId(),
@@ -146,12 +145,17 @@ class Router
             break;
 
             case "exchangeIPaidButton":
-                $this->checkIPaidButtonAndResponse($this->data);
+                $this->checkIPaidButtonAndResponse($this->user->telegram_id, $this->user->language, $this->data);
                 return;
             break;
 
             case "openChangeLanguage":
-                $this->sendLanguageMessage($this->user->telegram_id, $this->user->language, KeyboardGenerator::generate($this->keyboardLanguages($this->user->language)));
+                $this->sendLanguageMessage($this->user->telegram_id, $this->user->language);
+                return;
+            break;
+
+            case "openExchangesHistory":
+                $this->sendUserExchangesHistory($this->user->telegram_id, $this->user->language, $this->data);
                 return;
             break;
         }

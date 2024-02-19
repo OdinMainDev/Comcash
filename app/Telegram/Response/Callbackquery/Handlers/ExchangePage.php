@@ -313,7 +313,7 @@ trait ExchangePage {
         return true;
     }
 
-    public function checkIPaidButtonAndResponse($id) {
+    public function checkIPaidButtonAndResponse($chat_id, $language, $id) {
         if(!is_numeric($id))
             return;
         
@@ -328,9 +328,9 @@ trait ExchangePage {
         sendTelegramNotification($text);
 
         Request::sendMessage([
-            'chat_id' => $this->user->telegram_id,
+            'chat_id' => $chat_id,
             'parse_mode' => 'html',
-            'text' => __("telegram.i_paid_message", [], $this->user->language),
+            'text' => __("telegram.i_paid_message", [], $language),
         ]);
     }
 }

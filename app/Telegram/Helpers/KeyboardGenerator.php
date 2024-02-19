@@ -27,18 +27,22 @@ class KeyboardGenerator
             return $response;
         }
         $currentIndex++;
-        $response[$keyboard_type][$currentIndex][] = [
-            "text" => "⬅️ ".$pagination['page_previous'],
-            "callback_data" => $pagination['callback_previous']
-        ];
+        if(isset($pagination['page_previous'])){
+            $response[$keyboard_type][$currentIndex][] = [
+                "text" => "⬅️ ".$pagination['page_previous'],
+                "callback_data" => $pagination['callback_previous']
+            ];
+        }
         $response[$keyboard_type][$currentIndex][] = [
             "text" => "➡️ ".$pagination['page_current']." ⬅️",
             "callback_data" => "withoutAction"
         ];
-        $response[$keyboard_type][$currentIndex][] = [
-            "text" => $pagination['page_next']." ➡️",
-            "callback_data" => $pagination['callback_next']
-        ];
+        if(isset($pagination['page_next'])){
+            $response[$keyboard_type][$currentIndex][] = [
+                "text" => $pagination['page_next']." ➡️",
+                "callback_data" => $pagination['callback_next']
+            ];
+        }
   
         return $response;
     }
@@ -52,6 +56,21 @@ class KeyboardGenerator
             ];
         }
         return $temp;
+    }
+
+    public static function makePaginationData($callback, $page, $totalItems, $perPage = 10) {
+        $response = [];
+        if($page > 1) {
+            $response['page_previous'] = $page - 1;
+            $response['callback_previous'] = $callback.":;:".($page - 1);
+        }
+        $response['page_current'] = $page;
+
+        if($page * $perPage <= $totalItems) {
+            $response['page_next'] = $page + 1;
+            $response['callback_next'] = $callback.":;:".($page + 1);
+        } 
+        return $response;
     }
 
 }

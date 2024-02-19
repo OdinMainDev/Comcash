@@ -224,13 +224,16 @@ trait HasCache {
         });
     }
 
-    public function getCacheExchanges($user_id = 0){
+    public function getCacheExchanges($user_id = 0, $page_number = false){
         $request = request();
         if($request->page && !is_numeric($request->page)){
             return abort(404);
         }
         if($request->page >= 10) {
             $request->page = 10;
+        }
+        if($page_number){
+            $request->page = $page_number;
         }
         return Cache::remember("exchanges-".$request->page."-".$user_id, 600, function() use($user_id){
             $query = Exchange::with("currencyFrom")

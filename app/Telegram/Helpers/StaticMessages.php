@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Config;
 use Longman\TelegramBot\Request;
 
 trait StaticMessages {
+    use Keyboards;
 
     public function sendMainMenu($chat_id, $language){
         Request::sendMessage([
@@ -215,7 +216,8 @@ trait StaticMessages {
         ]);
     }
 
-    public function sendLanguageMessage($chat_id, $language, $keyboard){
+    public function sendLanguageMessage($chat_id, $language){
+        $keyboard = KeyboardGenerator::generate($this->keyboardLanguages($language));
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
