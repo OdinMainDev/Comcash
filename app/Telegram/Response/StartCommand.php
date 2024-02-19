@@ -2,6 +2,7 @@
 
 namespace App\Telegram\Response;
 
+use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasTelegramBot;
 use App\Telegram\Helpers\BotFunctions;
 use App\Telegram\Helpers\KeyboardGenerator;
@@ -14,7 +15,7 @@ use Longman\TelegramBot\Request;
 
 class StartCommand extends SystemCommand
 {
-    use HasTelegramBot, BotFunctions, Keyboards, StaticMessages;
+    use HasTelegramBot, BotFunctions, Keyboards, StaticMessages, HasAffiliate;
 
     protected $name = 'start';
     protected $description = 'Start command';
@@ -26,11 +27,7 @@ class StartCommand extends SystemCommand
     {
         $user = $this->getUserBotModel($this->getMessage()->getFrom(), $this->constructBotData());
         $affiliateCampaignUser = $this->getMessage()->getText(true);
-        info("OKKK");
-        info($affiliateCampaignUser);
-        info($user->is_now_registered);
         if($affiliateCampaignUser && $user->is_now_registered){
-            info("OKKK2");
             $this->addUserToAffiliate($user->getUser, $affiliateCampaignUser);
         }
         $language = $user->language;
