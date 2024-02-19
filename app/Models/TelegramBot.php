@@ -12,4 +12,9 @@ class TelegramBot extends Model
     protected $casts = [
         "status" => "boolean"
     ];
+
+    protected $appends = ['isNowRegistered'];
+    public function getIsNowRegisteredAttribute(){
+        return false;
+    }
 }
