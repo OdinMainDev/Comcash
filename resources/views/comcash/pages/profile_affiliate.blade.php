@@ -26,7 +26,7 @@
 					<div class='accounts__list-item'>
 						<span>{{__("front.affiliate campaign_name")}}: {{$campaign->name}}</span>
 						<span>{{__("front.affiliate registered_users")}}: {{$campaign->registered_users}}</span>
-						<span>{{__("front.affiliate profitable_users")}}: {{$campaign->profitable_users}}</span>
+						<span>{{__("front.affiliate profitable_transactions")}}: {{$campaign->profitable_transactions}}</span>
 					</div>
 					<div class='accounts__list-item'>
 						<span>

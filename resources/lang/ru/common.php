@@ -158,5 +158,7 @@ return [
     "merchantTypeFrom" => "Тип мерчанта приема:",
     "merchantTypeTo" => "Тип мерчанта выплаты:",
     "viewUserExchanges" => "Обмены пользователя",
-    "viewUserAffiliateUsers" => "Приглашенные пользователи аффилейта"
+    "viewUserAffiliateUsers" => "Приглашенные пользователи аффилейта",
+    "affTable_registered_users" => "Зарегистрировано пользователей",
+    "affTable_profitable_transactions" => "Успешных сделок",
 ];

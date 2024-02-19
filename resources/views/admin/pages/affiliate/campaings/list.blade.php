@@ -11,6 +11,8 @@
                     {"data": "user_id", "name": "user_id"},
                     {"data": "name", "name": "name"},
                     {"data": "hash", "name": "hash"},
+                    {"data": "registered_users", "name": "registered_users"},
+                    {"data": "profitable_transactions", "name": "profitable_transactions"},
                     {"data": "created_at", "name": "created_at"},
                     {"data": "action", "name": "action", "orderable": false, "searchable": false}
                 ]'>
@@ -21,6 +23,8 @@
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-search-type="user">{{__("common.user")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.name")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">Hash</th>
+                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.affTable_registered_users")}}</th>
+                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.affTable_profitable_transactions")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-datepicker="true">{{__("common.createdAt")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" scope="col">{{__("common.action")}}</th>
                             </tr>

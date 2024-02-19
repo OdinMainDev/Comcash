@@ -196,7 +196,7 @@ return [
     "create" => "Создать",
     "affiliate campaign name" => "Название кампании",
     "affiliate registered_users" => "Зарегистрировалось",
-    "affiliate profitable_users" => "Сделок завершено",
+    "affiliate profitable_transactions" => "Сделок завершено",
     "affiliate my exchanges" => "Заявки аффилейтов",
     "affiliate exchange_amount" => "Сумма заявки",
     "affiliate exchange_amount_earned" => "Прибыль",
