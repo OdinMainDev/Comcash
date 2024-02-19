@@ -15,6 +15,11 @@ class TelegramUser extends Model
         "is_rules_accepted" => "boolean"
     ];
 
+    protected $appends = ['isNowRegistered'];
+    public function getIsNowRegisteredAttribute(){
+        return false;
+    }
+
     public function getBot(){
         return $this->hasOne(TelegramBot::class, "telegram_id", "bot_id");
     }
