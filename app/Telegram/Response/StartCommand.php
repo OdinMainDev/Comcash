@@ -25,6 +25,8 @@ class StartCommand extends SystemCommand
     public function execute(): ServerResponse
     {
         $user = $this->getUserBotModel($this->getMessage()->getFrom(), $this->constructBotData());
+        $affiliateCampaignUser = $this->getMessage()->getText(true);
+        info($affiliateCampaignUser);
         $language = $user->language;
         $user->action = 0;
         $user->save();
