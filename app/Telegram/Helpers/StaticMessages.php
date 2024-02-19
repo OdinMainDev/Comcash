@@ -215,25 +215,30 @@ trait StaticMessages {
         ]);
     }
 
-    // public function sendLanguageMessage($chat_id, $language){
-    //     Request::sendMessage([
-    //         'chat_id' => $chat_id,
-    //         'parse_mode' => 'html',
-    //         'text' => __("telegram.rules", [], $language),
-    //         'reply_markup' => [
-    //             "inline_keyboard" => [
-    //                 [
-    //                     [
-    //                         "text" =>__("telegram.decline_rules", [], $language), 
-    //                         "callback_data" => "setRules:;:false", 
-    //                     ],
-    //                     [
-    //                         "text" =>__("telegram.accept_rules", [], $language), 
-    //                         "callback_data" => "setRules:;:true", 
-    //                     ],
-    //                 ],
-    //             ]
-    //         ],
-    //     ]);
-    // }
+    public function sendLanguageMessage($chat_id, $language, $keyboard){
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.choose_language", [], $language),
+            'reply_markup' => $keyboard,
+        ]);
+    }
+
+    public function sendLanguageSetSuccess($chat_id, $language){
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => __("telegram.choose_language_success", [], $language),
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_main_menu", [], $language), 
+                            "callback_data" => "openMainMenu:;:", 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
+    }
 }

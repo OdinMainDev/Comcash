@@ -38,14 +38,8 @@ class StartCommand extends SystemCommand
 
         // если пользователь только что зарегался то отправляем изначально ему кейборд с выбором языка
         if(count(Config::get("app.languages")) > 1 && $user->IsNowRegistered){
-            $text = __("telegram.choose_language", [], $language);
-            $keyboard = KeyboardGenerator::generate($this->keyboardLanguages($language));
-            return $this->replyToChat(
-                $text,
-                [
-                    'reply_markup' => $keyboard,
-                ]
-            );
+            $this->sendLanguageMessage($user->telegram_id, $language, KeyboardGenerator::generate($this->keyboardLanguages($language)));
+            return Request::emptyResponse();
         }
 
         // если правила не приняты правила то отправляем их

@@ -3,6 +3,8 @@
 namespace App\Telegram\Response\Callbackquery;
 
 use App\Telegram\Helpers\BotFunctions;
+use App\Telegram\Helpers\KeyboardGenerator;
+use App\Telegram\Helpers\Keyboards;
 use App\Telegram\Helpers\StaticMessages;
 use App\Telegram\Response\Callbackquery\Handlers\ExchangePage;
 use App\Telegram\Response\Callbackquery\Handlers\ProfileActions;
@@ -14,7 +16,7 @@ use App\Telegram\Response\Message\Handlers\ExchangePage as MExchangePage;
 
 class Router
 {
-    use BotFunctions, StaticMessages, SetLanguage, SetRules, ProfileActions, ExchangePage, MExchangePage;
+    use BotFunctions, StaticMessages, SetLanguage, SetRules, ProfileActions, ExchangePage, MExchangePage, Keyboards;
     
     public $query;
     public $command;
@@ -61,6 +63,8 @@ class Router
                     $this->sendRulesMessage($this->user->telegram_id, $this->user->language);
                     return;
                 }
+                // отправить сообщение что язык применен
+                $this->sendLanguageSetSuccess($this->user->telegram_id, $this->user->language);
             break;
 
             case "setRules":
@@ -143,6 +147,11 @@ class Router
 
             case "exchangeIPaidButton":
                 $this->checkIPaidButtonAndResponse($this->data);
+                return;
+            break;
+
+            case "openChangeLanguage":
+                $this->sendLanguageMessage($this->user->telegram_id, $this->user->language, KeyboardGenerator::generate($this->keyboardLanguages($this->user->language)));
                 return;
             break;
         }

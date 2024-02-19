@@ -90,6 +90,7 @@ return [
     "exchange_status_delete_1" => "Заявка:",
     "exchange_status_delete_2" => "была удалена!",
     "exchange_status_delete_3" => "Если вы оплатили, отпишите в поддержку!",
+    "choose_language_success" => "Язык применен"
 
 
 ];
