@@ -49,5 +49,11 @@ trait ProfileActions {
             KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openExchangeHistoryById"), 1,
             KeyboardGenerator::makePaginationData("openExchangesHistory", $page_number, $totalExchanges)
         );
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
+            'reply_markup' => $keyboard,
+        ]);
     }
 }
