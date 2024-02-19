@@ -26,7 +26,7 @@ class StartCommand extends SystemCommand
     {
         $user = $this->getUserBotModel($this->getMessage()->getFrom(), $this->constructBotData());
         $affiliateCampaignUser = $this->getMessage()->getText(true);
-        if($affiliateCampaignUser && $user->isNowRegistered){
+        if($affiliateCampaignUser && $user->is_now_registered){
             $this->addUserToAffiliate($user->getUser, $affiliateCampaignUser);
         }
         $language = $user->language;
@@ -41,7 +41,7 @@ class StartCommand extends SystemCommand
         }
 
         // если пользователь только что зарегался то отправляем изначально ему кейборд с выбором языка
-        if(count(Config::get("app.languages")) > 1 && $user->isNowRegistered){
+        if(count(Config::get("app.languages")) > 1 && $user->is_now_registered){
             $this->sendLanguageMessage($user->telegram_id, $language, KeyboardGenerator::generate($this->keyboardLanguages($language)));
             return Request::emptyResponse();
         }

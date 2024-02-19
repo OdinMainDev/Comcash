@@ -15,7 +15,7 @@ class TelegramUser extends Model
         "is_rules_accepted" => "boolean"
     ];
 
-    protected $appends = ['isNowRegistered'];
+    protected $appends = ['is_now_registered'];
     public function getIsNowRegisteredAttribute(){
         return false;
     }

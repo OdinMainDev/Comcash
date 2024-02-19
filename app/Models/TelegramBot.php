@@ -13,7 +13,7 @@ class TelegramBot extends Model
         "status" => "boolean"
     ];
 
-    protected $appends = ['isNowRegistered'];
+    protected $appends = ['is_now_registered'];
     public function getIsNowRegisteredAttribute(){
         return false;
     }
