@@ -6,10 +6,10 @@
         @include("comcash.component.knowledge_menu")
         <div class="reviews__content">
             <div class="reviews__header">
-            <p class="reviews__header-title">{{__("front.reviewsPageTitle")}}</p>
-            <p class="reviews__header-text">
-                {{__("front.reviewsPageText")}}
-            </p>
+                <p class="reviews__header-title">{{__("front.reviewsPageTitle")}}</p>
+                <p class="reviews__header-text">
+                    {{__("front.reviewsPageText")}}
+                </p>
             </div>
             <div class="reviews__slider-content">
                 @if(isset($feedbacks) && count($feedbacks) > 0)

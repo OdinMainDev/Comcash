@@ -13,10 +13,10 @@ class Controller_Seo extends Controller
 {
     use HasCache;
 
-    private $pages = ["index", "tariffs", "delivery", "reviews", "news", "blog", "support", "company", "faq", "profile", "login", "register"];
+    private $pages = ["index", "tariffs", "delivery", "reviews", "news", "blog", "support", "company", "faq", "profile", "login", "register", "rules"];
     
     public function view_choose_page() {
-        return view("admin.pages.seo.basics");
+        return view("admin.pages.seo.basics")->with("seoPages", $this->pages);
     }
 
     public function view_basic_page(Request $request, $lang, $page) {
@@ -24,6 +24,12 @@ class Controller_Seo extends Controller
             return abort(404);
         }
         $model = ExchangerSettigns::where("key", "seoData")->first();
+        if(!$model){
+            $model = new ExchangerSettigns;
+            $model->key = "seoData";
+            $model->value = json_encode([]);
+            $model->save();
+        }
         $model->value = json_decode($model->value, true);
         return view("admin.pages.seo.basics_item")->with("pagename", $page)->with("model", $model);
     }

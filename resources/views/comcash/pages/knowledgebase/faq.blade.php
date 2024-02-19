@@ -86,11 +86,12 @@
             </div>
 
             <button class='accordion__button active'>
-                <span>{{__("front.faqPageFaqText21")}}</span>
+                <span>{{__("front.faqPageFaqTitle3")}}</span>
 
             </button>
             <div class='accordion__content'>
                 <div class='accordion__text'>
+                    <a  href="{{route("comcashPage", ["rules"])}}" class="faq__accordion-title">{{__("front.faqPageFaqText21")}}</a>
                     <p class="faq__accordion-title">{{__("front.faqPageFaqText22")}}</p>
                     <p class="faq__accordion-text">{{__("front.faqPageFaqText23")}}</p>
                     <p class="faq__accordion-title">{{__("front.faqPageFaqText24")}}</p>

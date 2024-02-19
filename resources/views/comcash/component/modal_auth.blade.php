@@ -49,7 +49,7 @@
 						{{__("front.pressing button")}}
 						<a href='#'>“{{__("front.continue")}}”</a>
 						- {{__("front.you are agree")}}
-						<a href='#'>“{{__("front.privacy policy")}}”</a>
+						<a href='{{route("comcashPage", ["rules"])}}'>“{{__("front.privacy policy")}}”</a>
 					</p>
 
 					<p class='signup-text'>
