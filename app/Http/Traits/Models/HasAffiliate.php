@@ -78,7 +78,7 @@ trait HasAffiliate {
             return $aff_campaign;
         }
         $aff_campaign = new AffiliateCampaign;
-        $aff_campaign->user_Id = $user->id;
+        $aff_campaign->user_id = $user->id;
         $aff_campaign->status = true;
         $aff_campaign->name = "telegramBotCampaign";
         $aff_campaign->registered_users = 0;
