@@ -41,7 +41,7 @@ trait HasTelegramBot {
             $user->language = $bot['language'];
             $user->is_rules_accepted = !Config::get("app.telegram_has_rules");
             $user->save();
-            $user->IsNowRegistered = true;
+            $user->isNowRegistered = true;
             $user->getUser = $exchangerUser;
         }
 
