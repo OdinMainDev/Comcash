@@ -42,6 +42,16 @@
                             <label for="reason" class="form-label">{{__("common.decline_reason")}}</label>
                             <input type="text" class="form-control" id="reason" name="reason" autocomplete="off" placeholder="..." value="{{$model->reason}}">
                         </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="" class="form-label">{{__("common.addressToSendMoney")}}</label>
+                            <input type="text" class="form-control" value="{{$model->address}}" disabled>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <label for="" class="form-label">{{__("common.amountToClient")}}</label>
+                            <input type="text" class="form-control" value="{{$model->amount}}" disabled>
+                        </div>
                        
                     </div>
                     
