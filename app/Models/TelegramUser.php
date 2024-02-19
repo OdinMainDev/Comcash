@@ -17,7 +17,7 @@ class TelegramUser extends Model
 
     protected $appends = ['is_now_registered'];
     public function getIsNowRegisteredAttribute(){
-        return false;
+        return $this->created_at->gt(now()->subSeconds(5));
     }
 
     public function getBot(){

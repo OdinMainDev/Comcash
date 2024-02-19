@@ -48,11 +48,6 @@ class User extends Authenticatable
         return in_array("admin", $this->roles->pluck('name')->toArray());
     }
 
-    protected $appends = ['is_now_registered'];
-    public function getIsNowRegisteredAttribute(){
-        return false;
-    }
-
     public function getUserCredentials() {
         if($this->email)
             return $this->email;
