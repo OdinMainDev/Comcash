@@ -31,6 +31,10 @@ class CacheDirections extends Command
     {
         Cache::rememberForever("directions-public", function(){
             $directions = Direction::where("status", true)
+                ->with("currencyFrom")
+                ->with("currencyTo")
+                ->with("merchantFrom")
+                ->with("merchantTo")
                 ->whereHas("currencyFrom", function($q){
                     $q->where("status", true);
                 })
@@ -79,6 +83,10 @@ class CacheDirections extends Command
                 $direction->save();
             }
             return Direction::where("status", true)
+                ->with("currencyFrom")
+                ->with("currencyTo")
+                ->with("merchantFrom")
+                ->with("merchantTo")
                 ->whereHas("currencyFrom", function($q){
                     $q->where("status", true);
                 })
