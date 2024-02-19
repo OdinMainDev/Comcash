@@ -17,54 +17,25 @@
                     </a>
                 </div>
             </div>
+            <div class='footer__sitemap-col'>
+                <p class='footer__sitemap-title'>{{__("front.footer_links_title")}}</p>
+                <a href='{{route("comcashPage", ["sitemap"])}}' class='footer__sitemap-link'>{{__("front.footer_links_1")}}</a>
+                <a href='{{route("comcashPage", ["rules"])}}' class='footer__sitemap-link'>{{__("front.footer_links_2")}}</a>
+                <a href='{{route("comcashPage", ["delivery"])}}' class='footer__sitemap-link'>{{__("front.footer_links_3")}}</a>
+                <a href='{{route("comcashPage", ["reviews"])}}' class='footer__sitemap-link'>{{__("front.footer_links_4")}}</a>
+                <a href='{{route("comcashPage", ["news"])}}' class='footer__sitemap-link'>{{__("front.footer_links_5")}}</a>
+            </div>
+            <div class='footer__sitemap-col'>
+                <p class='footer__sitemap-title'></p>
+                <a href='{{route("comcashPage", ["blog"])}}' class='footer__sitemap-link'>{{__("front.footer_links_6")}}</a>
+                <a href='{{route("comcashPage", ["support"])}}' class='footer__sitemap-link'>{{__("front.footer_links_7")}}</a>
+                <a href='{{route("comcashPage", ["company"])}}' class='footer__sitemap-link'>{{__("front.footer_links_8")}}</a>
+                <a href='{{route("comcashPage", ["faq"])}}' class='footer__sitemap-link'>{{__("front.footer_links_9")}}</a>
+            </div>
             <div class='footer__sitemap'>
                 <div class='footer__sitemap-col'>
                     <p class=''>{{__("front.footer_text")}}</p>
                 </div>
-                <!-- <div class='footer__sitemap-col'>
-                    <p class='footer__sitemap-title'>title</p>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                </div>
-                <div class='footer__sitemap-col'>
-                    <p class='footer__sitemap-title'>title</p>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                </div>
-                <div class='footer__sitemap-col'>
-                    <p class='footer__sitemap-title'>title</p>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                </div>
-                <div class='footer__sitemap-col'>
-                    <p class='footer__sitemap-title'>title</p>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                    <a href='#'
-                        class='footer__sitemap-link'>link</a>
-                </div> -->
             </div>
         </div>
         <div class='footer__bottom'>

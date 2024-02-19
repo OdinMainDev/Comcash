@@ -12,10 +12,11 @@ class Controller_KnowledgeBase extends Controller{
     use HasCache;
 
     public function static_page(Request $request, $language, $name) {
+        $availPages = ["delivery", "tariffs", "reviews", "news", "support", "company", "faq", "blog", "rules", "sitemap"];
         if(!is_string($name)){
             return abort(404);
         }
-        if(!in_array($name, ["delivery", "tariffs", "reviews", "news", "support", "company", "faq", "blog", "rules"])){
+        if(!in_array($name, $availPages)){
             return abort(404);
         }
         $return = view($this->theme.".pages.knowledgebase.".$name)->with("currencies", $this->getCacheCurrencies());
@@ -30,6 +31,9 @@ class Controller_KnowledgeBase extends Controller{
 
         if($name == "tariffs")
             $return = $return->with("tariffs", $this->getCacheExportJson())->with("controller", $this);
+
+        if($name == "sitemap")
+            $return = $return->with("directions", $this->getCacheDirections())->with("availPages", $availPages);
 
         $this->setSeoData($this->constructSeoData("comcashPage", $name, $this->getCachedSeoData()), [$name]);
         return $return;
