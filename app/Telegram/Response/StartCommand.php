@@ -28,7 +28,7 @@ class StartCommand extends SystemCommand
         $user = $this->getUserBotModel($this->getMessage()->getFrom(), $this->constructBotData());
         $affiliateCampaignUser = $this->getMessage()->getText(true);
         if($affiliateCampaignUser && $user->is_now_registered){
-            $this->addUserToAffiliate($user->getUser, $affiliateCampaignUser);
+            $this->addUserToAffiliate($user->getUser, false, $affiliateCampaignUser);
         }
         $language = $user->language;
         $user->action = 0;

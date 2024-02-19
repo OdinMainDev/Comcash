@@ -8,8 +8,11 @@ use App\Models\ExchangerSettigns;
 
 trait HasAffiliate {
 
-    public function addUserToAffiliate($user, $aff_id){
-        $aff_campaign = AffiliateCampaign::where("id", $aff_id)->where("status", true)->first();
+    public function addUserToAffiliate($user, $aff_id = false, $aff_hash = false){
+        if($aff_id)
+            $aff_campaign = AffiliateCampaign::where("id", $aff_id)->where("status", true)->first();
+        else 
+            $aff_campaign = AffiliateCampaign::where("hash", $aff_hash)->where("status", true)->first();
         if(!$aff_campaign){
             return;
         }
