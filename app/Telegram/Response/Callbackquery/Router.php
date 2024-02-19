@@ -158,6 +158,11 @@ class Router
                 $this->sendUserExchangesHistory($this->user->telegram_id, $this->user->language, $this->data);
                 return;
             break;
+
+            case "openExchangeHistoryById":
+                $this->sendUserExchangeHistory($this->user->telegram_id, $this->user->language, $this->data);
+                return;
+            break;
         }
     }
 

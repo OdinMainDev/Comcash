@@ -95,5 +95,6 @@ return [
     "exchanges_history_description" => "Дополнительный текст",
     "page_number" => "Текущая страница",
     "on_this_page" => "На этой странице",
+    "back_to_exchanges_history" => "Вернутся в историю обменов"
 
 ];

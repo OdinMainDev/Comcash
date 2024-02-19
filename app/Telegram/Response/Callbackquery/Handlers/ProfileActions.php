@@ -2,13 +2,15 @@
      
 namespace App\Telegram\Response\Callbackquery\Handlers;
 
+use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasCache;
+use App\Models\Exchange;
 use App\Telegram\Helpers\KeyboardGenerator;
 use Illuminate\Support\Facades\Config;
 use Longman\TelegramBot\Request;
 
 trait ProfileActions {
-    use HasCache;
+    use HasCache, HasTelegramMessage;
     
     public function profileGoToWeb($chat_id, $language, $exchanger_user_id){
         $text = __("telegram.goto_web_text", [], $language);
@@ -37,13 +39,13 @@ trait ProfileActions {
         $totalExchanges = $this->user->getUser->getCountExchanges();
         $text = "<b>".__("telegram.exchanges_history_title", [], $language)."</b>\n";
         $text .= __("telegram.exchanges_history_description", [], $language)."\n\n";
-        $text .= "<b>".__("telegram.profile_total_exchanges", [], $language).":</b>";
+        $text .= "<b>".__("telegram.profile_total_exchanges", [], $language)."</b>";
         $text .= " ".$totalExchanges."\n";
         $exchanges = $this->getCacheExchanges($this->user->user_id, $page_number);
         $keyboardArray = [];
         foreach($exchanges as $index => $exchange){
             $key = (string)($index + 1).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
-            $keyboardArray[$key] = $exchange->id;
+            $keyboardArray[$key] = $exchange->id."_".$page_number;
         }
         $keyboard = KeyboardGenerator::generate(
             KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openExchangeHistoryById"), 1,
@@ -54,6 +56,45 @@ trait ProfileActions {
             'parse_mode' => 'html',
             'text' => $text,
             'reply_markup' => $keyboard,
+        ]);
+    }
+
+    public function sendUserExchangeHistory($chat_id, $language, $data) {
+        $data = explode("_", $data);
+        if(count($data) != 2 || !is_numeric($data[0]) || !is_numeric($data[1])){
+            return;
+        }
+        $exchange = Exchange::where("id", $data[0])->where("user_id", $this->user->user_id)->where("status", 5)->first();
+        if(!$exchange){
+            return;
+        }
+        $text = $this->tgUserExchangeStartMessage($exchange, $language);
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_exchanges_history", [], $language), 
+                            "callback_data" => "openExchangesHistory:;:".$data[1], 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.back_to_profile", [], $language), 
+                            "callback_data" => "openProfile:;:", 
+                        ],
+                    ],
+                    [
+                        [
+                            "text" =>__("telegram.back_to_main_menu", [], $language), 
+                            "callback_data" => "openMainMenu:;:", 
+                        ],
+                    ],
+                ]
+            ],
         ]);
     }
 }
