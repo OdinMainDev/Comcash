@@ -51,7 +51,7 @@ trait ProfileActions {
             $currentRealIndex = (10 * ($page_number - 1));
             $text .= " ".($currentRealIndex + 1)."->".($currentRealIndex + 11 > $totalExchanges ? $totalExchanges : $currentRealIndex + 11)."/".$totalExchanges;
             foreach($exchanges as $index => $exchange){
-                $key = (string)($index + 1).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
+                $key = (string)($currentRealIndex + $index + 1).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
                 $keyboardArray[$key] = $exchange->id."_".$page_number;
             }
             $keyboard = KeyboardGenerator::generate(
