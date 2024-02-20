@@ -11,12 +11,12 @@ import axios from 'axios';
 $(document).ready(async function() {
     const table = $('.eaDatatable');
     const currenciesList = await getCurrencies();
+    const statusWithdrawsList = [];
     const selectOptionDefault = `<option value="">` + "—" + '</option>';
 
     table.each(function() {
         $(this).find("thead tr:eq(1) th").each(function() {
             const select = $(this).find('select.form-select');
-            const search = $(this).find('input.search');
             const datepicker = $(this).find('input.datepicker');
             const url = window.location.href;
             const languagePattern = /\/(en|ru)\//;
@@ -44,12 +44,9 @@ $(document).ready(async function() {
                 case 'status':
                     renderStatus(select)
                     break;
-            }
-
-            switch ($(this).data('search-type')) {
-                case 'user': 
-                    searchUser(search)
-                    break;
+                case 'status_withdraws':
+                    renderStatusWithdraws(select)
+                    break;    
             }
 
             $(this).removeAttr(Object.values($(this).get(0).attributes).map(attr => attr.name).join(' '));
@@ -58,23 +55,7 @@ $(document).ready(async function() {
         })
     });
 
-    function searchUser(search) {
-        let timer = null;
-        search.on('input', (e) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => {
-                axios.get('/ru/panel/api/get/users', {
-                    params: {
-                        query: e.target.value
-                    }
-                })
-                .then(res => {
-                    console.log(res.data);
-                })
-            }, 2000);
-        })
-    }
-
+MediaKeyMessageEvent, 
     function renderCurrenciesCode(select) {
         currenciesList.forEach(item => {
             const selectOption = `<option value=${item.name}>` + item.name + '</option>'
@@ -85,6 +66,13 @@ $(document).ready(async function() {
     function renderCurrenciesCodeId(select) {
         currenciesList.forEach(item => {
             const selectOption = `<option value=${item.id}>` + item.name + '</option>'
+            select.append(selectOption);
+        })
+    }
+
+    function renderStatusWithdraws(select) {
+        statusWithdrawsList.forEach(item => {
+            const selectOption = `<option value=${item.number}>` + item.name + '</option>'
             select.append(selectOption);
         })
     }

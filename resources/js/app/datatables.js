@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 (() => {
     function debounce(callback, ms) {
@@ -129,6 +130,38 @@
             } else if($(this).data('search-type')) {
                 var t = $(this).text();
                 $(this).html('<input type="text" class="form-control search" placeholder="🔍 ' + t + '" />');
+                let timer = null;
+                const search = $(this).find('input.search');
+                const ul = $('<ul class="admin-exchange-table__search-list"></ul>');
+                $(search).after(ul)
+        
+                search.on('input', (e) => {
+                    clearTimeout(timer);
+                    timer = setTimeout(() => {
+                        if (e.target.value.trim().length !== 0) {
+                            axios.get('/ru/panel/api/get/users/', {
+                                params: {
+                                    search: e.target.value
+                                }
+                            })
+                            .then(res => {
+                                ul.empty()
+                                res.data.forEach(item => {
+                                    ul.append(`<li data-value="${item.id}">${item.text}</li>`).on('mousedown', () => {
+                                        dtCont.column(a).search(item.id, true, false).draw();
+                                    });
+                                })
+                            })
+                        } else {
+                            dtCont.column(a).search('', true, false).draw();
+                        }
+  
+                    }, 500);
+                })
+        
+                search.on('blur', (e) => {
+                    ul.empty();
+                })
             } else {
                 var t = $(this).text();
                 $(this).html('<input type="text" class="form-control" placeholder="🔍 ' + t + '" />');

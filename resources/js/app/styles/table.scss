@@ -2,6 +2,60 @@
     td {
         position: relative;
     }
+
+    th {
+        &.sorting {
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                width: 6px;
+                margin-left: 5px;
+                top: 40%;
+                transform: translateY(-50%);
+                box-sizing: border-box;
+                height: 6px;
+                border-top: 2px solid #7886a1;
+                border-left: 2px solid #7886a1;
+                transform: rotate(-135deg);
+            }
+        }
+
+        &.sorting_desc {
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                width: 6px;
+                margin-left: 5px;
+                top: 40%;
+                transform: translateY(-50%);
+                box-sizing: border-box;
+                height: 6px;
+                border-top: 2px solid #7886a1;
+                border-left: 2px solid #7886a1;
+                transform: rotate(-135deg);
+            }
+        }
+
+        &.sorting_asc {
+
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                width: 6px;
+                margin-left: 5px;
+                top: 50%;
+                transform: translateY(-50%);
+                box-sizing: border-box;
+                height: 6px;
+                border-top: 2px solid #7886a1;
+                border-left: 2px solid #7886a1;
+                transform: rotate(45deg);
+            }
+        }
+    }
 }
 
 .admin-exchange-table {
@@ -27,6 +81,32 @@
     //     }
     // }
     
+
+    &__search-list {
+        position: absolute;
+        z-index: 3;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        -webkit-box-shadow: 3px 0 10px 0 #060b15;
+        background-clip: border-box;
+        border: 1px solid #172340;
+        background-color: #0c1427;
+    
+        li {
+            color: #FFF;
+            font-size: 12px;
+            padding: 10px 30px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            &:nth-child(even) {
+                background-color: #080e1b;
+            }
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
 
     &__arrow {
         width: 20px;
