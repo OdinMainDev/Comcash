@@ -55,6 +55,10 @@ trait ProfileActions {
                 KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openExchangeHistoryById"), 1,
                 KeyboardGenerator::makePaginationData("openExchangesHistory", $page_number, $totalExchanges)
             );
+            $keyboard['inline_keyboard'][] = [
+                "text" =>__("telegram.back_to_profile", [], $language), 
+                "callback_data" => "openProfile:;:",
+            ];
         }
         $postData = [
             'chat_id' => $chat_id,
