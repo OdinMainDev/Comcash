@@ -138,7 +138,17 @@ trait HasCache {
     }
 
     public function getCacheExportJson(){
-        return Cache::remember("export-json-public", 3600, function(){
+        return Cache::get("export-json-public", [
+            "version" => "1.3",
+            "currencies" => [
+                "list" => []
+            ],
+            "exchange" => []
+        ]);
+    }
+
+    public function refreshCacheExportJson(){
+        return Cache::rememberForever("export-json-public", function(){
             $currencies = $this->getCacheCurrencies();
             $response = [
                 "version" => "1.3",
@@ -249,7 +259,11 @@ trait HasCache {
     }
 
     public function getCacheExportXml(){
-        return Cache::remember("export-xml-public", 3600, function(){
+        return Cache::get("export-xml-public", "<rates></rates>");
+    }
+
+    public function refreshCacheExportXml(){
+        return Cache::rememberForever("export-xml-public", function(){
             $xml = "<rates>";
             $currencies = $this->getCacheCurrencies();
 
@@ -402,5 +416,25 @@ trait HasCache {
                 return $currency->id == $fromId;
             });
         });
+    }
+
+    public function getCachedCurrencyByName($search_currencies = false) {
+        if(!$search_currencies){
+            return false;
+        }
+        $return = [];
+        if(!is_array($search_currencies)){
+            $search_currencies = [$search_currencies];
+        }
+        $currencies = $this->getCacheCurrencies();
+        foreach($search_currencies as $key => $currency_name){
+            foreach($currencies as $val){
+                if($currency_name == $val->name){
+                    $return[] = $val;
+                }
+            }
+        }
+        unset($currencies);
+        return $return;
     }
 }

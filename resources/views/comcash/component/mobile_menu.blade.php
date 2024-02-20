@@ -9,8 +9,8 @@
                 <a href='{{route("myprofilePassword")}}' >{{__("front.security")}}</a>
             </div>
         @endauth
-        <!-- <a class='accordion__button accordion__button_custom'>{{__("front.TariffsMenu")}}</a> -->
-        <!-- <div class='accordion__content'></div> -->
+        <a class='accordion__button accordion__button_custom'  href='{{route("comcashPage", ["tariffs"])}}'>{{__("front.TariffsMenu")}}</a>
+        <div class='accordion__content'></div>
         <a class='accordion__button accordion__button_custom'  href='{{route("comcashPage", ["delivery"])}}'>{{__("front.CashCourierMenu")}}</a>
         <div class='accordion__content'></div>
         <a class='accordion__button accordion__button_custom'  href='{{route("comcashPage", ["faq"])}}'>{{__("front.PartnerFAQMenu")}}</a>

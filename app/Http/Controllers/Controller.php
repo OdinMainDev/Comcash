@@ -61,23 +61,7 @@ class Controller extends BaseController{
     }
 
     public function getCurrencyByName($search_currencies = false) {
-        if(!$search_currencies){
-            return false;
-        }
-        $return = [];
-        if(!is_array($search_currencies)){
-            $search_currencies = [$search_currencies];
-        }
-        $currencies = $this->getCacheCurrencies();
-        foreach($search_currencies as $key => $currency_name){
-            foreach($currencies as $val){
-                if($currency_name == $val->name){
-                    $return[] = $val;
-                }
-            }
-        }
-        unset($currencies);
-        return $return;
+        return $this->getCachedCurrencyByName($search_currencies);
     }
 
     public function getEstimateDataFromRequest($request, $with_reverse_check = false){
