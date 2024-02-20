@@ -53,7 +53,7 @@ trait ProfileActions {
             }
             $keyboard = KeyboardGenerator::generate(
                 KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openExchangeHistoryById"), 1,
-                KeyboardGenerator::makePaginationData("openExchangesHistory", $page_number, $totalExchanges)
+                $totalExchanges > 10 ? KeyboardGenerator::makePaginationData("openExchangesHistory", $page_number, $totalExchanges) : [],
             );
         }else{
             $keyboard = [];
