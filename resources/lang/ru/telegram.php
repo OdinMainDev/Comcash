@@ -120,6 +120,9 @@ return [
     "aff_withdraw_set_complete" => "Подтвердите создание заявки на выплату средств",
     "aff_withdraw_do_withdraw_yes" => "Подтверждаю",
     "aff_withdraw_do_withdraw_no" => "Отклоняю",
-    "aff_withdraw_success_create_withdraw" => "Заявка на выплату успешно создана"
+    "aff_withdraw_success_create_withdraw" => "Заявка на выплату успешно создана",
+    "my_affiliate_url" => "Моя партнерская ссылка",
+    "my_affiliate_balances" => "Мои балансы",
+    "my_affiliate_withdraws" => "Мои выплаты",
 
 ];
