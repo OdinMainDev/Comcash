@@ -312,6 +312,16 @@ trait ProfileActions {
             $keyboard['inline_keyboard'] = [];
         }
 
+        $keyboard['inline_keyboard'][] = [
+            [
+                "text" =>__("telegram.my_affiliate_balances", [], $language), 
+                "callback_data" => "openAffiliateBalances:;:", 
+            ],
+            [
+                "text" =>__("telegram.do_affiliate_withdraw", [], $language), 
+                "callback_data" => "openCreateAffiliateWithdraw:;:", 
+            ],
+        ];
         $keyboard['inline_keyboard'][] = [[
             "text" =>__("telegram.back_to_profile", [], $language), 
             "callback_data" => "openProfile:;:",
