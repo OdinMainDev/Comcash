@@ -112,7 +112,7 @@ trait AffiliatePage {
         $this->user->save();
 
         $withdraw = new AffiliateWithdraw;
-        $withdraw->user_id = auth()->user()->id;
+        $withdraw->user_id = $balance->user_id;
         $withdraw->currency = $balance->currency;
         $withdraw->status = 0;
         $withdraw->amount = $textAmount;
