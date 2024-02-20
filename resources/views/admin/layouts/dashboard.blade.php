@@ -33,17 +33,20 @@
 
         <script>
             window.__str = JSON.parse(`{!!addslashes(json_encode([
-                "statusExchange0" => __("common.statusExchange0"),   
-                "statusExchange1" => __("common.statusExchange1"),   
-                "statusExchange2" => __("common.statusExchange2"),   
-                "statusExchange3" => __("common.statusExchange3"),   
-                "statusExchange4" => __("common.statusExchange4"),   
-                "statusExchange5" => __("common.statusExchange5"),   
-                "statusExchange11" => __("common.statusExchange11"),   
-                "statusExchange12" => __("common.statusExchange12"),   
-                "statusExchange13" => __("common.statusExchange13"),   
-                "statusExchange14" => __("common.statusExchange14"),   
-                "statusExchange15" => __("common.statusExchange15"),   
+                "statusExchange0" => __("common.statusExchange0"),
+                "statusExchange1" => __("common.statusExchange1"),
+                "statusExchange2" => __("common.statusExchange2"),
+                "statusExchange3" => __("common.statusExchange3"),
+                "statusExchange4" => __("common.statusExchange4"),
+                "statusExchange5" => __("common.statusExchange5"),
+                "statusExchange11" => __("common.statusExchange11"),
+                "statusExchange12" => __("common.statusExchange12"),
+                "statusExchange13" => __("common.statusExchange13"),
+                "statusExchange14" => __("common.statusExchange14"),
+                "statusExchange15" => __("common.statusExchange15"),
+                "affstatus0" => __("common.affstatus0"),
+                "affstatus1" => __("common.affstatus1"),
+                "affstatus2" => __("common.affstatus2"),
             ]));!!}`);
         </script>
         <script src="/admin/assets/vendors/core/core.js"></script>

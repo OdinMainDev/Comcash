@@ -44,3 +44,18 @@ export const statusList = [
         name: window.__str["statusExchange15"]
     },
 ]
+
+export const statusAffstatusList = [
+    {
+        number: 0,
+        name: window.__str["affstatus0"]
+    },
+    {
+        number: 1,
+        name: window.__str["affstatus1"]
+    },
+    {
+        number: 2,
+        name: window.__str["affstatus2"]
+    },
+]

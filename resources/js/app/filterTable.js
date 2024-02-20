@@ -3,7 +3,7 @@ import flatpickr from "flatpickr";
 import 'flatpickr/dist/flatpickr.min.css'
 import { Russian } from "flatpickr/dist/l10n/ru.js";
 import { English } from "flatpickr/dist/l10n/default.js";
-import { statusList } from "./constants";
+import { statusList, statusAffstatusList } from "./constants";
 import axios from 'axios';
 
 
@@ -11,7 +11,6 @@ import axios from 'axios';
 $(document).ready(async function() {
     const table = $('.eaDatatable');
     const currenciesList = await getCurrencies();
-    const statusWithdrawsList = [];
     const selectOptionDefault = `<option value="">` + "—" + '</option>';
 
     table.each(function() {
@@ -71,7 +70,7 @@ MediaKeyMessageEvent,
     }
 
     function renderStatusWithdraws(select) {
-        statusWithdrawsList.forEach(item => {
+        statusAffstatusList.forEach(item => {
             const selectOption = `<option value=${item.number}>` + item.name + '</option>'
             select.append(selectOption);
         })
