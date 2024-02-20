@@ -387,7 +387,7 @@ trait ProfileActions {
             $text .= " ".($currentRealIndex + 11 > $totalExchanges ? $totalExchanges : $currentRealIndex + 11)."/".$totalExchanges." ";
             $text .= __("telegram.profile_current_paginate_aff_exchanges_3", [], $language);
             foreach($exchanges as $index => $exchange){
-                $key = (string)(($exchange->id)).": ".$exchange->getCurrency->getTitle().": ".$exchange->amount;
+                $key = (string)(($exchange->id)).": ".$exchange->getCurrency->name.": ".$exchange->amount." (".$exchange->amount_earned.")";
                 $keyboardArray[$key] = $exchange->id."_".$page_number;
             }
             $keyboard = KeyboardGenerator::generate(
@@ -431,6 +431,7 @@ trait ProfileActions {
         if(count($data) != 2 || !is_numeric($data[0]) || !is_numeric($data[1])){
             return;
         }
+        // $campaign = $this->getTelegramUserCampaign($this->user->getUser);
         $exchange = AffiliateExchange::where("id", $data[0])->where("user_id", $this->user->user_id)->first();
         if(!$exchange){
             return;
@@ -440,16 +441,7 @@ trait ProfileActions {
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' => $text,
-            'reply_markup' => [
-                "inline_keyboard" => [
-                    [
-                        [
-                            "text" =>__("telegram.back_to_exchanges_history", [], $language), 
-                            "callback_data" => "openAffiliateExchanges:;:".$data[1], 
-                        ],
-                    ],
-                ]
-            ],
+            
         ]);
     }
 }
