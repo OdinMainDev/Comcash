@@ -40,6 +40,8 @@ class Controller_Affiliate extends Controller
             "filter_user_id" => "nullable|integer",
             "filter_name" => "nullable|string|max:255",
             "filter_hash" => "nullable|string|max:255",
+            "filter_registered_users" => "nullable|integer",
+            "filter_profitable_transactions" => "nullable|integer",
             "filter_created_at" => 'nullable|date|date_format:Y-m-d\TH:i',
         ]);
         if(!is_null($request->filter_id)){
@@ -55,6 +57,12 @@ class Controller_Affiliate extends Controller
         if(!is_null($request->filter_hash)){
             $search = mb_strtolower($request->filter_hash);
             $query = $query->whereRaw('lower(hash) like (?)', ["%{$search}%"]);
+        }
+        if(!is_null($request->filter_registered_users) && $request->filter_registered_users > 0){
+            $query = $query->where('registered_users', ">=", $request->filter_registered_users);
+        }
+        if(!is_null($request->filter_profitable_transactions) && $request->filter_profitable_transactions > 0){
+            $query = $query->where('profitable_transactions', ">=", $request->filter_profitable_transactions);
         }
         if(!is_null($request->filter_created_at)){
             $date = Carbon::createFromFormat('Y-m-d\TH:i', $request->filter_created_at);
