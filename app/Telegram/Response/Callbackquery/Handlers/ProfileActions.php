@@ -410,9 +410,9 @@ trait ProfileActions {
             ],
         ];
         $keyboard['inline_keyboard'][] = [[
-            "text" =>__("telegram.do_affiliate_exchange", [], $language), 
-            "callback_data" => "openCreateAffiliateExchange:;:", 
-        ]];
+            "text" =>__("telegram.do_affiliate_withdraw", [], $language), 
+            "callback_data" => "openCreateAffiliateWithdraw:;:", 
+        ],];
         $keyboard['inline_keyboard'][] = [[
             "text" =>__("telegram.back_to_profile", [], $language), 
             "callback_data" => "openProfile:;:",

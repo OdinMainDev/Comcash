@@ -140,5 +140,11 @@ return [
     "withdraw_reason" => "Причина отклонения:",
     "withdraw_status_updated" => "Обновлен статус партнерской выплаты",
     "withdraw_status_new_status" => "Новый статус: ",
+    "aff_exchanges_history_title" => "Заголовок обменов",
+    "aff_exchanges_history_description" => "Подпись",
+    "profile_aff_total_exchanges" => "Всего обменов:",
+    "profile_current_paginate_aff_exchanges" => "от",
+    "profile_current_paginate_aff_exchanges_2" => "до",
+    "profile_current_paginate_aff_exchanges_3" => "обменов",
 
 ];
