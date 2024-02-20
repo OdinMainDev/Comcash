@@ -135,5 +135,8 @@ return [
     "withdraw_status_0" => "На модерации",
     "withdraw_status_1" => "Успешна",
     "withdraw_status_2" => "Отклонена",
+    "withdraw_currency" => "Валюта:",
+    "withdraw_amount" => "Сумма:",
+    "withdraw_reason" => "Причина отклонения:"
 
 ];

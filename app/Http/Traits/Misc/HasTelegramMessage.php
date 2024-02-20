@@ -84,6 +84,11 @@ trait HasTelegramMessage {
         $text .= " ".$withdraw->getCurrency->getTitle($language);
         $text .= "\n".__("telegram.withdraw_amount", [], $language);
         $text .= " ".$withdraw->amount." ".$withdraw->getCurrency->name;
+
+        if($withdraw->status == 2){
+            $text .= "\n\n".__("telegram.withdraw_reason", [], $language);
+            $text .= " ".$withdraw->reason;
+        }
         return $text;
     }
 
