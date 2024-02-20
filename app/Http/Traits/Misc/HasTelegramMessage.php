@@ -106,7 +106,7 @@ trait HasTelegramMessage {
         $text .= " ".$exchange->getCurrency->getTitle($language);
         $text .= "\n".__("telegram.exchange_amount", [], $language);
         $text .= " ".$exchange->amount." ".$exchange->getCurrency->name;
-        $text .= " (".$exchange->amount_earned." $)";
+        $text .= " (".$exchange->amount_earned.")";
         return $text;
     }
 }
