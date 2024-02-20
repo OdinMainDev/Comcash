@@ -242,7 +242,7 @@ trait HasCache {
             }
 
             if($page_number)
-                return $query->limit(10)->offset(($page_number - 1 ) * 10);
+                return $query->limit(10)->offset(($page_number - 1 ) * 10)->get();
 
             return $query->paginate(10);
         });
