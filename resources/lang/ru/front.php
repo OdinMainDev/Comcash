@@ -421,5 +421,8 @@ return [
     "footer_links_7" => "Поддержка",
     "footer_links_8" => "О нас",
     "footer_links_9" => "FAQ",
-    "sitemap_page_title" => "Карта сайта"
+    "sitemap_page_title" => "Карта сайта",
+    "affiliate_withdraw_status" => "Статус:",
+    "affiliate_withdraw_amount" => "Сумма:",
+    "affiliate_withdraw_reason" => "Причина отказа:",
 ];

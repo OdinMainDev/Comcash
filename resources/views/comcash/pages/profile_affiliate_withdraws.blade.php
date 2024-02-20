@@ -12,9 +12,11 @@
 				@foreach($withdraws as $withdraw)
 					<div class='accounts__list-row'>
 						<div class='accounts__list-item'>
-							<span>{{__("front.affiliate_withdraw_status".$withdraw->status)}}</span>
-							<span>{{sprintf("%.12f", $withdraw->amount)}}</span>
-							<span>{{$withdraw->reason}}</span>
+							<span>{{__("front.affiliate_withdraw_status")}} {{__("front.affiliate_withdraw_status".$withdraw->status)}}</span>
+							<span>{{__("front.affiliate_withdraw_amount")}} {{sprintf("%.12f", $withdraw->amount)}}</span>
+							@if($withdraw->reason)
+								<span>{{__("front.affiliate_withdraw_reason")}} {{$withdraw->reason}}</span>
+							@endif
 						</div>
 					</div>
 				@endforeach
