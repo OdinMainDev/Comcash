@@ -68,4 +68,8 @@ class User extends Authenticatable
     public function getCountWithdraws() {
         return AffiliateWithdraw::where("user_id", $this->id)->where("status", 1)->count();
     }
+
+    public function getCountAllWithdraws() {
+        return AffiliateWithdraw::where("user_id", $this->id)->count();
+    }
 }

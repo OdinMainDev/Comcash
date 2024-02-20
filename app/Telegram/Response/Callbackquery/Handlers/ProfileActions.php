@@ -286,7 +286,7 @@ trait ProfileActions {
             $page_number = 1;
         }
         $withdraws = $this->getCacheAffiliatesWithdraws($this->user->user_id, $page_number);
-        $totalWithdraws = $this->user->getUser->getCountWithdraws();
+        $totalWithdraws = $this->user->getUser->getCountAllWithdraws();
         $text = "<b>".__("telegram.withdraws_history_title", [], $language)."</b>\n";
         $text .= __("telegram.withdraws_history_description", [], $language)."\n\n";
         $text .= "<b>".__("telegram.profile_total_withdraws", [], $language)."</b>";
@@ -300,7 +300,7 @@ trait ProfileActions {
             $text .= " ".($currentRealIndex + 11 > $totalWithdraws ? $totalWithdraws : $currentRealIndex + 11)."/".$totalWithdraws." ";
             $text .= __("telegram.profile_current_paginate_withdraws_3", [], $language);
             foreach($withdraws as $index => $withdraw){
-                $key = (string)(($withdraw->id)).": <b>".$withdraw->getCurrency->getTitle().":</b> ".$withdraw->amount;
+                $key = (string)(($withdraw->id)).": ".$withdraw->getCurrency->getTitle().": ".$withdraw->amount;
                 $keyboardArray[$key] = $withdraw->id."_".$page_number;
             }
             $keyboard = KeyboardGenerator::generate(
