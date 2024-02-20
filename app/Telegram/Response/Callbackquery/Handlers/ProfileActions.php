@@ -46,20 +46,25 @@ trait ProfileActions {
         $text .= " ".$totalExchanges."\n";
         $exchanges = $this->getCacheExchanges($this->user->user_id, $page_number);
         $keyboardArray = [];
-        foreach($exchanges as $index => $exchange){
-            $key = (string)($index + 1).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
-            $keyboardArray[$key] = $exchange->id."_".$page_number;
+        if($totalExchanges > 0){
+            foreach($exchanges as $index => $exchange){
+                $key = (string)($index + 1).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
+                $keyboardArray[$key] = $exchange->id."_".$page_number;
+            }
+            $keyboard = KeyboardGenerator::generate(
+                KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openExchangeHistoryById"), 1,
+                KeyboardGenerator::makePaginationData("openExchangesHistory", $page_number, $totalExchanges)
+            );
         }
-        $keyboard = KeyboardGenerator::generate(
-            KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openExchangeHistoryById"), 1,
-            KeyboardGenerator::makePaginationData("openExchangesHistory", $page_number, $totalExchanges)
-        );
-        Request::sendMessage([
+        $postData = [
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' => $text,
-            'reply_markup' => $keyboard,
-        ]);
+        ];
+        if($totalExchanges > 0){
+            $postData['reply_markup'] = $keyboard;
+        }
+        Request::sendMessage($postData);
     }
 
     public function sendUserExchangeHistory($chat_id, $language, $data) {
