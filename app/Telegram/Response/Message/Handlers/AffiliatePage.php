@@ -118,7 +118,7 @@ trait AffiliatePage {
         $withdraw->amount = $textAmount;
         $withdraw->address = $textAddress;
         $withdraw->save();
-        // sendTelegramNotificationAffiliate("Новая заявка на выплату аффилейту");
+        sendTelegramNotificationAffiliate("Новая заявка на выплату аффилейту");
 
 
         $text = __("telegram.aff_withdraw_success_create_withdraw", [], $language);
