@@ -232,10 +232,7 @@ trait HasCache {
         if($request->page >= 10) {
             $request->page = 10;
         }
-        if($page_number){
-            $request->page = $page_number;
-        }
-        return Cache::remember("exchanges-".$request->page."-".$user_id, 600, function() use($user_id){
+        return Cache::remember("exchanges-".$request->page."-".$user_id."-".$page_number, 600, function() use($user_id, $page_number){
             $query = Exchange::with("currencyFrom")
                 ->with("currencyTo")
                 ->orderBy("id", "DESC")
@@ -243,7 +240,11 @@ trait HasCache {
             if($user_id){
                 $query = $query->where("user_id", $user_id);
             }
-                return $query->paginate(10);
+
+            if($page_number)
+                return $query->limit(10)->offset(($page_number - 1 ) * 10);
+
+            return $query->paginate(10);
         });
     }
 
