@@ -421,4 +421,5 @@ return [
     "footer_links_7" => "Поддержка",
     "footer_links_8" => "О нас",
     "footer_links_9" => "FAQ",
+    "sitemap_page_title" => "Карта сайта"
 ];
