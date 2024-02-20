@@ -58,8 +58,18 @@ trait HasTable {
         }
         
         // if(is_array($custom)){
-        //     foreach($custom as $key => $value){
-        //         $html .= '<a class="dropdown-item d-flex align-items-center" href="'.$value.'">'.$key.'</a>';
+        //     foreach($custom as $value){
+        //         if(!is_array($value))
+        //             continue;
+
+        //         if($value['type'] == "icon"){
+        //             $html .= '
+        //                 <a href="'.$value['route'].'" class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon">
+        //                     <i data-feather="'.$value['icon'].'" ></i>
+        //                 </a>';
+        //         }else{
+        //             $html .= '<a href="'.$value['route'].'" class="btn btn-primary me-2">'.$value['text'].'</a>';
+        //         }
         //     }
         // }
         $html .= '</div>';
