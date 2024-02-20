@@ -60,10 +60,10 @@ trait ProfileActions {
             $keyboard['inline_keyboard'] = [];
         }
 
-        $keyboard['inline_keyboard'][] = [
+        $keyboard['inline_keyboard'][] = [[
             "text" =>__("telegram.back_to_profile", [], $language), 
             "callback_data" => "openProfile:;:",
-        ];
+        ]];
         $postData = [
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
