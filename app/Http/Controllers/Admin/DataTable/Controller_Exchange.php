@@ -34,7 +34,7 @@ class Controller_Exchange extends Controller
             if(isset($row->data['merchant_from_data']))
                 $html .= '<tr class="admin-exchange-table__row hidden-row"><td>'.__("common.addressToReceiveMoney").'</td><td >' . @$row->data['merchant_from_data']['address'] . '</td></tr>';
             if(isset($row->data['merchant_from_data']))
-                $html .= '<tr class="admin-exchange-table__row hidden-row"  style="background-color: darkseagreen"><td>'.__("common.addressToSendMoney").'</td><td >' . @$row->data['request_data']['to_address'] . '</td></tr>';
+                $html .= '<tr class="admin-exchange-table__row hidden-row"  style="background-color: darkseagreen"><td>'.__("common.addressToSendMoney").'</td><td >' . @$row->data['request_data']['to_address'] ? @$row->data['request_data']['to_address'] : @$row->data['request_data']['to_card'] . '</td></tr>';
             
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>'.__("common.user").'</td><td><a href="'.route("adminUserEdit", [$row->user_id]).'">' . ($row->getUser ? $row->getUser->getUserCredentials() : $row->user_id) . '</a></td></tr>';
             // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>currency_from:</td><td>' . @$row->currency_from . '</td></tr>';
