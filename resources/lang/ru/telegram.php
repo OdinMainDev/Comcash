@@ -137,6 +137,8 @@ return [
     "withdraw_status_2" => "Отклонена",
     "withdraw_currency" => "Валюта:",
     "withdraw_amount" => "Сумма:",
-    "withdraw_reason" => "Причина отклонения:"
+    "withdraw_reason" => "Причина отклонения:",
+    "withdraw_status_updated" => "Обновлен статус партнерской выплаты",
+    "withdraw_status_new_status" => "Новый статус: ",
 
 ];

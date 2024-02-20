@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasImage;
+use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasAffiliate;
 use App\Models\AffiliateBalance;
 use App\Models\AffiliateCampaign;
@@ -13,7 +14,7 @@ use Illuminate\Http\Request;
 
 class Controller_AffiliateWithdraw extends Controller{
     
-    use HasAffiliate;
+    use HasAffiliate, HasTelegramMessage;
 
     public function view_settigns() {
         $percent = $this->getAffilatePercent();
@@ -75,6 +76,14 @@ class Controller_AffiliateWithdraw extends Controller{
         $model->reason = $request->reason;
         $model->save();
         sendTelegramNotificationAffiliate("Закрыта заявка на выплату аффилейту");
+
+        $user = $model->getUser;
+        $botUsers = $user->getTelegramUsers;
+        foreach($botUsers as $botUser){
+            $language = $botUser->language;
+            $text = $this->tgUserWithdrawStatusUpdateMessage($model, $language);
+            sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
+        }
         return $this->responseSuccess();
     }
 }

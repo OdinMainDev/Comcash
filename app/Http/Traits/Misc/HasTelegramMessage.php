@@ -80,7 +80,7 @@ trait HasTelegramMessage {
     public function tgUserWithdrawStatusMessage($withdraw, $language) {
         $text = __("telegram.withdraw_status_".$withdraw->status, [], $language);
         $text .= " <b>#".$withdraw->id."</b>";
-        $text .= " ".__("telegram.withdraw_currency", [], $language);
+        $text .= "\n\n".__("telegram.withdraw_currency", [], $language);
         $text .= " ".$withdraw->getCurrency->getTitle($language);
         $text .= "\n".__("telegram.withdraw_amount", [], $language);
         $text .= " ".$withdraw->amount." ".$withdraw->getCurrency->name;
@@ -89,6 +89,13 @@ trait HasTelegramMessage {
             $text .= "\n\n".__("telegram.withdraw_reason", [], $language);
             $text .= " ".$withdraw->reason;
         }
+        return $text;
+    }
+
+    public function tgUserWithdrawStatusUpdateMessage($withdraw, $language) {
+        $text = __("telegram.withdraw_status_updated", [], $language);
+        $text .= "\n".__("telegram.withdraw_status_new_status", [], $language);
+        $text .= " <b>".__("telegram.withdraw_status_".$withdraw->status, [], $language)."</b>";
         return $text;
     }
 
