@@ -373,7 +373,7 @@ trait ProfileActions {
             $page_number = 1;
         }
         $exchanges = $this->getCacheAffiliatesExchanges($this->user->user_id, $page_number);
-        $totalExchanges = $this->user->getUser->getCountAllExchanges();
+        $totalExchanges = $this->user->getUser->getCountAllAffiliateExchanges();
         $text = "<b>".__("telegram.aff_exchanges_history_title", [], $language)."</b>\n";
         $text .= __("telegram.aff_exchanges_history_description", [], $language)."\n\n";
         $text .= "<b>".__("telegram.profile_aff_total_exchanges", [], $language)."</b>";
