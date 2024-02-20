@@ -65,6 +65,7 @@ trait ProfileActions {
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' => $text,
+            'reply_markup'  => $keyboard,
         ];
         if($totalExchanges > 0){
             $postData['reply_markup'] = $keyboard;
