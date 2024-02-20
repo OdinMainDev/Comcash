@@ -51,7 +51,7 @@ trait ProfileActions {
             $currentRealIndex = (10 * ($page_number - 1));
             $text .= " ".($currentRealIndex + 1)."->".($currentRealIndex + 11 > $totalExchanges ? $totalExchanges : $currentRealIndex + 11)."/".$totalExchanges;
             foreach($exchanges as $index => $exchange){
-                $key = (string)(($exchange->id)).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
+                $key = (string)(($exchange->id)).": ".$exchange->currencyFrom->getTitle($language)." -> ".$exchange->currencyTo->getTitle($language);
                 $keyboardArray[$key] = $exchange->id."_".$page_number;
             }
             $keyboard = KeyboardGenerator::generate(
@@ -279,5 +279,49 @@ trait ProfileActions {
                 "inline_keyboard" => $keyboards
             ],
         ]);
+    }
+
+    public function sendAffiliateWithdrawsHistory($chat_id, $language, $page_number) {
+        if(!is_numeric($page_number) || $page_number < 1){
+            $page_number = 1;
+        }
+        $withdraws = $this->getCacheAffiliatesWithdraws($this->user->user_id, $page_number);
+        $totalWithdraws = $this->user->getUser->getCountWithdraws();
+        $text = "<b>".__("telegram.withdraws_history_title", [], $language)."</b>\n";
+        $text .= __("telegram.withdraws_history_description", [], $language)."\n\n";
+        $text .= "<b>".__("telegram.profile_total_withdraws", [], $language)."</b>";
+        $text .= " ".$totalWithdraws."\n";
+        $keyboardArray = [];
+        if($totalWithdraws > 0){
+            $text .= __("telegram.profile_current_paginate_withdraws", [], $language);
+            $currentRealIndex = (10 * ($page_number - 1));
+            $text .= " ".($currentRealIndex + 1)." ";
+            $text .= __("telegram.profile_current_paginate_withdraws_2", [], $language);
+            $text .= " ".($currentRealIndex + 11 > $totalWithdraws ? $totalWithdraws : $currentRealIndex + 11)."/".$totalWithdraws." ";
+            $text .= __("telegram.profile_current_paginate_withdraws_3", [], $language);
+            foreach($withdraws as $index => $withdraw){
+                $key = (string)(($withdraw->id)).": <b>".$withdraw->getCurrency->getTitle().":</b> ".$withdraw->amount;
+                $keyboardArray[$key] = $withdraw->id."_".$page_number;
+            }
+            $keyboard = KeyboardGenerator::generate(
+                KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openWithdrawHistoryById"), 1,
+                $totalWithdraws > 10 ? KeyboardGenerator::makePaginationData("openAffiliateWithdraws", $page_number, $totalWithdraws) : [],
+            );
+        }else{
+            $keyboard = [];
+            $keyboard['inline_keyboard'] = [];
+        }
+
+        $keyboard['inline_keyboard'][] = [[
+            "text" =>__("telegram.back_to_profile", [], $language), 
+            "callback_data" => "openProfile:;:",
+        ]];
+        $postData = [
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
+            'reply_markup' => $keyboard
+        ];
+        Request::sendMessage($postData);
     }
 }

@@ -195,6 +195,11 @@ class Router
                 $this->affWithdrawFinish($this->user->telegram_id, $this->user->language);
                 return;
             break;
+
+            case "openAffiliateWithdraws":
+                $this->sendAffiliateWithdrawsHistory($this->user->telegram_id, $this->user->language, $this->data);
+                return;
+            break;
         }
     }
 

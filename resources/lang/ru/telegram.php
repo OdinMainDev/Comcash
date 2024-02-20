@@ -124,6 +124,12 @@ return [
     "my_affiliate_url" => "Моя партнерская ссылка",
     "my_affiliate_balances" => "Мои балансы",
     "my_affiliate_withdraws" => "Мои выплаты",
-    "profile_current_paginate_exchanges" => "Просмотр историй выплат:"
+    "profile_current_paginate_exchanges" => "Просмотр историй выплат:",
+    "withdraws_history_title" => "История выплат",
+    "withdraws_history_description" => "Подпись",
+    "profile_total_withdraws" => "Всего выплат:",
+    "profile_current_paginate_withdraws" => "от",
+    "profile_current_paginate_withdraws_2" => "до",
+    "profile_current_paginate_withdraws_3" => " выплат",
 
 ];

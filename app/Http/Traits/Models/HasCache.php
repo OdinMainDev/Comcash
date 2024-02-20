@@ -358,12 +358,16 @@ trait HasCache {
         });
     }
 
-    public function getCacheAffiliatesWithdraws($user_id){
+    public function getCacheAffiliatesWithdraws($user_id, $page_number = false){
         $request = request();
-        return Cache::remember("aff-withdraws-".$request->page."-".$user_id, 60, function() use($user_id){
-            return AffiliateWithdraw::orderBy("id", "DESC")
-                ->where("user_id", $user_id)
-                ->paginate(10);
+        return Cache::remember("aff-withdraws-".$request->page."-".$user_id."-".$page_number, 120, function() use($user_id, $page_number){
+            $query = AffiliateWithdraw::orderBy("id", "DESC")
+                ->where("user_id", $user_id);
+
+            if(!$page_number)
+                return $query->paginate(10);
+        
+            return $query->limit(10)->offset(($page_number - 1) * 10)->get();
         });
     }
 
