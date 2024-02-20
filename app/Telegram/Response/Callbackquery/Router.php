@@ -211,7 +211,7 @@ class Router
                 return;
             break;
 
-            case "openExchangeHistoryById":
+            case "openAffiliateExchangeById":
                 $this->sendAffiliateExchangeHistory($this->user->telegram_id, $this->user->language, $this->data);
                 return;
             break;

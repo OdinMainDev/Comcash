@@ -391,7 +391,7 @@ trait ProfileActions {
                 $keyboardArray[$key] = $exchange->id."_".$page_number;
             }
             $keyboard = KeyboardGenerator::generate(
-                KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openExchangeHistoryById"), 1,
+                KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openAffiliateExchangeById"), 1,
                 $totalExchanges > 10 ? KeyboardGenerator::makePaginationData("openAffiliateExchanges", $page_number, $totalExchanges) : [],
             );
         }else{
@@ -429,31 +429,28 @@ trait ProfileActions {
     public function sendAffiliateExchangeHistory($chat_id, $language, $data) {
         $data = explode("_", $data);
         if(count($data) != 2 || !is_numeric($data[0]) || !is_numeric($data[1])){
-            info("HUY 1");
             return;
         }
         // $campaign = $this->getTelegramUserCampaign($this->user->getUser);
         $exchange = AffiliateExchange::where("id", $data[0])->where("user_id", $this->user->user_id)->first();
         if(!$exchange){
-            info("HUY 2");
             return;
         }
-        info("HUY 3");
         $text = $this->tgUserExchangeStatusMessage($exchange, $language);
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
-            'text' => "TESST",
-            // 'reply_markup' => [
-            //     "inline_keyboard" => [
-            //         [
-            //             [
-            //                 "text" =>__("telegram.back_to_exchanges_history", [], $language), 
-            //                 "callback_data" => "openAffiliateExchanges:;:".$data[1], 
-            //             ],
-            //         ],
-            //     ]
-            // ],
+            'text' => $text,
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_exchanges_history", [], $language), 
+                            "callback_data" => "openAffiliateExchanges:;:".$data[1], 
+                        ],
+                    ],
+                ]
+            ],
         ]);
     }
 }
