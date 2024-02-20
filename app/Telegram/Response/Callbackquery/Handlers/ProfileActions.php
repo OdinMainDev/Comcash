@@ -6,6 +6,7 @@ use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
 use App\Models\AffiliateBalance;
+use App\Models\AffiliateWithdraw;
 use App\Models\Currency;
 use App\Models\Exchange;
 use App\Telegram\Helpers\KeyboardGenerator;
@@ -323,6 +324,10 @@ trait ProfileActions {
             ],
         ];
         $keyboard['inline_keyboard'][] = [[
+            "text" =>__("telegram.my_affiliate_exchanges", [], $language), 
+            "callback_data" => "openAffiliateExchanges:;:", 
+        ]];
+        $keyboard['inline_keyboard'][] = [[
             "text" =>__("telegram.back_to_profile", [], $language), 
             "callback_data" => "openProfile:;:",
         ]];
@@ -333,5 +338,32 @@ trait ProfileActions {
             'reply_markup' => $keyboard
         ];
         Request::sendMessage($postData);
+    }
+
+    public function sendAffiliateWithdrawHistory($chat_id, $language, $data) {
+        $data = explode("_", $data);
+        if(count($data) != 2 || !is_numeric($data[0]) || !is_numeric($data[1])){
+            return;
+        }
+        $withdraw = AffiliateWithdraw::where("id", $data[0])->where("user_id", $this->user->user_id)->first();
+        if(!$withdraw){
+            return;
+        }
+        $text = $this->tgUserWithdrawStatusMessage($withdraw, $language);
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_withdraws_history", [], $language), 
+                            "callback_data" => "openAffiliateWithdraws:;:".$data[1], 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
     }
 }

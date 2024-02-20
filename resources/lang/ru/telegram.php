@@ -131,5 +131,9 @@ return [
     "profile_current_paginate_withdraws" => "от",
     "profile_current_paginate_withdraws_2" => "до",
     "profile_current_paginate_withdraws_3" => " выплат",
+    "back_to_withdraws_history" => "Вернутся к истории выплат",
+    "withdraw_status_0" => "На модерации",
+    "withdraw_status_1" => "Успешна",
+    "withdraw_status_2" => "Отклонена",
 
 ];

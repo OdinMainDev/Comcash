@@ -77,4 +77,14 @@ trait HasTelegramMessage {
         return $text;
     }
 
+    public function tgUserWithdrawStatusMessage($withdraw, $language) {
+        $text = __("telegram.withdraw_status_".$withdraw->status, [], $language);
+        $text .= " <b>#".$withdraw->id."</b>";
+        $text .= " ".__("telegram.withdraw_currency", [], $language);
+        $text .= " ".$withdraw->getCurrency->getTitle($language);
+        $text .= "\n".__("telegram.withdraw_amount", [], $language);
+        $text .= " ".$withdraw->amount." ".$withdraw->getCurrency->name;
+        return $text;
+    }
+
 }
