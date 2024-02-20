@@ -11,10 +11,11 @@ use App\Telegram\Response\Callbackquery\Handlers\SetRules;
 use Illuminate\Support\Facades\Config;
 use Longman\TelegramBot\Request;
 use App\Telegram\Response\Message\Handlers\ExchangePage as MExchangePage;
+use App\Telegram\Response\Message\Handlers\AffiliatePage as MAffiliatePage;
 
 class Router
 {
-    use BotFunctions, StaticMessages, SetLanguage, SetRules, ProfileActions, ExchangePage, MExchangePage;
+    use BotFunctions, StaticMessages, SetLanguage, SetRules, ProfileActions, ExchangePage, MExchangePage, MAffiliatePage;
     
     public $query;
     public $command;
@@ -186,6 +187,12 @@ class Router
 
             case "doCreateAffiliateWithdraw":
                 $this->openDoCreateAffiliateWithdrawPage($this->user->telegram_id, $this->user->language, $this->data);
+                return;
+            break;
+
+            case "finishDoWithdraw":
+                $this->user->action_data = $this->data;
+                $this->affWithdrawFinish($this->user->telegram_id, $this->user->language);
                 return;
             break;
         }
