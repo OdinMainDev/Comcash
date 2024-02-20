@@ -47,8 +47,11 @@ trait ProfileActions {
         $exchanges = $this->getCacheExchanges($this->user->user_id, $page_number);
         $keyboardArray = [];
         if($totalExchanges > 0){
+            $text .= __("telegram.profile_current_paginate_exchanges", [], $language);
+            $currentRealIndex = (10 * ($page_number - 1));
+            $text .= " ".($currentRealIndex + 1)."->".($currentRealIndex + 11)."/".$totalExchanges;
             foreach($exchanges as $index => $exchange){
-                $key = (string)($index + 1).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
+                $key = (string)($currentRealIndex + 1).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
                 $keyboardArray[$key] = $exchange->id."_".$page_number;
             }
             $keyboard = KeyboardGenerator::generate(

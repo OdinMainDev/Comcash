@@ -124,5 +124,6 @@ return [
     "my_affiliate_url" => "Моя партнерская ссылка",
     "my_affiliate_balances" => "Мои балансы",
     "my_affiliate_withdraws" => "Мои выплаты",
+    "profile_current_paginate_exchanges" => "Просмотр историй выплат:"
 
 ];
