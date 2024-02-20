@@ -20,7 +20,7 @@
                             <tr>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">#</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-select-type="status_withdraws">{{__("common.status")}}</th>
-                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.user_id")}}</th>
+                                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-search-type="user">{{__("common.user_id")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-currency" data-search="true" data-sort="true" scope="col" data-select-type="code_id">{{__("common.currency")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.amount")}}</th>
                                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-datepicker="true">{{__("common.createdAt")}}</th>
