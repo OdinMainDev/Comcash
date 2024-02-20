@@ -2,13 +2,14 @@
      
 namespace App\Telegram\Response\Message\Handlers;
 
+use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
 use App\Models\AffiliateBalance;
 use App\Models\AffiliateWithdraw;
 use Longman\TelegramBot\Request;
 
 trait AffiliatePage {
-    use HasCache;
+    use HasCache, HasAffiliate;
 
     public function affWithdrawSetAmount($chat_id, $language, $textAmount){
         if(!is_numeric($textAmount)){
