@@ -429,11 +429,13 @@ trait ProfileActions {
     public function sendAffiliateExchangeHistory($chat_id, $language, $data) {
         $data = explode("_", $data);
         if(count($data) != 2 || !is_numeric($data[0]) || !is_numeric($data[1])){
+            info("HUY 1");
             return;
         }
         // $campaign = $this->getTelegramUserCampaign($this->user->getUser);
         $exchange = AffiliateExchange::where("id", $data[0])->where("user_id", $this->user->user_id)->first();
         if(!$exchange){
+            info("HUY 2");
             return;
         }
         $text = $this->tgUserExchangeStatusMessage($exchange, $language);
@@ -441,7 +443,16 @@ trait ProfileActions {
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' => $text,
-            
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_exchanges_history", [], $language), 
+                            "callback_data" => "openAffiliateExchanges:;:".$data[1], 
+                        ],
+                    ],
+                ]
+            ],
         ]);
     }
 }
