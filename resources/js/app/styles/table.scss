@@ -1,7 +1,45 @@
+.dataTables {
+    &_info {
+        display: none;
+    }
 
-.dataTables_info {
-    display: none;
+    &_pager {
+        flex :1;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    &_paginate {
+        padding-top: 30px;
+        font-size: 16px;
+        span {
+            display: flex;
+            gap: 6px;
+            .paginate_button {
+                background-color: #080e1b;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                height: 30px;
+                width: 30px;
+                border-radius: 4px;
+                cursor: pointer;
+                box-sizing: border-box;
+                background-color: #727cf5;
+                color: #FFF !important;
+                &.current { 
+                    opacity: 0.3;
+                }
+            }
+        }
+
+    }
+
+
 }
+
+
+
 
 .table {
     td {
