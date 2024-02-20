@@ -146,5 +146,6 @@ return [
     "profile_current_paginate_aff_exchanges" => "от",
     "profile_current_paginate_aff_exchanges_2" => "до",
     "profile_current_paginate_aff_exchanges_3" => "обменов",
+    "exchange_status_completed" => "Завершенная заявка:"
 
 ];
