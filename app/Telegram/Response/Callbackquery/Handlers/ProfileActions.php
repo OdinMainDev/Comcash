@@ -6,6 +6,7 @@ use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
 use App\Models\AffiliateBalance;
+use App\Models\AffiliateExchange;
 use App\Models\AffiliateWithdraw;
 use App\Models\Currency;
 use App\Models\Exchange;
@@ -360,6 +361,91 @@ trait ProfileActions {
                         [
                             "text" =>__("telegram.back_to_withdraws_history", [], $language), 
                             "callback_data" => "openAffiliateWithdraws:;:".$data[1], 
+                        ],
+                    ],
+                ]
+            ],
+        ]);
+    }
+
+    public function sendAffiliateExchangesHistory($chat_id, $language, $page_number) {
+        if(!is_numeric($page_number) || $page_number < 1){
+            $page_number = 1;
+        }
+        $exchanges = $this->getCacheAffiliatesExchanges($this->user->user_id, $page_number);
+        $totalExchanges = $this->user->getUser->getCountAllExchanges();
+        $text = "<b>".__("telegram.aff_exchanges_history_title", [], $language)."</b>\n";
+        $text .= __("telegram.aff_exchanges_history_description", [], $language)."\n\n";
+        $text .= "<b>".__("telegram.profile_aff_total_exchanges", [], $language)."</b>";
+        $text .= " ".$totalExchanges."\n";
+        $keyboardArray = [];
+        if($totalExchanges > 0){
+            $text .= __("telegram.profile_current_paginate_aff_exchanges", [], $language);
+            $currentRealIndex = (10 * ($page_number - 1));
+            $text .= " ".($currentRealIndex + 1)." ";
+            $text .= __("telegram.profile_current_paginate_aff_exchanges_2", [], $language);
+            $text .= " ".($currentRealIndex + 11 > $totalExchanges ? $totalExchanges : $currentRealIndex + 11)."/".$totalExchanges." ";
+            $text .= __("telegram.profile_current_paginate_aff_exchanges_3", [], $language);
+            foreach($exchanges as $index => $exchange){
+                $key = (string)(($exchange->id)).": ".$exchange->getCurrency->getTitle().": ".$exchange->amount;
+                $keyboardArray[$key] = $exchange->id."_".$page_number;
+            }
+            $keyboard = KeyboardGenerator::generate(
+                KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openExchangeHistoryById"), 1,
+                $totalExchanges > 10 ? KeyboardGenerator::makePaginationData("openAffiliateExchanges", $page_number, $totalExchanges) : [],
+            );
+        }else{
+            $keyboard = [];
+            $keyboard['inline_keyboard'] = [];
+        }
+
+        $keyboard['inline_keyboard'][] = [
+            [
+                "text" =>__("telegram.my_affiliate_balances", [], $language), 
+                "callback_data" => "openAffiliateBalances:;:", 
+            ],
+            [
+                "text" =>__("telegram.my_affiliate_withdraws", [], $language), 
+                "callback_data" => "openAffiliateWithdraws:;:", 
+            ],
+        ];
+        $keyboard['inline_keyboard'][] = [[
+            "text" =>__("telegram.do_affiliate_exchange", [], $language), 
+            "callback_data" => "openCreateAffiliateExchange:;:", 
+        ]];
+        $keyboard['inline_keyboard'][] = [[
+            "text" =>__("telegram.back_to_profile", [], $language), 
+            "callback_data" => "openProfile:;:",
+        ]];
+        $postData = [
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
+            'reply_markup' => $keyboard
+        ];
+        Request::sendMessage($postData);
+    }
+
+    public function sendAffiliateExchangeHistory($chat_id, $language, $data) {
+        $data = explode("_", $data);
+        if(count($data) != 2 || !is_numeric($data[0]) || !is_numeric($data[1])){
+            return;
+        }
+        $exchange = AffiliateExchange::where("id", $data[0])->where("user_id", $this->user->user_id)->first();
+        if(!$exchange){
+            return;
+        }
+        $text = $this->tgUserExchangeStatusMessage($exchange, $language);
+        Request::sendMessage([
+            'chat_id' => $chat_id,
+            'parse_mode' => 'html',
+            'text' => $text,
+            'reply_markup' => [
+                "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.back_to_exchanges_history", [], $language), 
+                            "callback_data" => "openAffiliateExchanges:;:".$data[1], 
                         ],
                     ],
                 ]

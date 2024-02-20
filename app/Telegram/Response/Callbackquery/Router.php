@@ -205,6 +205,16 @@ class Router
                 $this->sendAffiliateWithdrawHistory($this->user->telegram_id, $this->user->language, $this->data);
                 return;
             break;
+
+            case "openAffiliateExchanges":
+                $this->sendAffiliateExchangesHistory($this->user->telegram_id, $this->user->language, $this->data);
+                return;
+            break;
+
+            case "openExchangeHistoryById":
+                $this->sendAffiliateExchangeHistory($this->user->telegram_id, $this->user->language, $this->data);
+                return;
+            break;
         }
     }
 
