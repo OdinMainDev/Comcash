@@ -99,4 +99,13 @@ trait HasTelegramMessage {
         return $text;
     }
 
+    public function tgUserExchangeStatusMessage($exchange, $language) {
+        $text = __("telegram.exchange_status_".$exchange->status, [], $language);
+        $text .= " <b>#".$exchange->id."</b>";
+        $text .= "\n\n".__("telegram.exchange_currency", [], $language);
+        $text .= " ".$exchange->getCurrency->getTitle($language);
+        $text .= "\n".__("telegram.exchange_amount", [], $language);
+        $text .= " ".$exchange->amount." ".$exchange->getCurrency->name;
+        return $text;
+    }
 }

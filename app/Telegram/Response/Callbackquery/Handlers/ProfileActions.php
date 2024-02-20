@@ -438,21 +438,22 @@ trait ProfileActions {
             info("HUY 2");
             return;
         }
+        info("HUY 3");
         $text = $this->tgUserExchangeStatusMessage($exchange, $language);
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
-            'text' => $text,
-            'reply_markup' => [
-                "inline_keyboard" => [
-                    [
-                        [
-                            "text" =>__("telegram.back_to_exchanges_history", [], $language), 
-                            "callback_data" => "openAffiliateExchanges:;:".$data[1], 
-                        ],
-                    ],
-                ]
-            ],
+            'text' => "TESST",
+            // 'reply_markup' => [
+            //     "inline_keyboard" => [
+            //         [
+            //             [
+            //                 "text" =>__("telegram.back_to_exchanges_history", [], $language), 
+            //                 "callback_data" => "openAffiliateExchanges:;:".$data[1], 
+            //             ],
+            //         ],
+            //     ]
+            // ],
         ]);
     }
 }
