@@ -1,4 +1,9 @@
 import axios from 'axios';
+import flatpickr from "flatpickr";
+import { Russian } from "flatpickr/dist/l10n/ru.js";
+import { English } from "flatpickr/dist/l10n/default.js";
+import 'flatpickr/dist/flatpickr.min.css'
+
 
 (() => {
     function debounce(callback, ms) {
@@ -114,19 +119,31 @@ import axios from 'axios';
             } else if($(this).data('datepicker')) {
                 var t = $(this).text();
                 $(this).html('<input type="text" class="form-control datepicker" placeholder="🔍 ' + t + '" />');
-                $("input", this).keyup(debounce(function(e) {
-                    const inputDate =$(this).val();
+                const url = window.location.href;
+                const languagePattern = /\/(en|ru)\//;
+              
+                const match = url.match(languagePattern);
+                const datepicker = $(this).find('input.datepicker');
     
-                    let parts = inputDate.split(' ');
-                    
-                    let dateParts = parts[0].split('.');
-                    let year = dateParts[2];
-                    let month = dateParts[1];
-                    let day = dateParts[0];
-                    let time = parts[1];
-                    let formattedDate = year + '-' + month + '-' + day + 'T' + time;
-                    dtCont.column(a).search(formattedDate, true, false).draw();
-                }, 1000));
+                flatpickr(datepicker, {
+                    enableTime: true,
+                    dateFormat: "d.m.Y H:i",
+                    locale: match[1] === 'ru' ? Russian : English,
+                    onChange: (selectedDates, dateStr, instance) => {
+                        const inputDate = dateStr;
+    
+                        let parts = inputDate.split(' ');
+                        
+                        let dateParts = parts[0].split('.');
+                        let year = dateParts[2];
+                        let month = dateParts[1];
+                        let day = dateParts[0];
+                        let time = parts[1];
+                        let formattedDate = year + '-' + month + '-' + day + 'T' + time;
+                        dtCont.column(a).search(formattedDate, true, false).draw();
+                    }
+                });
+                datepicker.on('lc')
             } else if($(this).data('search-type')) {
                 var t = $(this).text();
                 $(this).html('<input type="text" class="form-control search" placeholder="🔍 ' + t + '" />');

@@ -1,8 +1,4 @@
 import $ from "jquery";
-import flatpickr from "flatpickr";
-import 'flatpickr/dist/flatpickr.min.css'
-import { Russian } from "flatpickr/dist/l10n/ru.js";
-import { English } from "flatpickr/dist/l10n/default.js";
 import { statusList, statusAffstatusList } from "./constants";
 import axios from 'axios';
 
@@ -16,18 +12,6 @@ $(document).ready(async function() {
     table.each(function() {
         $(this).find("thead tr:eq(1) th").each(function() {
             const select = $(this).find('select.form-select');
-            const datepicker = $(this).find('input.datepicker');
-            const url = window.location.href;
-            const languagePattern = /\/(en|ru)\//;
-          
-            const match = url.match(languagePattern);
-        
-            flatpickr(datepicker, {
-                enableTime: true,
-                dateFormat: "d.m.Y H:i",
-                locale: match[1] === 'ru' ? Russian : English,
-            });
-            datepicker.on('lc')
 
             select.append(selectOptionDefault);
             switch ($(this).data('select-type')) {

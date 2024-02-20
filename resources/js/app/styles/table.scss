@@ -1,7 +1,13 @@
+
+.dataTables_info {
+    display: none;
+}
+
 .table {
     td {
         position: relative;
     }
+
 
     th {
         &.sorting {
