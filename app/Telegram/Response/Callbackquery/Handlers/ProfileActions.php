@@ -52,7 +52,6 @@ trait ProfileActions {
                 $keyboardArray[$key] = $exchange->id."_".$page_number;
             }
         }
-
         $keyboard = KeyboardGenerator::generate(
             KeyboardGenerator::makeFromKeyValueArray($keyboardArray, "openExchangeHistoryById"), 1,
             KeyboardGenerator::makePaginationData("openExchangesHistory", $page_number, $totalExchanges)

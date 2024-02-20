@@ -26,7 +26,9 @@ class KeyboardGenerator
         if(count($pagination) == 0) {
             return $response;
         }
-        $currentIndex++;
+        if(count($response[$keyboard_type][$currentIndex]) > 0)
+            $currentIndex++;
+        
         if(isset($pagination['page_previous'])){
             $response[$keyboard_type][$currentIndex][] = [
                 "text" => "⬅️ ".$pagination['page_previous'],
