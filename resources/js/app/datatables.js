@@ -148,6 +148,7 @@ import axios from 'axios';
                                 ul.empty()
                                 res.data.forEach(item => {
                                     ul.append(`<li data-value="${item.id}">${item.text}</li>`).on('mousedown', () => {
+                                        search.val(item.text);
                                         dtCont.column(a).search(item.id, true, false).draw();
                                     });
                                 })
