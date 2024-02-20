@@ -49,9 +49,9 @@ trait ProfileActions {
         if($totalExchanges > 0){
             $text .= __("telegram.profile_current_paginate_exchanges", [], $language);
             $currentRealIndex = (10 * ($page_number - 1));
-            $text .= " ".($currentRealIndex + 1)."->".($currentRealIndex + 11)."/".$totalExchanges;
+            $text .= " ".($currentRealIndex + 1)."->".($currentRealIndex + 11 > $totalExchanges ? $totalExchanges : $currentRealIndex + 11)."/".$totalExchanges;
             foreach($exchanges as $index => $exchange){
-                $key = (string)($currentRealIndex + 1).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
+                $key = (string)($index + 1).": ".$exchange->currencyFrom->name." -> ".$exchange->currencyTo->name;
                 $keyboardArray[$key] = $exchange->id."_".$page_number;
             }
             $keyboard = KeyboardGenerator::generate(
