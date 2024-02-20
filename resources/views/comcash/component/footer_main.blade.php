@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class='footer__bottom'>
-            <p class='footer__copyright'>since from 2023 - {{date("Y")}}! With love From ©omcash.</p>
+            <p class='footer__copyright'>Since from 2023 - {{date("Y")}}! With love From ©omcash.</p>
             <!-- <div class='footer__socials'>
 
                 <a href=''
