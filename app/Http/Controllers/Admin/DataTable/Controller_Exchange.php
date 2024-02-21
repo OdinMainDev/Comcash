@@ -30,7 +30,7 @@ class Controller_Exchange extends Controller
             if(isset($row->data['isTelegramExchange']) && $row->data['isTelegramExchange']){
                 $html .= '<tr class="admin-exchange-table__row"  style="background-color: darkgreen">
                     <td>ЗАЯВКА ИЗ ТЕЛЕГРАМ БОТА</td>
-                    <td></td>
+                    <td>ЗАЯВКА ИЗ ТЕЛЕГРАМ БОТА</td>
                 </tr>';
             }
             $html .= '<tr class=""><td>'.__("common.amountFromClient").'</td><td>' . @$row->data['amount_data']['amount_send'] . '</td></tr>';
