@@ -27,6 +27,12 @@ class Controller_Exchange extends Controller
         ->editColumn("data", function($row){
             $html = '<table class="admin-exchange-table">';
             $html .= '<tbody>';
+            if(isset($row->data['isTelegramExchange']) && $row->data['isTelegramExchange']){
+                $html .= '<tr class="admin-exchange-table__row"  style="background-color: darkgreen">
+                    <td>ЗАЯВКА ИЗ ТЕЛЕГРАМ БОТА</td>
+                    <td></td>
+                </tr>';
+            }
             $html .= '<tr class=""><td>'.__("common.amountFromClient").'</td><td>' . @$row->data['amount_data']['amount_send'] . '</td></tr>';
             $html .= '<tr class="" style="background-color: darkseagreen"><td>'.__("common.amountToClient").'</td><td>' . @$row->data['amount_data']['amount_receive'] . '</td></tr>';
             $html .= '<tr class=""><td>'.__("common.rate").'</td><td>' . @$row->data['amount_data']['exchange_rate'] . '</td></tr>';
@@ -43,6 +49,8 @@ class Controller_Exchange extends Controller
                     <td >' . (@$row->data['request_data']['to_address'] ? @$row->data['request_data']['to_address'] : @$row->data['request_data']['to_card']) . '</td>
                 </tr>';
             }
+
+            
             $html .= '<tr class="admin-exchange-table__row hidden-row"><td>'.__("common.user").'</td><td><a href="'.route("adminUserEdit", [$row->user_id]).'">' . ($row->getUser ? $row->getUser->getUserCredentials() : $row->user_id) . '</a></td></tr>';
             // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>currency_from:</td><td>' . @$row->currency_from . '</td></tr>';
             // $html .= '<tr class="admin-exchange-table__row hidden-row"><td>currency_to:</td><td>' . @$row->currency_to . '</td></tr>';
