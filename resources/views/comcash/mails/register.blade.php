@@ -1,247 +1,193 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{{__("front.register email subject")}}</title>
+  <title>{{__("emails.subject_register")}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style type="text/css">
-  /**
-   * Google webfonts. Recommended to include the .woff version for cross-client compatibility.
-   */
-  @media screen {
-    @font-face {
-      font-family: 'Source Sans Pro';
-      font-style: normal;
+    @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700&family=Inter:wght@100..900&display=swap');
+    table {
+      border-spacing: 0;
+      mso-cellspacign: 0;
+      mso-padding-alt: 0;
+    }
+
+    * {
+      font-family: "Inter", sans-serif;
       font-weight: 400;
-      src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff');
-    }
-    @font-face {
-      font-family: 'Source Sans Pro';
       font-style: normal;
-      font-weight: 700;
-      src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/toadOcfmlt9b38dHJxOBGFkQc6VGVFSmCnC_l7QZG60.woff) format('woff');
     }
-  }
-  /**
-   * Avoid browser level font resizing.
-   * 1. Windows Mobile
-   * 2. iOS / OSX
-   */
-  body,
-  table,
-  td,
-  a {
-    -ms-text-size-adjust: 100%; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-  }
-  /**
-   * Remove extra space added to tables and cells in Outlook.
-   */
-  table,
-  td {
-    mso-table-rspace: 0pt;
-    mso-table-lspace: 0pt;
-  }
-  /**
-   * Better fluid images in Internet Explorer.
-   */
-  img {
-    -ms-interpolation-mode: bicubic;
-  }
-  /**
-   * Remove blue links for iOS devices.
-   */
-  a[x-apple-data-detectors] {
-    font-family: inherit !important;
-    font-size: inherit !important;
-    font-weight: inherit !important;
-    line-height: inherit !important;
-    color: inherit !important;
-    text-decoration: none !important;
-  }
-  /**
-   * Fix centering issues in Android 4.4.
-   */
-  div[style*="margin: 16px 0;"] {
-    margin: 0 !important;
-  }
-  body {
-    width: 100% !important;
-    height: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-  /**
-   * Collapse table borders to avoid space between cells.
-   */
-  table {
-    border-collapse: collapse !important;
-  }
-  a {
-    color: #1a82e2;
-  }
-  img {
-    height: auto;
-    line-height: 100%;
-    text-decoration: none;
-    border: 0;
-    outline: none;
-  }
+    
+    .container {
+      background: radial-gradient(circle, rgba(26,57,47,1) 20%, rgba(0,0,0,1) 50%);
+    }
+
+    td {
+      padding: 0;
+    }
+
+    #outlook a {
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333333; 
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 30px; 
+      -webkit-text-size-adjust:none; 
+      display: block;
+    }
+
+    span {
+      color: #333333; 
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 30px; 
+      -webkit-text-size-adjust:none; 
+      display: block;
+    }
   </style>
-
 </head>
-<body style="background-color: #e9ecef;">
-
-  <!-- start preheader -->
-  <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-    {{__("front.register email subject")}}
-  </div>
-  <!-- end preheader -->
-
-  <!-- start body -->
-  <table border="0" cellpadding="0" cellspacing="0" width="100%">
-
-    <!-- start logo -->
-    <tr>
-      <td align="center" bgcolor="#e9ecef">
-        <!--[if (gte mso 9)|(IE)]>
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+<body style="Margin:0;padding:0;min-width:100%;background-color:#dde0e1;">
+  <center style="width: 100%;table-layout:fixed;background-color: #dde0e1;padding-top: 40px;">
+    <div style="max-width: 650px;background-color: #fafdfe;box-shadow: 0 0 10px rgba(0, 0, 0, .2);">
+      <table class="container" border="0" cellpadding="0" cellspacing="0" style="margin:0; padding:0" width="100%" role="presentation" 
+        style="margin:0; padding:0; width: 100%; max-width: 650px;">
         <tr>
-        <td align="center" valign="top" width="600">
-        <![endif]-->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-          <tr>
-            <td align="center" valign="top" style="padding: 36px 24px;">
-              <a href="{{env("APP_URL")}}" target="_blank" style="display: inline-block;">
-                <img src="{{env("APP_URL")}}/comcash/img/logo.png" alt="Comcash" border="0" width="48" style="display: block; width: 48px; max-width: 48px; min-width: 48px;">
-              </a>
-            </td>
-          </tr>
-        </table>
-        <!--[if (gte mso 9)|(IE)]>
-        </td>
-        </tr>
-        </table>
-        <![endif]-->
-      </td>
-    </tr>
-    <!-- end logo -->
-    @if($password)
-    <tr>
-      <td align="center" bgcolor="#e9ecef">
-        <!--[if (gte mso 9)|(IE)]>
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
-        <tr>
-        <td align="center" valign="top" width="600">
-        <![endif]-->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-          <tr>
-            <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-              <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Your password: {{$password}}</h1>
-            </td>
-          </tr>
-        </table>
-        <!--[if (gte mso 9)|(IE)]>
-        </td>
-        </tr>
-        </table>
-        <![endif]-->
-      </td>
-    </tr>
-    @endif
-
-    <!-- start hero -->
-    <tr>
-      <td align="center" bgcolor="#e9ecef">
-        <!--[if (gte mso 9)|(IE)]>
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
-        <tr>
-        <td align="center" valign="top" width="600">
-        <![endif]-->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-          <tr>
-            <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-              <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">{{__("front.confirm your email address")}}</h1>
-            </td>
-          </tr>
-        </table>
-        <!--[if (gte mso 9)|(IE)]>
-        </td>
-        </tr>
-        </table>
-        <![endif]-->
-      </td>
-    </tr>
-    <!-- end hero -->
-
-    <!-- start copy block -->
-    <tr>
-      <td align="center" bgcolor="#e9ecef">
-        <!--[if (gte mso 9)|(IE)]>
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
-        <tr>
-        <td align="center" valign="top" width="600">
-        <![endif]-->
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-
-          <!-- start copy -->
-          <tr>
-            <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-              <p style="margin: 0;">{{__("front.register email text")}}</p>
-            </td>
-          </tr>
-          <!-- end copy -->
-
-          <!-- start button -->
-          <tr>
-            <td align="left" bgcolor="#ffffff">
-              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <td>
+            <span style="max-width: 650px; margin: 0 auto;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                 <tr>
-                  <td align="center" bgcolor="#ffffff" style="padding: 12px;">
-                    <table border="0" cellpadding="0" cellspacing="0">
-                      <tr>
-                        <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                          <a href="{{$url}}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">{{__("front.continue")}}</a>
-                        </td>
-                      </tr>
-                    </table>
+                  <td width="33%" valign="top">
+                    <img src="{{env("APP_URL")}}/comcash/img/mails/leaves_left.png" class="leaves" alt="leave_left">
+                  </td>
+                  <td align="center"  width="33%">
+                    <a style="padding-top: 30px; padding-bottom: 30px;" href="#" target="_blank">
+                      <img src="{{env("APP_URL")}}/comcash/img/mails/logo.png" style="height: 40px;" alt="Comcash">
+                    </a>
+                  </td>
+                  <td width="33%" align="right"  valign="top">
+                    <img src="{{env("APP_URL")}}/comcash/img/mails/leaves_right.png" alt="leave_right">
                   </td>
                 </tr>
               </table>
-            </td>
-          </tr>
-          <!-- end button -->
-
-          <!-- start copy -->
-          <tr>
-            <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-              <p style="margin: 0;">{{__("front.register email text 2")}}</p>
-              <p style="margin: 0;"><a href="{{$url}}" target="_blank">{{$url}}</a></p>
-            </td>
-          </tr>
-          <!-- end copy -->
-
-          <!-- start copy -->
-          <tr>
-            <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
-              <p style="margin: 0;">{{__("front.email cheers")}},<br> Comcash</p>
-            </td>
-          </tr>
-          <!-- end copy -->
-
-        </table>
-        <!--[if (gte mso 9)|(IE)]>
-        </td>
+            </span>
+          </td>
         </tr>
-        </table>
-        <![endif]-->
-      </td>
-    </tr>
-    <!-- end copy block -->
-
-  </table>
-  <!-- end body -->
-
+        <?php
+          if(!isset($password) || !$password)
+            $password = "TEST";
+          if(!isset($url) || !$password)
+            $url = "https://test.test.test.test";
+        ?>
+        <tr>
+          <td style="padding-bottom: 30px;">
+            <span style="max-width: 650px; margin: 0 auto;">
+              <table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                <tr>
+                  <td>
+                    <span style="
+                    padding: 7px 15px;
+                    background: #009c74;
+                    border-radius: 10px;
+                    font-weight: 600;
+                    font-size: 20px;
+                    color: #ffffff;">{{__("emails.your_password")}} {{$password}}</span>
+                  </td>
+                </tr>
+              </table>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <span style="max-width: 650px; margin: 0 auto;">
+              <table border="0" cellspacing="0" cellpadding="0" role="presentation">
+                <tr>
+                  <td style="padding: 0 40px;">
+                    <span style="
+                    font-weight: 600;
+                    font-size: 25px;
+                    color: #ffffff;
+                    padding-bottom: 20px;">{{__("emails.register_text_1")}} <strong style="color: #009c74; font-weight: 600; font-size: 25px;">{{__("emails.register_text_2")}}</strong> {{__("emails.register_text_3")}}</span>
+                  </td>
+                </tr>
+              </table>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <span style="max-width: 650px; margin: 0 auto;">
+              <table border="0" cellspacing="0" cellpadding="0" role="presentation">
+                <tr>
+                  <td style="padding: 0 40px;">
+                    <span style="
+                    font-weight: 500;
+                    font-size: 18px;
+                    color: #ffffff;
+                    padding-bottom: 30px;">{{__("emails.register_text_4")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{__("emails.register_text_5")}}</strong> {{__("emails.register_text_6")}}</span>
+                  </td>
+                </tr>
+              </table>
+            </span>
+          </td>
+        </tr>
+          <tr>
+            <td>
+              <span style="max-width: 650px; margin: 0 auto;">
+                <table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                  <tr>
+                    <td style="padding-top: 20px; padding-bottom: 50px;">
+                      <a style="      
+                      padding: 10px 20px;
+                      background: #009c74;
+                      border-radius: 100px;
+                      font-weight: 600;
+                      font-size: 25px;
+                      color: #ffffff;
+                      cursor: pointer;" href="{{$url}}" blank="_target">{{__("emails.register_text_7")}}</a>
+                    </td>
+                  </tr>
+                </table>
+              </span>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <span>
+                <table border="0" cellspacing="0" cellpadding="0" role="presentation">
+                  <tr>
+                    <td style="padding: 0 40px;">
+                      <a style="font-size: 15px; color: #ffffff;">{{__("emails.register_text_8")}}</a>
+                      <a style="font-size: 18px; color: #009c74; text-decoration: underline;">{{$url}}</a>
+                    </td>
+                  </tr>
+                </table>
+              </span>
+            </td>
+          </tr>
+        <tr>
+          <td style="padding-top: 70px; padding-bottom: 60px;">
+            <span>
+              <table border="0" cellspacing="0" cellpadding="0" role="presentation">
+                <tr>
+                  <td style="padding: 0 40px;">
+                    <img src="{{env("APP_URL")}}/comcash/img/mails/logo.png" style="height: 30px;" alt="logo">
+                  </td>
+                </tr>
+              </table>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </center>
 </body>
 </html>

@@ -11,7 +11,7 @@ return [
     | Supported: "file", "database"
     |
     */
-    'driver' => app()->runningInConsole() ? "file" : env("TRANSLATION_TYPE", "database"),
+    'driver' => env("TRANSLATION_TYPE", "database"),
 
     /*
     |--------------------------------------------------------------------------

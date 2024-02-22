@@ -69,7 +69,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::get('/auth/reset-password', [Login::class, "view"])->name("resetPassword");
     Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
     Route::post('/auth/reset-password/confirm', [ResetPassword::class, "confirm_process"])->name("resetPasswordConfirmPost");
-    Route::get('/auth/email/confirm/{id}/{hash}', [Login::class, "view"])->name("verifyEmail"); 
+    Route::get('/auth/email/confirm/{id}/{hash}', [Register::class, "confirm_email"])->name("verifyEmail"); 
 });
 /* AUTH ROUTES */
 
