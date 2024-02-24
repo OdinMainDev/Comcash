@@ -198,6 +198,7 @@ return [
         "aifory",
         "manualcrypto", // ручной режим крипта
         "manualfiat", // ручной режим фиат
+        "manualcash", // ручной режим наличка
     ],
     'kyc_credential' => env("KYC_CREDENTIAL", true),
     'kyc_address' => env("KYC_ADDRESS", true),
