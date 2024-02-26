@@ -38,6 +38,14 @@
             $id = "TEST";
           if(!isset($url) || !$url)
             $url = "https://test.test.test.test";
+          if(!isset($currencyFrom) || !$currencyFrom)
+            $currencyFrom = "CurrencyFrom";
+          if(!isset($currencyTo) || !$currencyTo)
+            $currencyTo = "CurrencyTo";
+          if(!isset($amountFrom) || !$amountFrom)
+            $amountFrom = "AmountFrom";
+          if(!isset($amountTo) || !$amountTo)
+            $amountTo = "AmountTo";
         ?>
         <tr>
           <td style="padding-bottom: 30px;">
@@ -87,13 +95,13 @@
                     color: #ffffff;
                     padding-bottom: 30px;">
                       <li>
-                        {{__("emails.exchange_create_text_3")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">CurrencyFrom -> CurrencyTo</strong>
+                        {{__("emails.exchange_create_text_3")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$currencyFrom}} -> {{$currencyTo}}</strong>
                       </li>
                       <li>
-                        {{__("emails.exchange_create_text_4")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">Amount CurrencyFrom</strong>
+                        {{__("emails.exchange_create_text_4")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$amountFrom}} {{$currencyFrom}}</strong>
                       </li>
                       <li>
-                        {{__("emails.exchange_create_text_5")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">Amount CurrencyTo</strong>
+                        {{__("emails.exchange_create_text_5")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$amountTo}} {{$currencyTo}}</strong>
                       </li>
                     </ul>
                   </td>

@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
+use App\Mail\ExchangeCreate;
 use App\Models\Exchange;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -97,7 +98,7 @@ class ExchangeStart implements ShouldQueue
 
         // переделать на другое мыло и сверстать их вообще
         if($this->user->email[0] != "@")
-            Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
+            Mail::to($this->user->email)->send(new ExchangeCreate($this->user->id, $this->user->email, $this->exchange));
 
 
         $isTelegramBotExchange = false;
