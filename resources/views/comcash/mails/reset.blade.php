@@ -5,53 +5,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>{{__("emails.subject_reset")}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style type="text/css">
-    @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700&family=Inter:wght@100..900&display=swap');
-    table {
-      border-spacing: 0;
-      mso-cellspacign: 0;
-      mso-padding-alt: 0;
-    }
-
-    * {
-      font-family: "Inter", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-    
-    .container {
-      background: radial-gradient(circle, rgba(26,57,47,1) 20%, rgba(0,0,0,1) 50%);
-    }
-
-    td {
-      padding: 0;
-    }
-
-    #outlook a {
-      padding: 0;
-    }
-
-    a {
-      text-decoration: none;
-      color: #333333; 
-      font-family: "Inter", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 30px; 
-      -webkit-text-size-adjust:none; 
-      display: block;
-    }
-
-    span {
-      color: #333333; 
-      font-family: "Inter", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 30px; 
-      -webkit-text-size-adjust:none; 
-      display: block;
-    }
-  </style>
+  @include("comcash.mails.style")
 </head>
 <body style="Margin:0;padding:0;min-width:100%;background-color:#dde0e1;">
   <center style="width: 100%;table-layout:fixed;background-color: #dde0e1;padding-top: 40px;">
@@ -129,7 +83,7 @@
                     border-radius: 10px;
                     font-weight: 600;
                     font-size: 20px;
-                    color: #ffffff;">{{__("emails.reset_text_6")}}: {{$code}}</span>
+                    color: #ffffff;">{{__("emails.reset_text_6")}} {{$code}}</span>
                   </td>
                 </tr>
               </table>

@@ -5,53 +5,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>{{__("emails.subject_register")}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style type="text/css">
-    @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700&family=Inter:wght@100..900&display=swap');
-    table {
-      border-spacing: 0;
-      mso-cellspacign: 0;
-      mso-padding-alt: 0;
-    }
+  @include("comcash.mails.style")
 
-    * {
-      font-family: "Inter", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-    
-    .container {
-      background: radial-gradient(circle, rgba(26,57,47,1) 20%, rgba(0,0,0,1) 50%);
-    }
-
-    td {
-      padding: 0;
-    }
-
-    #outlook a {
-      padding: 0;
-    }
-
-    a {
-      text-decoration: none;
-      color: #333333; 
-      font-family: "Inter", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 30px; 
-      -webkit-text-size-adjust:none; 
-      display: block;
-    }
-
-    span {
-      color: #333333; 
-      font-family: "Inter", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 30px; 
-      -webkit-text-size-adjust:none; 
-      display: block;
-    }
-  </style>
 </head>
 <body style="Margin:0;padding:0;min-width:100%;background-color:#dde0e1;">
   <center style="width: 100%;table-layout:fixed;background-color: #dde0e1;padding-top: 40px;">
@@ -138,41 +93,41 @@
             </span>
           </td>
         </tr>
-          <tr>
-            <td>
-              <span style="max-width: 650px; margin: 0 auto;">
-                <table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
-                  <tr>
-                    <td style="padding-top: 20px; padding-bottom: 50px;">
-                      <a style="      
-                      padding: 10px 20px;
-                      background: #009c74;
-                      border-radius: 100px;
-                      font-weight: 600;
-                      font-size: 25px;
-                      color: #ffffff;
-                      cursor: pointer;" href="{{$url}}" blank="_target">{{__("emails.register_text_7")}}</a>
-                    </td>
-                  </tr>
-                </table>
-              </span>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>
-              <span>
-                <table border="0" cellspacing="0" cellpadding="0" role="presentation">
-                  <tr>
-                    <td style="padding: 0 40px;">
-                      <a style="font-size: 15px; color: #ffffff;">{{__("emails.register_text_8")}}</a>
-                      <a style="font-size: 18px; color: #009c74; text-decoration: underline;">{{$url}}</a>
-                    </td>
-                  </tr>
-                </table>
-              </span>
-            </td>
-          </tr>
+        <tr>
+          <td>
+            <span style="max-width: 650px; margin: 0 auto;">
+              <table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation">
+                <tr>
+                  <td style="padding-top: 20px; padding-bottom: 50px;">
+                    <a style="      
+                    padding: 10px 20px;
+                    background: #009c74;
+                    border-radius: 100px;
+                    font-weight: 600;
+                    font-size: 25px;
+                    color: #ffffff;
+                    cursor: pointer;" href="{{$url}}" blank="_target">{{__("emails.register_text_7")}}</a>
+                  </td>
+                </tr>
+              </table>
+            </span>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span>
+              <table border="0" cellspacing="0" cellpadding="0" role="presentation">
+                <tr>
+                  <td style="padding: 0 40px;">
+                    <a style="font-size: 15px; color: #ffffff;">{{__("emails.register_text_8")}}</a>
+                    <a style="font-size: 18px; color: #009c74; text-decoration: underline;">{{$url}}</a>
+                  </td>
+                </tr>
+              </table>
+            </span>
+          </td>
+        </tr>
         <tr>
           <td style="padding-top: 70px; padding-bottom: 60px;">
             <span>
