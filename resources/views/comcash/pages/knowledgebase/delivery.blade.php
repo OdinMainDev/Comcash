@@ -6,8 +6,8 @@
         @include("comcash.component.knowledge_menu")
         <div class="delivery__content">
             <div class="delivery__header">
-            <p class="delivery__header-title">{{__("front.page_delivery_title")}}</p>
-            <p class="delivery__header-text">{{__("front.page_delivery_description")}}</p>
+                <p class="delivery__header-title">{{__("front.page_delivery_title")}}</p>
+                <p class="delivery__header-text">{{__("front.page_delivery_description")}}</p>
             </div>
 
             <div class='delivery__features'>

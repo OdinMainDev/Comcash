@@ -22,9 +22,11 @@
                                 <div class="custom-select__select-container" id="cryptoYouSendSelect" data-currency="cryptoYouSendSelect">
                                     <div class="custom-select__select-label">{{__("front.choose currency")}}</div>
                                     <input class="custom-select__select-label-input" name="currency_from"/>
-                                    <div class="custom-select__select-list hide">
-                                        <div class="custom-select__search">
-                                            <input class="custom-select__search-field"/>
+                                    <div class="custom-select__select-list-container hide">
+                                        <div class="custom-select__select-list">
+                                            <div class="custom-select__search">
+                                                <input class="custom-select__search-field"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -48,11 +50,14 @@
                                 <div class="custom-select__select-container" id="cryptoYouGetSelect" data-currency="cryptoYouGetSelect">
                                     <div class="custom-select__select-label">{{__("front.choose currency")}}</div>
                                     <input class="custom-select__select-label-input" name="currency_to"/>
-                                    <div class="custom-select__select-list hide">
-                                        <div class="custom-select__search">
-                                            <input class="custom-select__search-field"/>
+                                    <div class="custom-select__select-list-container hide">
+                                        <div class="custom-select__select-list">
+                                            <div class="custom-select__search">
+                                                <input class="custom-select__search-field"/>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <button class='button button--auto' type='submit'>{{__("front.exchange")}}</button>

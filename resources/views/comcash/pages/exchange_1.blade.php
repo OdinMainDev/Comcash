@@ -29,9 +29,11 @@
 								{{__("front.exchangePageChooseCurrencyFrom")}}
 							</div>
 							<input class="custom-select__select-label-input" name="currency_from"/>
-							<div class="custom-select__select-list hide">
-								<div class="custom-select__search">
-									<input class="custom-select__search-field"/>
+							<div class="custom-select__select-list-container hide">
+								<div class="custom-select__select-list">
+									<div class="custom-select__search">
+										<input class="custom-select__search-field"/>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -75,9 +77,11 @@
 								{{__("front.exchangePageChooseCurrencyTo")}}
 							</div>
 							<input class="custom-select__select-label-input" name="currency_to"/>
-							<div class="custom-select__select-list hide">
-								<div class="custom-select__search">
-									<input class="custom-select__search-field"/>
+							<div class="custom-select__select-list-container hide">
+								<div class="custom-select__select-list">
+									<div class="custom-select__search">
+										<input class="custom-select__search-field"/>
+									</div>
 								</div>
 							</div>
 						</div>
