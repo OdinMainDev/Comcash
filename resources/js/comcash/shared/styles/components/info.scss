@@ -1325,6 +1325,126 @@
   }
 }
 
+.sitemap {
+  &__content {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    margin-left: 260px;
+    padding: 40px 60px 0 60px;
+    // background: url(/comcash/img/main-bg.svg) center 00px/cover no-repeat;
+
+    @media (max-width: 1100px) {
+      margin: 0 auto;
+      padding: 125px 60px 0 60px;
+    }
+
+    @media (max-width: 680px) {
+      padding: 80px 20px 60px 20px;
+      background: url(/comcash/img/bg-bottom-delivery.svg) bottom no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &__header {
+    margin-bottom: 20px;
+    @media (max-width: 680px) {
+      margin-bottom: 80px;
+    }
+
+    &-title {
+      max-width: 300px;
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 12px;
+
+      @media (max-width: 680px) {
+        font-size: 24px;
+      }
+
+      @media (max-width: 1100px) {
+        position: fixed;
+        z-index: 1;
+        top: calc(var(--height-header-mobile) + 18px);
+        left: 0;
+        right: 0;
+        max-width: 100%;
+        height: 56px;
+        padding: 20px 0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        text-align: center;
+        background: linear-gradient(to top, #2d2d2d, #2d2d2d) padding-box,
+          linear-gradient(to top, #acacac, transparent) border-box;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+
+    &-text {
+      position: relative;
+      max-width: 500px;
+      line-height: 1.5;
+
+      @media (max-width: 1100px) {
+        max-width: 400px;
+      }
+
+      @media (max-width: 680px) {
+        margin: 0 auto;
+        margin-top: 50px;
+        padding: 20px 28px;
+        background: linear-gradient(to bottom, #2e2e2e, #171717);
+        border-radius: 40px;
+      }
+
+      &::before {
+        @media (max-width: 680px) {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 205px;
+          height: 205px;
+          z-index: -1;
+          top: -75px;
+          left: 50%;
+          transform: translateX(-50%) rotate(2deg);
+          background: url('/comcash/img/double-leaves.svg') no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &::after {
+        @media (max-width: 680px) {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          bottom: -71px;
+          left: 50%;
+          transform: translateX(-50%) rotate(-173deg);
+          display: block;
+          width: 205px;
+          height: 130px;
+          background: url('/comcash/img/double-leaves.svg') no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+  }
+
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    &-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+  }
+}
+
 .delivery {
   &__content {
     position: relative;

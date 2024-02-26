@@ -7,7 +7,7 @@ $(document).ready(function () {
   const select = $('.custom-select__select-container');
 
   select.find('.custom-select__select-label').on('click', function () {
-    select.find('.custom-select__select-list')?.toggleClass('hide');
+    select.find('.custom-select__select-list-container')?.toggleClass('hide');
     select.toggleClass('active');
   });
 
@@ -16,7 +16,7 @@ $(document).ready(function () {
     const select = $(this);
     $(window).on('click', function(event: JQuery.ClickEvent<Window>) {
       if (!select.is(event.target) && select.has(event.target).length === 0) {
-        select.find('.custom-select__select-list').addClass('hide');
+        select.find('.custom-select__select-list-container').addClass('hide');
         select.removeClass('active');
       }
     });
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
   $('.custom-select__search-field').on('input', function() {
     const searchText = $(this).val() as string;
-    const parentList = $(this).closest('.custom-select__select-list');
+    const parentList = $(this).closest('.custom-select__select-list-container');
     parentList.find('.custom-select__select-item').each(function() {
       const listItemText = $(this).text().toLowerCase();
       if (listItemText.indexOf(searchText.toLowerCase()) === -1) {
