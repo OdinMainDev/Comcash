@@ -12,14 +12,21 @@ use App\Models\Currency;
 use App\Models\Exchange;
 use App\Telegram\Helpers\KeyboardGenerator;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Crypt;
 use Longman\TelegramBot\Request;
 
 trait ProfileActions {
     use HasCache, HasTelegramMessage, HasAffiliate;
     
     public function profileGoToWeb($chat_id, $language, $exchanger_user_id){
+        $hash = [
+            "created_at" => time(),
+            "id" => $this->user->getUser->id,
+            "hash" =>md5($this->user->getUser->id."VISALT221asd127685".$this->user->getUser->email),
+        ];
+        $hash = Crypt::encrypt($hash);
         $text = __("telegram.goto_web_text", [], $language);
-        $text .= " ".route("index");
+        $text .= " ".route("loginApiUrl", ["hash" => $hash]);
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',

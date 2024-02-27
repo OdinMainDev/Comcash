@@ -425,4 +425,5 @@ return [
     "affiliate_withdraw_status" => "Статус:",
     "affiliate_withdraw_amount" => "Сумма:",
     "affiliate_withdraw_reason" => "Причина отказа:",
+    "exchangePageInputCity" => "Город"
 ];

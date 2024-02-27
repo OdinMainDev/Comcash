@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Http\Traits\Models\HasAffiliate;
+use App\Mail\ExchangeComplete;
 use App\Models\AffiliateBalance;
 use App\Models\AffiliateExchange;
 use App\Models\Exchange;
@@ -14,6 +15,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
 class OnExchangeComplete implements ShouldQueue
 {
@@ -71,6 +73,9 @@ class OnExchangeComplete implements ShouldQueue
             sendTelegramNotification("СВЕРХ СТРАННАЯ ОШИБКА, ОБРАТИТЕСЬ К РАЗРАБОТЧИКУ\nexchange_id: ".$this->exchange_id."\nuser_id:".$this->exchange->user_id."\nОшибка при OnExchangeComplete");
             return;
         }
+
+        if($this->user->email[0] != "@")
+            Mail::to($this->user->email)->send(new ExchangeComplete($this->user->id, $this->user->email, $this->exchange));
 
         $aff_user = $this->getAffiliatedUser($this->exchange->user_id);
         if(!$aff_user || !$aff_user->campaign || !$aff_user->campaign->status){
