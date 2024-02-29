@@ -46,4 +46,21 @@ class Controller_Register extends Controller
             "open_modal" => 'verification-sent'
         ]);
     }
+
+    public function confirm_email(Request $request, $lang, $id, $hash) {
+        if(!is_numeric($id)){
+            return abort(404);
+        }
+        if(!is_string($hash) || mb_strlen($hash) > 255){
+            return abort(404);
+        }
+        $user = User::where("id", $id)->first();
+        if(!$user || $user->email_verified_at > 0 || $hash != md5($user->id.$user->email."VerifyCmHash")){
+            return abort(404);
+        }
+
+        $user->email_verified_at = time();
+        $user->save();
+        return redirect("/");
+    } 
 }

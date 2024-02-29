@@ -91,6 +91,10 @@ class Handler {
                 $this->merchant = new ManualMode;
                 return $this->merchant;
             break;
+            case "manualcash":
+                $this->merchant = new ManualMode(false, true);
+                return $this->merchant;
+            break;
         }    
         
         return false;

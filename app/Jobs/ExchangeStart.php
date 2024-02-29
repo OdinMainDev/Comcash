@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
+use App\Mail\ExchangeCreate;
 use App\Models\Exchange;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -88,7 +89,8 @@ class ExchangeStart implements ShouldQueue
                 ];
             }else{
                 $isManualMode = true;
-                $data['merchant_from_data'] = $this->checkAvailWalletForManualExchange();
+                $isCacheMode = @$address['is_cache_mode'];
+                $data['merchant_from_data'] = $this->checkAvailWalletForManualExchange($isCacheMode);
             }
         }
         $this->exchange->data = $data;
@@ -96,7 +98,7 @@ class ExchangeStart implements ShouldQueue
 
         // переделать на другое мыло и сверстать их вообще
         if($this->user->email[0] != "@")
-            Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
+            Mail::to($this->user->email)->send(new ExchangeCreate($this->user->id, $this->user->email, $this->exchange));
 
 
         $isTelegramBotExchange = false;
@@ -105,7 +107,11 @@ class ExchangeStart implements ShouldQueue
         }
         $text = "";
         if($isManualMode){
-            $text = "❗️⚠️⚠️<b>ВНИМАНИЕ ЗАЯВКА ДОЛЖНА БЫТЬ ОТРАБОТАНА В РУЧНОМ РЕЖИМЕ!</b>⚠️⚠️❗️\n\n";
+            $text = "❗️⚠️⚠️<b>ВНИМАНИЕ ЗАЯВКА ДОЛЖНА БЫТЬ ОТРАБОТАНА В РУЧНОМ РЕЖИМЕ!</b>⚠️⚠️❗️\n";
+            if($isCacheMode){
+                $text .= "❗️⚠️⚠️<b>ВНИМАНИЕ ЗАЯВКА НА НАЛИЧКУ!</b>⚠️⚠️❗️\n";
+            }
+            $text .= "\n";
         }
         $text .= "🟡<b>Новая заявка на обмен</b>🟡\n";
         if($isTelegramBotExchange){
@@ -197,7 +203,8 @@ class ExchangeStart implements ShouldQueue
         return true;
     }
 
-    public function checkAvailWalletForManualExchange() {
+    public function checkAvailWalletForManualExchange($isCacheMode = false) {
+        if($isCacheMode) return ["address" => null,"url" => null];
         if(!$this->exchange->currencyFrom) return ["address" => null,"url" => null];
         if(!@$this->exchange->currencyFrom->data) return ["address" => null,"url" => null];
         $data = $this->exchange->currencyFrom->data;

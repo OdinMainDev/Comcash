@@ -60,6 +60,7 @@ class Controller_ResetPassword extends Controller{
 
         $user = User::where("id", $code->user_id)->first();
         $user->password = Hash::make($request->password);
+        $user->email_verified_at = time();
         $user->save();
 
         $code->delete();

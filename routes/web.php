@@ -63,13 +63,14 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::get('/', [Home::class, "view"])->name("index");
     Route::get('/at/{hash}', [Home::class, "check_aff"])->name("checkAffiliate");
     Route::get('/auth/login', [Login::class, "view"])->name("login");
+    Route::get('/auth/login/api/{hash}', [Login::class, "process_api_url"])->name("loginApiUrl");
     Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
     Route::get('/auth/register', [Login::class, "view_register"])->name("register");
     Route::post('/auth/register', [Register::class, "process"])->name("registerPost");
     Route::get('/auth/reset-password', [Login::class, "view"])->name("resetPassword");
     Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
     Route::post('/auth/reset-password/confirm', [ResetPassword::class, "confirm_process"])->name("resetPasswordConfirmPost");
-    Route::get('/auth/email/confirm/{id}/{hash}', [Login::class, "view"])->name("verifyEmail"); 
+    Route::get('/auth/email/confirm/{id}/{hash}', [Register::class, "confirm_email"])->name("verifyEmail"); 
 });
 /* AUTH ROUTES */
 

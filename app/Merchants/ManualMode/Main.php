@@ -13,27 +13,36 @@ class Main {
 
     use HasAmount, HasLogs, HasKyc;
     public $isCrypto = false;
+    public $isCash = false;
 
-    public function __construct($isCrypto = false){
+    public function __construct($isCrypto = false, $isCash = false){
         $this->isCrypto = $isCrypto;
+        $this->isCash = $isCash;
     }
 
     function getLayout($is_withdraw){
         $base = ["email"];
-        if(!$this->isCrypto){
+        if(!$this->isCrypto && !$this->isCash){
             $base[] = "first_name";
             $base[] = "second_name";
             $base[] = "last_name";
         }
 
         if(!$is_withdraw){
-            if(!$this->isCrypto)
+            if(!$this->isCrypto && !$this->isCash)
                 $base[] = "from_card";
         }else{
-            if(!$this->isCrypto)
-                $base[] = "to_card";
-            else
-                $base[] = "to_address";
+            if(!$this->isCash){
+                if(!$this->isCrypto)
+                    $base[] = "to_card";
+                else
+                    $base[] = "to_address";
+            }
+        }
+
+        if($this->isCash) {
+            $base[] = "telegram";
+            $base[] = "city";
         }
 
         return $base;
@@ -42,13 +51,15 @@ class Main {
     function getLayoutTelegram($is_withdraw){
         $base = [];
         if(!$is_withdraw){
-            if(!$this->isCrypto)
+            if(!$this->isCrypto && !$this->isCash)
                 $base[] = "from_card";
         }else{
-            if(!$this->isCrypto)
-                $base[] = "to_card";
-            else
-                $base[] = "to_address";
+            if(!$this->isCash){
+                if(!$this->isCrypto)
+                    $base[] = "to_card";
+                else
+                    $base[] = "to_address";
+            }
         }
         return $base;
     }
@@ -58,26 +69,35 @@ class Main {
             "email" => "required|email|string|max:255",
         ];
         
-        if(!$this->isCrypto){
+        if(!$this->isCrypto && !$this->isCash){
             $base["first_name"] = "required|string|max:255";
             $base["second_name"] = "required|string|max:255";
             $base["last_name"] = "required|string|max:255";
         }
         if(!$is_withdraw){
-            if(!$this->isCrypto)
+            if(!$this->isCrypto && !$this->isCash)
                 $base["from_card"] = "required|string|max:20";
         }else{
-            if(!$this->isCrypto)
-                $base["to_card"] = "required|string|max:20";
-            else
-                $base["to_address"] = "required|string|max:255";
+            if(!$this->isCash){
+                if(!$this->isCrypto)
+                    $base["to_card"] = "required|string|max:20";
+                else
+                    $base["to_address"] = "required|string|max:255";
+            }
         }
+
+        if($this->isCash) {
+            $base["telegram"] = "required|string|max:60";
+            $base["city"] = "required|string|max:255";
+        }
+
         $request->validate($base);
     }
 
     function getAddress($merchant, $exchange, $currency){
         return [
-            "is_manual_mode" => true
+            "is_manual_mode" => true,
+            "is_cache_mode" => $this->isCash
         ];
     }
 

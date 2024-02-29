@@ -108,6 +108,12 @@
 						</div>
 						<input type="text" class="input input--large" name="passport">
 					</div>
+					<div class="exchange__contact-item hide" id="exchange-city">
+						<div class='label'>
+							<span>{{__("front.exchangePageInputCity")}}</span>
+						</div>
+						<input type="text" class="input input--large" name="city">
+					</div>
 					<div class="exchange__contact">
 						<div class="exchange__contact-item hide" id="exchange-phone">
 							<div class='label'>

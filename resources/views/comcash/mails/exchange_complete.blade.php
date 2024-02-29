@@ -3,55 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{{__("front.register email subject")}}</title>
+  <title>{{__("emails.subject_exchange_complete")}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style type="text/css">
-    @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700&family=Inter:wght@100..900&display=swap');
-    table {
-      border-spacing: 0;
-      mso-cellspacign: 0;
-      mso-padding-alt: 0;
-    }
-
-    * {
-      font-family: "Inter", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-    }
-    
-    .container {
-      background: radial-gradient(circle, rgba(26,57,47,1) 20%, rgba(0,0,0,1) 50%);
-    }
-
-    td {
-      padding: 0;
-    }
-
-    #outlook a {
-      padding: 0;
-    }
-
-    a {
-      text-decoration: none;
-      color: #333333; 
-      font-family: "Inter", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 30px; 
-      -webkit-text-size-adjust:none; 
-      display: block;
-    }
-
-    span {
-      color: #333333; 
-      font-family: "Inter", sans-serif;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 30px; 
-      -webkit-text-size-adjust:none; 
-      display: block;
-    }
-  </style>
+  @include("comcash.mails.style")
 </head>
 <body style="Margin:0;padding:0;min-width:100%;background-color:#dde0e1;">
   <center style="width: 100%;table-layout:fixed;background-color: #dde0e1;padding-top: 40px;">
@@ -64,21 +18,35 @@
               <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                 <tr>
                   <td width="33%" valign="top">
-                    <img src="/comcash/img/mails/leaves_left.png" class="leaves" alt="leaves">
+                    <img src="{{env("APP_URL")}}/comcash/img/mails/leaves_left.png" class="leaves" alt="leaves">
                   </td>
                   <td align="center"  width="33%">
                     <a style="padding-top: 30px; padding-bottom: 30px;" href="#" target="_blank">
-                      <img src="/comcash/img/mails/logo.png" style="height: 40px;" alt="logo">
+                      <img src="{{env("APP_URL")}}/comcash/img/mails/logo.png" style="height: 40px;" alt="logo">
                     </a>
                   </td>
                   <td width="33%" align="right"  valign="top">
-                    <img src="/comcash/img/mails/leaves_right.png" alt="leaves">
+                    <img src="{{env("APP_URL")}}/comcash/img/mails/leaves_right.png" alt="leaves">
                   </td>
                 </tr>
               </table>
             </span>
           </td>
         </tr>
+        <?php
+          if(!isset($id) || !$id)
+            $id = "TEST";
+          if(!isset($url) || !$url)
+            $url = "https://test.test.test.test";
+          if(!isset($currencyFrom) || !$currencyFrom)
+            $currencyFrom = "CurrencyFrom";
+          if(!isset($currencyTo) || !$currencyTo)
+            $currencyTo = "CurrencyTo";
+          if(!isset($amountFrom) || !$amountFrom)
+            $amountFrom = "AmountFrom";
+          if(!isset($amountTo) || !$amountTo)
+            $amountTo = "AmountTo";
+        ?>
         <tr>
           <td style="padding-bottom: 30px;">
             <span style="max-width: 650px; margin: 0 auto;">
@@ -91,7 +59,7 @@
                     border-radius: 10px;
                     font-weight: 600;
                     font-size: 20px;
-                    color: #ffffff;">Ваш пароль: Test</span>
+                    color: #ffffff;">{{__("emails.exchange_id")}} {{$id}}</span>
                   </td>
                 </tr>
               </table>
@@ -108,7 +76,34 @@
                     font-weight: 600;
                     font-size: 25px;
                     color: #ffffff;
-                    padding-bottom: 20px;">Подтвердите <strong style="color: #009c74; font-weight: 600; font-size: 25px;">вашу</strong> почту!</span>
+                    padding-bottom: 20px;">{{__("emails.exchange_complete_text_1")}} <strong style="color: #009c74; font-weight: 600; font-size: 25px;">{{__("emails.exchange_complete_text_2")}}</strong></span>
+                  </td>
+                </tr>
+              </table>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <span style="max-width: 650px; margin: 0 auto;">
+              <table border="0" cellspacing="0" cellpadding="0" role="presentation">
+                <tr>
+                  <td style="padding: 0 40px;">
+                    <ul  style="
+                    font-weight: 500;
+                    font-size: 18px;
+                    color: #ffffff;
+                    padding-bottom: 30px;">
+                      <li>
+                        {{__("emails.exchange_complete_text_3")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$currencyFrom}} -> {{$currencyTo}}</strong>
+                      </li>
+                      <li>
+                        {{__("emails.exchange_complete_text_4")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$amountFrom}} {{$currencyFrom}}</strong>
+                      </li>
+                      <li>
+                        {{__("emails.exchange_complete_text_5")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$amountTo}} {{$currencyTo}}</strong>
+                      </li>
+                    </ul>
                   </td>
                 </tr>
               </table>
@@ -125,13 +120,17 @@
                     font-weight: 500;
                     font-size: 18px;
                     color: #ffffff;
-                    padding-bottom: 30px;">Нажмите на <strong style="color: #009c74; font-weight: 500; font-size: 18px;">кнопку</strong> ниже для подтверждения вашей почты!</span>
+                    padding-bottom: 30px;">{{__("emails.exchange_complete_text_6")}}</span>
                   </td>
                 </tr>
               </table>
             </span>
           </td>
         </tr>
+        <?php
+          if(!isset($code) || !$code)
+            $code = "TEST";
+        ?>
         <tr>
           <td>
             <span style="max-width: 650px; margin: 0 auto;">
@@ -145,7 +144,7 @@
                     font-weight: 600;
                     font-size: 25px;
                     color: #ffffff;
-                    cursor: pointer;" href="#" blank="_target">Подтвердить</a>
+                    cursor: pointer;" href="{{$url}}" blank="_target">{{__("emails.exchange_complete_text_7")}}</a>
                   </td>
                 </tr>
               </table>
@@ -158,8 +157,8 @@
               <table border="0" cellspacing="0" cellpadding="0" role="presentation">
                 <tr>
                   <td style="padding: 0 40px;">
-                    <a style="font-size: 15px; color: #ffffff;">Если не получается нажать на кнопку - скопируйте ссылку ниже и перейдите вручную:</a>
-                    <a style="font-size: 18px; color: #009c74; text-decoration: underline;">Ссылка</a>
+                    <a style="font-size: 15px; color: #ffffff;">{{__("emails.exchange_complete_text_8")}}</a>
+                    <a style="font-size: 18px; color: #009c74; text-decoration: underline;">{{$url}}</a>
                   </td>
                 </tr>
               </table>
@@ -172,7 +171,7 @@
               <table border="0" cellspacing="0" cellpadding="0" role="presentation">
                 <tr>
                   <td style="padding: 0 40px;">
-                    <img src="/comcash/img/mails/logo.png" style="height: 30px;" alt="logo">
+                    <img src="{{env("APP_URL")}}/comcash/img/mails/logo.png" style="height: 30px;" alt="logo">
                   </td>
                 </tr>
               </table>

@@ -25,6 +25,6 @@ class Reset extends Mailable
 
     public function build()
     {
-        return $this->subject(__("front.reset email subject"))->view(env("THEME_NAME", "comcash").'.mails.reset')->with("code", $this->code);
+        return $this->subject(__("emails.subject_reset"))->view(env("THEME_NAME", "comcash").'.mails.reset')->with("code", $this->code);
     }
 }

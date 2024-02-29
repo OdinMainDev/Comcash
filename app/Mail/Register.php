@@ -28,7 +28,7 @@ class Register extends Mailable
 
     public function build()
     {
-        return $this->subject(__("front.register email subject"))->view(env("THEME_NAME", "comcash").'.mails.register')->with("url", route("verifyEmail", [
+        return $this->subject(__("emails.subject_register"))->view(env("THEME_NAME", "comcash").'.mails.register')->with("url", route("verifyEmail", [
             "locale" => app()->getLocale(),
             "id" => $this->user_id, 
             "hash" => md5($this->user_id.$this->email."VerifyCmHash")
