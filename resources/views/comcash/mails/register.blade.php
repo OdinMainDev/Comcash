@@ -35,11 +35,12 @@
           </td>
         </tr>
         <?php
-          if(!isset($password) || !$password)
+          if(!isset($password))
             $password = "TEST";
-          if(!isset($url) || !$password)
+          if(!isset($url))
             $url = "https://test.test.test.test";
         ?>
+        @if($password)
         <tr>
           <td style="padding-bottom: 30px;">
             <span style="max-width: 650px; margin: 0 auto;">
@@ -59,6 +60,7 @@
             </span>
           </td>
         </tr>
+        @endif
         <tr>
           <td >
             <span style="max-width: 650px; margin: 0 auto;">

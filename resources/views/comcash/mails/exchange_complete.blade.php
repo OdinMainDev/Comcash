@@ -34,17 +34,17 @@
           </td>
         </tr>
         <?php
-          if(!isset($id) || !$id)
+          if(!isset($id))
             $id = "TEST";
-          if(!isset($url) || !$url)
+          if(!isset($url))
             $url = "https://test.test.test.test";
-          if(!isset($currencyFrom) || !$currencyFrom)
+          if(!isset($currencyFrom))
             $currencyFrom = "CurrencyFrom";
-          if(!isset($currencyTo) || !$currencyTo)
+          if(!isset($currencyTo))
             $currencyTo = "CurrencyTo";
-          if(!isset($amountFrom) || !$amountFrom)
+          if(!isset($amountFrom))
             $amountFrom = "AmountFrom";
-          if(!isset($amountTo) || !$amountTo)
+          if(!isset($amountTo))
             $amountTo = "AmountTo";
         ?>
         <tr>
@@ -127,10 +127,6 @@
             </span>
           </td>
         </tr>
-        <?php
-          if(!isset($code) || !$code)
-            $code = "TEST";
-        ?>
         <tr>
           <td>
             <span style="max-width: 650px; margin: 0 auto;">

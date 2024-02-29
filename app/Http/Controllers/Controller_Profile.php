@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\VerifyEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,13 +27,22 @@ class Controller_Profile extends Controller{
             "first_name" => "nullable|string|max:255",
             "second_name" => "nullable|string|max:255",
             "last_name" => "nullable|string|max:255",
-            // "email" => "required|email|max:255",
+            "email" => "nullable|string|email|max:255",
             "telegram" => "nullable|string|max:255",
             "phone" => "nullable|string|max:255",
             "passport" => "nullable|string|max:255",
         ]);
 
         $user = Auth::user();
+        if($user->email_verified_at == 0) {
+            if($request->email && $request->email != $user->email){
+                $check = User::where("email", $request->email)->first();
+                if($check){
+                    return $this->responseErrorValidation(["email" => __("common.email_already_taken")]);
+                }
+                $user->email = $request->email;
+            }
+        }
         $user->first_name = $request->first_name;
         $user->second_name = $request->second_name;
         $user->last_name = $request->last_name;
@@ -59,6 +69,16 @@ class Controller_Profile extends Controller{
         $user->password = Hash::make($request->password);
         $user->save();
 
+        return $this->responseSuccess();
+    }
+
+    public function process_verify_start(Request $request) {
+        $user = auth()->user();
+        if($user->email && $user->email[0] == "@"){
+            return $this->responseErrorValidation(["email" => __("common.bad_email")]);
+        }
+        $this->checkThrottling("verify-".$user->email, 1);
+        VerifyEmail::dispatch($user->id, app()->getLocale());
         return $this->responseSuccess();
     }
 }

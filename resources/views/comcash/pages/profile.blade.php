@@ -5,7 +5,7 @@
         <p class="personal__title-mobile">{{__("front.client panel")}}</p>
         <div class="personal__container">
             @include("comcash.component.profile_menu")
-            <form class="personal__content" action="{{route("myprofilePost")}}">
+            <form class="personal__content" action="{{route("myprofilePost")}}" id="myProfileForm">
                 @csrf
                 <div class="personal__top">
                     <div class="input-box">
@@ -30,7 +30,10 @@
                         <div class='label'>
                             <span>{{__("front.email")}}</span>
                         </div>
-                        <input type="text" class="input input--large" name="email" value="{{auth()->user()->email}}" disabled>
+                        <input type="text" class="input input--large" name="email" value="{{auth()->user()->email}}" @if(auth()->user()->email_verified_at > 0) disabled @endif>
+                        @if(auth()->user()->email_verified_at == 0) 
+                            <button type="submit" class='button personal__button' onclick="document.getElementById('myProfileForm').setAttribute('action', '{{route('myprofileVerifyPost')}}');">{{__("front.verifyEmail")}}</button>
+                        @endif
                     </div>
                     <div class="input-box">
                         <div class='label'>
@@ -52,7 +55,7 @@
                     </div>
                 </div>
                 <div class="personal__bottom">
-                    <button type="submit" class='button personal__button'>{{__("front.save")}}</button>
+                    <button type="submit" class='button personal__button' document.getElementById('myProfileForm').setAttribute('action', '{{route('myprofilePost')}}');">{{__("front.save")}}</button>
                 </div>
             </form>
         </div>

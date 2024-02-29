@@ -100,6 +100,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         
         Route::get('/profile', [Profile::class, "view"])->name("myprofile");
         Route::post('/profile/update', [Profile::class, "process_profile"])->name("myprofilePost");
+        Route::post('/profile/verifyMyEmail', [Profile::class, "process_verify_start"])->name("myprofileVerifyPost");
 
         Route::get('/profile/password', [Profile::class, "view_password"])->name("myprofilePassword");
         Route::post('/profile/password/change', [Profile::class, "process_password"])->name("myprofilePasswordPost");

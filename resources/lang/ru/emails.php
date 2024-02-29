@@ -39,4 +39,11 @@ return [
     "exchange_complete_text_6" => "Спасибо что воспользовались нашим сервисом! Вы можете перейти к заявке нажав на кнопку ниже и оставить отзыв",
     "exchange_complete_text_7" => "Перейти к заявке",
     "exchange_complete_text_8" => "Если кнопка не активна то скопируйте ссылку ниже",
+    "subject_verify_email" => "Подтверждение почты",
+    "verify_email_text_1" => "Чтобы подтвердить",
+    "verify_email_text_2" => "вашу почту",
+    "verify_email_text_3" => "Вам нужно нажать на",
+    "verify_email_text_4" => "кноку ниже",
+    "verify_email_text_5" => "Подтвердить",
+    "verify_email_text_6" => "Если кнопка не работает то скопируйте ссылку ниже!",
 ];

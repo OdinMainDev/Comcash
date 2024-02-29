@@ -204,7 +204,6 @@ $(function() {
     },
     eventClick: function(info) {
       var eventObj = info.event;
-      console.log(info);
       $('#modalTitle1').html(eventObj.title);
       $('#modalBody1').html(eventObj._def.extendedProps.description);
       $('#eventUrl').attr('href',eventObj.url);
@@ -212,7 +211,6 @@ $(function() {
     },
     dateClick: function(info) {
       $("#createEventModal").modal("show");
-      console.log(info);
     },
   });
 

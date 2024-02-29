@@ -162,4 +162,7 @@ return [
     "viewUserAffiliateUsers" => "Приглашенные пользователи аффилейта",
     "affTable_registered_users" => "Зарегистрировано пользователей",
     "affTable_profitable_transactions" => "Успешных сделок",
+    "email_already_taken" => "Почта уже занята",
+    "bad_email" => "Почта не правильно введена",
+    "choose_email" => "Выберите шаблон"
 ];

@@ -68,7 +68,7 @@
           </td>
         </tr>
         <?php
-          if(!isset($code) || !$code)
+          if(!isset($code))
             $code = "TEST";
         ?>
         <tr>
