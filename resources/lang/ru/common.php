@@ -164,5 +164,6 @@ return [
     "affTable_profitable_transactions" => "Успешных сделок",
     "email_already_taken" => "Почта уже занята",
     "bad_email" => "Почта не правильно введена",
-    "choose_email" => "Выберите шаблон"
+    "choose_email" => "Выберите шаблон",
+    "bad_email_save_before_verify" => "Почта не правильно введена либо не сохранена новая ( нажмите на кнопку сохранить сначала )",
 ];

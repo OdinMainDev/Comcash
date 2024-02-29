@@ -75,7 +75,7 @@ class Controller_Profile extends Controller{
     public function process_verify_start(Request $request) {
         $user = auth()->user();
         if($user->email && $user->email[0] == "@"){
-            return $this->responseErrorValidation(["email" => __("common.bad_email")]);
+            return $this->responseErrorValidation(["email" => __("common.bad_email_save_before_verify")]);
         }
         $this->checkThrottling("verify-".$user->email, 1);
         VerifyEmail::dispatch($user->id, app()->getLocale());
