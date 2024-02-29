@@ -22,6 +22,11 @@ $(document).ready(function () {
     });
   })
 
+  select.on('click', '.custom-select__select-item', function() {
+    $(this).closest('.custom-select__select-list-container').addClass('hide');
+    select.removeClass('active');
+  });
+
   // select search
 
   $('.custom-select__search-field').on('input', function() {
