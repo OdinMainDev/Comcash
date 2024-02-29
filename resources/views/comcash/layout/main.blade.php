@@ -18,6 +18,9 @@
 		<link rel="mask-icon" href="/comcash/safari-pinned-tab.svg" color="#5bbad5">
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="theme-color" content="#ffffff">
+		<?php 
+			$yandexMetricaId = 93703988; 
+		?>
 		{!! SEO::generate() !!}
 		@include('comcash.layout.ads')
 		@vite('resources/js/comcash/main.ts')
@@ -27,16 +30,20 @@
         @include('comcash.component.header_main')
 
 		@yield("content")
-
 		@include('comcash.component.modal_auth')
-
 		@include('comcash.component.footer_main')
 
 		<script>
 			window.language = "{{mb_strtolower(app()->getLocale())}}";
 			window.isChristmasThemeComcash = "{{env('THEME_SUBNAME', false)}}" == "christmas" ? true : false;
+			window.updateYMForm = function(name) {
+				var appDebug = "{{env('APP_DEBUG')}}" == "true";
+				if(appDebug) {
+					return;
+				}
+				ym('{{$yandexMetricaId}}', 'reachGoal', name);
+			}
 		</script>
-		@yield('js')
 		<script src="//code.jivosite.com/widget/oirWWejdYl" async></script>
 		<!-- Google Tag Manager --> 
 		<script>
@@ -49,5 +56,9 @@
 			})(window,document,'script','dataLayer','GTM-P23G9N', '92140');
 		</script> 
 		<!-- End Google Tag Manager -->
+
+		
+
+		@yield('js')
 	</body>
 </html>

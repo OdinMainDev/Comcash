@@ -201,5 +201,23 @@
 	<script>
 		window.exchangeStatus = parseInt("{{$exchange->status}}");
 		window.exchangeHash = "{{$exchange->hash}}";
+
+		switch(window.exchangeStatus){
+			case 0:
+				window.updateYMForm("openExchangeStatusCreated");
+			break;
+			case 1:
+				window.updateYMForm("openExchangeStatusCheckPaid");
+			break;
+			case 2:
+				window.updateYMForm("openExchangeStatusSuccessPaid");
+			break;
+			case 4:
+				window.updateYMForm("openExchangeStatusStartWithdraw");
+			break;
+			case 5:
+				window.updateYMForm("openExchangeStatusCompleted");
+			break;
+		}
 	</script>
 @endsection

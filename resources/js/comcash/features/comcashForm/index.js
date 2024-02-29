@@ -30,6 +30,13 @@ import { setForm } from '@/shared/scripts/modal';
             for(let j = 0; j < elems.length; j++){
                 elems[j].remove();
             }
+            
+            if(route.includes("exchange/redirect")){
+                window.updateYMForm("fillShortForm");
+            }
+            if(route.includes("exchange/create")){
+                window.updateYMForm("fillFullForm");
+            }
             const fpPromise = FingerprintJS.load()
             fpPromise
             .then(fp => fp.get())

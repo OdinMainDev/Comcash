@@ -3,6 +3,9 @@ import { IEstimate } from '../models/interfaces/currency';
 
 export const getConvetredToUSD = async (currency: string, amount: number): Promise<number> => {
   try {
+    if (currency == "USDTTRC20" || currency == "USDTERC20"){
+      return Number(amount);
+    }
     const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/estimate`, {
       params: {
         currency_from: currency,
