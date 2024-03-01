@@ -135,6 +135,12 @@ class Controller_Exchange extends Controller{
         if(@$direction->data['max_amount'] && $direction->data['max_amount'] < $request->amount){
             return $this->responseError("bad amount (limit max)", ["code" => 5]);
         }
+
+        if($direction->merchant_type_from == "manualcash" || $direction->merchant_type_to == "manualcash"){
+            return $this->responseSuccess(false, [
+                "open_modal_cashexchange" => true
+            ]);
+        }
         $exchange = new Exchange;
         $exchange->hash = hash("sha256", uniqid().time()."cmcshsaltbyvio");
         $exchange->direction_id = $direction->id;
