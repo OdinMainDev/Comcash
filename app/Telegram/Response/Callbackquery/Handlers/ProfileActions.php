@@ -25,14 +25,19 @@ trait ProfileActions {
             "hash" =>md5($this->user->getUser->id."VISALT221asd127685".$this->user->getUser->email),
         ];
         $hash = Crypt::encrypt($hash);
-        $text = __("telegram.goto_web_text", [], $language);
-        $text .= " ".route("loginApiUrl", ["hash" => $hash]);
+        $text = __("telegram.your_personal_link", [], $language);
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' => $text,
             'reply_markup' => [
                 "inline_keyboard" => [
+                    [
+                        [
+                            "text" =>__("telegram.goto_web_text", [], $language), 
+                            "url" => route("loginApiUrl", ["hash" => $hash]),
+                        ],
+                    ],
                     [
                         [
                             "text" =>__("telegram.back_to_profile", [], $language), 
