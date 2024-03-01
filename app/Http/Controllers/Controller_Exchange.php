@@ -136,11 +136,6 @@ class Controller_Exchange extends Controller{
             return $this->responseError("bad amount (limit max)", ["code" => 5]);
         }
 
-        if($direction->merchant_type_from == "manualcash" || $direction->merchant_type_to == "manualcash"){
-            return $this->responseSuccess(false, [
-                "open_modal_cashexchange" => true
-            ]);
-        }
         $exchange = new Exchange;
         $exchange->hash = hash("sha256", uniqid().time()."cmcshsaltbyvio");
         $exchange->direction_id = $direction->id;
@@ -176,6 +171,14 @@ class Controller_Exchange extends Controller{
         
         $exchange->save();
         ExchangeStart::dispatch($exchange->id, app()->getLocale(), auth()->user());
+
+        if($direction->merchant_type_from == "manualcash" || $direction->merchant_type_to == "manualcash"){
+            $text = "❗️❗️❗️<b>СОЗДАНА ЗАЯВКА НА НАЛИЧКУ</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
+            sendTelegramNotification($text);
+            return $this->responseSuccess(false, [
+                "open_modal_cashexchange" => true
+            ]);
+        }
         return $this->responseSuccess(false, [
             "redirect" => route("exchgangePage2", [
                 $exchange->hash
