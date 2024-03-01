@@ -1893,10 +1893,12 @@
   &__content {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh);
     margin-left: 254px;
     padding: 40px 60px 0 60px;
-    background: url(/comcash/img/bg-support.svg) center no-repeat;
+    background: url(/comcash/img/bg-support.svg) no-repeat;
+    background-size: cover;
+    background-position: center bottom;
 
     @media (max-width: 1100px) {
       margin: 0 auto;
