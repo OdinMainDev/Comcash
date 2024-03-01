@@ -25,18 +25,19 @@ trait ExchangePage {
             $units = $direction->currencyTo->units;
         }
 
-        if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $textAmount){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_4");
-        }
-        if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $textAmount){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_5");
-        }
-
         $amount = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $textAmount, $direction->profit_percent, $isReverse);
         if(!$amount) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_3");
         }
 
+        $checkAmount = $isReverse ? $amount : $textAmount;
+        if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $checkAmount){
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_4");
+        }
+        if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $checkAmount){
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_5");
+        }
+        
         $this->user->action = config("app.telegram_actions")["exchangeSetFields"];
         $this->user->action_data = $directionId."_".$textAmount;
         $this->user->save();
