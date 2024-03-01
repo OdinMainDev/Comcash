@@ -19,7 +19,7 @@ trait ExchangePage {
         if(!$direction){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
         }
-        $isReverse = $this->user->action != config("app.telegram_actions")['exchangeSumFrom'];
+        $isReverse = $this->user->action == config("app.telegram_actions")['exchangeSumTo'];
         $units = $direction->currencyFrom->units;
         if($isReverse){
             $units = $direction->currencyTo->units;
