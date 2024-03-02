@@ -1,6 +1,8 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import tailwindcss from 'tailwindcss'
+
 
 export default defineConfig({
     plugins: [
@@ -13,5 +15,10 @@ export default defineConfig({
         alias: {
           '@': path.resolve(__dirname, 'resources/js/comcash')
         }
-    }
+    },
+    css: {
+        postcss: {
+          plugins: [tailwindcss],
+        },
+      },
 });

@@ -41,7 +41,6 @@
                     <div class='accordion__text'>
                         {{__("front.deliveryFaqText1")}}
                     </div>
-
                 </div>
 
                 <button class='accordion__button'>

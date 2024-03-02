@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './reset.scss';
+@import './vars.scss';
+@import './styles.scss';
+
+@import './components/header.scss';
+@import './components/main.scss';
+@import './components/auth.scss';
+@import './components/exchanger.scss';
+@import './components/profile.scss';
+@import './components/info.scss';
+
+@import './custom.scss'

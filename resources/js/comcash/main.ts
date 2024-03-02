@@ -1,15 +1,4 @@
-import './shared/styles/reset.scss';
-import './shared/styles/vars.scss';
-import './shared/styles/styles.scss';
-
-import './shared/styles/components/header.scss';
-import './shared/styles/components/main.scss';
-import './shared/styles/components/auth.scss';
-import './shared/styles/components/exchanger.scss';
-import './shared/styles/components/profile.scss';
-import './shared/styles/components/info.scss';
-
-import './shared/styles/custom.scss'
+import './shared/styles/global.scss'
 
 
 import '@/shared/scripts/modal';
