@@ -1155,6 +1155,19 @@
 
 .reviews {
 
+  &__form {
+    max-width: 500px;
+    margin-bottom: 15%;
+    @media (max-width: 680px) {
+      margin: 0 auto;
+      margin-bottom: 80px;
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+  }
+
   &__pagination {
     display: flex;
     justify-content: center;
@@ -1188,10 +1201,9 @@
   }
 
   &__header {
-    margin-bottom: 15%;
-
+    margin-bottom: 50px;
     @media (max-width: 680px) {
-      margin-bottom: 80px;
+      margin-bottom: 30px;
     }
 
     &-title {
