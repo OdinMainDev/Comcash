@@ -32,12 +32,12 @@
                         </div>
                         <div class="flex items-center">
                             <input type="text" class="input input--large mr-[10px]" name="email" value="{{auth()->user()->email}}" @if(auth()->user()->email_verified_at > 0) disabled @endif>
-                            @if(auth()->user()->email_verified_at == 0) 
+                            <!-- @if(auth()->user()->email_verified_at == 0) 
                                 <button type="submit" class='button' onclick="document.getElementById('myProfileForm').setAttribute('action', '{{route('myprofileVerifyPost')}}');">{{__("front.verifyEmail")}}</button>
-                            @endif
+                            @endif -->
                         </div>
                         @if(auth()->user()->email_verified_at == 0) 
-                            <div class="mt-[15px] text-[#BD2F2F]">Подтвердите почту!</div>
+                            <div class="mt-[15px] text-[#A4493B] text-[13px]">Адрес эл. почты не подтвержден. <a class="underline cursor-pointer">Подтвердите сейчас<a></div>
                         @endif
                     </div>
                     <div class="input-box">
