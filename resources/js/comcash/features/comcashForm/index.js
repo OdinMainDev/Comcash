@@ -47,7 +47,7 @@ import { setForm } from '@/shared/scripts/modal';
                         'Content-Type': 'multipart/form-data',
                     },
                 }).then(e => {
-
+                    console.log(e.data);
                     if(route.includes('/exchange/kyc')){
                         confirmCardStatus('ru', window.kycId);
                         // return;
@@ -71,6 +71,14 @@ import { setForm } from '@/shared/scripts/modal';
                         setTimeout(() => {
                             window.location.href = e.data.data.redirect;
                         }, 100)
+                        return;
+                    }
+                    if (e.data.data?.open_modal_cashexchange) {
+                        const exchangeForm = $('.exchange__form');
+                        exchangeForm.find('.exchange__main-form').addClass('hide');
+                        exchangeForm.find('.validation').addClass('hide');
+                        exchangeForm.find('.exchange__cash-modal').removeClass('hide');
+
                         return;
                     }
                     if(e.data.data?.open_modal){

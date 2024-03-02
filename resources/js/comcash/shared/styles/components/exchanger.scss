@@ -127,14 +127,6 @@
   }
 
   &__form {
-    min-height: calc(
-      100vh - (var(--height-header) + var(--height-footer) + 24px)
-    );
-
-    @media (max-width: 1100px) {
-      min-height: calc(100vh - var(--height-header-mobile));
-    }
-
     //select
     &-select {
       &-container {
@@ -479,7 +471,66 @@
       display: none;
     }
   }
+
+  &__cash-modal {
+    &.hide {
+      display: none;
+    }
+    &-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 70px 50px;
+      min-height: 70vh;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+      background: linear-gradient(180deg, #2b2c2b 0%, #151515 100%);
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        right: 0;
+        top: 0;
+        background: url('/comcash/img/mails/leaves_right.png') center center/cover no-repeat;
+      } 
+      &::after {
+        content: '';
+        left: 0;
+        top: 0;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: url('/comcash/img/mails/leaves_left.png') center center/cover no-repeat;
+      } 
+
+      @media (max-width: 1100px) {
+        min-height: 60vh;
+      }
+    }
+
+    &-title {
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    &-subtitle {
+      font-weight: 500;
+      line-height: 1.5;
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+  }
 }
+
+
 
 .validation {
   &.hide {

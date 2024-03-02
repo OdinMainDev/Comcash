@@ -426,13 +426,14 @@ $(document).ready(function () {
     })
 
 
-
     if(!isError) {
       exchangeForm.find('.exchange__main-form').addClass('hide');
       exchangeForm.find('.validation').removeClass('hide')
       initializeValidationModal(selectedCurrencyYouSend, selectedCurrencyYouGet, currencyYouSendAmount, currencyYouGetAmount, settingsLayout)
     }
   }
+
+  
   const startApp = async () => {
     hideAllLayouts();
     startTimerUploadNewCurrency();
