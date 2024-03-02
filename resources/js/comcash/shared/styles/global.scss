@@ -1,6 +1,4 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @import './reset.scss';
 @import './vars.scss';
@@ -13,4 +11,6 @@
 @import './components/profile.scss';
 @import './components/info.scss';
 
-@import './custom.scss'
+@import './custom.scss';
+@tailwind components;
+@tailwind utilities;
