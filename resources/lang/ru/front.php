@@ -426,5 +426,8 @@ return [
     "affiliate_withdraw_amount" => "Сумма:",
     "affiliate_withdraw_reason" => "Причина отказа:",
     "exchangePageInputCity" => "Город",
-    "verifyEmail" => "Подтвердить почту"
+    "verifyEmail" => "Подтвердить почту",
+    "exchangePageCashTitle" => "Запрос принят!",
+    "exchangePageCashDescription" => "Ожидайте мы напишем вам в телеграм",
+    "exchangePageCashButton" => "Принять",
 ];

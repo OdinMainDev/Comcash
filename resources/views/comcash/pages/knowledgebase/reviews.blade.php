@@ -11,14 +11,14 @@
                     {{__("front.reviewsPageText")}}
                 </p>
             </div>
-            <div class="reviews__form">
+            <!-- <div class="reviews__form">
                 <div class='label'>
                         <span>{{__("front.message")}}</span>
                     </div>
                     <textarea class="textarea" name="message"></textarea>
                     <button class='support__btn button' type='submit'>{{__("front.send message")}}</button>
 
-                </div>
+                </div> -->
             <div class="reviews__slider-content">
                 @if(isset($feedbacks) && count($feedbacks) > 0)
                     @foreach($feedbacks as $item)
