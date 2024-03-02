@@ -23,9 +23,9 @@ class Main {
     function getLayout($is_withdraw){
         $base = ["email"];
         if(!$this->isCrypto && !$this->isCash){
-            $base[] = "first_name";
-            $base[] = "second_name";
-            $base[] = "last_name";
+            // $base[] = "first_name";
+            // $base[] = "second_name";
+            // $base[] = "last_name";
         }
 
         if(!$is_withdraw){
@@ -70,9 +70,9 @@ class Main {
         ];
         
         if(!$this->isCrypto && !$this->isCash){
-            $base["first_name"] = "required|string|max:255";
-            $base["second_name"] = "required|string|max:255";
-            $base["last_name"] = "required|string|max:255";
+            // $base["first_name"] = "required|string|max:255";
+            // $base["second_name"] = "required|string|max:255";
+            // $base["last_name"] = "required|string|max:255";
         }
         if(!$is_withdraw){
             if(!$this->isCrypto && !$this->isCash)
