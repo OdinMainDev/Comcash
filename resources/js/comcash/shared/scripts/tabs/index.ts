@@ -16,4 +16,7 @@ $(document).ready(() => {
       const tab = $(this).data('tab');
       openTab(e, tab);
   });
+
 });
+
+

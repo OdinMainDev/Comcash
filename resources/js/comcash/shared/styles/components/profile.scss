@@ -772,3 +772,38 @@
     }
   }
 }
+
+
+.affiliate-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+  margin-bottom: 40px;
+  border-radius: 100px;
+  background-color: #2a2a2a;
+  &__tab {
+    text-align: center;
+    height: 100%;
+    padding: 10px 25px;
+    font-size: 14px;
+    font-weight: 500;
+    &.active {
+      border-radius: 30px;
+      background-color: var(--color-accent);
+    }
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 425px) {
+      font-size: 10px;
+      padding: 5px 10px;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 8px;
+    }
+  }
+} 
