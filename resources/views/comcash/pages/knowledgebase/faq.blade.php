@@ -87,7 +87,6 @@
 
             <button class='accordion__button active'>
                 <span>{{__("front.faqPageFaqTitle3")}}</span>
-
             </button>
             <div class='accordion__content'>
                 <div class='accordion__text'>

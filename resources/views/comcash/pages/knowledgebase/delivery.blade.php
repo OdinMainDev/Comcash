@@ -38,45 +38,35 @@
                     <span>{{__("front.deliveryFaqTitle1")}}</span>
                 </button>
                 <div class='accordion__content'>
-                    <div class='accordion__text'>
-                        {{__("front.deliveryFaqText1")}}
-                    </div>
+                    <div class='accordion__text'>{{__("front.deliveryFaqText1")}}</div>
                 </div>
 
                 <button class='accordion__button'>
                     <span>{{__("front.deliveryFaqTitle2")}}</span>
                 </button>
                 <div class='accordion__content'>
-                    <div class='accordion__text'>
-                        {{__("front.deliveryFaqText2")}}
-                    </div>
+                    <div class='accordion__text'>{{__("front.deliveryFaqText2")}}</div>
                 </div>
 
                 <button class='accordion__button'>
                     <span>{{__("front.deliveryFaqTitle3")}}</span>
                 </button>
                 <div class='accordion__content'>
-                    <div class='accordion__text'>
-                        {{__("front.deliveryFaqText3")}}
-                    </div>
+                    <div class='accordion__text'>{{__("front.deliveryFaqText3")}}</div>
                 </div>
 
                 <button class='accordion__button'>
                     <span>{{__("front.deliveryFaqTitle4")}}</span>
                 </button>
                 <div class='accordion__content'>
-                    <div class='accordion__text'>
-                        {{__("front.deliveryFaqText4")}}
-                    </div>
+                    <div class='accordion__text'>{{__("front.deliveryFaqText4")}}</div>
                 </div>
 
                 <button class='accordion__button'>
                     <span>{{__("front.deliveryFaqTitle5")}}</span>
                 </button>
                 <div class='accordion__content'>
-                    <div class='accordion__text'>
-                        {{__("front.deliveryFaqText5")}}
-                    </div>
+                    <div class='accordion__text'>{{__("front.deliveryFaqText5")}}</div>
                 </div>
             </div>
 
