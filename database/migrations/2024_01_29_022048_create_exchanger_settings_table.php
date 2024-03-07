@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('exchanger_settigns', function (Blueprint $table) {
+        Schema::create('exchanger_settings', function (Blueprint $table) {
             $table->id();
             $table->string("key")->index();
             $table->text("value");
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('exchanger_settigns');
+        Schema::dropIfExists('exchanger_settings');
     }
 };

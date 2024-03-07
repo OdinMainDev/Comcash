@@ -5,8 +5,11 @@
     <script src="/admin/assets/vendors/clipboard/clipboard.min.js"></script>
     <script src="/admin/assets/vendors/select2/select2.min.js"></script>
     <script>
-        $('#currencyWallets').select2({
-            tags: true,
+        $('#currencies').select2({
+            ajax: {
+                url: '/ru/panel/api/get/currencies',
+                dataType: 'json'
+            }
         });
     </script>
 @endsection
@@ -30,13 +33,21 @@
                     @csrf
                     <div class="row">
                        
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="percent" class="form-label">{{__("common.affiliatePercent")}}</label>
                             <input type="text" class="form-control" id="percent" name="percent" autocomplete="off" placeholder="0.5" value="{{$percent}}">
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label for="minamount" class="form-label">{{__("common.affiliateMinAmount")}}</label>
                             <input type="text" class="form-control" id="minamount" name="minamount" autocomplete="off" placeholder="0.5" value="{{$minamount}}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="currencies" class="form-label">{{__("common.affiliateAvailCurrencies")}}</label>
+                            <select class="w-100 h-100" id="currencies" name="currencies[]" multiple="multiple">
+                                @foreach($currencies as $key => $currency)
+                                    <option value="{{$currency}}" selected>{{$key}}</option>
+                                @endforeach
+                            </select>
                         </div>
                        
                     </div>

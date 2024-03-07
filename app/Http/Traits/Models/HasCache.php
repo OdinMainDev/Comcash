@@ -11,7 +11,7 @@ use App\Models\Currency;
 use App\Models\Direction;
 use App\Models\Exchange;
 use App\Models\ExchangeRate;
-use App\Models\ExchangerSettigns;
+use App\Models\ExchangerSettings;
 use App\Models\Feedback;
 use Illuminate\Support\Facades\Cache;
 
@@ -388,7 +388,7 @@ trait HasCache {
 
     public function getCachedSeoData(){
         return Cache::remember("cached-seo-data", 86400, function(){
-            $data = ExchangerSettigns::where("key", "seoData")->first();
+            $data = ExchangerSettings::where("key", "seoData")->first();
             if(!$data)
                 return [];
             return $data->toArray();

@@ -256,8 +256,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/affiliate/withdraws/edit/{id}', [AdminAffiliateWithdraw::class, "view"])->name("adminAffiliateWithdrawsEdit");
         Route::post('/panel/affiliate/withdraws/process', [AdminAffiliateWithdraw::class, "process"])->name("adminAffiliateWithdrawsProcess");
 
-        Route::get('/panel/affiliate/settings/edit', [AdminAffiliateWithdraw::class, "view_settigns"])->name("adminAffiliateSettings");
-        Route::post('/panel/affiliate/settings/process', [AdminAffiliateWithdraw::class, "settigns_process"])->name("adminAffiliateSettingsProcess");
+        Route::get('/panel/affiliate/settings/edit', [AdminAffiliateWithdraw::class, "view_settings"])->name("adminAffiliateSettings");
+        Route::post('/panel/affiliate/settings/process', [AdminAffiliateWithdraw::class, "settings_process"])->name("adminAffiliateSettingsProcess");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:view-statistic']], function() {

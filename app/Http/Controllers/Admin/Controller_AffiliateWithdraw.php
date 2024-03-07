@@ -16,21 +16,36 @@ class Controller_AffiliateWithdraw extends Controller{
     
     use HasAffiliate, HasTelegramMessage;
 
-    public function view_settigns() {
+    public function view_settings() {
         $percent = $this->getAffilatePercent();
         $minamount = $this->getAffilateMinAmount();
+        $currenciesList = $this->getAffilateCurrencies();
+        $currencies = [];
+        foreach($currenciesList as $id){
+            $currency = Currency::where("id", $id)->first();
+            if(!$currency){
+                continue;
+            }
+            $currencies[$currency->id.": (".$currency->name.") ".@$currency->data['titles'][mb_strtolower(app()->getLocale())]] =  $currency->id;
+        }
         
-        return view("admin.pages.affiliate.settings.item")->with("percent", $percent)->with("minamount", $minamount);
+        return view("admin.pages.affiliate.settings.item")
+            ->with("percent", $percent)
+            ->with("minamount", $minamount)
+            ->with("currencies", $currencies);
     }
 
-    public function settigns_process(Request $request){
+    public function settings_process(Request $request){
         $request->validate([
             "percent" => "required|numeric",
             "minamount" => "required|numeric",
+            "currencies" => "nullable|array",
+            "currencies.*" => "integer|exists:App\Models\Currency,id",
         ]);
 
         $this->setAffilatePercent($request->percent);
         $this->setAffilateMinAmount($request->minamount);
+        $this->setAffilateCurrencies($request->currencies);
         return $this->responseSuccess();
     }
 

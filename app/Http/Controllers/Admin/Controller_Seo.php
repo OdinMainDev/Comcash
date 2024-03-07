@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Models\HasCache;
 use App\Models\Direction;
-use App\Models\ExchangerSettigns;
+use App\Models\ExchangerSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -23,9 +23,9 @@ class Controller_Seo extends Controller
         if(!in_array($page, $this->pages)){
             return abort(404);
         }
-        $model = ExchangerSettigns::where("key", "seoData")->first();
+        $model = ExchangerSettings::where("key", "seoData")->first();
         if(!$model){
-            $model = new ExchangerSettigns;
+            $model = new ExchangerSettings;
             $model->key = "seoData";
             $model->value = json_encode([]);
             $model->save();
@@ -40,9 +40,9 @@ class Controller_Seo extends Controller
         ];
         $validators = appendLocalesSEO($validators);
         $request->validate($validators);
-        $model = ExchangerSettigns::where("key", "seoData")->first();
+        $model = ExchangerSettings::where("key", "seoData")->first();
         if(!$model){
-            $model = new ExchangerSettigns;
+            $model = new ExchangerSettings;
             $model->key = "seoData";
             $model->value = json_encode([]);
         }

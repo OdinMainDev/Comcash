@@ -146,6 +146,10 @@ class RatesParser extends Command{
     public function parseFromParserV2($request_currency, $without_garantex_rates = false) {
         $parser = new Parser($request_currency);
         $response = $parser->handle();
+        $inserts = [];
+        if(!is_array($response)){
+            return $inserts;
+        }
         foreach($response as $from => $arr){
             foreach($arr as $to => $rate){
                 if($from == $to){

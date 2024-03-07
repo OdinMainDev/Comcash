@@ -82,6 +82,11 @@ class OnExchangeComplete implements ShouldQueue
             return;
         }
 
+        $affAvailCurrencies = $this->getAffilateCurrencies();
+        if(!in_array($this->exchange->currency_from, $affAvailCurrencies)){
+            return;
+        }
+
         $aff_balance = AffiliateBalance::where("user_id", $aff_user->campaign->user_id)->where("currency", $this->exchange->currency_from)->first();
         if(!$aff_balance){
             $aff_balance = new AffiliateBalance;

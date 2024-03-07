@@ -4,10 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Models\HasCache;
-use App\Models\Direction;
-use App\Models\ExchangerSettigns;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 
 class Controller_EmailTemplate extends Controller

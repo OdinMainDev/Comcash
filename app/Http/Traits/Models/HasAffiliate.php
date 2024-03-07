@@ -4,7 +4,7 @@ namespace App\Http\Traits\Models;
 
 use App\Models\AffiliateCampaign;
 use App\Models\AffiliateUser;
-use App\Models\ExchangerSettigns;
+use App\Models\ExchangerSettings;
 
 trait HasAffiliate {
 
@@ -30,9 +30,9 @@ trait HasAffiliate {
     }
 
     public function getAffilatePercent() {
-        $model = ExchangerSettigns::where("key", "affiliate_percent")->first();
+        $model = ExchangerSettings::where("key", "affiliate_percent")->first();
         if(!$model){
-            $model = new ExchangerSettigns;
+            $model = new ExchangerSettings;
             $model->key = "affiliate_percent";
             $model->value = "0.5";
             $model->save();
@@ -41,9 +41,9 @@ trait HasAffiliate {
     }
 
     public function setAffilatePercent($percent) {
-        $model = ExchangerSettigns::where("key", "affiliate_percent")->first();
+        $model = ExchangerSettings::where("key", "affiliate_percent")->first();
         if(!$model){
-            $model = new ExchangerSettigns;
+            $model = new ExchangerSettings;
             $model->key = "affiliate_percent";
             $model->value = "0.5";
             $model->save();
@@ -53,9 +53,9 @@ trait HasAffiliate {
     }
 
     public function getAffilateMinAmount() {
-        $model = ExchangerSettigns::where("key", "affiliate_minamount")->first();
+        $model = ExchangerSettings::where("key", "affiliate_minamount")->first();
         if(!$model){
-            $model = new ExchangerSettigns;
+            $model = new ExchangerSettings;
             $model->key = "affiliate_minamount";
             $model->value = "100";
             $model->save();
@@ -64,9 +64,9 @@ trait HasAffiliate {
     }
 
     public function setAffilateMinAmount($amount) {
-        $model = ExchangerSettigns::where("key", "affiliate_minamount")->first();
+        $model = ExchangerSettings::where("key", "affiliate_minamount")->first();
         if(!$model){
-            $model = new ExchangerSettigns;
+            $model = new ExchangerSettings;
             $model->key = "affiliate_minamount";
             $model->value = "100";
             $model->save();
@@ -89,5 +89,31 @@ trait HasAffiliate {
         $aff_campaign->hash = md5(uniqid($user->id).time());
         $aff_campaign->save();
         return $aff_campaign;
+    }
+
+    public function getAffilateCurrencies() {
+        $model = ExchangerSettings::where("key", "affiliate_currencies")->first();
+        if(!$model){
+            $model = new ExchangerSettings;
+            $model->key = "affiliate_currencies";
+            $model->value = json_encode([]);
+            $model->save();
+        }
+        return json_decode($model->value, true);
+    }
+
+    public function setAffilateCurrencies($currencies) {
+        $model = ExchangerSettings::where("key", "affiliate_currencies")->first();
+        if(!$model){
+            $model = new ExchangerSettings;
+            $model->key = "affiliate_currencies";
+            $model->value = json_encode([]);
+            $model->save();
+        }
+        if(!$currencies || !is_array($currencies)){
+            return;
+        }
+        $model->value = json_encode($currencies);
+        $model->save();
     }
 }
