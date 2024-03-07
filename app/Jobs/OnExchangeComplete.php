@@ -83,7 +83,7 @@ class OnExchangeComplete implements ShouldQueue
         }
 
         $affAvailCurrencies = $this->getAffilateCurrencies();
-        if(!in_array($this->exchange->currency_from, $affAvailCurrencies)){
+        if(count($affAvailCurrencies) > 0 && !in_array($this->exchange->currency_from, $affAvailCurrencies)){
             return;
         }
 
