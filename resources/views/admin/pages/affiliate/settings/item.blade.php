@@ -41,12 +41,19 @@
                             <label for="minamount" class="form-label">{{__("common.affiliateMinAmount")}}</label>
                             <input type="text" class="form-control" id="minamount" name="minamount" autocomplete="off" placeholder="0.5" value="{{$minamount}}">
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label for="currencies" class="form-label">{{__("common.affiliateAvailCurrencies")}}</label>
                             <select class="w-100 h-100" id="currencies" name="currencies[]" multiple="multiple">
                                 @foreach($currencies as $key => $currency)
                                     <option value="{{$currency}}" selected>{{$key}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="usdtOnly" class="form-label">{{__("common.affiliateUSDTOnly")}}</label>
+                            <select class="form-select" id="usdtOnly" name="usdtOnly">
+                                <option value="0" @if($usdtOnly == 0) selected @endif>{{__("common.enable0")}}</option>
+                                <option value="1" @if($usdtOnly == 1) selected @endif>{{__("common.enable1")}}</option>
                             </select>
                         </div>
                        

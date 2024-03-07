@@ -110,10 +110,33 @@ trait HasAffiliate {
             $model->value = json_encode([]);
             $model->save();
         }
-        if(!$currencies || !is_array($currencies)){
+        if(!is_array($currencies)){
             return;
         }
         $model->value = json_encode($currencies);
+        $model->save();
+    }
+
+    public function getAffilateUsdtOnly() {
+        $model = ExchangerSettings::where("key", "affiliate_usdt_only")->first();
+        if(!$model){
+            $model = new ExchangerSettings;
+            $model->key = "affiliate_usdt_only";
+            $model->value = "0";
+            $model->save();
+        }
+        return (int) $model->value;
+    }
+
+    public function setAffilateUsdtOnly($status) {
+        $model = ExchangerSettings::where("key", "affiliate_usdt_only")->first();
+        if(!$model){
+            $model = new ExchangerSettings;
+            $model->key = "affiliate_usdt_only";
+            $model->value = "0";
+            $model->save();
+        }
+        $model->value = $status;
         $model->save();
     }
 }

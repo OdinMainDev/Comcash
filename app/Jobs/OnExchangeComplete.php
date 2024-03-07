@@ -6,6 +6,7 @@ use App\Http\Traits\Models\HasAffiliate;
 use App\Mail\ExchangeComplete;
 use App\Models\AffiliateBalance;
 use App\Models\AffiliateExchange;
+use App\Models\Currency;
 use App\Models\Exchange;
 use App\Models\Statistic;
 use App\Models\StatisticCompleteExchange;
@@ -87,21 +88,29 @@ class OnExchangeComplete implements ShouldQueue
             return;
         }
 
-        $aff_balance = AffiliateBalance::where("user_id", $aff_user->campaign->user_id)->where("currency", $this->exchange->currency_from)->first();
+        $aff_full_amount = $this->exchange->data['amount_data']['amount_send'];
+        $aff_currency =  $this->exchange->currency_from;
+        $affUsdtOnly = $this->getAffilateUsdtOnly();
+        if($affUsdtOnly == 1){
+            $aff_full_amount = $this->exchange->data['amount_data']['amount_send_usd'];
+            $aff_currency = Currency::where("name", "USDTTRC20")->first()->id;
+        }
+
+        $aff_balance = AffiliateBalance::where("user_id", $aff_user->campaign->user_id)->where("currency", $aff_currency)->first();
         if(!$aff_balance){
             $aff_balance = new AffiliateBalance;
             $aff_balance->user_id = $aff_user->campaign->user_id;
-            $aff_balance->currency = $this->exchange->currency_from;
+            $aff_balance->currency = $aff_currency;
             $aff_balance->save();
         }
-        // ДОБАВИТЬ %
+        
         $aff_percent = $this->getAffilatePercent();
-        $earned_amount = $this->exchange->data['amount_data']['amount_send'] / 100 * $aff_percent;
+        $earned_amount = $aff_full_amount / 100 * $aff_percent;
         $aff_balance->increment("balance", $earned_amount);
 
         $aff_exchange = new AffiliateExchange;
-        $aff_exchange->currency = $this->exchange->currency_from;
-        $aff_exchange->amount = $this->exchange->data['amount_data']['amount_send'];
+        $aff_exchange->currency = $aff_currency;
+        $aff_exchange->amount = $aff_full_amount;
         $aff_exchange->amount_earned = $earned_amount;
         $aff_exchange->exchange_id = $this->exchange->id;
         $aff_exchange->user_credential = $this->user->email;

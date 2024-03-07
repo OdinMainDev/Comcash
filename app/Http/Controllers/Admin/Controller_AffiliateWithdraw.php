@@ -20,6 +20,7 @@ class Controller_AffiliateWithdraw extends Controller{
         $percent = $this->getAffilatePercent();
         $minamount = $this->getAffilateMinAmount();
         $currenciesList = $this->getAffilateCurrencies();
+        $usdtOnly = $this->getAffilateUsdtOnly();
         $currencies = [];
         foreach($currenciesList as $id){
             $currency = Currency::where("id", $id)->first();
@@ -32,7 +33,8 @@ class Controller_AffiliateWithdraw extends Controller{
         return view("admin.pages.affiliate.settings.item")
             ->with("percent", $percent)
             ->with("minamount", $minamount)
-            ->with("currencies", $currencies);
+            ->with("currencies", $currencies)
+            ->with("usdtOnly", $usdtOnly);
     }
 
     public function settings_process(Request $request){
@@ -41,11 +43,13 @@ class Controller_AffiliateWithdraw extends Controller{
             "minamount" => "required|numeric",
             "currencies" => "nullable|array",
             "currencies.*" => "integer|exists:App\Models\Currency,id",
+            "usdtOnly" => "required|in:0,1",
         ]);
 
         $this->setAffilatePercent($request->percent);
         $this->setAffilateMinAmount($request->minamount);
-        $this->setAffilateCurrencies($request->currencies);
+        $this->setAffilateCurrencies($request->currencies ? $request->currencies : []);
+        $this->setAffilateUsdtOnly($request->usdtOnly);
         return $this->responseSuccess();
     }
 
