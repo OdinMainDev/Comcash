@@ -112,7 +112,10 @@
 						<div class='label'>
 							<span>{{__("front.exchangePageInputCity")}}</span>
 						</div>
-						<input type="text" class="input input--large" name="city">
+						<input type="text" class="input input--large mb-[5px]" name="city">
+						<a class="text-[12px] px-[20px] underline" href='{{route("comcashPage", ["delivery"])}}'>
+							Актуальные города и страны
+						</a>
 					</div>
 					<div class="exchange__contact">
 						<div class="exchange__contact-item hide" id="exchange-phone">
