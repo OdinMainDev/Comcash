@@ -65,6 +65,7 @@ class Controller_KnowledgeBase extends Controller{
             }
         }
 
+        $text .= "Сообщение: ".$request->message."\n";
 
         // if(!$user){
         //     $user = User::where('email', $request->email)->first();
