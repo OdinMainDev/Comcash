@@ -59,3 +59,14 @@ export const statusAffstatusList = [
         name: window.__str["affstatus2"]
     },
 ]
+
+export const registerTypes = [
+    {
+        number: 0,
+        name: "🌍 Website 🌍"
+    },
+    {
+        number: 1,
+        name: "🤖 Telegram 🤖"
+    },
+]

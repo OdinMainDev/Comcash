@@ -40,8 +40,23 @@ class Controller_User extends Controller
             
             return $html;
         })
+        ->addColumn('register_type', function ($row) {
+            if($row->telegram_id){
+                return "🤖 Telegram 🤖";
+            }
+            return "🌍 Website 🌍";
+        })
+        ->addColumn('role', function ($row) {
+            return $this->tableAction($row, route("adminUserEdit", [$row->id]));
+        })
         ->addColumn('action', function ($row) {
             return $this->tableAction($row, route("adminUserEdit", [$row->id]));
+        })
+        ->addColumn('role', function ($row) {
+            if(!$row->roles->first()){
+                return "Обычный пользователь";
+            }
+            return $row->roles->first()->name;
         })
         ->make(true);
     }
@@ -51,8 +66,10 @@ class Controller_User extends Controller
             "filter_id" => "nullable|integer",
             "filter_email" => "nullable|string|max:255",
             "filter_created_at" => 'nullable|date|date_format:Y-m-d\TH:i',
+            "filter_register_type" => "nullable|integer|min:0|max:1",
+            "filter_role" => "nullable|string|max:255",
         ]);
-        $query = User::query();
+        $query = User::with("roles");
         if(!$this->isRootUser()){
             $query = $query->doesntHave('roles', 'or', function ($q) {
                 $q->where('name', "admin");
@@ -61,6 +78,19 @@ class Controller_User extends Controller
         if(!is_null($request->filter_email)){
             $search = mb_strtolower($request->filter_email);
             $query = $query->whereRaw('lower(email) like (?)', ["%{$search}%"]);
+        }
+        if($request->has("filter_register_type") && is_numeric($request->get("filter_register_type"))) {
+            if($request->filter_register_type == 1){
+                $query = $query->whereNotNull("telegram_id");
+            }else{
+                $query = $query->whereNull("telegram_id");
+            }
+        }
+
+        if($request->filter_role) {
+            $query = $query->whereHas('roles', function ($query) use($request) {
+                $query->where('name', $request->filter_role);
+            });
         }
         
 

@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { statusList, statusAffstatusList } from "./constants";
+import { statusList, statusAffstatusList, registerTypes } from "./constants";
 import axios from 'axios';
 
 
@@ -29,7 +29,10 @@ $(document).ready(async function() {
                     break;
                 case 'status_withdraws':
                     renderStatusWithdraws(select)
-                    break;    
+                    break;
+                case 'register_type':
+                    renderRegisterTypes(select)
+                    break;
             }
 
             $(this).removeAttr(Object.values($(this).get(0).attributes).map(attr => attr.name).join(' '));
@@ -84,5 +87,10 @@ MediaKeyMessageEvent,
         return data.data
     }
 
-    
+    function renderRegisterTypes(select) {
+        registerTypes.forEach(item => {
+            const selectOption = `<option value=${item.number}>` + item.name + '</option>'
+            select.append(selectOption);
+        })
+    }
 });

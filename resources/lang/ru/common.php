@@ -167,5 +167,7 @@ return [
     "choose_email" => "Выберите шаблон",
     "bad_email_save_before_verify" => "Почта не правильно введена либо не сохранена новая ( нажмите на кнопку сохранить сначала )",
     "affiliateAvailCurrencies" => "Доступные валюты для аффилейтов",
-    "affiliateUSDTOnly" => "Приводить выплату к USDT"
+    "affiliateUSDTOnly" => "Приводить выплату к USDT",
+    "registerType" => "Тип регистрации",
+    "roleUser" => "Роль пользователя",
 ];
