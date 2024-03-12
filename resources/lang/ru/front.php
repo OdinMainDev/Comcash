@@ -430,4 +430,6 @@ return [
     "exchangePageCashTitle" => "Запрос принят!",
     "exchangePageCashDescription" => "Ожидайте мы напишем вам в телеграм",
     "exchangePageCashButton" => "Принять",
+    "menuBot" => "Обменник",
+    "menuBotUrl" => "https://t.me/comcashBot",
 ];
