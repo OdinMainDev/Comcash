@@ -69,8 +69,8 @@ $(document).ready(function () {
 
   inputCurrencyYouSend.on('input', onChangeYouSendInput);
   inputCurrencyYouGet.on('input', onChangeYouGetInput);
-  inputFromCardNumber.on('input', onChangeCardNumberInput);
-  inputToCardNumber.on('input', onChangeCardNumberInput);
+  // inputFromCardNumber.on('input', onChangeCardNumberInput);
+  // inputToCardNumber.on('input', onChangeCardNumberInput);
   inputFirstName.on('input', removeSpaces);
   inputLastName.on('input', removeSpaces);
   inputSecondName.on('input', removeSpaces);
@@ -383,8 +383,8 @@ $(document).ready(function () {
       email: inputEmail.val(),
       phone: inputPhoneNumber.val()?.toString().replace(/\+/g, ''),
       telegram: inputTelegram.val(),
-      from_card: inputFromCardNumber.val()?.toString().replace(/\s+/g, ''),
-      to_card: inputToCardNumber.val()?.toString().replace(/\s+/g, ''),
+      from_card: inputFromCardNumber.val(),
+      to_card: inputToCardNumber.val(),
       currency_from: selectedCurrencyYouSend.name,
       currency_to: selectedCurrencyYouGet.name,
       amount: currencyYouSendAmount,
@@ -400,7 +400,7 @@ $(document).ready(function () {
       const itemValue: any = data[item];
       if (
         (item === 'email' && !isValidEmail(itemValue)) ||
-        ((item === 'from_card' || item === 'to_card') && (!itemValue || itemValue.length !== 16)) ||
+        // ((item === 'from_card' || item === 'to_card') && (!itemValue || itemValue.length !== 16)) ||
         (!itemValue || itemValue.toString().length === 0)
       ) {
         isError = true;
