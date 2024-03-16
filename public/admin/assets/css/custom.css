@@ -1,0 +1,37 @@
+.message-builder {
+    margin: 20px;
+}
+  
+.message-builder .toolbar {
+    margin-bottom: 10px;
+}
+  
+.message-builder .btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    color: #000;
+}
+  
+.message-builder .btn:hover {
+    background-color: #e7e7e7;
+}
+  
+.message-builder .text-input {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+  
+.message-builder .button-builder input[type="text"] {
+    padding: 5px;
+    margin-right: 5px;
+}
+  
+.message-builder #buttonsPreview {
+    margin-top: 20px;
+}

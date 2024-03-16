@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\DataTable\Controller_Exchange as DTExchange;
 use App\Http\Controllers\Admin\DataTable\Controller_ExchangeLog as DTExchangeLog;
 
 use App\Http\Controllers\Admin\Controller_User as AdminUser;
+use App\Http\Controllers\Admin\Controller_UserSpam as AdminUserSpam;
 use App\Http\Controllers\Admin\DataTable\Controller_User as DTUser;
 use App\Http\Controllers\Admin\Controller_Affiliate as AdminAffiliate;
 use App\Http\Controllers\Admin\DataTable\Controller_Affiliate as DTAffiliate;
@@ -225,6 +226,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/users/list', [DTUser::class, "view"])->name("adminUserList");
         Route::get('/panel/users/list/data', [DTUser::class, "process"]);
 
+        Route::get('/panel/users/spam/tg', [AdminUserSpam::class, "tg_view"])->name("adminUserSpamTg");
+        Route::post('/panel/users/spam/tg', [AdminUserSpam::class, "tg_process"])->name("adminUserSpamTgProcess");
         Route::get('/panel/users/export', [AdminUser::class, "export"])->name("adminUserExport");
         Route::get('/panel/users/edit/{id}', [AdminUser::class, "edit"])->name("adminUserEdit");
         Route::post('/panel/users/process', [AdminUser::class, "process"])->name("adminUserProcess");
