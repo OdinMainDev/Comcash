@@ -6,6 +6,9 @@
 	<div class="col-12 grid-margin stretch-card">
 		<div class="card">
 			<div class="card-body">
+                <div class="row my-3">
+                    <a href="{{route("adminDirectionAdd")}}" class="btn btn-primary mx-2">Выгрузить всех юзеров</a>
+                </div>
                 <table class="table table-striped eaDatatable" data-list="" data-columns='[
                     {"data": "id", "name": "id"},
                     {"data": "email", "name": "email"},

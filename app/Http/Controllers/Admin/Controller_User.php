@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasImage;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
@@ -127,5 +129,16 @@ class Controller_User extends Controller{
         $model->password = Hash::make($request->password);
         $model->save();
         return $this->responseSuccess();
+    }
+
+    public function export() {
+        $cache = Cache::get("users-emails-admin-cache");
+        if(!$cache) {
+            dispatch(function () {
+                Artisan::call('app:fill-emails-users');
+            });
+            return redirect()->back();
+        }
+        return view("admin.pages.user.export")->with("cache", $cache);
     }
 }
