@@ -173,6 +173,6 @@ return [
     "telegramBotSpam" => "Рассылка по телеграму",
     "chooseTgBot" => "Выберите бота",
     "chooseLanguageToSpam" => "Выберите язык на который рассылать",
-    "chooseLanguageToSpam" => "По всем языкам",
+    "spamToAllLanguages" => "По всем языкам",
     "telegramMessageBuilder" => "Сообщение которое отправляем пользователям"
 ];

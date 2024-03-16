@@ -7,7 +7,7 @@
 		<div class="card">
 			<div class="card-body">
                 <div class="row my-3">
-                    <a href="{{route("adminDirectionAdd")}}" class="btn btn-primary mx-2">Выгрузить всех юзеров</a>
+                    <a href="{{route("adminDirectionAdd")}}" class="btn btn-primary mx-2">Выгрузить все емейлы</a>
                     <a href="{{route("adminUserSpamTg")}}" class="btn btn-primary mx-2">Рассылка по тг</a>
                 </div>
                 <table class="table table-striped eaDatatable" data-list="" data-columns='[
