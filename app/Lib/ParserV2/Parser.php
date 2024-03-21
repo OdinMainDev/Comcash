@@ -109,10 +109,10 @@ class Parser {
         //     "askQty":"56.00000000"
         // }
         
-        $url = $this->parserConfig["commex_api"] . "api/v1/ticker/bookTicker?symbol=USDtrub";
+        $url = $this->parserConfig["commex_api"] . "api/v1/ticker/bookTicker?symbol=USDTRUB";
         $response = $this->doRequest($url);
         if (!$response) {
-            sendTelegramNotification("Error fetching data from Kucoin: url: ".$url);
+            sendTelegramNotification("Error fetching data from Commex: url: ".$url);
             return [];
         }
         $data = json_decode($response, true);
@@ -120,8 +120,35 @@ class Parser {
     }
 
     private function doRequest($url) {
+        $options = array(
+            CURLOPT_TIMEOUT => 60,
+            CURLOPT_CONNECTTIMEOUT => 60,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_MAXREDIRS => 2,
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_AUTOREFERER => true,
+            CURLOPT_HEADER => false,
+            CURLOPT_HTTPHEADER => array(
+                'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
+                'Cache-Control: no-cache',
+                'Pragma: no-cache'
+            ),
+        );
+        $curl_options = array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_REFERER => '',
+            CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36 OPR/60.0.3255.27",
+        );
         $ch = curl_init(str_replace("//", "/", $url));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        foreach($options as $k => $v){
+            $curl_options[$k] = $v;
+        }
+        curl_setopt_array($ch, $curl_options);
         $response = curl_exec($ch);
         curl_close($ch);
         return $response;
