@@ -66,6 +66,8 @@ trait HasCache {
     public function estimateGetRate($currency_from, $currency_to, $with_fee = false){
         $currency_from = $this->convertCurrencyName($currency_from);
         $currency_to = $this->convertCurrencyName($currency_to);
+        if($currency_from == $currency_to)
+            return (100 - ($with_fee ? $with_fee : 0)) / 100;
 
         $rates = $this->getCacheRates();
         $rate = false;
