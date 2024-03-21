@@ -1,13 +1,26 @@
-<?php
-
-declare(strict_types=1);
-
-return [
-    'home' => 'Dashboard',
-    'currencies' => 'Currencies',
-    'list' => 'List',
-    'add' => "Add",
-    "return_to_site" => "Return to site",
-    "profile" => "Profile",
-    "logout" => "Log out",
-];
+<?php return array (
+  'home' => 'Main',
+  'currencies' => 'Currencies',
+  'list' => 'List',
+  'add' => 'Add',
+  'return_to_site' => 'Return to site',
+  'profile' => 'Profile',
+  'logout' => 'End session',
+  'merchants' => 'Merchants',
+  'roles' => 'User Roles',
+  'directions' => 'Directions for exchange',
+  'languages' => 'Languages',
+  'blog' => 'Blog',
+  'feedback' => 'Testimonials',
+  'exchanges' => 'Exchanges',
+  'clear cache' => 'Clear cache',
+  'users' => 'Users',
+  'sitemap generate' => 'Generate sitemap',
+  'languages update' => 'Update languages (synchronization)',
+  'affiliate_campaigns' => 'Affiliate Campaigns',
+  'affiliate_settings' => 'Affiliate settings',
+  'affiliate_withdraws' => 'Payments to affiliates',
+  'seo_basics' => 'Basic settings',
+  'seo_directions' => 'Directional settings',
+  'telegram' => 'Telegram bot',
+);

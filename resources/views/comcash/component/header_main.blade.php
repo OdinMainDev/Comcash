@@ -66,7 +66,7 @@
                 {{__("front.SupportMenu")}}
             </a>
         </div>
-        <!-- <div class='select'>
+        <div class='select'>
             <div class='select__container'>
                 <div class='select__option language_select' name="ru">
                     <input type='radio' id='ru' name='locale' value='ru'
@@ -86,9 +86,44 @@
                         alt='Comcash - english language' />
                     </label>
                 </div>
+                @if(in_array("fr", config("app.languages")))
+                    <div class='select__option language_select' name="fr">
+                        <input type='radio' id='fr' name='locale' value='fr'
+                            @if(app()->getLocale() == "fr") checked @endif
+                        />
+                        <label for='fr'>
+                        <img src='/comcash/img/icons/locales/fr.png'
+                            alt='Comcash - langue française' />
+                        </label>
+                    </div>
+                @endif
+                @if(in_array("de", config("app.languages")))
+                    <div class='select__option language_select' name="de">
+                        <input type='radio' id='de' name='locale' value='de'
+                            @if(app()->getLocale() == "de") checked @endif
+                        />
+                        <label for='de'>
+                        <img src='/comcash/img/icons/locales/de.png'
+                            alt='Comcash - deutsche Sprache' />
+                        </label>
+                    </div>
+                @endif
+
+                @if(in_array("es", config("app.languages")))
+                    <div class='select__option language_select' name="es">
+                        <input type='radio' id='es' name='locale' value='es'
+                            @if(app()->getLocale() == "es") checked @endif
+                        />
+                        <label for='es'>
+                        <img src='/comcash/img/icons/locales/es.png'
+                            alt='Comcash - lengua española' />
+                        </label>
+                    </div>
+                @endif
+                
             </div>
             <div class='select__current'></div>
-        </div> -->
+        </div>
         <div class="header__buttons">
             <a class='header__btn-aml button' href="https://t.me/amlchecksbot">
                 {{__("front.check your aml")}}
