@@ -64,6 +64,11 @@ class Parser {
         // },
         $url = $this->parserConfig["kucoin_api"] . "api/v1/market/allTickers";
         $response = $this->doRequest($url);
+        // if (!$response) {
+        //     sleep(1);
+        //     $response = $this->doRequest($url);
+        // }
+
         if (!$response) {
             sendTelegramNotification("Error fetching data from Kucoin: url: ".$url);
             return [];
@@ -111,6 +116,11 @@ class Parser {
         
         $url = $this->parserConfig["commex_api"] . "api/v1/ticker/bookTicker?symbol=USDTRUB";
         $response = $this->doRequest($url);
+        // if (!$response) {
+        //     sleep(1);
+        //     $response = $this->doRequest($url);
+        // }
+
         if (!$response) {
             sendTelegramNotification("Error fetching data from Commex: url: ".$url);
             return [];
@@ -150,6 +160,14 @@ class Parser {
         }
         curl_setopt_array($ch, $curl_options);
         $response = curl_exec($ch);
+        $err = curl_error($ch);
+        if ($err) {
+            info("ОШИБКА ПАРСИНГА");
+            info($url);
+            info($err);
+            info($response);
+            info($curl_options);
+        }
         curl_close($ch);
         return $response;
     }
