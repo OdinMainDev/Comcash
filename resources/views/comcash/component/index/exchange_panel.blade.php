@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="welcome__security">
-                    <img src="/comcash/img/kyc.png" class="welcome__security-image">
+                    <img src="/comcash/img/kyc-cross.svg" class="welcome__security-image">
                 </div>  
             </div>
         </div>
