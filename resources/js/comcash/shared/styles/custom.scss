@@ -16,6 +16,10 @@
     animation: rotation 1s linear infinite;
 }
 
+.green {
+    color: var(--color-accent);
+}
+
 
 @keyframes rotation {
     0% {

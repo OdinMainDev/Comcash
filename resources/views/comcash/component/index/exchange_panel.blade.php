@@ -1,78 +1,103 @@
 <div class='welcome'>
     <div class='welcome__container'>
-        <div class='welcome__top'>
-            <div class='welcome__form crypto-form'>
-                <div class='welcome__tabs-body'>
-                    <div class='welcome__tabs-content active' data-tab='tab1'>
-                        <form method='POST' class="crypto-form__exchange-form" action="{{route("redirectToExchange")}}">
-                            @csrf
-                            <div class='label'>
-                                {{__("front.you send")}}
-                                <div class="welcome__limit">
-                                    <span class="welcome__exchange-covert-send-currency">0</span>
-                                    &ensp;
-                                    <span>≈</span>
-                                    &ensp;
-                                    <span class="welcome__exchange-covert-send-usd">0$</span>
+        <div class="welcome__panel-container">
+            <div class="welcome__descr">
+                <div class="welcome__descr-title">
+                    <span class="green">Наш</span> обменник сохраняет <span class="green">Вашу</span> <span class="underline">анонимность</span>
+                </div>
+                <ul class="welcome__descr-list">
+                    <li>
+                        Мы гарантируем <span class="green">сохранность</span> ваших средств и выполнения сделок вне зависимости от происхождения вашей криптовалюты
+                    </li>
+                    <li>                    
+                        Если вам необходимо получить <span class="green">анонимно</span> наличные от 
+                        <span class="green">5000$</span> или же сделать вашу крипту чище, убрав следы 
+                        ее происхождения - пишите по контактам в шапке профиля!
+                    </li>
+                    <li>
+                        <span class="green">
+                            Репутация,
+                        </span> это наша главная задача!
+                    </li>
+                </ul>
+                <div class="welcome__descr-copyright">
+                    С уважением,
+                </div>
+                <div class="welcome__descr-copyright">Команда Com<span class="green">CASH</span></div>
+            </div>
+            <div class='welcome__top'>
+                <div class='welcome__form crypto-form'>
+                    <div class='welcome__tabs-body'>
+                        <div class='welcome__tabs-content active' data-tab='tab1'>
+                            <form method='POST' class="crypto-form__exchange-form" action="{{route("redirectToExchange")}}">
+                                @csrf
+                                <div class='label'>
+                                    {{__("front.you send")}}
+                                    <div class="welcome__limit">
+                                        <span class="welcome__exchange-covert-send-currency">0</span>
+                                        &ensp;
+                                        <span>≈</span>
+                                        &ensp;
+                                        <span class="welcome__exchange-covert-send-usd">0$</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class='input-control'>
-                                <input type='text' class="input" id="cryptoYouSend" name="amount"/>
-                                <img src="/comcash/img/loader-gray.gif" class="crypto-form__select-loader"/>
-                                <div class="custom-select__select-container" id="cryptoYouSendSelect" data-currency="cryptoYouSendSelect">
-                                    <div class="custom-select__select-label">{{__("front.choose currency")}}</div>
-                                    <input class="custom-select__select-label-input" name="currency_from"/>
-                                    <div class="custom-select__select-list-container hide">
-                                        <div class="custom-select__select-list">
-                                            <div class="custom-select__search">
-                                                <input class="custom-select__search-field"/>
+                                <div class='input-control'>
+                                    <input type='text' class="input" id="cryptoYouSend" name="amount"/>
+                                    <img src="/comcash/img/loader-gray.gif" class="crypto-form__select-loader"/>
+                                    <div class="custom-select__select-container" id="cryptoYouSendSelect" data-currency="cryptoYouSendSelect">
+                                        <div class="custom-select__select-label">{{__("front.choose currency")}}</div>
+                                        <input class="custom-select__select-label-input" name="currency_from"/>
+                                        <div class="custom-select__select-list-container hide">
+                                            <div class="custom-select__select-list">
+                                                <div class="custom-select__search">
+                                                    <input class="custom-select__search-field"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="crypto-form__reverse">
-                                <span class='label__tarif'></span>
-                            </div>
-                            <div class='label'>
-                                <span>{{__("front.you receive")}}</span>
-                                <div class="welcome__limit">
-                                    <span class="welcome__exchange-covert-get-currency">0</span>
-                                    &ensp;
-                                    <span>≈</span>
-                                    &ensp;
-                                    <span class="welcome__exchange-covert-get-usd">0$</span>
+                                <div class="crypto-form__reverse">
+                                    <span class='label__tarif'></span>
                                 </div>
-                            </div>
-                            <div class='input-control'>
-                                <input type='text' class='input' id="cryptoYouGet"/>
-                                <img src="/comcash/img/loader-gray.gif" class="crypto-form__select-loader"/>
-                                <div class="custom-select__select-container" id="cryptoYouGetSelect" data-currency="cryptoYouGetSelect">
-                                    <div class="custom-select__select-label">{{__("front.choose currency")}}</div>
-                                    <input class="custom-select__select-label-input" name="currency_to"/>
-                                    <div class="custom-select__select-list-container hide">
-                                        <div class="custom-select__select-list">
-                                            <div class="custom-select__search">
-                                                <input class="custom-select__search-field"/>
+                                <div class='label'>
+                                    <span>{{__("front.you receive")}}</span>
+                                    <div class="welcome__limit">
+                                        <span class="welcome__exchange-covert-get-currency">0</span>
+                                        &ensp;
+                                        <span>≈</span>
+                                        &ensp;
+                                        <span class="welcome__exchange-covert-get-usd">0$</span>
+                                    </div>
+                                </div>
+                                <div class='input-control'>
+                                    <input type='text' class='input' id="cryptoYouGet"/>
+                                    <img src="/comcash/img/loader-gray.gif" class="crypto-form__select-loader"/>
+                                    <div class="custom-select__select-container" id="cryptoYouGetSelect" data-currency="cryptoYouGetSelect">
+                                        <div class="custom-select__select-label">{{__("front.choose currency")}}</div>
+                                        <input class="custom-select__select-label-input" name="currency_to"/>
+                                        <div class="custom-select__select-list-container hide">
+                                            <div class="custom-select__select-list">
+                                                <div class="custom-select__search">
+                                                    <input class="custom-select__search-field"/>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <button class='button button--auto' type='submit'>{{__("front.exchange")}}</button>
-                        </form>
+                                <button class='button button--auto' type='submit'>{{__("front.exchange")}}</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="welcome__security">
-                <img src="/comcash/img/kyc.png" class="welcome__security-image">
-                <img src="/comcash/img/aml.png" class="welcome__security-image">
-            </div>  
+                <div class="welcome__security">
+                    <img src="/comcash/img/kyc.png" class="welcome__security-image">
+                </div>  
+            </div>
         </div>
     </div>
-    <div class='welcome__banner'>
+    <!-- <div class='welcome__banner'>
         <div class="welcome__banner-arrow welcome__banner-arrow_left">
             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="48" viewBox="0 0 27 48" fill="none">
                 <path d="M26.0115 5.76149C27.3295 4.44347 27.3295 2.30653 26.0115 0.988515C24.6935 -0.329505 22.5565 -0.329505 21.2385 0.988515L0.988514 21.2385C-0.329504 22.5565 -0.329504 24.6935 0.988514 26.0115L21.2385 46.2615C22.5565 47.5795 24.6935 47.5795 26.0115 46.2615C27.3295 44.9435 27.3295 42.8065 26.0115 41.4885L8.14797 23.625L26.0115 5.76149Z" fill="white"/>
@@ -105,7 +130,7 @@
             {{__("front.indexSidePanelText6")}}<br>
             {{__("front.indexSidePanelText7")}} Com<span>CASH</span>
         </div>
-    </div>
+    </div> -->
     <div class='welcome__container'>
         <div class='welcome__bottom'>
             <div class='welcome__bottom-text'>{{__("front.Buy Crypto With")}}</div>
