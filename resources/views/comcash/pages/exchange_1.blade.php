@@ -72,6 +72,7 @@
 								<path fill-rule="evenodd" clip-rule="evenodd" d="M4 5C4 2.23858 6.23858 0 9 0C11.7614 0 14 2.23842 14 4.99988V7H16C17.1046 7 18 7.89543 18 9V17C18 19.2091 16.2091 21 14 21H4C1.79086 21 0 19.2091 0 17V9C0 7.89543 0.895431 7 2 7H4V5ZM12 7H6V5C6 3.34315 7.34315 2 9 2C10.6569 2 12 3.34307 12 4.99988V7ZM2 9V17C2 18.1046 2.89543 19 4 19H14C15.1046 19 16 18.1046 16 17V9H2Z"></path>
 							</svg>
 						</div>
+						<input name="reverse" class="hidden"/>
 						<div class="custom-select__select-container light" data-currency="currencyYouGet">
 							<div class="custom-select__select-label">
 								{{__("front.exchangePageChooseCurrencyTo")}}

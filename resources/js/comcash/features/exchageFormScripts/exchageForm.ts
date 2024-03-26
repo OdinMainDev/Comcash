@@ -59,6 +59,7 @@ $(document).ready(function () {
   let currencyYouSendAmount = 0;
   let currencyYouGetAmount = 0;
   let isLock = false;
+  exchangeForm.find('input[name="reverse"]').val(isLock ? "1" : "0");
 
   let impossimbleExchange = false;
   const timerInSeconds = 5;
@@ -90,6 +91,7 @@ $(document).ready(function () {
     const open = currencyLock.find('.exchange__currency-lock_open');
     const close = currencyLock.find('.exchange__currency-lock_close');
     isLock = !isLock;
+    exchangeForm.find('input[name="reverse"]').val(isLock ? "1" : "0");
     open.toggle();
     close.toggle();
   }

@@ -47,7 +47,6 @@ import { setForm } from '@/shared/scripts/modal';
                         'Content-Type': 'multipart/form-data',
                     },
                 }).then(e => {
-                    console.log(e.data);
                     if(route.includes('/exchange/kyc')){
                         confirmCardStatus('ru', window.kycId);
                         // return;
