@@ -60,7 +60,7 @@
 						<span>{{__("front.exchangePageChooseCurrencyTo")}}</span>
 					</div>
 					<div class='input-control' id="exchange-currency_to">
-						<input type='text' class='input input--large'/>
+						<input type='text' class='input input--large'  name="amount_to"/>
 						<img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
 						<div class="exchange__currency-lock">
 							<svg width="18" height="21" viewBox="0 0 18 21" xmlns="http://www.w3.org/2000/svg" fill="#BFBFC3" class="exchange__currency-lock_open">

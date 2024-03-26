@@ -66,7 +66,7 @@ class Controller_Api extends Controller{
             "amount" => "required|numeric",
             "reverse" => "boolean"
         ]);
-        $data = $this->getEstimateDataFromRequest($request, true);
+        $data = $this->getEstimateDataFromRequest($request, $request->reverse);
         $amount = $data['amount'];
         $direction = $data['direction'];
         return $this->responseSuccess("ok", [

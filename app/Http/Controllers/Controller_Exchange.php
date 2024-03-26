@@ -103,11 +103,14 @@ class Controller_Exchange extends Controller{
             "currency_from" => "required|string|max:255",
             "currency_to" => "required|string|max:255",
             "amount" => "required|numeric",
+            "amount_to" => "required|numeric",
             "fid" => "required|string",
+            "reverse" => "nullable|in:0,1"
         ]);
         // получение данных обмена
-        $data = $this->getEstimateDataFromRequest($request);
-        $amount = $data['amount'];
+        $data = $this->getEstimateDataFromRequest($request, $request->reverse == "1", $request->amount_to);
+        $amountFrom = $request->reverse == "1" ? $data['amount'] : $request->amount;
+        $amountTo = $request->reverse == "1" ? $request->amount_to : $data['amount'];
         $direction = $data['direction'];
         $currency_to = $data['currency_to'];
         $currency_from = $data['currency_from'];
@@ -118,21 +121,23 @@ class Controller_Exchange extends Controller{
             return $this->responseError("bad currency pair", ["code" => 3]);
         }
         $request->merge(['aff_id' => $request->cookie("aff_hash")]);
-        $request->merge(['amount' => $this->format_amount($request->amount, $currency_from->units)]);
+        $request->merge(['amount' => $this->format_amount($amountFrom, $currency_from->units)]);
+        $request->merge(['amount_to' => $this->format_amount($amountTo, $currency_to->units)]);
         // валидирование доп данных от мерчанта
         $merchant_from = new Handler($direction->merchant_type_from);
         $merchant_to = new Handler($direction->merchant_type_to, true);
         $merchant_from->getValidation($request);
         $merchant_to->getValidation($request);
         // валидирование суммы
-        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_to->units, $request->amount, $direction->profit_percent);
-        if(!$amount){
+        // $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_to->units, $amountFrom, $direction->profit_percent);
+
+        if(!$amountFrom){
             return $this->responseError("bad amount", ["code" => 3]);
         }
-        if(@$direction->data['min_amount'] && $direction->data['min_amount'] > $request->amount){
+        if(@$direction->data['min_amount'] && $direction->data['min_amount'] > $amountFrom){
             return $this->responseError("bad amount (limit min)", ["code" => 4]);
         }
-        if(@$direction->data['max_amount'] && $direction->data['max_amount'] < $request->amount){
+        if(@$direction->data['max_amount'] && $direction->data['max_amount'] < $amountFrom){
             return $this->responseError("bad amount (limit max)", ["code" => 5]);
         }
 
@@ -155,10 +160,10 @@ class Controller_Exchange extends Controller{
 
             ],
             "amount_data" => [
-                "amount_send" => $request->amount,
-                "amount_send_usd" => $this->estimateAmount($currency_from->name, "USD", 2, $request->amount, $direction->profit_percent),
-                "amount_receive" => $amount,
-                "amount_receive_usd" => $this->estimateAmount($currency_to->name, "USD", 2, $amount, 0),
+                "amount_send" => $amountFrom,
+                "amount_send_usd" => $this->estimateAmount($currency_from->name, "USD", 2, $amountFrom, $direction->profit_percent),
+                "amount_receive" => $amountTo,
+                "amount_receive_usd" => $this->estimateAmount($currency_to->name, "USD", 2, $amountTo, 0),
                 "exchange_rate" => $this->estimateGetRate($currency_from->name, $currency_to->name),
                 "exchange_rate_to_usd" => $this->estimateGetRate($currency_from->name, "USD"),
                 "currency_from_name" => $this->convertCurrencyName($currency_from->name),

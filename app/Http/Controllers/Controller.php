@@ -64,7 +64,7 @@ class Controller extends BaseController{
         return $this->getCachedCurrencyByName($search_currencies);
     }
 
-    public function getEstimateDataFromRequest($request, $with_reverse_check = false){
+    public function getEstimateDataFromRequest($request, $with_reverse_check = false, $override_reverse_amount = false){
         $currencies = $this->getCurrencyByName([$request->currency_from, $request->currency_to]);
         $currency_from = @$currencies[0];
         $currency_to = @$currencies[1];
@@ -81,18 +81,22 @@ class Controller extends BaseController{
             $units = $currency_to->units;
         }
 
-        if(!$request->amount) {
+        $amount = $request->amount;
+        if($with_reverse_check && $override_reverse_amount) {
+            $amount = $override_reverse_amount;
+        }
+        if(!$amount) {
             if(!isset($direction->data['min_amount'])){
                 throw ValidationException::withMessages(["currency" => "bad amount ( required from request )"]);
             }
-            $request->amount = $direction->data['min_amount'];
+            $amount = $direction->data['min_amount'];
         }
-        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $units, $request->amount, $direction->profit_percent, $request->reverse);
+        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $units, $amount, $direction->profit_percent, $request->reverse);
         if(!$amount){
             throw ValidationException::withMessages(["currency" => "bad amount"]);
         }
         return [
-            "amount_from" => $request->amount,
+            "amount_from" => $amount,
             "amount" => $amount,
             "direction" => $direction,
             "currency_from" => $currency_from,
