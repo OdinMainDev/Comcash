@@ -210,6 +210,18 @@
       height: 25px;
     }
     
+    &.profile {
+      svg {
+        path {
+          transition: 0.2s fill;
+        }
+      }
+      &:hover svg {
+        path {
+          fill: var(--color-accent-light);
+        }
+      }
+    }
     &-aml {
       min-width: 50px;
       @media (max-width: 1100px) {
