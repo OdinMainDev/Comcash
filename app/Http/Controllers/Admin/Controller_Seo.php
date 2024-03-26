@@ -13,7 +13,7 @@ class Controller_Seo extends Controller
 {
     use HasCache;
 
-    private $pages = ["index", "tariffs", "delivery", "reviews", "news", "blog", "support", "company", "faq", "profile", "login", "register", "rules", "sitemap"];
+    private $pages = ["index", "tariffs", "delivery", "reviews", "news", "blog", "support", "company", "faq", "profile", "login", "register", "rules", "sitemap", "cleaning"];
     
     public function view_choose_page() {
         return view("admin.pages.seo.basics")->with("seoPages", $this->pages);

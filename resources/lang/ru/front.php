@@ -432,4 +432,5 @@ return [
     "exchangePageCashButton" => "Принять",
     "menuBot" => "Обменник",
     "menuBotUrl" => "https://t.me/comcashBot",
+    "CleaningMenu" => "Очистка крипты",
 ];

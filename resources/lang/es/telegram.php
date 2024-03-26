@@ -1,6 +1,9 @@
 <?php return array (
-  'language_ru' => 'Ruso',
-  'language_en' => 'Inglés',
+  'language_ru' => 'Русский',
+  'language_en' => 'English',
+  'language_es' => 'Española',
+  'language_de' => 'Deutsch',
+  'language_fr' => 'Français',
   'decline_rules' => 'Estoy renunciando a las reglas',
   'accept_rules' => 'Acepto las normas',
   'welcome_message' => '¡Bienvenido a nuestro intercambio de telegramas!',

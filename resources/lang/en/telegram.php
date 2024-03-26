@@ -1,6 +1,9 @@
 <?php return array (
-  'language_ru' => 'Russian',
+  'language_ru' => 'Русский',
   'language_en' => 'English',
+  'language_es' => 'Española',
+  'language_de' => 'Deutsch',
+  'language_fr' => 'Français',
   'decline_rules' => 'I waive the rules',
   'accept_rules' => 'I accept the rules',
   'welcome_message' => 'Welcome to our telegram exchange!',

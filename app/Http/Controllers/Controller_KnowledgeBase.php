@@ -12,7 +12,7 @@ class Controller_KnowledgeBase extends Controller{
     use HasCache;
 
     public function static_page(Request $request, $language, $name) {
-        $availPages = ["delivery", "tariffs", "reviews", "news", "support", "company", "faq", "blog", "rules", "sitemap"];
+        $availPages = ["delivery", "tariffs", "reviews", "news", "support", "company", "faq", "blog", "rules", "sitemap", "cleaning"];
         if(!is_string($name)){
             return abort(404);
         }
