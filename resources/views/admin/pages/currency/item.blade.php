@@ -7,7 +7,8 @@
     <script>
         $('#currencyWallets').select2({
             tags: true,
-        });
+            tokenSeparators: [',', ' ', '\n'],
+        });    
     </script>
 @endsection
 
