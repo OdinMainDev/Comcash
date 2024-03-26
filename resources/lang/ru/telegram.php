@@ -5,6 +5,9 @@ declare(strict_types=1);
 return [
     'language_ru' => 'Русский',
     'language_en' => 'English',
+    'language_es' => 'Española',
+    'language_de' => 'Deutsch',
+    'language_fr' => 'Français',
     'decline_rules' => 'Отказываюсь от правил',
     'accept_rules' => 'Принимаю правила',
     "welcome_message" => "Добро пожаловать в наш обменный пункт в телеграмме!",
@@ -149,5 +152,5 @@ return [
     "exchange_status_completed" => "Завершенная заявка:",
     "exchange_currency" => "Валюта обмена:",
     "exchange_amount" => "Сумма обмена:",
-    "your_personal_link" => "Ваша персональная ссылка сгенерирована!"
+    "your_personal_link" => "Ваша персональная ссылка сгенерирована!",
 ];

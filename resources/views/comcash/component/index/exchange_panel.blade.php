@@ -133,7 +133,6 @@
     </div> -->
     <div class='welcome__container'>
         <div class='welcome__bottom'>
-            <div class='welcome__bottom-text'>{{__("front.Buy Crypto With")}}</div>
             <div class='welcome__bottom-payments'>
                 <img src='/comcash/img/sber.svg' alt='' />
                 <img src='/comcash/img/tinkoff.svg' alt='' />

@@ -63,4 +63,16 @@ class Controller_Currency extends Controller{
         $model->save();
         return $this->responseSuccess();
     }
+
+    public function remove_wallets() {
+        $models = Currency::get();
+        foreach($models as $model) {
+            $data = $model->data;
+            $data['wallets'] = [];
+            $data['walletsReuse'] = [];
+            $model->data = $data;
+            $model->save();
+        }
+        return redirect(route("adminCurrencyList"));
+    }
 }

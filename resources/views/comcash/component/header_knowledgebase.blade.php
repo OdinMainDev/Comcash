@@ -113,6 +113,14 @@
                 </a>
                 <div class='accordion__content'>
                 </div>
+
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", ["name" => "cleaning"])}}'>
+                    <span>
+                        {{__("front.CleaningMenu")}}
+                    </span>
+                </a>
+                <div class='accordion__content'>
+                </div>
             </div>
             <div class="header__nav-mobile-info">
                 <span class="header-info__contact copy">

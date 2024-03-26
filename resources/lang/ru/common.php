@@ -174,5 +174,8 @@ return [
     "chooseTgBot" => "Выберите бота",
     "chooseLanguageToSpam" => "Выберите язык на который рассылать",
     "spamToAllLanguages" => "По всем языкам",
-    "telegramMessageBuilder" => "Сообщение которое отправляем пользователям"
+    "telegramMessageBuilder" => "Сообщение которое отправляем пользователям",
+    "rules_page" => "Страница правила",
+    "sitemap_page" => "Страница sitemap",
+    "cleaning_page" => "Страница очистки",
 ];

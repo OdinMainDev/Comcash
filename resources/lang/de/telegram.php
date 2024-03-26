@@ -1,6 +1,9 @@
 <?php return array (
-  'language_ru' => 'Russisch',
-  'language_en' => 'Englisch',
+  'language_ru' => 'Русский',
+  'language_en' => 'English',
+  'language_es' => 'Española',
+  'language_de' => 'Deutsch',
+  'language_fr' => 'Français',
   'decline_rules' => 'Ich verzichte auf die Regeln',
   'accept_rules' => 'Ich akzeptiere die Regeln',
   'welcome_message' => 'Willkommen bei unserer Telegrammbörse!',

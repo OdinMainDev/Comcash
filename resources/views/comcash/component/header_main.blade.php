@@ -50,6 +50,11 @@
                             {{__("front.SupportMenu")}}
                         </a>
                     </li>
+                    <li class="header__link-menu-item">
+                        <a class='header__link' href='{{route("comcashPage", ["name" => "cleaning"])}}'>
+                            {{__("front.CleaningMenu")}}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -224,6 +229,14 @@
                     </svg>
                     <span>
                         {{__("front.SupportMenu")}}
+                    </span>
+                </a>
+                <div class='accordion__content'>
+                </div>
+
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", ["name" => "cleaning"])}}'>
+                    <span>
+                        {{__("front.CleaningMenu")}}
                     </span>
                 </a>
                 <div class='accordion__content'>
