@@ -233,6 +233,9 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
         Route::get('/panel/users/spam/tg', [AdminUserSpam::class, "tg_view"])->name("adminUserSpamTg");
         Route::post('/panel/users/spam/tg', [AdminUserSpam::class, "tg_process"])->name("adminUserSpamTgProcess");
+        Route::get('/panel/users/spam/mail', [AdminUserSpam::class, "mail_view"])->name("adminUserSpamMail");
+        Route::post('/panel/users/spam/mail', [AdminUserSpam::class, "mail_process"])->name("adminUserSpamMailProcess");
+
         Route::get('/panel/users/export', [AdminUser::class, "export"])->name("adminUserExport");
         Route::get('/panel/users/edit/{id}', [AdminUser::class, "edit"])->name("adminUserEdit");
         Route::post('/panel/users/process', [AdminUser::class, "process"])->name("adminUserProcess");

@@ -31,4 +31,16 @@ class Controller_UserSpam extends Controller{
         TelegramSpam::dispatch($request->telegramId, $request->messageTg, $request->language);
         return $this->responseSuccess();
     }
+
+    public function mail_view() {
+        return view("admin.pages.user.spam_mail");
+    }
+
+    public function mail_process(Request $request) {
+        $request->validate([
+            'emailTemplate' => 'required|string',
+        ]);
+        TelegramSpam::dispatch($request->telegramId, $request->messageTg, $request->language);
+        return $this->responseSuccess();
+    }
 }
