@@ -1,4 +1,12 @@
 <?php return array (
+  'rules_page' => 'Seite Regeln',
+  'sitemap_page' => 'Sitemap Seite',
+  'cleaning_page' => 'Seite reinigen',
+  'updateCurrencies' => 'Währungen aktualisieren',
+  'currencies' => 'Währungen',
+  'mailSpam' => 'Mailingliste',
+  'mailTemplateBuilder' => 'Verfassen Sie eine E-Mail, die an Benutzer gesendet werden soll',
+  'mailSubject' => 'Betreffzeile',
   'currency' => 'Währung',
   'amount' => 'Betrag',
   'amount_usd' => 'Dollar-Betrag',

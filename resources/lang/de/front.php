@@ -1,4 +1,11 @@
 <?php return array (
+  'welcomeMainText' => 'Unser Tauscher bewahrt Ihre Anonymität',
+  'PagesMenu' => 'Seiten',
+  'CleaningMenu' => 'Reinigung der Gruft',
+  'exchangePageInputPhone' => 'Rufnummer',
+  'phonesbpreceive' => 'Telefonnummer ( SBP )',
+  'exchange_set_field_city' => 'Stadt angeben',
+  'exchange_check_field_city' => 'Stadt:',
   'menuBotUrl' => 'https://t.me/comcashBot',
   'exchange crypto' => 'Krypto-Börse',
   'buy sell' => 'Kauf/Verkauf',

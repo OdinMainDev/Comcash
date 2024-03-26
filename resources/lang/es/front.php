@@ -1,4 +1,11 @@
 <?php return array (
+  'welcomeMainText' => 'Nuestro intercambiador preserva su anonimato',
+  'PagesMenu' => 'Páginas',
+  'CleaningMenu' => 'Limpieza de criptas',
+  'exchangePageInputPhone' => 'Número de teléfono',
+  'phonesbpreceive' => 'Número de teléfono ( SBP )',
+  'exchange_set_field_city' => 'Especifique la ciudad',
+  'exchange_check_field_city' => 'Ciudad:',
   'your name' => 'Su nombre',
   'exchange id' => 'Id. de intercambio',
   'message' => 'Mensaje',
