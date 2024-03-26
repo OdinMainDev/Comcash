@@ -178,4 +178,6 @@ return [
     "rules_page" => "Страница правила",
     "sitemap_page" => "Страница sitemap",
     "cleaning_page" => "Страница очистки",
+    "updateCurrencies" => "Обновить валюты",
+    "currencies" => "Валюты"
 ];

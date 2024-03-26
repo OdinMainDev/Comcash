@@ -75,4 +75,27 @@ class Controller_Currency extends Controller{
         }
         return redirect(route("adminCurrencyList"));
     }
+
+    public function mass_update() {
+        return view("admin.pages.currency.update");
+    }
+
+    public function mass_update_process(Request $request) {
+        $request->validate([
+            "currencies" => "required|array",
+            "currencies.*" => "integer|exists:App\Models\Currency,id",
+            "currencyWallets" => "required|array",
+            "currencyWallets.*" => "string|max:255",
+        ]);
+
+        $models = Currency::whereIn("id", $request->currencies)->get();
+        foreach($models as $model) {
+            $data = $model->data;
+            $data['wallets'] = $request->currencyWallets;
+            $data['walletsReuse'] = $request->currencyWallets;
+            $model->data = $data;
+            $model->save();
+        }
+        return $this->responseSuccess();
+    }
 }

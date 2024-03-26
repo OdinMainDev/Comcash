@@ -136,7 +136,11 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/currencies/add', [AdminCurrency::class, "add"])->name("adminCurrencyAdd");
         Route::get('/panel/currencies/edit/{id}', [AdminCurrency::class, "edit"])->name("adminCurrencyEdit");
         Route::post('/panel/currencies/process', [AdminCurrency::class, "process"])->name("adminCurrencyProcess");
+
         Route::get('/panel/currencies/removeWallets', [AdminCurrency::class, "remove_wallets"])->name("adminCurrencyRemoveWallets");
+
+        Route::get('/panel/currencies/massUpdate', [AdminCurrency::class, "mass_update"])->name("adminCurrenciesMassUpdate");
+        Route::post('/panel/currencies/massUpdate', [AdminCurrency::class, "mass_update_process"])->name("adminCurrenciesMassUpdateProcess");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-merchants']], function() {
