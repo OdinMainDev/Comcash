@@ -435,4 +435,6 @@ return [
     "menuBot" => "Обменник",
     "menuBotUrl" => "https://t.me/comcashBot",
     "CleaningMenu" => "Очистка крипты",
+    "exchangePageInputPhone" => "Номер телефона",
+    "phonesbpreceive" => "Номер телефона ( СБП )"
 ];

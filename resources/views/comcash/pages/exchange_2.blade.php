@@ -163,8 +163,13 @@
 						</div>
 					@else
 						<div class="progress__data">
-							<p class="progress__data-label">{{__("front.cardreceive")}}</p>
-							<p class="progress__data-text"> {{$exchange->data['request_data']['to_card']}}</p>
+							@if(isset($exchange->data['request_data']['to_card']))
+								<p class="progress__data-label">{{__("front.cardreceive")}}</p>
+								<p class="progress__data-text"> {{$exchange->data['request_data']['to_card']}}</p>
+							@else
+								<p class="progress__data-label">{{__("front.phonesbpreceive")}}</p>
+								<p class="progress__data-text"> {{$exchange->data['request_data']['phone']}}</p>
+							@endif
 						</div>
 					@endif
 					<div class="progress__data">
