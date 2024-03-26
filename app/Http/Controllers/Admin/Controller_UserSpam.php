@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasImage;
+use App\Jobs\MailSpam;
 use App\Jobs\TelegramSpam;
 use App\Models\TelegramBot;
 use App\Models\User;
@@ -38,9 +39,10 @@ class Controller_UserSpam extends Controller{
 
     public function mail_process(Request $request) {
         $request->validate([
-            'emailTemplate' => 'required|string',
+            'template' => 'required|string',
+            'subject' => 'required|string|max:255',
         ]);
-        TelegramSpam::dispatch($request->telegramId, $request->messageTg, $request->language);
+        MailSpam::dispatch($request->template, $request->subject);
         return $this->responseSuccess();
     }
 }

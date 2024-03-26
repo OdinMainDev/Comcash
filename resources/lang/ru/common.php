@@ -179,5 +179,8 @@ return [
     "sitemap_page" => "Страница sitemap",
     "cleaning_page" => "Страница очистки",
     "updateCurrencies" => "Обновить валюты",
-    "currencies" => "Валюты"
+    "currencies" => "Валюты", 
+    "mailSpam" => "Рассылка по почтам",
+    "mailTemplateBuilder" => "Составьте письмо которое будет отправлено пользователям",
+    "mailSubject" => "Тема письма"
 ];
