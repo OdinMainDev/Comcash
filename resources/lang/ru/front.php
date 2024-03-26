@@ -436,5 +436,7 @@ return [
     "menuBotUrl" => "https://t.me/comcashBot",
     "CleaningMenu" => "Очистка крипты",
     "exchangePageInputPhone" => "Номер телефона",
-    "phonesbpreceive" => "Номер телефона ( СБП )"
+    "phonesbpreceive" => "Номер телефона ( СБП )",
+    "exchange_set_field_city" => "Укажите город",
+    "exchange_check_field_city" => "Город:"
 ];
