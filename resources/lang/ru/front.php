@@ -45,6 +45,7 @@ return [
     "PartnerFAQMenu" => "FAQ",
     "FeedbackMenu" => "Отзывы",
     "TariffsMenu" => "Тарифы",
+    "PagesMenu" => "Страницы",
     "SupportMenu" => "Поддержка",
     "profile" => "Профиль",
     "client panel" => "Личный кабинет",

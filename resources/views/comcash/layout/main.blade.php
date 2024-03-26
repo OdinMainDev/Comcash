@@ -27,8 +27,7 @@
 	</head>
 	<body>
 		@include('comcash.component.header_info')
-        @include('comcash.component.header_main')
-
+    @include('comcash.component.header_main')
 		@yield("content")
 		@include('comcash.component.modal_auth')
 		@include('comcash.component.footer_main')

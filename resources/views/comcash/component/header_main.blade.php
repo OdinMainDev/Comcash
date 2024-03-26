@@ -1,3 +1,4 @@
+
 <header class='header'>
     <div class="header__time">
         <span class="header-info__contact">
@@ -28,28 +29,10 @@
         </span>
     </div>
     <div class='header__container'>
-        <a href='{{route("index")}}' class='header__logo header__default'>
-        <img src='/comcash/img/logo.svg' alt='logo' />
-        </a>
-        <a href='{{route("index")}}' class='header__logo header__christmas'>
-        <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
-        </a>
-        <div class="header__telegram">
-            <a href="{{__("front.menuBotUrl")}}" target="_blank" class='button'>
-                <svg class="mr-[10px]" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.09992 5.7083C5.39488 3.83705 8.25885 2.60341 9.69185 2.00738C13.7834 0.30558 14.6335 0.00996027 15.1877 9.46359e-05C15.3095 -0.00194823 15.582 0.0282562 15.7586 0.171489C15.9076 0.292432 15.9486 0.455809 15.9683 0.570476C15.9879 0.685143 16.0123 0.946358 15.9929 1.15046C15.7712 3.48009 14.8118 9.13349 14.3237 11.7427C14.1172 12.8468 13.7105 13.217 13.3169 13.2532C12.4613 13.3319 11.8116 12.6878 10.9829 12.1446C9.68624 11.2946 8.95369 10.7654 7.69503 9.936C6.24042 8.97744 7.18338 8.4506 8.01236 7.58959C8.22931 7.36426 11.999 3.93546 12.0719 3.62441C12.0811 3.58551 12.0895 3.44051 12.0034 3.36394C11.9172 3.28737 11.7901 3.31355 11.6983 3.33438C11.5683 3.36389 9.4968 4.73307 5.48389 7.4419C4.89591 7.84565 4.36333 8.04237 3.88616 8.03207C3.36012 8.0207 2.34822 7.73463 1.59598 7.49011C0.673328 7.19019 -0.0599784 7.03162 0.00387615 6.52227C0.0371355 6.25697 0.402482 5.98564 1.09992 5.7083Z" fill="white" />
-                </svg>
-                {{__("front.menuBot")}}
-            </a>
-        </div>
-
         <div class='header__nav'>
             <!-- <a class='header__link' href='{{route("index")}}'>
                 {{__("front.ClearYourCryptoMenu")}}
             </a> -->
-            <a class='header__link' href='{{route("index")}}'>
-                {{__("front.ExchangeMenu")}}
-            </a>
             <a class='header__link' href='{{route("comcashPage", ["name" => "delivery"])}}'>
                 {{__("front.CashCourierMenu")}}
             </a>
@@ -59,13 +42,24 @@
             <a class='header__link' href='{{route("comcashPage", ["name" => "reviews"])}}'>
                 {{__("front.FeedbackMenu")}}
             </a>
-            <!-- <a class='header__link' href='{{route("comcashPage", ["name" => "tariffs"])}}'>
-                {{__("front.TariffsMenu")}}
-            </a> -->
-            <a class='header__link' href='{{route("comcashPage", ["name" => "support"])}}'>
-                {{__("front.SupportMenu")}}
-            </a>
+            <div class="header__link arrow">
+                {{__("front.PagesMenu")}}
+                <ul class="header__link-menu">
+                    <li class="header__link-menu-item">
+                        <a class='header__link' href='{{route("comcashPage", ["name" => "support"])}}'>
+                            {{__("front.SupportMenu")}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <a href='{{route("index")}}' class='header__logo header__default'>
+            <img src='/comcash/img/logo.svg' alt='logo' />
+        </a>
+        <a href='{{route("index")}}' class='header__logo header__christmas'>
+            <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
+        </a>
+        <div class="header__buttons">
         <div class='select'>
             <div class='select__container'>
                 <div class='select__option language_select' name="ru">
@@ -120,20 +114,30 @@
                         </label>
                     </div>
                 @endif
-                
+                </div>
+                <div class='select__current'></div>
             </div>
-            <div class='select__current'></div>
-        </div>
-        <div class="header__buttons">
+            <div class="header__telegram">
+                <a href="{{__("front.menuBotUrl")}}" target="_blank" class='button'>
+                    <svg class="mr-[10px]" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.09992 5.7083C5.39488 3.83705 8.25885 2.60341 9.69185 2.00738C13.7834 0.30558 14.6335 0.00996027 15.1877 9.46359e-05C15.3095 -0.00194823 15.582 0.0282562 15.7586 0.171489C15.9076 0.292432 15.9486 0.455809 15.9683 0.570476C15.9879 0.685143 16.0123 0.946358 15.9929 1.15046C15.7712 3.48009 14.8118 9.13349 14.3237 11.7427C14.1172 12.8468 13.7105 13.217 13.3169 13.2532C12.4613 13.3319 11.8116 12.6878 10.9829 12.1446C9.68624 11.2946 8.95369 10.7654 7.69503 9.936C6.24042 8.97744 7.18338 8.4506 8.01236 7.58959C8.22931 7.36426 11.999 3.93546 12.0719 3.62441C12.0811 3.58551 12.0895 3.44051 12.0034 3.36394C11.9172 3.28737 11.7901 3.31355 11.6983 3.33438C11.5683 3.36389 9.4968 4.73307 5.48389 7.4419C4.89591 7.84565 4.36333 8.04237 3.88616 8.03207C3.36012 8.0207 2.34822 7.73463 1.59598 7.49011C0.673328 7.19019 -0.0599784 7.03162 0.00387615 6.52227C0.0371355 6.25697 0.402482 5.98564 1.09992 5.7083Z" fill="white" />
+                    </svg>
+                    {{__("front.menuBot")}}
+                </a>
+            </div>
             <a class='header__btn-aml button' href="https://t.me/amlchecksbot">
                 {{__("front.check your aml")}}
             </a>
             @guest
                 <a class='header__btn button open___signin' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</a>
-                <a class='header__btn button open___signup' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign up")}}</a>
             @endguest
             @auth
-                <a class='header__btn button' type='button' href="{{route("myprofile")}}">{{__("front.profile")}}</a>
+                <a class='header__btn' type='button' href="{{route("myprofile")}}">
+                    <svg width="40" height="40" viewBox="0 0 139 139" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M70.2887 13.0326C38.5304 12.6036 12.6036 38.5304 13.0326 70.2887C13.4561 100.746 38.2562 125.547 68.714 125.97C100.478 126.404 126.399 100.478 125.965 68.7195C125.547 38.2562 100.746 13.4561 70.2887 13.0326ZM104.61 101.876C104.502 101.993 104.369 102.085 104.221 102.145C104.074 102.205 103.915 102.231 103.756 102.223C103.597 102.215 103.442 102.172 103.301 102.097C103.16 102.022 103.038 101.917 102.943 101.789C100.514 98.6119 97.5407 95.8919 94.1603 93.7558C87.2483 89.3197 78.4902 86.8763 69.5013 86.8763C60.5125 86.8763 51.7544 89.3197 44.8424 93.7558C41.4621 95.8909 38.4883 98.6101 36.0599 101.786C35.9645 101.914 35.8422 102.019 35.7017 102.094C35.5612 102.169 35.4059 102.212 35.2468 102.22C35.0877 102.229 34.9288 102.202 34.7812 102.142C34.6337 102.082 34.5011 101.99 34.393 101.873C26.4267 93.2735 21.9142 82.0366 21.7201 70.3158C21.2776 43.8977 42.9556 21.7852 69.3846 21.7201C95.8136 21.6549 117.283 43.1158 117.283 69.5013C117.292 81.5048 112.765 93.0684 104.61 101.876Z" fill="#009C74"/>
+                        <path d="M69.5009 39.0938C64.1472 39.0938 59.3066 41.1 55.8669 44.7461C52.4272 48.3921 50.7087 53.4336 51.0969 58.8442C51.8842 69.5 60.1401 78.1875 69.5009 78.1875C78.8616 78.1875 87.1012 69.5 87.9048 58.847C88.3066 53.4879 86.6016 48.4925 83.1049 44.7786C79.6516 41.1136 74.8192 39.0938 69.5009 39.0938Z" fill="#009C74"/>
+                    </svg>
+                </a>
             @endauth
         </div>
 
@@ -291,14 +295,12 @@
                 </span>
             </div>
         </div>
-        <div class="header__btn-container">
-            @guest
-                <button class='header__btn button open___signin show' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
-            @endguest
-            <button class='header__burger button'>
-                <img src='/comcash/img/icons/burger.svg' alt="Comcash"/>
-                <img src='/comcash/img/icons/burger-cross.svg' alt="Comcash"/>
-            </button>
-        </div>
+        @guest
+            <button class='header__btn button open___signin show' type='submit' data-mfp-src='#auth-popup'>{{__("front.sign in")}}</button>
+        @endguest
+        <button class='header__burger button'>
+            <img src='/comcash/img/icons/burger.svg' alt="Comcash"/>
+            <img src='/comcash/img/icons/burger-cross.svg' alt="Comcash"/>
+        </button>
     </div>
 </header>

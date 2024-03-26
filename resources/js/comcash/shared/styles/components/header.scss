@@ -83,6 +83,9 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    @media (max-width: 1100px) {
+      flex:1;
+    }
   }
 
   @media (max-width: 1100px) {
@@ -116,7 +119,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 70px;
+    padding: 14px 40px;
     border-radius: 40px;
     background: #191919;
     transition: all 0.4s ease-out;
@@ -153,11 +156,45 @@
 
       color: var(--color-accent);
     }
+    &.arrow {
+      position: relative;
+      &:hover {
+        color: #FFF;
+        .header__link-menu {
+          opacity: 1;
+          pointer-events:all;
+        }
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        background: url(/comcash/img/icons/arrow.svg) no-repeat;
+        width: 10px;
+        height: 6px;
+        right: -5px;
+        top: 50%;
+        transform: translateY(-50%);
+      } 
+    }
+    &-menu {
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.2s opacity;
+      flex-direction: column;
+      gap: 20px;
+      top: 40px;
+      position: absolute;
+      padding: 20px;
+      border-radius: 20px;
+      background: linear-gradient(to bottom, #3f3f3f, #171717) padding-box, linear-gradient(to bottom, #5d5d5d, #000) border-box;
+    }
   }
 
   &__logo img {
     display: block;
     height: 40px;
+    margin: 0 auto;
 
     @media (max-width: 1200px) {
       width: 120px;
