@@ -41,7 +41,7 @@ class RatesParser extends Command{
         $request_currency = ["USD", "USDT", "RUB"];
         foreach($currencies as $currency){
             $name = $currency->name;
-            if(in_array($name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
+            if(in_array($name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB", "SBPRUB"])){
                 $name = "RUB";
             }
             if(in_array($name, ["USDTTRC20", "USDTERC20"])){

@@ -188,7 +188,7 @@ trait HasCache {
     }
 
     public function convertCurrencyName($currency){
-        if(in_array($currency, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB"])){
+        if(in_array($currency, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB", "SBPRUB"])){
             $currency = "RUB";
         }
         if(in_array($currency, ["USDTTRC20", "USDTERC20"])){
