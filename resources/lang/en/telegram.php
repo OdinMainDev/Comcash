@@ -1,4 +1,6 @@
 <?php return array (
+  'exchange_set_field_bank' => 'Specify the bank',
+  'exchange_check_field_bank' => 'Bunk:',
   'language_ru' => 'Русский',
   'language_en' => 'English',
   'language_es' => 'Española',
