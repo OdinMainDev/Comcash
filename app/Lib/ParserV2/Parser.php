@@ -18,6 +18,7 @@ class Parser {
         $this->parserConfig = [
             "kucoin_api" => "https://api.kucoin.com/",
             "commex_api" => "https://api.commex.com/",
+            "garantex_api" => "https://garantex.org/",
         ];
     }
 
@@ -27,7 +28,7 @@ class Parser {
             sendTelegramNotification("Error on parse rates...");
             return;
         }
-        $rubPrice = $this->getRubPrice();
+        $rubPrice = $this->getRubPriceGarantex();
         if(!$rubPrice){
             sendTelegramNotification("Failed to fetch RUB price...");
             return;
@@ -127,6 +128,39 @@ class Parser {
         }
         $data = json_decode($response, true);
         return (float)$data['askPrice'];
+    }
+
+    private function getRubPriceGarantex() {
+        // $url = 'https://garantex.org/api/v2/k?market=usdtrub';
+        // response: 
+        // [
+        //     { "close": 95.15, "high": 95.15, "low": 95.11, "open": 95.11, "time": 1711528620, "volume": 743413.36 },
+        //     { "close": 95.1, "high": 95.18, "low": 95.1, "open": 95.15, "time": 1711528680, "volume": 8249021.51 }
+        // ]
+
+        
+        $url = $this->parserConfig["garantex_api"] . "api/v2/k?market=usdtrub";
+        $response = $this->doRequest($url);
+        // if (!$response) {
+        //     sleep(1);
+        //     $response = $this->doRequest($url);
+        // }
+
+        if (!$response) {
+            sendTelegramNotification("Error fetching data from Garantex: url: ".$url);
+            return false;
+        }
+        $data = json_decode($response, true);
+        if(!is_array($data) || count($data) == 0) {
+            sendTelegramNotification("Error fetching data #2 from Garantex: url: ".$url);
+            return false;
+        }
+        $lastElement = end($data);
+        if (!isset($lastElement['low'])) {
+            sendTelegramNotification("Error fetching data #3 from Garantex: url: ".$url);
+            return false;
+        }
+        return (float)$lastElement['low'];
     }
 
     private function doRequest($url) {
