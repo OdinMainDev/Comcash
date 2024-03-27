@@ -149,4 +149,6 @@
   'exchange_currency' => 'Monnaie de change :',
   'exchange_amount' => 'Montant de l\'échange :',
   'your_personal_link' => 'Votre lien personnalisé a été généré !',
+  'exchange_set_field_city' => 'Préciser la ville',
+  'exchange_check_field_city' => 'Ville :',
 );

@@ -119,12 +119,6 @@
 						</a>
 					</div>
 					<div class="exchange__contact">
-						<div class="exchange__contact-item hide" id="exchange-phone">
-							<div class='label'>
-								<span>{{__("front.exchangePageInputPhone")}}</span>
-							</div>
-							<input type="text" class="input input--large" value="+" name="phone">
-						</div>
 						<div class="exchange__contact-item hide" id="exchange-email">
 							<div class='label'>
 								<span>Email</span>
@@ -136,6 +130,20 @@
 								<span>Telegram</span>
 							</div>
 							<input type="text" class="input input--large" name="telegram" value="{{auth()->user() ? auth()->user()->telegram : ""}}">
+						</div>
+					</div>
+					<div class="exchange__contact">
+						<div class="exchange__contact-item hide" id="exchange-phone">
+							<div class='label'>
+								<span>{{__("front.exchangePageInputPhone")}}</span>
+							</div>
+							<input type="text" class="input input--large" value="+" name="phone">
+						</div>
+						<div class="exchange__contact-item hide" id="exchange-bank">
+							<div class='label'>
+								<span>{{__("front.exchangePageInputBank")}}</span>
+							</div>
+							<input name="bank" type="text" class="input input--large" value="">
 						</div>
 					</div>
 					<div class="exchange__name">

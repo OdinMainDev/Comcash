@@ -149,4 +149,6 @@
   'choose_language_success' => 'Language applied',
   'exchanges_history_title' => 'Your exchange history',
   'exchanges_history_description' => 'Additional text',
+  'exchange_set_field_city' => 'Specify city',
+  'exchange_check_field_city' => 'City:',
 );

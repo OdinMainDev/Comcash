@@ -1,12 +1,11 @@
 <?php return array (
+  'exchangePageInputBank' => 'Préciser la banque',
   'page_about_advantage_1_title' => 'DES COURS OPTIMAUX',
   'page_about_advantage_1_content' => 'Découvrez tous les avantages de l\'échange de crypto-monnaies de différentes manières, y compris contre de l\'argent réel.',
   'menuBotUrl' => 'https://t.me/comcashBot',
   'CleaningMenu' => 'Nettoyage des cryptes',
   'exchangePageInputPhone' => 'Numéro de téléphone',
   'phonesbpreceive' => 'Numéro de téléphone ( SBP )',
-  'exchange_set_field_city' => 'Préciser la ville',
-  'exchange_check_field_city' => 'Ville :',
   'sign in header' => 'Heureux de vous voir !',
   'first time?' => 'Première fois ?',
   'sign up now!' => 'Inscrivez-vous dès maintenant !',

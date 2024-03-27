@@ -149,4 +149,6 @@
   'aff_withdraw_success_create_withdraw' => 'Der Antrag auf Zahlung wurde erfolgreich erstellt',
   'my_affiliate_url' => 'Mein Partnerlink',
   'my_affiliate_balances' => 'Meine Bilanzen',
+  'exchange_set_field_city' => 'Stadt angeben',
+  'exchange_check_field_city' => 'Stadt:',
 );

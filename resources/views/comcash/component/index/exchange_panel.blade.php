@@ -22,7 +22,7 @@
 
                         $first = implode(" ", array_slice($text, 0, 2));
                         $second = @$text[2];
-                        $third = implode(" ", array_slice($text, 2));
+                        $third = implode(" ", array_slice($text, 3));
 
                     ?>
                     <li>

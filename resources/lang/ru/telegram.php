@@ -153,4 +153,6 @@ return [
     "exchange_currency" => "Валюта обмена:",
     "exchange_amount" => "Сумма обмена:",
     "your_personal_link" => "Ваша персональная ссылка сгенерирована!",
+    "exchange_set_field_city" => "Укажите город",
+    "exchange_check_field_city" => "Город:",
 ];

@@ -39,8 +39,10 @@ class Main {
                 $base[] = "to_card";
             else if($this->isCrypto)
                 $base[] = "to_address";
-            else if($this->isSbp)
+            else if($this->isSbp){
                 $base[] = "phone";
+                $base[] = "bank";
+            }
         }
 
         return $base;
@@ -63,8 +65,10 @@ class Main {
                 $base[] = "to_card";
             else if($this->isCrypto)
                 $base[] = "to_address";
-            else if($this->isSbp)
+            else if($this->isSbp){
                 $base[] = "phone";
+                $base[] = "bank";
+            }
         }
 
         return $base;
@@ -88,8 +92,10 @@ class Main {
                 $base["to_card"] = "required|string|max:20";
             else if($this->isCrypto)
                 $base["to_address"] = "required|string|max:255";
-            else if($this->isSbp)
+            else if($this->isSbp){
                 $base["phone"] = "required|string|max:255";
+                $base["bank"] = "required|string|max:255";
+            }
         }
 
         if($this->isCash) {

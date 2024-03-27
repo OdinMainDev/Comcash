@@ -1,11 +1,10 @@
 <?php return array (
+  'exchangePageInputBank' => 'Specify the bank',
   'welcomeMainText' => 'Our exchanger preserves your anonymity',
   'PagesMenu' => 'Pages',
   'CleaningMenu' => 'Crypt cleansing',
   'exchangePageInputPhone' => 'Phone number',
   'phonesbpreceive' => 'Phone Number ( SBP )',
-  'exchange_set_field_city' => 'Specify city',
-  'exchange_check_field_city' => 'City:',
   'photoofcard' => 'Photo of card',
   'photoofpassport' => 'Photo of passport',
   'validatekyctitle' => 'The authenticity of your card is verified, do not close the page.',
