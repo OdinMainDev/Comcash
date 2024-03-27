@@ -75,16 +75,6 @@ class Controller_Exchange extends Controller{
         if(!$direction){
             return abort(404);
         }
-        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_from->units, $request->amount, $direction->profit_percent);
-        if(!$amount){
-            return abort(404);
-        }
-        if(@$direction->data['min_amount'] && $direction->data['min_amount'] > $request->amount){
-            return abort(404);
-        }
-        if(@$direction->data['max_amount'] && $direction->data['max_amount'] < $request->amount){
-            return abort(404);
-        }
 
         $lang = mb_strtolower(app()->getLocale());
         $seo_data = [
