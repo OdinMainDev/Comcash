@@ -147,6 +147,9 @@ class Parser {
         // }
 
         if (!$response) {
+            info("GARANTEX ERROR");
+            info($url);
+            info($response);
             sendTelegramNotification("Error fetching data from Garantex: url: ".$url);
             return false;
         }
@@ -160,17 +163,19 @@ class Parser {
             sendTelegramNotification("Error fetching data #3 from Garantex: url: ".$url);
             return false;
         }
+        
         return (float)$lastElement['low'];
     }
 
     private function doRequest($url) {
         $options = array(
-            CURLOPT_TIMEOUT => 60,
-            CURLOPT_CONNECTTIMEOUT => 60,
+            CURLOPT_TIMEOUT => 5,
+            CURLOPT_CONNECTTIMEOUT => 5,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_MAXREDIRS => 2,
-            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1_2,
+            CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_AUTOREFERER => true,
             CURLOPT_HEADER => false,
@@ -184,7 +189,7 @@ class Parser {
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_REFERER => '',
             CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36 OPR/60.0.3255.27",
         );
@@ -192,6 +197,7 @@ class Parser {
         foreach($options as $k => $v){
             $curl_options[$k] = $v;
         }
+        
         curl_setopt_array($ch, $curl_options);
         $response = curl_exec($ch);
         $err = curl_error($ch);
