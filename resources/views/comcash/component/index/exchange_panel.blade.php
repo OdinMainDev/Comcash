@@ -2,9 +2,9 @@
     <div class='welcome__container'>
         <div class="welcome__panel-container">
             <div class="welcome__descr">
-                <div class="welcome__descr-title">
+                <h1 class="welcome__descr-title">
                     <?php 
-                        $text = __("front.welcomeMainText");
+                        $text = __("front.indexSidePanelText1");
                         $text = explode(" ", $text);
 
                         $first = $text[0];
@@ -14,7 +14,7 @@
                         $fourth = end($text);
                     ?>
                     <span class="green">{{$first}}</span> {{$second}} <span class="green">{{$third}}</span> <span class="underline">{{$fourth}}</span>
-                </div>
+                </h1>
                 <ul class="welcome__descr-list">
                     <?php 
                         $text = __("front.indexSidePanelText3");
@@ -50,7 +50,7 @@
                 <div class="welcome__descr-copyright">
                     {{__("front.indexSidePanelText6")}}
                 </div>
-                <div class="welcome__descr-copyright">Команда Com<span class="green">CASH</span></div>
+                <div class="welcome__descr-copyright">Com<span class="green">CASH</span></div>
             </div>
             <div class='welcome__top'>
                 <div class='welcome__form crypto-form'>

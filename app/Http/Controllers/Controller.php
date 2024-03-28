@@ -151,7 +151,7 @@ class Controller extends BaseController{
             "page" => $page,
             "title" => $data['titles'][$lang],
             "description" => $data['descriptions'][$lang],
-            "keywords" => explode(",", str_replace(' ', '',$data['keywords'][$lang]))
+            "keywords" => explode(",", $data['keywords'][$lang])
         ];
     }
 }
