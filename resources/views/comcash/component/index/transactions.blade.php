@@ -1,7 +1,7 @@
 @if(isset($exchanges) && count($exchanges) > 0)
     <div class='transactions'>
         <div class='transactions__container'>
-            <p class='transactions__title'>{{__("front.Last Transactions")}}</p>
+            <h3 class='transactions__title'>{{__("front.Last Transactions")}}</h3>
             <div class='transactions__table'>
                 <div class='transactions__header'>
                     <div class='transactions__header-item'>#</div>

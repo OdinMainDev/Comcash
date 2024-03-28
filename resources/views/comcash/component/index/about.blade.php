@@ -1,8 +1,8 @@
 <div class='about'>
     <div class='about__container'>
-        <p class='about__title'>
+        <h2 class='about__title'>
             {{__("front.How to use it")}}
-        </p>
+        </h2>
         <div class='about__body'>
             <div class='about__col'>
                 <div class='about__item about__item-1'>
