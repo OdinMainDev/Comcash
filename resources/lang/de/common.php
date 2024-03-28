@@ -1,4 +1,6 @@
 <?php return array (
+  'bankToSendMoney' => 'Bank',
+  'phoneToSendMoney' => 'Rufnummer',
   'rules_page' => 'Seite Regeln',
   'sitemap_page' => 'Sitemap Seite',
   'cleaning_page' => 'Seite reinigen',

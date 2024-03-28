@@ -182,5 +182,7 @@ return [
     "currencies" => "Валюты", 
     "mailSpam" => "Рассылка по почтам",
     "mailTemplateBuilder" => "Составьте письмо которое будет отправлено пользователям",
-    "mailSubject" => "Тема письма"
+    "mailSubject" => "Тема письма",
+    "bankToSendMoney" => "Банк",
+    "phoneToSendMoney" => "Номер телефона",
 ];
