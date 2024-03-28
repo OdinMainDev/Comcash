@@ -124,6 +124,7 @@ class Controller extends BaseController{
         SEOTools::opengraph()->addProperty('type', 'website');
         // SEOTools::twitter()->setSite('@LuizVinicius73');
         SEOTools::jsonLd()->addImage(str_replace("//", "/", env("APP_URL")."/".$this->theme."/seobanner.png"));
+        SEOTools::opengraph()->addImage(str_replace("//", "/", env("APP_URL")."/".$this->theme."/seobanner.png"));
     }
 
     public function constructSeoData($page, $pagename, $data) {
