@@ -121,9 +121,9 @@ class Controller extends BaseController{
             SEOTools::setCanonical(route($seo_data['page']));
         else
             SEOTools::setCanonical(route($seo_data['page'], $page_data));
-        // SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::opengraph()->addProperty('type', 'website');
         // SEOTools::twitter()->setSite('@LuizVinicius73');
-        // SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
+        SEOTools::jsonLd()->addImage(str_replace("//", "/", env("APP_URL")."/".$this->theme."/seobanner.png"));
     }
 
     public function constructSeoData($page, $pagename, $data) {
