@@ -1,4 +1,10 @@
 <?php return array (
+  'exchangePageInputBank' => 'Especifique el banco',
+  'welcomeMainText' => 'Nuestro intercambiador preserva su anonimato',
+  'PagesMenu' => 'Páginas',
+  'CleaningMenu' => 'Limpieza de criptas',
+  'exchangePageInputPhone' => 'Número de teléfono',
+  'phonesbpreceive' => 'Número de teléfono ( SBP )',
   'your name' => 'Su nombre',
   'exchange id' => 'Id. de intercambio',
   'message' => 'Mensaje',

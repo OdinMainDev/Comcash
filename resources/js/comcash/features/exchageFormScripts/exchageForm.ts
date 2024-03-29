@@ -50,6 +50,7 @@ $(document).ready(function () {
   const inputFromAddress = exchangeForm.find('#exchange-from_address > input');
   const inputPassport = exchangeForm.find('#exchange-passport > input');
   const inputCity = exchangeForm.find('#exchange-city > input');
+  const inputBank = exchangeForm.find('#exchange-bank > input');
   const currencyLock = exchangeForm.find('.exchange__currency-lock');
 
   let selectedCurrencyYouSend: ICurrency = defaultCurrencyYouSend;
@@ -394,6 +395,7 @@ $(document).ready(function () {
       from_address: inputFromAddress.val(),
       passport: inputPassport.val(),
       city: inputCity.val(),
+      bank: inputBank.val(),
     }
 
     settingsLayout.forEach(item => {

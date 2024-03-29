@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasImage;
+use App\Jobs\MailSpam;
 use App\Jobs\TelegramSpam;
 use App\Models\TelegramBot;
 use App\Models\User;
@@ -29,6 +30,19 @@ class Controller_UserSpam extends Controller{
             'language' => 'required|string|in:all,'.implode(",", config()->get("app.languages")),
         ]);
         TelegramSpam::dispatch($request->telegramId, $request->messageTg, $request->language);
+        return $this->responseSuccess();
+    }
+
+    public function mail_view() {
+        return view("admin.pages.user.spam_mail");
+    }
+
+    public function mail_process(Request $request) {
+        $request->validate([
+            'template' => 'required|string',
+            'subject' => 'required|string|max:255',
+        ]);
+        MailSpam::dispatch($request->template, $request->subject);
         return $this->responseSuccess();
     }
 }

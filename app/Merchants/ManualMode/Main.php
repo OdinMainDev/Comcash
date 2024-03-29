@@ -14,35 +14,35 @@ class Main {
     use HasAmount, HasLogs, HasKyc;
     public $isCrypto = false;
     public $isCash = false;
+    public $isSbp = false;
 
-    public function __construct($isCrypto = false, $isCash = false){
+    public function __construct($isCrypto = false, $isCash = false, $isSbp = false){
         $this->isCrypto = $isCrypto;
         $this->isCash = $isCash;
+        $this->isSbp = $isSbp;
     }
 
     function getLayout($is_withdraw){
         $base = ["email"];
-        if(!$this->isCrypto && !$this->isCash){
-            // $base[] = "first_name";
-            // $base[] = "second_name";
-            // $base[] = "last_name";
-        }
-
-        if(!$is_withdraw){
-            if(!$this->isCrypto && !$this->isCash)
-                $base[] = "from_card";
-        }else{
-            if(!$this->isCash){
-                if(!$this->isCrypto)
-                    $base[] = "to_card";
-                else
-                    $base[] = "to_address";
-            }
-        }
 
         if($this->isCash) {
             $base[] = "telegram";
             $base[] = "city";
+            return $base;
+        }
+
+        if(!$is_withdraw){
+            if(!$this->isCrypto && !$this->isSbp)
+                $base[] = "from_card";
+        }else{
+            if(!$this->isCrypto && !$this->isSbp)
+                $base[] = "to_card";
+            else if($this->isCrypto)
+                $base[] = "to_address";
+            else if($this->isSbp){
+                $base[] = "phone";
+                $base[] = "bank";
+            }
         }
 
         return $base;
@@ -50,17 +50,27 @@ class Main {
 
     function getLayoutTelegram($is_withdraw){
         $base = [];
+
+        if($this->isCash) {
+            $base[] = "city";
+            return $base;
+        }
+
+        
         if(!$is_withdraw){
-            if(!$this->isCrypto && !$this->isCash)
+            if(!$this->isCrypto && !$this->isSbp)
                 $base[] = "from_card";
         }else{
-            if(!$this->isCash){
-                if(!$this->isCrypto)
-                    $base[] = "to_card";
-                else
-                    $base[] = "to_address";
+            if(!$this->isCrypto && !$this->isSbp)
+                $base[] = "to_card";
+            else if($this->isCrypto)
+                $base[] = "to_address";
+            else if($this->isSbp){
+                $base[] = "phone";
+                $base[] = "bank";
             }
         }
+
         return $base;
     }
 
@@ -74,15 +84,17 @@ class Main {
             // $base["second_name"] = "required|string|max:255";
             // $base["last_name"] = "required|string|max:255";
         }
-        if(!$is_withdraw){
-            if(!$this->isCrypto && !$this->isCash)
+       if(!$is_withdraw){
+            if(!$this->isCrypto && !$this->isSbp)
                 $base["from_card"] = "required|string|max:20";
         }else{
-            if(!$this->isCash){
-                if(!$this->isCrypto)
-                    $base["to_card"] = "required|string|max:20";
-                else
-                    $base["to_address"] = "required|string|max:255";
+            if(!$this->isCrypto && !$this->isSbp)
+                $base["to_card"] = "required|string|max:20";
+            else if($this->isCrypto)
+                $base["to_address"] = "required|string|max:255";
+            else if($this->isSbp){
+                $base["phone"] = "required|string|max:255";
+                $base["bank"] = "required|string|max:255";
             }
         }
 

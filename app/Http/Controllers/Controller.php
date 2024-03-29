@@ -64,7 +64,7 @@ class Controller extends BaseController{
         return $this->getCachedCurrencyByName($search_currencies);
     }
 
-    public function getEstimateDataFromRequest($request, $with_reverse_check = false){
+    public function getEstimateDataFromRequest($request, $with_reverse_check = false, $override_reverse_amount = false){
         $currencies = $this->getCurrencyByName([$request->currency_from, $request->currency_to]);
         $currency_from = @$currencies[0];
         $currency_to = @$currencies[1];
@@ -81,18 +81,22 @@ class Controller extends BaseController{
             $units = $currency_to->units;
         }
 
-        if(!$request->amount) {
+        $amount = $request->amount;
+        if($with_reverse_check && $override_reverse_amount) {
+            $amount = $override_reverse_amount;
+        }
+        if(!$amount) {
             if(!isset($direction->data['min_amount'])){
                 throw ValidationException::withMessages(["currency" => "bad amount ( required from request )"]);
             }
-            $request->amount = $direction->data['min_amount'];
+            $amount = $direction->data['min_amount'];
         }
-        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $units, $request->amount, $direction->profit_percent, $request->reverse);
+        $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $units, $amount, $direction->profit_percent, $request->reverse);
         if(!$amount){
             throw ValidationException::withMessages(["currency" => "bad amount"]);
         }
         return [
-            "amount_from" => $request->amount,
+            "amount_from" => $amount,
             "amount" => $amount,
             "direction" => $direction,
             "currency_from" => $currency_from,
@@ -117,9 +121,10 @@ class Controller extends BaseController{
             SEOTools::setCanonical(route($seo_data['page']));
         else
             SEOTools::setCanonical(route($seo_data['page'], $page_data));
-        // SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::opengraph()->addProperty('type', 'website');
         // SEOTools::twitter()->setSite('@LuizVinicius73');
-        // SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
+        SEOTools::jsonLd()->addImage(str_replace("//", "/", env("APP_URL")."/".$this->theme."/seobanner.png"));
+        SEOTools::opengraph()->addImage(str_replace("//", "/", env("APP_URL")."/".$this->theme."/seobanner.png"));
     }
 
     public function constructSeoData($page, $pagename, $data) {
@@ -145,8 +150,8 @@ class Controller extends BaseController{
         return [
             "page" => $page,
             "title" => $data['titles'][$lang],
-            "description" => $data['titles'][$lang],
-            "keywords" => explode(",", str_replace(' ', '',$data['titles'][$lang]))
+            "description" => $data['descriptions'][$lang],
+            "keywords" => explode(",", $data['keywords'][$lang])
         ];
     }
 }

@@ -2,28 +2,55 @@
     <div class='welcome__container'>
         <div class="welcome__panel-container">
             <div class="welcome__descr">
-                <div class="welcome__descr-title">
-                    <span class="green">Наш</span> обменник сохраняет <span class="green">Вашу</span> <span class="underline">анонимность</span>
-                </div>
+                <h1 class="welcome__descr-title">
+                    <?php 
+                        $text = __("front.indexSidePanelText1");
+                        $text = explode(" ", $text);
+
+                        $first = $text[0];
+                        $second = array_slice($text, 1, -2);
+                        $second = implode(" ", $second);
+                        $third = @$text[count($text) - 2];
+                        $fourth = end($text);
+                    ?>
+                    <span class="green">{{$first}}</span> {{$second}} <span class="green">{{$third}}</span> <span class="underline">{{$fourth}}</span>
+                </h1>
                 <ul class="welcome__descr-list">
+                    <?php 
+                        $text = __("front.indexSidePanelText3");
+                        $text = explode(" ", $text);
+
+                        $first = implode(" ", array_slice($text, 0, 2));
+                        $second = @$text[2];
+                        $third = implode(" ", array_slice($text, 3));
+
+                    ?>
                     <li>
-                        Мы гарантируем <span class="green">сохранность</span> ваших средств и выполнения сделок вне зависимости от происхождения вашей криптовалюты
+                        {{$first}} <span class="green">{{$second}}</span> {{$third}}
                     </li>
+                    <?php 
+                        $text = __("front.indexSidePanelText4");
+                        $text = explode(" ", $text);
+
+                        $first = implode(" ", array_slice($text, 0, 4));
+                        $second = @$text[4];
+                        $third = implode(" ", array_slice($text, 5, 2));
+                        $fourth = @$text[7];
+                        $fifth = implode(" ", array_slice($text, 8));
+
+                    ?>
                     <li>                    
-                        Если вам необходимо получить <span class="green">анонимно</span> наличные от 
-                        <span class="green">5000$</span> или же сделать вашу крипту чище, убрав следы 
-                        ее происхождения - пишите по контактам в шапке профиля!
+                        {{$first}} <span class="green">{{$second}}</span> {{$third}} 
+                        <span class="green">{{$fourth}}</span> {{$fifth}}
                     </li>
                     <li>
-                        <span class="green">
-                            Репутация,
-                        </span> это наша главная задача!
+                        {{__("front.indexSidePanelText5")}}
                     </li>
                 </ul>
                 <div class="welcome__descr-copyright">
-                    С уважением,
+                    {{__("front.indexSidePanelText6")}}
                 </div>
-                <div class="welcome__descr-copyright">Команда Com<span class="green">CASH</span></div>
+                <div class="welcome__descr-copyright">Com<span class="green">CASH</span></div>
             </div>
             <div class='welcome__top'>
                 <div class='welcome__form crypto-form'>

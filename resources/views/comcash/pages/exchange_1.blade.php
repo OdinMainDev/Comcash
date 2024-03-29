@@ -60,7 +60,7 @@
 						<span>{{__("front.exchangePageChooseCurrencyTo")}}</span>
 					</div>
 					<div class='input-control' id="exchange-currency_to">
-						<input type='text' class='input input--large'/>
+						<input type='text' class='input input--large'  name="amount_to"/>
 						<img src="/comcash/img/loader-gray.gif" class="custom-select__select-loader"/>
 						<div class="exchange__currency-lock">
 							<svg width="18" height="21" viewBox="0 0 18 21" xmlns="http://www.w3.org/2000/svg" fill="#BFBFC3" class="exchange__currency-lock_open">
@@ -119,12 +119,6 @@
 						</a>
 					</div>
 					<div class="exchange__contact">
-						<div class="exchange__contact-item hide" id="exchange-phone">
-							<div class='label'>
-								<span>{{__("front.exchangePageInputPhone")}}</span>
-							</div>
-							<input type="text" class="input input--large" value="+" name="phone">
-						</div>
 						<div class="exchange__contact-item hide" id="exchange-email">
 							<div class='label'>
 								<span>Email</span>
@@ -136,6 +130,20 @@
 								<span>Telegram</span>
 							</div>
 							<input type="text" class="input input--large" name="telegram" value="{{auth()->user() ? auth()->user()->telegram : ""}}">
+						</div>
+					</div>
+					<div class="exchange__contact">
+						<div class="exchange__contact-item hide" id="exchange-phone">
+							<div class='label'>
+								<span>{{__("front.exchangePageInputPhone")}}</span>
+							</div>
+							<input type="text" class="input input--large" value="+" name="phone">
+						</div>
+						<div class="exchange__contact-item hide" id="exchange-bank">
+							<div class='label'>
+								<span>{{__("front.exchangePageInputBank")}}</span>
+							</div>
+							<input name="bank" type="text" class="input input--large" value="">
 						</div>
 					</div>
 					<div class="exchange__name">
@@ -213,10 +221,13 @@
 					<a href="/" class="button min-w-[200px]">{{__("front.exchangePageCashButton")}}</a>
 				</div>
 			</div>
+
+			<div class="seo_block">
+				{!! @$direction->data['content'][mb_strtolower(app()->getLocale())] !!}
+			</div>
 		</form>
 	</div>
 </div>
-
 
 @endsection
 

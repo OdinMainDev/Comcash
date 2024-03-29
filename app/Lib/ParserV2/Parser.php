@@ -18,6 +18,7 @@ class Parser {
         $this->parserConfig = [
             "kucoin_api" => "https://api.kucoin.com/",
             "commex_api" => "https://api.commex.com/",
+            "garantex_api" => "https://garantex.org/",
         ];
     }
 
@@ -27,7 +28,7 @@ class Parser {
             sendTelegramNotification("Error on parse rates...");
             return;
         }
-        $rubPrice = $this->getRubPrice();
+        $rubPrice = $this->getRubPriceGarantex();
         if(!$rubPrice){
             sendTelegramNotification("Failed to fetch RUB price...");
             return;
@@ -129,14 +130,52 @@ class Parser {
         return (float)$data['askPrice'];
     }
 
+    private function getRubPriceGarantex() {
+        // $url = 'https://garantex.org/api/v2/k?market=usdtrub';
+        // response: 
+        // [
+        //     { "close": 95.15, "high": 95.15, "low": 95.11, "open": 95.11, "time": 1711528620, "volume": 743413.36 },
+        //     { "close": 95.1, "high": 95.18, "low": 95.1, "open": 95.15, "time": 1711528680, "volume": 8249021.51 }
+        // ]
+
+        
+        $url = $this->parserConfig["garantex_api"] . "api/v2/k?market=usdtrub";
+        $response = $this->doRequest($url);
+        // if (!$response) {
+        //     sleep(1);
+        //     $response = $this->doRequest($url);
+        // }
+
+        if (!$response) {
+            info("GARANTEX ERROR");
+            info($url);
+            info($response);
+            sendTelegramNotification("Error fetching data from Garantex: url: ".$url);
+            return false;
+        }
+        $data = json_decode($response, true);
+        if(!is_array($data) || count($data) == 0) {
+            sendTelegramNotification("Error fetching data #2 from Garantex: url: ".$url);
+            return false;
+        }
+        $lastElement = end($data);
+        if (!isset($lastElement['low'])) {
+            sendTelegramNotification("Error fetching data #3 from Garantex: url: ".$url);
+            return false;
+        }
+        
+        return (float)$lastElement['low'];
+    }
+
     private function doRequest($url) {
         $options = array(
-            CURLOPT_TIMEOUT => 60,
-            CURLOPT_CONNECTTIMEOUT => 60,
+            CURLOPT_TIMEOUT => 5,
+            CURLOPT_CONNECTTIMEOUT => 5,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_MAXREDIRS => 2,
-            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1_2,
+            CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_AUTOREFERER => true,
             CURLOPT_HEADER => false,
@@ -150,7 +189,7 @@ class Parser {
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_REFERER => '',
             CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36 OPR/60.0.3255.27",
         );
@@ -158,6 +197,7 @@ class Parser {
         foreach($options as $k => $v){
             $curl_options[$k] = $v;
         }
+        
         curl_setopt_array($ch, $curl_options);
         $response = curl_exec($ch);
         $err = curl_error($ch);

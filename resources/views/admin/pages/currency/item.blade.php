@@ -38,9 +38,16 @@
                         <input type="hidden" name="id" value="{{$model->id}}">
                     @endif
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-8 mb-3">
                             <label for="currencyCode" class="form-label">{{__("common.currencyCode")}}</label>
                             <input type="text" class="form-control" id="currencyCode" name="currencyCode" autocomplete="off" placeholder="BTC" value="{{$model->name}}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="tag" class="form-label">{{__("common.chooseTag")}}</label>
+                            <select class="form-select" id="tag" name="tag">
+                                <option value="fiat" @if($model->tag == "fiat") selected @endif>fiat</option>
+                                <option value="crypto" @if($model->tag == "crypto") selected @endif>crypto</option>
+                            </select>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label class="form-label" for="image">{{__("common.image")}}</label>
@@ -51,17 +58,14 @@
                             <input type="text" class="form-control" id="currencyUnits" name="currencyUnits" autocomplete="off" placeholder="2" value="{{$model->units}}">
                         </div>
                         <div class="col-md-3 mb-3">
+                            <label for="position" class="form-label">{{__("common.position")}}</label>
+                            <input type="text" class="form-control" id="position" name="position" autocomplete="off" placeholder="1" value="{{$model->position}}">
+                        </div>
+                        <div class="col-md-3 mb-3">
                             <label for="enabled" class="form-label">{{__("common.enabled")}}</label>
                             <select class="form-select" id="enabled" name="enabled">
                                 <option value="0" @if(!$model->status) selected @endif>{{__("common.enable0")}}</option>
                                 <option value="1" @if($model->status) selected @endif>{{__("common.enable1")}}</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="tag" class="form-label">{{__("common.chooseTag")}}</label>
-                            <select class="form-select" id="tag" name="tag">
-                                <option value="fiat" @if($model->tag == "fiat") selected @endif>fiat</option>
-                                <option value="crypto" @if($model->tag == "crypto") selected @endif>crypto</option>
                             </select>
                         </div>
                     </div>

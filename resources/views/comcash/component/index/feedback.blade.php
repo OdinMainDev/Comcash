@@ -1,8 +1,7 @@
 @if(isset($feedbacks) && count($feedbacks) > 0)
     <div class='feedback'>
         <div class='feedback__container'>
-            <p class='feedback__title'>{{__("front.Feedback Label")}}
-            </p>
+            <h3 class='feedback__title'>{{__("front.Feedback Label")}}</h3>
             <div class="slider">
                 @foreach($feedbacks as $item)
                     <div>

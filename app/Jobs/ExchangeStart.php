@@ -160,6 +160,9 @@ class ExchangeStart implements ShouldQueue
         if(isset($data['request_data']['city'])){
             $text .= "Город: ".$data['request_data']['city']."\n";
         }
+        if(isset($data['request_data']['bank'])){
+            $text .= "Банк: ".$data['request_data']['bank']."\n";
+        }
 
         $text .= "\n";
         if($this->user->first_name)

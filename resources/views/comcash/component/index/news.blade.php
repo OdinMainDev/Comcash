@@ -1,7 +1,7 @@
 @if(isset($news) && count($news) > 0)
     <div class='news'>
         <div class='news__container'>
-            <p class='news__title'>{{__("front.stay tuned")}}</p>
+            <h3 class='news__title'>{{__("front.stay tuned")}}</h3>
             <div class='news__content'>
                 @foreach($news as $key => $item)
                     @if($key <= 3)

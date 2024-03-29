@@ -36,6 +36,7 @@ class Controller_Currency extends Controller{
             "tag" => "required|string|max:255",
             "currencyWallets" => "nullable|array",
             "currencyWallets.*" => "string|max:255",
+            "position" => "required|integer|min:1|max:10000"
         ];
         $validators = appendLocalesNames($validators);
         $request->validate($validators);
@@ -60,6 +61,7 @@ class Controller_Currency extends Controller{
         ];
         $model->status = $request->enabled;
         $model->tag = $request->tag;
+        $model->position = $request->position;
         $model->save();
         return $this->responseSuccess();
     }

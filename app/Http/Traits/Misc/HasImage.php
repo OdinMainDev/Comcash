@@ -15,7 +15,7 @@ trait HasImage {
         $hash = sha1_file($request->file($name)->path());
         $check = File::where("hash", $hash)->first();
         if($check)
-            return $check->path;
+            return "/uploads/".$check->path;
         
         $file = $request->file($name);
         $image_name = time().".".uniqid().".".$file->getClientOriginalExtension();

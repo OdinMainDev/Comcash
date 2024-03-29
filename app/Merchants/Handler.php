@@ -95,6 +95,11 @@ class Handler {
                 $this->merchant = new ManualMode(false, true);
                 return $this->merchant;
             break;
+
+            case "manualsbp":
+                $this->merchant = new ManualMode(false, false, true);
+                return $this->merchant;
+            break;
         }    
         
         return false;

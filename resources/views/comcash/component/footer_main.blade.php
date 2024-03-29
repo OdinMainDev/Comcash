@@ -8,12 +8,16 @@
                     class='footer__logo-img' />
                 <p>{{__("front.slogan")}}</p>
                 <div class="footer__sponsors-list">
-                    <a href="https://kurs.expert/ru/obmennik/comcash-io/feedbacks.html#stat" target="_blank">
-                        <img class="footer__sponsors-item" src="/comcash/img/cb.png"/>
+                    <a href="https://kurs.expert/ru/obmennik/comcash-io/feedbacks.html#stat" target="_blank" >
+                        <img class="footer__sponsors-item" src="/comcash/img/cb.png" alt="KursExpert - мониторинг обменников" title="KursExpert - честный мониторинг обменников"/>
                     </a>
 
                     <a href="https://antiswap.info/exchanger/ComCASH-otzyvy" target="_blank">
                         <img class="footer__sponsors-item" src="https://antiswap.info/images/banner/200-70-1-anim.gif" alt="AntiSwap - мониторинг обменников" title="AntiSwap - честный мониторинг обменников">
+                    </a>
+
+                    <a target="_blank" href="https://www.okchanger.ru/?a=235857">
+                        <img class="footer__sponsors-item" src="https://www.okchanger.ru/images/banners/320x50.gif"   alt="OkChanger - мониторинг обменников" title="OkChanger - честный мониторинг обменников"/>
                     </a>
                 </div>
             </div>

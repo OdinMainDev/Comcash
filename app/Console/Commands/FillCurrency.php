@@ -35,6 +35,21 @@ class FillCurrency extends Command
         $currencies = [
             [
                 // "id" => 1,
+                "name" => "SBPRUB",
+                "units" => 2,
+                "image" => "/icons/Visa-Master.png",
+                "data" => json_encode([
+                    "titles" => [
+                        "ru" => "Visa/MasterCard RUB",
+                        "en" => "Visa/MasterCard RUB",
+                    ]
+                ]),
+                "tag" => "fiat",
+                "position" => 1,
+                "created_at" => now()
+            ],
+            [
+                // "id" => 1,
                 "name" => "CARDRUB",
                 "units" => 2,
                 "image" => "/icons/Visa-Master.png",

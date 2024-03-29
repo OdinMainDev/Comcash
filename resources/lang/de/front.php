@@ -1,4 +1,10 @@
 <?php return array (
+  'exchangePageInputBank' => 'Geben Sie die Bank an',
+  'welcomeMainText' => 'Unser Tauscher bewahrt Ihre Anonymität',
+  'PagesMenu' => 'Seiten',
+  'CleaningMenu' => 'Reinigung der Gruft',
+  'exchangePageInputPhone' => 'Rufnummer',
+  'phonesbpreceive' => 'Telefonnummer ( SBP )',
   'menuBotUrl' => 'https://t.me/comcashBot',
   'exchange crypto' => 'Krypto-Börse',
   'buy sell' => 'Kauf/Verkauf',

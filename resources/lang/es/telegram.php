@@ -1,4 +1,6 @@
 <?php return array (
+  'exchange_set_field_bank' => 'Especifique el banco',
+  'exchange_check_field_bank' => 'Banco:',
   'language_ru' => 'Русский',
   'language_en' => 'English',
   'language_es' => 'Española',
@@ -149,4 +151,6 @@
   'exchange_currency' => 'Moneda de cambio:',
   'exchange_amount' => 'Importe del cambio:',
   'your_personal_link' => 'Se ha generado su enlace personalizado.',
+  'exchange_set_field_city' => 'Especifique la ciudad',
+  'exchange_check_field_city' => 'Ciudad:',
 );

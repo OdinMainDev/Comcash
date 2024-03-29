@@ -1,4 +1,6 @@
 <?php return array (
+  'exchange_set_field_bank' => 'Geben Sie die Bank an',
+  'exchange_check_field_bank' => 'Bank:',
   'language_ru' => 'Русский',
   'language_en' => 'English',
   'language_es' => 'Española',
@@ -149,4 +151,6 @@
   'aff_withdraw_success_create_withdraw' => 'Der Antrag auf Zahlung wurde erfolgreich erstellt',
   'my_affiliate_url' => 'Mein Partnerlink',
   'my_affiliate_balances' => 'Meine Bilanzen',
+  'exchange_set_field_city' => 'Stadt angeben',
+  'exchange_check_field_city' => 'Stadt:',
 );

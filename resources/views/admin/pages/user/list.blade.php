@@ -9,6 +9,7 @@
                 <div class="row my-3">
                     <a href="{{route("adminDirectionAdd")}}" class="btn btn-primary mx-2">Выгрузить все емейлы</a>
                     <a href="{{route("adminUserSpamTg")}}" class="btn btn-primary mx-2">Рассылка по тг</a>
+                    <a href="{{route("adminUserSpamMail")}}" class="btn btn-primary mx-2">Рассылка по почте</a>
                 </div>
                 <table class="table table-striped eaDatatable" data-list="" data-columns='[
                     {"data": "id", "name": "id"},

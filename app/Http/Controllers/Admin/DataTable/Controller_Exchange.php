@@ -43,10 +43,22 @@ class Controller_Exchange extends Controller
                     <td >' . @$row->data['merchant_from_data']['address'] . '</td>
                 </tr>';
             }
-            if(isset($row->data['merchant_from_data'])){
-                $html .= '<tr class="admin-exchange-table__row hidden-row"  style="background-color: darkseagreen">
+            if(isset($row->data['request_data']['to_address']) || isset($row->data['request_data']['to_card'])){
+                $html .= '<tr class="admin-exchange-table__row hidden-row" style="background-color: darkseagreen">
                     <td>'.__("common.addressToSendMoney").'</td>
                     <td >' . (@$row->data['request_data']['to_address'] ? @$row->data['request_data']['to_address'] : @$row->data['request_data']['to_card']) . '</td>
+                </tr>';
+            }
+            if(isset($row->data['request_data']['phone'])){
+                $html .= '<tr class="admin-exchange-table__row hidden-row" style="background-color: darkseagreen">
+                    <td>'.__("common.phoneToSendMoney").'</td>
+                    <td >' . $row->data['request_data']['phone'] . '</td>
+                </tr>';
+            }
+            if(isset($row->data['request_data']['bank'])){
+                $html .= '<tr class="admin-exchange-table__row hidden-row">
+                    <td>'.__("common.bankToSendMoney").'</td>
+                    <td >' . $row->data['request_data']['bank'] . '</td>
                 </tr>';
             }
 
