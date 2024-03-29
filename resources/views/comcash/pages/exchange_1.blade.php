@@ -225,7 +225,6 @@
 	</div>
 	<div class="exchange__seo">
 		<div class="seo_block">
-			dede
 			{!! @$direction->data['content'][mb_strtolower(app()->getLocale())] !!}
 		</div>
 	</div>
