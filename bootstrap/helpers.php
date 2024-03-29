@@ -72,7 +72,7 @@ function getLocalesContents($request){
     $response = [];
     foreach($config as $lang){
         $lang = mb_strtolower($lang);
-        $response[$lang] = $request->{'mlContent'.$lang};
+        $response[$lang] = cleanHTML($request->{'mlContent'.$lang});
     }
     return $response;
 }
@@ -246,4 +246,10 @@ function sendTelegramNotificationAffiliate($text, $level = 1){
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_exec($ch);
     curl_close($ch);
+}
+
+function cleanHTML($html) {
+    $allowedTags = '<h1><h2><h3><h4><h5><h6><p><br><ul><ol><li><table><tr><th><td><thead><tbody><tfoot><blockquote><pre><code><a><img><div><span><strong><em><b><i><u><strike><sub><sup>';
+    $cleanedHtml = strip_tags($html, $allowedTags);
+    return $cleanedHtml;
 }

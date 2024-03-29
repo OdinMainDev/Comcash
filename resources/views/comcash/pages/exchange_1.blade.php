@@ -221,10 +221,13 @@
 					<a href="/" class="button min-w-[200px]">{{__("front.exchangePageCashButton")}}</a>
 				</div>
 			</div>
+
+			<div class="seo_block">
+				{!! @$direction->data['content'][mb_strtolower(app()->getLocale())] !!}
+			</div>
 		</form>
 	</div>
 </div>
-
 
 @endsection
 
