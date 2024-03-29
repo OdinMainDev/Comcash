@@ -18,6 +18,13 @@
     background-size: contain;
   }
 
+  &__seo {
+    max-width: 700px;
+    margin: 20px auto;
+    background: linear-gradient(to bottom, #2f2f3d, #1e1e27);
+    padding: 20px;
+  }
+
   &__main-form {
     padding: 80px 40px 0;
     &.hide {
