@@ -141,10 +141,10 @@ class Parser {
         
         $url = $this->parserConfig["garantex_api"] . "api/v2/k?market=usdtrub";
         $response = $this->doRequest($url);
-        // if (!$response) {
-        //     sleep(1);
-        //     $response = $this->doRequest($url);
-        // }
+        if (!$response) {
+            sleep(1);
+            $response = $this->doRequest($url);
+        }
 
         if (!$response) {
             info("GARANTEX ERROR");
