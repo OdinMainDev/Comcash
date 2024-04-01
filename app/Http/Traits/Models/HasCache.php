@@ -195,7 +195,7 @@ trait HasCache {
             $currency = "USDT";
         }
         if(in_array($currency, ["TONCOIN"])){
-            $name = "TON";
+            $currency = "TON";
         }
 
        return $currency;
