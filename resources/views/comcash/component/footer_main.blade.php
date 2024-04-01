@@ -16,7 +16,7 @@
                         <img class="footer__sponsors-item" src="https://antiswap.info/images/banner/200-70-1-anim.gif" alt="AntiSwap - мониторинг обменников" title="AntiSwap - честный мониторинг обменников">
                     </a>
 
-                    <a target="_blank" href="https://www.okchanger.ru/?a=235857">
+                    <a target="_blank" href="https://www.okchanger.ru/exchangers/Comcash-io?a=235857">
                         <img class="footer__sponsors-item" src="https://www.okchanger.ru/images/banners/320x50.gif"   alt="OkChanger - мониторинг обменников" title="OkChanger - честный мониторинг обменников"/>
                     </a>
                 </div>

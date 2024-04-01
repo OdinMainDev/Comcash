@@ -78,6 +78,12 @@ class Main {
         $base = [
             "email" => "required|email|string|max:255",
         ];
+
+        if($this->isCash) {
+            $base["telegram"] = "required|string|max:60";
+            $base["city"] = "required|string|max:255";
+            return $base;
+        }
         
         if(!$this->isCrypto && !$this->isCash){
             // $base["first_name"] = "required|string|max:255";
@@ -96,11 +102,6 @@ class Main {
                 $base["phone"] = "required|string|max:255";
                 $base["bank"] = "required|string|max:255";
             }
-        }
-
-        if($this->isCash) {
-            $base["telegram"] = "required|string|max:60";
-            $base["city"] = "required|string|max:255";
         }
 
         $request->validate($base);
