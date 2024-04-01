@@ -83,4 +83,9 @@ class Controller_Api extends Controller{
             "status" => $exch ? $exch->status : 15
         ]);
     }
+
+    public function directions(Request $request){
+        $directions = $this->getCacheDirections();
+        return $this->responseSuccess("ok", $directions);
+    }
 }
