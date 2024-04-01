@@ -40,6 +40,7 @@ class Parser {
     }
 
     private function getKucoinData() {
+        // url: https://api.kucoin.com/api/v1/market/allTickers
         // method: "api/v1/market/allTickers"
         // response: {"code":"200000","data":{"time":1708482624055,"ticker":[]}}
         // item (ticker):
