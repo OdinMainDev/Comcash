@@ -14,5 +14,5 @@
    });
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/{{$yandexMetricaId}}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<meta name="yandex-verification" content="4195c71d72a8373b" />
+<meta name="yandex-verification" content="9bc3beaedcd56bdb" />
 <!-- /Yandex.Metrika counter -->
