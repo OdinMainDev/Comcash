@@ -1,5 +1,7 @@
 
-import './exchangeCrypto';
+import './exchangeColumnsTable'
+import './exchangeColumnsMobile'
+
 import '../cryptoForm.scss';
 
 

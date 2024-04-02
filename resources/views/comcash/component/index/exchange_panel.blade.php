@@ -1,127 +1,179 @@
 <div class='welcome'>
     <div class='welcome__container'>
         <div class="welcome__panel-container">
-            <div class="welcome__descr">
-                <h1 class="welcome__descr-title">
-                    <?php 
-                        $text = __("front.indexSidePanelText1");
-                        $text = explode(" ", $text);
-
-                        $first = $text[0];
-                        $second = array_slice($text, 1, -2);
-                        $second = implode(" ", $second);
-                        $third = @$text[count($text) - 2];
-                        $fourth = end($text);
-                    ?>
-                    <span class="green">{{$first}}</span> {{$second}} <span class="green">{{$third}}</span> <span class="underline">{{$fourth}}</span>
-                </h1>
-                <ul class="welcome__descr-list">
-                    <?php 
-                        $text = __("front.indexSidePanelText3");
-                        $text = explode(" ", $text);
-
-                        $first = implode(" ", array_slice($text, 0, 2));
-                        $second = @$text[2];
-                        $third = implode(" ", array_slice($text, 3));
-
-                    ?>
-                    <li>
-                        {{$first}} <span class="green">{{$second}}</span> {{$third}}
-                    </li>
-                    <?php 
-                        $text = __("front.indexSidePanelText4");
-                        $text = explode(" ", $text);
-
-                        $first = implode(" ", array_slice($text, 0, 4));
-                        $second = @$text[4];
-                        $third = implode(" ", array_slice($text, 5, 2));
-                        $fourth = @$text[7];
-                        $fifth = implode(" ", array_slice($text, 8));
-
-                    ?>
-                    <li>                    
-                        {{$first}} <span class="green">{{$second}}</span> {{$third}} 
-                        <span class="green">{{$fourth}}</span> {{$fifth}}
-                    </li>
-                    <li>
-                        {{__("front.indexSidePanelText5")}}
-                    </li>
-                </ul>
-                <div class="welcome__descr-copyright">
-                    {{__("front.indexSidePanelText6")}}
-                </div>
-                <div class="welcome__descr-copyright">Com<span class="green">CASH</span></div>
-            </div>
-            <div class='welcome__top'>
-                <div class='welcome__form crypto-form'>
-                    <div class='welcome__tabs-body'>
-                        <div class='welcome__tabs-content active' data-tab='tab1'>
-                            <form method='POST' class="crypto-form__exchange-form" action="{{route("redirectToExchange")}}">
-                                @csrf
-                                <div class='label'>
-                                    {{__("front.you send")}}
-                                    <div class="welcome__limit">
-                                        <span class="welcome__exchange-covert-send-currency">0</span>
-                                        &ensp;
-                                        <span>≈</span>
-                                        &ensp;
-                                        <span class="welcome__exchange-covert-send-usd">0$</span>
-                                    </div>
-                                </div>
-                                <div class='input-control'>
-                                    <input type='text' class="input" id="cryptoYouSend" name="amount"/>
-                                    <img src="/comcash/img/loader-gray.gif" class="crypto-form__select-loader"/>
-                                    <div class="custom-select__select-container" id="cryptoYouSendSelect" data-currency="cryptoYouSendSelect">
-                                        <div class="custom-select__select-label">{{__("front.choose currency")}}</div>
-                                        <input class="custom-select__select-label-input" name="currency_from"/>
-                                        <div class="custom-select__select-list-container hide">
-                                            <div class="custom-select__select-list">
-                                                <div class="custom-select__search">
-                                                    <input class="custom-select__search-field"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="crypto-form__reverse">
-                                    <span class='label__tarif'></span>
-                                </div>
-                                <div class='label'>
-                                    <span>{{__("front.you receive")}}</span>
-                                    <div class="welcome__limit">
-                                        <span class="welcome__exchange-covert-get-currency">0</span>
-                                        &ensp;
-                                        <span>≈</span>
-                                        &ensp;
-                                        <span class="welcome__exchange-covert-get-usd">0$</span>
-                                    </div>
-                                </div>
-                                <div class='input-control'>
-                                    <input type='text' class='input' id="cryptoYouGet"/>
-                                    <img src="/comcash/img/loader-gray.gif" class="crypto-form__select-loader"/>
-                                    <div class="custom-select__select-container" id="cryptoYouGetSelect" data-currency="cryptoYouGetSelect">
-                                        <div class="custom-select__select-label">{{__("front.choose currency")}}</div>
-                                        <input class="custom-select__select-label-input" name="currency_to"/>
-                                        <div class="custom-select__select-list-container hide">
-                                            <div class="custom-select__select-list">
-                                                <div class="custom-select__search">
-                                                    <input class="custom-select__search-field"/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <button class='button button--auto' type='submit'>{{__("front.exchange")}}</button>
-                            </form>
-                        </div>
+            <form class="welcome__exchange" action="{{route("redirectToExchange")}}">
+                <div class="welcome__exchange-col welcome__exchange-col_left">
+                    <input class="welcome__exchange-input" id="exchangeCurrencyFrom" name="currency_from"/>
+                    <div class="welcome__exchange-title">ВЫ ОТПРАВЛЯЕТЕ</div>
+                    <div class="welcome__exchange-col-list">
                     </div>
                 </div>
+                <div class="welcome__exchange-col welcome__exchange-col_right">
+                    <input class="welcome__exchange-input" id="exchangeCurrencyAmout" name="amount"/>
+                    <input class="welcome__exchange-input" id="exchangeCurrencyTo" name="currency_to"/>
+                    <div class="welcome__exchange-title">ВЫ ПОЛУЧАЕТЕ</div>
+                    <div class="welcome__exchange-filter">
+                        <div class="welcome__exchange-filter-item active" data-filter="all">
+                            Все
+                        </div>
+                        <div class="welcome__exchange-filter-item" data-filter="fiat">
+                            Карта
+                        </div>
+                        <div class="welcome__exchange-filter-item" data-filter="crypto">
+                            Крипта
+                        </div>
+                    </div>
+                    <div class="welcome__exchange-col-list">
+                    </div>
+                </div>
+            </form>
+            <form class="welcome__exchange-mobile" action="{{route("redirectToExchange")}}">
+                <div class="welcome__exchange-mobile-container">
+                    <div class="welcome__exchange-mobile-side">
+                        <div class="welcome__exchange-title">ВЫ ОТПРАВЛЯЕТЕ</div>
+                        <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_left-list">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="welcome__exchange-item-content">
+                                        <div class="flex items-center">
+                                            <img  class="welcome__exchange-img" src="${currency.image}">
+                                            <div class="welcome__exchange-name">
+                                                Text
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="welcome__exchange-item-content">
+                                        <div class="flex items-center">
+                                            <img  class="welcome__exchange-img" src="${currency.image}">
+                                            <div class="welcome__exchange-name">
+                                                Text
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="welcome__exchange-item-content">
+                                        <div class="flex items-center">
+                                            <img  class="welcome__exchange-img" src="${currency.image}">
+                                            <div class="welcome__exchange-name">
+                                                Text
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="welcome__exchange-mobile-side">
+                        <div class="welcome__exchange-title">ВЫ ПОЛУЧАЕТЕ</div>
+                        <div class="welcome__exchange-filter">
+                            <div class="welcome__exchange-filter-item active" data-filter="all">
+                                Все
+                            </div>
+                            <div class="welcome__exchange-filter-item" data-filter="fiat">
+                                Карта
+                            </div>
+                            <div class="welcome__exchange-filter-item" data-filter="crypto">
+                                Крипта
+                            </div>
+                        </div>
+                        <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_right-list">
+                        <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="welcome__exchange-item-content">
+                                        <div class="flex items-center">
+                                            <img  class="welcome__exchange-img" src="${currency.image}">
+                                            <div class="welcome__exchange-name">
+                                                Text
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="welcome__exchange-item-content">
+                                        <div class="flex items-center">
+                                            <img  class="welcome__exchange-img" src="${currency.image}">
+                                            <div class="welcome__exchange-name">
+                                                Text
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="welcome__exchange-item-content">
+                                        <div class="flex items-center">
+                                            <img  class="welcome__exchange-img" src="${currency.image}">
+                                            <div class="welcome__exchange-name">
+                                                Text
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>		
+                </div>
+                <div class="welcome__exchange-mobile-button">
+                    ОБМЕНЯТЬ
+                </div>
+            </form>
+            <div class="welcome__descr-container">
+                <div class="welcome__descr">
+                    <h1 class="welcome__descr-title">
+                        <?php 
+                            $text = __("front.indexSidePanelText1");
+                            $text = explode(" ", $text);
 
-                <div class="welcome__security">
-                    <img src="/comcash/img/kyc-cross.svg" class="welcome__security-image">
-                </div>  
-            </div>
+                            $first = $text[0];
+                            $second = array_slice($text, 1, -2);
+                            $second = implode(" ", $second);
+                            $third = @$text[count($text) - 2];
+                            $fourth = end($text);
+                        ?>
+                        <span class="green">{{$first}}</span> {{$second}} <span class="green">{{$third}}</span> <span class="underline">{{$fourth}}</span>
+                    </h1>
+                    <ul class="welcome__descr-list">
+                        <?php 
+                            $text = __("front.indexSidePanelText3");
+                            $text = explode(" ", $text);
+
+                            $first = implode(" ", array_slice($text, 0, 2));
+                            $second = @$text[2];
+                            $third = implode(" ", array_slice($text, 3));
+
+                        ?>
+                        <li>
+                            {{$first}} <span class="green">{{$second}}</span> {{$third}}
+                        </li>
+                        <?php 
+                            $text = __("front.indexSidePanelText4");
+                            $text = explode(" ", $text);
+
+                            $first = implode(" ", array_slice($text, 0, 4));
+                            $second = @$text[4];
+                            $third = implode(" ", array_slice($text, 5, 2));
+                            $fourth = @$text[7];
+                            $fifth = implode(" ", array_slice($text, 8));
+
+                        ?>
+                        <li>                    
+                            {{$first}} <span class="green">{{$second}}</span> {{$third}} 
+                            <span class="green">{{$fourth}}</span> {{$fifth}}
+                        </li>
+                        <li>
+                            {{__("front.indexSidePanelText5")}}
+                        </li>
+                    </ul>
+                    <div class="welcome__descr-copyright">
+                        {{__("front.indexSidePanelText6")}}
+                    </div>
+                    <div class="welcome__descr-copyright">Com<span class="green">CASH</span></div>
+                </div>
+                <img src="/comcash/img/kyc-cross.svg" class="welcome__security-image">
+
+            </div>  
         </div>
     </div>
     <!-- <div class='welcome__banner'>
