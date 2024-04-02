@@ -7,7 +7,7 @@ import tailwindcss from 'tailwindcss'
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/js/app.js', 'resources/js/comcash/main.ts'],
+            input: ['resources/js/app.js', 'resources/js/comcash/main.ts', 'resources/js/comcash/main2.ts'],
             refresh: true,
         }),
     ],
