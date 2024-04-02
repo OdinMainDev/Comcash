@@ -84,8 +84,13 @@ class Controller_Api extends Controller{
         ]);
     }
 
-    public function directions(Request $request){
+    public function directions(){
+        return $this->responseSuccess("ok", $this->getCacheDirections());
+    }
+
+    public function direction_currencies_from(){
         $directions = $this->getCacheDirections();
-        return $this->responseSuccess("ok", $directions);
+        $sorted = array_values($directions->pluck("currencyFrom")->unique()->toArray());
+        return $this->responseSuccess("ok", $sorted);
     }
 }

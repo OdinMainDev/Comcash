@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Casts\Json;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Resources\CurrencyResource;
 
 class Currency extends Model
 {
@@ -39,5 +40,17 @@ class Currency extends Model
             }
         }
         return $this->name;
+    }
+
+    public function toArray()
+    {
+        $currency = parent::toArray();
+
+        if (isset($currency['data']) && is_array($currency['data'])) {
+            unset($currency['data']['wallets']);
+            unset($currency['data']['walletsReuse']);
+        }
+
+        return $currency;
     }
 }

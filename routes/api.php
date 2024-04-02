@@ -9,3 +9,5 @@ Route::get('/get/direction/settings', [Api::class, "direction_settings"]);
 Route::get('/get/directions', [Api::class, "directions"]);
 Route::get('/get/rates', [Api::class, "rates"]);
 Route::get('/estimate', [Api::class, "estimate"]);
+Route::get('/get/directions/currencies/from', [Api::class, "direction_currencies_from"]);
+// Route::get('/get/directions/currencies/to', [Api::class, "direction_currencies_to"]);
