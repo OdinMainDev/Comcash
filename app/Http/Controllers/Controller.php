@@ -127,6 +127,7 @@ class Controller extends BaseController{
         SEOTools::jsonLdMulti()->addImage(str_replace("//", "/", env("APP_URL")."/".$this->theme."/seobanner.png"));
         SEOTools::opengraph()->addImage(str_replace("//", "/", env("APP_URL")."/".$this->theme."/seobanner.png"));
         SEOTools::opengraph()->addImage(["url" => str_replace("//", "/", env("APP_URL")."/".$this->theme."/seobanner.png")]);
+        SEOTools::twitter()->setImage(str_replace("//", "/", env("APP_URL")."/".$this->theme."/seobanner.png"));
         
     }
 
