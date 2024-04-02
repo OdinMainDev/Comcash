@@ -81,7 +81,7 @@ class Controller_Exchange extends Controller{
             "page" => "exchgangePage",
             "title" => @$direction->data['seo']['titles'][$lang] ? $direction->data['seo']['titles'][$lang] : ucfirst($this->theme),
             "description" => @$direction->data['seo']['descriptions'][$lang] ? $direction->data['seo']['descriptions'][$lang] : ucfirst($this->theme),
-            "keywords" => @$direction->data['seo']['keywords'][$lang] ?  explode(",", $direction->data['seo']['keywords'][$lang]) : [ucfirst($this->theme)]
+            "keywords" => @$direction->data['seo']['keywords'][$lang] ?  explode(",", str_replace(' ', '', $direction->data['seo']['keywords'][$lang])) : [ucfirst($this->theme)]
         ];
 
         $this->setSeoData($seo_data, ["currencyFrom" => $currencyFrom, "currencyTo" => $currencyTo]);
