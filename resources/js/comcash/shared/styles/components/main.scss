@@ -359,7 +359,7 @@
       width: 100%;
     }
     &-image {
-      height: 300px;
+      height: 200px;
       @media (max-width: 1024px) {
         height: 200px;
       }
@@ -411,8 +411,9 @@
   &__top {   
     flex:1;
     display: flex;
+
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     transition: justify-content 0.2s;
 
     @media (max-width: 1024px) {
@@ -607,7 +608,6 @@
 
   &__panel-container {
     display: flex;
-    flex-direction: column;
     padding: 100px 0;
     @media (max-width:1024px) {
       flex-direction: column;
@@ -619,6 +619,7 @@
   }
 
   &__descr {
+    flex: 1;
     @media (max-width:1024px) {
       display: flex;
       flex-direction: column;
