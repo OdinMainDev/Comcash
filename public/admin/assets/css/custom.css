@@ -35,3 +35,11 @@
 .message-builder #buttonsPreview {
     margin-top: 20px;
 }
+
+.form-control {
+    color: #fff !important;
+}
+
+select, input {
+    color: #fff !important;
+}
