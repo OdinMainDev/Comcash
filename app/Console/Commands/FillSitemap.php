@@ -34,7 +34,7 @@ class FillSitemap extends Command
         //        $generator->add(Url::create('/extra-page')->setPriority(0.5));
         //     }
         // });
-        // $generator->writeToFile(public_path('sitemap.xml'))
+        $generator->writeToFile(public_path('sitemap.xml'));
         sendTelegramNotification("SITEMAP СГЕНЕРИРОВАН УСПЕШНО");
     }
 }
