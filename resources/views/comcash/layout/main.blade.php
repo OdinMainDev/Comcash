@@ -23,7 +23,11 @@
 		?>
 		{!! SEO::generate() !!}
 		@include('comcash.layout.ads')
-		@vite('resources/js/comcash/main.ts')
+		@if(env("THEME_NAME", "comcash") == "comcash")
+			@vite('resources/js/comcash/main.ts')
+		@else
+			@vite('resources/js/comcash/main2.ts')
+		@endif
 	</head>
 	<body>
 		@include('comcash.component.header_info')
