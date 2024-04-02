@@ -33,8 +33,8 @@ class Kernel extends ConsoleKernel
 
         // Кеширование данных
         $schedule->command('app:cache-directions')->everyFiveMinutes();
-        $schedule->command('app:cache-tarrifs-page')->everyMinute();
         $schedule->command('app:cache-export')->everyTwoMinutes();
+        $schedule->command('app:cache-tarrifs-page')->everyMinute();
         
 
         // $schedule->command('app:bybit-payment')->everyMinute();
