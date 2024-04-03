@@ -197,6 +197,10 @@ class Controller_Exchange extends Controller{
         $exchange = $this->checkexchlocal($id);
         if(!$exchange) return abort(404);
         // if(!$this->isRootUser()) return abort(404);
+
+        if($exchange->admin_id == 0 && !$this->isRootUser()){
+            $exchange->admin_id = auth()->user()->id;
+        }
         
         $exchange->status = 13;
         $exchange->save();
@@ -241,6 +245,9 @@ class Controller_Exchange extends Controller{
 
         $query = $query->get();
         foreach($query as $exchange){
+            if($exchange->admin_id == 0 && !$this->isRootUser()){
+                $exchange->admin_id = auth()->user()->id;
+            }
             $exchange->status = 13;
             $exchange->save();
             $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА УДАЛЕНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);

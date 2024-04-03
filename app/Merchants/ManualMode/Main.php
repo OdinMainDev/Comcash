@@ -42,6 +42,9 @@ class Main {
             else if($this->isSbp){
                 $base[] = "phone";
                 $base[] = "bank";
+                $base[] = "first_name";
+                $base[] = "second_name";
+                $base[] = "last_name";
             }
         }
 
@@ -68,6 +71,9 @@ class Main {
             else if($this->isSbp){
                 $base[] = "phone";
                 $base[] = "bank";
+                $base[] = "first_name";
+                $base[] = "second_name";
+                $base[] = "last_name";
             }
         }
 
@@ -101,6 +107,9 @@ class Main {
             else if($this->isSbp){
                 $base["phone"] = "required|string|max:255";
                 $base["bank"] = "required|string|max:255";
+                $base["first_name"] = "required|string|max:255";
+                $base["second_name"] = "required|string|max:255";
+                $base["last_name"] = "required|string|max:255";
             }
         }
 

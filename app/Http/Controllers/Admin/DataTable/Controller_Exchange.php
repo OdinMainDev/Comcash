@@ -155,7 +155,7 @@ class Controller_Exchange extends Controller
         if(!$this->isRootUser()){
             $query = $query->where(function($q){
                 $q->where("admin_id", auth()->user()->id)->orWhere(function($q2){
-                    $q2->where("admin_id", 0)->whereIn("status", [0, 1]);
+                    $q2->where("admin_id", 0)->whereIn("status", [0, 1, 13]);
                 });
             });
         }
