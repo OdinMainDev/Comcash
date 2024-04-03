@@ -1,4 +1,12 @@
 <?php return array (
+  'exchange_set_field_phone' => 'Préciser le numéro de téléphone',
+  'exchange_set_field_first_name' => 'Donnez-moi un nom',
+  'exchange_set_field_second_name' => 'Indiquer le patronyme',
+  'exchange_set_field_last_name' => 'Indiquez votre nom de famille',
+  'exchange_check_field_phone' => 'Téléphone :',
+  'exchange_check_field_first_name' => 'Nom :',
+  'exchange_check_field_second_name' => 'Nom du père :',
+  'exchange_check_field_last_name' => 'Nom de famille :',
   'exchange_set_field_bank' => 'Préciser la banque',
   'exchange_check_field_bank' => 'Banque :',
   'language_ru' => 'Русский',

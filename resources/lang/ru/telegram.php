@@ -156,5 +156,13 @@ return [
     "exchange_set_field_city" => "Укажите город",
     "exchange_check_field_city" => "Город:",
     "exchange_set_field_bank" => "Укажите банк",
-    "exchange_check_field_bank" => "Банк:"
+    "exchange_check_field_bank" => "Банк:",
+    "exchange_set_field_phone" => "Укажите телефон",
+    "exchange_set_field_first_name" => "Укажите имя",
+    "exchange_set_field_second_name" => "Укажите отчество",
+    "exchange_set_field_last_name" => "Укажите фамилию",
+    "exchange_check_field_phone" => "Телефон:",
+    "exchange_check_field_first_name" => "Имя:",
+    "exchange_check_field_second_name" => "Отчество:",
+    "exchange_check_field_last_name" => "Фамилия:",
 ];

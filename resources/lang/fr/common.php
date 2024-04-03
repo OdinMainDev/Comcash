@@ -1,4 +1,5 @@
 <?php return array (
+  'password' => 'Mot de passe',
   'bankToSendMoney' => 'Banque',
   'phoneToSendMoney' => 'Numéro de téléphone',
   'rules_page' => 'Page des règles',
