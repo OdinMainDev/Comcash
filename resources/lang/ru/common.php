@@ -185,5 +185,6 @@ return [
     "mailSubject" => "Тема письма",
     "bankToSendMoney" => "Банк",
     "phoneToSendMoney" => "Номер телефона",
-    "password" => "Пароль"
+    "password" => "Пароль",
+    "balance" => "Баланс"
 ];

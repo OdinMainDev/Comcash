@@ -1,4 +1,5 @@
 <?php return array (
+  'balance' => 'Équilibre',
   'password' => 'Mot de passe',
   'bankToSendMoney' => 'Banque',
   'phoneToSendMoney' => 'Numéro de téléphone',

@@ -12,4 +12,8 @@ class AffiliateBalance extends Model
     public function getCurrency(){
         return $this->hasOne(Currency::class, "id", "currency");
     }
+
+    public function getUser(){
+        return $this->hasOne(User::class, "id", "user_id");
+    }
 }
