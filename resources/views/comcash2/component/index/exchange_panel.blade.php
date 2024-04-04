@@ -30,43 +30,17 @@
             <form class="welcome__exchange-mobile" action="{{route("redirectToExchange")}}">
                 <div class="welcome__exchange-mobile-container">
                     <div class="welcome__exchange-mobile-side">
+                        <input class="welcome__exchange-input" id="exchangeCurrencyFromMobile" name="currency_from"/>
+
                         <div class="welcome__exchange-title">ВЫ ОТПРАВЛЯЕТЕ</div>
+                        <div class="welcome__exchange-filter"></div>
                         <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_left-list">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="welcome__exchange-item-content">
-                                        <div class="flex items-center">
-                                            <img  class="welcome__exchange-img" src="${currency.image}">
-                                            <div class="welcome__exchange-name">
-                                                Text
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="welcome__exchange-item-content">
-                                        <div class="flex items-center">
-                                            <img  class="welcome__exchange-img" src="${currency.image}">
-                                            <div class="welcome__exchange-name">
-                                                Text
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="welcome__exchange-item-content">
-                                        <div class="flex items-center">
-                                            <img  class="welcome__exchange-img" src="${currency.image}">
-                                            <div class="welcome__exchange-name">
-                                                Text
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="swiper-wrapper"></div>
                         </div>
                     </div>
                     <div class="welcome__exchange-mobile-side">
+                        <input class="welcome__exchange-input" id="exchangeCurrencyAmoutMobile" name="amount"/>
+                        <input class="welcome__exchange-input" id="exchangeCurrencyToMobile" name="currency_to"/>
                         <div class="welcome__exchange-title">ВЫ ПОЛУЧАЕТЕ</div>
                         <div class="welcome__exchange-filter">
                             <div class="welcome__exchange-filter-item active" data-filter="all">
@@ -79,34 +53,26 @@
                                 Крипта
                             </div>
                         </div>
-                        <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_right-list">
-                        <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="welcome__exchange-item-content">
-                                        <div class="flex items-center">
-                                            <img  class="welcome__exchange-img" src="${currency.image}">
-                                            <div class="welcome__exchange-name">
-                                                Text
+                        <div class="welcome__exchange-mobile-side-list">
+                            <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_right-list">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="welcome__exchange-item-content">
+                                            <div class="flex items-center">
+                                                <img  class="welcome__exchange-img" src="${currency.image}">
+                                                <div class="welcome__exchange-name">
+                                                    Text
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="welcome__exchange-item-content">
-                                        <div class="flex items-center">
-                                            <img  class="welcome__exchange-img" src="${currency.image}">
-                                            <div class="welcome__exchange-name">
-                                                Text
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="welcome__exchange-item-content">
-                                        <div class="flex items-center">
-                                            <img  class="welcome__exchange-img" src="${currency.image}">
-                                            <div class="welcome__exchange-name">
-                                                Text
+                                    <div class="swiper-slide">
+                                        <div class="welcome__exchange-item-content">
+                                            <div class="flex items-center">
+                                                <img  class="welcome__exchange-img" src="${currency.image}">
+                                                <div class="welcome__exchange-name">
+                                                    Text
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

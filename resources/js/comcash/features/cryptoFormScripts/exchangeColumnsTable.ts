@@ -42,8 +42,6 @@ $(document).ready(function () {
       console.log(e);
     }
   }
-
-
   async function getDirections(): Promise<IDirection[]> {
     try {
       const { data } = await axios.get<{data: IDirection[]}>(getDirectionsApi())
