@@ -66,10 +66,6 @@ class Controller_AffiliateWithdraw extends Controller
         if(!is_null($request->filter_currency)){
             $query = $query->where('currency', $request->filter_currency);
         }
-        if(!is_null($request->filter_hash)){
-            $search = mb_strtolower($request->filter_hash);
-            $query = $query->whereRaw('lower(hash) like (?)', ["%{$search}%"]);
-        }
         if(!is_null($request->filter_amount)){
             $query = $query->where('amount', ">=", $request->filter_amount);
         }

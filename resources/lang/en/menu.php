@@ -1,4 +1,5 @@
 <?php return array (
+  'affiliate_balances' => 'Affiliate balances',
   'home' => 'Main',
   'currencies' => 'Currencies',
   'list' => 'List',

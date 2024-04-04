@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\Controller_Affiliate as AdminAffiliate;
 use App\Http\Controllers\Admin\DataTable\Controller_Affiliate as DTAffiliate;
 use App\Http\Controllers\Admin\Controller_AffiliateWithdraw as AdminAffiliateWithdraw;
 use App\Http\Controllers\Admin\DataTable\Controller_AffiliateWithdraw as DTAffiliateWithdraw;
+use App\Http\Controllers\Admin\DataTable\Controller_AffiliateBalance as DTAffiliateBalance;
 use App\Http\Controllers\Admin\Controller_Seo as AdminSeo;
 use App\Http\Controllers\Admin\DataTable\Controller_Seo as DTAdminSeo;
 use App\Http\Controllers\Admin\Controller_TelegramBot as AdminTelegramBot;
@@ -262,6 +263,9 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-affiliate-withdraws']], function() {
+        Route::get('/panel/affiliate/balances/list', [DTAffiliateBalance::class, "view"])->name("adminAffiliateBalances");
+        Route::get('/panel/affiliate/balances/list/data', [DTAffiliateBalance::class, "process"]);
+
         Route::get('/panel/affiliate/withdraws/list', [DTAffiliateWithdraw::class, "view"])->name("adminAffiliateWithdraws");
         Route::get('/panel/affiliate/withdraws/list/data', [DTAffiliateWithdraw::class, "process"]);
 

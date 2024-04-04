@@ -1,4 +1,5 @@
 <?php return array (
+  'affiliate_balances' => 'Guthaben der Partner',
   'home' => 'Hauptseite',
   'currencies' => 'Währungen',
   'list' => 'Liste',

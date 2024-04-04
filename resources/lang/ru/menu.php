@@ -26,5 +26,6 @@ return [
     "affiliate_withdraws" => "Выплаты аффилейтам",
     "seo_basics" => "Основные настройки",
     "seo_directions" => "Настройки направлений",
-    "telegram" => "Телеграм бот"
+    "telegram" => "Телеграм бот",
+    "affiliate_balances" => "Балансы аффилейтов"
 ];
