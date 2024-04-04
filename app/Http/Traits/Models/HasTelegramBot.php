@@ -46,7 +46,6 @@ trait HasTelegramBot {
         $hasChanges = false;
         if($user->username != $data->getUsername()){
             $hasChanges = true;
-            $user->username = $data->getUsername();
             $user->getUser->username = $data->getUsername();
         }
         if($user->first_name != $data->getFirstName()){
