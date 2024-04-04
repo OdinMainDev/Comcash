@@ -1,6 +1,6 @@
 <div class='welcome'>
     <div class='welcome__container'>
-        <div class="welcome__panel-container">
+        <div class="welcome__panel-container-second">
             <form class="welcome__exchange" action="{{route("redirectToExchange")}}">
                 <div class="welcome__exchange-col welcome__exchange-col_left">
                     <input class="welcome__exchange-input" id="exchangeCurrencyFrom" name="currency_from"/>
@@ -56,34 +56,14 @@
                         <div class="welcome__exchange-mobile-side-list">
                             <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_right-list">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="welcome__exchange-item-content">
-                                            <div class="flex items-center">
-                                                <img  class="welcome__exchange-img" src="${currency.image}">
-                                                <div class="welcome__exchange-name">
-                                                    Text
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="welcome__exchange-item-content">
-                                            <div class="flex items-center">
-                                                <img  class="welcome__exchange-img" src="${currency.image}">
-                                                <div class="welcome__exchange-name">
-                                                    Text
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>		
                 </div>
-                <div class="welcome__exchange-mobile-button">
+                <button type="submit" class="welcome__exchange-mobile-button">
                     ОБМЕНЯТЬ
-                </div>
+                </button>
             </form>
             <div class="welcome__descr-container">
                 <div class="welcome__descr">
@@ -137,8 +117,7 @@
                     </div>
                     <div class="welcome__descr-copyright">Com<span class="green">CASH</span></div>
                 </div>
-                <img src="/comcash/img/kyc-cross.svg" class="welcome__security-image">
-
+                <img src="/comcash/img/kyc-cross.svg" class="welcome__security-image big">
             </div>  
         </div>
     </div>

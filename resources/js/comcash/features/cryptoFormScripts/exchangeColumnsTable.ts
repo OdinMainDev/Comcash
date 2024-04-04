@@ -1,7 +1,6 @@
 import axios from 'axios';
 import $ from 'jquery';
-import { getCurrenciesApi } from '../../shared/api/getCurrenciesApi';
-import { getDirectionsApi, getRatessApi } from './api/getDirectionApi';
+import { getCurrencies, getDirections, getRatessApi } from './api/getDirectionApi';
 import { IDirection, ICurrency, IRate } from './models/interfaces';
 import { filterByTag, findRateByCurrency } from './helpers/filter';
 
@@ -14,7 +13,7 @@ $(document).ready(function () {
   exchangeCurrencyFrom.val(defaultCurrency)
   const leftExchangeColumnList = $('.welcome__exchange-col_left > .welcome__exchange-col-list')
   const rightExchangeColumnList = $('.welcome__exchange-col_right > .welcome__exchange-col-list');
-  const filterItem = $('.welcome__exchange-filter-item');
+  const filterItem = $('.welcome__exchange-col_right > .welcome__exchange-filter > .welcome__exchange-filter-item');
   let rates: IRate[] = [];
 
   filterItem.on('click', function() {
@@ -23,16 +22,6 @@ $(document).ready(function () {
     drawRightColumns(defaultCurrency, $(this).data('filter'));
   })
 
-  async function getCurrencies(): Promise<ICurrency[]> {
-    try {
-      const { data } = await axios.get<ICurrency[]>(getCurrenciesApi())
-      return data;
-    } catch(e) {
-      console.log(e)
-      return [];
-    }
-  }
-
   async function getRates() {
     try {
       const {data} = await axios.get<IRate[]>(getRatessApi());
@@ -40,15 +29,6 @@ $(document).ready(function () {
       drawRightColumns(defaultCurrency);
     } catch(e) {
       console.log(e);
-    }
-  }
-  async function getDirections(): Promise<IDirection[]> {
-    try {
-      const { data } = await axios.get<{data: IDirection[]}>(getDirectionsApi())
-      return data.data;
-    } catch(e) {
-      console.log(e)
-      return [];
     }
   }
 
@@ -68,9 +48,6 @@ $(document).ready(function () {
           </div>
           <div class="welcome__exchange-name">
               Резерв: ${direction.data.max_amount}
-          </div>
-          <div class="welcome__exchange-button" type="submit">
-              ОБМЕНЯТЬ
           </div>
         </div>
       </div>
@@ -98,9 +75,7 @@ $(document).ready(function () {
     let filtredDirection = tag !== "all" ? directions.filter(item => item.currency_to.tag === tag) : directions
     rightExchangeColumnList.html('')
     $.each(filtredDirection, function(_, item) {
-      
       const listItem = $(generateHTMLRightItem(item));
-
       listItem.on('click', function() {
         exchangeCurrencyTo.val(item.currency_to.name);
         exchangeCurrencyAmout.val(item.data.min_amount)
@@ -118,7 +93,9 @@ $(document).ready(function () {
       const listItem = $(generateHTMLLeftItem(item));
 
       listItem.on('click', function() {
+        filterItem.removeClass('active');
         $('.welcome__exchange-item').removeClass('active');
+        $('.welcome__exchange-filter-item[data-filter="all"]').addClass('active');
         $(this).addClass('active');
         drawRightColumns(item.name)
         defaultCurrency = item.name;

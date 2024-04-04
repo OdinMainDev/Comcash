@@ -1,9 +1,19 @@
 import axios from "axios";
-import { ICurrency } from "../models/interfaces";
+import { ICurrency, IDirection } from "../models/interfaces";
 import { getCurrenciesApi } from "@/shared/api/getCurrenciesApi";
 
 export const getDirectionsApi = ():string => {
   return `${import.meta.env.VITE_API_URL}/api/get/directions`;
+}
+
+export async function getDirections(): Promise<IDirection[]> {
+  try {
+    const { data } = await axios.get<{data: IDirection[]}>(getDirectionsApi())
+    return data.data;
+  } catch(e) {
+    console.log(e)
+    return [];
+  }
 }
 
 export const getRatessApi = ():string => {
