@@ -32,16 +32,11 @@ class Controller_TelegramBot extends Controller{
             "enabled" => "required|boolean",
         ]);
 
-        $needToUpdateWebhook = true;
         $model = new TelegramBot;
         if($request->has("id") && $request->id){
-            $needToUpdateWebhook = false;
             $model = TelegramBot::where("id", $request->id)->first();
             if(!$model){
                 return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
-            }
-            if($request->token != $model->token || $request->username != $model->username){
-                $needToUpdateWebhook = true;
             }
         }
 
@@ -50,13 +45,10 @@ class Controller_TelegramBot extends Controller{
         $model->status = $request->enabled;
         $model->save();
 
-        if($needToUpdateWebhook){
-            $handler = new RegisterWebhook($model);
-            $handler->process();
-        }
-        return $this->responseSuccess(false, [
-            "update_webhook" => $needToUpdateWebhook
-        ]);
+        $handler = new RegisterWebhook($model);
+        $handler->process();
+        
+        return $this->responseSuccess();
     }
 
     public function delete($lang, $id) {

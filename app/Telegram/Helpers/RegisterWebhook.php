@@ -25,7 +25,7 @@ class RegisterWebhook
             if(env("APP_IP_ADDRESS", false)) {
                 $data['ip_address'] = env("APP_IP_ADDRESS", false);
             }
-            $result = $telegram->setWebhook(route("telegramBotWebhook", $data));
+            $result = $telegram->setWebhook(route("telegramBotWebhook", [$this->bot->id]), $data);
             if (!$result->isOk()) {
                 $this->bot->delete();
                 throw ValidationException::withMessages(["id" => $result->getDescription()]);
