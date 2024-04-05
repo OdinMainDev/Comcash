@@ -35,12 +35,13 @@ class Controller_TelegramBot extends Controller{
         $needToUpdateWebhook = true;
         $model = new TelegramBot;
         if($request->has("id") && $request->id){
+            $needToUpdateWebhook = false;
             $model = TelegramBot::where("id", $request->id)->first();
             if(!$model){
                 return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
             }
             if($request->token != $model->token || $request->username != $model->username || $request->enabled != $model->status){
-                $needToUpdateWebhook = false;
+                $needToUpdateWebhook = true;
             }
         }
 
