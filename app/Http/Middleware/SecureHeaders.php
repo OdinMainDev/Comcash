@@ -71,8 +71,10 @@ class SecureHeaders
                 $cspString[] = $directive . ' ' . $sources;
             }
         }
-
-        $response->headers->set('Content-Security-Policy', implode('; ', $cspString));
+        
+        if (!$request->is('*/panel/*')) {
+            $response->headers->set('Content-Security-Policy', implode('; ', $cspString));
+        }
         $response->headers->set('X-Frame-Options', 'DENY');
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('Referrer-Policy', 'no-referrer');
