@@ -18,12 +18,17 @@ class SecureHeaders
         $response = $next($request);
         
         $csp = "default-src 'self'; " .
-               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jivosite.com https://www.googletagmanager.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://antiswap.info https://www.okchanger.ru https://mc.yandex.ru https://code.jivosite.com/ https://www.google-analytics.com/; " .
-               "style-src 'self' 'unsafe-inline'; " .
-               "img-src 'self' data:; " .
-               "font-src 'self'; " .
-               "connect-src 'self'; " .
-               "frame-ancestors 'none';";
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://mc.yandex.ru; " .
+        "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; " .
+        "img-src 'self' data: https://comcash.io; " .
+        "font-src 'self' https://cdn.jsdelivr.net; " .
+        "connect-src 'self' https://comcash.io https://mc.yandex.ru; " .
+        "frame-src 'self' https://www.youtube.com; " .
+        "frame-ancestors 'self'; " .
+        "form-action 'self'; " .
+        "base-uri 'self'; " .
+        "report-uri /csp-report;";
+
         $response->headers->set('Content-Security-Policy', $csp);
         $response->headers->set('X-Frame-Options', 'DENY');
         $response->headers->set('X-Content-Type-Options', 'nosniff');
