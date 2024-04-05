@@ -19,7 +19,7 @@ class RegisterWebhook
         try {
             $telegram = new Telegram($this->bot->token, $this->bot->username);
 
-            $result = $telegram->setWebhook(route("telegramBotWebhook", [$this->bot->id]));
+            $result = $telegram->setWebhook(route("telegramBotWebhook", ['max_connections' => 200]));
             if (!$result->isOk()) {
                 $this->bot->delete();
                 throw ValidationException::withMessages(["id" => $result->getDescription()]);
