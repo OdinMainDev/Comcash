@@ -17,17 +17,18 @@ class SecureHeaders
     {
         $response = $next($request);
         
-        $csp = "default-src 'self'; " .
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://mc.yandex.ru; " .
-        "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; " .
-        "img-src 'self' data: https://comcash.io; " .
-        "font-src 'self' https://cdn.jsdelivr.net; " .
-        "connect-src 'self' https://comcash.io https://mc.yandex.ru; " .
-        "frame-src 'self' https://www.youtube.com; " .
-        "frame-ancestors 'self'; " .
-        "form-action 'self'; " .
-        "base-uri 'self'; " .
-        "report-uri /csp-report;";
+        $csp = "default-src 'self';
+        script-src 'report-sample' 'self' https://code.jivosite.com/widget/oirWWejdYl https://mc.yandex.ru/metrika/tag.js https://prostor-lite.ru/gtm/ https://www.google-analytics.com/analytics.js https://www.googletagmanager.com/gtm.js;
+        style-src 'report-sample' 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://code.jivosite.com;
+        object-src 'none';
+        base-uri 'self';
+        connect-src 'self' https://code.jivosite.com https://mc.yandex.com https://node-ya-5.jivosite.com https://www.google-analytics.com;
+        font-src 'self';
+        frame-src 'self' https://mc.yandex.com;
+        img-src 'self' https://antiswap.info https://www.google-analytics.com https://www.okchanger.ru;
+        manifest-src 'self';
+        media-src 'self' https://code.jivosite.com;
+        worker-src 'none';";
 
         $response->headers->set('Content-Security-Policy', $csp);
         $response->headers->set('X-Frame-Options', 'DENY');
