@@ -137,7 +137,7 @@ class Controller_User extends Controller{
             dispatch(function () {
                 Artisan::call('app:fill-emails-users');
             });
-            return redirect()->back();
+            return redirect(route("dashboard"));
         }
         return view("admin.pages.user.export")->with("cache", $cache);
     }
