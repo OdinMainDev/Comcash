@@ -53,7 +53,9 @@ class Controller_TelegramBot extends Controller{
             $handler = new RegisterWebhook($model);
             $handler->process();
         }
-        return $this->responseSuccess();
+        return $this->responseSuccess(false, [
+            "update_webhook" => $needToUpdateWebhook
+        ]);
     }
 
     public function delete($lang, $id) {
