@@ -185,6 +185,7 @@ return [
     "affiliate my affiliates" => "Заявки моих аффилейтов",
     "affiliate my balance" => "Мой баланс",
     "knowledge tariffs title" => "Тарифы",
+    "knowledge tariffs title 2" => "Тарифы",
     "knowledge tariffs description" => "Если вас интересует обмен криптовалют, то рекомендуется обязательно изучить тарифы Comcash.io. Ниже
     представлен актуальный перечень цифровых валют с курсами по обмену. Задействовав наш сервис, вы сможете
     моментально, безопасно и выгодно обменять Bitcoin, Ethereum, Dogecoin, Bitcoin Cash, Tether ERC20, Dai, TRON

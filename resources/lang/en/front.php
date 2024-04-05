@@ -1,4 +1,5 @@
 <?php return array (
+  'knowledge tariffs title 2' => 'Tariffs',
   'exchangePageInputBank' => 'Specify the bank',
   'welcomeMainText' => 'Our exchanger preserves your anonymity',
   'PagesMenu' => 'Pages',
