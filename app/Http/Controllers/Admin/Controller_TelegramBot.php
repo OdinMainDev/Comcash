@@ -33,11 +33,18 @@ class Controller_TelegramBot extends Controller{
         ]);
 
         $model = new TelegramBot;
+        $check = TelegramBot::where("token", $request->token);
         if($request->has("id") && $request->id){
             $model = TelegramBot::where("id", $request->id)->first();
             if(!$model){
                 return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
             }
+            $check = $check->where("id", "!=", $model->id);
+        }
+        $check = $check->first();
+
+        if($check) {
+            return $this->responseErrorValidation(["undefined" => __("common.token_bot_already_exists")]);
         }
 
         $model->username = $request->username;
