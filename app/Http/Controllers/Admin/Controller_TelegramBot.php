@@ -39,7 +39,7 @@ class Controller_TelegramBot extends Controller{
             if(!$model){
                 return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
             }
-            if($request->token == $model->token && $request->username == $model->username && $request->enabled == $model->status){
+            if($request->token != $model->token || $request->username != $model->username || $request->enabled != $model->status){
                 $needToUpdateWebhook = false;
             }
         }
