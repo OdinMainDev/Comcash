@@ -22,6 +22,6 @@ class SecureHeaders
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('Referrer-Policy', 'no-referrer');
 
-        return $next($request);
+        return $response;
     }
 }
