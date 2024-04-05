@@ -19,7 +19,13 @@ class RegisterWebhook
         try {
             $telegram = new Telegram($this->bot->token, $this->bot->username);
 
-            $result = $telegram->setWebhook(route("telegramBotWebhook", ['max_connections' => 200]));
+            $data = [
+                'max_connections' => 200
+            ];
+            if(env("APP_IP_ADDRESS", false)) {
+                $data['ip_address'] = env("APP_IP_ADDRESS", false);
+            }
+            $result = $telegram->setWebhook(route("telegramBotWebhook", $data));
             if (!$result->isOk()) {
                 $this->bot->delete();
                 throw ValidationException::withMessages(["id" => $result->getDescription()]);

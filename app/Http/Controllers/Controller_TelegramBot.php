@@ -17,7 +17,7 @@ class Controller_TelegramBot extends Controller{
         
         $bot = $this->getTelegramBotModel($id);
         if (!$bot)
-            return abort(404);
+            return "";
 
         try {
             $telegram = new Telegram($bot->token, $bot->username);
@@ -35,7 +35,6 @@ class Controller_TelegramBot extends Controller{
             $telegram->handle();
 
         } catch (TelegramException $e) {
-            
             sendTelegramNotification("ОШИБКА ТЕЛЕГРАМ БОТА\n".$e->getMessage());
             $this->responseErrorValidation(["undefined" => $e->getMessage()]);
         }
