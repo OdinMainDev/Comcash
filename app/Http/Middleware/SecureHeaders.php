@@ -18,7 +18,7 @@ class SecureHeaders
         $response = $next($request);
         
         $csp = "default-src 'self'; " .
-               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jivosite.com https://www.googletagmanager.com; " .
+               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jivosite.com https://www.googletagmanager.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://antiswap.info https://www.okchanger.ru https://mc.yandex.ru https://code.jivosite.com/ https://www.google-analytics.com/; " .
                "style-src 'self' 'unsafe-inline'; " .
                "img-src 'self' data:; " .
                "font-src 'self'; " .
