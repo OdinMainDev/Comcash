@@ -33,7 +33,7 @@ class RegisterWebhook
             
         } catch (TelegramException $e) {
             $this->bot->delete();
-            throw ValidationException::withMessages(["id" => $result->getDescription()]);
+            throw ValidationException::withMessages(["id" => $e->getMessage()]);
         }
         return $this->bot;
     }
