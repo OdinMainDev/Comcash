@@ -72,7 +72,7 @@ class SecureHeaders
             }
         }
         
-        if (!$request->is('*/panel/*')) {
+        if (!$request->is('*/panel/*') && !$request->is('*/panel')) {
             $response->headers->set('Content-Security-Policy', implode('; ', $cspString));
         }
         $response->headers->set('X-Frame-Options', 'DENY');
