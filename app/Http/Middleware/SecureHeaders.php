@@ -17,7 +17,14 @@ class SecureHeaders
     {
         $response = $next($request);
         
-        $response->headers->set('Content-Security-Policy', "default-src 'self';");
+        $csp = "default-src 'self'; " .
+               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jivosite.com https://www.googletagmanager.com; " .
+               "style-src 'self' 'unsafe-inline'; " .
+               "img-src 'self' data:; " .
+               "font-src 'self'; " .
+               "connect-src 'self'; " .
+               "frame-ancestors 'none';";
+        $response->headers->set('Content-Security-Policy', $csp);
         $response->headers->set('X-Frame-Options', 'DENY');
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('Referrer-Policy', 'no-referrer');
