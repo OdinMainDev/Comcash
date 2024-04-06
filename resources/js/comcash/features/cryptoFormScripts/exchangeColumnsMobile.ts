@@ -85,6 +85,7 @@ $(document).ready(function () {
       })
       rightExchangeColumnList.append(listItem)
     });
+  
     rightSlider = new Swiper(".welcome__exchange-mobile-side_right-list", {
       slidesPerView: 3,
       loop: filtredDirection.length > 0,
