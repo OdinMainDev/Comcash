@@ -67,7 +67,7 @@
         <div class="header__buttons">
         <div class='select'>
             <div class='select__container'>
-                <a class='select__option language_select' name="ru">
+                <a class='select__option language_select' name="ru" href="/ru">
                     <input type='radio' id='ru' name='locale' value='ru'
                         @if(app()->getLocale() == "ru") checked @endif
                     >
@@ -76,7 +76,7 @@
                         alt='Comcash - русский язык' />
                     </label>
                 </a>
-                <a class='select__option language_select' name="en">
+                <a class='select__option language_select' name="en" href="/en">
                     <input type='radio' id='en' name='locale' value='en'
                         @if(app()->getLocale() == "en") checked @endif
                     >
@@ -86,7 +86,7 @@
                     </label>
                 </a>
                 @if(in_array("fr", config("app.languages")))
-                    <a class='select__option language_select' name="fr">
+                    <a class='select__option language_select' name="fr" href="/fr">
                         <input type='radio' id='fr' name='locale' value='fr'
                             @if(app()->getLocale() == "fr") checked @endif
                         >
@@ -97,7 +97,7 @@
                     </a>
                 @endif
                 @if(in_array("de", config("app.languages")))
-                    <a class='select__option language_select' name="de">
+                    <a class='select__option language_select' name="de" href="/de">
                         <input type='radio' id='de' name='locale' value='de'
                             @if(app()->getLocale() == "de") checked @endif
                         >
@@ -109,7 +109,7 @@
                 @endif
 
                 @if(in_array("es", config("app.languages")))
-                    <a class='select__option language_select' name="es">
+                    <a class='select__option language_select' name="es" href="/es">
                         <input type='radio' id='es' name='locale' value='es'
                             @if(app()->getLocale() == "es") checked @endif
                         >
