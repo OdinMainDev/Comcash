@@ -67,57 +67,57 @@
         <div class="header__buttons">
         <div class='select'>
             <div class='select__container'>
-                <div class='select__option language_select' name="ru">
+                <a class='select__option language_select' name="ru">
                     <input type='radio' id='ru' name='locale' value='ru'
                         @if(app()->getLocale() == "ru") checked @endif
-                    />
+                    >
                     <label for='ru'>
                     <img src='/comcash/img/icons/locales/ru.png'
                         alt='Comcash - русский язык' />
                     </label>
-                </div>
-                <div class='select__option language_select' name="en">
+                </a>
+                <a class='select__option language_select' name="en">
                     <input type='radio' id='en' name='locale' value='en'
                         @if(app()->getLocale() == "en") checked @endif
-                    />
+                    >
                     <label for='en'>
                     <img src='/comcash/img/icons/locales/en.png'
                         alt='Comcash - english language' />
                     </label>
-                </div>
+                </a>
                 @if(in_array("fr", config("app.languages")))
-                    <div class='select__option language_select' name="fr">
+                    <a class='select__option language_select' name="fr">
                         <input type='radio' id='fr' name='locale' value='fr'
                             @if(app()->getLocale() == "fr") checked @endif
-                        />
+                        >
                         <label for='fr'>
                         <img src='/comcash/img/icons/locales/fr.png'
                             alt='Comcash - langue française' />
                         </label>
-                    </div>
+                    </a>
                 @endif
                 @if(in_array("de", config("app.languages")))
-                    <div class='select__option language_select' name="de">
+                    <a class='select__option language_select' name="de">
                         <input type='radio' id='de' name='locale' value='de'
                             @if(app()->getLocale() == "de") checked @endif
-                        />
+                        >
                         <label for='de'>
                         <img src='/comcash/img/icons/locales/de.png'
                             alt='Comcash - deutsche Sprache' />
                         </label>
-                    </div>
+                    </a>
                 @endif
 
                 @if(in_array("es", config("app.languages")))
-                    <div class='select__option language_select' name="es">
+                    <a class='select__option language_select' name="es">
                         <input type='radio' id='es' name='locale' value='es'
                             @if(app()->getLocale() == "es") checked @endif
-                        />
+                        >
                         <label for='es'>
                         <img src='/comcash/img/icons/locales/es.png'
                             alt='Comcash - lengua española' />
                         </label>
-                    </div>
+                    </a>
                 @endif
                 </div>
                 <div class='select__current'></div>

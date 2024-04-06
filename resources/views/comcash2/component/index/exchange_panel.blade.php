@@ -33,7 +33,8 @@
                         <input class="welcome__exchange-input" id="exchangeCurrencyFromMobile" name="currency_from"/>
 
                         <div class="welcome__exchange-title">ВЫ ОТПРАВЛЯЕТЕ</div>
-                        <div class="welcome__exchange-filter"></div>
+                        <div class="welcome__exchange-filter">
+                        </div>
                         <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_left-list">
                             <div class="swiper-wrapper"></div>
                         </div>
@@ -53,11 +54,8 @@
                                 Крипта
                             </div>
                         </div>
-                        <div class="welcome__exchange-mobile-side-list">
-                            <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_right-list">
-                                <div class="swiper-wrapper">
-                                </div>
-                            </div>
+                        <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_right-list">
+                            <div class="swiper-wrapper"> </div>
                         </div>
                     </div>		
                 </div>

@@ -24,6 +24,8 @@ $(document).ready(function () {
     drawRightColumns(defaultCurrency, $(this).data('filter'));
   })
 
+;
+
   function generateHTMLLeftItem(currency: ICurrency) {
     return `
       <div class="swiper-slide" data-name=${currency.name}>
@@ -52,9 +54,6 @@ $(document).ready(function () {
             <div class="welcome__exchange-name">
                 Курс: 1 - ${findRateByCurrency(defaultCurrency, direction.currency_to.name, rates)}
             </div>
-            <div class="welcome__exchange-name">
-                Резерв: ${direction.data.max_amount}
-            </div>
           </div>
         </div>
 
@@ -76,14 +75,19 @@ $(document).ready(function () {
   async function drawRightColumns(currencyName:string, tag = "all") {
     let directions: IDirection[] = (await getDirections()).filter(item => item.currency_from.name === currencyName) || [];
     let filtredDirection = tag !== "all" ? directions.filter(item => item.currency_to.tag === tag) : directions
-    rightExchangeColumnList.html('')
+    rightExchangeColumnList.html('');
+    let rightSlider:Swiper;
     $.each(filtredDirection, function(_, item) {
       const listItem = $(generateHTMLRightItem(item));
+      $(listItem).on('click', function() {
+        const slideIndex = $(this).data("swiper-slide-index")
+        rightSlider.slideToLoop(slideIndex);
+      })
       rightExchangeColumnList.append(listItem)
     });
-    new Swiper(".welcome__exchange-mobile-side_right-list", {
+    rightSlider = new Swiper(".welcome__exchange-mobile-side_right-list", {
       slidesPerView: 3,
-      loop: true,
+      loop: filtredDirection.length > 0,
       effect: "coverflow",
       grabCursor: true,
       centeredSlides: true,
@@ -104,19 +108,24 @@ $(document).ready(function () {
           exchangeCurrencyAmout.val(amount)
         }
       }
-    });
+    })
+
   }
 
   async function drawLeftColumns () {
     currencies = await getCurrencies();
     const cryptoCurrencies = filterByTag(currencies, "crypto");
-    leftExchangeColumnList.html('')
+    leftExchangeColumnList.html('');
+    let leftSlider: Swiper;
     $.each(cryptoCurrencies, function(_, item) {
       const listItem = $(generateHTMLLeftItem(item));
-
+      $(listItem).on('click', function() {
+        const slideIndex = $(this).data("swiper-slide-index");
+        leftSlider.slideToLoop(slideIndex);
+      })
       leftExchangeColumnList.append(listItem)
     });
-    new Swiper(".welcome__exchange-mobile-side_left-list", {
+    leftSlider = new Swiper(".welcome__exchange-mobile-side_left-list", {
       slidesPerView: 3,
       loop: true,
       effect: "coverflow",
