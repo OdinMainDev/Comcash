@@ -34,7 +34,7 @@ $(document).ready(function () {
 
   function generateHTMLRightItem(direction: IDirection) {
     return `
-    <button class="welcome__exchange-item welcome__exchange-item_to">
+    <button class="welcome__exchange-item welcome__exchange-item_to desktop" type="submit">
       <div class="welcome__exchange-item-content">
         <div class="flex items-center">
           <img  class="welcome__exchange-img" src="${direction.currency_to.image}">
@@ -57,7 +57,7 @@ $(document).ready(function () {
 
   function generateHTMLLeftItem(currency: ICurrency) {
     return `
-    <div class="${currency.name === defaultCurrency ? "welcome__exchange-item active" : "welcome__exchange-item"}">
+    <div class="${currency.name === defaultCurrency ? "welcome__exchange-item active" : "welcome__exchange-item"} desktop">
       <div class="welcome__exchange-item-content">
         <div class="flex items-center">
           <img  class="welcome__exchange-img" src="${currency.image}">
