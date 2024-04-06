@@ -1,4 +1,5 @@
 <?php return array (
+  'token_bot_already_exists' => 'Le jeton existe déjà dans la base de données',
   'balance' => 'Équilibre',
   'password' => 'Mot de passe',
   'bankToSendMoney' => 'Banque',

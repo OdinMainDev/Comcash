@@ -25,12 +25,12 @@ class Parser {
     public function handle(){
         $response = $this->getKucoinData();
         if(!$response){
-            sendTelegramNotification("Error on parse rates...");
+            sendTelegramNotification("Error on parse rates...", 4);
             return;
         }
         $rubPrice = $this->getRubPriceGarantex();
         if(!$rubPrice){
-            sendTelegramNotification("Failed to fetch RUB price...");
+            sendTelegramNotification("Failed to fetch RUB price...", 4);
             return;
         }
         $response = $this->addRubValues($response, $rubPrice); 
@@ -72,7 +72,7 @@ class Parser {
         // }
 
         if (!$response) {
-            sendTelegramNotification("Error fetching data from Kucoin: url: ".$url);
+            sendTelegramNotification("Error fetching data from Kucoin: url: ".$url, 4);
             return [];
         }
         $data = json_decode($response, true);
@@ -124,7 +124,7 @@ class Parser {
         // }
 
         if (!$response) {
-            sendTelegramNotification("Error fetching data from Commex: url: ".$url);
+            sendTelegramNotification("Error fetching data from Commex: url: ".$url, 4);
             return [];
         }
         $data = json_decode($response, true);
@@ -151,17 +151,17 @@ class Parser {
             info("GARANTEX ERROR");
             info($url);
             info($response);
-            sendTelegramNotification("Error fetching data from Garantex: url: ".$url);
+            sendTelegramNotification("Error fetching data from Garantex: url: ".$url, 4);
             return false;
         }
         $data = json_decode($response, true);
         if(!is_array($data) || count($data) == 0) {
-            sendTelegramNotification("Error fetching data #2 from Garantex: url: ".$url);
+            sendTelegramNotification("Error fetching data #2 from Garantex: url: ".$url, 4);
             return false;
         }
         $lastElement = end($data);
         if (!isset($lastElement['low'])) {
-            sendTelegramNotification("Error fetching data #3 from Garantex: url: ".$url);
+            sendTelegramNotification("Error fetching data #3 from Garantex: url: ".$url, 4);
             return false;
         }
         

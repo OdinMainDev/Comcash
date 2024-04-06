@@ -57,7 +57,7 @@ class RatesParser extends Command{
         // $inserts = array_merge($inserts, $this->parseFromGarantex());
         $inserts = array_merge($inserts, $this->parseFromParserV2($request_currency, count($inserts) == 0));
         if(count($inserts) == 0){
-            sendTelegramNotification("ОШИБКА НОВОГО ПАРСЕРА!!");
+            sendTelegramNotification("ОШИБКА НОВОГО ПАРСЕРА!!", 4);
             $inserts = array_merge($inserts, $this->parseFromCryptocompare($request_currency, count($inserts) == 0));
         }
         
@@ -70,20 +70,20 @@ class RatesParser extends Command{
         $request_currency = implode(",", $request_currency);
         $api_key = env("CRYPTOCOMPARE_KEY", false);
         if(!$api_key){
-            sendTelegramNotification("<b>ОШИБКА!</b>\nНастройте парсер.");
+            sendTelegramNotification("<b>ОШИБКА!</b>\nНастройте парсер.", 4);
             return [];
         }
         $url = "https://min-api.cryptocompare.com/data/pricemulti?api_key=$api_key&fsyms=$request_currency&tsyms=$request_currency";
         $response = Http::get($url);
         if($response->clientError() || $response->status() != 200){
-            sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.");
+            sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.", 4);
             return [];
         }
 
         $response = $response->json();
         $inserts = [];
         if(@$response['Response'] == "Error"){
-            sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов 2, кривой ответ от сервера курсов валют.\n\n".json_encode($response));
+            sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов 2, кривой ответ от сервера курсов валют.\n\n".json_encode($response), 4);
             return [];
         }
 
@@ -122,12 +122,12 @@ class RatesParser extends Command{
                 try {
                     $response = Http::timeout(-1)->get($url);
                     if($response->clientError() || $response->status() != 200){
-                        sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса, кривой ответ от сервера курсов валют.");
+                        sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса, кривой ответ от сервера курсов валют.", 4);
                         return [];
                     }
                     $response = $response->json();
                     if(!is_array($response) || count($response) == 0){
-                        sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 2, кривой ответ от сервера курсов валют.");
+                        sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 2, кривой ответ от сервера курсов валют.", 4);
                         return [];
                     }
                     $inserts[] = [
@@ -136,7 +136,7 @@ class RatesParser extends Command{
                         "rate" => $response[0]['price'],
                     ];
                 } catch (RequestException $ex){
-                    sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 3, кривой ответ от сервера курсов валют.\n\n".$ex->getMessage());
+                    sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов гарантекса 3, кривой ответ от сервера курсов валют.\n\n".$ex->getMessage(), 4);
                     return [];
                 }
                 

@@ -32,16 +32,19 @@ class Controller_TelegramBot extends Controller{
             "enabled" => "required|boolean",
         ]);
 
-        $needToUpdateWebhook = true;
         $model = new TelegramBot;
+        $check = TelegramBot::where("token", $request->token);
         if($request->has("id") && $request->id){
             $model = TelegramBot::where("id", $request->id)->first();
             if(!$model){
                 return $this->responseErrorValidation(["undefined" => __("common.data_fail")]);
             }
-            if($request->token == $model->token && $request->username == $model->username && $request->enabled == $model->status){
-                $needToUpdateWebhook = false;
-            }
+            $check = $check->where("id", "!=", $model->id);
+        }
+        $check = $check->first();
+
+        if($check) {
+            return $this->responseErrorValidation(["undefined" => __("common.token_bot_already_exists")]);
         }
 
         $model->username = $request->username;
@@ -49,10 +52,9 @@ class Controller_TelegramBot extends Controller{
         $model->status = $request->enabled;
         $model->save();
 
-        if($needToUpdateWebhook){
-            $handler = new RegisterWebhook($model);
-            $handler->process();
-        }
+        $handler = new RegisterWebhook($model);
+        $handler->process();
+        
         return $this->responseSuccess();
     }
 

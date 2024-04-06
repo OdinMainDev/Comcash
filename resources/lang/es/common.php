@@ -1,4 +1,5 @@
 <?php return array (
+  'token_bot_already_exists' => 'El token ya existe en la base de datos',
   'balance' => 'Saldo',
   'password' => 'Contraseña',
   'bankToSendMoney' => 'Banco',

@@ -1,4 +1,5 @@
 <?php return array (
+  'knowledge tariffs title 2' => 'Tarifs',
   'exchangePageInputBank' => 'Préciser la banque',
   'page_about_advantage_1_title' => 'DES COURS OPTIMAUX',
   'page_about_advantage_1_content' => 'Découvrez tous les avantages de l\'échange de crypto-monnaies de différentes manières, y compris contre de l\'argent réel.',

@@ -186,5 +186,6 @@ return [
     "bankToSendMoney" => "Банк",
     "phoneToSendMoney" => "Номер телефона",
     "password" => "Пароль",
-    "balance" => "Баланс"
+    "balance" => "Баланс",
+    "token_bot_already_exists" => "Токен уже существует в базе"
 ];

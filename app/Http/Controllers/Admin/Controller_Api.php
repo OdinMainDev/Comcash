@@ -54,21 +54,21 @@ class Controller_Api extends Controller{
             Artisan::call('cache:clear');
             Artisan::call('app:cache-directions');
         });
-        return redirect()->back();
+        return redirect(route("dashboard"));
     }
 
     public function sitemap_generate() {
         dispatch(function () {
             Artisan::call('app:fill-sitemap');
         });
-        return redirect()->back();
+        return redirect(route("dashboard"));
     }
 
     public function languages_update() {
         dispatch(function () {
             Artisan::call('app:sync-languages');
         });
-        return redirect()->back();
+        return redirect(route("dashboard"));
     }
 
     public function dasboard_registers() {
