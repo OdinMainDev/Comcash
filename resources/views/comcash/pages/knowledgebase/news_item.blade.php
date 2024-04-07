@@ -10,7 +10,7 @@
                 {!! $news->getContent() !!}
             </p>
         </div>
-        <a class="support__btn button" href="{{route('index')}}">{{__("front.returnToHomePage")}}</a>
       </div>
+      <a class="support__btn button" href="{{route('index')}}">{{__("front.returnToHomePage")}}</a>
 </div>
 @endsection
