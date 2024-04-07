@@ -9,8 +9,8 @@
             <p class="news-item__text">
                 {!! $news->getContent() !!}
             </p>
+            <a class="support__btn button" href="{{route('index')}}">{{__("front.returnToHomePage")}}</a>
         </div>
       </div>
-      <a class="support__btn button" href="{{route('index')}}">{{__("front.returnToHomePage")}}</a>
 </div>
 @endsection
