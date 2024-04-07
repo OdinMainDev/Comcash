@@ -438,5 +438,6 @@ return [
     "CleaningMenu" => "Очистка крипты",
     "exchangePageInputPhone" => "Номер телефона",
     "phonesbpreceive" => "Номер телефона ( СБП )",
-    "exchangePageInputBank" => "Укажите банк"
+    "exchangePageInputBank" => "Укажите банк",
+    "returnToHomePage" => "Обмен криптовалюты"
 ];

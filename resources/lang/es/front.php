@@ -1,4 +1,5 @@
 <?php return array (
+  'returnToHomePage' => 'Bolsa de criptomonedas',
   'knowledge tariffs title 2' => 'Aranceles',
   'exchangePageInputBank' => 'Especifique el banco',
   'welcomeMainText' => 'Nuestro intercambiador preserva su anonimato',

@@ -1,4 +1,5 @@
 <?php return array (
+  'returnToHomePage' => 'Cryptocurrency Exchange',
   'knowledge tariffs title 2' => 'Tariffs',
   'exchangePageInputBank' => 'Specify the bank',
   'welcomeMainText' => 'Our exchanger preserves your anonymity',

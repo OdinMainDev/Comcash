@@ -116,6 +116,15 @@ class ExchangeStart implements ShouldQueue
         $text .= "🟡<b>Новая заявка на обмен</b>🟡\n";
         if($isTelegramBotExchange){
             $text .= "\n\n🤖🤖<b>ЗАЯВКА ИЗ БОТА</b>🤖🤖\n\n";
+            $telegramUsers = $this->user->getTelegramUsers;
+            $username = "";
+            foreach($telegramUsers as $user) {
+                if($user->username){
+                    $username = $user->username;
+                } 
+            }
+            if($username)
+                $text .= "Username: @".$username."\n";
         }
         $text .= "ID: ".$this->exchange->id."\n";
         $text .= "Направление обмена ".$this->exchange->currencyFrom->name." -> ".$this->exchange->currencyTo->name."\n";

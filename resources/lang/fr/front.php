@@ -1,4 +1,5 @@
 <?php return array (
+  'returnToHomePage' => 'Bourse des crypto-monnaies',
   'knowledge tariffs title 2' => 'Tarifs',
   'exchangePageInputBank' => 'Préciser la banque',
   'page_about_advantage_1_title' => 'DES COURS OPTIMAUX',
