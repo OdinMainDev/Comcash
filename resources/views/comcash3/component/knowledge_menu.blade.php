@@ -1,0 +1,1 @@
+@include("comcash.component.knowledge_menu")

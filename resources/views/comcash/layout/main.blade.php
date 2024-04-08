@@ -25,8 +25,10 @@
 		@include('comcash.layout.ads')
 		@if(env("THEME_NAME", "comcash") == "comcash")
 			@vite('resources/js/comcash/main.ts')
-		@else
+		@elseif(env("THEME_NAME", "comcash") == "comcash2")
 			@vite('resources/js/comcash/main2.ts')
+		@else
+			@vite('resources/js/comcash/main3.ts')
 		@endif
 	</head>
 	<body>

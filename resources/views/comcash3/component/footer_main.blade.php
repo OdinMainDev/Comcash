@@ -1,0 +1,1 @@
+@include("comcash.component.footer_main")

@@ -1,0 +1,1 @@
+@include("comcash.pages.profile_affiliate_balance")

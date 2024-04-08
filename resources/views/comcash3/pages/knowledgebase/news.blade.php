@@ -1,0 +1,1 @@
+@include("comcash.pages.knowledgebase.news")
