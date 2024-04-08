@@ -33,6 +33,9 @@ class Controller_Api extends Controller{
             "currency_to" => "required|string|max:255",
         ]);
         $currencies = $this->getCurrencyByName([ $request->currency_from, $request->currency_to]);
+        if(!is_array($currencies) || count($currencies) < 2) {
+            return $this->responseError("currency not found");
+        }
         $currency_from = $currencies[0];
         $currency_to = $currencies[1];
         unset($currencies);

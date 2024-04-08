@@ -34,6 +34,7 @@ class Controller_Exchange extends Controller{
             "manualfiat" => "nullable|string|max:255",
         ]);
 
+        $needToSendMessage = false;
         $exchange = Exchange::where("id", $request->id)->first();
         if(!$exchange)
             return abort(404);
