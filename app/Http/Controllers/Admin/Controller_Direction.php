@@ -215,13 +215,8 @@ class Controller_Direction extends Controller{
                     $direction->merchant_to = $merchant_to->id;
                     $direction->merchant_type_to = $merchant_to->type;
                 }
-                $data = $direction->data;
-                if($data_names)
-                    $data["titles"] = $this->replaceDirectionTags($direction, $data_names);
-                if($data_content)
-                    $data["content"] = $this->replaceDirectionTags($direction, $data_content);
-                if($data_seo)
-                    $data["seo"] = $this->replaceDirectionTags($direction, $data_seo);
+                $data = $this->updateDirectionTexts($direction, $data_names, $data_content, $data_seo, false);
+               
 
                 if(is_numeric($request->min_amount_usd))
                     $data['min_amount_usd'] = $request->min_amount_usd;
@@ -251,5 +246,31 @@ class Controller_Direction extends Controller{
         }
        
         return $texts;
+    }
+
+    public function updateDirectionTexts($direction, $data_names, $data_content, $data_seo, $needUpdate = false) {
+        $data = $direction->data;
+        if($data_names) {
+            if($needUpdate)
+                $data["titles"] = $this->replaceDirectionTags($direction, $data_names);
+            else
+                $data["titles"] = sumArraysWithoutDublicates(@$data["titles"], $this->replaceDirectionTags($direction, $data_names));
+        }
+        
+        if($data_content){
+            if($needUpdate)
+                $data["content"] = $this->replaceDirectionTags($direction, $data_content);
+            else
+                $data["content"] = sumArraysWithoutDublicates(@$data["content"], $this->replaceDirectionTags($direction, $data_content));
+        }
+
+        if($data_seo) {
+            if($needUpdate)
+                $data["seo"] = $this->replaceDirectionTags($direction, $data_seo);
+            else
+                $data["seo"] = sumArraysWithoutDublicates(@$data["seo"], $this->replaceDirectionTags($direction, $data_seo));
+        }
+
+        return $data;
     }
 }

@@ -253,3 +253,22 @@ function cleanHTML($html) {
     $cleanedHtml = strip_tags($html, $allowedTags);
     return $cleanedHtml;
 }
+
+function sumArraysWithoutDublicates($array, $sumArray) {
+    if(!$array)
+        $array = [];
+    if(!$sumArray)
+        $sumArray = [];
+
+    foreach($sumArray as $key => $value) {
+        if(!is_array($value)) {
+            if(!isset($array[$key]) || empty($array[$key])){
+                $array[$key] = $value;
+            }
+            continue;
+        }
+        $array[$key] = sumArraysWithoutDublicates(@$array[$key] ? $array[$key] : [], $value);
+    }
+
+    return $array;
+}
