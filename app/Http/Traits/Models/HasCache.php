@@ -280,8 +280,10 @@ trait HasCache {
                     continue;
 
                 $rate = $this->estimateGetRate($currency->name, $currency2->name, $direction->profit_percent);
+                $reverseRate = false;
                 if($rate < 0.01){
-                    $rate = $this->estimateGetRate($currency2->name, $currency->name, $direction->profit_percent); 
+                    $rate = $this->estimateGetRate($currency2->name, $currency->name, $direction->profit_percent);
+                    $reverseRate = true;
                 }
 
                 $citiesForCash = [
@@ -326,8 +328,13 @@ trait HasCache {
                     $xml .= "<item>";
                     $xml .= "<from>".$currency->name."</from>";
                     $xml .= "<to>".$currency2->name."</to>";
-                    $xml .= "<in>1</in>"; // CONSTANT
-                    $xml .= "<out>".$rate."</out>";
+                    if($reverseRate){
+                        $xml .= "<in>".$rate."</in>";
+                        $xml .= "<out>1</out>"; // CONSTANT
+                    }else{
+                        $xml .= "<in>1</in>"; // CONSTANT
+                        $xml .= "<out>".$rate."</out>";
+                    }
                     $xml .= "<amount>".@$this->estimateAmount("USD", $currency2->name, $currency2->units, env("MAX_EXCHANGE_AMOUNT", 50000), $direction->profit_percent)."</amount>"; // РЕЗЕРВ ТИПО
                     $xml .= "<minamount>".@$direction->data['min_amount']." ".$currency->name."</minamount>";
                     $xml .= "<maxamount>".@$direction->data['max_amount']." ".$currency->name."</maxamount>";
