@@ -1,9 +1,8 @@
+import { ITitles } from "@/features/cryptoFormScripts/models/interfaces";
+
 export interface ICurrency {
   data: {
-    titles: {
-      ru: string;
-      en: string;
-    }
+    titles: ITitles
   }
   id: number;
   image: string;

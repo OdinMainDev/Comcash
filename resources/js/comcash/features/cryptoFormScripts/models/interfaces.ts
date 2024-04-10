@@ -7,12 +7,11 @@ export interface IDirection {
 
 
 export interface IData {
-  titles: ITitles
+  titles: ITitles[]
 }
 
 export interface ITitles {
-  ru: string
-  en: string
+  [key: string]: string
 }
 
 export interface ICurrency{

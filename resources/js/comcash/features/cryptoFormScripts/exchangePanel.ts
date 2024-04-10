@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import { ICurrency } from './models/interfaces';
-import axios from 'axios';
-import { getCurrenciesApi } from '@/shared/api/getCurrenciesApi';
+
 import { defaultCryptoYouGet, defaultCryptoYouSend } from './constants';
 import { getCurrencySettings } from '../exchageFormScripts/api/getCurrencySettings';
 import { getEstimate } from '@/shared/api/getEstimate';
@@ -35,10 +34,8 @@ $(document).ready(async function() {
   const toTitle = $('.welcome-exchange__title_to');
 
   const courseTitle = $('.welcome-exchange__block-title > span');
-
-
   let currenciesList: ICurrency[] = await getCurrencies();
-  const lang = "en";
+  const lang = window.language || 'en';
   let currencyFrom: ICurrency = currenciesList[0] ?? defaultCryptoYouSend;
   let currencyTo: ICurrency = currenciesList[1] ?? defaultCryptoYouGet;
   let currencyFromAmount = 0;
