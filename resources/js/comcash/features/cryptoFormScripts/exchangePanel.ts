@@ -6,6 +6,7 @@ import { defaultCryptoYouGet, defaultCryptoYouSend } from './constants';
 import { getCurrencySettings } from '../exchageFormScripts/api/getCurrencySettings';
 import { getEstimate } from '@/shared/api/getEstimate';
 import { getCurrenciesFrom } from './api/getDirectionApi';
+import { getConvetredToUSD } from '@/shared/api/getConvetredToUSD';
 
 $(document).ready(async function() {
   const exchangePanelLeft = $('.exchnage-panel-left');
@@ -62,20 +63,20 @@ $(document).ready(async function() {
   $('.welcome-exchange__icon-reverse').on('click', reverse)
 
 
-  async function generateCourseTitle(currencyTo: string, error?: boolean) {
+  async function generateCourseTitle(currency: string, amount: number, error?: boolean) {
     const usdtName = 'USDTERC20';
     if (!error) {
-      courseTitle.text(`1 USD = ${0} ${currencyTo}`);
+      courseTitle.text(`${amount} ${currency} = ${0}$`);
 
       if (currentTimer) {
         clearInterval(currentTimer);
         currentTimer = null;
       }
   
-      startTimer(12, () => generateCourseTitle(currencyTo));
+      startTimer(12, () => generateCourseTitle(currency, amount, error));
       try {
-        const initialData = await getEstimate(usdtName, currencyTo, 1);
-        courseTitle.text(`1 USD = ${initialData.amount} ${currencyTo}`);
+        const initialData = await getConvetredToUSD(currency, amount);
+        courseTitle.text(`${amount} ${currency} = ${initialData}$`);
       } catch (e) {
       }
     } else {
@@ -117,6 +118,7 @@ $(document).ready(async function() {
     let value = amount.replace(/[^\d.-]/g, '');
     currencyFromAmountInput.val(value);
     currencyFromAmount = Number(value);
+    generateCourseTitle(currencyFrom.name, currencyFromAmount, false);
     try {
       const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value));
       currencyToAmount = data.amount;
@@ -254,9 +256,9 @@ $(document).ready(async function() {
       currencyFromAmountInput.prop('disabled', false);
       changeFromAmount(data.min_amount.toString());
       currencyFromAmountInput.attr('placeholder', `Min amount: ${data.min_amount}`);
-      generateCourseTitle(currencyTo.name);
+      generateCourseTitle(currencyFrom.name, currencyFromAmount);
     } catch(e) {
-      generateCourseTitle(currencyTo.name, true);
+      generateCourseTitle(currencyFrom.name, currencyFromAmount, true);
 
       currencyFromAmountInput.val('Недоступный вариант обмена!');
       currencyToAmountInput.val('Недоступный вариант обмена!');
