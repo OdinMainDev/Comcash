@@ -71,6 +71,27 @@ class Controller_Api extends Controller{
         return redirect(route("adminDashboard"));
     }
 
+    public function clear_directions_seo_titles() {
+        $directions = $this->getCacheDirections();
+        foreach($directions as $direction) {
+            if(!isset($direction->data['seo']))
+                continue;
+            if(!isset($direction->data['seo']['titles']))
+                continue;
+            if(!is_array($direction->data['seo']['titles']))
+                continue;
+            $data = $direction->data;
+            foreach($data['seo']['titles'] as $key => $value) {
+                if($key == "ru")
+                    continue;
+                $data['seo']['titles'][$key] = "";
+            }
+            $direction->data = $data;
+            $direction->save();
+        }
+        return redirect(route("adminDashboard"));
+    }
+
     public function dasboard_registers() {
         return Cache::remember("admin-dashboard-chart-registers", 60, function(){
             $endDate = Carbon::now();

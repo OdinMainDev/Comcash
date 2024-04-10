@@ -217,6 +217,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
     Route::group( ['middleware' => ['auth', 'permission:handle-exchanger']], function() {
         Route::get('/panel/clear/cache', [AdminApi::class, "clear_cache"])->name("adminClearCache");
+        Route::get('/panel/clear/directions/seo/titles', [AdminApi::class, "clear_directions_seo_titles"])->name("adminClearDirectionsSeoTitles");
         Route::get('/panel/update/languages', [AdminApi::class, "languages_update"])->name("adminLanguagesUpdate");
 
 
