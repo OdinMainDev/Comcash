@@ -1,31 +1,31 @@
 import { settingsLayoutTypes } from '@/shared/models/types/settings'
 
 export const defaultCurrencyYouSend = {
-  id: 5,
-  name: 'BTC',
-  units: 8,
-  image: '/icons/Bitcoin.png',
-  tag: 'crypto',
-  data: {
-    titles: {
-      en: 'BTC',
-      ru: 'BTC'
-    }
-  }
+  "id": 5,
+  "name": "BTC",
+  "units": 8,
+  "image": "/icons/Bitcoin.png",
+  "data": {
+      "titles": {
+          "ru": "Bitcoin BTC",
+          "en": "Bitcoin BTC"
+      }
+  },
+  "tag": "crypto"
 }
 
 export const defaultCurrencyYouGet = {
-  id: 6,
-  name: 'ETH',
-  units: 8,
-  image: '/icons/Ethereum.png',
-  tag: 'crypto',
-  data: {
-    titles: {
-      en: 'ETH',
-      ru: 'ETH'
-    }
-  }
+  "id": 6,
+  "name": "ETH",
+  "units": 8,
+  "image": "/icons/Ethereum.png",
+  "data": {
+      "titles": {
+          "ru": "Ethereum ETH",
+          "en": "Ethereum ETH"
+      }
+  },
+  "tag": "crypto"
 }
 
 export const settingsLayouts:settingsLayoutTypes[] = [

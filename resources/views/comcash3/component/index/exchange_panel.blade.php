@@ -4,12 +4,12 @@
             <form class="welcome-exchange" action="{{route("redirectToExchange")}}">
                 <div class="welcome-exchange__header">
                     <div class="welcome-exchange__title">
-                        Обмен Tether ERC20 USDT на Тинькофф RUB
+                        Обмен <span class="welcome-exchange__title_from"></span> на <span class="welcome-exchange__title_to"></span>
                     </div>
                     <div class="welcome-exchange__timer-container">
                         <div class="welcome-exchange__timer-text">
                             <div class="welcome-exchange__block-title">
-                                Курс: 1 USDT = 92.75 RUB
+                                Курс: <span></span>
                             </div>
                             <div class="welcome-exchange__block-subtitle">
                                 Курс зафиксируется после создания заявки
@@ -29,15 +29,15 @@
                 <div class="welcome-exchange__body">
                     <div class="welcome-exchange__block bottom exchnage-panel-left" >
                         <div class="welcome-exchange__block-subtitle mb-[10px]">
-                            Вы отправляете <span>Tether ERC20 USDT</span>
+                            Вы отправляете <span>–</span>
                         </div>
-                        <input class="welcome-exchange__input" type="number" name="amount" placeholder="Min amount:0">
+                        <input class="welcome-exchange__input" name="amount" placeholder="Min amount: 0">
                         <div class="welcome-exchange__select">
                             <input class="hidden" name="currency_from">
                             <div class="welcome-exchange__select-selected">
                                 <div class="welcome-exchange__select-selected-value flex items-center gap-[10px] mr-[20px]">
                                     <img src="https://comcash.io/icons/Ethereum.png" class="welcome-exchange__img"/>
-                                    <div class="welcome-exchange__name">Тинькофф(RUB)</div>
+                                    <div class="welcome-exchange__name">Не выбран</div>
                                 </div>
                                 <div class="welcome-exchange__arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="10" viewBox="0 0 28 14" fill="none">
@@ -55,28 +55,16 @@
                                     </div>
                                     <input class="welcome-exchange__select-search" placeholder="Поиск">
                                     <div class="welcome-exchange__filter">
-                                        <div class="welcome-exchange__filter-item active">Все</div>
-                                        <div class="welcome-exchange__filter-item">Карты</div>
-                                        <div class="welcome-exchange__filter-item">Крипта</div>
+                                        <div class="welcome-exchange__filter-item active" data-filter="all">Все</div>
+                                        <div class="welcome-exchange__filter-item" data-filter="fiat">Карты</div>
+                                        <div class="welcome-exchange__filter-item" data-filter="crypto">Крипта</div>
                                     </div>
                                 </div>
-                                <div class="welcome-exchange__list">
-                                    <div class="welcome-exchange__list-item active">
-                                        <div class="flex items-center gap-[10px]">
-                                            <img src="https://comcash.io/icons/Ethereum.png" class="welcome-exchange__img"/>
-                                            <div class="welcome-exchange__name">Тинькофф(RUB)</div>
-                                        </div>
-                                        <div class="welcome-exchange__list-check">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 28 28" fill="none">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14 28C21.732 28 28 21.732 28 14C28 6.26801 21.732 0 14 0C6.26801 0 0 6.26801 0 14C0 21.732 6.26801 28 14 28ZM20.9909 9.97352C21.3444 9.54924 21.2871 8.91868 20.8628 8.56511C20.4386 8.21155 19.808 8.26887 19.4544 8.69315L13.0787 16.344C12.732 16.7601 12.5371 16.9904 12.3815 17.132L12.3755 17.1374L12.3691 17.1325C12.2013 17.0057 11.9863 16.7939 11.6034 16.411L8.48532 13.2929C8.09479 12.9024 7.46163 12.9024 7.07111 13.2929C6.68058 13.6834 6.68058 14.3166 7.07111 14.7071L10.1892 17.8252L10.23 17.866L10.23 17.866C10.5565 18.1926 10.8706 18.5068 11.1628 18.7278C11.4902 18.9754 11.9189 19.2081 12.4683 19.1832C13.0177 19.1583 13.4236 18.8876 13.7272 18.6115C13.9982 18.365 14.2826 18.0236 14.5781 17.6688L14.5782 17.6688L14.6151 17.6244L20.9909 9.97352Z" fill="#009C74"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="welcome-exchange__list"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="welcome-exchange__icon">
+                    <div class="welcome-exchange__icon-reverse">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="none">
                             <g opacity="0.84992">
                                 <path d="M22.857 6.40091C21.5657 4.47826 19.823 3.09231 17.867 2.43221C15.9111 1.77212 13.837 1.87006 11.9279 2.71267C10.0189 3.55527 8.36794 5.10149 7.20038 7.14022C6.03282 9.17904 5.40562 11.611 5.4043 14.1042V17.4119" stroke="white" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -88,15 +76,15 @@
                     </div>
                     <div class="welcome-exchange__block top exchnage-panel-right">
                         <div class="welcome-exchange__block-subtitle mb-[10px]">
-                            Вы получаете<span>Тинькофф RUB</span>
+                            Вы получаете <span>–</span>
                         </div>
                         <input class="welcome-exchange__input" placeholder="Min amount: 0" >
                         <div class="welcome-exchange__select">
-                            <input class="hidden" name="currency_from" >
+                            <input class="hidden" name="currency_to">
                             <div class="welcome-exchange__select-selected">
                                 <div class="welcome-exchange__select-selected-value flex items-center gap-[10px] mr-[20px]">
                                     <img src="https://comcash.io/icons/Ethereum.png" class="welcome-exchange__img"/>
-                                    <div class="welcome-exchange__name">Тинькофф(RUB)</div>
+                                    <div class="welcome-exchange__name">Не выбран</div>
                                 </div>
                                 <div class="welcome-exchange__arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="10" viewBox="0 0 28 14" fill="none">
@@ -114,28 +102,20 @@
                                     </div>
                                     <input class="welcome-exchange__select-search" placeholder="Поиск">
                                     <div class="welcome-exchange__filter">
-                                        <div class="welcome-exchange__filter-item active">Все</div>
-                                        <div class="welcome-exchange__filter-item">Карты</div>
-                                        <div class="welcome-exchange__filter-item">Крипта</div>
+                                        <div class="welcome-exchange__filter-item active" data-filter="all">Все</div>
+                                        <div class="welcome-exchange__filter-item" data-filter="fiat">Карты</div>
+                                        <div class="welcome-exchange__filter-item" data-filter="crypto">Крипта</div>
                                     </div>
                                 </div>
                                 <div class="welcome-exchange__list">
-                                    <div class="welcome-exchange__list-item active">
-                                        <div class="flex items-center gap-[10px]">
-                                            <img src="https://comcash.io/icons/Ethereum.png" class="welcome-exchange__img"/>
-                                            <div class="welcome-exchange__name">Тинькофф(RUB)</div>
-                                        </div>
-                                        <div class="welcome-exchange__list-check">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 28 28" fill="none">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14 28C21.732 28 28 21.732 28 14C28 6.26801 21.732 0 14 0C6.26801 0 0 6.26801 0 14C0 21.732 6.26801 28 14 28ZM20.9909 9.97352C21.3444 9.54924 21.2871 8.91868 20.8628 8.56511C20.4386 8.21155 19.808 8.26887 19.4544 8.69315L13.0787 16.344C12.732 16.7601 12.5371 16.9904 12.3815 17.132L12.3755 17.1374L12.3691 17.1325C12.2013 17.0057 11.9863 16.7939 11.6034 16.411L8.48532 13.2929C8.09479 12.9024 7.46163 12.9024 7.07111 13.2929C6.68058 13.6834 6.68058 14.3166 7.07111 14.7071L10.1892 17.8252L10.23 17.866L10.23 17.866C10.5565 18.1926 10.8706 18.5068 11.1628 18.7278C11.4902 18.9754 11.9189 19.2081 12.4683 19.1832C13.0177 19.1583 13.4236 18.8876 13.7272 18.6115C13.9982 18.365 14.2826 18.0236 14.5781 17.6688L14.5782 17.6688L14.6151 17.6244L20.9909 9.97352Z" fill="#009C74"/>
-                                            </svg>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button type="submit" class="welcome-exchange__button">
+                    ОБМЕНЯТЬ
+                </button>
             </form>
             <div class="welcome__descr-container">
                 <div class="welcome__descr">
