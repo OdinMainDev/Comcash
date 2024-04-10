@@ -63,20 +63,19 @@ $(document).ready(async function() {
   $('.welcome-exchange__icon-reverse').on('click', reverse)
 
 
-  async function generateCourseTitle(currency: string, amount: number, error?: boolean) {
-    const usdtName = 'USDTERC20';
+  async function generateCourseTitle(currencyFrom: string, currencyTo: string, error?: boolean) {
     if (!error) {
-      courseTitle.text(`${amount} ${currency} = ${0}$`);
+      courseTitle.text(`0 ${currencyFrom} ≈ 0 ${currencyTo}`);
 
       if (currentTimer) {
         clearInterval(currentTimer);
         currentTimer = null;
       }
   
-      startTimer(12, () => generateCourseTitle(currency, amount, error));
+      startTimer(12, () => generateCourseTitle(currencyFrom, currencyTo, error));
       try {
-        const initialData = await getConvetredToUSD(currency, amount);
-        courseTitle.text(`${amount} ${currency} = ${initialData}$`);
+        const initialData = await getEstimate(currencyFrom, currencyTo, 1);
+        courseTitle.text(`1 ${currencyFrom} ≈ ${initialData.amount} ${currencyTo}`);
       } catch (e) {
       }
     } else {
@@ -118,7 +117,6 @@ $(document).ready(async function() {
     let value = amount.replace(/[^\d.-]/g, '');
     currencyFromAmountInput.val(value);
     currencyFromAmount = Number(value);
-    generateCourseTitle(currencyFrom.name, currencyFromAmount, false);
     try {
       const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value));
       currencyToAmount = data.amount;
@@ -256,9 +254,9 @@ $(document).ready(async function() {
       currencyFromAmountInput.prop('disabled', false);
       changeFromAmount(data.min_amount.toString());
       currencyFromAmountInput.attr('placeholder', `Min amount: ${data.min_amount}`);
-      generateCourseTitle(currencyFrom.name, currencyFromAmount);
+      generateCourseTitle(currencyFrom.name, currencyTo.name);
     } catch(e) {
-      generateCourseTitle(currencyFrom.name, currencyFromAmount, true);
+      generateCourseTitle(currencyFrom.name, currencyTo.name, true);
 
       currencyFromAmountInput.val('Недоступный вариант обмена!');
       currencyToAmountInput.val('Недоступный вариант обмена!');

@@ -9,7 +9,7 @@
                     <div class="welcome-exchange__timer-container">
                         <div class="welcome-exchange__timer-text">
                             <div class="welcome-exchange__block-title">
-                                Курс: <span></span>
+                                <span></span>
                             </div>
                             <div class="welcome-exchange__block-subtitle">
                                 Курс зафиксируется после создания заявки
