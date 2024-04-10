@@ -5,6 +5,7 @@ import { getCurrenciesApi } from '@/shared/api/getCurrenciesApi';
 import { defaultCryptoYouGet, defaultCryptoYouSend } from './constants';
 import { getCurrencySettings } from '../exchageFormScripts/api/getCurrencySettings';
 import { getEstimate } from '@/shared/api/getEstimate';
+import { getCurrenciesFrom } from './api/getDirectionApi';
 
 $(document).ready(async function() {
   const exchangePanelLeft = $('.exchnage-panel-left');
@@ -61,19 +62,20 @@ $(document).ready(async function() {
   $('.welcome-exchange__icon-reverse').on('click', reverse)
 
 
-  async function generateCourseTitle(currencyFrom: string, currencyTo: string, error?: boolean) {
+  async function generateCourseTitle(currencyTo: string, error?: boolean) {
+    const usdtName = 'USDTERC20';
     if (!error) {
-      courseTitle.text(`1 ${currencyFrom} = ${0} ${currencyTo}`);
+      courseTitle.text(`1 USD = ${0} ${currencyTo}`);
 
       if (currentTimer) {
         clearInterval(currentTimer);
         currentTimer = null;
       }
   
-      startTimer(12, () => generateCourseTitle(currencyFrom, currencyTo));
+      startTimer(12, () => generateCourseTitle(currencyTo));
       try {
-        const initialData = await getEstimate(currencyFrom, currencyTo, 1);
-        courseTitle.text(`1 ${currencyFrom} = ${initialData.amount} ${currencyTo}`);
+        const initialData = await getEstimate(usdtName, currencyTo, 1);
+        courseTitle.text(`1 USD = ${initialData.amount} ${currencyTo}`);
       } catch (e) {
       }
     } else {
@@ -252,9 +254,9 @@ $(document).ready(async function() {
       currencyFromAmountInput.prop('disabled', false);
       changeFromAmount(data.min_amount.toString());
       currencyFromAmountInput.attr('placeholder', `Min amount: ${data.min_amount}`);
-      generateCourseTitle(currencyFrom.name, currencyTo.name);
+      generateCourseTitle(currencyTo.name);
     } catch(e) {
-      generateCourseTitle(currencyFrom.name, currencyTo.name, true);
+      generateCourseTitle(currencyTo.name, true);
 
       currencyFromAmountInput.val('Недоступный вариант обмена!');
       currencyToAmountInput.val('Недоступный вариант обмена!');
@@ -268,11 +270,12 @@ $(document).ready(async function() {
   }
 
   currenciesList = await getCurrencies();
+  let currencyFromList = await getCurrenciesFrom();
   let rightList = currenciesList;
   let rightFilter = 'all';
   let rightSearchText = '';
   
-  let leftList = currenciesList;
+  let leftList = currencyFromList;
   let leftFilter = 'all';
   let leftSearchText = '';
 
@@ -335,7 +338,7 @@ $(document).ready(async function() {
     leftSearch.val(leftSearchText);
     leftFilterItem.removeClass('active');
     $(this).addClass('active');
-    leftList = currenciesList;
+    leftList = currencyFromList;
     leftFilter = $(this).data('filter');
     let filtredList = leftList.filter(item => item.data.titles[lang].toLowerCase().includes(leftSearchText));
     filtredList = leftFilter === "all" ? filtredList : filtredList.filter(item => item.tag === leftFilter);

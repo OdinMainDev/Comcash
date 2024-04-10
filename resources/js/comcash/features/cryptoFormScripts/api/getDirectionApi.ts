@@ -6,6 +6,10 @@ export const getDirectionsApi = ():string => {
   return `${import.meta.env.VITE_API_URL}/api/get/directions`;
 }
 
+export const getCurrenciesFromApi = ():string => {
+  return `${import.meta.env.VITE_API_URL}/api/get/directions/currencies/from`;
+}
+
 export async function getDirections(): Promise<IDirection[]> {
   try {
     const { data } = await axios.get<{data: IDirection[]}>(getDirectionsApi())
@@ -24,6 +28,16 @@ export async function getCurrencies(): Promise<ICurrency[]> {
   try {
     const { data } = await axios.get<ICurrency[]>(getCurrenciesApi())
     return data;
+  } catch(e) {
+    console.log(e)
+    return [];
+  }
+}
+
+export async function getCurrenciesFrom(): Promise<ICurrency[]> {
+  try {
+    const { data } = await axios.get<{data: ICurrency[]}>(getCurrenciesFromApi())
+    return data.data;
   } catch(e) {
     console.log(e)
     return [];
