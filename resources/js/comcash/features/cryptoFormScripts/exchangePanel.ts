@@ -5,8 +5,7 @@ import { getCurrenciesApi } from '@/shared/api/getCurrenciesApi';
 import { defaultCryptoYouGet, defaultCryptoYouSend } from './constants';
 import { getCurrencySettings } from '../exchageFormScripts/api/getCurrencySettings';
 import { getEstimate } from '@/shared/api/getEstimate';
-import { getCurrenciesFrom } from './api/getDirectionApi';
-import { getConvetredToUSD } from '@/shared/api/getConvetredToUSD';
+import { getCurrencies, getCurrenciesFrom } from './api/getDirectionApi';
 
 $(document).ready(async function() {
   const exchangePanelLeft = $('.exchnage-panel-left');
@@ -38,10 +37,10 @@ $(document).ready(async function() {
   const courseTitle = $('.welcome-exchange__block-title > span');
 
 
-  let currenciesList: ICurrency[] = [];
+  let currenciesList: ICurrency[] = await getCurrencies();
   const lang = "en";
-  let currencyFrom: ICurrency = defaultCryptoYouGet;
-  let currencyTo: ICurrency = defaultCryptoYouSend;
+  let currencyFrom: ICurrency = currenciesList[0] ?? defaultCryptoYouSend;
+  let currencyTo: ICurrency = currenciesList[1] ?? defaultCryptoYouGet;
   let currencyFromAmount = 0;
   let currencyToAmount = 0;
 
@@ -222,15 +221,6 @@ $(document).ready(async function() {
   //<------------select----------------->
   
 
-  const getCurrencies = async (): Promise<ICurrency[]> => {
-    try {
-      const {data} = await axios.get<ICurrency[]>(getCurrenciesApi());
-      return data;
-    } catch (e) {
-      return [];
-    }
-  }
-
   const generateSelectItem = (currency: ICurrency, is_active?: boolean) => {
     return `
     <div class="welcome-exchange__list-item ${is_active ? "active" : ''}">
@@ -268,8 +258,6 @@ $(document).ready(async function() {
 
     }
   }
-
-  currenciesList = await getCurrencies();
   let currencyFromList = await getCurrenciesFrom();
   let rightList = currenciesList;
   let rightFilter = 'all';
