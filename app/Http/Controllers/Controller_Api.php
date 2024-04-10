@@ -93,7 +93,7 @@ class Controller_Api extends Controller{
 
     public function direction_currencies_from(){
         $directions = $this->getCacheDirections();
-        $sorted = array_values($directions->pluck("currencyFrom")->unique()->toArray());
+        $sorted = array_values($directions->pluck("currencyFrom")->unique()->sortBy('position')->toArray());
         return $this->responseSuccess("ok", $sorted);
     }
 }
