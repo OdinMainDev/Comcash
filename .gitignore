@@ -21,3 +21,4 @@ yarn-error.log
 /public/uploads/*rr
 .rr.yaml
 rr
+backup.zip
