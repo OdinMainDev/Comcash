@@ -39,7 +39,7 @@ $(document).ready(async function() {
 
 
   let currenciesList: ICurrency[] = [];
-  const lang = "en";
+  const lang = window.language;
   let currencyFrom: ICurrency = defaultCryptoYouGet;
   let currencyTo: ICurrency = defaultCryptoYouSend;
   let currencyFromAmount = 0;
