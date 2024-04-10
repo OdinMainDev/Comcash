@@ -305,7 +305,7 @@ $(document).ready(async function() {
 
   leftSearch.on('input', function() {
     leftSearchText = $(this).val()?.toString().toLowerCase() as string;
-    let filtredList = leftList.filter(item => item.name.toLowerCase().includes(leftSearchText));
+    let filtredList = leftList.filter(item => item.data.titles[lang].toLowerCase().includes(leftSearchText));
     filtredList = leftFilter === "all" ? filtredList : filtredList.filter(item => item.tag === leftFilter);
     leftSelectList.find('.welcome-exchange__list').empty();
     generateList(filtredList, "from");
@@ -318,7 +318,7 @@ $(document).ready(async function() {
     $(this).addClass('active');
     leftList = currenciesList;
     leftFilter = $(this).data('filter');
-    let filtredList = leftList.filter(item => item.name.toLowerCase().includes(leftSearchText));
+    let filtredList = leftList.filter(item => item.data.titles[lang].toLowerCase().includes(leftSearchText));
     filtredList = leftFilter === "all" ? filtredList : filtredList.filter(item => item.tag === leftFilter);
     leftSelectList.find('.welcome-exchange__list').empty();
     generateList(filtredList, "from");
@@ -326,7 +326,7 @@ $(document).ready(async function() {
 
   rightSearch.on('input', function() {
     rightSearchText = $(this).val()?.toString().toLowerCase() as string;
-    let filtredList = rightList.filter(item => item.name.toLowerCase().includes(rightSearchText));
+    let filtredList = rightList.filter(item => item.data.titles[lang].toLowerCase().includes(rightSearchText));
     filtredList = rightFilter === "all" ? filtredList : filtredList.filter(item => item.tag === rightFilter);
     rightSelectList.find('.welcome-exchange__list').empty();
     generateList(filtredList, "to");
@@ -339,7 +339,7 @@ $(document).ready(async function() {
     $(this).addClass('active');
     rightList = currenciesList;
     rightFilter = $(this).data('filter');
-    let filtredList = rightList.filter(item => item.name.toLowerCase().includes(rightSearchText));
+    let filtredList = rightList.filter(item => item.data.titles[lang].toLowerCase().includes(rightSearchText));
     filtredList = rightFilter === "all" ? filtredList : filtredList.filter(item => item.tag === rightFilter);
     rightSelectList.find('.welcome-exchange__list').empty();
     generateList(filtredList, "to");
