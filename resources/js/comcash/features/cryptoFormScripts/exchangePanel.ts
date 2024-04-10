@@ -45,8 +45,6 @@ $(document).ready(async function() {
 
   let currentTimer: any = null;
 
-
-  
   selectItem(leftSelectList, currencyFrom, "from");
   selectItem(rightSelectList, currencyTo, "to");
 
@@ -62,13 +60,6 @@ $(document).ready(async function() {
 
   $('.welcome-exchange__icon-reverse').on('click', reverse)
 
-  function reverse() {
-    let tmp = currencyFrom;
-    currencyFrom = currencyTo;
-    currencyTo = tmp;
-    selectItem(leftSelectList, currencyFrom, "from");
-    selectItem(rightSelectList, currencyTo, "to");
-  }
 
   async function generateCourseTitle(currencyFrom: string, currencyTo: string, error?: boolean) {
     if (!error) {
@@ -158,6 +149,7 @@ $(document).ready(async function() {
     }
   }
 
+
   function selectItem(element: JQuery, item: ICurrency, type: "to" | "from") {
     $(element).closest('.welcome-exchange__select')
       .find('.welcome-exchange__select-selected')
@@ -166,18 +158,28 @@ $(document).ready(async function() {
         <img src="${item.image}" class="welcome-exchange__img"/>
         <div class="welcome-exchange__name">${item.data.titles[lang]}</div>
       `);  
+
     if(type === "from") {
-      currencyFrom = item;
-      fromTitle.text(currencyFrom.data.titles[lang]);
-      leftPanelTitle.text(currencyFrom.data.titles[lang])
-      currencyFromInput.val(currencyFrom.name);
-      getSettings(item, currencyTo);
+      if(item.name === currencyTo.name) {
+        reverse()
+      } else {
+        currencyFrom = item;
+        fromTitle.text(currencyFrom.data.titles[lang]);
+        leftPanelTitle.text(currencyFrom.data.titles[lang])
+        currencyFromInput.val(currencyFrom.name);
+        getSettings(item, currencyTo);
+      }
+
     } else if(type === "to") {
-      currencyTo = item;
-      toTitle.text(currencyTo.data.titles[lang]);
-      currencyToInput.val(currencyTo.name);
-      rightPanelTitle.text(currencyTo.data.titles[lang]);
-      getSettings(currencyFrom, item);
+      if(item.name === currencyFrom.name) {
+        reverse()
+      } else {
+        currencyTo = item;
+        toTitle.text(currencyTo.data.titles[lang]);
+        currencyToInput.val(currencyTo.name);
+        rightPanelTitle.text(currencyTo.data.titles[lang]);
+        getSettings(currencyFrom, item);
+      }
     }
 
 
@@ -273,42 +275,59 @@ $(document).ready(async function() {
   let leftFilter = 'all';
   let leftSearchText = '';
 
+  function reverse() {
+    let tmp = currencyFrom;
+    currencyFrom = currencyTo;
+    currencyTo = tmp;
+    console.log(currencyFrom, currencyTo)
+    selectItem(leftSelectList, currencyFrom, "from");
+    selectItem(rightSelectList, currencyTo, "to");
+    generateList(leftList, "from", currencyFrom);
+    generateList(rightList, "to", currencyTo);
+  }
+
+
   const removeActive = (element: JQuery) => {
     $(element).closest('.welcome-exchange__select').find('.welcome-exchange__list-item').removeClass('active');
   }
 
-  const generateList = (list: ICurrency[], type: "from" | "to") => {
+  const generateList = (list: ICurrency[], type: "from" | "to", currency: ICurrency) => {
+    if (type === "from") {
+      leftSelectList.find('.welcome-exchange__list').empty();
+    } else {
+      rightSelectList.find('.welcome-exchange__list').empty();
+    }
     $.each(list, (_, item) => {
       let listItem = $(generateSelectItem(item));
-      if(item.name === currencyFrom.name) {
+      if(item.name === currency.name) {
         listItem = $(generateSelectItem(item, true));
-  
       } else {
         listItem = $(generateSelectItem(item));
       }
+      if (type === "from") {
+        leftSelectList.find('.welcome-exchange__list').append(listItem);
+      } else {
+        rightSelectList.find('.welcome-exchange__list').append(listItem);
+      }
+
       listItem.on('click', function() {
         removeActive($(this));
         selectItem($(this), item, type)
         $(this).addClass('active');
         closeSelectModal();
       })
-      if (type === "from") {
-        leftSelectList.find('.welcome-exchange__list').append(listItem);
-      } else {
-        rightSelectList.find('.welcome-exchange__list').append(listItem);
-      }
     });
   }
 
-  generateList(leftList, "from");
-  generateList(rightList, "to");
+  generateList(leftList, "from", currencyFrom);
+  generateList(rightList, "to", currencyTo);
 
   leftSearch.on('input', function() {
     leftSearchText = $(this).val()?.toString().toLowerCase() as string;
     let filtredList = leftList.filter(item => item.data.titles[lang].toLowerCase().includes(leftSearchText));
     filtredList = leftFilter === "all" ? filtredList : filtredList.filter(item => item.tag === leftFilter);
     leftSelectList.find('.welcome-exchange__list').empty();
-    generateList(filtredList, "from");
+    generateList(filtredList, "from", currencyFrom);
   });
 
   leftFilterItem.on('click', function() {
@@ -321,7 +340,7 @@ $(document).ready(async function() {
     let filtredList = leftList.filter(item => item.data.titles[lang].toLowerCase().includes(leftSearchText));
     filtredList = leftFilter === "all" ? filtredList : filtredList.filter(item => item.tag === leftFilter);
     leftSelectList.find('.welcome-exchange__list').empty();
-    generateList(filtredList, "from");
+    generateList(filtredList, "from", currencyFrom);
   }) 
 
   rightSearch.on('input', function() {
@@ -329,7 +348,7 @@ $(document).ready(async function() {
     let filtredList = rightList.filter(item => item.data.titles[lang].toLowerCase().includes(rightSearchText));
     filtredList = rightFilter === "all" ? filtredList : filtredList.filter(item => item.tag === rightFilter);
     rightSelectList.find('.welcome-exchange__list').empty();
-    generateList(filtredList, "to");
+    generateList(filtredList, "to", currencyTo);
   });
 
   rightFilterItem.on('click', function() {
@@ -342,7 +361,7 @@ $(document).ready(async function() {
     let filtredList = rightList.filter(item => item.data.titles[lang].toLowerCase().includes(rightSearchText));
     filtredList = rightFilter === "all" ? filtredList : filtredList.filter(item => item.tag === rightFilter);
     rightSelectList.find('.welcome-exchange__list').empty();
-    generateList(filtredList, "to");
+    generateList(filtredList, "to", currencyTo);
   }) 
 
 
