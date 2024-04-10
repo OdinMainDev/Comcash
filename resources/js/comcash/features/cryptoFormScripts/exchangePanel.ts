@@ -35,9 +35,11 @@ $(document).ready(async function() {
 
   const courseTitle = $('.welcome-exchange__block-title > span');
   let currenciesList: ICurrency[] = await getCurrencies();
+  let currencyFromList = await getCurrenciesFrom();
+
   const lang = window.language || 'en';
-  let currencyFrom: ICurrency = currenciesList[0] ?? defaultCryptoYouSend;
-  let currencyTo: ICurrency = currenciesList[1] ?? defaultCryptoYouGet;
+  let currencyFrom: ICurrency = currencyFromList[0] ?? defaultCryptoYouSend;
+  let currencyTo: ICurrency = currenciesList[0] ?? defaultCryptoYouGet;
   let currencyFromAmount = 0;
   let currencyToAmount = 0;
 
@@ -255,7 +257,6 @@ $(document).ready(async function() {
 
     }
   }
-  let currencyFromList = await getCurrenciesFrom();
   let rightList = currenciesList;
   let rightFilter = 'all';
   let rightSearchText = '';
