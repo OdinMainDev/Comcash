@@ -58,6 +58,7 @@ class RatesParser extends Command{
         $inserts = array_merge($inserts, $this->parseFromParserV2($request_currency, count($inserts) == 0));
         if(count($inserts) == 0){
             sendTelegramNotification("ОШИБКА НОВОГО ПАРСЕРА!!", 4);
+            return;
             $inserts = array_merge($inserts, $this->parseFromCryptocompare($request_currency, count($inserts) == 0));
         }
         
