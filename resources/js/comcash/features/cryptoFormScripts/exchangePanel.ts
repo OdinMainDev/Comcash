@@ -143,9 +143,9 @@ $(document).ready(async function() {
 
   function toggleBodyScroll() {
     if ($('.welcome-exchange__select-list.active').length > 0 && Number($(window).width()) <= 768) {
-      $('body').css('overflow', 'hidden');
+      $('body').addClass('overflow-hidden	');
     } else {
-      $('body').css('overflow', '');
+      $('body').removeClass('overflow-hidden	');
     }
   }
 
@@ -158,7 +158,7 @@ $(document).ready(async function() {
         <img src="${item.image}" class="welcome-exchange__img"/>
         <div class="welcome-exchange__name">${item.data.titles[lang]}</div>
       `);  
-
+    $('body').removeClass('overflow-hidden	');
     if(type === "from") {
       if(item.name === currencyTo.name) {
         reverse()
@@ -200,7 +200,6 @@ $(document).ready(async function() {
   });
 
   closeButton.on('click', function() {
-    toggleBodyScroll();
     $(this).closest('.welcome-exchange__select').find('.welcome-exchange__select-list').removeClass('active');
     $(this).closest('.welcome-exchange__select').find('.welcome-exchange__arrow').removeClass('active');
     toggleBodyScroll();
@@ -210,10 +209,12 @@ $(document).ready(async function() {
     event.stopPropagation();
   });
 
-  $(document).on('click', function(e) {
+  $(document).on('click', function() {
     selectedItem.next().removeClass('active');
     selectedItem.find('.welcome-exchange__arrow').removeClass('active');
+    toggleBodyScroll();
   });
+
   $(window).resize(toggleBodyScroll);
 
   //<------------select----------------->
@@ -279,7 +280,6 @@ $(document).ready(async function() {
     let tmp = currencyFrom;
     currencyFrom = currencyTo;
     currencyTo = tmp;
-    console.log(currencyFrom, currencyTo)
     selectItem(leftSelectList, currencyFrom, "from");
     selectItem(rightSelectList, currencyTo, "to");
     generateList(leftList, "from", currencyFrom);
