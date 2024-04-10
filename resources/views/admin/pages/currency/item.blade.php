@@ -47,6 +47,7 @@
                             <select class="form-select" id="tag" name="tag">
                                 <option value="fiat" @if($model->tag == "fiat") selected @endif>fiat</option>
                                 <option value="crypto" @if($model->tag == "crypto") selected @endif>crypto</option>
+                                <option value="cash" @if($model->tag == "cash") selected @endif>cash</option>
                             </select>
                         </div>
                         <div class="col-md-3 mb-3">

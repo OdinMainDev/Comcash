@@ -22,6 +22,9 @@
                         <div class="welcome__exchange-filter-item" data-filter="crypto">
                             Крипта
                         </div>
+                        <div class="welcome__exchange-filter-item" data-filter="cash">
+                            Наличные
+                        </div>
                     </div>
                     <div class="welcome__exchange-col-list">
                     </div>
@@ -52,6 +55,9 @@
                             </div>
                             <div class="welcome__exchange-filter-item" data-filter="crypto">
                                 Крипта
+                            </div>
+                            <div class="welcome__exchange-filter-item" data-filter="cash">
+                                Наличные
                             </div>
                         </div>
                         <div class="welcome__exchange-mobile-side-list welcome__exchange-mobile-side_right-list">

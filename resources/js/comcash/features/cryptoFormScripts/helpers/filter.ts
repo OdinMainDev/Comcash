@@ -1,6 +1,6 @@
 import { ICurrency, IRate } from "../models/interfaces"
 
-export const filterByTag = (currencies: ICurrency[], tag: "fiat" | "crypto") => {
+export const filterByTag = (currencies: ICurrency[], tag: "fiat" | "crypto" | "cash") => {
   return currencies.filter(item => item.tag === tag)
 }
 

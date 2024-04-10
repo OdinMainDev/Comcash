@@ -74,7 +74,7 @@ class FillCurrency extends Command
                         "en" => "Cash RUB",
                     ]
                 ]),
-                "tag" => "fiat",
+                "tag" => "cash",
                 "position" => 2,
                 "created_at" => now()
             ],

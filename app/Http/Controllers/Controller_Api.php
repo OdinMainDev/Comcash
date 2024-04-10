@@ -13,7 +13,7 @@ class Controller_Api extends Controller{
 
     public function currencies(Request $request) {
         $currencies = $this->getCacheCurrencies();
-        if($request->has("tag") && in_array($request->tag, ["fiat", "crypto"])){
+        if($request->has("tag") && in_array($request->tag, ["fiat", "crypto", "cash"])){
             foreach($currencies as $key => $currency){
                 if($currency->tag != $request->tag){
                     $currencies->forget($key);

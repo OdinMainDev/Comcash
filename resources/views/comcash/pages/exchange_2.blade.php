@@ -30,6 +30,10 @@
 			@if(isset($exchange->data['merchant_from_data']['url']))
 				<?php $show = true; ?>
 			@endif
+		@elseif($exchange->currencyFrom->tag == "cash")
+			@if(isset($exchange->data['merchant_from_data']['url']))
+				<?php $show = true; ?>
+			@endif
 		@else
 			@if(isset($exchange->data['merchant_from_data']['address']))
 				<?php $show = true; ?>

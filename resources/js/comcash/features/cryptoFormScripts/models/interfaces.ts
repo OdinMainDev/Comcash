@@ -21,7 +21,7 @@ export interface ICurrency{
   units: number
   image: string
   data: ICurrencyData
-  tag: "fiat" | "crypto";
+  tag: "fiat" | "crypto" | "cash";
 }
 
 export interface ICurrencyData {
