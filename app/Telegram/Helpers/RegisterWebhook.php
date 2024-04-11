@@ -27,7 +27,7 @@ class RegisterWebhook
             }
             $result = $telegram->setWebhook(route("telegramBotWebhook", [$this->bot->id]), $data);
             if (!$result->isOk()) {
-                $this->bot->delete();
+                // $this->bot->delete();
                 throw ValidationException::withMessages(["id" => $result->getDescription()]);
             }
             
