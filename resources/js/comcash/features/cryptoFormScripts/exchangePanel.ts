@@ -121,7 +121,6 @@ $(document).ready(async function() {
     currencyFromAmountInput.val(value);
     currencyFromAmount = Number(value);
     try {  
-      rightLoader.show();
       const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value));
       currencyToAmount = data.amount;
       currencyToAmountInput.attr('placeholder', `Min amount: ${data.min_amount}`);
@@ -359,6 +358,5 @@ $(document).ready(async function() {
     generateList(filtredList, "to", currencyTo);
   }) 
 
-  leftLoader.hide();
-  rightLoader.hide();  
+  leftLoader.hide(); 
 })
