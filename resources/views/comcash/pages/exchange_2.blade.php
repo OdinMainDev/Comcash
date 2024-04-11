@@ -73,7 +73,7 @@
 				</div>
 				<div class="progress__box">
 					@if($exchange->currencyFrom->tag == "crypto")
-						<img src="https://chart.googleapis.com/chart?chs=224x224&cht=qr&chl={{$exchange->data['merchant_from_data']['address']}}&choe=UTF-8" class="progress__box-img" title="Link to Google.com" />
+						<img src="https://api.qrserver.com/v1/create-qr-code/?data={{$exchange->data['merchant_from_data']['address']}}" class="progress__box-img" title="Link to Google.com" />
 					@endif
 					<div class="progress__box-right">
 						@if($exchange->status != 5)
