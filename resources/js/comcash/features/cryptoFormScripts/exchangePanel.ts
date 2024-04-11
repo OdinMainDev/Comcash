@@ -30,12 +30,19 @@ $(document).ready(async function() {
   const rightSearch = exchangePanelRight.find('.welcome-exchange__select-search');
   const rightFilterItem = exchangePanelRight.find('.welcome-exchange__filter-item');
 
+  const leftLoader = exchangePanelLeft.find('.welcome-exchange__loading');
+  const rightLoader = exchangePanelRight.find('.welcome-exchange__loading');
+
   const fromTitle = $('.welcome-exchange__title_from');
   const toTitle = $('.welcome-exchange__title_to');
 
   const courseTitle = $('.welcome-exchange__block-title > span');
+  leftLoader.show();
+  rightLoader.show();
   let currenciesList: ICurrency[] = await getCurrencies();
+  rightLoader.hide();
   let currencyFromList = await getCurrenciesFrom();
+  leftLoader.hide();
 
   const lang = window.language || 'en';
   let currencyFrom: ICurrency = currencyFromList[0] ?? defaultCryptoYouSend;

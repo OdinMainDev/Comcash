@@ -30,6 +30,16 @@
     border-radius: 30px;
     margin-bottom: 40px;
     width: 100%;
+
+    &__loading {
+      display: none;
+      position: absolute;
+      width: 40px;
+      top: 45%;
+      transform: translateY(-50%);
+      left: 100px;
+      height: 40px;
+    }
     &__select {
       position: relative;
       &-selected {

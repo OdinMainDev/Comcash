@@ -31,6 +31,9 @@
                         <div class="welcome-exchange__block-subtitle mb-[10px]">
                             Вы отправляете <span>–</span>
                         </div>
+                        <div class="welcome-exchange__loading">
+                            <img src="/comcash/img/loader-gray.gif" alt="loader"/>
+                        </div>
                         <input class="welcome-exchange__input" name="amount" placeholder="Min amount: 0">
                         <div class="welcome-exchange__select">
                             <input class="hidden" name="currency_from">
@@ -77,6 +80,9 @@
                     <div class="welcome-exchange__block top exchnage-panel-right">
                         <div class="welcome-exchange__block-subtitle mb-[10px]">
                             Вы получаете <span>–</span>
+                        </div>
+                        <div class="welcome-exchange__loading">
+                            <img src="/comcash/img/loader-gray.gif" alt="loader"/>
                         </div>
                         <input class="welcome-exchange__input" placeholder="Min amount: 0" >
                         <div class="welcome-exchange__select">
