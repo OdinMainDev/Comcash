@@ -40,9 +40,7 @@ $(document).ready(async function() {
   leftLoader.show();
   rightLoader.show();
   let currenciesList: ICurrency[] = await getCurrencies();
-  rightLoader.hide();
   let currencyFromList = await getCurrenciesFrom();
-  leftLoader.hide();
 
   const lang = window.language || 'en';
   let currencyFrom: ICurrency = currencyFromList[0] ?? defaultCryptoYouSend;
@@ -122,12 +120,15 @@ $(document).ready(async function() {
     let value = amount.replace(/[^\d.-]/g, '');
     currencyFromAmountInput.val(value);
     currencyFromAmount = Number(value);
-    try {
+    try {  
+      rightLoader.show();
       const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value));
       currencyToAmount = data.amount;
       currencyToAmountInput.attr('placeholder', `Min amount: ${data.min_amount}`);
     } catch (e) {
 
+    } finally {
+      rightLoader.hide();
     }
     currencyToAmountInput.val(currencyToAmount);
   }
@@ -260,8 +261,6 @@ $(document).ready(async function() {
       currencyToAmountInput.attr('placeholder', 'Недоступный вариант обмена!');
       currencyToAmountInput.prop('disabled', true);
       currencyFromAmountInput.prop('disabled', true);
-
-
     }
   }
   let rightList = currenciesList;
@@ -360,9 +359,6 @@ $(document).ready(async function() {
     generateList(filtredList, "to", currencyTo);
   }) 
 
-
-
-
-  
-  
+  leftLoader.hide();
+  rightLoader.hide();  
 })
