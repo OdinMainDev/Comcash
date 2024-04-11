@@ -40,7 +40,7 @@
 					</div>
 					<div class="exchange__text-warning">
 						ВНИМАНИЕ ! При отправке суммы меньше минимальной, средства не зачисляются,  обращайтесь в поддержку. 
-						<a class="green underline cursor-pointer">Telegram</a>
+						<a class="green underline cursor-pointer" href="{{__('front.menuBotUrl')}}">Telegram</a>
 					</div>
 					<div class="exchange__card-number hide" id="exchange-from_card">
 						<div class='label'>
