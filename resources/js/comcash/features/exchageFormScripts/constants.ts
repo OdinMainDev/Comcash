@@ -40,4 +40,6 @@ export const settingsLayouts:settingsLayoutTypes[] = [
   'from_card',
   'to_card',
   'passport',
+  'city',
+  'bank'
 ]

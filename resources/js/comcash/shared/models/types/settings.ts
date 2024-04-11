@@ -13,3 +13,5 @@ export type settingsLayoutTypes =
 | 'currency_from'
 | 'currency_to'
 | 'amount'
+| 'city'
+|'bank'
