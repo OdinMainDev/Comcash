@@ -19,6 +19,10 @@
                     <a target="_blank" href="https://www.okchanger.ru/exchangers/Comcash-io?a=235857">
                         <img class="footer__sponsors-item" src="https://www.okchanger.ru/images/banners/320x50.gif"   alt="OkChanger - мониторинг обменников" title="OkChanger - честный мониторинг обменников"/>
                     </a>
+
+                    <a target="_blank" href="https://change.pro/exchangers/comcash">
+                        <img class="footer__sponsors-item" src="/images/changepro.png"   alt="ChangePro - мониторинг обменников" title="ChangePro - честный мониторинг обменников"/>
+                    </a>
                 </div>
             </div>
             <div class='footer__sitemap-col'>
