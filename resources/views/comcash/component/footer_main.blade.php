@@ -17,11 +17,15 @@
                     </a>
 
                     <a target="_blank" href="https://www.okchanger.ru/exchangers/Comcash-io?a=235857">
-                        <img class="footer__sponsors-item" src="https://www.okchanger.ru/images/banners/320x50.gif"   alt="OkChanger - мониторинг обменников" title="OkChanger - честный мониторинг обменников"/>
+                        <img class="footer__sponsors-item" src="https://www.okchanger.ru/images/banners/320x50.gif" alt="OkChanger - мониторинг обменников" title="OkChanger - честный мониторинг обменников"/>
                     </a>
 
                     <a target="_blank" href="https://change.pro/exchangers/comcash">
-                        <img class="footer__sponsors-item" src="/images/changepro.png"   alt="ChangePro - мониторинг обменников" title="ChangePro - честный мониторинг обменников"/>
+                        <img class="footer__sponsors-item" src="/images/changepro.png" alt="ChangePro - мониторинг обменников" title="ChangePro - честный мониторинг обменников"/>
+                    </a>
+
+                    <a target="_blank" href="https://pro-obmen.ru/comcash/#comments">
+                        <img class="footer__sponsors-item" alt="Мониторинг обменников Pro-Obmen.ru" src="https://pro-obmen.ru/img/bn/88x31_1.gif" title="Мониторинг обменников Pro-Obmen.ru" />
                     </a>
                 </div>
             </div>
