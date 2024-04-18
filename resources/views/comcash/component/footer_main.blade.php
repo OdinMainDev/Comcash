@@ -25,7 +25,7 @@
                     </a>
 
                     <a target="_blank" href="https://pro-obmen.ru/comcash/#comments">
-                        <img class="footer__sponsors-item" alt="Мониторинг обменников Pro-Obmen.ru" src="https://pro-obmen.ru/img/bn/88x31_1.gif" title="Мониторинг обменников Pro-Obmen.ru" />
+                        <img class="footer__sponsors-item" alt="Мониторинг обменников Pro-Obmen.ru" src="/images/proobmen.gif" title="Мониторинг обменников Pro-Obmen.ru" />
                     </a>
                 </div>
             </div>
