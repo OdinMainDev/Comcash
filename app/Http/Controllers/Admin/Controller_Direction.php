@@ -215,7 +215,7 @@ class Controller_Direction extends Controller{
                     $direction->merchant_to = $merchant_to->id;
                     $direction->merchant_type_to = $merchant_to->type;
                 }
-                $data = $this->updateDirectionTexts($direction, $data_names, $data_content, $data_seo, false);
+                $data = $this->updateDirectionTexts($direction, $data_names, $data_content, $data_seo, true);
                
 
                 if(is_numeric($request->min_amount_usd))
