@@ -43,3 +43,7 @@
 select, input {
     color: #fff !important;
 }
+
+.cke_reset_all, .cke_reset_all * {
+    color: #000 !important;
+}
