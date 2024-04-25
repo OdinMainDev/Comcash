@@ -52,6 +52,20 @@
         </div>
         <div class='footer__bottom'>
             <p class='footer__copyright'>Since from 2023 - {{date("Y")}}! With love From ©omcash.</p>
+            <a id='wot-badge2' class='wot-badge' href='https://www.mywot.com/scorecard/comcash.io?wot_badge=2_white' target='_blank' >
+                    <div class='wot-secured-container '>
+                        <div class='wot-shield-background'></div>
+                        <div class='wot-text-container'>
+                            <p class='wot-secured-bold'>Verified Site</p>
+                            <div class='wot-trusted-container'>
+                                <div class='wot-trusted'>Trusted by</div>
+                                <div class='wot-logo'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='wot-vertical'></div>
+                    <p class='wot-report'>See Report</p>
+                </a>
             <!-- <div class='footer__socials'>
 
                 <a href=''

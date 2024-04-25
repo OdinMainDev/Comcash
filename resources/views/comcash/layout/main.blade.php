@@ -62,7 +62,7 @@
 			})(window,document,'script','dataLayer','GTM-P23G9N', '92140');
 		</script> 
 		<!-- End Google Tag Manager -->
-
+		<script async src='https://static.mywot.com/website_owners_badges/websiteOwnersBadge.js'></script>
 		
 
 		@yield('js')
