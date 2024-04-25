@@ -1,4 +1,5 @@
 <?php return array (
+  'importLanguages' => 'Importer des langues',
   'exportLanguages' => 'Exporter des fichiers de langues',
   'chooseLanguage' => 'Sélectionner une langue',
   'chooseGroupLanguage' => 'Sélectionner un groupe de langues',

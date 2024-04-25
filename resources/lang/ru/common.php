@@ -190,5 +190,6 @@ return [
     "token_bot_already_exists" => "Токен уже существует в базе",
     "exportLanguages" => "Экспортировать языковые файлы",
     "chooseLanguage" => "Выберите язык",
-    "chooseGroupLanguage" => "Выберите группу языков"
+    "chooseGroupLanguage" => "Выберите группу языков",
+    "importLanguages" => "Импортировать языки"
 ];

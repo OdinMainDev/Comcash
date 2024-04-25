@@ -6,7 +6,7 @@
 	<div class="col-12 grid-margin stretch-card">
 		<div class="card">
 			<div class="card-body">
-                <h5 class="mb-2">{{__("common.exportLanguages")}}</h5>
+                <h5 class="mb-2">{{__("common.importLanguages")}}</h5>
 				<form class="forms-sample" action="{{route("adminProcessLanguageImport")}}">
                     @csrf
                     <div class="row">
