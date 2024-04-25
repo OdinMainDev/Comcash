@@ -9,6 +9,9 @@ import $ from 'jquery';
     if(forms.length == 0) return false;
     forms.forEach(element => {
         element.addEventListener('submit', e => {
+            if(element.dataset.notused == "true"){
+                return;
+            }
             e.preventDefault();
             const route = element.action;
             const redirect = element.dataset.redirect;

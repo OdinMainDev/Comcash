@@ -187,5 +187,8 @@ return [
     "phoneToSendMoney" => "Номер телефона",
     "password" => "Пароль",
     "balance" => "Баланс",
-    "token_bot_already_exists" => "Токен уже существует в базе"
+    "token_bot_already_exists" => "Токен уже существует в базе",
+    "exportLanguages" => "Экспортировать языковые файлы",
+    "chooseLanguage" => "Выберите язык",
+    "chooseGroupLanguage" => "Выберите группу языков"
 ];

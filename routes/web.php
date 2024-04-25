@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\DataTable\Controller_Seo as DTAdminSeo;
 use App\Http\Controllers\Admin\Controller_TelegramBot as AdminTelegramBot;
 use App\Http\Controllers\Admin\DataTable\Controller_TelegramBot as DTAdminTelegramBot;
 use App\Http\Controllers\Admin\Controller_EmailTemplate as AdminEmailTemplate;
+use App\Http\Controllers\Admin\Controller_Language as AdminLanguage;
 
 use App\Http\Controllers\Controller_Home as Home;
 use App\Http\Controllers\Controller_Login as Login;
@@ -223,6 +224,11 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
         Route::get('/panel/view/emailtemplates', [AdminEmailTemplate::class, "view_choose"])->name("adminViewEmailTemplates");
         Route::get('/panel/view/emailtemplates/{page}', [AdminEmailTemplate::class, "view_item"])->name("adminViewEmailTemplate");
+
+        Route::get('/panel/export/languages', [AdminLanguage::class, "view_export"])->name("adminViewLanguageExport");
+        Route::post('/panel/export/languages', [AdminLanguage::class, "process_export"])->name("adminProcessLanguageExport");
+        Route::get('/panel/import/languages', [AdminLanguage::class, "view_import"])->name("adminViewLanguageImport");
+        Route::post('/panel/import/languages', [AdminLanguage::class, "process_import"])->name("adminProcessLanguageImport");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-exchanges|handle-users|handle-affiliate|handle-affiliate-withdraws']], function() {

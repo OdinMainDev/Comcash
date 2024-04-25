@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\File;
 class Controller_EmailTemplate extends Controller
 {
     use HasCache;
-
-    private $pages = ["index", "tariffs", "delivery", "reviews", "news", "blog", "support", "company", "faq", "profile", "login", "register", "rules", "sitemap"];
     
     public function view_choose() {
         $path = resource_path('views/'.$this->theme.'/mails');
