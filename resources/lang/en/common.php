@@ -1,4 +1,7 @@
 <?php return array (
+  'exportLanguages' => 'Export language files',
+  'chooseLanguage' => 'Select a language',
+  'chooseGroupLanguage' => 'Select a language group',
   'token_bot_already_exists' => 'The token already exists in the database',
   'balance' => 'Balance',
   'password' => 'Password',

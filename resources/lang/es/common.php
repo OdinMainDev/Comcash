@@ -1,4 +1,7 @@
 <?php return array (
+  'exportLanguages' => 'Exportar archivos de idioma',
+  'chooseLanguage' => 'Seleccione un idioma',
+  'chooseGroupLanguage' => 'Seleccionar un grupo lingüístico',
   'token_bot_already_exists' => 'El token ya existe en la base de datos',
   'balance' => 'Saldo',
   'password' => 'Contraseña',

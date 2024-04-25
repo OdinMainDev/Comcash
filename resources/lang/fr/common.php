@@ -1,4 +1,7 @@
 <?php return array (
+  'exportLanguages' => 'Exporter des fichiers de langues',
+  'chooseLanguage' => 'Sélectionner une langue',
+  'chooseGroupLanguage' => 'Sélectionner un groupe de langues',
   'token_bot_already_exists' => 'Le jeton existe déjà dans la base de données',
   'balance' => 'Équilibre',
   'password' => 'Mot de passe',
