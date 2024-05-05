@@ -8,7 +8,7 @@
             &nbsp;
             <span class="header-info__time">
                 {{__("front.headerClearExchangesTime2")}}
-            </span>	
+            </span>
         </span>
         <span class="header-info__contact">
             <span class="header-info__time header-info__time_green">
@@ -17,7 +17,7 @@
             &nbsp;
             <span class="header-info__time">
                 {{__("front.headerWorkingTime2")}}
-            </span>	
+            </span>
             &nbsp;
             <span class="header-info__time header-info__time_green">
                 {{__("front.headerWorkingTime3")}}
@@ -25,7 +25,7 @@
             &nbsp;
             <span class="header-info__time">
                 {{__("front.headerWorkingTime4")}}
-            </span>	
+            </span>
         </span>
     </div>
     <div class='header__container'>
@@ -40,7 +40,7 @@
                 {{__("front.PartnerFAQMenu")}}
             </a>
             <a class='header__link' href='{{route("comcashPage", ["name" => "reviews"])}}'>
-                {{__("front.FeedbackMenu")}}
+                <span class="green">{{__("front.FeedbackMenu")}}</span>
             </a>
             <div class="header__link arrow">
                 {{__("front.PagesMenu")}}
@@ -263,7 +263,7 @@
                     &nbsp;
                     <span class="header-info__contact-label">
                         {{__("front.supportContactsQtox")}}
-                    </span>	
+                    </span>
                 </span>
                 <span class="header-info__contact copy">
                     <span class="header-info__contact-icon">
@@ -278,7 +278,7 @@
                     &nbsp;
                     <span class="header-info__contact-label">
                         {{__("front.supportContactsJabber1")}}
-                    </span>	
+                    </span>
                 </span>
                 <span class="header-info__contact copy">
                     <span class="header-info__contact-icon">
@@ -293,7 +293,7 @@
                     &nbsp;
                     <span class="header-info__contact-label">
                         {{__("front.supportContactsJabber2")}}
-                    </span>	
+                    </span>
                 </span>
                 <span class="header-info__contact">
                     <span class="header-info__contact-icon">
@@ -304,7 +304,7 @@
                     &nbsp;
                     <span class="header-info__contact-label">
                         <a href="https://t.me/{{__("front.supportContactsTelegram")}}">{{__("front.supportContactsTelegram")}}</a>
-                    </span>	
+                    </span>
                 </span>
             </div>
         </div>

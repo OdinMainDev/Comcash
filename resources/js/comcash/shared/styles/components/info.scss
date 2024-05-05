@@ -258,7 +258,6 @@
     width: 100%;
     margin-left: 260px;
     padding: 80px 60px 0 60px;
-    background: url(/comcash/img/bg-company-1.svg) top no-repeat;
     background-size: contain;
 
     @media (max-width: 1100px) {
@@ -269,34 +268,72 @@
       padding: 80px 20px 0 20px;
       background-size: auto;
     }
+
+    .about__colums-item {
+        @media (max-width: 1024px) {
+            width: 230px;
+            height: 180px;
+            font-size: 15px;
+        }
+        @media (max-width: 460px) {
+            width: 100%;
+        }
+    }
+    .about__clean-img {
+        @media (max-width: 1024px) {
+            width: 350px;
+            height: 500px;
+        }
+    }
+
+    .about__clean-img {
+        @media (max-width:768px) {
+            height: 500px;
+            width: 450px;
+        }
+    }
+
+    .about {
+        padding: 0;
+    }
   }
 
   &__header {
-    margin-bottom: 160px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
 
-    @media (max-width: 1100px) {
-      margin-top: 50px;
-      margin-bottom: 180px;
-    }
 
     @media (max-width: 1100px) {
       margin-top: 0;
       margin-bottom: 40px;
     }
 
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &-item {
+        flex:1;
+        width: 100%;
+        max-width: 500px;
+        margin-bottom: 20px;
+    }
+
+    &-contacts {
+
+    }
+
     &-title {
-      max-width: 300px;
       font-size: 42px;
       font-weight: 700;
       margin-bottom: 12px;
-
-      @media (max-width: 680px) {
-        font-size: 24px;
-      }
-
       @media (max-width: 1100px) {
-        position: absolute;
-        top: -1px;
+        position: fixed;
+        z-index: 1;
+        top: calc(var(--height-header-mobile) + 18px);
         left: 0;
         right: 0;
         max-width: 100%;
@@ -305,23 +342,38 @@
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
         text-align: center;
-        background: linear-gradient(to top, #2d2d2d, #2d2d2d) padding-box,
-          linear-gradient(to top, #acacac, transparent) border-box;
+        background: linear-gradient(to top, #2d2d2d, #2d2d2d) padding-box, linear-gradient(to top, #acacac, transparent) border-box;
         text-transform: uppercase;
         font-size: 14px;
         font-weight: 700;
       }
     }
 
+    &-subtitle {
+        font-size: 35px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        @media (max-width: 768px) {
+          text-align: center;
+        }
+        @media (max-width: 680px) {
+          font-size: 24px;
+        }
+      }
+
     &-text {
       max-width: 500px;
       line-height: 1.5;
-
+      @media (max-width: 768px) {
+        text-align: center;
+      }
       @media (max-width: 680px) {
         max-width: 400px;
       }
     }
   }
+
+
 
   &__features {
     margin-bottom: 40px;
@@ -1964,7 +2016,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 500px;
-    
+
     @media (max-width: 768px) {
 
       flex-direction: column;

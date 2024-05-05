@@ -44,7 +44,7 @@ return [
     "CashCourierMenu" => "Наличные курьером",
     "ContactsMenu" => "Контакты",
     "PartnerFAQMenu" => "FAQ",
-    "FeedbackMenu" => "Отзывы",
+    "FeedbackMenu" => "Репутация",
     "TariffsMenu" => "Тарифы",
     "PagesMenu" => "Страницы",
     "SupportMenu" => "Поддержка",

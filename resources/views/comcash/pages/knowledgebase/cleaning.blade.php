@@ -6,179 +6,102 @@
         @include("comcash.component.knowledge_menu")
         <div class="company__content">
             <div class="company__header">
-            <p class="company__header-title">{{__("front.page_about_title")}}</p>
-            <p class="company__header-text">{{__("front.page_about_desc_1")}}</p>
-            </div>
+                <div class="company__header-item">
+                    <p class="company__header-title">Чистка крипты</p>
+                </div>
+                <div class="company__header-item">
+                    <p class="company__header-subtitle">Наши контакты</p>
 
-            <div class='company__features'>
-            <p class="company__features-title">{{__("front.page_about_title_2")}}</p>
-            <div class='company__features-row'>
-                <div class='company__features-item company__features-item-1'>
-                    <p class='company__features-item-title'>{{__("front.page_about_advantage_1_title")}}</p>
-                    <p class='company__features-item-text'>{{__("front.page_about_advantage_1_content")}}</p>
-                </div>
-                <div class='company__features-item company__features-item-2'>
-                    <p class='company__features-item-title'>{{__("front.page_about_advantage_2_title")}}</p>
-                    <p class='company__features-item-text'>{{__("front.page_about_advantage_2_content")}}</p>
-                </div>
-            </div>
-            <div class='company__features-row'>
-                <div class='company__features-item company__features-item-3'>
-                    <p class='company__features-item-title'>{{__("front.page_about_advantage_3_title")}}</p>
-                    <p class='company__features-item-text'>{{__("front.page_about_advantage_3_content")}}</p>
-                </div>
-                <div class='company__features-item company__features-item-4'>
-                    <p class='company__features-item-title'>{{__("front.page_about_advantage_4_title")}}</p>
-                    <p class='company__features-item-text'>{{__("front.page_about_advantage_4_content")}}</p>
-                </div>
-            </div>
-            </div>
-
-            <div class="company__about">
-            <p class="company__about-title">{{__("front.page_about_title_3")}}</p>
-            <p class="company__about-text">
-                {{__("front.page_about_desc_2")}}
-                <br/><br/>
-                {{__("front.page_about_desc_3")}}
-            </p>
-            </div>
-
-            <div class="company__products">
-            <p class="company__products-title">{{__("front.page_about_title_4")}}</p>
-            <div class="company__products-body">
-
-                <div class="company__products-item">
-                    <div class="company__products-card">
-                        <p class="company__products-card-title">
-                            {{__("front.page_about_product_1_title")}}
-                        </p>
-                        <p class="company__products-card-text">
-                            {{__("front.page_about_product_1_content")}}
-                        </p>
-                    </div>
-                    <a class="company__products-btn" href="{{route("index")}}">{{__("front.page_about_product_try_it")}} &rarr;</a>
-                </div>
-                <div class="company__products-item">
-                    <div class="company__products-card">
-                        <p class="company__products-card-title">
-                            {{__("front.page_about_product_2_title")}}
-                        </p>
-                        <p class="company__products-card-text">
-                            {{__("front.page_about_product_2_content")}}
-                        </p>
-                    </div>
-                    <a class="company__products-btn" href="{{route("comcashPage", ["delivery"])}}">{{__("front.page_about_product_try_it")}} &rarr;</a>
-                </div>
-                <div class="company__products-item">
-                    <div class="company__products-card">
-                        <p class="company__products-card-title">
-                            {{__("front.page_about_product_3_title")}}
-                        </p>
-                        <p class="company__products-card-text">
-                            {{__("front.page_about_product_3_content")}}
-                        </p>
-                    </div>
-                    <a class="company__products-btn" href="https://amlcheck.pw">{{__("front.page_about_product_try_it")}} &rarr;</a>
-                </div>
-
-            </div>
-
-            </div>
-
-            <div class="company__advantages">
-                <div class="company__advantages-row">
-                    <div class="company__advantages-item">
-                        <p class="company__advantages-title">{{__("front.companyAdvantageTitle1")}}</p>
-                        <p class="company__advantages-text">{{__("front.companyAdvantageText1")}}</p>
-                    </div>
-                    <div class="company__advantages-item">
-                        <p class="company__advantages-title">{{__("front.companyAdvantageTitle2")}}</p>
-                        <p class="company__advantages-text">
-                            {{__("front.companyAdvantageText2_1")}}
-                            {{__("front.companyAdvantageText2_2")}}
-                            {{__("front.companyAdvantageText2_3")}}
-                            {{__("front.companyAdvantageText2_4")}}
-                        </p>
-                    </div>
-                </div>
-                <div class="company__advantages-row">
-                    <div class="company__advantages-item">
-                        <p class="company__advantages-title">{{__("front.companyAdvantageTitle3")}}</p>
-                        <p class="company__advantages-text">{{__("front.companyAdvantageText3")}}</p>
+                    <div class="company__header-contacts">
+                        <span class="header-info__contact copy">
+                            <span class="header-info__contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                    <g clip-path="url(#clip0_60_1451)">
+                                        <path d="M21.875 18.7487H15.625V15.6237H13.8542C12.7083 18.1237 10.1042 19.7904 7.29167 19.7904C3.22917 19.7904 0 16.5612 0 12.4987C0 8.4362 3.22917 5.20703 7.29167 5.20703C10.1042 5.20703 12.7083 6.8737 13.8542 9.3737H25V15.6237H21.875V18.7487ZM17.7083 16.6654H19.7917V13.5404H22.9167V11.457H12.3958L12.1875 10.7279C11.4583 8.64453 9.47917 7.29036 7.29167 7.29036C4.375 7.29036 2.08333 9.58203 2.08333 12.4987C2.08333 15.4154 4.375 17.707 7.29167 17.707C9.47917 17.707 11.4583 16.3529 12.1875 14.2695L12.3958 13.5404H17.7083V16.6654ZM7.29167 15.6237C5.52083 15.6237 4.16667 14.2695 4.16667 12.4987C4.16667 10.7279 5.52083 9.3737 7.29167 9.3737C9.0625 9.3737 10.4167 10.7279 10.4167 12.4987C10.4167 14.2695 9.0625 15.6237 7.29167 15.6237ZM7.29167 11.457C6.66667 11.457 6.25 11.8737 6.25 12.4987C6.25 13.1237 6.66667 13.5404 7.29167 13.5404C7.91667 13.5404 8.33333 13.1237 8.33333 12.4987C8.33333 11.8737 7.91667 11.457 7.29167 11.457Z" fill="#009C74"></path>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_60_1451">
+                                        <rect width="25" height="25" fill="white"></rect>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="header-info__contact-title">
+                                qTox:
+                            </span>
+                            &nbsp;
+                            <span class="header-info__contact-label">
+                                44F916D1AEA991BD510171AD4E48BCB80E34702A11FA9295E7C541FB67A32D762588CFCB44B9
+                            </span>
+                        </span>
+                        <span class="header-info__contact">
+                            <span class="header-info__contact-icon">
+                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.5 0C5.152 0 0 5.152 0 11.5C0 17.848 5.152 23 11.5 23C17.848 23 23 17.848 23 11.5C23 5.152 17.848 0 11.5 0ZM16.836 7.82C16.6635 9.637 15.916 14.053 15.5365 16.0885C15.3755 16.951 15.0535 17.2385 14.7545 17.273C14.0875 17.3305 13.5815 16.836 12.9375 16.4105C11.9255 15.7435 11.3505 15.3295 10.373 14.6855C9.2345 13.938 9.9705 13.524 10.626 12.857C10.7985 12.6845 13.7425 10.005 13.8 9.7635C13.808 9.72692 13.8069 9.68895 13.7969 9.65287C13.7869 9.6168 13.7682 9.58372 13.7425 9.5565C13.6735 9.499 13.5815 9.522 13.501 9.5335C13.3975 9.5565 11.7875 10.626 8.648 12.742C8.188 13.0525 7.774 13.2135 7.406 13.202C6.992 13.1905 6.21 12.972 5.6235 12.7765C4.899 12.5465 4.3355 12.42 4.3815 12.0175C4.4045 11.8105 4.692 11.6035 5.2325 11.385C8.5905 9.9245 10.8215 8.9585 11.937 8.4985C15.134 7.1645 15.7895 6.9345 16.2265 6.9345C16.3185 6.9345 16.537 6.9575 16.675 7.0725C16.79 7.1645 16.8245 7.291 16.836 7.383C16.8245 7.452 16.8475 7.659 16.836 7.82Z" fill="#009C74"></path>
+                                </svg>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="header-info__contact-label">
+                                <a href="https://t.me/comcash_exchange">comcash_exchange</a>
+                            </span>
+                        </span>
+                        <span class="header-info__contact copy">
+                            <span class="header-info__contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                    <path d="M20.834 18.7493H18.7507V9.63477L12.5007 13.541L6.25065 9.63477V18.7493H4.16732V6.24935H5.41732L12.5007 10.6764L19.584 6.24935H20.834M20.834 4.16602H4.16732C3.01107 4.16602 2.08398 5.0931 2.08398 6.24935V18.7493C2.08398 19.3019 2.30348 19.8318 2.69418 20.2225C3.08488 20.6132 3.61478 20.8327 4.16732 20.8327H20.834C21.3865 20.8327 21.9164 20.6132 22.3071 20.2225C22.6978 19.8318 22.9173 19.3019 22.9173 18.7493V6.24935C22.9173 5.69681 22.6978 5.16691 22.3071 4.77621C21.9164 4.38551 21.3865 4.16602 20.834 4.16602Z" fill="#009C74"></path>
+                                </svg>
+                            </span>
+                            &nbsp;
+                            <span class="header-info__contact-title">
+                                Jabber:
+                            </span>
+                            &nbsp;
+                            <span class="header-info__contact-label">
+                                Comcash@exploit.im
+                            </span>
+                        </span>
+                        <span class="header-info__contact copy">
+                            <span class="header-info__contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                    <path d="M20.834 18.7493H18.7507V9.63477L12.5007 13.541L6.25065 9.63477V18.7493H4.16732V6.24935H5.41732L12.5007 10.6764L19.584 6.24935H20.834M20.834 4.16602H4.16732C3.01107 4.16602 2.08398 5.0931 2.08398 6.24935V18.7493C2.08398 19.3019 2.30348 19.8318 2.69418 20.2225C3.08488 20.6132 3.61478 20.8327 4.16732 20.8327H20.834C21.3865 20.8327 21.9164 20.6132 22.3071 20.2225C22.6978 19.8318 22.9173 19.3019 22.9173 18.7493V6.24935C22.9173 5.69681 22.6978 5.16691 22.3071 4.77621C21.9164 4.38551 21.3865 4.16602 20.834 4.16602Z" fill="#009C74"></path>
+                                </svg>
+                            </span>
+                            &nbsp;
+                            <span class="header-info__contact-title">
+                                Jabber:
+                            </span>
+                            &nbsp;
+                            <span class="header-info__contact-label">
+                                Comcash_support@exploit.im
+                            </span>
+                        </span>
                     </div>
                 </div>
             </div>
-
-            <div class="company__faq accordion accordion--secondary">
-                <button class='accordion__button'>
-                    <span>{{__("front.companyFaqTitle1")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class="accordion__text">
-                        {{__("front.companyFaqText1")}}
-                    </div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.companyFaqTitle2")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class="accordion__text">
-                        {{__("front.companyFaqText2")}}
-                    </div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.companyFaqTitle3")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class="accordion__text">
-                        {{__("front.companyFaqText3")}}
-                    </div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.companyFaqTitle4")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class="accordion__text">
-                        {{__("front.companyFaqText4")}}
-                    </div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.companyFaqTitle5")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class="accordion__text">
-                        {{__("front.companyFaqText5")}}
-                    </div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.companyFaqTitle6")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class="accordion__text">
-                        {{__("front.companyFaqText6")}}
-                    </div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.companyFaqTitle7")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class="accordion__text">
-                        {{__("front.companyFaqText7")}}
-                    </div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.companyFaqTitle8")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class="accordion__text">
-                        {{__("front.companyFaqText8")}}
+            <div class='about'>
+                <div class='about__container'>
+                    <h2 class='about__title'>
+                        МЫ <span class="green">РАБОТАЕМ</span> ЧТОБЫ ВЫ <span class="green">ОТДЫХАЛИ</span>
+                    </h2>
+                    <div class='about__body'>
+                        <div class="about__colums">
+                            <div class="about__colums-item">
+                                МЫ ВЫДАЕМ ТОЛЬКО ЧИСТУЮ КРИПТУ
+                            </div>
+                            <div class="about__colums-item">
+                                Нас не интересует кто вы и где вы, полная анонимность гарантирована
+                            </div>
+                        </div>
+                        <img src="/comcash/img/clean_crypto.png" class="about__clean-img"/>
+                        <div class="about__colums">
+                            <div class="about__colums-item">
+                                Блокировка Ваших средств  ИСКЛЮЧЕНА
+                            </div>
+                            <div class="about__colums-item">
+                                Доставка наличных по всему миру анонимно» - справа внизу
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

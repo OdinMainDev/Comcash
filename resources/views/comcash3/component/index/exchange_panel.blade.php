@@ -8,7 +8,7 @@
                     </div> -->
                     <div class="scroll-text-container">
                         <div class="scroll-text">
-                            Мы не <span class="green">блокируем</span> средства из-за высокого <span class="green">AML</span>
+                            Мы <span class="green">не блокируем</span> средства из-за высокого <span class="green">AML</span>
                         </div>
                     </div>
                     <div class="flex-1">
