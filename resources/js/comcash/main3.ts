@@ -20,6 +20,7 @@ import '@/features/exchageFormScripts';
 import '@/features/comcashForm';
 import '@/features/kycForm';
 import '@/features/progressScript'
+import '@/features/scrollText'
 
 import '@/shared/scripts/checkChristmas'
 

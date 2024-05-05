@@ -13,10 +13,8 @@
 
 .welcome {
   position: relative;
-  padding: 0 20px 185px 20px;
+  padding: 0 20px 100px 20px;
   background: url('/comcash/img/welcome_bg.png') center center/contain no-repeat;
-  overflow: hidden;
-
   &.сhristmas {
     background: url(/comcash/img/new_year_img/snow.svg) center center/cover no-repeat;
   }
@@ -129,7 +127,7 @@
 
    &__filter {
     display: flex;
-    gap: 10px;    
+    gap: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
     &-item {
@@ -187,7 +185,7 @@
           }
         }
       }
-      
+
 
       &-check {
         display: none;
@@ -206,7 +204,7 @@
 
     &__header {
       display: flex;
-      gap: 130px;
+      gap: 90px;
       width: 100%;
       margin-bottom: 20px;
       @media (max-width: 768px) {
@@ -222,7 +220,7 @@
       margin-bottom: 40px;
       cursor: pointer;
       align-items: center;
-      @media (max-width: 768px) { 
+      @media (max-width: 768px) {
         flex-direction: column;
         gap: 20px;
         max-width: 468px;
@@ -262,12 +260,12 @@
       font-style: normal;
       font-weight: 600;
       line-height: 45px;
-      @media (max-width: 768px) { 
+      @media (max-width: 768px) {
         font-size: 25px;
         line-height: 35px;
         text-align: center;
       }
-      @media (max-width: 375px) { 
+      @media (max-width: 375px) {
         font-size: 20px;
         line-height: 30px;
       }
@@ -321,7 +319,7 @@
         font-style: normal;
         font-weight: 600;
         line-height: 24px;
-        @media (max-width: 375px) { 
+        @media (max-width: 375px) {
           font-size: 15px;
           line-height: 20px;
         }
@@ -333,7 +331,7 @@
         font-style: normal;
         font-weight: 500;
         line-height: 20px;
-        @media (max-width: 375px) { 
+        @media (max-width: 375px) {
           font-size: 13px;
           line-height: 17px;
         }
@@ -374,12 +372,12 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-        @media (max-width: 425px) {
+        @media (max-width: 450px) {
           gap: 10px;
         }
       }
     }
-    
+
   }
 
   &__exchange-mobile {
@@ -392,16 +390,16 @@
     @media (max-width: 900px) {
       display: flex;
     }
-    @media (max-width: 425px) {
+    @media (max-width: 450px) {
       padding-top: 30px;
     }
-    
+
     &-container {
       width: 100%;
       display: flex;
       gap: 20px;
       margin-bottom: 20px;
-      @media (max-width: 425px) {
+      @media (max-width: 450px) {
         gap: 10px;
       }
     }
@@ -415,7 +413,7 @@
         height: 250px;
         margin-top: 10px;
         overflow: hidden;
-        @media (max-width: 425px) {
+        @media (max-width: 450px) {
           height: 180px;
         }
         .swiper-slide {
@@ -430,7 +428,7 @@
           transform: scale(0.8)!important;
           transition: opacity 0.2s;
           overflow: hidden;
-          @media (max-width: 425px) {
+          @media (max-width: 450px) {
             padding: 0 15px;
           }
           &::before {
@@ -442,13 +440,13 @@
             bottom: 0;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 30%, rgba(0, 0, 0, 0.1) 100%);
           }
-  
+
           &-active {
             transform: scale(1) !important;
             background: linear-gradient(360deg, #299377 500%, #929592 100%);
             transition: 0.3s all;
             height: 80px !important;
-            @media (max-width: 425px) {
+            @media (max-width: 450px) {
               height: 60px !important;
             }
           }
@@ -465,7 +463,7 @@
       width: 250px;
       background: linear-gradient(180deg, #fafafa 0%, #d4d4d4 100%);
 
-      @media (max-width: 425px) {
+      @media (max-width: 450px) {
         padding: 5px 20px;
         font-size: 14px;
         width: 150px;
@@ -484,7 +482,7 @@
     @media (max-width: 900px) {
       display: none;
     }
-    
+
     &-col {
       display: flex;
       background: linear-gradient(to bottom, #3f3f3f, #171717) padding-box, linear-gradient(to bottom, #5d5d5d, #000) border-box;
@@ -535,7 +533,7 @@
         transition: background-color 0.2s, color 0.2s;
         background-color: #D9D9D9;
         font-size: 16px;
-        
+
 
         &.active {
           color: #FFF;
@@ -553,7 +551,7 @@
           padding: 5px 10px;
         }
 
-        @media (max-width:425px) {
+        @media (max-width:450px) {
           font-size: 10px;
           padding: 3px 10px;
         }
@@ -563,7 +561,7 @@
         justify-content: space-between;
       }
 
-      @media (max-width:425px) {
+      @media (max-width:450px) {
         gap: 5px;
 
       }
@@ -577,14 +575,14 @@
       font-size: 14px;
       &.big {
         font-size: 12px;
-        @media (max-width: 425px) {
+        @media (max-width: 450px) {
           font-size: 10px;
         }
       }
       @media (max-width: 900px) {
         font-size: 9px;
       }
-      @media (max-width: 425px) {
+      @media (max-width: 450px) {
         font-size: 6px;
       }
     }
@@ -593,7 +591,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      @media (max-width: 425px) {
+      @media (max-width: 450px) {
         gap: 5px;
       }
     }
@@ -602,7 +600,7 @@
       width: 30px;
       height: 30px;
       margin-right: 20px;
-      @media (max-width: 425px) {
+      @media (max-width: 450px) {
         width: 25px;
         height: 25px;
         margin-right: 5px;
@@ -650,7 +648,7 @@
         transition: opacity 0.3s;
 
       }
-       
+
 
       &:hover::after {
         opacity: 1;
@@ -714,7 +712,7 @@
       font-size: 15px;
       font-weight: 500;
       margin-bottom: 20px;
-      @media (max-width:425px) {
+      @media (max-width:450px) {
         font-size: 10px;
       }
     }
@@ -779,7 +777,7 @@
       @media (max-width: 680px) {
         height: 130px;
       }
-  
+
     }
     &-text {
       text-align: center;
@@ -821,7 +819,7 @@
     // }
   }
 
-  &__top {   
+  &__top {
     flex:1;
     display: flex;
 
@@ -852,7 +850,7 @@
     z-index: 2;
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
-    background: linear-gradient(to bottom,#272727,#000000) padding-box,linear-gradient(to bottom,#5d5d5d,#000) border-box;   
+    background: linear-gradient(to bottom,#272727,#000000) padding-box,linear-gradient(to bottom,#5d5d5d,#000) border-box;
     width: 650px;
     padding: 30px 100px;
     top: 100px;
@@ -902,7 +900,7 @@
         &_left {
           left: 20px;
         }
-  
+
         &_right {
           opacity: 0;
           transform: translateY(-50%) rotate(180deg);
@@ -912,7 +910,7 @@
       @media (max-width: 1024px) {
         display: none;
       }
-      
+
     }
 
 
@@ -937,7 +935,7 @@
         top: 50%;
         transform: translateY(-50%);
         transition: opacity 0.2s;
-  
+
         svg {
           height: 40px;
           width: 30px;
@@ -946,7 +944,7 @@
           opacity: 1;
           left: 40px;
         }
-  
+
         &_right {
           opacity: 0;
           transform: translateY(-50%) rotate(180deg);
@@ -962,7 +960,7 @@
       border-radius: 40px;
       margin-top: 0;
     }
-    
+
     &-title {
       font-size: 30px;
       text-align: center;
@@ -1026,7 +1024,7 @@
       flex-direction: column;
       padding: 50px 20px;
     }
-    @media (max-width: 425px) {
+    @media (max-width: 450px) {
       padding: 0;
     }
     &-second {
@@ -1037,7 +1035,7 @@
         flex-direction: column;
         padding: 50px 20px;
       }
-      @media (max-width: 425px) {
+      @media (max-width: 450px) {
         padding: 0;
       }
     }
@@ -1410,7 +1408,7 @@
       max-width: 800px;
       padding: 0 20px;
       margin: 0 auto;
-      
+
       img {
         height: 30px;
       }
@@ -1429,7 +1427,7 @@
 
 .about {
   position: relative;
-  padding: 100px 20px 20px;
+  padding: 0 20px 20px;
   overflow: hidden;
 
   @media (max-width: 1000px) {
@@ -1480,194 +1478,68 @@
 
   &__body {
     display: flex;
+    justify-content: center;
+    gap: 20px;
     margin-bottom: 40px;
-
-    @media (max-width: 760px) {
+    @media (max-width: 768px) {
       flex-direction: column;
       align-items: center;
     }
   }
 
-  &__col {
-    width: 30%;
-
-    &:nth-child(2) {
-      width: 40%;
+  &__clean-img {
+    width: 420px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 40px;
+    @media (max-width: 768px) {
+        height: 400px;
+        width: 500px;
     }
 
-    @media (max-width: 760px) {
-      width: 100%;
-
-      &:nth-child(2) {
+    @media (max-width: 450px) {
         width: 100%;
-      }
+
     }
+
   }
 
-  &__item {
-    position: relative;
+  &__colums {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 120px 20px 60px 20px;
-    background: linear-gradient(to bottom, #2e2e2e, #000000);
-    border-radius: 40px;
-
-    &.christmas {
-        background: url(/comcash/img/new_year_img/snow.svg) center center/cover no-repeat,
-        linear-gradient(to bottom, #2e2e2e, #000000);
+    gap: 20px;
+    @media (max-width: 768px) {
+        flex-direction: row;
+        justify-content: center;
     }
-
-
-    &-christmas-toy {
-      display: none;
-      position: absolute;
-      height: 100px;
-      width: 100px;
-      &_right {
-        top: 0;
-        right: 0;
-        background: url(/comcash/img/new_year_img/tree_toys_right.png) no-repeat;
-      }
-      &_left {
-        top: 0;
-        left: 0;
-        background: url(/comcash/img/new_year_img/tree_toys_left.png) no-repeat;
-
-      }
+    @media (max-width: 450px) {
+        flex-direction: column;
     }
-
-    &:first-child {
-      margin-bottom: 40px;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 40px;
-      left: 20px;
-      display: block;
-      width: 60px;
-      height: 60px;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-
-    &-1 {
-      position: relative;
-      &::before {
-        background-image: url('/comcash/img/about-1.svg');
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        z-index: 1;
-        top: 85%;
-        left: -86px;
-        display: block;
-        width: 140px;
-        height: 160px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-image: url('/comcash/img/about-2.svg');
-
-        @media (max-width: 760px) {
-          display: none;
+    &-item {
+        width: 260px;
+        height: 230px;
+        background: linear-gradient(180deg, rgba(26, 99, 79, 0.7) 0%, rgba(7, 21, 17, 0.7) 100%);
+        border-radius: 40px;
+        display: flex;
+        align-items:center;
+        text-align: center;
+        padding: 20px;
+        justify-content: center;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 130%;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-align: center;
+        color: #d9d9d9;
+        @media (max-width: 450px) {
+            width: 100%;
+            height: 180px;
         }
-      }
-    }
-
-    &-2::before {
-      background-image: url('/comcash/img/about-3.svg');
-    }
-
-    &-3 {
-      &::before {
-        background-image: url('/comcash/img/about-4.svg');
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        z-index: 1;
-        top: -64px;
-        right: -55px;
-        display: block;
-        width: 172px;
-        height: 234px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-image: url('/comcash/img/about-7.svg');
-
-        @media (max-width: 760px) {
-          display: none;
-        }
-      }
-    }
-
-    &-4 {
-      &::before {
-        background-image: url('/comcash/img/about-5.svg');
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        z-index: 1;
-        bottom: -33px;
-        right: -45px;
-        display: block;
-        width: 100px;
-        height: 101px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-image: url('/comcash/img/about-6.svg');
-
-        @media (max-width: 760px) {
-          display: none;
-        }
-      }
-    }
-
-    &-title {
-      margin-bottom: 16px;
-      font-size: 18px;
-      color: var(--color-accent);
     }
   }
 
-  &__screen {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    height: 100%;
-    padding: 20px 20px 60px 20px;
-    background: url('/comcash/img/about-mobile.svg') bottom no-repeat,
-      linear-gradient(to bottom, #35cea3, #024b37);
-    border-radius: 40px;
-    margin: 0 20px 0 20px;
 
-    @media (max-width: 1000px) {
-      background-size: 95%;
-    }
-
-    @media (max-width: 760px) {
-      margin: 20px 0;
-      padding: 0px 20px 240px 20px;
-      background: url('/comcash/img/about-laptop.svg') bottom no-repeat,
-        linear-gradient(to bottom, #35cea3, #024b37);
-    }
-
-    &-title {
-      margin: 16px 0 26px 0;
-      font-size: 18px;
-    }
-  }
-
-  &__btn {
-    margin: 0 auto;
-  }
 }
 
 .transactions {
@@ -1790,7 +1662,7 @@
             background-size: contain;
             position: absolute;
           }
-  
+
           // &::after {
           //   content: '';
           //   height: 100px;
@@ -1884,7 +1756,7 @@
       margin: 0 auto 20px;
     }
 
-    @media (max-width: 425px) {
+    @media (max-width: 450px) {
       overflow-x: auto;
       &::-webkit-scrollbar {
         background-color: #2a2a2a;

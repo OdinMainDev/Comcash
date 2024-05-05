@@ -3,28 +3,36 @@
         <div class="welcome__panel-container-second">
             <form class="welcome-exchange" action="{{route("redirectToExchange")}}">
                 <div class="welcome-exchange__header">
-                    <div class="welcome-exchange__title">
+                    <!-- <div class="welcome-exchange__title">
                         Обмен <span class="welcome-exchange__title_from"></span> на <span class="welcome-exchange__title_to"></span>
-                    </div>
-                    <div class="welcome-exchange__timer-container">
-                        <div class="welcome-exchange__timer-text">
-                            <div class="welcome-exchange__block-title">
-                                <span></span>
-                            </div>
-                            <div class="welcome-exchange__block-subtitle">
-                                Курс зафиксируется после создания заявки
-                            </div>
-                        </div>
-                        <div class="welcome-exchange__timer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 39 40" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.54512 33.9999C9.55655 34 9.56799 34 9.57944 34H30.4206C30.432 34 30.4434 34 30.4549 33.9999H9.54512ZM9.40558 33.9968C6.95699 33.9054 5 31.8915 5 29.4206C5 27.7468 5.91318 26.2063 7.3816 25.403L19.5 18.7735V25.6301L9.56895 30.419C9.39604 30.5024 9.28613 30.6774 9.28613 30.8694V33.8499C9.28613 33.9222 9.33739 33.9827 9.40558 33.9968ZM19.5612 18.26L7.3816 11.597C6.78762 11.2721 6.28449 10.8265 5.8959 10.3003L20 16.7777L34.1041 10.3003C33.7155 10.8265 33.2124 11.2721 32.6184 11.597L20.4388 18.26C20.3538 18.105 20.1892 17.9999 20 17.9999C19.8108 17.9999 19.6462 18.105 19.5612 18.26ZM20.5 18.7735L32.6184 25.403C34.0868 26.2063 35 27.7468 35 29.4206C35 31.8912 33.0436 33.9048 30.5954 33.9967C30.6635 33.9825 30.7147 33.9222 30.7147 33.8499V30.8694C30.7147 30.6774 30.6048 30.5024 30.4319 30.419L20.5 25.6297V18.7735ZM34.375 9.88885H5.62496C5.22269 9.20003 5 8.40599 5 7.57944C5 5.05028 7.05028 3 9.57944 3H30.4206C32.9497 3 35 5.05028 35 7.57944C35 8.40599 34.7773 9.20003 34.375 9.88885Z" fill="#009C74"/>
-                                <path d="M20 18.5L32.6184 25.403C34.0868 26.2063 35 27.7468 35 29.4206V29.4206C35 31.9497 32.9497 34 30.4206 34H9.57944C7.05028 34 5 31.9497 5 29.4206V29.4206C5 27.7468 5.91318 26.2063 7.3816 25.403L20 18.5ZM20 18.5L32.6184 11.597C34.0868 10.7937 35 9.25323 35 7.57944V7.57944C35 5.05028 32.9497 3 30.4206 3H9.57944C7.05028 3 5 5.05028 5 7.57944V7.57944C5 9.25323 5.91318 10.7937 7.3816 11.597L20 18.5Z" stroke="#009C74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <div class="welcome-exchange__timer-clock">
-                                00:00
-                            </div>
+                    </div> -->
+                    <div class="scroll-text-container">
+                        <div class="scroll-text">
+                            Мы не <span class="green">блокируем</span> средства из-за высокого <span class="green">AML</span>
                         </div>
                     </div>
+                    <div class="flex-1">
+                        <div class="welcome-exchange__timer-container">
+                            <div class="welcome-exchange__timer-text">
+                                <div class="welcome-exchange__block-title">
+                                    <span></span>
+                                </div>
+                                <div class="welcome-exchange__block-subtitle">
+                                    Курс зафиксируется после создания заявки
+                                </div>
+                            </div>
+                            <div class="welcome-exchange__timer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 39 40" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.54512 33.9999C9.55655 34 9.56799 34 9.57944 34H30.4206C30.432 34 30.4434 34 30.4549 33.9999H9.54512ZM9.40558 33.9968C6.95699 33.9054 5 31.8915 5 29.4206C5 27.7468 5.91318 26.2063 7.3816 25.403L19.5 18.7735V25.6301L9.56895 30.419C9.39604 30.5024 9.28613 30.6774 9.28613 30.8694V33.8499C9.28613 33.9222 9.33739 33.9827 9.40558 33.9968ZM19.5612 18.26L7.3816 11.597C6.78762 11.2721 6.28449 10.8265 5.8959 10.3003L20 16.7777L34.1041 10.3003C33.7155 10.8265 33.2124 11.2721 32.6184 11.597L20.4388 18.26C20.3538 18.105 20.1892 17.9999 20 17.9999C19.8108 17.9999 19.6462 18.105 19.5612 18.26ZM20.5 18.7735L32.6184 25.403C34.0868 26.2063 35 27.7468 35 29.4206C35 31.8912 33.0436 33.9048 30.5954 33.9967C30.6635 33.9825 30.7147 33.9222 30.7147 33.8499V30.8694C30.7147 30.6774 30.6048 30.5024 30.4319 30.419L20.5 25.6297V18.7735ZM34.375 9.88885H5.62496C5.22269 9.20003 5 8.40599 5 7.57944C5 5.05028 7.05028 3 9.57944 3H30.4206C32.9497 3 35 5.05028 35 7.57944C35 8.40599 34.7773 9.20003 34.375 9.88885Z" fill="#009C74"/>
+                                    <path d="M20 18.5L32.6184 25.403C34.0868 26.2063 35 27.7468 35 29.4206V29.4206C35 31.9497 32.9497 34 30.4206 34H9.57944C7.05028 34 5 31.9497 5 29.4206V29.4206C5 27.7468 5.91318 26.2063 7.3816 25.403L20 18.5ZM20 18.5L32.6184 11.597C34.0868 10.7937 35 9.25323 35 7.57944V7.57944C35 5.05028 32.9497 3 30.4206 3H9.57944C7.05028 3 5 5.05028 5 7.57944V7.57944C5 9.25323 5.91318 10.7937 7.3816 11.597L20 18.5Z" stroke="#009C74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <div class="welcome-exchange__timer-clock">
+                                    00:00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="welcome-exchange__body">
                     <div class="welcome-exchange__block bottom exchnage-panel-left" >
@@ -173,3 +181,4 @@
         </div>
     </div>
 </div>
+
