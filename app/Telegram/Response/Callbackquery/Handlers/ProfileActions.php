@@ -59,11 +59,11 @@ trait ProfileActions {
         $text .= "<b>".__("telegram.profile_total_exchanges", [], $language)."</b>";
         $text .= " ".$totalExchanges."\n";
         $exchanges = $this->getCacheExchanges($this->user->user_id, $page_number);
-        $keyboardArray = [];
         if($totalExchanges > 0){
-            $text .= __("telegram.profile_current_paginate_exchanges", [], $language);
-            $currentRealIndex = (10 * ($page_number - 1));
-            $text .= " ".($currentRealIndex + 1)."->".($currentRealIndex + 11 > $totalExchanges ? $totalExchanges : $currentRealIndex + 11)."/".$totalExchanges;
+            // $text .= __("telegram.profile_current_paginate_exchanges", [], $language);
+            // $currentRealIndex = (10 * ($page_number - 1));
+            // $text .= " ".($currentRealIndex + 1)."->".($currentRealIndex + 11 > $totalExchanges ? $totalExchanges : $currentRealIndex + 11)."/".$totalExchanges;
+            $keyboardArray = [];
             foreach($exchanges as $index => $exchange){
                 $key = (string)(($exchange->id)).": ".$exchange->currencyFrom->getTitle($language)." -> ".$exchange->currencyTo->getTitle($language);
                 $keyboardArray[$key] = $exchange->id."_".$page_number;
