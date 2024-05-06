@@ -109,6 +109,7 @@ class Router
 
             case "openExchangePageStep3":
                 $directionId = $this->validateExchangeDirectionByCurrencies($this->data);
+                info($this->data);
                 if(!$directionId){
                     $this->sendMainMenu($this->user->telegram_id, $this->user->language);
                     return;
