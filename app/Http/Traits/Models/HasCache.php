@@ -426,7 +426,10 @@ trait HasCache {
             });
             $ids = $directions->pluck("currency_to")->toArray();
             return $this->getCacheCurrencies()->reject(function ($currency) use($ids, $fromId) {
-                return !in_array($currency->id, $ids) && $currency->id != $fromId;
+                if($currency->id == $fromId)
+                    return false;
+                
+                return !in_array($currency->id, $ids);
             });
         });
     }
