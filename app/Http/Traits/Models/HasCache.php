@@ -417,13 +417,12 @@ trait HasCache {
     }
 
     public function getCachedCurrencyDirectionsTo($fromId) {
-        return Cache::remember("cached-directions-currency-from-".$fromId, 300, function() use($fromId){
-            $ids = $this->getCacheDirections()->pluck("currency_to")->toArray();
-            return $this->getCacheCurrencies()->reject(function ($currency) use($ids, $fromId) {
-                if(!in_array($currency->id, $ids))
+        return Cache::remember("cached-directions-currency-to-".$fromId, 300, function() use($fromId){
+            return $this->getCacheDirections()->reject(function ($direction) use($fromId) {
+                if(!$direction->status)
                     return false;
 
-                return $currency->id == $fromId;
+                return $direction->currency_from == $fromId;
             });
         });
     }
