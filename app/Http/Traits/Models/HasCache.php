@@ -419,7 +419,7 @@ trait HasCache {
     public function getCachedCurrencyDirectionsTo($fromId) {
         return Cache::remember("cached-directions-currency-to-".$fromId, 300, function() use($fromId){
             $directions = $this->getCacheDirections()->reject(function ($direction) use($fromId) {
-                return $direction->currency_from == $fromId;
+                return $direction->currency_from != $fromId;
             });
             $ids = $directions->pluck("currency_to")->toArray();
             return $this->getCacheCurrencies()->reject(function ($currency) use($ids, $fromId) {
