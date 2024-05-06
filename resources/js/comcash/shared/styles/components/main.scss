@@ -1087,7 +1087,6 @@
     &-list {
       display: flex;
       flex-direction: column;
-      max-width: 600px;
       font-size: 19px;
       font-weight: 300;
       line-height: 1.5;
@@ -1110,6 +1109,8 @@
         gap: 8px;
         position: relative;
         padding-left: 20px;
+        margin-bottom: 20px;
+
         &::before {
           content: "";
           position: absolute;
@@ -1120,7 +1121,6 @@
           background-color: #fff;
           border-radius: 50%;
         }
-        margin-bottom: 10px;
       }
     }
 
