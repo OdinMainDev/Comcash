@@ -87,23 +87,20 @@ trait ExchangePage {
         $data = explode("_", $data);
         if(count($data) != 2)
             return false;
-
         if(!is_numeric($data[0]) || !is_numeric($data[1]))
             return false;
 
-        $currencyFrom = $this->getCacheDirections()->reject(function($currency) use($data){
+        $currencyFrom = $this->getCacheCurrencies()->reject(function($currency) use($data){
             return $currency->id != $data[0];
         })->first();
-        $currencyTo = $this->getCacheDirections()->reject(function($currency) use($data){
+        $currencyTo = $this->getCacheCurrencies()->reject(function($currency) use($data){
             return $currency->id != $data[1];
         })->first();
         if(!$currencyFrom || !$currencyTo)
             return false;
-
         $direction = $this->getDirectionByCurrencyPair($currencyFrom, $currencyTo);
         if(!$direction)
             return false;
-
         return $direction->id;
     }
 
