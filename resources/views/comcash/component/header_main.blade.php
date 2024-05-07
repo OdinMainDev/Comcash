@@ -33,8 +33,8 @@
             <!-- <a class='header__link' href='{{route("index")}}'>
                 {{__("front.ClearYourCryptoMenu")}}
             </a> -->
-            <a class='header__link' href='{{route("comcashPage", ["name" => "delivery"])}}'>
-                {{__("front.CashCourierMenu")}}
+            <a class='header__link' href='{{route("comcashPage", ["name" => "support"])}}'>
+                {{__("front.SupportMenu")}}
             </a>
             <a class='header__link' href='{{route("comcashPage", ["name" => "faq"])}}'>
                 {{__("front.PartnerFAQMenu")}}
@@ -46,13 +46,8 @@
                 {{__("front.PagesMenu")}}
                 <ul class="header__link-menu">
                     <li class="header__link-menu-item">
-                        <a class='header__link' href='{{route("comcashPage", ["name" => "support"])}}'>
-                            {{__("front.SupportMenu")}}
-                        </a>
-                    </li>
-                    <li class="header__link-menu-item">
-                        <a class='header__link' href='{{route("comcashPage", ["name" => "cleaning"])}}'>
-                            {{__("front.CleaningMenu")}}
+                        <a class='header__link' href='{{route("comcashPage", ["name" => "delivery"])}}'>
+                            {{__("front.CashCourierMenu")}}
                         </a>
                     </li>
                 </ul>
