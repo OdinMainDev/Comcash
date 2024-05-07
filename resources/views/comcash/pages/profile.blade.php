@@ -34,7 +34,7 @@
                             <input type="text" class="input input--large mr-[10px]" name="email" value="{{auth()->user()->email}}" @if(auth()->user()->email_verified_at > 0) disabled @endif>
                         </div>
                         @if(auth()->user()->email_verified_at == 0) 
-                            <div class="mt-[15px] text-[#A4493B] text-[13px]">Адрес эл. почты не подтвержден. <a class="underline cursor-pointer">Подтвердите сейчас</a></div>
+                            <div class="mt-[15px] text-[#A4493B] text-[13px]">{{__("front.profileNotVerifiedEmail")}} <a class="underline cursor-pointer">{{__("front.profileNotVerifiedEmailButton")}}</a></div>
                         @endif
                     </div>
                     <div class="input-box">

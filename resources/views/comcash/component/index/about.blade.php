@@ -1,24 +1,35 @@
 <div class='about'>
     <div class='about__container'>
         <h2 class='about__title'>
-            МЫ <span class="green">РАБОТАЕМ</span> ЧТОБЫ ВЫ <span class="green">ОТДЫХАЛИ</span>
+            <?php 
+                $text = __("front.cleaningPageText1");
+                $text = mb_strtoupper($text);
+                $text = explode(" ", $text);
+
+                $first = $text[0];
+                $second = array_slice($text, 1, -2);
+                $second = implode(" ", $second);
+                $third = @$text[count($text) - 2];
+                $fourth = end($text);
+            ?>
+            {{$first}} <span class="green">{{$second}}</span> {{$third}} <span class="green">{{$fourth}}</span>
         </h2>
         <div class='about__body'>
             <div class="about__colums">
                 <div class="about__colums-item">
-                    МЫ ВЫДАЕМ ТОЛЬКО ЧИСТУЮ КРИПТУ
+                    {{__("front.cleaningPageText1")}}
                 </div>
                 <div class="about__colums-item">
-                    Нас не интересует кто вы и где вы, полная анонимность гарантирована
+                    {{__("front.cleaningPageText2")}}
                 </div>
             </div>
             <img src="/comcash/img/clean_crypto.png" class="about__clean-img"/>
             <div class="about__colums">
                 <div class="about__colums-item">
-                    Блокировка Ваших средств  ИСКЛЮЧЕНА
+                    {{__("front.cleaningPageText3")}}
                 </div>
                 <div class="about__colums-item">
-                    Доставка наличных по всему миру анонимно
+                    {{__("front.cleaningPageText4")}}
                 </div>
             </div>
         </div>

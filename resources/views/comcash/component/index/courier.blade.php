@@ -11,6 +11,5 @@
                 {{__("front.courier_cash_text")}}
             </p>
         </div>
-        <!-- <button class='courier__button button'>Попробовать</button> -->
     </div>
 </div>

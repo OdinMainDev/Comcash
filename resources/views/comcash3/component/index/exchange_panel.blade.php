@@ -3,12 +3,20 @@
         <div class="welcome__panel-container-second">
             <form class="welcome-exchange" action="{{route("redirectToExchange")}}">
                 <div class="welcome-exchange__header">
-                    <!-- <div class="welcome-exchange__title">
-                        Обмен <span class="welcome-exchange__title_from"></span> на <span class="welcome-exchange__title_to"></span>
-                    </div> -->
                     <div class="scroll-text-container">
                         <div class="scroll-text">
-                            Мы <span class="green">не блокируем</span> средства из-за высокого <span class="green">AML</span>
+                        <?php 
+                            $text = __("front.indexExchangePanelScrollText");
+                            $text = mb_strtoupper($text);
+                            $text = explode(" ", $text);
+
+                            $first = $text[0];
+                            $second = array_slice($text, 1, -2);
+                            $second = implode(" ", $second);
+                            $third = @$text[count($text) - 2];
+                            $fourth = end($text);
+                        ?>
+                            {{$first}} <span class="green">{{$second}}</span> {{$third}} <span class="green">{{$fourth}}</span>
                         </div>
                     </div>
                     <div class="flex-1">
@@ -18,7 +26,7 @@
                                     <span></span>
                                 </div>
                                 <div class="welcome-exchange__block-subtitle">
-                                    Курс зафиксируется после создания заявки
+                                    {{__("front.homePagePanelRatesInfo")}}
                                 </div>
                             </div>
                             <div class="welcome-exchange__timer">
@@ -37,18 +45,18 @@
                 <div class="welcome-exchange__body">
                     <div class="welcome-exchange__block bottom exchnage-panel-left" >
                         <div class="welcome-exchange__block-subtitle mb-[10px]">
-                            Вы отправляете <span>–</span>
+                            {{__("front.exchangePageCheckYouSend")}} <span>–</span>
                         </div>
                         <div class="welcome-exchange__loading">
                             <img src="/comcash/img/loader-gray.gif" alt="loader"/>
                         </div>
-                        <input class="welcome-exchange__input" name="amount" placeholder="Min amount: 0">
+                        <input class="welcome-exchange__input" name="amount" placeholder="0">
                         <div class="welcome-exchange__select">
                             <input class="hidden" name="currency_from">
                             <div class="welcome-exchange__select-selected">
                                 <div class="welcome-exchange__select-selected-value flex items-center gap-[10px] mr-[20px]">
                                     <img src="https://comcash.io/icons/Ethereum.png" class="welcome-exchange__img"/>
-                                    <div class="welcome-exchange__name">Не выбран</div>
+                                    <div class="welcome-exchange__name">---</div>
                                 </div>
                                 <div class="welcome-exchange__arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="10" viewBox="0 0 28 14" fill="none">
@@ -64,11 +72,11 @@
                                             <path d="M6 6L18 18" stroke="#CFCFCF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </div>
-                                    <input class="welcome-exchange__select-search" placeholder="Поиск">
+                                    <input class="welcome-exchange__select-search" placeholder="...">
                                     <div class="welcome-exchange__filter">
-                                        <div class="welcome-exchange__filter-item active" data-filter="all">Все</div>
-                                        <div class="welcome-exchange__filter-item" data-filter="crypto">Крипта</div>
-                                        <div class="welcome-exchange__filter-item" data-filter="cash">Наличные</div>
+                                        <div class="welcome-exchange__filter-item active" data-filter="all">{{__("front.exchangePanelTabAll")}}</div>
+                                        <div class="welcome-exchange__filter-item" data-filter="crypto">{{__("front.exchangePanelTabCrypto")}}</div>
+                                        <div class="welcome-exchange__filter-item" data-filter="cash">{{__("front.exchangePanelTabCash")}}</div>
                                     </div>
                                 </div>
                                 <div class="welcome-exchange__list"></div>
@@ -87,18 +95,18 @@
                     </div>
                     <div class="welcome-exchange__block top exchnage-panel-right">
                         <div class="welcome-exchange__block-subtitle mb-[10px]">
-                            Вы получаете <span>–</span>
+                            {{__("front.exchangePageCheckYouReceive")}} <span>–</span>
                         </div>
                         <div class="welcome-exchange__loading">
                             <img src="/comcash/img/loader-gray.gif" alt="loader"/>
                         </div>
-                        <input class="welcome-exchange__input" placeholder="Min amount: 0" >
+                        <input class="welcome-exchange__input" placeholder="0" >
                         <div class="welcome-exchange__select">
                             <input class="hidden" name="currency_to">
                             <div class="welcome-exchange__select-selected">
                                 <div class="welcome-exchange__select-selected-value flex items-center gap-[10px] mr-[20px]">
                                     <img src="https://comcash.io/icons/Ethereum.png" class="welcome-exchange__img"/>
-                                    <div class="welcome-exchange__name">Не выбран</div>
+                                    <div class="welcome-exchange__name">---</div>
                                 </div>
                                 <div class="welcome-exchange__arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="10" viewBox="0 0 28 14" fill="none">
@@ -114,12 +122,12 @@
                                             <path d="M6 6L18 18" stroke="#CFCFCF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </div>
-                                    <input class="welcome-exchange__select-search" placeholder="Поиск">
+                                    <input class="welcome-exchange__select-search" placeholder="...">
                                     <div class="welcome-exchange__filter">
-                                        <div class="welcome-exchange__filter-item active" data-filter="all">Все</div>
-                                        <div class="welcome-exchange__filter-item" data-filter="fiat">Карты</div>
-                                        <div class="welcome-exchange__filter-item" data-filter="crypto">Крипта</div>
-                                        <div class="welcome-exchange__filter-item" data-filter="cash">Наличные</div>
+                                        <div class="welcome-exchange__filter-item active" data-filter="all">{{__("front.exchangePanelTabAll")}}</div>
+                                        <div class="welcome-exchange__filter-item" data-filter="fiat">{{__("front.exchangePanelTabFiat")}}</div>
+                                        <div class="welcome-exchange__filter-item" data-filter="crypto">{{__("front.exchangePanelTabCrypto")}}</div>
+                                        <div class="welcome-exchange__filter-item" data-filter="cash">{{__("front.exchangePanelTabCash")}}</div>
                                     </div>
                                 </div>
                                 <div class="welcome-exchange__list">
@@ -129,7 +137,7 @@
                     </div>
                 </div>
                 <button type="submit" class="welcome-exchange__button">
-                    ОБМЕНЯТЬ
+                    {{__("front.exchangePageSubmit")}}
                 </button>
             </form>
         </div>

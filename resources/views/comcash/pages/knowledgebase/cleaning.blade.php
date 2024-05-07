@@ -7,10 +7,10 @@
         <div class="company__content">
             <div class="company__header">
                 <div class="company__header-item">
-                    <p class="company__header-title">Чистка крипты</p>
+                    <p class="company__header-title">{{__("front.cleaningPageTitle")}}</p>
                 </div>
                 <div class="company__header-item">
-                    <p class="company__header-subtitle">Наши контакты</p>
+                    <p class="company__header-subtitle">{{__("front.cleaningPageContacts")}}</p>
 
                     <div class="company__header-contacts">
                         <span class="header-info__contact copy">
@@ -32,7 +32,7 @@
                             </span>
                             &nbsp;
                             <span class="header-info__contact-label">
-                                44F916D1AEA991BD510171AD4E48BCB80E34702A11FA9295E7C541FB67A32D762588CFCB44B9
+                                {{__("front.supportContactsQtox")}}
                             </span>
                         </span>
                         <span class="header-info__contact">
@@ -43,7 +43,7 @@
                             </span>
                             &nbsp;&nbsp;
                             <span class="header-info__contact-label">
-                                <a href="https://t.me/comcash_exchange">comcash_exchange</a>
+                                <a href="https://t.me/comcash_exchange">{{__("front.supportContactsTelegram")}}</a>
                             </span>
                         </span>
                         <span class="header-info__contact copy">
@@ -58,7 +58,7 @@
                             </span>
                             &nbsp;
                             <span class="header-info__contact-label">
-                                Comcash@exploit.im
+                                {{__("front.supportContactsJabber1")}}
                             </span>
                         </span>
                         <span class="header-info__contact copy">
@@ -73,38 +73,13 @@
                             </span>
                             &nbsp;
                             <span class="header-info__contact-label">
-                                Comcash_support@exploit.im
+                                {{__("front.supportContactsJabber2")}}
                             </span>
                         </span>
                     </div>
                 </div>
             </div>
-            <div class='about'>
-                <div class='about__container'>
-                    <h2 class='about__title'>
-                        МЫ <span class="green">РАБОТАЕМ</span> ЧТОБЫ ВЫ <span class="green">ОТДЫХАЛИ</span>
-                    </h2>
-                    <div class='about__body'>
-                        <div class="about__colums">
-                            <div class="about__colums-item">
-                                МЫ ВЫДАЕМ ТОЛЬКО ЧИСТУЮ КРИПТУ
-                            </div>
-                            <div class="about__colums-item">
-                                Нас не интересует кто вы и где вы, полная анонимность гарантирована
-                            </div>
-                        </div>
-                        <img src="/comcash/img/clean_crypto.png" class="about__clean-img"/>
-                        <div class="about__colums">
-                            <div class="about__colums-item">
-                                Блокировка Ваших средств  ИСКЛЮЧЕНА
-                            </div>
-                            <div class="about__colums-item">
-                                Доставка наличных по всему миру анонимно» - справа внизу
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include("comcash.component.index.about")
 
         </div>
       </div>

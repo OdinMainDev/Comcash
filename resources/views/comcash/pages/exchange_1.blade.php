@@ -39,7 +39,7 @@
 						</div>
 					</div>
 					<div class="exchange__text-warning">
-						<b>ВНИМАНИЕ!</b> При отправке суммы меньше минимальной, средства не зачисляются,  обращайтесь в поддержку. 
+						<b>{{mb_strtoupper(__("front.attention"))}}!</b> {{__("front.exchangeattentiontext")}} 
 						<a class="green underline cursor-pointer" href="https://t.me/{{__('front.supportContactsTelegram')}}">Telegram</a>
 					</div>
 					<div class="exchange__card-number hide" id="exchange-from_card">
@@ -119,7 +119,7 @@
 						</div>
 						<input type="text" class="input input--large mb-[5px]" name="city">
 						<a class="text-[12px] px-[20px] underline" href='{{route("comcashPage", ["delivery"])}}'>
-							Актуальные города и страны
+							{{__("front.exchangeCitiesCash")}}
 						</a>
 					</div>
 					<div class="exchange__contact">

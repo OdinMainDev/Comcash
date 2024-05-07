@@ -181,15 +181,6 @@
 						<p class="progress__data-text"> {{$exchange->id}}</p>
 					</div>
 				</div>
-				<!-- <div class="progress__mail">
-					<p class="progress__mail-title">Время ожидания</p>
-					<div class="checkbox">
-					<input type="checkbox"
-							id="switch"
-							class="checkbox" />
-					<label for="switch"></label>
-					</div>
-					</div> -->
 			</div>
 		</div>
 	@endif

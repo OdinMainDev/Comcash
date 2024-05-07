@@ -118,7 +118,7 @@
 					{{__("front.validatekyctitle")}}
 				</p>
 				<p class="auth__title confirm-verification__subtitle">
-					Время проверки загруженных документов не более 10 минут
+					{{__("front.validatekyctext2")}}
 				</p>
 				<div class="confirm-verification__loader">
 				</div>

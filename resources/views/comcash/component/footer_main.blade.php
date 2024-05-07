@@ -9,23 +9,23 @@
                 <p>{{__("front.slogan")}}</p>
                 <div class="footer__sponsors-list">
                     <a href="https://kurs.expert/ru/obmennik/comcash-io/feedbacks.html#stat" target="_blank" >
-                        <img class="footer__sponsors-item" src="/comcash/img/cb.png" alt="KursExpert - мониторинг обменников" title="KursExpert - честный мониторинг обменников"/>
+                        <img class="footer__sponsors-item" src="/comcash/img/cb.png" alt="KursExpert" title="KursExpert"/>
                     </a>
 
                     <a href="https://antiswap.info/exchanger/ComCASH-otzyvy" target="_blank">
-                        <img class="footer__sponsors-item" src="https://antiswap.info/images/banner/200-70-1-anim.gif" alt="AntiSwap - мониторинг обменников" title="AntiSwap - честный мониторинг обменников">
+                        <img class="footer__sponsors-item" src="https://antiswap.info/images/banner/200-70-1-anim.gif" alt="AntiSwap" title="AntiSwap">
                     </a>
 
                     <a target="_blank" href="https://www.okchanger.ru/exchangers/Comcash-io?a=235857">
-                        <img class="footer__sponsors-item" src="https://www.okchanger.ru/images/banners/320x50.gif" alt="OkChanger - мониторинг обменников" title="OkChanger - честный мониторинг обменников"/>
+                        <img class="footer__sponsors-item" src="https://www.okchanger.ru/images/banners/320x50.gif" alt="OkChanger" title="OkChanger"/>
                     </a>
 
                     <a target="_blank" href="https://change.pro/exchangers/comcash">
-                        <img class="footer__sponsors-item" src="/images/changepro.png" alt="ChangePro - мониторинг обменников" title="ChangePro - честный мониторинг обменников"/>
+                        <img class="footer__sponsors-item" src="/images/changepro.png" alt="ChangePro" title="ChangePro"/>
                     </a>
 
                     <a target="_blank" href="https://pro-obmen.ru/comcash/#comments">
-                        <img class="footer__sponsors-item" alt="Мониторинг обменников Pro-Obmen.ru" src="/images/proobmen.gif" title="Мониторинг обменников Pro-Obmen.ru" />
+                        <img class="footer__sponsors-item" alt="Pro-Obmen.ru" src="/images/proobmen.gif" title="Pro-Obmen.ru" />
                     </a>
                 </div>
             </div>
