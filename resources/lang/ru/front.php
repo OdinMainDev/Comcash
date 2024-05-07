@@ -441,4 +441,8 @@ return [
     "exchangePageInputBank" => "Укажите банк",
     "returnToHomePage" => "Обмен криптовалюты",
     "ReputationMenu" => "Репутация",
+    "reputationPageTitle" => "Мы на форумах и мониторингах",
+    "reputationPageText" => "Мониторинги и отзывы о нас:",
+    "reputationPageText2" => "Генеральные форумы:",
+    "reputationPageText3" => "Все форумы:",
 ];

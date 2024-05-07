@@ -1,4 +1,8 @@
 <?php return array (
+  'reputationPageTitle' => 'We\'re on the forums and monitoring',
+  'reputationPageText' => 'Monitors and reviews about us:',
+  'reputationPageText2' => 'General Forums:',
+  'reputationPageText3' => 'All forums:',
   'ReputationMenu' => 'Reputation',
   'returnToHomePage' => 'Cryptocurrency Exchange',
   'knowledge tariffs title 2' => 'Tariffs',

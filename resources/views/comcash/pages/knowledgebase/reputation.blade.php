@@ -6,14 +6,11 @@
         @include("comcash.component.knowledge_menu")
         <div class="reviews__content">
             <div class="reviews__header">
-                <p class="reviews__header-title">{{__("front.reviewsPageTitle")}}</p>
-                <!-- <p class="reviews__header-text">
-                    {{__("front.reviewsPageText")}}
-                </p> -->
+                <p class="reviews__header-title">{{__("front.reputationPageTitle")}}</p>
             </div>
             <div class="reviews__links">
                 <div class="reviews__links-title">
-                    Мониторинги и отзывы о нас:
+                    {{__("front.reputationPageText")}}
                 </div>
                 <div class="reviews__links-list">
                     <a class="reviews__links-item" href="https://kurs.expert/ru/obmennik/comcash-io/feedbacks.html#stat">
@@ -35,7 +32,7 @@
             </div>
             <div class="reviews__links">
                 <div class="reviews__links-title">
-                    Генеральные форумы:
+                    {{__("front.reputationPageText2")}}
                 </div>
                 <div class="reviews__links-list">
                     <a class="reviews__links-item" href="https://www.mywot.com/ru/user/8992061/ratings">
@@ -57,7 +54,7 @@
             </div>
             <div class="reviews__links">
                 <div class="reviews__links-title">
-                    Все форумы:
+                    {{__("front.reputationPageText3")}}
                 </div>
                 <div class="reviews__links-list">
                     <a class="reviews__links-item" href="https://zismo.biz/topic/1127812-comcashio-anonimnyj-obmen-i-chistka-kripty-bez-amlkyc/#entry19078800">
@@ -345,27 +342,6 @@
                 </div>
 
             </div>
-            <!-- <div class="reviews__form">
-                <div class='label'>
-                        <span>{{__("front.message")}}</span>
-                    </div>
-                    <textarea class="textarea" name="message"></textarea>
-                    <button class='support__btn button' type='submit'>{{__("front.send message")}}</button>
-
-                </div> -->
-            <!-- <div class="reviews__slider-content">
-                @if(isset($feedbacks) && count($feedbacks) > 0)
-                    @foreach($feedbacks as $item)
-                        <div class="reviews__slider-card">
-                            <p class="reviews__slider-card-date">{{date("H:i:s d.m.Y", $item->created_at->unix())}}</p>
-                            <p class="reviews__slider-card-title">{{$item->name}}</p>
-                            <p class="reviews__slider-card-text"> {{$item->text}}</p>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-
-            {{ $feedbacks->withPath(route("comcashPage", ["reviews"]))->onEachSide(1)->links() }} -->
         </div>
       </div>
 </div>

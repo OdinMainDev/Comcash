@@ -1,4 +1,8 @@
 <?php return array (
+  'reputationPageTitle' => 'Estamos en los foros y monitorizando',
+  'reputationPageText' => 'Monitores y reseñas sobre nosotros:',
+  'reputationPageText2' => 'Foros generales:',
+  'reputationPageText3' => 'Todos los foros:',
   'ReputationMenu' => 'Reputación',
   'returnToHomePage' => 'Bolsa de criptomonedas',
   'knowledge tariffs title 2' => 'Aranceles',
