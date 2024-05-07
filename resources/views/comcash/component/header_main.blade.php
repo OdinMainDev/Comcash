@@ -39,8 +39,8 @@
             <a class='header__link' href='{{route("comcashPage", ["name" => "faq"])}}'>
                 {{__("front.PartnerFAQMenu")}}
             </a>
-            <a class='header__link' href='{{route("comcashPage", ["name" => "reviews"])}}'>
-                <span class="green">{{__("front.FeedbackMenu")}}</span>
+            <a class='header__link' href='{{route("comcashPage", ["name" => "reputation"])}}'>
+                <span class="green">{{__("front.ReputationMenu")}}</span>
             </a>
             <div class="header__link arrow">
                 {{__("front.PagesMenu")}}

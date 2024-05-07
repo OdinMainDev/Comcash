@@ -439,5 +439,6 @@ return [
     "exchangePageInputPhone" => "Номер телефона",
     "phonesbpreceive" => "Номер телефона ( СБП )",
     "exchangePageInputBank" => "Укажите банк",
-    "returnToHomePage" => "Обмен криптовалюты"
+    "returnToHomePage" => "Обмен криптовалюты",
+    "ReputationMenu" => "Репутация",
 ];

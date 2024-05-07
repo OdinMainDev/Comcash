@@ -1,4 +1,5 @@
 <?php return array (
+  'ReputationMenu' => 'Reputation',
   'returnToHomePage' => 'Börse für Kryptowährungen',
   'knowledge tariffs title 2' => 'Tarife',
   'exchangePageInputBank' => 'Geben Sie die Bank an',
