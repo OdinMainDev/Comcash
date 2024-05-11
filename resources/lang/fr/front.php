@@ -1,4 +1,7 @@
 <?php return array (
+  'exchangePanelTabFiat' => 'Fiat',
+  'exchangePanelTabCrypto' => 'Crypto',
+  'exchangePanelTabCash' => 'Cash',
   'validatekyctext2' => 'Le temps de vérification des documents téléchargés ne dépasse pas 10 minutes.',
   'profileNotVerifiedEmail' => 'L\'adresse électronique n\'est pas vérifiée.',
   'profileNotVerifiedEmailButton' => 'Confirmer maintenant',
@@ -13,8 +16,7 @@
   'cleaningPageText4' => 'Le blocage de vos fonds est exclu',
   'cleaningPageText5' => 'Livraison d\'argent liquide dans le monde entier de manière anonyme',
   'homePagePanelRatesInfo' => 'Le cours sera fixé une fois que la demande aura été créée.',
-  'exchangePanelTabAll' => 'Tous',
-  'exchangePanelTabFiat' => 'Argent liquide',
+  'exchangePanelTabAll' => 'All',
   'indexExchangePanelScrollText' => 'Nous ne bloquons pas les fonds en raison d\'un taux de LBC élevé.',
   'reputationPageTitle' => 'Nous sommes sur les forums et nous surveillons',
   'reputationPageText' => 'Contrôle et analyse de nos activités :',

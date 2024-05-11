@@ -1,4 +1,7 @@
 <?php return array (
+  'exchangePanelTabFiat' => 'Fiat',
+  'exchangePanelTabCrypto' => 'Crypto',
+  'exchangePanelTabCash' => 'Cash',
   'validatekyctext2' => 'Checking time of uploaded documents is no more than 10 minutes',
   'profileNotVerifiedEmail' => 'The e-mail address has not been confirmed.',
   'profileNotVerifiedEmailButton' => 'Confirm now',
@@ -13,8 +16,7 @@
   'cleaningPageText4' => 'Blocking of your funds is excluded',
   'cleaningPageText5' => 'Cash delivery worldwide anonymously',
   'homePagePanelRatesInfo' => 'The course will be fixed once the application is created',
-  'exchangePanelTabAll' => 'All of them',
-  'exchangePanelTabFiat' => 'Cash',
+  'exchangePanelTabAll' => 'All',
   'indexExchangePanelScrollText' => 'We do not block funds due to high AML',
   'reputationPageTitle' => 'We\'re on the forums and monitoring',
   'reputationPageText' => 'Monitors and reviews about us:',

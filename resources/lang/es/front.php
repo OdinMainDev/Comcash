@@ -1,4 +1,7 @@
 <?php return array (
+  'exchangePanelTabFiat' => 'Fiat',
+  'exchangePanelTabCrypto' => 'Crypto',
+  'exchangePanelTabCash' => 'Cash',
   'validatekyctext2' => 'Tiempo de comprobación de los documentos cargados no superior a 10 minutos',
   'profileNotVerifiedEmail' => 'La dirección de correo electrónico no está verificada.',
   'profileNotVerifiedEmailButton' => 'Confirmar ahora',
@@ -13,8 +16,7 @@
   'cleaningPageText4' => 'Se excluye el bloqueo de sus fondos',
   'cleaningPageText5' => 'Entrega de efectivo en todo el mundo de forma anónima',
   'homePagePanelRatesInfo' => 'El curso se fijará una vez creada la solicitud',
-  'exchangePanelTabAll' => 'Todos ellos',
-  'exchangePanelTabFiat' => 'Efectivo',
+  'exchangePanelTabAll' => 'All',
   'indexExchangePanelScrollText' => 'No bloqueamos fondos por un alto nivel de AML',
   'reputationPageTitle' => 'Estamos en los foros y monitorizando',
   'reputationPageText' => 'Monitores y reseñas sobre nosotros:',

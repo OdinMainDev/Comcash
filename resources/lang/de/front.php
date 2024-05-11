@@ -1,4 +1,7 @@
 <?php return array (
+  'exchangePanelTabFiat' => 'Fiat',
+  'exchangePanelTabCrypto' => 'Crypto',
+  'exchangePanelTabCash' => 'Cash',
   'validatekyctext2' => 'Die Prüfung der hochgeladenen Dokumente dauert nicht länger als 10 Minuten.',
   'profileNotVerifiedEmail' => 'Die E-Mail-Adresse ist nicht verifiziert.',
   'profileNotVerifiedEmailButton' => 'Bestätigen Sie jetzt',
@@ -13,8 +16,7 @@
   'cleaningPageText4' => 'Die Sperrung Ihrer Gelder ist ausgeschlossen',
   'cleaningPageText5' => 'Anonyme Bargeldlieferung weltweit',
   'homePagePanelRatesInfo' => 'Der Kurs wird festgelegt, sobald der Antrag erstellt wurde.',
-  'exchangePanelTabAll' => 'Alle von ihnen',
-  'exchangePanelTabFiat' => 'Bargeld',
+  'exchangePanelTabAll' => 'All',
   'indexExchangePanelScrollText' => 'Wir blockieren keine Gelder aufgrund von hohen AML',
   'reputationPageTitle' => 'Wir sind in den Foren und beobachten',
   'reputationPageText' => 'Monitore und Bewertungen über uns:',

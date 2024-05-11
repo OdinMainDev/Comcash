@@ -461,7 +461,7 @@ return [
     "homePagePanelRatesInfo" => "Курс зафиксируется после создания заявки",
     "exchangePanelTabAll" => "Все",
     "exchangePanelTabFiat" => "Карты",
-    "exchangePanelTabFiat" => "Крипта",
-    "exchangePanelTabFiat" => "Наличные",
+    "exchangePanelTabCrypto" => "Крипта",
+    "exchangePanelTabCash" => "Наличные",
     "indexExchangePanelScrollText" => "Мы не блокируем средства из-за высокого AML",
 ];
