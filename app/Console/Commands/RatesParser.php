@@ -44,7 +44,7 @@ class RatesParser extends Command{
             if(in_array($name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB", "SBPRUB"])){
                 $name = "RUB";
             }
-            if(in_array($name, ["USDTTRC20", "USDTERC20"])){
+            if(in_array($name, ["USDTTRC20", "USDTERC20", "USDTBEP20"])){
                 $name = "USDT";
             }
             if(in_array($name, ["TONCOIN"])){
