@@ -1,5 +1,5 @@
 <?php return array (
-  'exchangePanelTabFiat' => 'Fiat',
+  'exchangePanelTabFiat' => 'Cards',
   'exchangePanelTabCrypto' => 'Crypto',
   'exchangePanelTabCash' => 'Cash',
   'validatekyctext2' => 'Die Prüfung der hochgeladenen Dokumente dauert nicht länger als 10 Minuten.',

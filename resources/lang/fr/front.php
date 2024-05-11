@@ -1,5 +1,5 @@
 <?php return array (
-  'exchangePanelTabFiat' => 'Fiat',
+  'exchangePanelTabFiat' => 'Cards',
   'exchangePanelTabCrypto' => 'Crypto',
   'exchangePanelTabCash' => 'Cash',
   'validatekyctext2' => 'Le temps de vérification des documents téléchargés ne dépasse pas 10 minutes.',
