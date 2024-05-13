@@ -272,8 +272,8 @@ class Controller_Api extends Controller{
             $dates = array_reverse($dates);
 
             $statistics = [
-                "without" => [],
-                "with" => [],
+                "from_web" => [],
+                "from_affiliate" => [],
             ];
             foreach ($dates as $val) {
                 $date = Carbon::createFromFormat('d.m.Y', $val)->startOfDay();
@@ -284,9 +284,9 @@ class Controller_Api extends Controller{
                     ->where('status', 5)
                     ->get();
                 foreach($exchanges as $item){
-                    $key = "without";
+                    $key = "from_web";
                     if($item->getAffiliateExchange){
-                        $key = "with";
+                        $key = "from_affiliate";
                     }
 
                     if(!isset($statistics[$key][$val])){
