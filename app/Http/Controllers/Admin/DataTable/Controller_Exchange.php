@@ -33,6 +33,12 @@ class Controller_Exchange extends Controller
                     <td></td>
                 </tr>';
             }
+            if($row->getAffiliateExchange){
+                $html .= '<tr class=""  style="background-color: chocolate">
+                    <td>ЗАЯВКА ОТ АФФИЛЕЙТА</td>
+                    <td></td>
+                </tr>';
+            }
             $html .= '<tr class=""><td>'.__("common.amountFromClient").'</td><td>' . @$row->data['amount_data']['amount_send'] . '</td></tr>';
             $html .= '<tr class="" style="background-color: darkseagreen"><td>'.__("common.amountToClient").'</td><td>' . @$row->data['amount_data']['amount_receive'] . '</td></tr>';
             $html .= '<tr class=""><td>'.__("common.rate").'</td><td>' . @$row->data['amount_data']['exchange_rate'] . '</td></tr>';
@@ -148,7 +154,7 @@ class Controller_Exchange extends Controller
             "filter_hash" => "nullable|string|max:255",
             "filter_created_at" => 'nullable|date|date_format:Y-m-d\TH:i',
         ]);
-        $query = Exchange::with("getUser")->with("currencyFrom")->with("currencyTo");
+        $query = Exchange::with("getUser")->with("currencyFrom")->with("currencyTo")->with("getAffiliateExchange");
         if(is_numeric($id) && $id > 0){
             $query = $query->where("user_id", $id);
         }

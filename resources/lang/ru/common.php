@@ -191,5 +191,6 @@ return [
     "exportLanguages" => "Экспортировать языковые файлы",
     "chooseLanguage" => "Выберите язык",
     "chooseGroupLanguage" => "Выберите группу языков",
-    "importLanguages" => "Импортировать языки"
+    "importLanguages" => "Импортировать языки",
+    "dashboard_affiliate_latest" => "Последние заявки (аффилейтов к реальным)"
 ];

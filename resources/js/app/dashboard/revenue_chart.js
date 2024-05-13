@@ -13,14 +13,14 @@ function fillChart() {
         var series = [];
         const names = Object.keys(e.data.statistics);
         names.forEach(name => {
-            const seriesData = [];
+            let seriesData = [];
 
             e.data.dates.forEach(date => {
                 const value = e.data.statistics[name][date] || 0;
                 seriesData.push(value);
-              });
+            });
 
-              series.push({
+            series.push({
                 name: name,
                 data: seriesData
             });
@@ -33,9 +33,9 @@ function fillChart() {
                 type: 'area'
             },
             // если включено то даже приколдеснее работает
-            // dataLabels: {
-            //     enabled: false
-            // },
+            dataLabels: {
+                enabled: false
+            },
             stroke: {
                 curve: 'smooth'
             },

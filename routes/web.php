@@ -291,6 +291,7 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/api/get/dashboard/popular-directions', [AdminApi::class, "dasboard_popular_directions"]);
         Route::get('/panel/api/get/dashboard/affiliate-withdraws', [AdminApi::class, "dasboard_affiliate_withdraws"]);
         Route::get('/panel/api/get/dashboard/fulltime-statistic', [AdminApi::class, "dasboard_fulltime_statistic"]);
+        Route::get('/panel/api/get/dashboard/affiliate', [AdminApi::class, "dasboard_affiliate"]);
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-seo']], function() {
