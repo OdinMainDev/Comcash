@@ -262,7 +262,7 @@ class Controller_Api extends Controller{
     }
 
     public function dasboard_affiliate() {
-        return Cache::remember("admin-dashboard-chart-affiliate", 1, function(){
+        return Cache::remember("admin-dashboard-chart-affiliate", 60, function(){
             $endDate = Carbon::now();
             $dates = [];
             for ($i = 0; $i < 14; $i++) {
@@ -282,9 +282,6 @@ class Controller_Api extends Controller{
                     $key = "without";
                     if($item->getAffiliateExchange){
                         $key = "with";
-                        $statistics["with"][$val] = isset($statistics["with"][$val]) ? $statistics["with"][$val]++ : 1;
-                    }else{
-                        $statistics["without"][$val] = isset($statistics["without"][$val]) ? $statistics["without"][$val]++ : 1;
                     }
 
                     if(!isset($statistics[$key][$val])){
