@@ -276,8 +276,8 @@ class Controller_Api extends Controller{
                 "with" => [],
             ];
             foreach ($dates as $val) {
-                $date = Carbon::createFromFormat('d.m.Y', $val)->startOfDay()->timestamp;
-                $exchanges = Exchange::with("getAffiliateExchange")->where('created_at', $date)->where('status', 5)->get();
+                $date = Carbon::createFromFormat('d.m.Y', $val)->startOfDay();
+                $exchanges = Exchange::with("getAffiliateExchange")->where('created_at', ">=", $date)->where('status', 5)->get();
                 foreach($exchanges as $item){
                     if($item->getAffiliateExchange){
                         $statistics["with"][$val] = isset($statistics["with"][$val]) ? $statistics["with"][$val]++ : 1;
