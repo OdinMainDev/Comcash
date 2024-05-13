@@ -262,7 +262,7 @@ class Controller_Api extends Controller{
     }
 
     public function dasboard_affiliate() {
-        return Cache::remember("admin-dashboard-chart-affiliate", 60, function(){
+        return Cache::remember("admin-dashboard-chart-affiliate", 1, function(){
             $endDate = Carbon::now();
             $dates = [];
             for ($i = 0; $i < 14; $i++) {
