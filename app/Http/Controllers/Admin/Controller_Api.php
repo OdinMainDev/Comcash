@@ -279,11 +279,18 @@ class Controller_Api extends Controller{
                 $date = Carbon::createFromFormat('d.m.Y', $val)->startOfDay();
                 $exchanges = Exchange::with("getAffiliateExchange")->where('created_at', ">=", $date)->where('status', 5)->get();
                 foreach($exchanges as $item){
+                    $key = "without";
                     if($item->getAffiliateExchange){
+                        $key = "with";
                         $statistics["with"][$val] = isset($statistics["with"][$val]) ? $statistics["with"][$val]++ : 1;
                     }else{
                         $statistics["without"][$val] = isset($statistics["without"][$val]) ? $statistics["without"][$val]++ : 1;
                     }
+
+                    if(!isset($statistics[$key][$val])){
+                        $statistics[$key][$val] = 0;
+                    }
+                    $statistics[$key][$val]++;
                 }
             }
             
