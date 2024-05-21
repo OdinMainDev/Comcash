@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use JoeDixon\Translation\Language;
 use JoeDixon\Translation\Translation;
+use League\Csv\Reader;
 
 class Controller_Language extends Controller
 {
@@ -63,24 +64,38 @@ class Controller_Language extends Controller
 
     public function process_import(Request $request){
         $request->validate([
-            "language" => "required|in:".implode(",", config("app.languages")),
-            "csv" => "required|file"
+            'language' => 'required|in:' . implode(',', config('app.languages')),
+            'csv' => 'required|file',
         ]);
-        $file = $request->file('csv');
-        $csvData = array_map('str_getcsv', file($file->path()));
-        $language = Language::where("language", $request->language)->first();
-        if(!$language){
-            abort(404);
-            return;
-        }
-        foreach ($csvData as $index => $row) {
-            if ($index == 0) continue;  // Skip header row
 
-            ['group' => $group, 'key' => $key, 'value' => $value] = array_combine(['group', 'key', 'value'], $row);
-            $translation = Translation::where("language_id", $language->id)->where("group", $group)->where("key", $key)->first();
-            if(!$translation){
+        $file = $request->file('csv');
+
+        $csv = Reader::createFromPath($file->path(), 'r');
+        $csv->setHeaderOffset(0); // Set the first row as the header
+
+        $language = Language::where('language', $request->language)->first();
+        if (!$language) {
+            abort(404);
+        }
+
+        foreach ($csv as $record) {
+            $group = $record['group'] ?? null;
+            $key = $record['key'] ?? null;
+            $value = $record['value'] ?? null;
+
+            if (is_null($group) || is_null($key) || is_null($value)) {
                 continue;
             }
+
+            $translation = Translation::where('language_id', $language->id)
+                ->where('group', $group)
+                ->where('key', $key)
+                ->first();
+
+            if (!$translation) {
+                continue;
+            }
+
             $translation->value = $value;
             $translation->save();
         }
