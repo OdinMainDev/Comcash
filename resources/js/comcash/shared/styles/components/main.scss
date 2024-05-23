@@ -1444,6 +1444,20 @@
     border-radius: 40px;
     outline: none;
     margin-bottom: 20px;
+    @media(max-width: 1040px) {
+        width: 100%;
+    }
+    @media (max-width: 768px) {
+        height: 400px;
+    }
+
+    @media (max-width: 460px) {
+        height: 250px;
+    }
+
+    @media (max-width: 375px) {
+        height: 200px;
+    }
   }
 
   &__container {
