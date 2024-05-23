@@ -21,6 +21,7 @@ import '@/features/comcashForm';
 import '@/features/kycForm';
 import '@/features/progressScript'
 import '@/features/scrollText'
+import '@/features/aboutVideo'
 
 import '@/shared/scripts/checkChristmas'
 
