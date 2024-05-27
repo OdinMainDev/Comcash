@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Http\Traits\Misc\HasTelegramMessage;
 use App\Http\Traits\Models\HasAffiliate;
 use App\Http\Traits\Models\HasCache;
+use App\Http\Traits\Models\HasUtm;
 use App\Mail\ExchangeCreate;
 use App\Models\Exchange;
 use App\Models\User;
@@ -22,7 +23,7 @@ use App\Merchants\Handler;
 
 class ExchangeStart implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasCache, HasAffiliate, HasTelegramMessage;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasCache, HasAffiliate, HasTelegramMessage, HasUtm;
 
     /**
      * Create a new job instance.
@@ -57,6 +58,11 @@ class ExchangeStart implements ShouldQueue
                     $this->addUserToAffiliate($this->user, $this->exchange->data['request_data']['aff_id']);
                 }
             }
+        }
+
+        if(isset($this->exchange->data['request_data']['utm_id'])
+            && is_numeric($this->exchange->data['request_data']['utm_id'])){
+            $this->addExchangeToUtm($this->exchange, $this->exchange->data['request_data']['utm_id']);
         }
 
         $this->exchange->user_id = $this->user->id;

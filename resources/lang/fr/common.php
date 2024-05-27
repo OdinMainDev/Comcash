@@ -1,4 +1,6 @@
 <?php return array (
+  'affTable_total_transactions' => 'Total des transactions',
+  'dashboard_affiliate_latest' => 'Soumissions récentes (affiliées à des soumissions réelles)',
   'importLanguages' => 'Importer des langues',
   'exportLanguages' => 'Exporter des fichiers de langues',
   'chooseLanguage' => 'Sélectionner une langue',

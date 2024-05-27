@@ -111,6 +111,7 @@ class Controller_Exchange extends Controller{
             return $this->responseError("bad currency pair", ["code" => 3]);
         }
         $request->merge(['aff_id' => $request->cookie("aff_hash")]);
+        $request->merge(['utm_id' => $request->cookie("utm_hash")]);
         $request->merge(['amount' => $this->format_amount($amountFrom, $currency_from->units)]);
         $request->merge(['amount_to' => $this->format_amount($amountTo, $currency_to->units)]);
         // валидирование доп данных от мерчанта

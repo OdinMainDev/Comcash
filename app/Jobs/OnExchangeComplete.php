@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Http\Traits\Models\HasAffiliate;
+use App\Http\Traits\Models\HasUtm;
 use App\Mail\ExchangeComplete;
 use App\Models\AffiliateBalance;
 use App\Models\AffiliateExchange;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Mail;
 
 class OnExchangeComplete implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasAffiliate;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, HasAffiliate, HasUtm;
 
     private $exchange_id;
     private $exchange;
@@ -42,6 +43,12 @@ class OnExchangeComplete implements ShouldQueue
             return;
         }
         unset($check);
+
+        // проверяем и сохраняем utm
+        if(isset($this->exchange->data['request_data']['utm_id'])
+            && is_numeric($this->exchange->data['request_data']['utm_id'])){
+            $this->setUtmExchangeAsCompleted($this->exchange, $this->exchange->data['request_data']['utm_id']);
+        }
 
         // сохраняем статистику
         $stat_complete_exchange = new StatisticCompleteExchange; 

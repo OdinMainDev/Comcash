@@ -36,6 +36,8 @@ use App\Http\Controllers\Admin\Controller_TelegramBot as AdminTelegramBot;
 use App\Http\Controllers\Admin\DataTable\Controller_TelegramBot as DTAdminTelegramBot;
 use App\Http\Controllers\Admin\Controller_EmailTemplate as AdminEmailTemplate;
 use App\Http\Controllers\Admin\Controller_Language as AdminLanguage;
+use App\Http\Controllers\Admin\Controller_Utm as AdminUtm;
+use App\Http\Controllers\Admin\DataTable\Controller_Utm as DTAdminUtm;
 
 use App\Http\Controllers\Controller_Home as Home;
 use App\Http\Controllers\Controller_Login as Login;
@@ -292,6 +294,11 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/api/get/dashboard/affiliate-withdraws', [AdminApi::class, "dasboard_affiliate_withdraws"]);
         Route::get('/panel/api/get/dashboard/fulltime-statistic', [AdminApi::class, "dasboard_fulltime_statistic"]);
         Route::get('/panel/api/get/dashboard/affiliate', [AdminApi::class, "dasboard_affiliate"]);
+
+        Route::get('/panel/utms/list', [DTAdminUtm::class, "view"])->name("adminUtmList");
+        Route::get('/panel/utms/list/data', [DTAdminUtm::class, "process"]);
+        Route::get('/panel/utms/view/{id}', [AdminUtm::class, "view"])->name("adminUtmView");
+        Route::get('/panel/api/get/utms/{id}', [AdminUtm::class, "api"]);
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-seo']], function() {

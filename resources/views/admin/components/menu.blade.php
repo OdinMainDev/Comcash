@@ -235,6 +235,14 @@
 					</div>
 				</li>
 			@endcan
+			@can("view-statistic")
+				<li class="nav-item">
+					<a class="nav-link" href="{{route("adminUtmList")}}">
+						<i class="link-icon" data-feather="flag"></i>
+						<span class="link-title">UTM</span>
+					</a>
+				</li>
+			@endcan
 			@can("handle-exchanger")
 				<li class="nav-item">
 					<a class="nav-link" data-toggle="collapse" href="#languagessidemenu" role="button" aria-expanded="false" aria-controls="languagessidemenu">
