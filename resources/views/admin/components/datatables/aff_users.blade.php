@@ -8,7 +8,7 @@
         @for ($i = 0; $i < 2; $i++)
             <tr>
                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" scope="col">#</th>
-                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col">{{__("common.user")}}</th>
+                <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-search-type="user">{{__("common.user")}}</th>
                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-datepicker="true">{{__("common.createdAt")}}</th>
             </tr>
         @endfor
