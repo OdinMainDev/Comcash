@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Traits\Misc\HasImage;
 use App\Models\AffiliateWithdraw;
 use App\Models\Currency;
 use App\Models\Exchange;
@@ -17,13 +16,21 @@ use Illuminate\Support\Facades\Cache;
 
 class Controller_Api extends Controller{
     
-    public function currencies() {
+    public function currencies(Request $request) {
+        $request->validate([
+            "q" => "string|max:255"
+        ]);
         $currencies = Cache::remember("currencies-admin", 60, function(){
             return Currency::get();
         });
 
         $response = ["results" => []];
         foreach($currencies as $currency){
+            if(mb_strlen($request->q) > 0){
+                if (!str_contains(mb_strtolower($currency->name), mb_strtolower($request->q))) { 
+                    continue;
+                }
+            }
             $response['results'][] = [
                 "id" => $currency->id,
                 "text" => $currency->id.": (".$currency->name.") ".@$currency->data['titles'][mb_strtolower(app()->getLocale())]
@@ -33,13 +40,21 @@ class Controller_Api extends Controller{
         return json_encode($response);
     }
 
-    public function merchants() {
+    public function merchants(Request $request) {
+        $request->validate([
+            "q" => "string|max:255"
+        ]);
         $currencies = Cache::remember("merchants-admin", 60, function(){
             return Merchant::select("name as text", "id")->get()->pluck("id", "text")->toArray();
         });
 
         $response = ["results" => []];
         foreach($currencies as $merchant => $id){
+            if(mb_strlen($request->q) > 0){
+                if (!str_contains(mb_strtolower($merchant), mb_strtolower($merchant))) { 
+                    continue;
+                }
+            }
             $response['results'][] = [
                 "id" => $id,
                 "text" => "(".$id.") ".$merchant
