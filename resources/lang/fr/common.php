@@ -1,4 +1,5 @@
 <?php return array (
+  'viewUserExchangesAffiliates' => 'Échanges d\'utilisateurs affiliés de',
   'dashboard_affiliate_total' => 'Nombre total d\'applications (affiliées à des applications réelles)',
   'dashboard_affiliate_total_fromweb' => 'Total réel',
   'dashboard_affiliate_total_fromaff' => 'Total affilié',

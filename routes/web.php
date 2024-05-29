@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Controller_Feedback as AdminFeedback;
 use App\Http\Controllers\Admin\DataTable\Controller_Feedback as DTFeedback;
 use App\Http\Controllers\Admin\Controller_Exchange as AdminExchange;
 use App\Http\Controllers\Admin\DataTable\Controller_Exchange as DTExchange;
+use App\Http\Controllers\Admin\DataTable\Controller_ExchangeAffiliate as DTExchangeAffiliate;
 use App\Http\Controllers\Admin\DataTable\Controller_ExchangeLog as DTExchangeLog;
 
 use App\Http\Controllers\Admin\Controller_User as AdminUser;
@@ -200,6 +201,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
     Route::group( ['middleware' => ['auth', 'permission:handle-exchanges']], function() {
         Route::get('/panel/exchanges/list/{id}', [DTExchange::class, "view"])->name("adminExchangeList");
         Route::get('/panel/exchanges/list/{id}/data', [DTExchange::class, "process"])->name("adminExchangeListProcess");
+        Route::get('/panel/exchanges-aff/list/{id}/data', [DTExchangeAffiliate::class, "process"])->name("adminExchangeListAffiliateProcess");
+        
 
         Route::get('/panel/exchanges/edit/{id}', [AdminExchange::class, "edit"])->name("adminExchangeEdit");
         Route::post('/panel/exchanges/edit', [AdminExchange::class, "process"])->name("adminExchangeEditPost");

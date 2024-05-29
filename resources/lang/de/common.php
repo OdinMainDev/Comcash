@@ -1,4 +1,5 @@
 <?php return array (
+  'viewUserExchangesAffiliates' => 'Austausch von angeschlossenen Nutzern aus',
   'dashboard_affiliate_total' => 'Anmeldungen insgesamt (Affiliates zu echten Anmeldungen)',
   'dashboard_affiliate_total_fromweb' => 'Gesamt real',
   'dashboard_affiliate_total_fromaff' => 'Gesamte Tochtergesellschaft',
