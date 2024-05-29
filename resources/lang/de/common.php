@@ -1,4 +1,8 @@
 <?php return array (
+  'dashboard_affiliate_total' => 'Anmeldungen insgesamt (Affiliates zu echten Anmeldungen)',
+  'dashboard_affiliate_total_fromweb' => 'Gesamt real',
+  'dashboard_affiliate_total_fromaff' => 'Gesamte Tochtergesellschaft',
+  'dashboard_total_exhanges' => 'Anträge insgesamt',
   'affTable_total_transactions' => 'Transaktionen insgesamt',
   'dashboard_affiliate_latest' => 'Jüngste Einsendungen (Affiliates zu echten Einsendungen)',
   'importLanguages' => 'Sprachen importieren',

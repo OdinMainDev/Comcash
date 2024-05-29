@@ -1,4 +1,8 @@
 <?php return array (
+  'dashboard_affiliate_total' => 'Total applications (affiliates to real ones)',
+  'dashboard_affiliate_total_fromweb' => 'Total real',
+  'dashboard_affiliate_total_fromaff' => 'Total affiliate',
+  'dashboard_total_exhanges' => 'Total applications',
   'affTable_total_transactions' => 'Total transactions',
   'dashboard_affiliate_latest' => 'Recent submissions (affiliates to real ones)',
   'importLanguages' => 'Import languages',

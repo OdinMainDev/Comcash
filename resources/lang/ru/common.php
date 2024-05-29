@@ -193,5 +193,9 @@ return [
     "chooseLanguage" => "Выберите язык",
     "chooseGroupLanguage" => "Выберите группу языков",
     "importLanguages" => "Импортировать языки",
-    "dashboard_affiliate_latest" => "Последние заявки (аффилейтов к реальным)"
+    "dashboard_affiliate_latest" => "Последние заявки (аффилейтов к реальным)",
+    "dashboard_affiliate_total" => "Всего заявок (аффилейтов к реальным)",
+    "dashboard_affiliate_total_fromweb" => "Всего реальных",
+    "dashboard_affiliate_total_fromaff" => "Всего аффилейт",
+    "dashboard_total_exhanges" => "Всего заявок",
 ];

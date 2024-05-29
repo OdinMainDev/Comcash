@@ -1,4 +1,8 @@
 <?php return array (
+  'dashboard_affiliate_total' => 'Total de solicitudes (afiliados a los reales)',
+  'dashboard_affiliate_total_fromweb' => 'Total real',
+  'dashboard_affiliate_total_fromaff' => 'Afiliación total',
+  'dashboard_total_exhanges' => 'Total de solicitudes',
   'affTable_total_transactions' => 'Total de transacciones',
   'dashboard_affiliate_latest' => 'Envíos recientes (afiliados a los reales)',
   'importLanguages' => 'Importar idiomas',

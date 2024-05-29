@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AffiliateExchange;
 use App\Models\AffiliateWithdraw;
 use App\Models\Currency;
 use App\Models\Exchange;
@@ -315,6 +316,24 @@ class Controller_Api extends Controller{
                 'dates' => $dates,
                 'statistics' => $statistics,
             ];
+        });
+    }
+
+
+    public function dasboard_affiliate_2() {
+        return Cache::remember("admin-dashboard-chart-affiliate2", 1, function(){
+            $totalExchanges = Exchange::where("status", 5)->count();
+            $totalExchangesAff = AffiliateExchange::count();
+            $percent = $totalExchanges / 100;
+            $percent = ($totalExchanges - $totalExchangesAff) / $percent;
+            $percent = number_format($percent, 2);
+            $statistics = [
+                "total" => $totalExchanges,
+                "from_web" => $totalExchanges - $totalExchangesAff,
+                "from_affiliate" => $totalExchangesAff,
+                "percent" => $percent,
+            ];
+            return $statistics;
         });
     }
 }
