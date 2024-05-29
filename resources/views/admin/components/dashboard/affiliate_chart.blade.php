@@ -28,7 +28,7 @@
 					<div class="col-6 d-flex justify-content-end">
 						<div>
 							<label class="d-flex align-items-center justify-content-end tx-10 text-uppercase fw-bolder">
-							{{__("common.dashboard_affiliate_total_fromweb")}} <span class="p-1 ms-1 rounded-circle bg-primary"></span>
+							{{__("common.dashboard_affiliate_total_fromweb")}}   <span class="p-1 ms-1 rounded-circle bg-primary"></span>
 							</label>
 							<h5 class="fw-bolder mb-0 text-end" id="admAffiliateChart2FromWeb"></h5>
 						</div>
@@ -36,8 +36,7 @@
 					<div class="col-6">
 						<div>
 							<label class="d-flex align-items-center tx-10 text-uppercase fw-bolder">
-								<span class="p-1 me-1 rounded-circle bg-info"></span> 
-								{{__("common.dashboard_affiliate_total_fromaff")}}
+								<span class="p-1 me-1 rounded-circle bg-info"></span>   {{__("common.dashboard_affiliate_total_fromaff")}}
 							</label>
 							<h5 class="fw-bolder mb-0" id="admAffiliateChart2FromAff"></h5>
 						</div>
