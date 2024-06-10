@@ -27,7 +27,7 @@ class CheckUtm
 
         if (array_filter($utmParameters)) {
             $utm = UtmParameter::firstOrCreate($utmParameters);
-            Cookie::queue('utm_hash', $utm->id, 365 * 86400 * 60);
+            Cookie::queue('utm_hash', $utm->id, 86400);
         }
 
         return $next($request);
