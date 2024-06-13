@@ -11,7 +11,9 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
 
-
+		<?php 
+			$yandexMetricaId = 93703988; 
+		?>
 		<link rel="apple-touch-icon" sizes="120x120" href="/comcash/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/comcash/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/comcash/favicon-16x16.png">

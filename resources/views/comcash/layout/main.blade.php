@@ -19,6 +19,9 @@
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="theme-color" content="#ffffff">
 		<meta name="wot-verification" content="58070758d61d5f95c7da"/>
+		<?php 
+			$yandexMetricaId = 93703988; 
+		?>
 		{!! SEO::generate() !!}
 		@include('comcash.layout.ads')
 		@if(env("THEME_NAME", "comcash") == "comcash")
