@@ -50,7 +50,6 @@
 				ym('{{$yandexMetricaId}}', 'reachGoal', name);
 			}
 		</script>
-		<script src="//code.jivosite.com/widget/oirWWejdYl" async></script>
 		<!-- Google Tag Manager --> 
 		<script>
 			(function(w,d,s,l,i,cid){

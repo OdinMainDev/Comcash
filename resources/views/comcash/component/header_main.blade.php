@@ -241,7 +241,65 @@
                 </a>
                 <div class='accordion__content'>
                 </div>
+                <button class='accordion__button'>
+                    <?php if(app()->getLocale() == "ru"){ ?>
+                        <img src='/comcash/img/icons/locales/ru.png'
+                            alt='Comcash - русский язык' />
+                        </label>
+                    <?php } else if(app()->getLocale() == "en") { ?>
+                        <img src='/comcash/img/icons/locales/en.png'
+                            alt='Comcash - english language' />
+                        </label>
+                    <?php } else if(in_array("fr", config("app.languages")) && app()->getLocale() == "fr") { ?>
+                        <img src='/comcash/img/icons/locales/fr.png'
+                            alt='Comcash - langue française' />
+                        </label>
+                    <?php } else if(in_array("de", config("app.languages")) && app()->getLocale() == "de") { ?>
+                        <img src='/comcash/img/icons/locales/de.png'
+                            alt='Comcash - deutsche Sprache' />
+                        </label>
+                    <?php } else if(in_array("es", config("app.languages")) && app()->getLocale() == "es") { ?>
+                        <img src='/comcash/img/icons/locales/es.png'
+                            alt='Comcash - lengua española' />
+                        </label>
+                    <?php } ?>
+                </button>
+                <div class='accordion__content' style="flex-direction: row;">
+                    <a name="ru" href="/ru">
+                        <img src='/comcash/img/icons/locales/ru.png'
+                            alt='Comcash - русский язык' />
+                        </label>
+                    </a>
+                    <a name="en" href="/en">
+                        <img src='/comcash/img/icons/locales/en.png'
+                            alt='Comcash - english language' />
+                        </label>
+                    </a>
+                    @if(in_array("fr", config("app.languages")))
+                        <a name="fr" href="/fr">
+                            <img src='/comcash/img/icons/locales/fr.png'
+                                alt='Comcash - langue française' />
+                            </label>
+                        </a>
+                    @endif
+                    @if(in_array("de", config("app.languages")))
+                        <a name="de" href="/de">
+                            <img src='/comcash/img/icons/locales/de.png'
+                                alt='Comcash - deutsche Sprache' />
+                            </label>
+                        </a>
+                    @endif
+                    @if(in_array("es", config("app.languages")))
+                        <a name="es" href="/es">
+                            <img src='/comcash/img/icons/locales/es.png'
+                                alt='Comcash - lengua española' />
+                            </label>
+                        </a>
+                    @endif
+                </div>
+                
             </div>
+            
             <div class="header__nav-mobile-info">
                 <span class="header-info__contact copy">
                     <span class="header-info__contact-icon">

@@ -21,6 +21,7 @@
 		<meta name="theme-color" content="#ffffff">
 		{!! SEO::generate() !!}
         @vite('resources/js/comcash/main.ts')
+		@include('comcash.layout.ads')
 	</head>
 	<body>
         @include('comcash.component.header_knowledgebase')
