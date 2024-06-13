@@ -68,7 +68,7 @@ $(document).ready(async function() {
 
   async function generateCourseTitle(currencyFrom: string, currencyTo: string, error?: boolean) {
     if (!error) {
-      courseTitle.text(`0 ${currencyFrom} ≈ 0 ${currencyTo}`);
+      courseTitle.text(`- ≈ -`);
 
       if (currentTimer) {
         clearInterval(currentTimer);
@@ -78,6 +78,9 @@ $(document).ready(async function() {
       startTimer(12, () => generateCourseTitle(currencyFrom, currencyTo, error));
       try {
         const initialData = await getEstimate(currencyFrom, currencyTo, 1);
+        if (currencyTo == "CASHRUB") {
+          currencyTo = "CASH";
+        }
         courseTitle.text(`1 ${currencyFrom} ≈ ${initialData.amount} ${currencyTo}`);
       } catch (e) {
       }
