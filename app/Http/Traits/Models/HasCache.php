@@ -281,10 +281,10 @@ trait HasCache {
 
                 $rate = $this->estimateGetRate($currency->name, $currency2->name, $direction->profit_percent);
                 $reverseRate = false;
-                if($rate < 0.01){
-                    $rate = $this->estimateGetRate($currency2->name, $currency->name, $direction->profit_percent);
-                    $reverseRate = true;
-                }
+                // if($rate < 0.01){
+                //     $rate = $this->estimateGetRate($currency2->name, $currency->name, $direction->profit_percent);
+                //     $reverseRate = true;
+                // }
 
                 $citiesForCash = [
                     "MSK",
