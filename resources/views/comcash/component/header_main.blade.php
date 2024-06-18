@@ -239,6 +239,13 @@
                         {{__("front.CleaningMenu")}}
                     </span>
                 </a>
+
+                <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", ["name" => "reputation"])}}'>
+                    <span>
+                        {{__("front.ReputationMenu")}}
+                    </span>
+                </a>
+                
                 <div class='accordion__content'>
                 </div>
                 <button class='accordion__button'>

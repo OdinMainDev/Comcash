@@ -20,3 +20,14 @@
 <meta name="yandex-verification" content="9bc3beaedcd56bdb" />
 <!-- /Yandex.Metrika counter -->
 <script src="//code.jivosite.com/widget/oirWWejdYl" async></script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-90Q36TF23S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-90Q36TF23S');
+</script>
