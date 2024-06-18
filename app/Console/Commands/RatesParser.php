@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Http\Traits\Misc\HasAmount;
+use App\Http\Traits\Models\HasCache;
 use App\Lib\ParserV2\Parser;
 use App\Models\Currency;
 use App\Models\ExchangeRate;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Http;
 
 class RatesParser extends Command{
     
-    use HasAmount;
+    use HasAmount, HasCache;
     /**
      * The name and signature of the console command.
      *
@@ -64,6 +65,8 @@ class RatesParser extends Command{
         
         ExchangeRate::truncate();
         ExchangeRate::insert($inserts);
+        $this->refreshCacheExportJson();
+        $this->refreshCacheExportXml();
         sendTelegramNotification("Курсы успешно обновлены", 4);
     }
 
