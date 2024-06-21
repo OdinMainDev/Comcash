@@ -56,7 +56,8 @@ Route::get('/', function () {
     if(!$lang){
         $lang = "ru";
     }
-    return redirect("/".$lang);
+    
+    return redirect(constructUrlWithUtm(request(), $lang));
 });
 
 Route::get('/request-exportjson.json', [Home::class, "export_json"]);

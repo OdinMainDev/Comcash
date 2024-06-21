@@ -37,6 +37,6 @@ class CheckAffiliate
         }
 
         Cookie::queue('aff_hash', $check->id, 365 * 86400 * 60);
-        return redirect('/');
+        return redirect(constructUrlWithUtm($request));
     }
 }

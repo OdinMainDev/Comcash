@@ -272,3 +272,32 @@ function sumArraysWithoutDublicates($array, $sumArray) {
 
     return $array;
 }
+
+function constructUrlWithUtm($request, $lang = false) {
+    $utmParameters = [
+        'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'
+    ];
+
+    $hasUtm = false;
+    foreach ($utmParameters as $param) {
+        if ($request->has($param)) {
+            $hasUtm = true;
+        }
+    }
+
+    if ($hasUtm) {
+        $queryParams = [];
+        foreach ($utmParameters as $param) {
+            if ($request->has($param)) {
+                $queryParams[$param] = $request->get($param);
+            }
+        }
+        $redirectUrl = '/'.($lang ? $lang."/" : "");
+        if (!empty($queryParams)) {
+            $redirectUrl .= '?' . http_build_query($queryParams);
+        }
+
+        return $redirectUrl;
+    }
+    return "/";
+}

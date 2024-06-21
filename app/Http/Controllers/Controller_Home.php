@@ -46,6 +46,6 @@ class Controller_Home extends Controller{
         }
 
         Cookie::queue('aff_hash', $check->id, 365 * 86400 * 60);
-        return redirect(route("index"));
+        return redirect(constructUrlWithUtm($request, $lang));
     }
 }
