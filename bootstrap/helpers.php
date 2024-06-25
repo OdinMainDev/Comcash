@@ -299,5 +299,5 @@ function constructUrlWithUtm($request, $lang = false) {
 
         return $redirectUrl;
     }
-    return "/";
+    return "/".($lang ? $lang."/" : "");
 }
