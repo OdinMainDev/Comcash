@@ -26,7 +26,7 @@ export const getRatessApi = ():string => {
 
 export async function getCurrencies(): Promise<ICurrency[]> {
   try {
-    const { data } = await axios.get<ICurrency[]>(getCurrenciesApi())
+    const { data } = await axios.get<ICurrency[]>(getCurrenciesApi(window.language ? window.language : "ru"))
     return data;
   } catch(e) {
     console.log(e)

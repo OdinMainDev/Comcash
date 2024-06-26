@@ -42,6 +42,9 @@ class ParserBestchange extends Command
                 if(in_array($name, ["TONCOIN"])){
                     $name = "TON";
                 }
+                if(in_array($name, ["CARDUSD"])){
+                    $name = "USD";
+                }
                 if(!in_array($name, $request_currency))
                     $request_currency[] = $name;
             }

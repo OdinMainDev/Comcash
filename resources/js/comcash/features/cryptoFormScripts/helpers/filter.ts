@@ -12,6 +12,8 @@ export const findRateByCurrency = (currencyFromName: string, currencyToName: str
     toName = "USDT"
   } else if(["TONCOIN"].find(item => item === toName)) {
     toName = "TON"
+  } else if(["CARDUSD"].find(item => item === toName)) {
+    toName = "USD"
   }
 
   const rate = rates.find(item => (item.from === currencyFromName) && (item.to === toName));

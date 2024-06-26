@@ -196,7 +196,7 @@ $(document).ready(function () {
   }
 
   function handleFillList() {
-    axios.get(getCurrenciesApi())
+    axios.get(getCurrenciesApi(window.language ? window.language : "ru"))
       .then(res => {
         const currenciesList:ICurrency[] = res.data;
 

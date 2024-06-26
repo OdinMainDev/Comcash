@@ -13,12 +13,27 @@ class Controller_Api extends Controller{
 
     public function currencies(Request $request) {
         $currencies = $this->getCacheCurrencies();
+        $language = $request->has("language") ? (
+            in_array($request->language, config()->get("app.languages")) ? $request->language : false
+        ) : false;
         if($request->has("tag") && in_array($request->tag, ["fiat", "crypto", "cash"])){
             foreach($currencies as $key => $currency){
                 if($currency->tag != $request->tag){
                     $currencies->forget($key);
                 }
             }
+        }
+        if($language && $language != "ru") {
+            $currencies = $currencies->sortBy(function($currency) {
+                if (in_array($currency->name, ['CARDUSD'])) {
+                    return -1;
+                } elseif (in_array($currency->name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB", "SBPRUB"])) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            $currencies = array_values($currencies->toArray());
         }
         return $currencies;
     }
