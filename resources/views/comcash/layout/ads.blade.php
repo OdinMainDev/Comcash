@@ -1,6 +1,3 @@
-<?php 
-   $yandexMetricaId = 93703988; 
-?>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -9,14 +6,14 @@
    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-   ym('{{$yandexMetricaId}}', "init", {
+   ym('93703988', "init", {
         clickmap:true,
         trackLinks:true,
         accurateTrackBounce:true,
         webvisor:true
    });
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/{{$yandexMetricaId}}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/93703988" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <meta name="yandex-verification" content="9bc3beaedcd56bdb" />
 <!-- /Yandex.Metrika counter -->
 <script src="//code.jivosite.com/widget/oirWWejdYl" async></script>
