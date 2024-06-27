@@ -74,7 +74,7 @@ $(document).ready(async function() {
         clearInterval(currentTimer);
         currentTimer = null;
       }
-  
+
       startTimer(12, () => generateCourseTitle(currencyFrom, currencyTo, error));
       try {
         const initialData = await getEstimate(currencyFrom, currencyTo, 1);
@@ -91,22 +91,22 @@ $(document).ready(async function() {
     }
 
   }
-  
+
 
   function startTimer(duration: number, onComplete: () => void) {
     let remainingSeconds = duration;
     updateTimer(remainingSeconds);
-  
+
     currentTimer = setInterval(() => {
       remainingSeconds -= 1;
       updateTimer(remainingSeconds);
-  
+
       if (remainingSeconds < 0) {
         clearInterval(currentTimer);
         $('.welcome-exchange__timer-clock').text(`00:00`);
         currentTimer = null;
         if (typeof onComplete === 'function') {
-          onComplete(); 
+          onComplete();
         }
       }
     }, 1000);
@@ -123,7 +123,7 @@ $(document).ready(async function() {
     let value = amount.replace(/[^\d.-]/g, '');
     currencyFromAmountInput.val(value);
     currencyFromAmount = Number(value);
-    try {  
+    try {
       const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value));
       currencyToAmount = data.amount;
       currencyToAmountInput.attr('placeholder', `Min amount: ${data.min_amount}`);
@@ -161,45 +161,45 @@ $(document).ready(async function() {
 
 
   function selectItem(element: JQuery, item: ICurrency, type: "to" | "from") {
-    $(element).closest('.welcome-exchange__select')
-      .find('.welcome-exchange__select-selected')
-      .find('.welcome-exchange__select-selected-value')
-      .html(`
-        <img src="${item.image}" class="welcome-exchange__img"/>
-        <div class="welcome-exchange__name">${item.data.titles[lang]}</div>
-      `);  
-    $('body').removeClass('overflow-hidden	');
-    if(type === "from") {
-      if(item.name === currencyTo.name) {
-        reverse()
-      } else {
-        currencyFrom = item;
-        fromTitle.text(currencyFrom.data.titles[lang]);
-        leftPanelTitle.text(currencyFrom.data.titles[lang])
-        currencyFromInput.val(currencyFrom.name);
-        getSettings(item, currencyTo);
-      }
-
-    } else if(type === "to") {
-      if(item.name === currencyFrom.name) {
-        reverse()
-      } else {
-        currencyTo = item;
-        toTitle.text(currencyTo.data.titles[lang]);
-        currencyToInput.val(currencyTo.name);
-        rightPanelTitle.text(currencyTo.data.titles[lang]);
-        getSettings(currencyFrom, item);
-      }
+    const selectedValue = $(element)?.closest('.welcome-exchange__select')
+    .find('.welcome-exchange__select-selected-value');
+    const currentHtml = selectedValue?.html();
+    const newHtml = `
+    <img src="${item.image}" class="welcome-exchange__img"/>
+    <div class="welcome-exchange__name">${item.data.titles[lang]}</div>
+    `;
+    if (currentHtml !== newHtml) {
+        selectedValue.html(newHtml);
+        $('body').removeClass('overflow-hidden	');
+        if(type === "from") {
+            if(item.name === currencyTo.name) {
+                reverse()
+            } else {
+                currencyFrom = item;
+                fromTitle.text(currencyFrom.data.titles[lang]);
+                leftPanelTitle.text(currencyFrom.data.titles[lang])
+                currencyFromInput.val(currencyFrom.name);
+                getSettings(item, currencyTo);
+            }
+        } else if(type === "to") {
+            if(item.name === currencyFrom.name) {
+                reverse()
+            } else {
+                currencyTo = item;
+                toTitle.text(currencyTo.data.titles[lang]);
+                currencyToInput.val(currencyTo.name);
+                rightPanelTitle.text(currencyTo.data.titles[lang]);
+                getSettings(currencyFrom, item);
+            }
+        }
     }
-
-
   }
 
   function closeSelectModal() {
     selectedItem.next().removeClass('active');
     selectedItem.find('.welcome-exchange__arrow').removeClass('active');
   }
-  
+
   selectedItem.on('click', function(event) {
     event.stopPropagation();
     $(this).next().toggleClass('active');
@@ -228,7 +228,7 @@ $(document).ready(async function() {
   $(window).resize(toggleBodyScroll);
 
   //<------------select----------------->
-  
+
 
   const generateSelectItem = (currency: ICurrency, is_active?: boolean) => {
     return `
@@ -268,7 +268,7 @@ $(document).ready(async function() {
   let rightList = currenciesList;
   let rightFilter = 'all';
   let rightSearchText = '';
-  
+
   let leftList = currencyFromList;
   let leftFilter = 'all';
   let leftSearchText = '';
@@ -338,7 +338,7 @@ $(document).ready(async function() {
     filtredList = leftFilter === "all" ? filtredList : filtredList.filter(item => item.tag === leftFilter);
     leftSelectList.find('.welcome-exchange__list').empty();
     generateList(filtredList, "from", currencyFrom);
-  }) 
+  })
 
   rightSearch.on('input', function() {
     rightSearchText = $(this).val()?.toString().toLowerCase() as string;
@@ -359,7 +359,7 @@ $(document).ready(async function() {
     filtredList = rightFilter === "all" ? filtredList : filtredList.filter(item => item.tag === rightFilter);
     rightSelectList.find('.welcome-exchange__list').empty();
     generateList(filtredList, "to", currencyTo);
-  }) 
+  })
 
-  leftLoader.hide(); 
+  leftLoader.hide();
 })
