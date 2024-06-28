@@ -34,6 +34,12 @@ class Controller_Api extends Controller{
                 }
             });
             $currencies = array_values($currencies->toArray());
+            if(count($currencies) > 2) {
+                $currencies0 = $currencies[0];
+                $currencies1 = $currencies[1];
+                $currencies[0] = $currencies1;
+                $currencies[1] = $currencies0;
+            }
         }
         return $currencies;
     }
