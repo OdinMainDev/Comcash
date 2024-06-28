@@ -12,7 +12,7 @@
                         <h5 class="mb-2">{{__("common.editAffiliateCampaign")}}: {{$campaign->name}}</h5>
                     </div>
                 </div>
-				<?php $dtRouteOverride = route("adminAffiliateCampaignsExchangesProcess", [$model->id]); ?>
+				<?php $dtRouteOverride = route("adminAffiliateCampaignsExchangesProcess", [$campaign->id]); ?>
 				@include("admin.components.datatables.exchanges")
 			</div>
 		</div>
