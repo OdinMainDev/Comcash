@@ -187,13 +187,10 @@ class Controller_Exchange extends Controller
                 $q->where('campaign_id', $idCampaign);
             });
         }
-        
+
         if(!$this->isRootUser()){
-            $query = $query->where(function($q){
-                $q->where("admin_id", auth()->user()->id)->orWhere(function($q2){
-                    $q2->where("admin_id", 0)->whereIn("status", [0, 1, 13]);
-                });
-            });
+            $query->join('affiliate_exchanges', 'exchanges.id', '=', 'affiliate_exchanges.exchange_id')
+              ->where('affiliate_exchanges.campaign_id', $idCampaign);
         }
 
         if(!is_null($request->filter_id)){
