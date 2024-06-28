@@ -28,7 +28,13 @@ class Controller_Affiliate extends Controller
             return $this->tableDate($row, "created_at");
         })
         ->addColumn('action', function ($row) {
-            return $this->tableAction($row, route("adminAffiliateCampaignEdit", [$row->id]));
+            return $this->tableAction($row, route("adminAffiliateCampaignEdit", [$row->id]), false, [
+                [
+                    "type" => "icon",
+                    "route" => route("adminAffiliateCampaignsExchanges", [$row->id]),
+                    "icon" => "list"
+                ]
+            ]);
         })
         ->make(true);
     }

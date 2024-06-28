@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\DataTable;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Misc\HasTable;
+use App\Models\AffiliateCampaign;
 use App\Models\Exchange;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,8 +18,29 @@ class Controller_Exchange extends Controller
         return view("admin.pages.exchange.list");
     }
 
+    public function view_by_campaign(Request $request, $lang, $id){
+        if(!$id || !is_numeric($id)){
+            return abort(404);
+        }
+
+        $campaign = AffiliateCampaign::where("id", $id)->first();
+        if(!$campaign)
+            return abort(404);
+
+        return view("admin.pages.exchange.list_by_campaign")->with("campaign", $campaign);
+    }
+
     public function process(Request $request, $lang, $id){
         $query = $this->constructQuery($request, $id);
+        return $this->process_response($query);
+    }
+
+    public function process_by_campaign(Request $request, $lang, $id){
+        $query = $this->constructQuery($request, false, $id);
+        return $this->process_response($query);
+    }
+
+    public function process_response($query){
         return DataTables::of($query)
         ->editColumn("id", function($row){
             // dd($row);
@@ -145,7 +167,7 @@ class Controller_Exchange extends Controller
         ->make(true);
     }
 
-    public function constructQuery($request, $id){
+    public function constructQuery($request, $id = false, $idCampaign = false){
         $request->validate([
             "filter_id" => "nullable|integer",
             "filter_status" => "nullable|integer",
@@ -155,9 +177,17 @@ class Controller_Exchange extends Controller
             "filter_created_at" => 'nullable|date|date_format:Y-m-d\TH:i',
         ]);
         $query = Exchange::with("getUser")->with("currencyFrom")->with("currencyTo")->with("getAffiliateExchange");
+
         if(is_numeric($id) && $id > 0){
             $query = $query->where("user_id", $id);
         }
+
+        if(is_numeric($idCampaign) && $idCampaign > 0){
+            $query->whereHas('getAffiliateExchangeByCampaign', function ($q) use ($idCampaign) {
+                $q->where('campaign_id', $idCampaign);
+            });
+        }
+        
         if(!$this->isRootUser()){
             $query = $query->where(function($q){
                 $q->where("admin_id", auth()->user()->id)->orWhere(function($q2){

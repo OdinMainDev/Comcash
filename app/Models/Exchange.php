@@ -46,4 +46,10 @@ class Exchange extends Model
     public function getAffiliateExchange(){
         return $this->hasOne(AffiliateExchange::class, "exchange_id", "id");
     }
+
+    public function getAffiliateExchangeByCampaign()
+    {
+        return $this->hasMany(AffiliateExchange::class)
+                    ->where('campaign_id', $this->campaign_id);
+    }
 }
