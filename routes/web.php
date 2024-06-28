@@ -269,8 +269,8 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/panel/affiliate/campaigns/list', [DTAffiliate::class, "view"])->name("adminAffiliateCampaigns");
         Route::get('/panel/affiliate/campaigns/list/data', [DTAffiliate::class, "process"]);
 
-        Route::get('/panel/affiliate/campaigns/{id}/list', [DTExchange::class, "view_by_campaign"])->name("adminAffiliateCampaignsExchanges");
-        Route::get('/panel/affiliate/campaigns/{id}/list/data', [DTExchange::class, "process_by_campaign"])->name("adminAffiliateCampaignsExchangesProcess");
+        Route::get('/panel/affiliate/campaigns-exchange/{id}/list', [DTExchange::class, "view_by_campaign"])->name("adminAffiliateCampaignsExchanges");
+        Route::get('/panel/affiliate/campaigns-exchange/{id}/list/data', [DTExchange::class, "process_by_campaign"])->name("adminAffiliateCampaignsExchangesProcess");
 
         Route::get('/panel/affiliate/campaigns/{id}/list/data', [DTAffiliate::class, "process_users"])->name("adminAffiliateCampaignsUsers");
 
