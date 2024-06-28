@@ -183,8 +183,9 @@ class Controller_Exchange extends Controller
         }
 
         if(is_numeric($idCampaign) && $idCampaign > 0){
-            $query->join('affiliate_exchanges', 'exchanges.id', '=', 'affiliate_exchanges.exchange_id')
-              ->where('affiliate_exchanges.campaign_id', $idCampaign);
+            $query->whereHas('getAffiliateExchange', function ($q) use ($idCampaign) {
+                $q->where('campaign_id', $idCampaign);
+            });
         }
         
         if(!$this->isRootUser()){
