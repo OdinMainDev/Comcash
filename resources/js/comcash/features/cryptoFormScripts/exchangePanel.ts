@@ -91,6 +91,9 @@ $(document).ready(async function() {
   let currencyFromAmount = 0;
   let currencyToAmount = 0;
 
+  selectItem(leftSelectList, currencyFrom, "from");
+  selectItem(rightSelectList, currencyTo, "to");
+
   let currentTimer: any = null;
 
   updateSelectionUI();
