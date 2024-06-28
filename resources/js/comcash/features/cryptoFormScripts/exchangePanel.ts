@@ -197,27 +197,40 @@ $(document).ready(async function() {
   }
 
   function selectItem(element: JQuery, item: ICurrency, type: "to" | "from") {
-    $(element).closest('.welcome-exchange__select')
-      .find('.welcome-exchange__select-selected')
-      .find('.welcome-exchange__select-selected-value')
-      .html(`
-        <img src="${item.image}" class="welcome-exchange__img"/>
-        <div class="welcome-exchange__name">${item.data.titles[lang]}</div>
-      `);
+    const selectedValue = $(element).closest('.welcome-exchange__select')
+      .find('.welcome-exchange__select-selected-value');
+    const currentHtml = selectedValue.html();
+    const newHtml = `
+      <img src="${item.image}" class="welcome-exchange__img"/>
+      <div class="welcome-exchange__name">${item.data.titles[lang]}</div>
+    `;
+
+    if (currentHtml !== newHtml) {
+      selectedValue.html(newHtml);
       $('body').removeClass('overflow-hidden');
+
       if (type === "from") {
-        currencyFrom = item;
-        fromTitle.text(currencyFrom.data.titles[lang]);
-        leftPanelTitle.text(currencyFrom.data.titles[lang]);
-        currencyFromInput.val(currencyFrom.name);
-        getSettings(currencyFrom, currencyTo);
+        if (item.name === currencyTo.name) {
+          executeReverse();
+        } else {
+          currencyFrom = item;
+          fromTitle.text(currencyFrom.data.titles[lang]);
+          leftPanelTitle.text(currencyFrom.data.titles[lang]);
+          currencyFromInput.val(currencyFrom.name);
+          getSettings(currencyFrom, currencyTo);
+        }
       } else if (type === "to") {
-        currencyTo = item;
-        toTitle.text(currencyTo.data.titles[lang]);
-        currencyToInput.val(currencyTo.name);
-        rightPanelTitle.text(currencyTo.data.titles[lang]);
-        getSettings(currencyFrom, currencyTo);
+        if (item.name === currencyFrom.name) {
+          executeReverse();
+        } else {
+          currencyTo = item;
+          toTitle.text(currencyTo.data.titles[lang]);
+          currencyToInput.val(currencyTo.name);
+          rightPanelTitle.text(currencyTo.data.titles[lang]);
+          getSettings(currencyFrom, currencyTo);
+        }
       }
+    }
   }
 
   function executeReverse() {
@@ -228,8 +241,30 @@ $(document).ready(async function() {
   }
 
   function updateSelectionUI() {
-    selectItem(leftSelectList, currencyFrom, "from");
-    selectItem(rightSelectList, currencyTo, "to");
+    const leftSelectList = $('.exchnage-panel-left .welcome-exchange__select-list');
+    const rightSelectList = $('.exchnage-panel-right .welcome-exchange__select-list');
+
+    // Обновляем отображение выбранных элементов
+    leftSelectList.find('.welcome-exchange__select-selected-value').html(`
+      <img src="${currencyFrom.image}" class="welcome-exchange__img"/>
+      <div class="welcome-exchange__name">${currencyFrom.data.titles[lang]}</div>
+    `);
+
+    rightSelectList.find('.welcome-exchange__select-selected-value').html(`
+      <img src="${currencyTo.image}" class="welcome-exchange__img"/>
+      <div class="welcome-exchange__name">${currencyTo.data.titles[lang]}</div>
+    `);
+
+    // Обновляем заголовки
+    fromTitle.text(currencyFrom.data.titles[lang]);
+    leftPanelTitle.text(currencyFrom.data.titles[lang]);
+    currencyFromInput.val(currencyFrom.name);
+
+    toTitle.text(currencyTo.data.titles[lang]);
+    rightPanelTitle.text(currencyTo.data.titles[lang]);
+    currencyToInput.val(currencyTo.name);
+
+    // Генерируем списки без вызова selectItem
     generateList(leftList, "from", currencyFrom);
     generateList(rightList, "to", currencyTo);
   }
