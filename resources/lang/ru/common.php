@@ -198,5 +198,6 @@ return [
     "dashboard_affiliate_total_fromweb" => "Всего реальных",
     "dashboard_affiliate_total_fromaff" => "Всего аффилейт",
     "dashboard_total_exhanges" => "Всего заявок",
-    "viewUserExchangesAffiliates" => "Обмены аффилированных пользователей от"
+    "viewUserExchangesAffiliates" => "Обмены аффилированных пользователей от",
+    "exchangesAffiliateCampaign" => "Обмены по кампании"
 ];

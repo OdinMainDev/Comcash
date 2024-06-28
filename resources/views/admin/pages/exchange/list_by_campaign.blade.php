@@ -9,7 +9,7 @@
 			<div class="card-body">
 				<div class="d-flex align-items-start">
                     <div>
-                        <h5 class="mb-2">{{__("common.editAffiliateCampaign")}}: {{$campaign->name}}</h5>
+                        <h5 class="mb-2">{{__("common.exchangesAffiliateCampaign")}}: {{$campaign->name}}</h5>
                     </div>
                 </div>
 				<?php $dtRouteOverride = route("adminAffiliateCampaignsExchangesProcess", [$campaign->id]); ?>
