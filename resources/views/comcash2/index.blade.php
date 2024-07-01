@@ -7,6 +7,8 @@
 	@include("comcash2.component.index.feedback")
 	@include("comcash2.component.index.courier")
 	@include("comcash2.component.index.news")
+    @include("comcash3.component.index.advertising_banner")
+
 @endsection
 
 

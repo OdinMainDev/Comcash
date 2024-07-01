@@ -1,4 +1,4 @@
-import './shared/styles/global.scss'
+import './assets/styles/global.scss'
 
 
 import '@/shared/scripts/modal';
@@ -22,6 +22,8 @@ import '@/features/kycForm';
 import '@/features/progressScript'
 import '@/features/scrollText'
 import '@/features/aboutVideo'
+import '@/features/banner'
+
 
 import '@/shared/scripts/checkChristmas'
 
