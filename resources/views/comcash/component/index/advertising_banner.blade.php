@@ -21,7 +21,7 @@
                     if(count($text) > 0){
                         $first = array_slice($text, 0, 4);
                         $second = array_slice($text, 4, 2);
-                        $third = array_slice($text, 5);
+                        $third = array_slice($text, 6);
                     }
 
                 ?>
