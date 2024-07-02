@@ -1,4 +1,8 @@
 <?php return array (
+  'banner_index_1' => 'The aim of the project is to satisfy all the client\'s wishes!',
+  'banner_index_2' => 'The bottom line of the business is to never block a client\'s money!',
+  'banner_index_3' => 'Read more in Reputation',
+  'banner_index_4' => 'Sincerely, the administration',
   'exchangePanelTabFiat' => 'Cards',
   'exchangePanelTabCrypto' => 'Crypto',
   'exchangePanelTabCash' => 'Cash',

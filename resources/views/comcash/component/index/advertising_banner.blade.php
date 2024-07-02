@@ -6,21 +6,36 @@
         <div class="main-banner__text">
             <div>
                 <span>
-                    Цель проекта - удовлетворить все пожелания клиента!
+                    {{__("front.banner_index_1")}}
                 </span>
             </div>
             <div>
                 <span>
-                    Суть бизнеса - никогда <span class="green">не блокировать</span> деньги клиента!
+                <?php
+                    $text = __("front.banner_index_2");
+                    $text = mb_strtoupper($text);
+                    $text = explode(" ", $text);
+
+                    $first = array_slice($text, 0, 4);
+                    $second = array_slice($text, 3, 2);
+                    $third = array_slice($text, 5);
+                ?>
+                    {{$first}} <span class="green">{{$second}}</span> {{$third}}
                 </span>
             </div>
         </div>
         <div class="main-banner__footer">
             <div>
-                Подробнее в разделе <a href="" class="green underline">Репутация</a>
+            <?php
+                    $text = __("front.banner_index_3");
+                    $text = mb_strtoupper($text);
+                    $lastWord = end(explode(" ", $text));
+                    $text = str_replace($lastWord, "", $text)
+                ?>
+                {{$text}} <a href="{{route('comcashPage',[ 'name' => 'reputation' ])}}" class="green underline">{{$lastWord}}</a>
             </div>
             <div>
-                С уважением, администрация Com<span class="green">Cash</span>
+                {{__("front.banner_index_4")}} Com<span class="green">Cash</span>
             </div>
         </div>
     </div>

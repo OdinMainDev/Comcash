@@ -1,4 +1,5 @@
 <?php return array (
+  'exchangesAffiliateCampaign' => 'Campaign Exchanges',
   'viewUserExchangesAffiliates' => 'Affiliate user exchanges from',
   'dashboard_affiliate_total' => 'Total applications (affiliates to real ones)',
   'dashboard_affiliate_total_fromweb' => 'Total real',

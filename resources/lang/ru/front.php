@@ -464,4 +464,8 @@ return [
     "exchangePanelTabCrypto" => "Крипта",
     "exchangePanelTabCash" => "Наличные",
     "indexExchangePanelScrollText" => "Мы не блокируем средства из-за высокого AML",
+    "banner_index_1" => "Цель проекта - удовлетворить все пожелания клиента!",
+    "banner_index_2" => "Суть бизнеса - никогда не блокировать деньги клиента!",
+    "banner_index_3" => "Подробнее в разделе Репутация",
+    "banner_index_4" => "С уважением, администрация",
 ];

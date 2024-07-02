@@ -1,4 +1,5 @@
 <?php return array (
+  'exchangesAffiliateCampaign' => 'Intercambios de campañas',
   'viewUserExchangesAffiliates' => 'Intercambios de usuarios afiliados de',
   'dashboard_affiliate_total' => 'Total de solicitudes (afiliados a los reales)',
   'dashboard_affiliate_total_fromweb' => 'Total real',

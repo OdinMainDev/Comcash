@@ -1,4 +1,8 @@
 <?php return array (
+  'banner_index_1' => 'L\'objectif du projet est de répondre à tous les souhaits du client !',
+  'banner_index_2' => 'L\'essentiel est de ne jamais bloquer l\'argent d\'un client !',
+  'banner_index_3' => 'Plus d\'informations dans la section Réputation',
+  'banner_index_4' => 'Cordialement, l\'administration',
   'exchangePanelTabFiat' => 'Cards',
   'exchangePanelTabCrypto' => 'Crypto',
   'exchangePanelTabCash' => 'Cash',
