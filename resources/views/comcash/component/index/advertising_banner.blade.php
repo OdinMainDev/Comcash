@@ -15,12 +15,15 @@
                     $text = __("front.banner_index_2");
                     $text = mb_strtoupper($text);
                     $text = explode(" ", $text);
-
                     $first = array_slice($text, 0, 4);
-                    $second = array_slice($text, 3, 2);
+                    $second = array_slice($text, 4, 2);
                     $third = array_slice($text, 5);
+
                 ?>
-                    {{$first}} <span class="green">{{$second}}</span> {{$third}}
+                    {{implode(" ", $first)}} 
+                    <span class="green">{{implode(" ", $second)}}</span> 
+                    {{implode(" ", $third)}}
+                    
                 </span>
             </div>
         </div>
@@ -29,7 +32,8 @@
             <?php
                     $text = __("front.banner_index_3");
                     $text = mb_strtoupper($text);
-                    $lastWord = end(explode(" ", $text));
+                    $textExploaded = explode(" ", $text);
+                    $lastWord = end($textExploaded);
                     $text = str_replace($lastWord, "", $text)
                 ?>
                 {{$text}} <a href="{{route('comcashPage',[ 'name' => 'reputation' ])}}" class="green underline">{{$lastWord}}</a>
