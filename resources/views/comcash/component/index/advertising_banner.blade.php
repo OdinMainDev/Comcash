@@ -15,9 +15,14 @@
                     $text = __("front.banner_index_2");
                     $text = mb_strtoupper($text);
                     $text = explode(" ", $text);
-                    $first = array_slice($text, 0, 4);
-                    $second = array_slice($text, 4, 2);
-                    $third = array_slice($text, 5);
+                    $first = [""];
+                    $second = [""];
+                    $third = [""];
+                    if(count($text) > 0){
+                        $first = array_slice($text, 0, 4);
+                        $second = array_slice($text, 4, 2);
+                        $third = array_slice($text, 5);
+                    }
 
                 ?>
                     {{implode(" ", $first)}} 
@@ -33,8 +38,11 @@
                     $text = __("front.banner_index_3");
                     $text = mb_strtoupper($text);
                     $textExploaded = explode(" ", $text);
-                    $lastWord = end($textExploaded);
-                    $text = str_replace($lastWord, "", $text)
+                    $lastWord = "";
+                    if(count($textExploaded) > 0){
+                        $lastWord = end($textExploaded);
+                        $text = str_replace($lastWord, "", $text);
+                    }
                 ?>
                 {{$text}} <a href="{{route('comcashPage',[ 'name' => 'reputation' ])}}" class="green underline">{{$lastWord}}</a>
             </div>
