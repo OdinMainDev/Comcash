@@ -4,7 +4,7 @@
     <script src="/admin/assets/vendors/prismjs/prism.js"></script>
     <script src="/admin/assets/vendors/clipboard/clipboard.min.js"></script>
 
-    <script src="//cdn.ckeditor.com/4.24.0-lts/standard/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('.ckeditor').ckeditor();
