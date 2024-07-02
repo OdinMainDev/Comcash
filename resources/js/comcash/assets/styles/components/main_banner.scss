@@ -6,7 +6,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 101;
     height: 100%;
     width: 100%;
     opacity: 0;
@@ -46,10 +46,10 @@
       }
 
       @media (max-width: 480px) {
-        background: url(/comcash/banner/banner_mobile.png) center center/cover no-repeat;
-        height: 600px;
-        width: 80%;
-        padding: 160px 20px 100px 35px;
+        background: url(/comcash/banner/banner_mobile.png) center 0/cover no-repeat;
+        height: 400px;
+        width: 70%;
+        padding: 90px 20px 20px 35px;
       }
     }
 
@@ -75,6 +75,7 @@
         width: 80%;
       }
       @media (max-width: 480px) {
+        font-size: 12px;
         width: 100%;
       }
       & > div {
@@ -84,10 +85,16 @@
                 content: '';
                 display: block;
                 width: 25px;
+                height: 30px;
                 left: -30px;
                 position: absolute;
-                height: 30px;
                 background: url(/comcash/banner/crystal.svg) center center/contain no-repeat;
+                @media (max-width: 480px) {
+                    width: 15px;
+                    height: 20px;
+                    left: -20px;
+
+                }
             }
         }
       }
@@ -119,8 +126,13 @@
       font-size: 20px;
       font-weight: 600;
       text-align: center;
+      margin-bottom: 40px;
       @media (max-width: 768px) {
         font-size: 16px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 12px;
       }
     }
   }
