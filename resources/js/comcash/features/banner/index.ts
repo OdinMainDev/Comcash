@@ -1,11 +1,11 @@
 import $ from 'jquery';
-import Cookies from 'js-cookie'; // Подключите библиотеку js-cookie для работы с cookies
+import Cookies from 'js-cookie';
 
 $(document).ready(function() {
     const $modal = $('#main-banner');
     const $closeBtn = $('#close-btn');
 
-    const hasSeenModal = Cookies.get('hasSeenModal');
+    const hasSeenModal = Cookies.get('hasSeenModal2');
 
     if (!hasSeenModal) {
         setTimeout(() => {
@@ -15,7 +15,7 @@ $(document).ready(function() {
 
     $closeBtn.on('click', function() {
         $modal.addClass('hide');
-        Cookies.set('hasSeenModal', 'true', { expires: 365 });
+        Cookies.set('hasSeenModal2', 'true', { expires: 1 });
         setTimeout(() => {
             $modal.removeClass('show hide').css('display', 'none');
         }, 500);
