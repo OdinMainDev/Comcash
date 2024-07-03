@@ -62,12 +62,24 @@
 </div>
 
 @if(!isset($model))
-    <div class="row">
-        ДЛЯ МАССОВОГО ОБНОВЛЕНИЯ ПРЕДУСМОТРЕНЫ ТЕГИ: <br>
-        &#123;&#123;currency_from&#125;&#125; <br>
-        &#123;&#123;currency_to&#125;&#125; <br>
-        &#123;&#123;currency_from_title&#125;&#125; <br>
-        &#123;&#123;currency_to_title&#125;&#125; <br>
+    <div class="row mt-5 pt-5 mb-2">
+        <div class="col-md-4">
+            <label for="withChangeFromAllTexts" class="form-label">Заменять старые текста</label>
+            <select class="form-select" id="withChangeFromAllTexts" name="withChangeFromAllTexts">
+                @if(!isset($model))
+                    <option value="666" selected>------------</option>
+                @endif
+                <option value="0" @if(isset($model) && !$model->status) selected @endif>{{__("common.enable0")}}</option>
+                <option value="1" @if(isset($model) && $model->status) selected @endif>{{__("common.enable1")}}</option>
+            </select>
+        </div>
+        <div class="col-md-8">
+            <p>ДЛЯ МАССОВОГО ОБНОВЛЕНИЯ ПРЕДУСМОТРЕНЫ ТЕГИ:</p>
+            <p>&#123;&#123;currency_from&#125;&#125;</p>
+            <p>&#123;&#123;currency_to&#125;&#125;</p>
+            <p>&#123;&#123;currency_from_title&#125;&#125;</p>
+            <p>&#123;&#123;currency_to_title&#125;&#125;</p>
+        </div>
     </div>
 @endif
 @include("admin.components.form.multilang_names", ['mlNames' => @$model->data['titles']])

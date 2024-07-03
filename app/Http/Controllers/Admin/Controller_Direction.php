@@ -135,6 +135,8 @@ class Controller_Direction extends Controller{
 
             "min_amount_usd" => "nullable|numeric",
             "max_amount_usd" => "nullable|numeric",
+
+            "withChangeFromAllTexts" => "required|in:0,1,666",
         ]);
 
         // валидация на хоть какие то данные
@@ -182,19 +184,21 @@ class Controller_Direction extends Controller{
         $data_names = getLocalesNames($request);
         $check = false;
         foreach($data_names as $value) {
-            if($value) $check = true;
+            $check = true;
         }
         if(!$check) $data_names = false;
+
         $data_content = getLocalesContents($request);
         $check = false;
         foreach($data_content as $value) {
-            if($value) $check = true;
+            $check = true;
         }
         if(!$check) $data_content = false;
+        
         $data_seo = getLocalesSeo($request);
         $check = false;
         foreach($data_seo as $value) {
-            if($value) $check = true;
+            $check = true;
         }
         if(!$check) $data_seo = false;
 
@@ -215,7 +219,7 @@ class Controller_Direction extends Controller{
                     $direction->merchant_to = $merchant_to->id;
                     $direction->merchant_type_to = $merchant_to->type;
                 }
-                $data = $this->updateDirectionTexts($direction, $data_names, $data_content, $data_seo, true);
+                $data = $this->updateDirectionTexts($direction, $data_names, $data_content, $data_seo, $request->withChangeFromAllTexts == 1);
                
 
                 if(is_numeric($request->min_amount_usd))
