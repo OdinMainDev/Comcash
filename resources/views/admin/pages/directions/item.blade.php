@@ -69,8 +69,14 @@
                 @if(!isset($model))
                     <option value="666" selected>------------</option>
                 @endif
-                <option value="0" @if(isset($model) && !$model->status) selected @endif>{{__("common.enable0")}}</option>
-                <option value="1" @if(isset($model) && $model->status) selected @endif>{{__("common.enable1")}}</option>
+                <option value="0">Заменять только пустые текста</option>
+                <option value="1">Заменять все текста</option>
+                <option value="2">Заменять только названий</option>
+                <option value="3">Заменять только описания</option>
+                <option value="4">Заменять только сео блоки</option>
+                <option value="5">Заменять только сео заголовки</option>
+                <option value="6">Заменять только сео описания</option>
+                <option value="7">Заменять только сео ключи</option>
             </select>
         </div>
         <div class="col-md-8">

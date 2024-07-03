@@ -136,7 +136,7 @@ class Controller_Direction extends Controller{
             "min_amount_usd" => "nullable|numeric",
             "max_amount_usd" => "nullable|numeric",
 
-            "withChangeFromAllTexts" => "required|in:0,1,666",
+            "withChangeFromAllTexts" => "required|numeric",
         ]);
 
         // валидация на хоть какие то данные
@@ -219,7 +219,7 @@ class Controller_Direction extends Controller{
                     $direction->merchant_to = $merchant_to->id;
                     $direction->merchant_type_to = $merchant_to->type;
                 }
-                $data = $this->updateDirectionTexts($direction, $data_names, $data_content, $data_seo, $request->withChangeFromAllTexts == 1);
+                $data = $this->updateDirectionTexts($direction, $data_names, $data_content, $data_seo, $request->withChangeFromAllTexts);
                
 
                 if(is_numeric($request->min_amount_usd))
@@ -252,27 +252,60 @@ class Controller_Direction extends Controller{
         return $texts;
     }
 
-    public function updateDirectionTexts($direction, $data_names, $data_content, $data_seo, $needUpdate = false) {
+    public function updateDirectionTexts($direction, $data_names, $data_content, $data_seo, $typeUpdate = false) {
         $data = $direction->data;
         if($data_names) {
-            if($needUpdate)
-                $data["titles"] = $this->replaceDirectionTags($direction, $data_names);
-            else
-                $data["titles"] = sumArraysWithoutDublicates(@$data["titles"], $this->replaceDirectionTags($direction, $data_names));
+            switch($typeUpdate) {
+                case "0":
+                case "666":
+                    $data["titles"] = sumArraysWithoutDublicates(@$data["titles"], $this->replaceDirectionTags($direction, $data_names));
+                break;
+                
+                case "1":
+                case "2":
+                    $data["titles"] = $this->replaceDirectionTags($direction, $data_names);
+                break;
+            }
         }
         
         if($data_content){
-            if($needUpdate)
-                $data["content"] = $this->replaceDirectionTags($direction, $data_content);
-            else
-                $data["content"] = sumArraysWithoutDublicates(@$data["content"], $this->replaceDirectionTags($direction, $data_content));
+            switch($typeUpdate) {
+                case "0":
+                case "666":
+                    $data["content"] = sumArraysWithoutDublicates(@$data["content"], $this->replaceDirectionTags($direction, $data_content));
+                break;
+                
+                case "1":
+                case "3":
+                    $data["content"] = $this->replaceDirectionTags($direction, $data_content);
+                break;
+            }
         }
 
         if($data_seo) {
-            if($needUpdate)
-                $data["seo"] = $this->replaceDirectionTags($direction, $data_seo);
-            else
-                $data["seo"] = sumArraysWithoutDublicates(@$data["seo"], $this->replaceDirectionTags($direction, $data_seo));
+            switch($typeUpdate) {
+                case "0":
+                case "666":
+                    $data["seo"] = sumArraysWithoutDublicates(@$data["seo"], $this->replaceDirectionTags($direction, $data_seo));
+                break;
+                
+                case "1":
+                case "4":
+                    $data["seo"] = $this->replaceDirectionTags($direction, $data_seo);
+                break;
+
+                case "5":
+                    $data["seo"]['titles'] = $this->replaceDirectionTags($direction, $data_seo['titles']);
+                break;
+                
+                case "6":
+                    $data["seo"]['descriptions'] = $this->replaceDirectionTags($direction, $data_seo['descriptions']);
+                break;
+
+                case "7":
+                    $data["seo"]['keywords'] = $this->replaceDirectionTags($direction, $data_seo['keywords']);
+                break;
+            }
         }
 
         return $data;
