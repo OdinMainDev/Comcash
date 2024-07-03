@@ -257,7 +257,7 @@ class Controller_Direction extends Controller{
         if($data_names) {
             switch($typeUpdate) {
                 case "0":
-                case "666":
+                // case "666":
                     $data["titles"] = sumArraysWithoutDublicates(@$data["titles"], $this->replaceDirectionTags($direction, $data_names));
                 break;
                 
@@ -271,7 +271,7 @@ class Controller_Direction extends Controller{
         if($data_content){
             switch($typeUpdate) {
                 case "0":
-                case "666":
+                // case "666":
                     $data["content"] = sumArraysWithoutDublicates(@$data["content"], $this->replaceDirectionTags($direction, $data_content));
                 break;
                 
@@ -285,7 +285,7 @@ class Controller_Direction extends Controller{
         if($data_seo) {
             switch($typeUpdate) {
                 case "0":
-                case "666":
+                // case "666":
                     $data["seo"] = sumArraysWithoutDublicates(@$data["seo"], $this->replaceDirectionTags($direction, $data_seo));
                 break;
                 
