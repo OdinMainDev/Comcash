@@ -244,8 +244,8 @@ $(document).ready(async function() {
   }
 
   function updateSelectionUI() {
-    const leftSelectList = $('.exchnage-panel-left .welcome-exchange__select-list');
-    const rightSelectList = $('.exchnage-panel-right .welcome-exchange__select-list');
+    const leftSelectList = $('.exchnage-panel-left');
+    const rightSelectList = $('.exchnage-panel-right');
 
     // Обновляем отображение выбранных элементов
     leftSelectList.find('.welcome-exchange__select-selected-value').html(`
@@ -267,9 +267,8 @@ $(document).ready(async function() {
     rightPanelTitle.text(currencyTo.data.titles[lang]);
     currencyToInput.val(currencyTo.name);
 
-    // Генерируем списки без вызова selectItem
-    generateList(leftList, "from", currencyFrom);
-    generateList(rightList, "to", currencyTo);
+    selectItem(leftSelectList, currencyFrom, "from");
+    selectItem(rightSelectList, currencyTo, "to");
   }
 
   function closeSelectModal() {
