@@ -42,6 +42,8 @@
                     if(count($textExploaded) > 0){
                         $lastWord = end($textExploaded);
                         $text = str_replace($lastWord, "", $text);
+                    }else{
+                        $text = __("front.banner_index_3");
                     }
                 ?>
                 {{$text}} <a href="{{route('comcashPage',[ 'name' => 'reputation' ])}}" class="green underline">{{$lastWord}}</a>

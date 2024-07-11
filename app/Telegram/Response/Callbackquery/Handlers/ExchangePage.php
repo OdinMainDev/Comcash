@@ -153,7 +153,7 @@ trait ExchangePage {
             $direction->profit_percent, 
             false
         );
-        $text .= " (~ ".$minAmountInToCurrency;
+        $text .= " (</b>~ <b>".$minAmountInToCurrency;
         $text .= " ".$direction->currencyTo->getTitle($language);
         $text .= ")</b>";
         $text .= " ".__("telegram.exchange_page_set_amount_3", [], $language);

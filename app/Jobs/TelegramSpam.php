@@ -38,6 +38,8 @@ class TelegramSpam implements ShouldQueue
     {
         $this->bot = TelegramBot::where("id", $this->bot_id)->first();
         $this->message = str_replace("<br />", "", $this->message);
+        $this->message = strip_tags($this->message, '<b><strong><i><em><u><s><del><ins><code><pre>');
+        $this->message = html_entity_decode($this->message, ENT_QUOTES | ENT_HTML5);
         $query = TelegramUser::where("is_member", true);
         if($this->language != "all" && in_array($this->language, config()->get("app.languages"))){
             $query = $query->where("language", $this->language);
