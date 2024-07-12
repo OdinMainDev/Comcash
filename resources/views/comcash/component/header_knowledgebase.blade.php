@@ -7,7 +7,7 @@
             &nbsp;
             <span class="header-info__time">
                 {{__("front.headerClearExchangesTime2")}}
-            </span>	
+            </span>
         </span>
         <span class="header-info__contact">
             <span class="header-info__time header-info__time_green">
@@ -16,7 +16,7 @@
             &nbsp;
             <span class="header-info__time">
                 {{__("front.headerWorkingTime2")}}
-            </span>	
+            </span>
             &nbsp;
             <span class="header-info__time header-info__time_green">
                 {{__("front.headerWorkingTime3")}}
@@ -24,7 +24,7 @@
             &nbsp;
             <span class="header-info__time">
                 {{__("front.headerWorkingTime4")}}
-            </span>	
+            </span>
         </span>
     </div>
 	<div class='info-header__container'>
@@ -43,6 +43,9 @@
                         <a href='{{route("myprofileExchanges")}}' >{{__("front.exchanges history")}}</a>
                         <a href='{{route("myprofileAffiliate")}}' >{{__("front.profile affiliate")}}</a>
                         <a href='{{route("myprofilePassword")}}' >{{__("front.security")}}</a>
+                        <a href='{{route("myprofilePassword")}}' >{{__("front.security")}}</a>
+                        <a href='{{route("logout")}}'>{{__("front.log out")}}</a>
+
                     </div>
                 @endauth
                 <a class='accordion__button accordion__button_custom' href='{{route("comcashPage", ["name" => "tariffs"])}}'>
@@ -143,7 +146,7 @@
                     &nbsp;
                     <span class="header-info__contact-label">
                         {{__("front.supportContactsQtox")}}
-                    </span>	
+                    </span>
                 </span>
                 <span class="header-info__contact copy">
                     <span class="header-info__contact-icon">
@@ -158,7 +161,7 @@
                     &nbsp;
                     <span class="header-info__contact-label">
                         {{__("front.supportContactsJabber1")}}
-                    </span>	
+                    </span>
                 </span>
                 <span class="header-info__contact copy">
                     <span class="header-info__contact-icon">
@@ -173,7 +176,7 @@
                     &nbsp;
                     <span class="header-info__contact-label">
                         {{__("front.supportContactsJabber2")}}
-                    </span>	
+                    </span>
                 </span>
                 <span class="header-info__contact">
                     <span class="header-info__contact-icon">
@@ -184,7 +187,7 @@
                     &nbsp;
                     <span class="header-info__contact-label">
                         <a href="https://t.me/{{__("front.supportContactsTelegram")}}">{{__("front.supportContactsTelegram")}}</a>
-                    </span>	
+                    </span>
                 </span>
             </div>
         </div>
