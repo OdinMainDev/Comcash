@@ -255,11 +255,15 @@ class Controller_Exchange extends Controller{
             sendTelegramNotification($text);
 
             $user = $exchange->getUser;
-            $botUsers = $user->getTelegramUsers;
-            foreach($botUsers as $botUser){
-                $language = $botUser->language;
-                $text = $this->tgUserExchangeDeleteMessage($exchange, $language);
-                sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
+            if($user){
+                $botUsers = $user->getTelegramUsers;
+                foreach($botUsers as $botUser){
+                    $language = $botUser->language;
+                    $text = $this->tgUserExchangeDeleteMessage($exchange, $language);
+                    sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
+                }
+            }else{
+                info("CHECK THIS EXCHANGE ID, ".$exchange->id);
             }
         }
         return redirect(route("adminExchangeList", ["id" => 0]));
