@@ -91,7 +91,11 @@ trait HasCache {
 
     public function getCacheNews($is_blog = false){
         $request = request();
-        return Cache::remember("news-public-".($is_blog ? "blog" : "")."-".$request->page, 600, function() use($is_blog){
+        $page = 1;
+        if($request->has("page") && is_numeric($request->page)){
+            $page = $request->page;
+        }
+        return Cache::remember("news-public-".($is_blog ? "blog" : "")."-".$page, 600, function() use($is_blog){
             return Blog::where("status", true)->where("is_blog", $is_blog)
                 ->orderBy("id", "DESC")
                 ->paginate(10);
