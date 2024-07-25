@@ -278,7 +278,7 @@ class Controller_Exchange extends Controller{
             if($with_restore && $address) {
                 $newWallets = $currencyData['walletsAvail'];
                 $newWallets[] = $address;
-                $currencyData['walletsAvail'][] = $newWallets;
+                $currencyData['walletsAvail'] = $newWallets;
             }
             if(count($currencyData['walletsAvail']) == 0){
                 if(!isset($currencyData['wallets']) || !is_array($currencyData['wallets'])){
