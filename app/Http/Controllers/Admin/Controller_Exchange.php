@@ -131,7 +131,7 @@ class Controller_Exchange extends Controller{
             sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
         }
 
-        $this->restoreWalletsAddress($exchange);
+        $this->restoreWalletsAddress($exchange, false);
         return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
@@ -180,7 +180,7 @@ class Controller_Exchange extends Controller{
             sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
         }
 
-        $this->restoreWalletsAddress($exchange);
+        $this->restoreWalletsAddress($exchange, false);
         return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
@@ -216,7 +216,7 @@ class Controller_Exchange extends Controller{
             sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
         }
 
-
+        $this->restoreWalletsAddress($exchange, true);
         return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
@@ -269,24 +269,21 @@ class Controller_Exchange extends Controller{
         return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
-    public function restoreWalletsAddress($exchange) {
+    public function restoreWalletsAddress($exchange, $with_restore) {
         $currency = $exchange->currencyFrom;
         $currencyData = $currency->data;
-        if(isset($currencyData['wallets']) && is_array($currencyData['wallets'])){
+        if(isset($currencyData['walletsAvail']) && is_array($currencyData['walletsAvail'])){
             $address = $exchange->data['merchant_from_data']['address'];
-            $newWallets = [];
-            foreach($currencyData['wallets'] as $wallet){
-                if($wallet == $address){
-                    continue;
-                }
-                $newWallets[] = $wallet;
+            if($with_restore) {
+                $newWallets = $currencyData['walletsAvail'];
+                $newWallets[] = $address;
+                $currencyData['walletsAvail'] = $newWallets;
             }
-            $currencyData['wallets'] = $newWallets;
-            if(count($currencyData['wallets']) == 0){
-                if(!isset($currencyData['walletsReuse']) || !is_array($currencyData['walletsReuse'])){
+            if(count($currencyData['walletsAvail']) == 0){
+                if(!isset($currencyData['wallets']) || !is_array($currencyData['wallets'])){
                     sendTelegramNotification("ВНИМАНИЕ ПРОИЗОШЛА ВНУТРЕННЯЯ ОШИБКА!!!! ПЕРЕЗАПОЛНИТЕ КОШЕЛЬКИ ДЛЯ ВАЛЮТЫ: ".$exchange->currencyFrom->name);
                 }else{
-                    $currencyData['wallets'] = $currencyData['walletsReuse'];
+                    $currencyData['walletsAvail'] = $currencyData['wallets'];
                 }
             }
             $currency->data = $currencyData;
