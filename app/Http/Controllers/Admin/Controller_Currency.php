@@ -63,7 +63,7 @@ class Controller_Currency extends Controller{
             ];
         }
         $data["titles"] = getLocalesNames($request);
-        if(($request->currencyWallets && count($request->currencyWallets) > 0) && $request->currencyWallets != $data["wallets"]) {
+        if(($request->currencyWallets && count($request->currencyWallets) > 0) && $request->currencyWallets != $data["walletsAvail"]) {
             $data["wallets"] = $request->currencyWallets;
             $data["walletsAvail"] = $request->currencyWallets;
         }
