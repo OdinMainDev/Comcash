@@ -99,8 +99,8 @@ class ExchangeStart implements ShouldQueue
                 $isCacheMode = @$address['is_cache_mode'];
                 $data['merchant_from_data'] = $this->checkAvailWalletForManualExchange($isCacheMode);
                 if(!$data['merchant_from_data']['address']) {
-                    sendTelegramNotification("ЗАКОНЧИЛИСЬ КОШЕЛЬКИ ДЛЯ ВАЛЮТЫ: ".$this->exchange->currencyFrom->name, 0);
-                    sendTelegramNotification("ЗАПОЛНИТЕ КОШЕЛЕК ДЛЯ ОБМЕНА С ID: ".$this->exchange->id, 0);
+                    sendTelegramNotification("❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️\n<b> ЗАКОНЧИЛИСЬ КОШЕЛЬКИ ДЛЯ ВАЛЮТЫ: </b>".$this->exchange->currencyFrom->name, 0);
+                    sendTelegramNotification("❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️\n<b> ЗАПОЛНИТЕ КОШЕЛЕК ДЛЯ ОБМЕНА С ID: </b>".$this->exchange->id, 0);
                 }
             }
         }

@@ -253,6 +253,7 @@ class Controller_Exchange extends Controller{
             $exchange->save();
             $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА УДАЛЕНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
             sendTelegramNotification($text);
+            $this->restoreWalletsAddress($exchange, true);
 
             $user = $exchange->getUser;
             if($user){
@@ -274,10 +275,10 @@ class Controller_Exchange extends Controller{
         $currencyData = $currency->data;
         if(isset($currencyData['walletsAvail']) && is_array($currencyData['walletsAvail'])){
             $address = $exchange->data['merchant_from_data']['address'];
-            if($with_restore) {
+            if($with_restore && $address) {
                 $newWallets = $currencyData['walletsAvail'];
                 $newWallets[] = $address;
-                $currencyData['walletsAvail'] = $newWallets;
+                $currencyData['walletsAvail'][] = $newWallets;
             }
             if(count($currencyData['walletsAvail']) == 0){
                 if(!isset($currencyData['wallets']) || !is_array($currencyData['wallets'])){
