@@ -51,7 +51,7 @@ class RatesParser extends Command{
             if(in_array($name, ["TONCOIN"])){
                 $name = "TON";
             }
-            if(in_array($name, ["CARDUSD"])){
+            if(in_array($name, ["CARDUSD", "CASHUSD"])){
                 $name = "USD";
             }
             if(!in_array($name, $request_currency))
