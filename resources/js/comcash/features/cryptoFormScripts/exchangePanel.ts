@@ -88,6 +88,9 @@ $(document).ready(async function() {
   const lang = window.language || 'en';
   let currencyFrom: ICurrency = currencyFromList[0] ?? defaultCryptoYouSend;
   let currencyTo: ICurrency = currenciesList[0] ?? defaultCryptoYouGet;
+  if(currencyTo.id == currencyFrom.id) {
+    currencyTo = currenciesList[1] ?? defaultCryptoYouGet;
+  }
   let currencyFromAmount = 0;
   let currencyToAmount = 0;
 
