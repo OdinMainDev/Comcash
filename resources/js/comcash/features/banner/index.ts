@@ -3,6 +3,9 @@ import Cookies from 'js-cookie';
 
 $(document).ready(function() {
     const $modal = $('#main-banner');
+    if(!$modal){
+        return;
+    }
     const $closeBtn = $('#close-btn');
 
     const hasSeenModal = Cookies.get('hasSeenModal2');
