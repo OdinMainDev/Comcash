@@ -24,7 +24,7 @@ class SetLanguage
         
         if (!$current_language || !in_array($current_language, $languages)) {
             foreach($request->getLanguages() as $key => $language) {
-                $language = mb_strtoupper($language);
+                $language = mb_strtolower($language);
                 if(in_array($language, $languages)){
                     $current_language = $language;
                 }

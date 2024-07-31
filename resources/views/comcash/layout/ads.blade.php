@@ -53,3 +53,15 @@ src="https://www.facebook.com/tr?id=293312590271083&ev=PageView&noscript=1"
             f.parentNode.insertBefore(a,f)})(window,document,'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
             tp('register', 'Nxh1ib6sgbnSgwEW');
 </script>
+
+<script> 
+ document.addEventListener('DOMContentLoaded', function() {
+  const trustpilot_invitation = {
+      recipientEmail: 'john@gmail.com',
+      recipientName: 'John',
+      referenceId: 'Order_123',
+      source: 'InvitationScript',
+    };
+    tp('createInvitation', trustpilot_invitation);
+ });
+</script>
