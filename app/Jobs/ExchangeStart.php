@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Register;
 use App\Merchants\Handler;
+use Illuminate\Support\Facades\Cache;
 
 class ExchangeStart implements ShouldQueue
 {
@@ -97,6 +98,10 @@ class ExchangeStart implements ShouldQueue
                 $isManualMode = true;
                 $isCacheMode = @$address['is_cache_mode'];
                 $data['merchant_from_data'] = $this->checkAvailWalletForManualExchange($isCacheMode);
+                if(!$data['merchant_from_data']['address']) {
+                    sendTelegramNotification("❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️\n<b> ЗАКОНЧИЛИСЬ КОШЕЛЬКИ ДЛЯ ВАЛЮТЫ: </b>".$this->exchange->currencyFrom->name, 0);
+                    sendTelegramNotification("❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️\n<b> ЗАПОЛНИТЕ КОШЕЛЕК ДЛЯ ОБМЕНА С ID: </b>".$this->exchange->id, 0);
+                }
             }
         }
         $this->exchange->data = $data;
@@ -229,11 +234,27 @@ class ExchangeStart implements ShouldQueue
         if(!$this->exchange->currencyFrom) return ["address" => null,"url" => null];
         if(!@$this->exchange->currencyFrom->data) return ["address" => null,"url" => null];
         $data = $this->exchange->currencyFrom->data;
-        if(!isset($data['wallets'])) return ["address" => null,"url" => null];
-        if(!is_array($data['wallets'])) return ["address" => null,"url" => null];
-        if(count($data['wallets']) == 0) return ["address" => null,"url" => null];
-        $data = $data['wallets'];
+        if(!isset($data['walletsAvail'])) return ["address" => null,"url" => null];
+        if(!is_array($data['walletsAvail'])) return ["address" => null,"url" => null];
+        if(count($data['walletsAvail']) == 0) return ["address" => null,"url" => null];
+        $currencyData = $data;
+        $data = $data['walletsAvail'];
         shuffle($data);
-        return ["address" => $data[0], "url" => null]; 
+
+        $address = $data[0];
+        $newWallets = [];
+        foreach($data as $wallet){
+            if($wallet == $address){
+                continue;
+            }
+            $newWallets[] = $wallet;
+        }
+        $currencyData['walletsAvail'] = $newWallets;
+        
+        $currency = $this->exchange->currencyFrom;
+        $currency->data = $currencyData;
+        $currency->save();
+        Cache::forget("currencies-public");
+        return ["address" => $address, "url" => null]; 
     }
 }

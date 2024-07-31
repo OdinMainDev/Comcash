@@ -48,7 +48,7 @@ class Currency extends Model
 
         if (isset($currency['data']) && is_array($currency['data'])) {
             unset($currency['data']['wallets']);
-            unset($currency['data']['walletsReuse']);
+            unset($currency['data']['walletsAvail']);
         }
 
         return $currency;

@@ -54,11 +54,20 @@ class Controller_Currency extends Controller{
         $image = $this->uploadImage($request);
         if($image)
             $model->image = $image;
-        $model->data = [
-            "titles" => getLocalesNames($request),
-            "wallets" => $request->currencyWallets ? $request->currencyWallets : [],
-            "walletsReuse" => $request->currencyWallets ? $request->currencyWallets : [] // если заканчиваются wallets то он обновляет список из этих же адресов
-        ];
+        $data = $model->data;
+        if(!is_array($data)) {
+            $data = [
+                "titles" => getLocalesNames($request),
+                "wallets" => $request->currencyWallets ? $request->currencyWallets : [],
+                "walletsAvail" => $request->currencyWallets ? $request->currencyWallets : [] // если заканчиваются wallets то он обновляет список из этих же адресов
+            ];
+        }
+        $data["titles"] = getLocalesNames($request);
+        if(($request->currencyWallets && count($request->currencyWallets) > 0) && $request->currencyWallets != $data["walletsAvail"]) {
+            $data["wallets"] = $request->currencyWallets;
+            $data["walletsAvail"] = $request->currencyWallets;
+        }
+        $model->data = $data;
         $model->status = $request->enabled;
         $model->tag = $request->tag;
         $model->position = $request->position;
@@ -71,7 +80,7 @@ class Controller_Currency extends Controller{
         foreach($models as $model) {
             $data = $model->data;
             $data['wallets'] = [];
-            $data['walletsReuse'] = [];
+            $data['walletsAvail'] = [];
             $model->data = $data;
             $model->save();
         }
@@ -93,8 +102,10 @@ class Controller_Currency extends Controller{
         $models = Currency::whereIn("id", $request->currencies)->get();
         foreach($models as $model) {
             $data = $model->data;
-            $data['wallets'] = $request->currencyWallets;
-            $data['walletsReuse'] = $request->currencyWallets;
+            if(is_array($request->currencyWallets) && count($request->currencyWallets) > 0){
+                $data['wallets'] = $request->currencyWallets;
+                $data['walletsAvail'] = $request->currencyWallets;
+            }
             $model->data = $data;
             $model->save();
         }

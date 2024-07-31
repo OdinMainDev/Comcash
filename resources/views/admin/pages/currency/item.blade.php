@@ -77,8 +77,8 @@
                         <div class="col-12">
                             <label for="currencyWallets" class="form-label">{{__("common.currencyWallets")}}</label>
                             <select class="w-100 h-100" id="currencyWallets" name="currencyWallets[]" multiple="multiple">
-                                @if(@$model->data && isset($model->data['walletsReuse']) && is_array($model->data['walletsReuse']))
-                                    @foreach(@$model->data['walletsReuse'] as $wallet)
+                                @if(@$model->data && isset($model->data['wallets']) && is_array($model->data['wallets']))
+                                    @foreach(@$model->data['wallets'] as $wallet)
                                         <option value="{{$wallet}}" selected>{{$wallet}}</option>
                                     @endforeach
                                 @endif
