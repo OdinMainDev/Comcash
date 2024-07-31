@@ -54,6 +54,10 @@ use App\Http\Controllers\Controller_TelegramBot as TelegramBot;
 Route::get('/', function () {
     $lang = Cookie::get('language');
     if(!$lang){
+        $lang = app()->getLocale();
+    }
+
+    if(!$lang || !in_array($lang, config("app.languages"))){
         $lang = "ru";
     }
     

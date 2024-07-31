@@ -30,10 +30,10 @@ class SetLanguage
                 }
             }
         }
-
-        app()->setLocale(mb_strtolower($current_language));
-        URL::defaults(['locale' => mb_strtolower($current_language)]);
-        Cookie::queue('language', mb_strtolower($current_language), 60 * 24 * 30);
+        $current_language = mb_strtolower($current_language);
+        app()->setLocale($current_language);
+        URL::defaults(['locale' => $current_language]);
+        Cookie::queue('language', $current_language, 60 * 24 * 30);
         return $next($request);
     }
 }
