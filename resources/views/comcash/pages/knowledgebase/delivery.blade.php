@@ -30,47 +30,6 @@
                     </div>
                 </div>
             </div>
-
-            <p class="delivery__accordion-title">{{__("front.deliveryFaqTitle")}} </p>
-            <div class="delivery__accordion accordion accordion--secondary">
-
-                <button class='accordion__button'>
-                    <span>{{__("front.deliveryFaqTitle1")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class='accordion__text'>{{__("front.deliveryFaqText1")}}</div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.deliveryFaqTitle2")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class='accordion__text'>{{__("front.deliveryFaqText2")}}</div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.deliveryFaqTitle3")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class='accordion__text'>{{__("front.deliveryFaqText3")}}</div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.deliveryFaqTitle4")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class='accordion__text'>{{__("front.deliveryFaqText4")}}</div>
-                </div>
-
-                <button class='accordion__button'>
-                    <span>{{__("front.deliveryFaqTitle5")}}</span>
-                </button>
-                <div class='accordion__content'>
-                    <div class='accordion__text'>{{__("front.deliveryFaqText5")}}</div>
-                </div>
-            </div>
-
-
         <p class='delivery__bottom'>
             {{__("front.deliveryFooter1")}} <a href='mailto:{{__("front.deliveryFooter2")}}'>{{__("front.deliveryFooter2")}}</a> {{__("front.deliveryFooter3")}}
         </p>
