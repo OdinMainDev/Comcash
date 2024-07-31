@@ -289,7 +289,7 @@ class Controller_Exchange extends Controller{
             }
             $currency->data = $currencyData;
             $currency->save();
-            Cache::forget("currencies-public");
+            // Cache::forget("currencies-public");
         }
     }
 }

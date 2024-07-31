@@ -254,7 +254,7 @@ class ExchangeStart implements ShouldQueue
         $currency = $this->exchange->currencyFrom;
         $currency->data = $currencyData;
         $currency->save();
-        Cache::forget("currencies-public");
+        // Cache::forget("currencies-public");
         return ["address" => $address, "url" => null]; 
     }
 }

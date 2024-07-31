@@ -26,11 +26,9 @@ trait HasCache {
     }
 
     public function getCacheCurrencies(){
-        return Cache::remember("currencies-public", 3600, function(){
-            return Currency::where("status", true)
-                ->orderBy("position", "ASC")
-                ->get();
-        });
+        return Currency::where("status", true)
+        ->orderBy("position", "ASC")
+        ->get();
     }
 
     public function getCacheRates(){
