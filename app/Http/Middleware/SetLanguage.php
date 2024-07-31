@@ -23,12 +23,12 @@ class SetLanguage
         $current_language = $request->segment(1);
         
         if (!$current_language || !in_array($current_language, $languages)) {
-            $prefer = mb_strtoupper($request->getPreferredLanguage());
-            if(!in_array($prefer, $languages))
-                $prefer = "ru";
-            
-            $current_language = $prefer;
-            // return redirect('/'.$prefer);
+            foreach($request->getLanguages() as $key => $language) {
+                $language = mb_strtoupper($language);
+                if(in_array($language, $languages)){
+                    $current_language = $language;
+                }
+            }
         }
 
         app()->setLocale(mb_strtolower($current_language));
