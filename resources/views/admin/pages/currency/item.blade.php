@@ -91,7 +91,7 @@
                     @if($model->id && isset($model->data['walletsAvail']) && is_array($model->data['walletsAvail']))
                         @foreach(@$model->data['walletsAvail'] as $wallet) 
                             <h5 class="mb-2">{{$wallet}}</h5>
-                        @endif
+                        @endforeach
                     @endif
 				</form>
 			</div>
