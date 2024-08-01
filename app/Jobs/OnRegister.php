@@ -35,6 +35,6 @@ class OnRegister implements ShouldQueue
     {
         $this->user = User::where("id", $this->user_id)->first();
         Lang::setLocale($this->language);
-        Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
+        // Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
     }
 }

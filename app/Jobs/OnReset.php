@@ -37,6 +37,6 @@ class OnReset implements ShouldQueue
     {
         $this->user = User::where("id", $this->user_id)->first();
         Lang::setLocale($this->language);
-        Mail::to($this->user->email)->send(new Reset($this->user->email, $this->code));
+        // Mail::to($this->user->email)->send(new Reset($this->user->email, $this->code));
     }
 }
