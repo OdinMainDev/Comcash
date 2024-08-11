@@ -67,9 +67,5 @@
     </a>
     <div class='sidebar__content'></div>
 
-    <a href='{{route("comcashPage", ["cleaning"])}}' class='sidebar__button accordion__button_custom'>
-        <img src="/comcash/img/icons/nav/faq.svg" alt="Comcash - {{__("front.CleaningMenu")}}">
-        <span>{{__("front.CleaningMenu")}}</span>
-    </a>
     <div class='sidebar__content'></div>
 </div>

@@ -11,6 +11,24 @@
   }
 }
 
+@keyframes moveIcon {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 80%;
+    }
+}
+
+@keyframes showText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        margin-left: 0;
+    }
+}
 
 .header {
   position: -webkit-sticky;
@@ -174,7 +192,7 @@
         right: -5px;
         top: 50%;
         transform: translateY(-50%);
-      } 
+      }
     }
     &-menu {
       display: flex;
@@ -209,7 +227,38 @@
     &-image {
       height: 25px;
     }
-    
+
+
+
+    &-anonymous {
+        gap: 10px;
+        position: relative;
+        background: linear-gradient(to bottom, #3f3f3f, #171717) padding-box, linear-gradient(to bottom, #5d5d5d, #000) border-box;
+        border: 1px solid;
+        overflow: hidden;
+        transition: opacity 0.3s;
+        border-image-source: linear-gradient(180deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.3751) 16.48%, rgba(255, 255, 255, 0.2263) 19.95%, rgba(255, 255, 255, 0.1209) 49.5%, rgba(255, 255, 255, 0) 87.5%);
+        .anonymous-text {
+            opacity: 1;
+            white-space: nowrap;
+            margin-right: 40px;
+        }
+        .anonymous-icon {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            left: 0;
+            background: linear-gradient(to bottom, #3f3f3f, #171717) padding-box, linear-gradient(to bottom, #5d5d5d, #000) border-box;
+            position: absolute;
+            animation: moveIcon 0.7s ease forwards;
+        }
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
     &.profile {
       svg {
         path {
@@ -326,7 +375,7 @@
       background: none;
       border-top: 2px solid #2D2F39;
       border-bottom: 2px solid #2D2F39;
-      padding: 20px    
+      padding: 20px
     }
 
     &.active {
@@ -377,8 +426,8 @@
 
   &__time {
     color: #FFF;
-    font-size: 15px;
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 300;
     &_green {
       color: var(--color-accent)
     }
@@ -387,32 +436,37 @@
   &__container {
     height: 100%;
     display: flex;
-    margin: 0 auto;  
+    margin: 0 auto;
     padding: 20px 35px 0 35px;
     justify-content: space-between;
     max-width: 1460px;
   }
 
   &__content {
+    width: 100%;
     height: 100%;
+    align-items: center;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-right: 30px;
-    &.qtox {
-      width: 23%;
-      text-overflow: ellipsis;
-    }
   }
 
   &__contact {
+    flex: 1;
+    font-weight: 200;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     margin-bottom: 10px;
     position: relative;
     z-index: 99;
-    
+    border-right: 1px solid #606060;
+    flex-wrap: wrap;
+
+    &:last-child {
+        border-right: 0;
+    }
+
+
     &.copy {
       &:hover::after, &:hover::before {
         opacity: 1;
@@ -433,7 +487,7 @@
         left: 50%;
         transform: translateX(-50%);
       }
-  
+
       &::before {
         pointer-events: none;
         content: '';
@@ -448,7 +502,7 @@
         left: 50%;
         transform: translateX(-50%) rotate(45deg);
       }
-      
+
       @media (max-width: 1100px) {
         &::after {
           display: none;
@@ -458,7 +512,7 @@
           display: none;
         }
       }
-  
+
       &.clicked {
         &::after {
           animation: copyPulse 0.3s;
@@ -476,18 +530,17 @@
       justify-content: center;
 
       svg {
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
       }
     }
 
     &-label {
       color: #FFF;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 300;
-      width: 100%;
       text-overflow: ellipsis;
-      overflow: hidden; 
+      overflow: hidden;
       @media (max-width: 1100px) {
         opacity: 0.7;
       }

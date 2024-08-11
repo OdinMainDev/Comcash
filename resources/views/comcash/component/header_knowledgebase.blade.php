@@ -126,58 +126,6 @@
                 </div>
             </div>
             <div class="header__nav-mobile-info">
-                <span class="header-info__contact copy">
-                    <span class="header-info__contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                            <g clip-path="url(#clip0_60_1451)">
-                                <path d="M21.875 18.7487H15.625V15.6237H13.8542C12.7083 18.1237 10.1042 19.7904 7.29167 19.7904C3.22917 19.7904 0 16.5612 0 12.4987C0 8.4362 3.22917 5.20703 7.29167 5.20703C10.1042 5.20703 12.7083 6.8737 13.8542 9.3737H25V15.6237H21.875V18.7487ZM17.7083 16.6654H19.7917V13.5404H22.9167V11.457H12.3958L12.1875 10.7279C11.4583 8.64453 9.47917 7.29036 7.29167 7.29036C4.375 7.29036 2.08333 9.58203 2.08333 12.4987C2.08333 15.4154 4.375 17.707 7.29167 17.707C9.47917 17.707 11.4583 16.3529 12.1875 14.2695L12.3958 13.5404H17.7083V16.6654ZM7.29167 15.6237C5.52083 15.6237 4.16667 14.2695 4.16667 12.4987C4.16667 10.7279 5.52083 9.3737 7.29167 9.3737C9.0625 9.3737 10.4167 10.7279 10.4167 12.4987C10.4167 14.2695 9.0625 15.6237 7.29167 15.6237ZM7.29167 11.457C6.66667 11.457 6.25 11.8737 6.25 12.4987C6.25 13.1237 6.66667 13.5404 7.29167 13.5404C7.91667 13.5404 8.33333 13.1237 8.33333 12.4987C8.33333 11.8737 7.91667 11.457 7.29167 11.457Z" fill="#009C74"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_60_1451">
-                                <rect width="25" height="25" fill="white"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </span>
-                    &nbsp;
-                    <span class="header-info__contact-title">
-                        qTox:
-                    </span>
-                    &nbsp;
-                    <span class="header-info__contact-label">
-                        {{__("front.supportContactsQtox")}}
-                    </span>
-                </span>
-                <span class="header-info__contact copy">
-                    <span class="header-info__contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                            <path d="M20.834 18.7493H18.7507V9.63477L12.5007 13.541L6.25065 9.63477V18.7493H4.16732V6.24935H5.41732L12.5007 10.6764L19.584 6.24935H20.834M20.834 4.16602H4.16732C3.01107 4.16602 2.08398 5.0931 2.08398 6.24935V18.7493C2.08398 19.3019 2.30348 19.8318 2.69418 20.2225C3.08488 20.6132 3.61478 20.8327 4.16732 20.8327H20.834C21.3865 20.8327 21.9164 20.6132 22.3071 20.2225C22.6978 19.8318 22.9173 19.3019 22.9173 18.7493V6.24935C22.9173 5.69681 22.6978 5.16691 22.3071 4.77621C21.9164 4.38551 21.3865 4.16602 20.834 4.16602Z" fill="#009C74"/>
-                        </svg>
-                    </span>
-                    &nbsp;
-                    <span class="header-info__contact-title">
-                        Jabber:
-                    </span>
-                    &nbsp;
-                    <span class="header-info__contact-label">
-                        {{__("front.supportContactsJabber1")}}
-                    </span>
-                </span>
-                <span class="header-info__contact copy">
-                    <span class="header-info__contact-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                            <path d="M20.834 18.7493H18.7507V9.63477L12.5007 13.541L6.25065 9.63477V18.7493H4.16732V6.24935H5.41732L12.5007 10.6764L19.584 6.24935H20.834M20.834 4.16602H4.16732C3.01107 4.16602 2.08398 5.0931 2.08398 6.24935V18.7493C2.08398 19.3019 2.30348 19.8318 2.69418 20.2225C3.08488 20.6132 3.61478 20.8327 4.16732 20.8327H20.834C21.3865 20.8327 21.9164 20.6132 22.3071 20.2225C22.6978 19.8318 22.9173 19.3019 22.9173 18.7493V6.24935C22.9173 5.69681 22.6978 5.16691 22.3071 4.77621C21.9164 4.38551 21.3865 4.16602 20.834 4.16602Z" fill="#009C74"/>
-                        </svg>
-                    </span>
-                    &nbsp;
-                    <span class="header-info__contact-title">
-                        Jabber:
-                    </span>
-                    &nbsp;
-                    <span class="header-info__contact-label">
-                        {{__("front.supportContactsJabber2")}}
-                    </span>
-                </span>
                 <span class="header-info__contact">
                     <span class="header-info__contact-icon">
                         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">

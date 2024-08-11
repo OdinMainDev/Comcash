@@ -253,6 +253,85 @@
 }
 
 .company {
+    &-form {
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        margin: auto;
+        width: 450px;
+        min-height: 300px;
+        background-color: #111111;overflow: hidden;
+        position: relative;
+        padding: 80px 20px;
+        box-shadow: 0px 5px 40px -20px rgba(255, 255, 255, 0.2);
+        margin-bottom: 60px;
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1;
+        }
+
+        &__label {
+            position: relative;
+            svg {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 20px;
+            }
+        }
+
+        &__input {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 40px;
+            width: 100%;
+            padding: 0 20px 0 60px;
+            height: 50px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+        }
+
+        &__logo {
+            z-index: 1;
+            height: 40px;
+            margin-bottom: 40px;
+        }
+        &__descr {
+            z-index: 1;
+            font-weight: 400;
+            font-size: 17px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        &:before {
+            content: '';
+            top: -78px;
+            left: -100px;
+            background:  linear-gradient(90deg, #fff 0%, #999 100%);
+            width: 215px;
+            height: 215px;
+            border-radius: 50%;
+            position: absolute;
+            opacity: 0.11;
+        }
+        &:after {
+            content: '';
+            bottom: -107px;
+            right: -30px;
+            background:  linear-gradient(180deg, #fff 0%, #999 100%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            opacity: 0.11;
+        }
+        @media (max-width: 450px) {
+            width: 100%;
+        }
+    }
   &__content {
     position: relative;
     width: 100%;
