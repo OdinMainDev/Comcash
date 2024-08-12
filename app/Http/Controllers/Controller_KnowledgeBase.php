@@ -131,8 +131,8 @@ class Controller_KnowledgeBase extends Controller{
 
     public function cleaning(Request $request){
         $request->validate([
-            "contactjabber" => "required_without:contacttox|string|max:255",
-            "contacttox" => "required_without:contactjabber|string|max:255",
+            "contactjabber" => "required_without:contacttox|nullable|string|max:255",
+            "contacttox" => "required_without:contactjabber|nullable|string|max:255",
         ]);
 
         $text = "⚠️⚠️<b>Контактная форма с сайта (tox,jabber)</b>⚠️⚠️\n";
