@@ -128,4 +128,34 @@ class Controller_KnowledgeBase extends Controller{
         $this->setSeoData($seo_data, [$id]);
         return view($this->theme.".pages.knowledgebase.news_item")->with("news", $newsItem);
     }
+
+    public function cleaning(Request $request){
+        $request->validate([
+            "contactjabber" => "required_without:contacttox|string|max:255",
+            "contacttox" => "required_without:contactjabber|string|max:255",
+        ]);
+
+        $text = "⚠️⚠️<b>Контактная форма с сайта (tox,jabber)</b>⚠️⚠️\n";
+        if($request->contactjabber)
+            $text .= "Jabber: ".$request->contactjabber."\n";
+        if($request->contacttox)
+            $text .= "Tox: ".$request->contacttox."\n";
+        
+        $user = auth()->user();
+
+        if($user){
+            $text .= "\n";
+            if($user->first_name)
+                $text .= "Имя (привязанное к аккаунту): ".$user->first_name."\n";
+            if($user->second_name)
+                $text .= "Отчество (привязанное к аккаунту): ".$user->second_name."\n";
+            if($user->last_name)
+                $text .= "Фамилия (привязанная к аккаунту): ".$user->last_name."\n";
+            $text .= "Email (привязанный к аккаунту): ".$user->email."\n";
+        }
+
+
+        sendTelegramNotification($text);
+        return $this->responseSuccess(__("common.support message success"));
+    }
 }
