@@ -1,7 +1,7 @@
 <header class='header info-header'>
     <div class="header__time">
         <span class="header-info__contact">
-            <span class="header-info__time header-info__time_green">
+            <span class="header-info__time">
                 {{__("front.headerClearExchangesTime1")}}
             </span>
             &nbsp;
@@ -10,7 +10,7 @@
             </span>
         </span>
         <span class="header-info__contact">
-            <span class="header-info__time header-info__time_green">
+            <span class="header-info__time ">
                 {{__("front.headerWorkingTime1")}}
             </span>
             &nbsp;
@@ -18,7 +18,7 @@
                 {{__("front.headerWorkingTime2")}}
             </span>
             &nbsp;
-            <span class="header-info__time header-info__time_green">
+            <span class="header-info__time">
                 {{__("front.headerWorkingTime3")}}
             </span>
             &nbsp;

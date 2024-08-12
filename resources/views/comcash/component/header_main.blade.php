@@ -127,7 +127,7 @@
             </div>
             <a class='header__btn-aml button header__btn-anonymous' href='{{route("comcashPage", ["name" => "cleaning"])}}'>
                 <span class="anonymous-text">
-                    Анонимный Режим
+                    {{__("front.anonymousMode")}}
                 </span>
                 <span class="anonymous-icon">
                     <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -269,7 +269,7 @@
                         </svg>
                     </span>
                     <span>
-                        Анонимный Режим
+                        {{__("front.anonymousMode")}}
                     </span>
                 </a>
 
