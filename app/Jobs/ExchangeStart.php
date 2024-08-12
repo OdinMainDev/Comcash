@@ -225,7 +225,7 @@ class ExchangeStart implements ShouldQueue
         $user->save();
         $this->user = $user;
         $this->exchange->user_id = $user->id;
-        // Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
+        Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
         return true;
     }
 

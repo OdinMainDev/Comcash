@@ -39,6 +39,6 @@ class VerifyEmail implements ShouldQueue
         if(!$this->user){ 
             return;
         }
-        // Mail::to($this->user->email)->send(new MailVerifyEmail($this->user->id, $this->user->email));
+        Mail::to($this->user->email)->send(new MailVerifyEmail($this->user->id, $this->user->email));
     }
 }

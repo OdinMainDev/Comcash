@@ -82,8 +82,8 @@ class OnExchangeComplete implements ShouldQueue
             return;
         }
 
-        // if($this->user->email[0] != "@")
-            // Mail::to($this->user->email)->send(new ExchangeComplete($this->user->id, $this->user->email, $this->exchange));
+        if($this->user->email[0] != "@")
+            Mail::to($this->user->email)->send(new ExchangeComplete($this->user->id, $this->user->email, $this->exchange));
 
         $aff_user = $this->getAffiliatedUser($this->exchange->user_id);
         if(!$aff_user || !$aff_user->campaign || !$aff_user->campaign->status){
