@@ -248,6 +248,32 @@ function sendTelegramNotificationAffiliate($text, $level = 1){
     curl_close($ch);
 }
 
+
+function sendTelegramNotificationContacts($text, $level = 1){
+    $bot_token = env("TELEGRAM_TOKEN", false);
+    $chat_id = env("TELEGRAM_CONTACTS_CHAT_ID", false);
+    if(!$bot_token || !$chat_id){
+        logger()->error("TELEGRAM BOT НЕ НАСТРОЕН");
+        logger()->error($text);
+        return;
+    }
+    if(env("NOTIFICATION_LEVEL", 1) < $level){
+        return;
+    }
+
+    $ch = curl_init('https://api.telegram.org/bot' . $bot_token . '/sendMessage');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        'chat_id' => $chat_id,
+        'text' => $text,
+        'parse_mode' =>  'html'
+    ));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_exec($ch);
+    curl_close($ch);
+}
+
 function cleanHTML($html) {
     $allowedTags = '<h1><h2><h3><h4><h5><h6><p><br><ul><ol><li><table><tr><th><td><thead><tbody><tfoot><blockquote><pre><code><a><img><div><span><strong><em><b><i><u><strike><sub><sup>';
     $cleanedHtml = strip_tags($html, $allowedTags);
