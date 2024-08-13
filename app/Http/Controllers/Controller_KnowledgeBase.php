@@ -155,7 +155,7 @@ class Controller_KnowledgeBase extends Controller{
         }
 
 
-        sendTelegramNotification($text);
+        sendTelegramNotificationContacts($text);
         return $this->responseSuccess(__("common.support message success"));
     }
 }
