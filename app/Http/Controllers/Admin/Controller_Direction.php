@@ -26,7 +26,8 @@ class Controller_Direction extends Controller{
             "merchantFrom" => "required|exists:App\Models\Merchant,id",
             "merchantTo" => "required|exists:App\Models\Merchant,id",
 
-            "profit_percent" => "required|numeric"
+            "profit_percent" => "required|numeric",
+            "with_same_directions" => "required|boolean",
         ]);
 
         $merchant_from = Merchant::where("id", $request->merchantFrom)->first();
@@ -35,7 +36,7 @@ class Controller_Direction extends Controller{
             $currency_from = Currency::where("id", $idFrom)->first();
             foreach($request->currencyTo as $idTo) {
                 $currency_to = Currency::where("id", $idTo)->first();
-                if($currency_from->id == $currency_to->id) continue;
+                if($currency_from->id == $currency_to->id && !$request->with_same_directions) continue;
                 
                 $model = new Direction;
                 $model->name = $currency_from->name." → ".$currency_to->name;

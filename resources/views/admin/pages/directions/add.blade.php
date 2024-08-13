@@ -66,9 +66,16 @@
                                 <option disabled selected>{{__("common.notChoosen")}}</option>
                             </select>
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="name" class="form-label">{{__("common.profit_percent")}}</label>
                             <input type="text" class="form-control" id="profit_percent" name="profit_percent" autocomplete="off" value="5.00">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="with_same_directions" class="form-label">With same directions</label>
+                            <select class="form-select" id="with_same_directions" name="with_same_directions">
+                                <option value="0" selected>{{__("common.enable0")}}</option>
+                                <option value="1" selected>{{__("common.enable1")}}</option>
+                            </select>
                         </div>
                     </div>
                     
