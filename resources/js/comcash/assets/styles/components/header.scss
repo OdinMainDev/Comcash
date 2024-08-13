@@ -39,6 +39,11 @@
   max-width: 1460px;
   top: 24px;
 
+  &-bottom {
+    display: flex;
+    justify-content: center;
+  }
+
   &__telegram {
     @media (max-width: 1100px) {
       flex: 1;
@@ -209,14 +214,17 @@
     }
   }
 
-  &__logo img {
-    display: block;
-    height: 40px;
-    margin: 0 auto;
+  &__logo {
+    margin-right: 10px;
+    img {
+        display: block;
+        height: 40px;
+        margin: 0 auto;
 
-    @media (max-width: 1200px) {
-      width: 120px;
-      height: 40px;
+        @media (max-width: 1200px) {
+          width: 120px;
+          height: 40px;
+        }
     }
   }
 
@@ -256,6 +264,19 @@
         }
         &:hover {
             opacity: 0.7;
+        }
+        &_main {
+            display: none;
+            @media (max-width: 1100px) {
+                height: 50px;
+                padding: 0 20px;
+                display: flex !important;
+                margin: 0 auto;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                max-width: 260px;
+                box-shadow: 0px 0px 100px 10px rgba(255, 255, 255, 0.2),
+            }
         }
     }
 
