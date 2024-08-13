@@ -74,7 +74,7 @@
                             <label for="with_same_directions" class="form-label">With same directions</label>
                             <select class="form-select" id="with_same_directions" name="with_same_directions">
                                 <option value="0" selected>{{__("common.enable0")}}</option>
-                                <option value="1" selected>{{__("common.enable1")}}</option>
+                                <option value="1">{{__("common.enable1")}}</option>
                             </select>
                         </div>
                     </div>
