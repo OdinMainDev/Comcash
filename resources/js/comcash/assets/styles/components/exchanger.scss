@@ -96,19 +96,15 @@
 
   &__currency-lock {
     position: absolute;
-    right: 43%;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
     cursor: pointer;
     &:hover svg{
       fill: var(--color-accent)
     }
 
-    @media (max-width: 360px) {
-      right: 46%;
-    }
-
-    @media (max-width: 320px) {
-      right: 53%;
-    }
     &_close {
       display: none;
     }
@@ -511,7 +507,7 @@
         right: 0;
         top: 0;
         background: url('/comcash/img/mails/leaves_right.png') center center/cover no-repeat;
-      } 
+      }
       &::after {
         content: '';
         left: 0;
@@ -520,7 +516,7 @@
         width: 100px;
         height: 100px;
         background: url('/comcash/img/mails/leaves_left.png') center center/cover no-repeat;
-      } 
+      }
 
       @media (max-width: 1100px) {
         min-height: 60vh;
@@ -753,7 +749,7 @@
   &__hash {
     width: 100%;
     word-wrap: break-word;
-    word-break: break-all; 
+    word-break: break-all;
     font-size: 20px;
     background: var(--green-grey, rgba(255, 255, 255, 0.1));
     padding: 20px 10px;

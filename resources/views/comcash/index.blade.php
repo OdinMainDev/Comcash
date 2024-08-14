@@ -1,6 +1,7 @@
 @extends('comcash.layout.main')
 
 @section('content')
+    @include("comcash.component.index.anonymous")
 	@include("comcash.component.index.exchange_panel")
 	@include("comcash.component.index.about")
 	@include("comcash.component.index.transactions")

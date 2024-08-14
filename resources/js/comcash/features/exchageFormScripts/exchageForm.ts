@@ -261,8 +261,6 @@ $(document).ready(function () {
     if(withSettings) {
       await getSettings(selectedCurrencyYouSend.name, selectedCurrencyYouGet.name)
     }
-
-
     try {
       const data = await getEstimate(selectedCurrencyYouSend.name, selectedCurrencyYouGet.name, currencyYouSendAmount);
       currencyYouGetAmount = data.amount;
@@ -351,30 +349,21 @@ $(document).ready(function () {
     impossimbleExchange = false;
 
     if(isCurrencyYouSend && currency.name !== selectedCurrencyYouSend.name) {
-      if(currency.name === selectedCurrencyYouGet.name) {
-        selectItem(labelCurrencyYouGet, selectedCurrencyYouSend)
-        swapCurrencies()
-      } else {
         selectedCurrencyYouSend = currency;
-      }
     } else if(!isCurrencyYouSend && currency.name !== selectedCurrencyYouGet.name) {
-      if(currency.name === selectedCurrencyYouSend.name) {
-        selectItem(labelCurrencyYouSend, selectedCurrencyYouGet)
-        swapCurrencies()
-      } else {
+
         selectedCurrencyYouGet = currency;
-      }
 
     }
     await changeYouSendValue(true);
     selectItem(parentSelect.find('.custom-select__select-label'), currency)
   }
 
-  function swapCurrencies() {
-    const tmp = selectedCurrencyYouGet;
-    selectedCurrencyYouGet = selectedCurrencyYouSend;
-    selectedCurrencyYouSend = tmp;
-  }
+//   function swapCurrencies() {
+//     const tmp = selectedCurrencyYouGet;
+//     selectedCurrencyYouGet = selectedCurrencyYouSend;
+//     selectedCurrencyYouSend = tmp;
+//   }
 
   function sendData (event: { preventDefault: () => void; }) {
     event.preventDefault();
@@ -437,7 +426,7 @@ $(document).ready(function () {
     }
   }
 
-  
+
   const startApp = async () => {
     hideAllLayouts();
     startTimerUploadNewCurrency();

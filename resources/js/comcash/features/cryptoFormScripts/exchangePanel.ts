@@ -216,25 +216,17 @@ $(document).ready(async function() {
       $('body').removeClass('overflow-hidden');
 
       if (type === "from") {
-        if (item.name === currencyTo.name) {
-          executeReverse();
-        } else {
           currencyFrom = item;
           fromTitle.text(currencyFrom.data.titles[lang]);
           leftPanelTitle.text(currencyFrom.data.titles[lang]);
           currencyFromInput.val(currencyFrom.name);
           getSettings(currencyFrom, currencyTo);
-        }
       } else if (type === "to") {
-        if (item.name === currencyFrom.name) {
-          executeReverse();
-        } else {
           currencyTo = item;
           toTitle.text(currencyTo.data.titles[lang]);
           currencyToInput.val(currencyTo.name);
           rightPanelTitle.text(currencyTo.data.titles[lang]);
           getSettings(currencyFrom, currencyTo);
-        }
       }
     }
   }
