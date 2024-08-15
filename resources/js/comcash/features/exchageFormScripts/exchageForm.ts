@@ -37,7 +37,7 @@ $(document).ready(function () {
   const timer = currencyYouGet.find('.exchange__timer');
 
   const inputCurrencyYouSend = exchangeForm.find('#exchange-currency_from > .input');
-  const inputCurrencyYouGet = exchangeForm.find('#exchange-currency_to > .input');
+  const inputCurrencyYouGet = exchangeForm.find('#exchange-currency_to > div >.input');
   const inputFromCardNumber = exchangeForm.find('#exchange-from_card > .input');
   const inputToCardNumber = exchangeForm.find('#exchange-to_card > .input');
   const inputFirstName = exchangeForm.find('#exchange-first_name > input');
