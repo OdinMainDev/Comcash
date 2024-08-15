@@ -186,7 +186,8 @@ $(document).ready(function () {
       list.forEach(item => {
         if(item.name  === currencyFromUrl) {
           selectedCurrencyYouSend = item;
-        } else if(item.name  === currencyToUrl) {
+        }
+        if(item.name  === currencyToUrl) {
           selectedCurrencyYouGet = item;
         }
       })
@@ -351,7 +352,6 @@ $(document).ready(function () {
     if(isCurrencyYouSend && currency.name !== selectedCurrencyYouSend.name) {
         selectedCurrencyYouSend = currency;
     } else if(!isCurrencyYouSend && currency.name !== selectedCurrencyYouGet.name) {
-
         selectedCurrencyYouGet = currency;
 
     }
