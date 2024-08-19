@@ -21,6 +21,7 @@
   'cleaningPageText5' => 'Anonyme Bargeldlieferung weltweit',
   'homePagePanelRatesInfo' => 'Der Kurs wird festgelegt, sobald der Antrag erstellt wurde.',
   'exchangePanelTabAll' => 'All',
+  'anonymousMode' => 'Jabber/Tox',
   'indexExchangePanelScrollText' => 'Wir blockieren keine Gelder aufgrund von hohen AML',
   'reputationPageTitle' => 'Wir sind in den Foren und beobachten',
   'reputationPageText' => 'Monitore und Bewertungen über uns:',

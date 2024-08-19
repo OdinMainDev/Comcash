@@ -21,6 +21,7 @@
   'cleaningPageText5' => 'Livraison d\'argent liquide dans le monde entier de manière anonyme',
   'homePagePanelRatesInfo' => 'Le cours sera fixé une fois que la demande aura été créée.',
   'exchangePanelTabAll' => 'All',
+  'anonymousMode' => 'Jabber/Tox',
   'indexExchangePanelScrollText' => 'Nous ne bloquons pas les fonds en raison d\'un taux de LBC élevé.',
   'reputationPageTitle' => 'Nous sommes sur les forums et nous surveillons',
   'reputationPageText' => 'Contrôle et analyse de nos activités :',

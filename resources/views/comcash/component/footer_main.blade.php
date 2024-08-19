@@ -2,7 +2,7 @@
     <div class='footer__container'>
         <div class='footer__top'>
             <div class='footer__logo'>
-                <img 
+                <img
                     src='/comcash/img/logo.svg'
                     alt=''
                     class='footer__logo-img' />
@@ -26,6 +26,9 @@
 
                     <a target="_blank" href="https://pro-obmen.ru/comcash/#comments">
                         <img class="footer__sponsors-item" alt="Pro-Obmen.ru" src="/images/proobmen.gif" title="Pro-Obmen.ru" />
+                    </a>
+                    <a target="_blank" href="https://www.trustpilot.com/review/comcash.io">
+                        <img class="footer__sponsors-item" alt="Pro-Obmen.ru" src="/images/trustpilot.svg" title="Pro-Obmen.ru" />
                     </a>
                 </div>
             </div>

@@ -21,6 +21,7 @@
   'cleaningPageText5' => 'Entrega de efectivo en todo el mundo de forma anónima',
   'homePagePanelRatesInfo' => 'El curso se fijará una vez creada la solicitud',
   'exchangePanelTabAll' => 'All',
+  'anonymousMode' => 'Jabber/Tox',
   'indexExchangePanelScrollText' => 'No bloqueamos fondos por un alto nivel de AML',
   'reputationPageTitle' => 'Estamos en los foros y monitorizando',
   'reputationPageText' => 'Monitores y reseñas sobre nosotros:',
