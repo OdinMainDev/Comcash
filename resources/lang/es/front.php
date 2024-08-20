@@ -1,4 +1,7 @@
 <?php return array (
+  'contectUs' => 'Póngase en contacto con nosotros',
+  'anonymousFormDescription' => 'Deje sus contactos, su conserje personal se pondrá en contacto con usted.
+El reto se cumplirá, independientemente de la cantidad, la dirección y los riesgos.',
   'banner_index_1' => 'El objetivo del proyecto es cumplir todos los deseos del cliente.',
   'banner_index_2' => 'Lo esencial del negocio es no bloquear nunca el dinero de un cliente.',
   'banner_index_3' => 'Más información en la sección Reputación',

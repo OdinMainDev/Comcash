@@ -64,7 +64,7 @@
   'translateNames' => 'Übersetzungen von Namen',
   'image' => 'Wählen Sie ein Bild aus',
   'currencyUnits' => 'Dezimalstellen',
-  'name' => '<ignore-file></ignore-file>Titel',
+  'name' => 'Titel',
   'createdAt' => 'Datum der Erstellung',
   'action' => 'Aktion',
   'edit' => 'Ändern Sie',

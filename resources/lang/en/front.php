@@ -1,4 +1,7 @@
 <?php return array (
+  'contectUs' => 'Contact us',
+  'anonymousFormDescription' => 'Leave your contacts, your personal concierge will contact you.
+The task will be accomplished, regardless of the amount, direction or risks.',
   'banner_index_1' => 'The aim of the project is to satisfy all the client\'s wishes!',
   'banner_index_2' => 'The bottom line of the business is to never block a client\'s money!',
   'banner_index_3' => 'Read more in Reputation',

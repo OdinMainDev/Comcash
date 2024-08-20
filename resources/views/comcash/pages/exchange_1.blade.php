@@ -234,6 +234,13 @@
 			{!! @$direction->data['content'][mb_strtolower(app()->getLocale())] !!}
 		</div>
 	</div>
+	<div class="exchange__seo">
+		<div class="seo_block">
+			@foreach($seo_directions as $item)
+				<p> {{$item->currencyFrom->getTitle()}} -> {{$item->currencyTo->getTitle()}} <a href="{{route("exchgangePage", [app()->getLocale(), $item->currencyFrom->name, $item->currencyTo->name])}}"></a></p>
+			@endforeach
+		</div>
+	</div>
 
 </div>
 

@@ -34,7 +34,7 @@
   'translateNames' => 'Translations of names',
   'image' => 'Select an',
   'currencyUnits' => 'Decimal places',
-  'name' => '<ignore-file></ignore-file>Title',
+  'name' => 'Title',
   'createdAt' => 'Date of Creation',
   'action' => 'Action',
   'edit' => 'Modify',

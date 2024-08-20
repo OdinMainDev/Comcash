@@ -25,6 +25,17 @@ trait HasCache {
         return $cached;
     }
 
+    public function getRandomDirections($len = 10) {
+        $directions = $this->getCacheDirections();
+        if ($directions->isEmpty()) {
+            return collect(); // Возвращаем пустую коллекцию
+        }
+    
+        // Выбираем 10 случайных элементов
+        $randomItems = $directions->random(10);
+        return collect($randomItems);
+    }
+
     public function getCacheCurrencies(){
         return Currency::where("status", true)
         ->orderBy("position", "ASC")

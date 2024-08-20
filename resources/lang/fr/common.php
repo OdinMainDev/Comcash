@@ -34,7 +34,7 @@
   'translateNames' => 'Traductions des noms',
   'image' => 'Sélectionner une',
   'currencyUnits' => 'Décimales',
-  'name' => '<ignore-file></ignore-file>Titre',
+  'name' => 'Titre',
   'createdAt' => 'Date de création',
   'action' => 'Action',
   'edit' => 'Modifier',

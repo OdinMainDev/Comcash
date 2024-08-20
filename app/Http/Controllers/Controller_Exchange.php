@@ -85,7 +85,11 @@ class Controller_Exchange extends Controller{
         ];
 
         $this->setSeoData($seo_data, ["currencyFrom" => $currencyFrom, "currencyTo" => $currencyTo]);
-        return view($this->theme.".pages.exchange_1")->with("currencyFrom", $currencyFrom)->with("currencyTo", $currencyTo)->with("direction", $direction);
+        return view($this->theme.".pages.exchange_1")
+            ->with("currencyFrom", $currencyFrom)
+            ->with("currencyTo", $currencyTo)
+            ->with("direction", $direction)
+            ->with("seo_directions", $this->getRandomDirections(10));
     }
 
     public function create(Request $request) {

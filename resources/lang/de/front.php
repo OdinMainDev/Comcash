@@ -1,4 +1,7 @@
 <?php return array (
+  'contectUs' => 'Kontakt',
+  'anonymousFormDescription' => 'Hinterlassen Sie Ihre Kontakte, Ihr persönlicher Concierge wird Sie kontaktieren.
+Die Herausforderung wird erfüllt werden, unabhängig von der Menge, Richtung und Risiken.',
   'banner_index_1' => 'Das Ziel des Projekts ist es, alle Wünsche des Kunden zu erfüllen!',
   'banner_index_2' => 'Das Wichtigste in diesem Geschäft ist, niemals das Geld eines Kunden zu blockieren!',
   'banner_index_3' => 'Lesen Sie mehr im Abschnitt Reputation',
