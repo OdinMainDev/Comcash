@@ -1,5 +1,5 @@
 <?php $show = false; ?>
-
+<?php $withoutADS = true; ?> 
 @extends('comcash.layout.main')
 
 @section('content')
