@@ -36,31 +36,6 @@
 		@include('comcash.component.modal_auth')
 		@include('comcash.component.footer_main')
 
-		<script>
-			window.language = "{{mb_strtolower(app()->getLocale())}}";
-			window.isChristmasThemeComcash = "{{env('THEME_SUBNAME', false)}}" == "christmas" ? true : false;
-			window.updateYMForm = function(name) {
-				var appDebug = "{{env('APP_DEBUG')}}" == "true";
-				if(appDebug) {
-					return;
-				}
-				ym('93703988', 'reachGoal', name);
-			}
-		</script>
-		<!-- Google Tag Manager -->
-		<script>
-			(function(w,d,s,l,i,cid){
-					w[l]=w[l]||[];
-					w.pclick_client_id=cid;
-					w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-					var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
-					j.async=true; j.src= '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','GTM-P23G9N', '92140');
-		</script>
-		<!-- End Google Tag Manager -->
-		<script async src='https://static.mywot.com/website_owners_badges/websiteOwnersBadge.js'></script>
-
-
 		@yield('js')
 	</body>
 </html>
