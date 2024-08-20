@@ -468,4 +468,7 @@ les points de retrait d\'argent suivants :',
   'exchangePageCashDescription' => 'Attendez que nous vous envoyions un message',
   'exchangePageCashButton' => 'Accepter',
   'menuBot' => 'Échangeur',
+  'seoExchangePage1' => 'Exchange',
+  'seoExchangePage2' => 'to',
+  'seoExchangePage3' => 'without AML and KYC',
 );

@@ -468,4 +468,7 @@ los siguientes lugares de retirada de efectivo:',
   'exchangePageCashButton' => 'Acepte',
   'menuBot' => 'Intercambiador',
   'menuBotUrl' => 'https://t.me/comcashBot',
+  'seoExchangePage1' => 'Exchange',
+  'seoExchangePage2' => 'to',
+  'seoExchangePage3' => 'without AML and KYC',
 );

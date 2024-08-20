@@ -237,7 +237,11 @@
 	<div class="exchange__seo">
 		<div class="seo_block">
 			@foreach($seo_directions as $item)
-				<p> {{$item->currencyFrom->getTitle()}} -> {{$item->currencyTo->getTitle()}} <a href="{{route("exchgangePage", [app()->getLocale(), $item->currencyFrom->name, $item->currencyTo->name])}}"></a></p>
+				<p> 
+					<a href="{{route("exchgangePage", [app()->getLocale(), $item->currencyFrom->name, $item->currencyTo->name])}}">
+						{{__("front.seoExchangePage1")}} {{$item->currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$item->currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}
+					</a>
+				</p>
 			@endforeach
 		</div>
 	</div>

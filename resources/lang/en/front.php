@@ -468,4 +468,7 @@ the following locations for cash withdrawal:',
   'rulesPageText8_4' => 'We use certain security measures to ensure that your personal information is protected. However, we cannot guarantee that these measures will stop any individuals attempting to circumvent the privacy or security settings on our website through unanticipated and/or illegal actions.',
   'rulesPageText8_5' => 'We comply with generally accepted standards for protecting your information. In particular, we have taken at least the following measures:',
   'menuBotUrl' => 'https://t.me/comcashBot',
+  'seoExchangePage1' => 'Exchange',
+  'seoExchangePage2' => 'to',
+  'seoExchangePage3' => 'without AML and KYC',
 );

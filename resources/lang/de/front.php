@@ -468,4 +468,7 @@ die folgenden Stellen für die Bargeldabhebung:',
   'rulesPageText8_3' => 'Wir gestatten Dritten nicht, Sie direkt und unaufgefordert bezüglich ihrer eigenen Produkte oder Dienstleistungen zu kontaktieren. Wir verkaufen, handeln oder vermieten Ihre persönlichen Daten nicht an Dritte.',
   'rulesPageText8_4' => 'Wir setzen bestimmte Sicherheitsmaßnahmen ein, um den Schutz Ihrer persönlichen Daten zu gewährleisten. Wir können jedoch nicht garantieren, dass diese Maßnahmen Personen davon abhalten, die Datenschutz- oder Sicherheitseinstellungen auf unserer Website durch unvorhergesehene und/oder illegale Aktionen zu umgehen.',
   'rulesPageText8_5' => 'Wir halten die allgemein anerkannten Standards zum Schutz Ihrer Daten ein. Insbesondere haben wir mindestens die folgenden Maßnahmen ergriffen:',
+  'seoExchangePage1' => 'Exchange',
+  'seoExchangePage2' => 'to',
+  'seoExchangePage3' => 'without AML and KYC',
 );

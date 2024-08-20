@@ -472,4 +472,7 @@ return [
     "banner_index_2" => "Суть бизнеса - никогда не блокировать деньги клиента!",
     "banner_index_3" => "Подробнее в разделе Репутация",
     "banner_index_4" => "С уважением, администрация",
+    "seoExchangePage1" => "Обмен",
+    "seoExchangePage2" => "на",
+    "seoExchangePage3" => "без AML и KYC",
 ];
