@@ -1,4 +1,4 @@
-@if(!isset($withoutADS) || !$withoutADS)
+@if(!isset($withoud_ads) || !$withoud_ads)
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript" >
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};

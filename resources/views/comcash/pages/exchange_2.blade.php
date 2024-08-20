@@ -1,6 +1,6 @@
 <?php $show = false; ?>
-<?php $withoutADS = true; ?> 
-@extends('comcash.layout.main')
+
+@extends('comcash.layout.main', ['withoud_ads' => true])
 
 @section('content')
 	@if($exchange->status >= 10)
