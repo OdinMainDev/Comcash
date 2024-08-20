@@ -79,7 +79,7 @@ class CacheTarrifsPage extends Command
                     }
                     $next_html .= '<p class="tariffs__list-agent">';
                     $next_html .= '<img src="'.$currency->image.'" alt="Comcash - '.$currency->getTitle().'">';
-                    $next_html .= '<span>'.$currency->getTitle().'</span>';
+                    $next_html .= '<span>'.__("front.seoExchangePage1").' '.$currency->getTitle().'</span>';
                     $next_html .= '</p>';
                     $next_html .= '<p class="tariffs__list-currency">'.$this->convertCurrencyName($currency->name).'</p>';
                     $next_html .= '<p class="tariffs__list-value">1</p>';
@@ -90,7 +90,7 @@ class CacheTarrifsPage extends Command
                     }
                     $next_html .= '<p class="tariffs__list-agent">';
                     $next_html .= '<img src="'.$currency2->image.'" alt="Comcash - '.$currency2->getTitle().'">';
-                    $next_html .= '<span>'.$currency2->getTitle().'</span>';
+                    $next_html .= '<span>'.__("front.seoExchangePage2").' '.$currency2->getTitle().'</span>';
                     $next_html .= '</p>';
                     $next_html .= '<p class="tariffs__list-currency">'.$this->convertCurrencyName($currency2->name).'</p>';
                     $next_html .= '<p class="tariffs__list-value">'.$rate.'</p>';
@@ -102,7 +102,7 @@ class CacheTarrifsPage extends Command
                     }
                     $next_html .= '<p class="tariffs__list-agent">';
                     $next_html .= '<img src="'.$currency->image.'" alt="Comcash - '.$currency->getTitle().'">';
-                    $next_html .= '<span>'.$currency->getTitle().'</span>';
+                    $next_html .= '<span>'.__("front.seoExchangePage1").' '.$currency->getTitle().'</span>';
                     $next_html .= '</p>';
                     $next_html .= '<p class="tariffs__list-currency">'.$this->convertCurrencyName($currency->name).'</p>';
                     $next_html .= '<p class="tariffs__list-value">'.$rate.'</p>';
@@ -113,7 +113,7 @@ class CacheTarrifsPage extends Command
                     }
                     $next_html .= '<p class="tariffs__list-agent">';
                     $next_html .= '<img src="'.$currency2->image.'" alt="Comcash - '.$currency2->getTitle().'">';
-                    $next_html .= '<span>'.$currency2->getTitle().'</span>';
+                    $next_html .= '<span>'.__("front.seoExchangePage2").' '.$currency2->getTitle().'</span>';
                     $next_html .= '</p>';
                     $next_html .= '<p class="tariffs__list-currency">'.$this->convertCurrencyName($currency2->name).'</p>';
                     $next_html .= '<p class="tariffs__list-value">1</p>';
