@@ -269,7 +269,7 @@
 			"name": "{{__("front.seoExchangePage1")}} {{$currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
 			"image": "{{$currencyFrom->image ? $currencyFrom->image : "https://comcash.io/comcash/img/logo.svg"}}",
 			"description": "{{__("front.seoExchangePage1")}} {{$currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
-			"sku": "{{$currencyFrom->getTitle()}}-{{$currencyTo->getTitle()}}",
+			"sku": "{{$currencyFrom->getTitle()}}-{{$currencyTo->getTitle()}}-{{$direction->id}}",
 			"offers": {
 				"@type": "Offer",
 				"priceCurrency": "{{$currencyFrom->getTitle()}}",
