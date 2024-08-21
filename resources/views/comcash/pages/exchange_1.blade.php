@@ -276,7 +276,7 @@
 				"price": "1",
 				"itemCondition": "https://schema.org/NewCondition",
 				"availability": "https://schema.org/InStock",
-				"url": "https://comcash.io/bitcoin"
+				"url": "{{route("exchgangePage", [$currencyFrom->name, $currencyTo->name])}}"
 			}
 		}
 	</script>
