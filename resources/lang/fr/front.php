@@ -471,4 +471,7 @@ les points de retrait d\'argent suivants :',
   'seoExchangePage1' => 'Exchange',
   'seoExchangePage2' => 'to',
   'seoExchangePage3' => 'without AML and KYC',
+  "descriptionTitle" => "ComCash.io — Votre échange de cryptomonnaies anonyme",
+  "comcashTitleStrong" => "ComCash.io",
+  "comcashDescription" => "est un échange de cryptomonnaies de premier plan qui vous offre commodité et sécurité sans avoir besoin de contrôles AML et KYC. Nous valorisons votre temps et votre vie privée en vous offrant un moyen simple et anonyme d'échanger des actifs numériques."
 );

@@ -471,4 +471,9 @@ los siguientes lugares de retirada de efectivo:',
   'seoExchangePage1' => 'Exchange',
   'seoExchangePage2' => 'to',
   'seoExchangePage3' => 'without AML and KYC',
+  "descriptionTitle" => "ComCash.io — Tu intercambio de criptomonedas anónimo",
+  "comcashTitleStrong" => "ComCash.io",
+  "comcashDescription" => "es un intercambio de criptomonedas líder que ofrece comodidad y seguridad sin necesidad de verificaciones AML y KYC. Valoramos tu tiempo y privacidad, ofreciendo una forma sencilla y anónima de intercambiar activos digitales.",
+
+
 );
