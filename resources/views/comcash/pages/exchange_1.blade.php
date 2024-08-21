@@ -266,17 +266,17 @@
 		{
 			"@context": "https://schema.org",
 			"@type": "Product",
-			"name": "{{__("front.seoExchangePage1")}} {{$currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
-			"image": "{{$currencyFrom->image ? $currencyFrom->image : "https://comcash.io/comcash/img/logo.svg"}}",
-			"description": "{{__("front.seoExchangePage1")}} {{$currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
-			"sku": "{{$currencyFrom->getTitle()}}-{{$currencyTo->getTitle()}}-{{$direction->id}}",
+			"name": "{{__("front.seoExchangePage1")}} {{$direction->currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$direction->currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
+			"image": "{{$direction->currencyFrom->image ? $direction->currencyFrom->image : "https://comcash.io/comcash/img/logo.svg"}}",
+			"description": "{{__("front.seoExchangePage1")}} {{$direction->currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$direction->currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
+			"sku": "{{$direction->currencyFrom->getTitle()}}-{{$direction->currencyTo->getTitle()}}-{{$direction->id}}",
 			"offers": {
 				"@type": "Offer",
-				"priceCurrency": "{{$currencyFrom->getTitle()}}",
+				"priceCurrency": "{{$direction->currencyFrom->getTitle()}}",
 				"price": "1",
 				"itemCondition": "https://schema.org/NewCondition",
 				"availability": "https://schema.org/InStock",
-				"url": "{{route("exchgangePage", [$currencyFrom->name, $currencyTo->name])}}"
+				"url": "{{route("exchgangePage", [$direction->currencyFrom->name, $direction->currencyTo->name])}}"
 			}
 		}
 	</script>
