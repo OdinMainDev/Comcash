@@ -1,0 +1,29 @@
+.description {
+    padding: 30px 20px 30px;
+    &__title {
+        font-size: 34px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    &__descr {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    &__subtitle {
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        &-item {
+            font-size: 16px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+    }
+}
