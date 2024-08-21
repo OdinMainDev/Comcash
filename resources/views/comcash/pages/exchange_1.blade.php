@@ -1,4 +1,4 @@
-@extends('comcash.layout.main', ['withoud_ads' => true])
+@extends('comcash.layout.main')
 
 @section('content')
 
