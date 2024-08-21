@@ -260,4 +260,24 @@
             document.documentElement.style.setProperty('--height-footer', footerHeight + 'px');
         });
     </script>
+
+
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Product",
+			"name": "{{__("front.seoExchangePage1")}} {{$currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
+			"image": "{{$currencyFrom->image ? $currencyFrom->image : "https://comcash.io/comcash/img/logo.svg"}}",
+			"description": "{{__("front.seoExchangePage1")}} {{$currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
+			"sku": "{{$currencyFrom->getTitle()}}-{{$currencyTo->getTitle()}}",
+			"offers": {
+				"@type": "Offer",
+				"priceCurrency": "{{$currencyFrom->getTitle()}}",
+				"price": "1",
+				"itemCondition": "https://schema.org/NewCondition",
+				"availability": "https://schema.org/InStock",
+				"url": "https://comcash.io/bitcoin"
+			}
+		}
+	</script>
 @endsection
