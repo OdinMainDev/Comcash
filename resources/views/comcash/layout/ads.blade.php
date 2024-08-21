@@ -68,3 +68,15 @@ document.addEventListener('DOMContentLoaded', function() {
     tp('createInvitation', trustpilot_invitation);
 });
 </script>
+
+<script>
+  window.language = "{{mb_strtolower(app()->getLocale())}}";
+  window.isChristmasThemeComcash = "{{env('THEME_SUBNAME', false)}}" == "christmas" ? true : false;
+  window.updateYMForm = function(name) {
+    var appDebug = "{{env('APP_DEBUG')}}" == "true";
+    if(appDebug) {
+      return;
+    }
+    ym('93703988', 'reachGoal', name);
+  }
+</script>
