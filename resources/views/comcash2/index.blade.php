@@ -5,6 +5,7 @@
 	@include("comcash2.component.index.exchange_panel")
 	@include("comcash2.component.index.about")
 	<!-- @include("comcash2.component.index.transactions") -->
+    @include("comcash.component.index.description")
 	@include("comcash2.component.index.feedback")
 	@include("comcash2.component.index.courier")
 	@include("comcash2.component.index.news")

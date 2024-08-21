@@ -5,10 +5,11 @@
 	@include("comcash.component.index.exchange_panel")
 	@include("comcash.component.index.about")
 	<!-- @include("comcash.component.index.transactions") -->
+    @include("comcash.component.index.description")
 	@include("comcash.component.index.feedback")
 	@include("comcash.component.index.courier")
 	@include("comcash.component.index.news")
-    @include("comcash3.component.index.advertising_banner")
+  @include("comcash3.component.index.advertising_banner")
 @endsection
 
 

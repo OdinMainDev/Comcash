@@ -471,4 +471,9 @@ die folgenden Stellen für die Bargeldabhebung:',
   'seoExchangePage1' => 'Exchange',
   'seoExchangePage2' => 'to',
   'seoExchangePage3' => 'without AML and KYC',
+  "descriptionTitle" => "ComCash.io — Ihr anonymes Kryptowährungs-Exchange",
+  "comcashTitleStrong" => "ComCash.io",
+  "comcashDescription" => "ist ein führendes Kryptowährungs-Exchange, das Ihnen Bequemlichkeit und Sicherheit bietet, ohne dass AML- und KYC-Prüfungen erforderlich sind. Wir schätzen Ihre Zeit und Privatsphäre und bieten Ihnen eine einfache und anonyme Möglichkeit, digitale Vermögenswerte zu tauschen.",
+
+
 );

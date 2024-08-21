@@ -471,4 +471,8 @@ the following locations for cash withdrawal:',
   'seoExchangePage1' => 'Exchange',
   'seoExchangePage2' => 'to',
   'seoExchangePage3' => 'without AML and KYC',
+  "descriptionTitle" => "ComCash.io — Your Anonymous Cryptocurrency Exchange",
+  "comcashTitleStrong" => "ComCash.io",
+  "comcashDescription" => "is a leading cryptocurrency exchange providing convenience and security without the need for AML and KYC checks. We value your time and privacy, offering a straightforward and anonymous way to exchange digital assets.",
+
 );
