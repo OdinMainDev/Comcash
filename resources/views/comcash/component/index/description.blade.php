@@ -1,7 +1,7 @@
 <div class="description">
-    <h1 class="description__title">
+    <h2 class="description__title">
         {{__("front.descriptionTitle")}}
-    </h1>
+    </h2>
     <button class="description__button button" id="descriptionToggleButton">
         {{ __("front.findOutMore") }}
     </button>
