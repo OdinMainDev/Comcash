@@ -13,7 +13,7 @@
         clickmap:true,
         trackLinks:true,
         accurateTrackBounce:true,
-        webvisor:false
+        webvisor:true
   });
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/93703988" style="position:absolute; left:-9999px;" alt="" /></div></noscript>

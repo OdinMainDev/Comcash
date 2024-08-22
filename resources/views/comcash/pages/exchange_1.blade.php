@@ -267,7 +267,7 @@
 			"@context": "https://schema.org",
 			"@type": "Product",
 			"name": "{{__("front.seoExchangePage1")}} {{$direction->currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$direction->currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
-			"image": "{{$direction->currencyFrom->image ? $direction->currencyFrom->image : "https://comcash.io/comcash/img/logo.svg"}}",
+			"image": "https://comcash.io/{{$direction->currencyFrom->image ? $direction->currencyFrom->image : "https://comcash.io/comcash/img/logo.svg"}}",
 			"description": "{{__("front.seoExchangePage1")}} {{$direction->currencyFrom->getTitle()}} {{__("front.seoExchangePage2")}} {{$direction->currencyTo->getTitle()}} {{__("front.seoExchangePage3")}}",
 			"sku": "{{$direction->currencyFrom->getTitle()}}-{{$direction->currencyTo->getTitle()}}-{{$direction->id}}",
 			"offers": {
