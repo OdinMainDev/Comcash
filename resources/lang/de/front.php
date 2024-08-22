@@ -474,6 +474,43 @@ die folgenden Stellen für die Bargeldabhebung:',
   "descriptionTitle" => "ComCash.io — Ihr anonymes Kryptowährungs-Exchange",
   "comcashTitleStrong" => "ComCash.io",
   "comcashDescription" => "ist ein führendes Kryptowährungs-Exchange, das Ihnen Bequemlichkeit und Sicherheit bietet, ohne dass AML- und KYC-Prüfungen erforderlich sind. Wir schätzen Ihre Zeit und Privatsphäre und bieten Ihnen eine einfache und anonyme Möglichkeit, digitale Vermögenswerte zu tauschen.",
+  "whyComcashDescription" => "Warum ComCash.io wählen?",
+  "whatIsComcash" => "ist ein Exchange, das Sie von komplexen und oft lästigen Verifizierungsverfahren befreit. Wir bieten:",
+  "comcashList1Title" => "Exchange ohne AML- und KYC-Prüfungen:",
+  "comcashList1" => "Auf unserer Plattform erfolgt der Kryptowährungstausch ohne die lästigen Prüfungen von Anti-Geldwäsche (AML) und Know Your Customer (KYC).",
+  "comcashList2Title" => "Kryptowährungs-Exchange ohne Verifizierung:",
+  "comcashList2" => "Wir bieten eine einfache und schnelle Möglichkeit, Kryptowährungen zu tauschen, ohne persönliche Daten oder umfangreiche Verifizierungen bereitzustellen.",
+  "comcashList3Title" => "Exchanges ohne AML und KYC:",
+  "comcashList3" => "Unser Service ermöglicht den Kryptowährungstausch ohne zusätzliche Verifizierung und garantiert Ihre Anonymität.",
+  "comcashList4Title" => "Bitcoin-Tausch ohne Verifizierung:",
+  "comcashList4" => "Tauschen Sie Bitcoin schnell und sicher aus, ohne eine Identitätsprüfung durchführen zu müssen.",
+
+  "descrSubtitle2" => "Dienstleistungen bei ComCash.io",
+  "comcash2List1Title" => "Kryptowährungs-Exchange ohne Provision:",
+  "comcash2List1" => "Wir bieten Kryptowährungs-Tausch ohne versteckte Gebühren oder zusätzliche Kosten, damit Sie das Beste aus Ihren Transaktionen herausholen können.",
+  "comcash2List2Title" => "Kryptowährung kaufen ohne Verifizierung:",
+  "comcash2List2" => "Unsere Plattform ermöglicht es Ihnen, Kryptowährungen zu kaufen, ohne eine Verifizierung durchlaufen zu müssen, wodurch Ihre persönlichen Informationen privat bleiben.",
+  "comcash2List3Title" => "Kryptowährung gegen Rubel tauschen ohne Provision:",
+  "comcash2List3" => "Wir bieten vorteilhafte Bedingungen für den Tausch von Kryptowährungen gegen Rubel ohne zusätzliche Kosten, um Ihre Erfahrung noch angenehmer zu gestalten.",
+
+  "descrSubtitle3" => "Häufig gestellte Fragen",
+  "comcash3List1Title" => "Wo kann man Kryptowährungen ohne Verifizierung kaufen?",
+  "comcash3List1" => "Mit ComCash.io können Sie Kryptowährungen einfach kaufen, ohne eine Identitätsverifizierung oder andere Verfahren durchlaufen zu müssen.",
+  "comcash3List2Title" => "Wie tauscht man Kryptowährungen gegen Rubel ohne Provision?",
+  "comcash3List2" => "Wir bieten den Tausch von Kryptowährungen gegen Rubel ohne Provision an und gewährleisten Transparenz und vorteilhafte Bedingungen für Sie.",
+  "comcash3List3Title" => "Exchange ohne Verifizierung:",
+  "comcash3List3" => "Auf unserer Plattform erfolgt der Kryptowährungstausch ohne zusätzliche Prüfungen, sodass Sie Transaktionen schnell und reibungslos abschließen können.",
+
+  "descrSubtitle4" => "Warum ComCash.io?",
+  "comcash4List1Title" => "Anonymität und Sicherheit:",
+  "comcash4List1" => "Wir garantieren ein hohes Maß an Sicherheit und Anonymität für alle Transaktionen.",
+  "comcash4List2Title" => "Geschwindigkeit und Einfachheit:",
+  "comcash4List2" => "Unsere Benutzeroberfläche ist intuitiv und benutzerfreundlich, was eine schnelle Bearbeitung aller Tauschvorgänge gewährleistet.",
+  "comcash4List3Title" => "Keine versteckten Gebühren:",
+  "comcash4List3" => "Wir bieten Tauschdienste ohne versteckte Kosten an, damit Sie sich auf Ihre Transaktionen konzentrieren können, ohne zusätzliche Sorgen.",
+
+  "descrSubtitle5" => "Beginnen Sie noch heute mit dem Tausch!",
+  "comcashDescrText" => "Treten Sie ComCash.io bei und nutzen Sie unsere Kryptowährungs-Exchange-Dienste ohne AML- und KYC-Prüfungen. Wir bieten eine zuverlässige, schnelle und anonyme Lösung für alle Ihre Bedürfnisse beim Austausch digitaler Währungen."
 
 
 );

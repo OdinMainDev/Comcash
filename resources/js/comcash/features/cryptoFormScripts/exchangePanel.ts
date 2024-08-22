@@ -12,7 +12,8 @@ $(document).ready(async function() {
 
   const currencyFromAmountInput = exchangePanelLeft.find('.welcome-exchange__input');
   const currencyToAmountInput = exchangePanelRight.find('.welcome-exchange__input');
-
+  let debounceTimer: any = null;
+  let lastRequestController: AbortController | null = null;
   const select = $('.welcome-exchange__select');
   const selectedItem = select.find('.welcome-exchange__select-selected');
   const closeButton = select.find('.welcome-exchange__select-close');
@@ -41,6 +42,7 @@ $(document).ready(async function() {
   let currencyFromList = await getCurrenciesFrom();
   leftLoader.hide();
   rightLoader.hide();
+  const timerFrom = null;
 
   let rightList = currenciesList;
   let rightFilter = 'all';
@@ -166,32 +168,46 @@ $(document).ready(async function() {
   }
 
   const changeFromAmount = async (amount: string) => {
-    let value = amount.replace(/[^\d.-]/g, '');
-    currencyFromAmountInput.val(value);
-    currencyFromAmount = Number(value);
-    try {
-      const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value));
-      currencyToAmount = data.amount;
-      currencyToAmountInput.attr('placeholder', `Min amount: ${data.min_amount}`);
-    } catch (e) {
-      // Handle error
-    } finally {
-      rightLoader.hide();
-    }
-    currencyToAmountInput.val(currencyToAmount);
+    if (debounceTimer) clearTimeout(debounceTimer);
+
+    debounceTimer = setTimeout(async () => {
+      if (lastRequestController) lastRequestController.abort();
+      lastRequestController = new AbortController();
+      const { signal } = lastRequestController;
+
+      let value = amount.replace(/[^\d.-]/g, '');
+      currencyFromAmountInput.val(value);
+      currencyFromAmount = Number(value);
+      try {
+        const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value), undefined, signal);
+        currencyToAmount = data.amount;
+        currencyToAmountInput.attr('placeholder', `Min amount: ${data.min_amount}`);
+      } catch (e) {
+      } finally {
+        rightLoader.hide();
+      }
+      currencyToAmountInput.val(currencyToAmount);
+    }, 300);
   }
 
   const changeToAmount = async (amount: string) => {
-    let value = amount.replace(/[^\d.-]/g, '');
-    currencyToAmountInput.val(value);
-    currencyToAmount = Number(value);
-    try {
-      const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value), 1);
-      currencyFromAmount = data.amount;
-      currencyFromAmountInput.val(currencyFromAmount);
-    } catch (e) {
-      // Handle error
-    }
+    if (debounceTimer) clearTimeout(debounceTimer);
+
+    debounceTimer = setTimeout(async () => {
+      if (lastRequestController) lastRequestController.abort();
+      lastRequestController = new AbortController();
+      const { signal } = lastRequestController;
+
+      let value = amount.replace(/[^\d.-]/g, '');
+      currencyToAmountInput.val(value);
+      currencyToAmount = Number(value);
+      try {
+        const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value), undefined, signal);
+        currencyFromAmount = data.amount;
+        currencyFromAmountInput.val(currencyFromAmount);
+      } catch (e) {
+      }
+    }, 300);
   }
 
   function toggleBodyScroll() {

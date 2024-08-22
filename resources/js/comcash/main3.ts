@@ -23,7 +23,7 @@ import '@/features/progressScript'
 import '@/features/scrollText'
 import '@/features/aboutVideo'
 import '@/features/banner'
-
+import '@/features/description'
 
 import '@/shared/scripts/checkChristmas'
 
