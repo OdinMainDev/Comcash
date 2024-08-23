@@ -136,11 +136,11 @@ class Controller_KnowledgeBase extends Controller{
         ]);
 
         if(preg_match('/^[0-9A-Fa-f]{76}$/', $request->contacttox)){
-            return abort(404);
+            return abort(419);
         }
 
         if(preg_match('/^[0-9A-Fa-f]{76}$/', $request->contacttox)){
-            return abort(404);
+            return abort(419);
         }
 
         $text = "⚠️⚠️<b>Контактная форма с сайта (tox,jabber)</b>⚠️⚠️\n";
