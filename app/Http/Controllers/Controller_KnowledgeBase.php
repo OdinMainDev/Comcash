@@ -131,9 +131,17 @@ class Controller_KnowledgeBase extends Controller{
 
     public function cleaning(Request $request){
         $request->validate([
-            "contactjabber" => "required_without:contacttox|nullable|string|max:255",
+            "contactjabber" => "required_without:contacttox|nullable|email|string|max:255",
             "contacttox" => "required_without:contactjabber|nullable|string|max:255",
         ]);
+
+        if(preg_match('/^[0-9A-Fa-f]{76}$/', $request->contacttox)){
+            return abort(404);
+        }
+
+        if(preg_match('/^[0-9A-Fa-f]{76}$/', $request->contacttox)){
+            return abort(404);
+        }
 
         $text = "⚠️⚠️<b>Контактная форма с сайта (tox,jabber)</b>⚠️⚠️\n";
         if($request->contactjabber)
