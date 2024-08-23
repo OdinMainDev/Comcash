@@ -135,11 +135,7 @@ class Controller_KnowledgeBase extends Controller{
             "contacttox" => "required_without:contactjabber|nullable|string|max:255",
         ]);
 
-        if(preg_match('/^[0-9A-Fa-f]{76}$/', $request->contacttox)){
-            return abort(419);
-        }
-
-        if(preg_match('/^[0-9A-Fa-f]{76}$/', $request->contacttox)){
+        if(preg_match('/^[0-9A-Fa-f]{76}$/', $request->contacttox) || preg_match('/^[0-9A-Fa-f]{52}$/', $request->contacttox)){
             return abort(419);
         }
 
