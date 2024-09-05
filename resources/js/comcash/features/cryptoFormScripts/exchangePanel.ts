@@ -202,7 +202,7 @@ $(document).ready(async function() {
       currencyToAmountInput.val(value);
       currencyToAmount = Number(value);
       try {
-        const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value), undefined, signal);
+        const data = await getEstimate(currencyFrom.name, currencyTo.name, Number(value), 1, signal);
         currencyFromAmount = data.amount;
         currencyFromAmountInput.val(currencyFromAmount);
       } catch (e) {
