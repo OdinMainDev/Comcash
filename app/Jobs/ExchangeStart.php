@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Register;
 use App\Merchants\Handler;
+use App\Models\UtmParameter;
 use Illuminate\Support\Facades\Cache;
 
 class ExchangeStart implements ShouldQueue
@@ -184,6 +185,7 @@ class ExchangeStart implements ShouldQueue
             $text .= "Банк: ".$data['request_data']['bank']."\n";
         }
 
+
         $text .= "\n";
         if($this->user->first_name)
             $text .= "Имя (привязанное к аккаунту): ".$this->user->first_name."\n";
@@ -192,6 +194,30 @@ class ExchangeStart implements ShouldQueue
         if($this->user->last_name)
             $text .= "Фамилия (привязанная к аккаунту): ".$this->user->last_name."\n";
         $text .= "Email (привязанный к аккаунту): ".$this->user->email."\n";
+
+
+        if(isset($this->exchange->data['request_data']['utm_id'])
+            && is_numeric($this->exchange->data['request_data']['utm_id'])){
+            $utm = UtmParameter::where("id", $this->exchange->data['request_data']['utm_id'])->first();
+            if($utm){
+                $text .= "\n";
+                if($utm->utm_source) {
+                    $text .= "utm_source: ".$utm->utm_source."\n";
+                }
+                if($utm->utm_medium) {
+                    $text .= "utm_medium: ".$utm->utm_medium."\n";
+                }
+                if($utm->utm_campaign) {
+                    $text .= "utm_campaign: ".$utm->utm_campaign."\n";
+                }
+                if($utm->utm_term) {
+                    $text .= "utm_term: ".$utm->utm_term."\n";
+                }
+                if($utm->utm_content) {
+                    $text .= "utm_content: ".$utm->utm_content."\n";
+                }
+            }
+        }
         
         sendTelegramNotification($text);
 
