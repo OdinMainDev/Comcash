@@ -150,6 +150,9 @@ class Controller extends BaseController{
         }
         $data = $data[$pagename];
         $lang = mb_strtolower(app()->getLocale());
+        if (!in_array($lang, config("app.languages"))) {
+            $lang = "ru";
+        }
         return [
             "page" => $page,
             "title" => $data['titles'][$lang],
