@@ -101,6 +101,7 @@ class Install extends Command
             "view-statistic",
             "handle-seo",
             "handle-telegram",
+            "handle-all-exchanges",
         ];
 
         $bar = $this->output->createProgressBar(count($permissions));

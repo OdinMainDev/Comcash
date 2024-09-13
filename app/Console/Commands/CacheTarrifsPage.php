@@ -64,10 +64,10 @@ class CacheTarrifsPage extends Command
                 }
 
                 $next_html .= '<a class="tariffs__list-row" href="'.route("exchgangePage", ["ru", $currency->name, $currency2->name]).'">';
-                $rate = $this->estimateGetRate($currency->name, $currency2->name);
+                $rate = $this->estimateGetRate($currency->name, $currency2->name, $direction->profit_percent);
                 $type = 1;
                 if($rate < 0.01){
-                    $rate = $this->estimateGetRate($currency2->name, $currency->name);
+                    $rate = $this->estimateGetRate($currency2->name, $currency->name, $direction->profit_percent);
                     $type = 2;
                 }
 
