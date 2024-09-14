@@ -27,7 +27,7 @@ class Controller_Api extends Controller{
             $currencies = $currencies->sortBy(function($currency) {
                 if (in_array($currency->name, ['CARDUSD', "CASHUSD"])) {
                     return -1;
-                } elseif (in_array($currency->name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB", "SBPRUB"])) {
+                } elseif (in_array($currency->name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB", "SBPRUB", "ACCRUB"])) {
                     return 1;
                 } else {
                     return 0;
