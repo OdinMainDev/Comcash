@@ -37,15 +37,12 @@ class Controller_Direction extends Controller{
             foreach($request->currencyTo as $idTo) {
                 $currency_to = Currency::where("id", $idTo)->first();
                 if(!$currency_from || !$currency_to) {
-                    info(1);
                     continue;
                 }
                 if($currency_from->id == $currency_to->id && !$request->with_same_directions) {
-                    info(2);
                     continue;
                 }
-                if(Direction::where("currency_from", $currency_from->id)->where("currency_from", $currency_from->id)->first()) {
-                    info(3);
+                if(Direction::where("currency_from", $currency_from->id)->where("currency_to", $currency_to->id)->first()) {
                     continue;
                 }
 
