@@ -11,7 +11,9 @@ class Exchange extends Model
     use HasFactory;
 
     protected $casts = [
-        "data" => Json::class
+        "data" => Json::class,
+        "is_new_client" => "boolean",
+        "is_first_completed" => "boolean",
     ];
 
     protected $hidden = [

@@ -12,6 +12,7 @@ use App\Models\Exchange;
 use App\Models\Statistic;
 use App\Models\StatisticCompleteExchange;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -43,6 +44,8 @@ class OnExchangeComplete implements ShouldQueue
             return;
         }
         unset($check);
+
+
 
         // проверяем и сохраняем utm
         if(isset($this->exchange->data['request_data']['utm_id'])
@@ -84,6 +87,13 @@ class OnExchangeComplete implements ShouldQueue
 
         if($this->user->email[0] != "@")
             Mail::to($this->user->email)->send(new ExchangeComplete($this->user->id, $this->user->email, $this->exchange));
+
+        // подбираем данные по человеку
+        $currentTime = Carbon::now();
+        if($currentTime->diffInSeconds($this->user->created_at) > 86400){
+            $this->exchange->is_new_client = true;
+            $this->exchange->save();
+        }
 
         $aff_user = $this->getAffiliatedUser($this->exchange->user_id);
         if(!$aff_user || !$aff_user->campaign || !$aff_user->campaign->status){
