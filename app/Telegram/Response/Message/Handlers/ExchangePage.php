@@ -33,7 +33,8 @@ trait ExchangePage {
         if(!$amount) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_3");
         }
-
+        info("FINAL AMOUNT");
+        info($amount);
         $finalAmount = $isReverse ? $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyFrom->units, $textAmount, 0, $isReverse) : $textAmount;
         if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $finalAmount){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_4");
