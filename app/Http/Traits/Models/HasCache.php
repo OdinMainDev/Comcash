@@ -248,7 +248,11 @@ trait HasCache {
 
     public function getCacheFeedbacks(){
         $request = request();
-        return Cache::remember("feedbacks-".$request->page, 600, function(){
+        $page = 1;
+        if($request->page && is_numeric($request->page)){
+            $page = $request->page;
+        }
+        return Cache::remember("feedbacks-".$page, 600, function(){
             return Feedback::orderBy("id", "DESC")
                 ->paginate(10);
         });
@@ -256,13 +260,14 @@ trait HasCache {
 
     public function getCacheExchanges($user_id = 0, $page_number = false){
         $request = request();
-        if($request->page && !is_numeric($request->page)){
-            return abort(404);
+        $page = 1;
+        if($request->page && is_numeric($request->page)){
+            $page = $request->page;
         }
-        if($request->page >= 10) {
-            $request->page = 10;
+        if($page >= 50) {
+            $page = 50;
         }
-        return Cache::remember("exchanges-".$request->page."-".$user_id."-".$page_number, 600, function() use($user_id, $page_number){
+        return Cache::remember("exchanges-".$page."-".$user_id."-".$page_number, 600, function() use($user_id, $page_number){
             $query = Exchange::with("currencyFrom")
                 ->with("currencyTo")
                 ->orderBy("id", "DESC")
@@ -382,7 +387,14 @@ trait HasCache {
 
     public function getCacheAffiliatesExchanges($user_id, $page_number = false){
         $request = request();
-        return Cache::remember("aff-exchanges-".$request->page."-".$user_id.$page_number, 60, function() use($user_id, $page_number){
+        $page = 1;
+        if($request->page && is_numeric($request->page)){
+            $page = $request->page;
+        }
+        if(!$page_number){
+            $page_number = "";
+        }
+        return Cache::remember("aff-exchanges-".$page."-".$user_id.$page_number, 60, function() use($user_id, $page_number){
             $query = AffiliateExchange::orderBy("id", "DESC")
                 ->where("user_id", $user_id);
             if(!$page_number)
@@ -403,7 +415,14 @@ trait HasCache {
 
     public function getCacheAffiliatesWithdraws($user_id, $page_number = false){
         $request = request();
-        return Cache::remember("aff-withdraws-".$request->page."-".$user_id."-".$page_number, 60, function() use($user_id, $page_number){
+        $page = 1;
+        if($request->page && is_numeric($request->page)){
+            $page = $request->page;
+        }
+        if(!$page_number){
+            $page_number = "";
+        }
+        return Cache::remember("aff-withdraws-".$page."-".$user_id."-".$page_number, 60, function() use($user_id, $page_number){
             $query = AffiliateWithdraw::orderBy("id", "DESC")
                 ->where("user_id", $user_id);
 

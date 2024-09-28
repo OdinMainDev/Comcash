@@ -29,18 +29,16 @@ trait ExchangePage {
         if(!$amount) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_3");
         }
-
-        $finalAmount = $isReverse ? $amount : $textAmount;
-
-        if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $finalAmount){
+        
+        if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $amount){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_4");
         }
-        if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $finalAmount){
+        if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $amount){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_5");
         }
         
         $this->user->action = config("app.telegram_actions")["exchangeSetFields"];
-        $this->user->action_data = $directionId."_".$textAmount;
+        $this->user->action_data = $directionId."_".$amount;
         $this->user->save();
         $this->exchangeFieldMessage($chat_id, $language, 0, $direction);
     }
