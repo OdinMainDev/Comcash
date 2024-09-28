@@ -25,6 +25,10 @@ trait ExchangePage {
             $units = $direction->currencyTo->units;
         }
 
+        info("TEXT AMOUNT");
+        info($textAmount);
+        info($isReverse);
+        info($this->user->action);
         $amount = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $textAmount, $direction->profit_percent, $isReverse);
         if(!$amount) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_3");
