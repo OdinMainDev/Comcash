@@ -90,8 +90,18 @@ class OnExchangeComplete implements ShouldQueue
 
         // подбираем данные по человеку
         $currentTime = Carbon::now();
+        $needUpdateExchange = false;
         if($currentTime->diffInSeconds($this->user->created_at) < 86400){
             $this->exchange->is_new_client = true;
+            $needUpdateExchange = true;
+        }
+
+        if($this->user->getCountExchanges() <= 1){
+            $this->exchange->is_first_completed = true;
+            $needUpdateExchange = true;
+        }
+
+        if($needUpdateExchange){
             $this->exchange->save();
         }
 
