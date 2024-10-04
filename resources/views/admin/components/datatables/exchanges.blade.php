@@ -19,8 +19,8 @@
                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-currency" data-search="true" data-sort="true" scope="col" data-select-type="code_id">{{__("common.currencyFrom")}}</th>
                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-currency" data-search="true" data-sort="true" scope="col" data-select-type="code_id">{{__("common.currencyTo")}}</th>
                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-data">{{__("common.data")}}</th>
-                <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-currency" data-search="true" data-sort="true" scope="col" data-select-type="true">is_new_client</th>
-                <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-currency" data-search="true" data-sort="true" scope="col" data-select-type="true">is_first_completed</th>
+                <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-currency" data-search="true" data-sort="true" scope="col" data-select-type="enabled">is_new_client</th>
+                <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-currency" data-search="true" data-sort="true" scope="col" data-select-type="enabled">is_first_completed</th>
                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1 column-exch-hash" data-search="true" data-sort="true" scope="col">{{__("common.hash")}}</th>
                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" data-search="true" data-sort="true" scope="col" data-datepicker="true">{{__("common.createdAt")}}</th>
                 <th class="sort white-space-nowrap align-middle text-uppercase pl-1" scope="col">{{__("common.action")}}</th>
