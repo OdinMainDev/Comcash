@@ -175,6 +175,8 @@ class Controller_Exchange extends Controller
             "filter_currency_to" => "nullable|integer",
             "filter_hash" => "nullable|string|max:255",
             "filter_created_at" => 'nullable|date|date_format:Y-m-d\TH:i',
+            "filter_is_new_client" => "nullable|boolean",
+            "filter_is_first_completed" => "nullable|boolean",
         ]);
         $query = Exchange::with("getUser")->with("currencyFrom")->with("currencyTo")->with("getAffiliateExchange");
 
@@ -215,6 +217,12 @@ class Controller_Exchange extends Controller
         if(!is_null($request->filter_created_at)){
             $date = Carbon::createFromFormat('Y-m-d\TH:i', $request->filter_created_at);
             $query = $query->where('created_at', '>=', $date);
+        }
+        if(!is_null($request->filter_is_new_client)){
+            $query = $query->where('is_new_client', $request->filter_is_new_client == "true");
+        }
+        if(!is_null($request->filter_is_first_completed)){
+            $query = $query->where('is_first_completed', $request->filter_is_first_completed == "true");
         }
         return $query;
     }

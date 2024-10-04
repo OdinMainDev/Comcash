@@ -81,7 +81,6 @@ MediaKeyMessageEvent,
     }
 
     function renderEnabled(select) {
-        select.append(`<option value="">------------</option>`);
         select.append(`<option value="true">True</option>`);
         select.append(`<option value="false">False</option>`);
     }
