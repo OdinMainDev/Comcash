@@ -33,6 +33,9 @@ $(document).ready(async function() {
                 case 'register_type':
                     renderRegisterTypes(select)
                     break;
+                case 'enabled':
+                    renderEnabled(select)
+                    break;
             }
 
             $(this).removeAttr(Object.values($(this).get(0).attributes).map(attr => attr.name).join(' '));
@@ -75,6 +78,12 @@ MediaKeyMessageEvent,
             const selectOption = `<option value=${item.id}>` + item.id + '</option>'
             select.append(selectOption);
         })
+    }
+
+    function renderEnabled(select) {
+        select.append(`<option value="">------------</option>`);
+        select.append(`<option value="true">True</option>`);
+        select.append(`<option value="false">False</option>`);
     }
 
     async function getCurrencies() {
