@@ -4,8 +4,8 @@
     {"data": "currency_from", "name": "currency_from"},
     {"data": "currency_to", "name": "currency_to"},
     {"data": "data", "name": "data", "orderable": false, "searchable": false},
-    {"data": "currency_to", "name": "is_new_client"},
-    {"data": "currency_to", "name": "is_first_completed"},
+    {"data": "is_new_client", "name": "is_new_client"},
+    {"data": "is_first_completed", "name": "is_first_completed"},
     {"data": "hash", "name": "hash"},
     {"data": "created_at", "name": "created_at"},
     {"data": "action", "name": "action", "orderable": false, "searchable": false}
