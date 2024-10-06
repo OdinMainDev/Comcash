@@ -158,6 +158,12 @@ class Controller_Exchange extends Controller
         ->editColumn("currency_to", function($row){
             return @$row->currencyTo->name;
         })
+        ->editColumn("is_new_client", function($row){
+            return @$row->is_new_client ? "✅" : "❌";
+        })
+        ->editColumn("is_first_completed", function($row){
+            return @$row->is_first_completed ? "✅" : "❌";
+        })
         ->editColumn("created_at", function($row){
             return $this->tableDate($row, "created_at");
         })
@@ -219,9 +225,11 @@ class Controller_Exchange extends Controller
             $query = $query->where('created_at', '>=', $date);
         }
         if(!is_null($request->filter_is_new_client)){
+            dd($request->filter_is_new_client);
             $query = $query->where('is_new_client', $request->filter_is_new_client == "true");
         }
         if(!is_null($request->filter_is_first_completed)){
+            dd($request->filter_is_first_completed);
             $query = $query->where('is_first_completed', $request->filter_is_first_completed == "true");
         }
         return $query;
