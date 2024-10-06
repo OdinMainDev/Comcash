@@ -57,7 +57,7 @@ class Controller_Exchange extends Controller
             }
             if($row->getAffiliateExchange){
                 $html .= '<tr class=""  style="background-color: chocolate">
-                    <td>ЗАЯВКА ОТ АФФИЛЕЙТА</td>
+                    <td>ЗАЯВКА ОТ АФФИЛЕЙТА <a href="'.route("adminUserEdit", [$row->getAffiliateExchange->user_id]).'">(id: '.$row->getAffiliateExchange->user_id.')</a></td>
                     <td></td>
                 </tr>';
             }
