@@ -81,8 +81,8 @@ MediaKeyMessageEvent,
     }
 
     function renderEnabled(select) {
-        select.append(`<option value="true">True</option>`);
-        select.append(`<option value="false">False</option>`);
+        select.append(`<option value="1">✅</option>`);
+        select.append(`<option value="0">❌</option>`);
     }
 
     async function getCurrencies() {

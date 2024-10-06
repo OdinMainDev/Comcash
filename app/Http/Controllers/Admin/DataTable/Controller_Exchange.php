@@ -225,12 +225,10 @@ class Controller_Exchange extends Controller
             $query = $query->where('created_at', '>=', $date);
         }
         if(!is_null($request->filter_is_new_client)){
-            dd($request->filter_is_new_client);
-            $query = $query->where('is_new_client', $request->filter_is_new_client == "true");
+            $query = $query->where('is_new_client', $request->filter_is_new_client == "1");
         }
         if(!is_null($request->filter_is_first_completed)){
-            dd($request->filter_is_first_completed);
-            $query = $query->where('is_first_completed', $request->filter_is_first_completed == "true");
+            $query = $query->where('is_first_completed', $request->filter_is_first_completed == "1");
         }
         return $query;
     }
