@@ -24,10 +24,6 @@ class CallbackqueryCommand extends SystemCommand
         $response = new Router($callback_query, $user);
         $response->exec();
 
-        return $callback_query->answer([
-            'text'       => __("telegram.loading", [], $user->language),
-            'show_alert' => false,
-            'cache_time' => 5,
-        ]);
+        return Request::emptyResponse();
     }
 }
