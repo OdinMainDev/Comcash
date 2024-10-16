@@ -215,4 +215,5 @@ return [
     ],
     'telegram_use_affiliate' => env("TELEGRAM_USE_AFFILIATE", true),
     'telegram_use_website' => env("TELEGRAM_USE_WEBSITE", true),
+    'telegram_use_main_menu_community' => env("TELEGRAM_USE_MAINMENUBUTTON_COMMUNITY", true),
 ];

@@ -9,24 +9,29 @@ trait StaticMessages {
     use Keyboards;
 
     public function sendMainMenu($chat_id, $language){
+        $buttons = [];
+        $buttons[] = [
+            __("telegram.bottom_menu_1", [], $language), // новый обмен
+        ];
+        $buttons[] = [
+            __("telegram.bottom_menu_2", [], $language), // о боте
+            __("telegram.bottom_menu_3", [], $language), // личный кабинет
+        ];
+
+        $bottomButtons = [];
+        $bottomButtons[] = __("telegram.bottom_menu_4", [], $language); // поддержка
+        if(Config::get("app.telegram_use_main_menu_community")) {
+            $bottomButtons[] = __("telegram.bottom_menu_5", [], $language); // сообщество
+        }
+
+        $buttons[] = $bottomButtons;
+
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' => __("telegram.welcome_message", [], $language),
             'reply_markup' => [
-                "keyboard" => [
-                    [
-                        __("telegram.bottom_menu_1", [], $language), // новый обмен
-                    ],
-                    [
-                       __("telegram.bottom_menu_2", [], $language), // о боте
-                       __("telegram.bottom_menu_3", [], $language), // личный кабинет
-                    ],
-                    [
-                        __("telegram.bottom_menu_4", [], $language), // поддержка
-                        __("telegram.bottom_menu_5", [], $language), // сообщество
-                    ],
-                ]
+                "keyboard" => $buttons
             ],
         ]);
     }
