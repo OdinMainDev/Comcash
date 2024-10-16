@@ -324,9 +324,12 @@ class Controller_Api extends Controller{
         return Cache::remember("admin-dashboard-chart-affiliate2", 1, function(){
             $totalExchanges = Exchange::where("status", 5)->count();
             $totalExchangesAff = AffiliateExchange::count();
-            $percent = $totalExchanges / 100;
-            $percent = ($totalExchanges - $totalExchangesAff) / $percent;
-            $percent = number_format($percent, 2);
+            $percent = 0;
+            if($totalExchanges != 0 && $totalExchanges != 0){
+                $percent = $totalExchanges / 100;
+                $percent = ($totalExchanges - $totalExchangesAff) / $percent;
+                $percent = number_format($percent, 2);
+            }
             $statistics = [
                 "total" => $totalExchanges,
                 "from_web" => $totalExchanges - $totalExchangesAff,
