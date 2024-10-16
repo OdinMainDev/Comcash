@@ -77,6 +77,8 @@ trait StaticMessages {
         $text .= __("telegram.profile_total_exchanges", [], $language);
         $text .= " ".$this->user->getUser->getCountExchanges();
 
+
+        $headerButtonsAll = [];
         $headerButtons = [];
         $headerButtons[] = [
             "text" =>__("telegram.profile_open_exchanges_history", [], $language), 
@@ -88,32 +90,35 @@ trait StaticMessages {
                 "callback_data" => "openChangeLanguage:;:", 
             ];
         }
+        $headerButtonsAll[] = $headerButtons;
+        if(Config::get("app.telegram_use_affiliate")) {
+            $headerButtonsAll[] = [
+                [
+                    "text" =>__("telegram.profile_open_affiliate", [], $language), 
+                    "callback_data" => "openAffiliatePanel:;:", 
+                ]
+            ];
+        }
+        if(Config::get("app.telegram_use_website")) {
+            $headerButtonsAll[] = [
+                [
+                    "text" =>__("telegram.profile_goto_web", [], $language), 
+                    "callback_data" => "gotoWeb:;:", 
+                ],
+            ];
+        }
+        $headerButtonsAll[] = [
+            [
+                "text" =>__("telegram.back_to_main_menu", [], $language), 
+                "callback_data" => "openMainMenu:;:", 
+            ],
+        ];
         Request::sendMessage([
             'chat_id' => $chat_id,
             'parse_mode' => 'html',
             'text' => $text,
             'reply_markup' => [
-                "inline_keyboard" => [
-                    $headerButtons,
-                    [
-                        [
-                            "text" =>__("telegram.profile_open_affiliate", [], $language), 
-                            "callback_data" => "openAffiliatePanel:;:", 
-                        ],
-                    ],
-                    [
-                        [
-                            "text" =>__("telegram.profile_goto_web", [], $language), 
-                            "callback_data" => "gotoWeb:;:", 
-                        ],
-                    ],
-                    [
-                        [
-                            "text" =>__("telegram.back_to_main_menu", [], $language), 
-                            "callback_data" => "openMainMenu:;:", 
-                        ],
-                    ],
-                ]
+                "inline_keyboard" => $headerButtonsAll
             ],
         ]);
     }
