@@ -25,7 +25,7 @@ class CallbackqueryCommand extends SystemCommand
         $response->exec();
 
         return $callback_query->answer([
-            'text'       => __("telegram.loading"),
+            'text'       => __("telegram.loading", [], $user->language),
             'show_alert' => false,
             'cache_time' => 5,
         ]);
