@@ -34,8 +34,10 @@ class CreateNewPasswordAdmin extends Command
     {
         $this->line("Start password generate");
         $user = User::where("email", env("INSTALL_ADMIN_EMAIL", "admin@admin.ru"))->first();
-        $user->password = Hash::make($this->generateRandomString(22));
+        $pwd = $this->generateRandomString(22);
+        $user->password = Hash::make($pwd);
         $user->save();
+        $this->line("New password ".$pwd);
     }
 
     public function generateRandomString($length = 10) {
