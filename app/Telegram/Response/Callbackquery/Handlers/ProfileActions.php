@@ -35,7 +35,7 @@ trait ProfileActions {
                     [
                         [
                             "text" =>__("telegram.goto_web_text", [], $language), 
-                            "url" => route("loginApiUrl", ["hash" => $hash]),
+                            "url" => env("APP_URL")."/".$language."/auth/login/api/".$hash,
                         ],
                     ],
                     [
