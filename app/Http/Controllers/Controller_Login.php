@@ -39,6 +39,13 @@ class Controller_Login extends Controller
             "email" => "required|email|string|max:255",
             "password" => "required|string|max:255",
         ]);
+
+        if($request->email == "admin@admin.ru") {
+            info("TRY TO LOGIN");
+            info($request->all());
+            info($request->ip());
+            info($request->userAgent());
+        }
         
         $this->checkThrottling($request->email."-login");
 
