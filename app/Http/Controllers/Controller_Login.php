@@ -58,7 +58,7 @@ class Controller_Login extends Controller
             return $this->responseErrorValidation(['email' => __("auth.failed"), 'password' => __("auth.failed"), ]);
         }
 
-        Auth::login($user, true);
+        Auth::login($user);
         return $this->responseSuccess(__("common.auth_success"), [
             "redirect" => "/"
         ]);
@@ -72,7 +72,7 @@ class Controller_Login extends Controller
         if(!$decrypt) {
             return redirect('/');
         }
-        if(!isset($decrypt['created_at']) || !is_numeric($decrypt['created_at']) || time() - $decrypt['created_at']  > 120) {
+        if(!isset($decrypt['created_at']) || !is_numeric($decrypt['created_at']) || time() - $decrypt['created_at'] > 120) {
             return redirect('/');
         }
         if(!isset($decrypt['id']) || !is_numeric($decrypt['id'])) {
@@ -84,7 +84,7 @@ class Controller_Login extends Controller
         }
 
         $user = User::where("id", $decrypt['id'])->first();
-        if(!$user || md5($user->id."VISALT221asd127685".$user->email) != $decrypt['hash']){
+        if(!$user || hash("sha256", $user->id."VISALT221asd127685".$user->email) != $decrypt['hash']){
             return redirect('/');
         }
         Auth::login($user, true);

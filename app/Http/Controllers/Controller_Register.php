@@ -41,7 +41,7 @@ class Controller_Register extends Controller
         }
 
         OnRegister::dispatch($user->id, app()->getLocale());
-        Auth::login($user, true);
+        Auth::login($user);
         return $this->responseSuccess(__("common.register_success"), [
             "open_modal" => 'verification-sent'
         ]);

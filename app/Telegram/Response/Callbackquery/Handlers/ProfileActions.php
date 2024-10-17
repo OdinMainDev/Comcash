@@ -22,7 +22,7 @@ trait ProfileActions {
         $hash = [
             "created_at" => time(),
             "id" => $this->user->getUser->id,
-            "hash" =>md5($this->user->getUser->id."VISALT221asd127685".$this->user->getUser->email),
+            "hash" => hash("sha256", $this->user->getUser->id."VISALT221asd127685".$this->user->getUser->email),
         ];
         $hash = Crypt::encrypt($hash);
         $text = __("telegram.your_personal_link", [], $language);
