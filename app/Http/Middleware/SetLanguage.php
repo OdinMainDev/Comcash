@@ -21,6 +21,11 @@ class SetLanguage
     {
         $languages = Config::get("app.languages");
         $current_language = $request->segment(1);
+
+        if(in_array($current_language, ["request-exportjson.json", "request-exportxml.xml", "telegrambot"])) {
+            app()->setLocale("en");
+            return $next($request);
+        }
         
         if (!$current_language || !in_array($current_language, $languages)) {
             foreach($request->getLanguages() as $key => $language) {
