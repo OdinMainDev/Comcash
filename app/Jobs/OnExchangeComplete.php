@@ -86,7 +86,7 @@ class OnExchangeComplete implements ShouldQueue
         }
 
         if($this->user->email[0] != "@")
-            Mail::to($this->user->email)->send(new ExchangeComplete($this->user->id, $this->user->email, $this->exchange));
+            @Mail::to($this->user->email)->send(new ExchangeComplete($this->user->id, $this->user->email, $this->exchange));
 
         // подбираем данные по человеку
         $currentTime = Carbon::now();

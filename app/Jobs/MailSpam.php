@@ -38,7 +38,7 @@ class MailSpam implements ShouldQueue
         $query->chunk(100, function($rows){
             foreach($rows as $row){
                 $view = new TemplateMail($row->email, $this->subject, $this->template);
-                Mail::to($row->email)
+                @Mail::to($row->email)
                 ->send($view);
             }
        });
