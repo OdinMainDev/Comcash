@@ -13,6 +13,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Mailer\Exception\TransportException;
 
 class VerifyEmail implements ShouldQueue
 {
@@ -39,6 +40,10 @@ class VerifyEmail implements ShouldQueue
         if(!$this->user){ 
             return;
         }
-        @Mail::to($this->user->email)->send(new MailVerifyEmail($this->user->id, $this->user->email));
+        try {
+            Mail::to($this->user->email)->send(new MailVerifyEmail($this->user->id, $this->user->email));
+        } catch (TransportException $th) {
+            sendTelegramNotification("ОШИБКА ОТПРАВКИ EMAIL ПИСЬМА! ".$this->user->email."\n".$th->getMessage());
+        }
     }
 }

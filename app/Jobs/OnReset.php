@@ -12,6 +12,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Mailer\Exception\TransportException;
 
 class OnReset implements ShouldQueue
 {
@@ -37,6 +38,10 @@ class OnReset implements ShouldQueue
     {
         $this->user = User::where("id", $this->user_id)->first();
         Lang::setLocale($this->language);
-        @Mail::to($this->user->email)->send(new Reset($this->user->email, $this->code));
+        try {
+            Mail::to($this->user->email)->send(new Reset($this->user->email, $this->code));
+        } catch (TransportException $th) {
+            sendTelegramNotification("ОШИБКА ОТПРАВКИ EMAIL ПИСЬМА! ".$this->user->email."\n".$th->getMessage());
+        }
     }
 }

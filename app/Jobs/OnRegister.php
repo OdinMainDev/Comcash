@@ -12,6 +12,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Mailer\Exception\TransportException;
 
 class OnRegister implements ShouldQueue
 {
@@ -35,6 +36,10 @@ class OnRegister implements ShouldQueue
     {
         $this->user = User::where("id", $this->user_id)->first();
         Lang::setLocale($this->language);
-        @Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
+        try {
+            Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email));
+        } catch (TransportException $th) {
+            sendTelegramNotification("ОШИБКА ОТПРАВКИ EMAIL ПИСЬМА! ".$this->user->email."\n".$th->getMessage());
+        }
     }
 }

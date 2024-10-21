@@ -22,6 +22,7 @@ use App\Mail\Register;
 use App\Merchants\Handler;
 use App\Models\UtmParameter;
 use Illuminate\Support\Facades\Cache;
+use Symfony\Component\Mailer\Exception\TransportException;
 
 class ExchangeStart implements ShouldQueue
 {
@@ -251,7 +252,12 @@ class ExchangeStart implements ShouldQueue
         $user->save();
         $this->user = $user;
         $this->exchange->user_id = $user->id;
-        @Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
+        try {
+            Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
+        } catch (TransportException $th) {
+            sendTelegramNotification("ОШИБКА ОТПРАВКИ EMAIL ПИСЬМА! ".$this->exchange->id."\n".$th->getMessage());
+        }
+        
         return true;
     }
 

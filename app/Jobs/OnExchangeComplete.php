@@ -19,6 +19,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Mailer\Exception\TransportException;
 
 class OnExchangeComplete implements ShouldQueue
 {
@@ -85,8 +86,13 @@ class OnExchangeComplete implements ShouldQueue
             return;
         }
 
-        if($this->user->email[0] != "@")
-            @Mail::to($this->user->email)->send(new ExchangeComplete($this->user->id, $this->user->email, $this->exchange));
+        if($this->user->email[0] != "@"){
+            try {
+                Mail::to($this->user->email)->send(new ExchangeComplete($this->user->id, $this->user->email, $this->exchange));
+            } catch (TransportException $th) {
+                sendTelegramNotification("ОШИБКА ОТПРАВКИ EMAIL ПИСЬМА! ".$this->exchange->id."\n".$th->getMessage());
+            }
+        }
 
         // подбираем данные по человеку
         $currentTime = Carbon::now();
