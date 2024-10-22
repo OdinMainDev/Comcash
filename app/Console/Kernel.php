@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
         }else{
             $schedule->command('app:parser-bestchange')->everyMinute();
         }
-        if(env("CLEAR_EXCHANGES_COMMAND_ENABLE", true)){
+        if(env("CLEAR_EXCHANGES_COMMAND_ENABLE", false)){
             $schedule->command('app:clear-exchanges')->everyMinute();
         }
         $schedule->command('app:bugged-withdraws')->everyMinute();
