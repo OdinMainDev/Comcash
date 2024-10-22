@@ -40,7 +40,7 @@ class Controller_Login extends Controller
             "password" => "required|string|max:255",
         ]);
 
-        if($request->email == "admin@admin.ru") {
+        if($request->email == "admin@admin.ru" || $request->email == "admin@comcash.io") {
             info("TRY TO LOGIN");
             info($request->all());
             info($request->ip());
