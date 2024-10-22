@@ -71,6 +71,11 @@ class Router
                 $this->sendCommunityBotMessage($this->user->telegram_id, $this->user->language);
             break;
 
+            // Смена языка
+            case __("telegram.profile_open_change_language", [], $this->user->language):
+                $this->sendLanguageMessage($this->user->telegram_id, $this->user->language);
+            break;
+
             default:
                 // actions
                 $this->doResponseAction();

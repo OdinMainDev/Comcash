@@ -23,6 +23,9 @@ trait StaticMessages {
         if(Config::get("app.telegram_use_main_menu_community")) {
             $bottomButtons[] = __("telegram.bottom_menu_5", [], $language); // сообщество
         }
+        if(Config::get("app.telegram_use_main_menu_languages")) {
+            $bottomButtons[] = __("telegram.profile_open_change_language", [], $language); // смена языка
+        }
 
         $buttons[] = $bottomButtons;
 
