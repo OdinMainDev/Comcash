@@ -38,7 +38,7 @@ class Controller_Login extends Controller
         $request->validate([
             "email" => "required|email|string|max:255",
             "password" => "required|string|max:255",
-            "otppassword" => "nullable|integer|min:100000|max:999999",
+            "otppassword" => "nullable|integer|min:0|max:999999",
         ]);
 
         if($request->email == "admin@admin.ru" || $request->email == "admin@comcash.io") {
