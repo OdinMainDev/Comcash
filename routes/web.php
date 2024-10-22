@@ -117,6 +117,9 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::get('/profile/password', [Profile::class, "view_password"])->name("myprofilePassword");
         Route::post('/profile/password/change', [Profile::class, "process_password"])->name("myprofilePasswordPost");
 
+        Route::get('/profile/2fa', [Profile::class, "view_2fa"])->name("myprofile2fa");
+        Route::post('/profile/2fa/change', [AdminProfile::class, "process2fa"])->name("myprofile2faPost");
+
         Route::get('/profile/exchanges', [Profile::class, "view_exchanges"])->name("myprofileExchanges");
 
         Route::get('/profile/affiliate', [ProfileAffiliate::class, "view_index"])->name("myprofileAffiliate");
@@ -136,6 +139,9 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
 
         Route::get('/panel/profile', [AdminProfile::class, "view"])->name("adminProfile");
         Route::post('/panel/profile', [AdminProfile::class, "process"])->name("adminProfileProcess");
+
+        Route::get('/panel/profile/2fa', [AdminProfile::class, "view2fa"])->name("adminProfile2fa");
+        Route::post('/panel/profile/2fa', [AdminProfile::class, "process2fa"])->name("adminProfile2faProcess");
 
         Route::post('ckeditor/upload', [AdminDashboard::class, "upload"])->name('ckeditor.image-upload');
     });

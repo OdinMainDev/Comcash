@@ -1,4 +1,5 @@
 <?php return array (
+  'otp_password_incorrect' => 'Vous avez saisi un mot de passe 2fa incorrect',
   'exchangesAffiliateCampaign' => 'Échanges de campagnes',
   'viewUserExchangesAffiliates' => 'Échanges d\'utilisateurs affiliés de',
   'dashboard_affiliate_total' => 'Nombre total d\'applications (affiliées à des applications réelles)',

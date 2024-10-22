@@ -18,6 +18,12 @@
                             <a class='input-password__eye'></a>
                         </div>
                     </div>
+					<div class="auth__input">
+                        <div class='input-password'>
+                            <input type='password' name="otppassword" class='input' placeholder='{{__("front.2fa_otp_label_login")}}' />
+                            <a class='input-password__eye'></a>
+                        </div>
+                    </div>
 					<a class='auth__forgot' href="#" onclick="window.setForm('forgot-password')">{{__("front.forgot password?")}}</a>
 					<button type="submit" class='button button--dark button--auto auth__btn btn__submit'>{{__("front.continue")}}</button>
 				</form>

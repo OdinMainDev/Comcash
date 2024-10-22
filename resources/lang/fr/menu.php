@@ -1,4 +1,5 @@
 <?php return array (
+  '2fa' => 'Autorisation 2FA',
   'affiliate_balances' => 'Soldes des affiliés',
   'home' => 'Principal',
   'currencies' => 'Monnaies',

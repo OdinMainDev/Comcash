@@ -126,6 +126,12 @@
 								</a>
 							</li>
 							<li class="nav-item">
+								<a href="{{route("adminProfile2fa")}}" class="nav-link">
+									<i data-feather="user"></i>
+									<span>{{__("menu.2fa")}}</span>
+								</a>
+							</li>
+							<li class="nav-item">
 								<a href="{{route("logout")}}" class="nav-link">
 									<i data-feather="log-out"></i>
 									<span>{{__("menu.logout")}}</span>

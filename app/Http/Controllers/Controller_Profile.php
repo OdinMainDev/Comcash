@@ -22,6 +22,19 @@ class Controller_Profile extends Controller{
         return view($this->theme.".pages.profile_exchanges")->with("exchanges", $this->getCacheExchanges(auth()->user()->id));
     }
 
+    public function view_2fa() {
+        $user = auth()->user();
+        $googleHandler = app('pragmarx.google2fa');
+        $secret = $googleHandler->generateSecretKey();
+
+        $qrImage = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . urlencode($googleHandler->getQRCodeUrl(
+            config('app.name'),
+            "id".$user->id,
+            $secret
+        ));
+        return view($this->theme.".pages.profile_2fa")->with("secret", $secret)->with("qrcode", $qrImage);
+    }
+
     public function process_profile(Request $request) {
         $request->validate([
             "first_name" => "nullable|string|max:255",

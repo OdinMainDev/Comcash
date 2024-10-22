@@ -8,6 +8,7 @@ use App\Models\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use PragmaRX\Google2FALaravel\Facade as Google2FA;
 
 class Controller_Profile extends Controller
 {
@@ -30,6 +31,37 @@ class Controller_Profile extends Controller
         }
 
         $user->password = Hash::make($request->password);
+        $user->save();
+        return $this->responseSuccess();
+    }
+    
+    public function view2fa() {
+        $user = auth()->user();
+        $googleHandler = app('pragmarx.google2fa');
+        $secret = $googleHandler->generateSecretKey();
+
+        $qrImage = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . urlencode($googleHandler->getQRCodeUrl(
+            config('app.name'),
+            "id".$user->id,
+            $secret
+        ));
+        return view("admin.pages.profile_2fa")->with("secret", $secret)->with("qrcode", $qrImage);
+    }
+
+    public function process2fa(Request $request) {
+        $request->validate([
+            "otppassword" => "required|integer|min:100000|max:999999",
+            "otpsecret" => "required|string|max:255",
+        ]);
+
+        $user = Auth::user();
+        $googleHandler = app('pragmarx.google2fa');
+
+        if (!$googleHandler->verifyKey($request->otpsecret, $request->otppassword)) {
+            return $this->responseErrorValidation(["otppassword" => __("common.old_password_incorrect")]);
+        }
+
+        $user->google2fa_secret = $request->otpsecret;
         $user->save();
         return $this->responseSuccess();
     }

@@ -27,5 +27,6 @@ return [
     "seo_basics" => "Основные настройки",
     "seo_directions" => "Настройки направлений",
     "telegram" => "Телеграм бот",
-    "affiliate_balances" => "Балансы аффилейтов"
+    "affiliate_balances" => "Балансы аффилейтов",
+    "2fa" => "2FA авторизация"
 ];

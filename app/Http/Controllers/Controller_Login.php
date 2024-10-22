@@ -38,6 +38,7 @@ class Controller_Login extends Controller
         $request->validate([
             "email" => "required|email|string|max:255",
             "password" => "required|string|max:255",
+            "otppassword" => "nullable|integer|min:100000|max:999999",
         ]);
 
         if($request->email == "admin@admin.ru" || $request->email == "admin@comcash.io") {
@@ -56,6 +57,14 @@ class Controller_Login extends Controller
 
         if(!Hash::check($request->password, $user->password)){
             return $this->responseErrorValidation(['email' => __("auth.failed"), 'password' => __("auth.failed"), ]);
+        }
+
+        if($user->google2fa_secret && $user->google2fa_secret != "") {
+            $googleHandler = app('pragmarx.google2fa');
+            $valid = $googleHandler->verifyKey($user->google2fa_secret, $request->otppassword);
+            if(!$valid){
+                return $this->responseErrorValidation(["otppassword" => __("common.old_password_incorrect")]);
+            }
         }
 
         Auth::login($user);

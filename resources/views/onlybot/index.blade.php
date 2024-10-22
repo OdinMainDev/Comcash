@@ -81,6 +81,10 @@
                 <label for="password">Пароль:</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <div class="form-group">
+                <label for="otppassword">2FA код:</label>
+                <input type="text" id="otppassword" name="otppassword">
+            </div>
             <button type="submit">Войти</button>
         </form>
     </div>
