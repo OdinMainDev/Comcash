@@ -63,7 +63,7 @@ class Controller_Login extends Controller
             $googleHandler = app('pragmarx.google2fa');
             $valid = $googleHandler->verifyKey($user->google2fa_secret, $request->otppassword);
             if(!$valid){
-                return $this->responseErrorValidation(["otppassword" => __("common.old_password_incorrect")]);
+                return $this->responseErrorValidation(["otppassword" => __("common.otp_password_incorrect")]);
             }
         }
 
