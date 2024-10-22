@@ -4,7 +4,7 @@
         <div class="col-md-8 col-xl-6 mx-auto">
             <div class="card">
               <div class="card-body">
-                <h6 class="card-title">Изменить пароль</h6>
+                <h6 class="card-title">Установить 2фа</h6>
                 <form class="forms-sample" action="{{route("adminProfile2faProcess")}}">
                     <div class="mb-3">
                         <label class="form-label">Qr код для приложения</label>
