@@ -131,7 +131,7 @@ class Controller_Exchange extends Controller{
             sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
         }
 
-        $this->restoreWalletsAddress($exchange, true);
+        $this->restoreWalletsAddress($exchange, false);
         return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
@@ -180,7 +180,7 @@ class Controller_Exchange extends Controller{
             sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
         }
 
-        $this->restoreWalletsAddress($exchange, true);
+        $this->restoreWalletsAddress($exchange, false);
         return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
@@ -217,7 +217,7 @@ class Controller_Exchange extends Controller{
             sendTelegramBotUserMessage($text, $botUser, $botUser->getBot);
         }
 
-        $this->restoreWalletsAddress($exchange, true);
+        $this->restoreWalletsAddress($exchange, false);
         return redirect(route("adminExchangeList", ["id" => 0]));
     }
 
@@ -254,7 +254,7 @@ class Controller_Exchange extends Controller{
             $exchange->save();
             $text = "❗️❗️❗️<b>СТАТУС ЗАЯВКИ ИЗМЕНЕН НА УДАЛЕНА</b>❗️❗️❗️\n".$this->tgBasicMessage($exchange);
             sendTelegramNotification($text);
-            $this->restoreWalletsAddress($exchange, true);
+            $this->restoreWalletsAddress($exchange, false);
 
             $user = $exchange->getUser;
             if($user){
