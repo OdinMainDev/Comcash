@@ -48,13 +48,13 @@ trait ExchangePage {
         })->first();
         $directions = $this->getCachedDirectionsTo($id);
         $newCurrencies = [];
-        $currencyToExist = [];
+        // $currencyToExist = [];
         foreach($directions as $direction){
             // if(in_array($direction->currency_to, $currencyToExist)){
             //     continue;
             // }
-            $currencyToExist[] = $direction->currency_to;
-            $currency = $direction->currencyFrom;
+            // $currencyToExist[] = $direction->currency_to;
+            $currency = $direction->currencyTo;
             $key = $currency->getTitle($language);
             $rate = $this->estimateGetRate($currency->name, $currencyFrom->name, $direction->profit_percent);
             if(!$rate){
