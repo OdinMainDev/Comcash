@@ -25,20 +25,20 @@ class Controller_Exchange extends Controller{
         $currency_to = $data['currency_to'];
         $currency_from = $data['currency_from'];
         if(!$currency_to || !$currency_from){
-            return $this->responseError("currency not found", ["code" => 1]);
+            return $this->responseError(__("front.errorBadCurrency"), ["code" => 1]);
         }
         if(!$direction){
-            return $this->responseError("bad currency pair", ["code" => 2]);
+            return $this->responseError(__("front.errorBadCurrencyPair"), ["code" => 2]);
         }
         $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_from->units, $request->amount, $direction->profit_percent);
         if(!$amount){
-            return $this->responseError("bad amount", ["code" => 3]);
+            return $this->responseError(__("front.errorBadAmount"), ["code" => 3]);
         }
         if(@$direction->data['min_amount'] && $direction->data['min_amount'] > $request->amount){
-            return $this->responseError("bad amount (limit min)", ["code" => 4]);
+            return $this->responseError(__("front.errorBadAmountMin"), ["code" => 4]);
         }
         if(@$direction->data['max_amount'] && $direction->data['max_amount'] < $request->amount){
-            return $this->responseError("bad amount (limit max)", ["code" => 5, $direction->data['max_amount'], $request->amount]);
+            return $this->responseError(__("front.errorBadAmountMax"), ["code" => 5, $direction->data['max_amount'], $request->amount]);
         }
         return $this->responseSuccess(false, [
             "redirect" => route("exchgangePage", [
@@ -109,10 +109,10 @@ class Controller_Exchange extends Controller{
         $currency_to = $data['currency_to'];
         $currency_from = $data['currency_from'];
         if(!$currency_to || !$currency_from){
-            return $this->responseError("currency not found", ["code" => 1]);
+            return $this->responseError(__("front.errorBadCurrency"), ["code" => 1]);
         }
         if(!$direction){
-            return $this->responseError("bad currency pair", ["code" => 3]);
+            return $this->responseError(__("front.errorBadCurrencyPair"), ["code" => 3]);
         }
         $request->merge(['aff_id' => $request->cookie("aff_hash")]);
         $request->merge(['utm_id' => $request->cookie("utm_hash")]);
@@ -127,13 +127,13 @@ class Controller_Exchange extends Controller{
         // $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $currency_to->units, $amountFrom, $direction->profit_percent);
 
         if(!$amountFrom){
-            return $this->responseError("bad amount", ["code" => 3]);
+            return $this->responseError(__("front.errorBadAmount"), ["code" => 3]);
         }
         if(@$direction->data['min_amount'] && $direction->data['min_amount'] > $amountFrom){
-            return $this->responseError("bad amount (limit min)", ["code" => 4]);
+            return $this->responseError(__("front.errorBadAmountMin"), ["code" => 4]);
         }
         if(@$direction->data['max_amount'] && $direction->data['max_amount'] < $amountFrom){
-            return $this->responseError("bad amount (limit max)", ["code" => 5]);
+            return $this->responseError(__("front.errorBadAmountMax"), ["code" => 5]);
         }
 
         $exchange = new Exchange;

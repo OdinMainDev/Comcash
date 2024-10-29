@@ -1,4 +1,9 @@
 <?php return array (
+  'errorBadCurrency' => 'Error Moneda seleccionada incorrecta',
+  'errorBadCurrencyPair' => '¡Error! Par de divisas seleccionado incorrecto',
+  'errorBadAmount' => 'Error El importe no es correcto',
+  'errorBadAmountMin' => 'Error El importe es inferior al importe mínimo',
+  'errorBadAmountMax' => 'Error El importe es superior al máximo',
   '2fa_otp_label_login' => 'Introduzca una contraseña de un solo uso (opcional)',
   'findOutMore' => 'Seguir leyendo',
   '2fa_image_label' => 'Código QR de conexión',

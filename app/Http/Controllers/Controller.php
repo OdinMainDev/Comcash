@@ -70,7 +70,7 @@ class Controller extends BaseController{
         $currency_to = @$currencies[1];
         unset($currencies);
         if(!$currency_to || !$currency_from){
-            throw ValidationException::withMessages(["currency" => "currency not found"]);
+            throw ValidationException::withMessages(["currency" => __("front.errorBadCurrency")]);
         }
         $direction = $this->getDirectionByCurrencyPair($currency_from, $currency_to, $with_reverse_check);
         if(!$direction){
@@ -93,7 +93,7 @@ class Controller extends BaseController{
         }
         $amount = $this->estimateAmount($currency_from->name, $currency_to->name, $units, $amount, $direction->profit_percent, $request->reverse);
         if(!$amount){
-            throw ValidationException::withMessages(["currency" => "bad amount"]);
+            throw ValidationException::withMessages(["currency" => __("front.errorBadAmount")]);
         }
         return [
             "amount_from" => $amount,

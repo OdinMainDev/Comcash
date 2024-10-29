@@ -55,13 +55,13 @@ class Controller_Api extends Controller{
         ]);
         $currencies = $this->getCurrencyByName([ $request->currency_from, $request->currency_to]);
         if(!is_array($currencies) || count($currencies) < 2) {
-            return $this->responseError("currency not found");
+            return $this->responseError(__("front.errorBadCurrency"));
         }
         $currency_from = $currencies[0];
         $currency_to = $currencies[1];
         unset($currencies);
         if(!$currency_to || !$currency_from){
-            return $this->responseError("currency not found");
+            return $this->responseError(__("front.errorBadCurrency"));
         }
 
         $directions = $this->getCacheDirections();
@@ -77,7 +77,7 @@ class Controller_Api extends Controller{
             break;
         }
         if(!$direction){
-            return $this->responseError("bad currency pair direction");
+            return $this->responseError(__("front.errorBadCurrencyPair"));
         }
 
         return $this->responseSuccess("ok", $direction);
