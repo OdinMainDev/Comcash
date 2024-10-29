@@ -464,9 +464,9 @@ trait HasCache {
     }
 
     public function getCachedDirectionsTo($fromId) {
-        return Cache::remember("cached-directions-by-currency-to-".$fromId, 300, function() use($fromId){
+        return Cache::remember("cached-directions-by-currency-from-".$fromId, 300, function() use($fromId){
             $directions = $this->getCacheDirections()->reject(function ($direction) use($fromId) {
-                return $direction->currency_from != $fromId;
+                return $direction->currency_to != $fromId;
             });
             return $directions;
         });
