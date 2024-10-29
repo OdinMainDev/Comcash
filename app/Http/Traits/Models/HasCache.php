@@ -463,6 +463,15 @@ trait HasCache {
         });
     }
 
+    public function getCachedDirectionsTo($fromId) {
+        return Cache::remember("cached-directions-by-currency-to-".$fromId, 300, function() use($fromId){
+            $directions = $this->getCacheDirections()->reject(function ($direction) use($fromId) {
+                return $direction->currency_from != $fromId;
+            });
+            return $directions;
+        });
+    }
+
     public function getCachedCurrencyByName($search_currencies = false) {
         if(!$search_currencies){
             return false;

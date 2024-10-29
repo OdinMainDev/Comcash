@@ -46,17 +46,23 @@ trait ExchangePage {
         $currencyFrom = $this->getCacheCurrencies()->reject(function ($currency) use($id) {
             return $currency->id != $id;
         })->first();
-        $currencies = $this->getCachedCurrencyDirectionsTo($id);
+        $directions = $this->getCachedDirectionsTo($id);
         $newCurrencies = [];
-        foreach($currencies as $currency){
+        $currencyToExist = [];
+        foreach($directions as $direction){
+            // if(in_array($direction->currency_to, $currencyToExist)){
+            //     continue;
+            // }
+            $currencyToExist[] = $direction->currency_to;
+            $currency = $direction->currencyFrom;
             $key = $currency->getTitle($language);
-            $rate = $this->estimateGetRate($currency->name, $currencyFrom->name);
+            $rate = $this->estimateGetRate($currency->name, $currencyFrom->name, $direction->profit_percent);
             if(!$rate){
                 continue;
             }
             
             if($rate < 0.01){
-                $rate = $this->estimateGetRate($currencyFrom->name, $currency->name);
+                $rate = $this->estimateGetRate($currencyFrom->name, $currency->name, $direction->profit_percent);
                 $key .= " / 1 : ".$rate."";
             }else{
                 $key .= " / ".$rate." : 1";
