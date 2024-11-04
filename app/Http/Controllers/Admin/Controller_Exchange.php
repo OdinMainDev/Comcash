@@ -274,25 +274,29 @@ class Controller_Exchange extends Controller{
     public function restoreWalletsAddress($exchange, $with_restore) {
         $currency = $exchange->currencyFrom;
         $currencyData = $currency->data;
-       
-        if(isset($currencyData['walletsAvail']) && is_array($currencyData['walletsAvail'])){
-            $availAddresses = $currencyData['wallets'];
-            $address = $exchange->data['merchant_from_data']['address'];
-            if($address) {
-                if(!is_array($availAddresses) || in_array($address, $availAddresses)){
-                    $currencyData['walletsAvail'][] = $address;
-                }
-            }
-            if($with_restore && (!is_array($availAddresses) || count($currencyData['walletsAvail']) == 0)){
-                if(!isset($currencyData['wallets']) || !is_array($currencyData['wallets'])){
-                    sendTelegramNotification("ВНИМАНИЕ ПРОИЗОШЛА ВНУТРЕННЯЯ ОШИБКА!!!! ПЕРЕЗАПОЛНИТЕ КОШЕЛЬКИ ДЛЯ ВАЛЮТЫ: ".$exchange->currencyFrom->name);
-                }else{
-                    $currencyData['walletsAvail'] = $currencyData['wallets'];
-                }
-            }
-            $currency->data = $currencyData;
-            $currency->save();
-            // Cache::forget("currencies-public");
+        $address = @$exchange->data['merchant_from_data']['address'];
+        if(!$address) {
+            return;
         }
+
+        if(!isset($currencyData['walletsAvail']) || !is_array($currencyData['walletsAvail'])){
+            $currencyData['walletsAvail'] = [];
+        }
+       
+        $availAddresses = $currencyData['wallets'];
+        if(!is_array($availAddresses) || in_array($address, $availAddresses)){
+            $currencyData['walletsAvail'][] = $address;
+        }
+        
+        if($with_restore && (!is_array($availAddresses) || count($currencyData['walletsAvail']) == 0)){
+            if(!isset($currencyData['wallets']) || !is_array($currencyData['wallets'])){
+                sendTelegramNotification("ВНИМАНИЕ ПРОИЗОШЛА ВНУТРЕННЯЯ ОШИБКА!!!! ПЕРЕЗАПОЛНИТЕ КОШЕЛЬКИ ДЛЯ ВАЛЮТЫ: ".$exchange->currencyFrom->name);
+            }else{
+                $currencyData['walletsAvail'] = $currencyData['wallets'];
+            }
+        }
+        $currency->data = $currencyData;
+        $currency->save();
+        // Cache::forget("currencies-public");
     }
 }

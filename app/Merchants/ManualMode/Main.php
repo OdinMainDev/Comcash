@@ -44,7 +44,8 @@ class Main {
                 $base[] = "bank";
                 $base[] = "first_name";
                 // $base[] = "second_name";
-                $base[] = "last_name";
+                if(env("THEME_NAME", "comcash") != "onlybot")
+                    $base[] = "last_name";
             }
         }
 
@@ -73,7 +74,8 @@ class Main {
                 $base[] = "bank";
                 $base[] = "first_name";
                 // $base[] = "second_name";
-                $base[] = "last_name";
+                if(env("THEME_NAME", "comcash") != "onlybot")
+                    $base[] = "last_name";
             }
         }
 
@@ -109,7 +111,8 @@ class Main {
                 $base["bank"] = "required|string|max:255";
                 $base["first_name"] = "required|string|max:255";
                 // $base["second_name"] = "required|string|max:255";
-                $base["last_name"] = "required|string|max:255";
+                if(env("THEME_NAME", "comcash") != "onlybot")
+                    $base["last_name"] = "required|string|max:255";
             }
         }
 
