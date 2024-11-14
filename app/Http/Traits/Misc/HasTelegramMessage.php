@@ -22,7 +22,7 @@ trait HasTelegramMessage {
             $text .= __("telegram.new_exchange_3", [], $language);
             $text .= " <b>".$exchange->data['amount_data']['amount_send']." ".$exchange->currencyFrom->name."</b>";
             $text .= "\n".__("telegram.new_exchange_4", [], $language);
-            $text .= " <b>".$exchange->data['merchant_from_data']['address']." ".$exchange->currencyFrom->name."</b>";
+            $text .= " <b>".$exchange->data['merchant_from_data']['address']."\n================\n".$exchange->currencyFrom->name."</b>";
             $text .= "\n".__("telegram.new_exchange_5", [], $language);
         }
         $text .= "\n\n".__("telegram.new_exchange_6", [], $language);
