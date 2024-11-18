@@ -1,4 +1,9 @@
 <?php return array (
+  'editRatesSettings' => 'Cambiar la configuración del tipo flotante',
+  'amountInUsd' => 'Importe en dólares',
+  'increaseProfitPercent' => 'Aumentar el porcentaje de beneficios',
+  'add_element' => 'Añadir un artículo',
+  'are_you_want_delete_element' => '¿Seguro que quieres borrar este elemento?',
   'otp_password_incorrect' => 'Ha introducido una contraseña 2fa incorrecta',
   'exchangesAffiliateCampaign' => 'Intercambios de campañas',
   'viewUserExchangesAffiliates' => 'Intercambios de usuarios afiliados de',

@@ -1,4 +1,5 @@
 <?php return array (
+  'rates_settings' => 'Schwimmende Kurse',
   '2fa' => '2FA-Autorisierung',
   'affiliate_balances' => 'Guthaben der Partner',
   'home' => 'Hauptseite',

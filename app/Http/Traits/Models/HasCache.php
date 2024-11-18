@@ -54,7 +54,51 @@ trait HasCache {
         if(!$rate){
             return false;
         }
-        
+
+        $getSettings = ExchangerSettings::where("key", "floating_rates_by_usd")->first();
+        $data = false;
+        if($getSettings && $getSettings->value != "") {
+            $data = json_decode($getSettings->value, true);
+            if(!is_array($data) || count($data) == 0) {
+                $data = false;
+            }
+        }
+
+        if(!$getSettings || !$data) {
+            if(!$reverse)
+                return $this->doEstimate($amount, $rate, $profit_percent, $minor_units);
+
+            return $this->doEstimateReverse($amount, $rate, $profit_percent, $minor_units);
+        }
+
+
+        $rateUsd = false;
+        $currencyToRealName = $this->convertCurrencyName($currency_to);
+        if($currencyToRealName == "USD" || $currencyToRealName == "USDT"){
+            $rateUsd = $rate;
+        }else{
+            $rateUsd = $this->estimateGetRate($currency_from, "USD");
+        }
+
+        $finalAmountUsd = 0;
+        if(!$reverse)
+            $finalAmountUsd = $this->doEstimate($amount, $rateUsd, $profit_percent, $minor_units);
+        else
+            $finalAmountUsd = $this->doEstimateReverse($amount, $rateUsd, $profit_percent, $minor_units);
+
+        $increase_fee = 0;
+        $last_increase_amount = 0;
+        foreach($data as $value) {
+            if($value['amount'] >= $finalAmountUsd) {
+                if($last_increase_amount == 0 || $last_increase_amount > $value['amount']){
+                    $increase_fee = $value['fee'];
+                    $last_increase_amount = $value['amount'];
+                }
+            }
+        }
+
+        $profit_percent += $increase_fee;
+
         if(!$reverse)
             return $this->doEstimate($amount, $rate, $profit_percent, $minor_units);
 

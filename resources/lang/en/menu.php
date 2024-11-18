@@ -1,4 +1,5 @@
 <?php return array (
+  'rates_settings' => 'Floating courses',
   '2fa' => '2FA authorization',
   'affiliate_balances' => 'Affiliate balances',
   'home' => 'Main',

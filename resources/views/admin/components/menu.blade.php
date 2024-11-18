@@ -267,6 +267,12 @@
 						<span class="link-title">ViewEmails</span>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{route("adminRatesSettings")}}">
+						<i class="link-icon" data-feather="flag"></i>
+						<span class="link-title">{{__("menu.rates_settings")}}</span>
+					</a>
+				</li>
 			@endcan
 		</ul>
 	</div>

@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\Controller_EmailTemplate as AdminEmailTemplate;
 use App\Http\Controllers\Admin\Controller_Language as AdminLanguage;
 use App\Http\Controllers\Admin\Controller_Utm as AdminUtm;
 use App\Http\Controllers\Admin\DataTable\Controller_Utm as DTAdminUtm;
+use App\Http\Controllers\Admin\Controller_Settings as AdminSettings;
 
 use App\Http\Controllers\Controller_Home as Home;
 use App\Http\Controllers\Controller_Login as Login;
@@ -246,6 +247,9 @@ Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function ()
         Route::post('/panel/export/languages', [AdminLanguage::class, "process_export"])->name("adminProcessLanguageExport");
         Route::get('/panel/import/languages', [AdminLanguage::class, "view_import"])->name("adminViewLanguageImport");
         Route::post('/panel/import/languages', [AdminLanguage::class, "process_import"])->name("adminProcessLanguageImport");
+
+        Route::get('/panel/exchanger/rates/settings', [AdminSettings::class, "view"])->name("adminRatesSettings");
+        Route::post('/panel/exchanger/rates/settings', [AdminSettings::class, "process"])->name("adminRatesSettingsProcess");
     });
 
     Route::group( ['middleware' => ['auth', 'permission:handle-exchanges|handle-users|handle-affiliate|handle-affiliate-withdraws']], function() {

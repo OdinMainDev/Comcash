@@ -1,4 +1,9 @@
 <?php return array (
+  'editRatesSettings' => 'Modifier les paramètres du taux flottant',
+  'amountInUsd' => 'Montant en dollars',
+  'increaseProfitPercent' => 'Augmenter le pourcentage de profit de',
+  'add_element' => 'Ajouter un élément',
+  'are_you_want_delete_element' => 'Êtes-vous sûr de vouloir supprimer cet élément ?',
   'otp_password_incorrect' => 'Vous avez saisi un mot de passe 2fa incorrect',
   'exchangesAffiliateCampaign' => 'Échanges de campagnes',
   'viewUserExchangesAffiliates' => 'Échanges d\'utilisateurs affiliés de',

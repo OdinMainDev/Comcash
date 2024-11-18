@@ -201,4 +201,9 @@ return [
     "viewUserExchangesAffiliates" => "Обмены аффилированных пользователей от",
     "exchangesAffiliateCampaign" => "Обмены по кампании",
     "otp_password_incorrect" => "Вы указали не корректный 2fa пароль",
+    "editRatesSettings" => "Изменить настройки плавающих курсов",
+    "amountInUsd" => "Сумма в долларах",
+    "increaseProfitPercent" => "Увеличиваем процент профита на",
+    "add_element" => "Добавить элемент",
+    "are_you_want_delete_element" => "Вы уверены что хотите удалить этот элемент?",
 ];

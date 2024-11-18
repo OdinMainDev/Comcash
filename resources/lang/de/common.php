@@ -1,4 +1,9 @@
 <?php return array (
+  'editRatesSettings' => 'Einstellungen für variable Zinssätze ändern',
+  'amountInUsd' => 'Dollar-Betrag',
+  'increaseProfitPercent' => 'Erhöhung des Gewinnanteils um',
+  'add_element' => 'Einen Artikel hinzufügen',
+  'are_you_want_delete_element' => 'Sind Sie sicher, dass Sie diesen Artikel löschen möchten?',
   'otp_password_incorrect' => 'Sie haben ein falsches 2fa-Passwort eingegeben',
   'exchangesAffiliateCampaign' => 'Austausch von Kampagnen',
   'viewUserExchangesAffiliates' => 'Austausch von angeschlossenen Nutzern aus',

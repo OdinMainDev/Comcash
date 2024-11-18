@@ -1,4 +1,5 @@
 <?php return array (
+  'rates_settings' => 'Cursos flotantes',
   '2fa' => 'Autorización 2FA',
   'affiliate_balances' => 'Saldos de afiliados',
   'home' => 'Principal',

@@ -1,4 +1,9 @@
 <?php return array (
+  'editRatesSettings' => 'Change floating rate settings',
+  'amountInUsd' => 'Dollar amount',
+  'increaseProfitPercent' => 'Increase the profit percentage by',
+  'add_element' => 'Add an item',
+  'are_you_want_delete_element' => 'Are you sure you want to delete this item?',
   'otp_password_incorrect' => 'You have entered an incorrect 2fa password',
   'exchangesAffiliateCampaign' => 'Campaign Exchanges',
   'viewUserExchangesAffiliates' => 'Affiliate user exchanges from',
