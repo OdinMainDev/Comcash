@@ -32,8 +32,11 @@ class Main {
         }
 
         if(!$is_withdraw){
-            if(!$this->isCrypto && !$this->isSbp)
+            if(!$this->isCrypto && !$this->isSbp){
                 $base[] = "from_card";
+                if(env("THEME_NAME", "comcash") == "onlybot")
+                    $base[] = "first_name";
+            }
         }else{
             if(!$this->isCrypto && !$this->isSbp)
                 $base[] = "to_card";
@@ -62,8 +65,11 @@ class Main {
 
         
         if(!$is_withdraw){
-            if(!$this->isCrypto && !$this->isSbp)
+            if(!$this->isCrypto && !$this->isSbp){
                 $base[] = "from_card";
+                if(env("THEME_NAME", "comcash") == "onlybot")
+                    $base[] = "first_name";
+            }
         }else{
             if(!$this->isCrypto && !$this->isSbp)
                 $base[] = "to_card";
@@ -99,8 +105,11 @@ class Main {
             // $base["last_name"] = "required|string|max:255";
         }
        if(!$is_withdraw){
-            if(!$this->isCrypto && !$this->isSbp)
+            if(!$this->isCrypto && !$this->isSbp){
                 $base["from_card"] = "required|string|max:20";
+                if(env("THEME_NAME", "comcash") == "onlybot")
+                    $base["first_name"] = "required|string|max:255";
+            }
         }else{
             if(!$this->isCrypto && !$this->isSbp)
                 $base["to_card"] = "required|string|max:20";
