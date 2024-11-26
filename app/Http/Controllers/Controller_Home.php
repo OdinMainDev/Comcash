@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Traits\Models\HasCache;
 use App\Models\AffiliateCampaign;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
 
@@ -13,6 +14,9 @@ class Controller_Home extends Controller{
     use HasCache;
 
     public function view() {
+        if(Auth::check() && $this->theme == "onlybot")
+            return redirect(route("adminDashboard"));
+
         $this->setSeoData($this->constructSeoData("index", "index", $this->getCachedSeoData()));
 
         return view($this->theme.".index")
