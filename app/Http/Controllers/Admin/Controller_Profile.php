@@ -50,7 +50,7 @@ class Controller_Profile extends Controller
 
     public function process2fa(Request $request) {
         $request->validate([
-            "otppassword" => "required|integer|min:0|max:999999",
+            "otppassword" => "nullable|string|size:6|regex:/^\d{6}$/",
             "otpsecret" => "required|string|max:255",
         ]);
 
