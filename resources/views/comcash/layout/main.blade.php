@@ -28,6 +28,7 @@
 		@else
 			@vite('resources/js/comcash/main3.ts')
 		@endif
+		@yield('css')
 	</head>
 	<body>
 		@include('comcash.component.header_info')

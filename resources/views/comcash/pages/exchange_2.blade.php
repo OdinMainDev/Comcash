@@ -187,6 +187,10 @@
 
 @endsection
 
+@section("css")
+	<meta name="robots" content="noindex, nofollow">
+@endsection
+
 @section("js")
     <script>
         document.addEventListener('DOMContentLoaded', function () {
