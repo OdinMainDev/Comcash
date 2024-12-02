@@ -14,8 +14,8 @@ class Controller_Home extends Controller{
     use HasCache;
 
     public function view() {
-        // if(Auth::check() && $this->theme == "onlybot")
-        //     return redirect(route("adminDashboard"));
+        if(Auth::check() && $this->theme == "onlybot")
+            return redirect(route("adminDashboard"));
 
         $this->setSeoData($this->constructSeoData("index", "index", $this->getCachedSeoData()));
 

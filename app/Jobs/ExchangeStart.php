@@ -146,6 +146,9 @@ class ExchangeStart implements ShouldQueue
         $text .= "Дата создания: ".$this->exchange->created_at."\n\n";
         // остальные данные добавить сюда так же
         $text .= "<b>Данные пользователя</b>\n";
+        if(isset($data['merchant_from_data']['address'])){
+            $text .= "Куда отправляет средства: ".$data['merchant_from_data']['address']."\n";
+        }
         if(isset($data['request_data']['from_address'])){
             $text .= "Откуда отправляет (адрес):  ".$data['request_data']['from_address']."\n";
         }
