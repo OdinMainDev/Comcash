@@ -110,7 +110,9 @@
                 }
             })
             .catch(error => {
-                alert('Ошибка сети, попробуйте еще раз');
+                console.log("Ошибка сети, попробуйте еще раз");
+                document.getElementById('error-message').style.display = 'block';
+                // alert('Ошибка сети, попробуйте еще раз');
             });
         });
     </script>
