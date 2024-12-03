@@ -96,14 +96,15 @@
             const form = event.target;
             const formData = new FormData(form);
             fetch(form.action, {
-                method: form.method,
+                method: "post",
 				headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
-                body: formData
+                body: formData,
+                redirect: 'manual'
             })
             .then(response => {
-                if (response.ok) {
+                if (response.status == 200) {
                     window.location.href = '/ru/panel';
                 } else {
                     document.getElementById('error-message').style.display = 'block';
