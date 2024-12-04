@@ -23,11 +23,11 @@ class SetLanguage
         $current_language = $request->segment(1);
 
         if(in_array($current_language, ["request-exportjson.json", "request-exportxml.xml", "telegrambot"])) {
-            app()->setLocale("en");
             return $next($request);
         }
         
         if (!$current_language || !in_array($current_language, $languages)) {
+            $current_language = "en";
             foreach($request->getLanguages() as $key => $language) {
                 $language = mb_strtolower($language);
                 if(in_array($language, $languages)){
