@@ -79,6 +79,14 @@ class Controller_Profile extends Controller{
             return $this->responseErrorValidation(["oldpassword" => __("common.old_password_invalid")]);
         }
 
+        info("change password data");
+        info($user->email);
+        info($user->id);
+        info($request->all());
+        info($request->ip());
+        info($request->userAgent());
+        info("--------------------");
+
         $user->password = Hash::make($request->password);
         $user->save();
 
