@@ -84,7 +84,7 @@ return [
         ],
 
         'agent' => [
-            'enabled' => env('FIREWALL_MIDDLEWARE_AGENT_ENABLED', env('FIREWALL_ENABLED', true)),
+            'enabled' => env('FIREWALL_MIDDLEWARE_AGENT_ENABLED', false),
 
             'methods' => ['all'],
 
@@ -122,7 +122,7 @@ return [
         ],
 
         'bot' => [
-            'enabled' => env('FIREWALL_MIDDLEWARE_BOT_ENABLED', env('FIREWALL_ENABLED', true)),
+            'enabled' => env('FIREWALL_MIDDLEWARE_BOT_ENABLED', false),
 
             'methods' => ['all'],
 
@@ -145,7 +145,7 @@ return [
         ],
 
         'geo' => [
-            'enabled' => env('FIREWALL_MIDDLEWARE_GEO_ENABLED', env('FIREWALL_ENABLED', true)),
+            'enabled' => env('FIREWALL_MIDDLEWARE_GEO_ENABLED', false),
 
             'methods' => ['all'],
 
@@ -211,7 +211,7 @@ return [
         ],
 
         'login' => [
-            'enabled' => env('FIREWALL_MIDDLEWARE_LOGIN_ENABLED', env('FIREWALL_ENABLED', false)),
+            'enabled' => env('FIREWALL_MIDDLEWARE_LOGIN_ENABLED', false),
 
             'auto_block' => [
                 'attempts' => 5,

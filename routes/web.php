@@ -52,321 +52,325 @@ use App\Http\Controllers\Controller_Kyc as Kyc;
 use App\Http\Controllers\Controller_ProfileAffiliate as ProfileAffiliate;
 
 use App\Http\Controllers\Controller_TelegramBot as TelegramBot;
-Route::get('/', function () {
-    $lang = Cookie::get('language');
-    if(!$lang){
-        $lang = app()->getLocale();
-    }
 
-    if(!$lang || !in_array($lang, config("app.languages"))){
-        $lang = "ru";
-    }
-    
-    return redirect(constructUrlWithUtm(request(), $lang));
-});
-
-Route::get('/request-exportjson.json', [Home::class, "export_json"]);
-Route::get('/request-exportxml.xml', [Home::class, "export_xml"]);
 Route::any('/telegrambot/webhook/{id}', [TelegramBot::class, "process"])->name("telegramBotWebhook");
 
-
-/* AUTH ROUTES */
-Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
-    Route::get('/', [Home::class, "view"])->name("index");
-    Route::get('/at/{hash}', [Home::class, "check_aff"])->name("checkAffiliate");
-    Route::get('/auth/login', [Login::class, "view"])->name("login");
-    Route::get('/auth/login/api/{hash}', [Login::class, "process_api_url"])->name("loginApiUrl");
-    Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
-    Route::get('/auth/register', [Login::class, "view_register"])->name("register");
-    Route::post('/auth/register', [Register::class, "process"])->name("registerPost");
-    Route::get('/auth/reset-password', [Login::class, "view"])->name("resetPassword");
-    Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
-    Route::post('/auth/reset-password/confirm', [ResetPassword::class, "confirm_process"])->name("resetPasswordConfirmPost");
-    Route::get('/auth/email/confirm/{id}/{hash}', [Register::class, "confirm_email"])->name("verifyEmail"); 
-});
-/* AUTH ROUTES */
-
-/* PUBLIC ROUTES */
-Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
-    Route::get('/exchange/{currencyFrom}-{currencyTo}/create', [Exchange::class, "view"])->name("exchgangePage");
-    Route::post('/exchange/redirect', [Exchange::class, "redirect"])->name("redirectToExchange");
-    Route::post('/exchange/create', [Exchange::class, "create"])->name("exchgangeCreate");
-    Route::get('/exchange/id/{hash}', [Exchange::class, "view_created"])->name("exchgangePage2");
-    Route::get('/exchange/id/{hash}/set_ipaid', [Exchange::class, "set_ipaid"])->name("exchgangeIPaid");
-
-    Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
-    Route::get('/comcash-knowledgebase/news/read/{id}', [KnowledgeBase::class, "news_item"])->name("comcashNewsItem");
-    Route::get('/comcash-knowledgebase/blog/read/{id}', [KnowledgeBase::class, "blog_item"])->name("comcashBlogItem");
-    Route::post('/comcash-knowledgebase/support', [KnowledgeBase::class, "support"])->name("comcashSupport");
-    Route::post('/comcash-knowledgebase/cleaning', [KnowledgeBase::class, "cleaning"])->name("comcashSupport");
-    Route::post('/exchange/kyc', [Kyc::class, "process"])->name("exchgangeKyc");
-    Route::get('/exchange/kyc/status/{id}', [Kyc::class, "status"]);
-    Route::get('/kyc/approve/adm/{hash}', [Kyc::class, "check_by_admin"])->name("exchgangeAdminKyc");
-});
-/* PUBLIC ROUTES */
-
-/* PRIVATE ROUTES */
-Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
-
-    Route::group( ['middleware' => ['auth']], function() {
-        Route::get('/auth/logout', [Login::class, "logout"])->name("logout");
+Route::group(['middleware' => 'firewall.all'], function () {
         
-        Route::get('/profile', [Profile::class, "view"])->name("myprofile");
-        Route::post('/profile/update', [Profile::class, "process_profile"])->name("myprofilePost");
-        Route::post('/profile/verifyMyEmail', [Profile::class, "process_verify_start"])->name("myprofileVerifyPost");
+    Route::get('/', function () {
+        $lang = Cookie::get('language');
+        if(!$lang){
+            $lang = app()->getLocale();
+        }
 
-        Route::get('/profile/password', [Profile::class, "view_password"])->name("myprofilePassword");
-        Route::post('/profile/password/change', [Profile::class, "process_password"])->name("myprofilePasswordPost");
-
-        Route::get('/profile/2fa', [Profile::class, "view_2fa"])->name("myprofile2fa");
-        Route::post('/profile/2fa/change', [AdminProfile::class, "process2fa"])->name("myprofile2faPost");
-
-        Route::get('/profile/exchanges', [Profile::class, "view_exchanges"])->name("myprofileExchanges");
-
-        Route::get('/profile/affiliate', [ProfileAffiliate::class, "view_index"])->name("myprofileAffiliate");
-        Route::post('/profile/affiliate', [ProfileAffiliate::class, "create_campaign"])->name("myprofileAffiliatePost");
-        Route::get('/profile/affiliate/exchanges', [ProfileAffiliate::class, "view_exchanges"])->name("myprofileAffiliateExchanges");
-        Route::get('/profile/affiliate/balances', [ProfileAffiliate::class, "view_balances"])->name("myprofileAffiliateBalances");
-        Route::post('/profile/affiliate/balances', [ProfileAffiliate::class, "withdraw_balance"])->name("myprofileAffiliateBalancesPost");
-        Route::get('/profile/affiliate/withdraws', [ProfileAffiliate::class, "view_withdraws"])->name("myprofileAffiliateWithdraws");
-    });
-    
-});
-/* PRIVATE ROUTES */
-
-Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
-    Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {
-        Route::get('/panel', [AdminDashboard::class, "view"])->name("adminDashboard");
-
-        Route::get('/panel/profile', [AdminProfile::class, "view"])->name("adminProfile");
-        Route::post('/panel/profile', [AdminProfile::class, "process"])->name("adminProfileProcess");
-
-        Route::get('/panel/profile/2fa', [AdminProfile::class, "view2fa"])->name("adminProfile2fa");
-        Route::post('/panel/profile/2fa', [AdminProfile::class, "process2fa"])->name("adminProfile2faProcess");
-
-        Route::post('ckeditor/upload', [AdminDashboard::class, "upload"])->name('ckeditor.image-upload');
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-currencies']], function() {
-        Route::get('/panel/currencies/list', [DTCurrency::class, "view"])->name("adminCurrencyList");
-        Route::get('/panel/currencies/list/data', [DTCurrency::class, "process"]);
-
-        Route::get('/panel/currencies/add', [AdminCurrency::class, "add"])->name("adminCurrencyAdd");
-        Route::get('/panel/currencies/edit/{id}', [AdminCurrency::class, "edit"])->name("adminCurrencyEdit");
-        Route::post('/panel/currencies/process', [AdminCurrency::class, "process"])->name("adminCurrencyProcess");
-
-        Route::get('/panel/currencies/removeWallets', [AdminCurrency::class, "remove_wallets"])->name("adminCurrencyRemoveWallets");
-
-        Route::get('/panel/currencies/massUpdate', [AdminCurrency::class, "mass_update"])->name("adminCurrenciesMassUpdate");
-        Route::post('/panel/currencies/massUpdate', [AdminCurrency::class, "mass_update_process"])->name("adminCurrenciesMassUpdateProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-merchants']], function() {
-        Route::get('/panel/merchants/list', [DTMerchant::class, "view"])->name("adminMerchantList");
-        Route::get('/panel/merchants/list/data', [DTMerchant::class, "process"]);
-
-        Route::get('/panel/merchants/add', [AdminMerchant::class, "add"])->name("adminMerchantAdd");
-        Route::get('/panel/merchants/edit/{id}', [AdminMerchant::class, "edit"])->name("adminMerchantEdit");
-        Route::post('/panel/merchants/process', [AdminMerchant::class, "process"])->name("adminMerchantProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-roles']], function() {
-        Route::get('/panel/roles/list', [DTRole::class, "view"])->name("adminRoleList");
-        Route::get('/panel/roles/list/data', [DTRole::class, "process"]);
-
-        Route::get('/panel/roles/add', [AdminRole::class, "add"])->name("adminRoleAdd");
-        Route::get('/panel/roles/edit/{id}', [AdminRole::class, "edit"])->name("adminRoleEdit");
-        Route::post('/panel/roles/process', [AdminRole::class, "process"])->name("adminRoleProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
-        Route::get('/panel/directions/list', [DTDirection::class, "view"])->name("adminDirectionList");
-        Route::get('/panel/directions/list/data', [DTDirection::class, "process"]);
-
-        Route::get('/panel/directions/add', [AdminDirection::class, "add"])->name("adminDirectionAdd");
-        Route::post('/panel/directions/add/process', [AdminDirection::class, "add_process"])->name("adminDirectionAddProcess");
-        Route::get('/panel/directions/edit/{id}', [AdminDirection::class, "edit"])->name("adminDirectionEdit");
-        Route::post('/panel/directions/process', [AdminDirection::class, "edit_process"])->name("adminDirectionProcess");
-        Route::get('/panel/directions/removeAll', [AdminDirection::class, "remove_all"])->name("adminDirectionRemoveAll");
-        Route::get('/panel/directions/massUpdateByCurrency', [AdminDirection::class, "update_by_currency"])->name("adminDirectionUpdateByCurrency");
-        Route::post('/panel/directions/massUpdateByCurrency', [AdminDirection::class, "update_by_currency_process"])->name("adminDirectionUpdateByCurrencyProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-blog']], function() {
-        Route::get('/panel/blog/list', [DTBlog::class, "view"])->name("adminBlogList");
-        Route::get('/panel/blog/list/data', [DTBlog::class, "process"]);
-
-        Route::get('/panel/blog/add', [AdminBlog::class, "add"])->name("adminBlogAdd");
-        Route::get('/panel/blog/edit/{id}', [AdminBlog::class, "edit"])->name("adminBlogEdit");
-        Route::post('/panel/blog/process', [AdminBlog::class, "process"])->name("adminBlogProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-feedback']], function() {
-        Route::get('/panel/feedback/list', [DTFeedback::class, "view"])->name("adminFeedbackList");
-        Route::get('/panel/feedback/list/data', [DTFeedback::class, "process"]);
-
-        Route::get('/panel/feedback/add', [AdminFeedback::class, "add"])->name("adminFeedbackAdd");
-        Route::get('/panel/feedback/edit/{id}', [AdminFeedback::class, "edit"])->name("adminFeedbackEdit");
-        Route::post('/panel/feedback/process', [AdminFeedback::class, "process"])->name("adminFeedbackProcess");
-        Route::get('/panel/feedback/delete/{id}', [AdminFeedback::class, "delete"])->name("adminFeedbackDelete");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-exchanges']], function() {
-        Route::get('/panel/exchanges/list/{id}', [DTExchange::class, "view"])->name("adminExchangeList");
-        Route::get('/panel/exchanges/list/{id}/data', [DTExchange::class, "process"])->name("adminExchangeListProcess");
-        Route::get('/panel/exchanges-aff/list/{id}/data', [DTExchangeAffiliate::class, "process"])->name("adminExchangeListAffiliateProcess");
+        if(!$lang || !in_array($lang, config("app.languages"))){
+            $lang = "ru";
+        }
         
-
-        Route::get('/panel/exchanges/edit/{id}', [AdminExchange::class, "edit"])->name("adminExchangeEdit");
-        Route::post('/panel/exchanges/edit', [AdminExchange::class, "process"])->name("adminExchangeEditPost");
-        Route::get('/panel/exchanges/edit/rewithdraw/{id}', [AdminExchange::class, "rewithdraw"])->name("adminExchangeRewithdraw");
-        Route::get('/panel/exchanges/edit/setwithdraw/{id}', [AdminExchange::class, "set_withdraw"])->name("adminExchangeSetWithdraw");
-        Route::get('/panel/exchanges/edit/setcompletewithdraw/{id}', [AdminExchange::class, "set_withdraw_complete"])->name("adminExchangeSetWithdrawComplete");
-        Route::get('/panel/exchanges/logs/{id}/data', [DTExchangeLog::class, "process"])->name("adminExchangeLogs");
-        Route::get('/panel/exchanges/edit/setpaid/{id}', [AdminExchange::class, "set_paid"])->name("adminExchangeSetPaid");
-        Route::get('/panel/exchanges/edit/setdeleted/{id}', [AdminExchange::class, "set_deleted"])->name("adminExchangeSetDeleted");
-        Route::get('/panel/exchanges/edit/setcreated/{id}', [AdminExchange::class, "set_created"])->name("adminExchangeSetCreated");
-
-        Route::get('/panel/exchanges/setclosedall', [AdminExchange::class, "set_closed_all"])->name("adminExchangeSetClosedAll");
+        return redirect(constructUrlWithUtm(request(), $lang));
     });
 
-    Route::group( ['middleware' => ['auth', 'permission:handle-exchanger|handle-seo']], function() {
-        Route::get('/panel/sitemap/generate', [AdminApi::class, "sitemap_generate"])->name("adminSitemapGenerate");
+    Route::get('/request-exportjson.json', [Home::class, "export_json"]);
+    Route::get('/request-exportxml.xml', [Home::class, "export_xml"]);
+
+    /* AUTH ROUTES */
+    Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
+        Route::get('/', [Home::class, "view"])->name("index");
+        Route::get('/at/{hash}', [Home::class, "check_aff"])->name("checkAffiliate");
+        Route::get('/auth/login', [Login::class, "view"])->name("login");
+        Route::get('/auth/login/api/{hash}', [Login::class, "process_api_url"])->name("loginApiUrl");
+        Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
+        Route::get('/auth/register', [Login::class, "view_register"])->name("register");
+        Route::post('/auth/register', [Register::class, "process"])->name("registerPost");
+        Route::get('/auth/reset-password', [Login::class, "view"])->name("resetPassword");
+        Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
+        Route::post('/auth/reset-password/confirm', [ResetPassword::class, "confirm_process"])->name("resetPasswordConfirmPost");
+        Route::get('/auth/email/confirm/{id}/{hash}', [Register::class, "confirm_email"])->name("verifyEmail"); 
+    });
+    /* AUTH ROUTES */
+
+    /* PUBLIC ROUTES */
+    Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
+        Route::get('/exchange/{currencyFrom}-{currencyTo}/create', [Exchange::class, "view"])->name("exchgangePage");
+        Route::post('/exchange/redirect', [Exchange::class, "redirect"])->name("redirectToExchange");
+        Route::post('/exchange/create', [Exchange::class, "create"])->name("exchgangeCreate");
+        Route::get('/exchange/id/{hash}', [Exchange::class, "view_created"])->name("exchgangePage2");
+        Route::get('/exchange/id/{hash}/set_ipaid', [Exchange::class, "set_ipaid"])->name("exchgangeIPaid");
+
+        Route::get('/comcash-knowledgebase/{name}', [KnowledgeBase::class, "static_page"])->name("comcashPage");
+        Route::get('/comcash-knowledgebase/news/read/{id}', [KnowledgeBase::class, "news_item"])->name("comcashNewsItem");
+        Route::get('/comcash-knowledgebase/blog/read/{id}', [KnowledgeBase::class, "blog_item"])->name("comcashBlogItem");
+        Route::post('/comcash-knowledgebase/support', [KnowledgeBase::class, "support"])->name("comcashSupport");
+        Route::post('/comcash-knowledgebase/cleaning', [KnowledgeBase::class, "cleaning"])->name("comcashSupport");
+        Route::post('/exchange/kyc', [Kyc::class, "process"])->name("exchgangeKyc");
+        Route::get('/exchange/kyc/status/{id}', [Kyc::class, "status"]);
+        Route::get('/kyc/approve/adm/{hash}', [Kyc::class, "check_by_admin"])->name("exchgangeAdminKyc");
+    });
+    /* PUBLIC ROUTES */
+
+    /* PRIVATE ROUTES */
+    Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
+
+        Route::group( ['middleware' => ['auth']], function() {
+            Route::get('/auth/logout', [Login::class, "logout"])->name("logout");
+            
+            Route::get('/profile', [Profile::class, "view"])->name("myprofile");
+            Route::post('/profile/update', [Profile::class, "process_profile"])->name("myprofilePost");
+            Route::post('/profile/verifyMyEmail', [Profile::class, "process_verify_start"])->name("myprofileVerifyPost");
+
+            Route::get('/profile/password', [Profile::class, "view_password"])->name("myprofilePassword");
+            Route::post('/profile/password/change', [Profile::class, "process_password"])->name("myprofilePasswordPost");
+
+            Route::get('/profile/2fa', [Profile::class, "view_2fa"])->name("myprofile2fa");
+            Route::post('/profile/2fa/change', [AdminProfile::class, "process2fa"])->name("myprofile2faPost");
+
+            Route::get('/profile/exchanges', [Profile::class, "view_exchanges"])->name("myprofileExchanges");
+
+            Route::get('/profile/affiliate', [ProfileAffiliate::class, "view_index"])->name("myprofileAffiliate");
+            Route::post('/profile/affiliate', [ProfileAffiliate::class, "create_campaign"])->name("myprofileAffiliatePost");
+            Route::get('/profile/affiliate/exchanges', [ProfileAffiliate::class, "view_exchanges"])->name("myprofileAffiliateExchanges");
+            Route::get('/profile/affiliate/balances', [ProfileAffiliate::class, "view_balances"])->name("myprofileAffiliateBalances");
+            Route::post('/profile/affiliate/balances', [ProfileAffiliate::class, "withdraw_balance"])->name("myprofileAffiliateBalancesPost");
+            Route::get('/profile/affiliate/withdraws', [ProfileAffiliate::class, "view_withdraws"])->name("myprofileAffiliateWithdraws");
+        });
+        
+    });
+    /* PRIVATE ROUTES */
+
+    Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
+        Route::group( ['middleware' => ['auth', 'permission:view-dashboard']], function() {
+            Route::get('/panel', [AdminDashboard::class, "view"])->name("adminDashboard");
+
+            Route::get('/panel/profile', [AdminProfile::class, "view"])->name("adminProfile");
+            Route::post('/panel/profile', [AdminProfile::class, "process"])->name("adminProfileProcess");
+
+            Route::get('/panel/profile/2fa', [AdminProfile::class, "view2fa"])->name("adminProfile2fa");
+            Route::post('/panel/profile/2fa', [AdminProfile::class, "process2fa"])->name("adminProfile2faProcess");
+
+            Route::post('ckeditor/upload', [AdminDashboard::class, "upload"])->name('ckeditor.image-upload');
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-currencies']], function() {
+            Route::get('/panel/currencies/list', [DTCurrency::class, "view"])->name("adminCurrencyList");
+            Route::get('/panel/currencies/list/data', [DTCurrency::class, "process"]);
+
+            Route::get('/panel/currencies/add', [AdminCurrency::class, "add"])->name("adminCurrencyAdd");
+            Route::get('/panel/currencies/edit/{id}', [AdminCurrency::class, "edit"])->name("adminCurrencyEdit");
+            Route::post('/panel/currencies/process', [AdminCurrency::class, "process"])->name("adminCurrencyProcess");
+
+            Route::get('/panel/currencies/removeWallets', [AdminCurrency::class, "remove_wallets"])->name("adminCurrencyRemoveWallets");
+
+            Route::get('/panel/currencies/massUpdate', [AdminCurrency::class, "mass_update"])->name("adminCurrenciesMassUpdate");
+            Route::post('/panel/currencies/massUpdate', [AdminCurrency::class, "mass_update_process"])->name("adminCurrenciesMassUpdateProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-merchants']], function() {
+            Route::get('/panel/merchants/list', [DTMerchant::class, "view"])->name("adminMerchantList");
+            Route::get('/panel/merchants/list/data', [DTMerchant::class, "process"]);
+
+            Route::get('/panel/merchants/add', [AdminMerchant::class, "add"])->name("adminMerchantAdd");
+            Route::get('/panel/merchants/edit/{id}', [AdminMerchant::class, "edit"])->name("adminMerchantEdit");
+            Route::post('/panel/merchants/process', [AdminMerchant::class, "process"])->name("adminMerchantProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-roles']], function() {
+            Route::get('/panel/roles/list', [DTRole::class, "view"])->name("adminRoleList");
+            Route::get('/panel/roles/list/data', [DTRole::class, "process"]);
+
+            Route::get('/panel/roles/add', [AdminRole::class, "add"])->name("adminRoleAdd");
+            Route::get('/panel/roles/edit/{id}', [AdminRole::class, "edit"])->name("adminRoleEdit");
+            Route::post('/panel/roles/process', [AdminRole::class, "process"])->name("adminRoleProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
+            Route::get('/panel/directions/list', [DTDirection::class, "view"])->name("adminDirectionList");
+            Route::get('/panel/directions/list/data', [DTDirection::class, "process"]);
+
+            Route::get('/panel/directions/add', [AdminDirection::class, "add"])->name("adminDirectionAdd");
+            Route::post('/panel/directions/add/process', [AdminDirection::class, "add_process"])->name("adminDirectionAddProcess");
+            Route::get('/panel/directions/edit/{id}', [AdminDirection::class, "edit"])->name("adminDirectionEdit");
+            Route::post('/panel/directions/process', [AdminDirection::class, "edit_process"])->name("adminDirectionProcess");
+            Route::get('/panel/directions/removeAll', [AdminDirection::class, "remove_all"])->name("adminDirectionRemoveAll");
+            Route::get('/panel/directions/massUpdateByCurrency', [AdminDirection::class, "update_by_currency"])->name("adminDirectionUpdateByCurrency");
+            Route::post('/panel/directions/massUpdateByCurrency', [AdminDirection::class, "update_by_currency_process"])->name("adminDirectionUpdateByCurrencyProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-blog']], function() {
+            Route::get('/panel/blog/list', [DTBlog::class, "view"])->name("adminBlogList");
+            Route::get('/panel/blog/list/data', [DTBlog::class, "process"]);
+
+            Route::get('/panel/blog/add', [AdminBlog::class, "add"])->name("adminBlogAdd");
+            Route::get('/panel/blog/edit/{id}', [AdminBlog::class, "edit"])->name("adminBlogEdit");
+            Route::post('/panel/blog/process', [AdminBlog::class, "process"])->name("adminBlogProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-feedback']], function() {
+            Route::get('/panel/feedback/list', [DTFeedback::class, "view"])->name("adminFeedbackList");
+            Route::get('/panel/feedback/list/data', [DTFeedback::class, "process"]);
+
+            Route::get('/panel/feedback/add', [AdminFeedback::class, "add"])->name("adminFeedbackAdd");
+            Route::get('/panel/feedback/edit/{id}', [AdminFeedback::class, "edit"])->name("adminFeedbackEdit");
+            Route::post('/panel/feedback/process', [AdminFeedback::class, "process"])->name("adminFeedbackProcess");
+            Route::get('/panel/feedback/delete/{id}', [AdminFeedback::class, "delete"])->name("adminFeedbackDelete");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-exchanges']], function() {
+            Route::get('/panel/exchanges/list/{id}', [DTExchange::class, "view"])->name("adminExchangeList");
+            Route::get('/panel/exchanges/list/{id}/data', [DTExchange::class, "process"])->name("adminExchangeListProcess");
+            Route::get('/panel/exchanges-aff/list/{id}/data', [DTExchangeAffiliate::class, "process"])->name("adminExchangeListAffiliateProcess");
+            
+
+            Route::get('/panel/exchanges/edit/{id}', [AdminExchange::class, "edit"])->name("adminExchangeEdit");
+            Route::post('/panel/exchanges/edit', [AdminExchange::class, "process"])->name("adminExchangeEditPost");
+            Route::get('/panel/exchanges/edit/rewithdraw/{id}', [AdminExchange::class, "rewithdraw"])->name("adminExchangeRewithdraw");
+            Route::get('/panel/exchanges/edit/setwithdraw/{id}', [AdminExchange::class, "set_withdraw"])->name("adminExchangeSetWithdraw");
+            Route::get('/panel/exchanges/edit/setcompletewithdraw/{id}', [AdminExchange::class, "set_withdraw_complete"])->name("adminExchangeSetWithdrawComplete");
+            Route::get('/panel/exchanges/logs/{id}/data', [DTExchangeLog::class, "process"])->name("adminExchangeLogs");
+            Route::get('/panel/exchanges/edit/setpaid/{id}', [AdminExchange::class, "set_paid"])->name("adminExchangeSetPaid");
+            Route::get('/panel/exchanges/edit/setdeleted/{id}', [AdminExchange::class, "set_deleted"])->name("adminExchangeSetDeleted");
+            Route::get('/panel/exchanges/edit/setcreated/{id}', [AdminExchange::class, "set_created"])->name("adminExchangeSetCreated");
+
+            Route::get('/panel/exchanges/setclosedall', [AdminExchange::class, "set_closed_all"])->name("adminExchangeSetClosedAll");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-exchanger|handle-seo']], function() {
+            Route::get('/panel/sitemap/generate', [AdminApi::class, "sitemap_generate"])->name("adminSitemapGenerate");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-exchanger']], function() {
+            Route::get('/panel/clear/cache', [AdminApi::class, "clear_cache"])->name("adminClearCache");
+            Route::get('/panel/clear/directions/seo/titles', [AdminApi::class, "clear_directions_seo_titles"])->name("adminClearDirectionsSeoTitles");
+            Route::get('/panel/update/languages', [AdminApi::class, "languages_update"])->name("adminLanguagesUpdate");
+
+
+            Route::get('/panel/view/emailtemplates', [AdminEmailTemplate::class, "view_choose"])->name("adminViewEmailTemplates");
+            Route::get('/panel/view/emailtemplates/{page}', [AdminEmailTemplate::class, "view_item"])->name("adminViewEmailTemplate");
+
+            Route::get('/panel/export/languages', [AdminLanguage::class, "view_export"])->name("adminViewLanguageExport");
+            Route::post('/panel/export/languages', [AdminLanguage::class, "process_export"])->name("adminProcessLanguageExport");
+            Route::get('/panel/import/languages', [AdminLanguage::class, "view_import"])->name("adminViewLanguageImport");
+            Route::post('/panel/import/languages', [AdminLanguage::class, "process_import"])->name("adminProcessLanguageImport");
+
+            Route::get('/panel/exchanger/rates/settings', [AdminSettings::class, "view"])->name("adminRatesSettings");
+            Route::post('/panel/exchanger/rates/settings', [AdminSettings::class, "process"])->name("adminRatesSettingsProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-exchanges|handle-users|handle-affiliate|handle-affiliate-withdraws']], function() {
+            Route::get('/panel/api/get/users', [AdminApi::class, "get_users"])->name("adminApiGetUsers");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-users']], function() {
+            Route::get('/panel/users/list', [DTUser::class, "view"])->name("adminUserList");
+            Route::get('/panel/users/list/data', [DTUser::class, "process"]);
+
+            Route::get('/panel/users/spam/tg', [AdminUserSpam::class, "tg_view"])->name("adminUserSpamTg");
+            Route::post('/panel/users/spam/tg', [AdminUserSpam::class, "tg_process"])->name("adminUserSpamTgProcess");
+            Route::get('/panel/users/spam/mail', [AdminUserSpam::class, "mail_view"])->name("adminUserSpamMail");
+            Route::post('/panel/users/spam/mail', [AdminUserSpam::class, "mail_process"])->name("adminUserSpamMailProcess");
+
+            Route::get('/panel/users/export', [AdminUser::class, "export"])->name("adminUserExport");
+            Route::get('/panel/users/edit/{id}', [AdminUser::class, "edit"])->name("adminUserEdit");
+            Route::post('/panel/users/process', [AdminUser::class, "process"])->name("adminUserProcess");
+            Route::post('/panel/users/password/process', [AdminUser::class, "password_process"])->name("adminUserPasswordProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-user-role']], function() {
+            Route::post('/panel/users/role/process', [AdminUser::class, "process_role"])->name("adminUserRoleProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
+            Route::get('/panel/api/get/currencies', [AdminApi::class, "currencies"]);
+            Route::get('/panel/api/get/merchants', [AdminApi::class, "merchants"]);
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-affiliate']], function() {
+            Route::get('/panel/affiliate/campaigns/list', [DTAffiliate::class, "view"])->name("adminAffiliateCampaigns");
+            Route::get('/panel/affiliate/campaigns/list/data', [DTAffiliate::class, "process"]);
+
+            Route::get('/panel/affiliate/campaigns-exchange/{id}/list', [DTExchange::class, "view_by_campaign"])->name("adminAffiliateCampaignsExchanges");
+            Route::get('/panel/affiliate/campaigns-exchange/{id}/list/data', [DTExchange::class, "process_by_campaign"])->name("adminAffiliateCampaignsExchangesProcess");
+
+            Route::get('/panel/affiliate/campaigns/{id}/list/data', [DTAffiliate::class, "process_users"])->name("adminAffiliateCampaignsUsers");
+
+            Route::get('/panel/affiliate/campaigns/edit/{id}', [AdminAffiliate::class, "edit"])->name("adminAffiliateCampaignEdit");
+            Route::post('/panel/affiliate/campaigns/process', [AdminAffiliate::class, "process"])->name("adminAffiliateCampaignProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-affiliate-withdraws']], function() {
+            Route::get('/panel/affiliate/balances/list', [DTAffiliateBalance::class, "view"])->name("adminAffiliateBalances");
+            Route::get('/panel/affiliate/balances/list/data', [DTAffiliateBalance::class, "process"]);
+
+            Route::get('/panel/affiliate/withdraws/list', [DTAffiliateWithdraw::class, "view"])->name("adminAffiliateWithdraws");
+            Route::get('/panel/affiliate/withdraws/list/data', [DTAffiliateWithdraw::class, "process"]);
+
+            Route::get('/panel/affiliate/withdraws/edit/{id}', [AdminAffiliateWithdraw::class, "view"])->name("adminAffiliateWithdrawsEdit");
+            Route::post('/panel/affiliate/withdraws/process', [AdminAffiliateWithdraw::class, "process"])->name("adminAffiliateWithdrawsProcess");
+
+            Route::get('/panel/affiliate/settings/edit', [AdminAffiliateWithdraw::class, "view_settings"])->name("adminAffiliateSettings");
+            Route::post('/panel/affiliate/settings/process', [AdminAffiliateWithdraw::class, "settings_process"])->name("adminAffiliateSettingsProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:view-statistic']], function() {
+            Route::get('/panel/api/get/dashboard/registers', [AdminApi::class, "dasboard_registers"]);
+            Route::get('/panel/api/get/dashboard/exchanges', [AdminApi::class, "dasboard_exchanges"]);
+            Route::get('/panel/api/get/dashboard/exchanges-complete', [AdminApi::class, "dasboard_exchanges_complete"]);
+            Route::get('/panel/api/get/dashboard/revenue', [AdminApi::class, "dasboard_revenue"]);
+            Route::get('/panel/api/get/dashboard/popular-directions', [AdminApi::class, "dasboard_popular_directions"]);
+            Route::get('/panel/api/get/dashboard/affiliate-withdraws', [AdminApi::class, "dasboard_affiliate_withdraws"]);
+            Route::get('/panel/api/get/dashboard/fulltime-statistic', [AdminApi::class, "dasboard_fulltime_statistic"]);
+            Route::get('/panel/api/get/dashboard/affiliate', [AdminApi::class, "dasboard_affiliate"]);
+            Route::get('/panel/api/get/dashboard/affiliate2', [AdminApi::class, "dasboard_affiliate_2"]);
+
+            Route::get('/panel/utms/list', [DTAdminUtm::class, "view"])->name("adminUtmList");
+            Route::get('/panel/utms/list/data', [DTAdminUtm::class, "process"]);
+            Route::get('/panel/utms/view/{id}', [AdminUtm::class, "view"])->name("adminUtmView");
+            Route::get('/panel/api/get/utms/{id}', [AdminUtm::class, "api"]);
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-seo']], function() {
+            Route::get('/panel/seo/basic/settings', [AdminSeo::class, "view_choose_page"])->name("adminSeo");
+            Route::get('/panel/seo/basic/settings/{page}', [AdminSeo::class, "view_basic_page"])->name("adminSeoPage");
+            Route::post('/panel/seo/basic/settings', [AdminSeo::class, "basic_process"])->name("adminSeoProcessing");
+
+            Route::get('/panel/seo/directions/list', [DTAdminSeo::class, "view"])->name("adminSeoDirections");
+            Route::get('/panel/seo/directions/list/data', [DTAdminSeo::class, "process"]);
+            Route::get('/panel/seo/directions/edit/{id}', [AdminSeo::class, "edit_direction"])->name("adminSeoDirectionsEdit");
+            Route::post('/panel/seo/directions/process', [AdminSeo::class, "edit_direction_process"])->name("adminSeoDirectionsProcess");
+            Route::get('/panel/seo/directions/massUpdateByCurrency', [AdminSeo::class, "update_by_currency"])->name("adminSeoDirectionUpdateByCurrency");
+            Route::post('/panel/seo/directions/massUpdateByCurrency', [AdminSeo::class, "update_by_currency_process"])->name("adminSeoDirectionUpdateByCurrencyProcess");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-telegram']], function() {
+            Route::get('/panel/telegram/bots/list', [DTAdminTelegramBot::class, "view"])->name("adminTelegramBotList");
+            Route::get('/panel/telegram/bots/list/data', [DTAdminTelegramBot::class, "process"]);
+
+            Route::get('/panel/telegram/bots/add', [AdminTelegramBot::class, "add"])->name("adminTelegramBotAdd");
+            Route::get('/panel/telegram/bots/edit/{id}', [AdminTelegramBot::class, "edit"])->name("adminTelegramBotEdit");
+            Route::get('/panel/telegram/bots/delete/{id}', [AdminTelegramBot::class, "delete"])->name("adminTelegramBotDelete");
+            Route::post('/panel/telegram/bots/process', [AdminTelegramBot::class, "process"])->name("adminTelegramBotProcess");
+        });
     });
 
-    Route::group( ['middleware' => ['auth', 'permission:handle-exchanger']], function() {
-        Route::get('/panel/clear/cache', [AdminApi::class, "clear_cache"])->name("adminClearCache");
-        Route::get('/panel/clear/directions/seo/titles', [AdminApi::class, "clear_directions_seo_titles"])->name("adminClearDirectionsSeoTitles");
-        Route::get('/panel/update/languages', [AdminApi::class, "languages_update"])->name("adminLanguagesUpdate");
+    Route::group(config('translation.route_group_config') + ['namespace' => 'JoeDixon\\Translation\\Http\\Controllers'], function ($router) {
+        $router->get(config('translation.ui_url'), 'LanguageController@index')
+            ->name('languages.index');
 
+        $router->get(config('translation.ui_url').'/create', 'LanguageController@create')
+            ->name('languages.create');
 
-        Route::get('/panel/view/emailtemplates', [AdminEmailTemplate::class, "view_choose"])->name("adminViewEmailTemplates");
-        Route::get('/panel/view/emailtemplates/{page}', [AdminEmailTemplate::class, "view_item"])->name("adminViewEmailTemplate");
+        $router->post(config('translation.ui_url'), 'LanguageController@store')
+            ->name('languages.store');
 
-        Route::get('/panel/export/languages', [AdminLanguage::class, "view_export"])->name("adminViewLanguageExport");
-        Route::post('/panel/export/languages', [AdminLanguage::class, "process_export"])->name("adminProcessLanguageExport");
-        Route::get('/panel/import/languages', [AdminLanguage::class, "view_import"])->name("adminViewLanguageImport");
-        Route::post('/panel/import/languages', [AdminLanguage::class, "process_import"])->name("adminProcessLanguageImport");
+        $router->get(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@index')
+            ->name('languages.translations.index');
 
-        Route::get('/panel/exchanger/rates/settings', [AdminSettings::class, "view"])->name("adminRatesSettings");
-        Route::post('/panel/exchanger/rates/settings', [AdminSettings::class, "process"])->name("adminRatesSettingsProcess");
+        $router->post(config('translation.ui_url').'/{language}', 'LanguageTranslationController@update')
+            ->name('languages.translations.update');
+
+        $router->get(config('translation.ui_url').'/{language}/translations/create', 'LanguageTranslationController@create')
+            ->name('languages.translations.create');
+
+        $router->post(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@store')
+            ->name('languages.translations.store');
     });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-exchanges|handle-users|handle-affiliate|handle-affiliate-withdraws']], function() {
-        Route::get('/panel/api/get/users', [AdminApi::class, "get_users"])->name("adminApiGetUsers");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-users']], function() {
-        Route::get('/panel/users/list', [DTUser::class, "view"])->name("adminUserList");
-        Route::get('/panel/users/list/data', [DTUser::class, "process"]);
-
-        Route::get('/panel/users/spam/tg', [AdminUserSpam::class, "tg_view"])->name("adminUserSpamTg");
-        Route::post('/panel/users/spam/tg', [AdminUserSpam::class, "tg_process"])->name("adminUserSpamTgProcess");
-        Route::get('/panel/users/spam/mail', [AdminUserSpam::class, "mail_view"])->name("adminUserSpamMail");
-        Route::post('/panel/users/spam/mail', [AdminUserSpam::class, "mail_process"])->name("adminUserSpamMailProcess");
-
-        Route::get('/panel/users/export', [AdminUser::class, "export"])->name("adminUserExport");
-        Route::get('/panel/users/edit/{id}', [AdminUser::class, "edit"])->name("adminUserEdit");
-        Route::post('/panel/users/process', [AdminUser::class, "process"])->name("adminUserProcess");
-        Route::post('/panel/users/password/process', [AdminUser::class, "password_process"])->name("adminUserPasswordProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-user-role']], function() {
-        Route::post('/panel/users/role/process', [AdminUser::class, "process_role"])->name("adminUserRoleProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-directions']], function() {
-        Route::get('/panel/api/get/currencies', [AdminApi::class, "currencies"]);
-        Route::get('/panel/api/get/merchants', [AdminApi::class, "merchants"]);
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-affiliate']], function() {
-        Route::get('/panel/affiliate/campaigns/list', [DTAffiliate::class, "view"])->name("adminAffiliateCampaigns");
-        Route::get('/panel/affiliate/campaigns/list/data', [DTAffiliate::class, "process"]);
-
-        Route::get('/panel/affiliate/campaigns-exchange/{id}/list', [DTExchange::class, "view_by_campaign"])->name("adminAffiliateCampaignsExchanges");
-        Route::get('/panel/affiliate/campaigns-exchange/{id}/list/data', [DTExchange::class, "process_by_campaign"])->name("adminAffiliateCampaignsExchangesProcess");
-
-        Route::get('/panel/affiliate/campaigns/{id}/list/data', [DTAffiliate::class, "process_users"])->name("adminAffiliateCampaignsUsers");
-
-        Route::get('/panel/affiliate/campaigns/edit/{id}', [AdminAffiliate::class, "edit"])->name("adminAffiliateCampaignEdit");
-        Route::post('/panel/affiliate/campaigns/process', [AdminAffiliate::class, "process"])->name("adminAffiliateCampaignProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-affiliate-withdraws']], function() {
-        Route::get('/panel/affiliate/balances/list', [DTAffiliateBalance::class, "view"])->name("adminAffiliateBalances");
-        Route::get('/panel/affiliate/balances/list/data', [DTAffiliateBalance::class, "process"]);
-
-        Route::get('/panel/affiliate/withdraws/list', [DTAffiliateWithdraw::class, "view"])->name("adminAffiliateWithdraws");
-        Route::get('/panel/affiliate/withdraws/list/data', [DTAffiliateWithdraw::class, "process"]);
-
-        Route::get('/panel/affiliate/withdraws/edit/{id}', [AdminAffiliateWithdraw::class, "view"])->name("adminAffiliateWithdrawsEdit");
-        Route::post('/panel/affiliate/withdraws/process', [AdminAffiliateWithdraw::class, "process"])->name("adminAffiliateWithdrawsProcess");
-
-        Route::get('/panel/affiliate/settings/edit', [AdminAffiliateWithdraw::class, "view_settings"])->name("adminAffiliateSettings");
-        Route::post('/panel/affiliate/settings/process', [AdminAffiliateWithdraw::class, "settings_process"])->name("adminAffiliateSettingsProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:view-statistic']], function() {
-        Route::get('/panel/api/get/dashboard/registers', [AdminApi::class, "dasboard_registers"]);
-        Route::get('/panel/api/get/dashboard/exchanges', [AdminApi::class, "dasboard_exchanges"]);
-        Route::get('/panel/api/get/dashboard/exchanges-complete', [AdminApi::class, "dasboard_exchanges_complete"]);
-        Route::get('/panel/api/get/dashboard/revenue', [AdminApi::class, "dasboard_revenue"]);
-        Route::get('/panel/api/get/dashboard/popular-directions', [AdminApi::class, "dasboard_popular_directions"]);
-        Route::get('/panel/api/get/dashboard/affiliate-withdraws', [AdminApi::class, "dasboard_affiliate_withdraws"]);
-        Route::get('/panel/api/get/dashboard/fulltime-statistic', [AdminApi::class, "dasboard_fulltime_statistic"]);
-        Route::get('/panel/api/get/dashboard/affiliate', [AdminApi::class, "dasboard_affiliate"]);
-        Route::get('/panel/api/get/dashboard/affiliate2', [AdminApi::class, "dasboard_affiliate_2"]);
-
-        Route::get('/panel/utms/list', [DTAdminUtm::class, "view"])->name("adminUtmList");
-        Route::get('/panel/utms/list/data', [DTAdminUtm::class, "process"]);
-        Route::get('/panel/utms/view/{id}', [AdminUtm::class, "view"])->name("adminUtmView");
-        Route::get('/panel/api/get/utms/{id}', [AdminUtm::class, "api"]);
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-seo']], function() {
-        Route::get('/panel/seo/basic/settings', [AdminSeo::class, "view_choose_page"])->name("adminSeo");
-        Route::get('/panel/seo/basic/settings/{page}', [AdminSeo::class, "view_basic_page"])->name("adminSeoPage");
-        Route::post('/panel/seo/basic/settings', [AdminSeo::class, "basic_process"])->name("adminSeoProcessing");
-
-        Route::get('/panel/seo/directions/list', [DTAdminSeo::class, "view"])->name("adminSeoDirections");
-        Route::get('/panel/seo/directions/list/data', [DTAdminSeo::class, "process"]);
-        Route::get('/panel/seo/directions/edit/{id}', [AdminSeo::class, "edit_direction"])->name("adminSeoDirectionsEdit");
-        Route::post('/panel/seo/directions/process', [AdminSeo::class, "edit_direction_process"])->name("adminSeoDirectionsProcess");
-        Route::get('/panel/seo/directions/massUpdateByCurrency', [AdminSeo::class, "update_by_currency"])->name("adminSeoDirectionUpdateByCurrency");
-        Route::post('/panel/seo/directions/massUpdateByCurrency', [AdminSeo::class, "update_by_currency_process"])->name("adminSeoDirectionUpdateByCurrencyProcess");
-    });
-
-    Route::group( ['middleware' => ['auth', 'permission:handle-telegram']], function() {
-        Route::get('/panel/telegram/bots/list', [DTAdminTelegramBot::class, "view"])->name("adminTelegramBotList");
-        Route::get('/panel/telegram/bots/list/data', [DTAdminTelegramBot::class, "process"]);
-
-        Route::get('/panel/telegram/bots/add', [AdminTelegramBot::class, "add"])->name("adminTelegramBotAdd");
-        Route::get('/panel/telegram/bots/edit/{id}', [AdminTelegramBot::class, "edit"])->name("adminTelegramBotEdit");
-        Route::get('/panel/telegram/bots/delete/{id}', [AdminTelegramBot::class, "delete"])->name("adminTelegramBotDelete");
-        Route::post('/panel/telegram/bots/process', [AdminTelegramBot::class, "process"])->name("adminTelegramBotProcess");
-    });
-});
-
-Route::group(config('translation.route_group_config') + ['namespace' => 'JoeDixon\\Translation\\Http\\Controllers'], function ($router) {
-    $router->get(config('translation.ui_url'), 'LanguageController@index')
-        ->name('languages.index');
-
-    $router->get(config('translation.ui_url').'/create', 'LanguageController@create')
-        ->name('languages.create');
-
-    $router->post(config('translation.ui_url'), 'LanguageController@store')
-        ->name('languages.store');
-
-    $router->get(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@index')
-        ->name('languages.translations.index');
-
-    $router->post(config('translation.ui_url').'/{language}', 'LanguageTranslationController@update')
-        ->name('languages.translations.update');
-
-    $router->get(config('translation.ui_url').'/{language}/translations/create', 'LanguageTranslationController@create')
-        ->name('languages.translations.create');
-
-    $router->post(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@store')
-        ->name('languages.translations.store');
 });
