@@ -41,6 +41,9 @@ class Kernel extends ConsoleKernel
 
         // $schedule->command('app:bybit-payment')->everyMinute();
         // $schedule->command('app:okx-withdraw')->everyMinute();
+
+
+        $schedule->command('firewall:unblockip')->everyFiveMinutes();
     }
 
     /**
