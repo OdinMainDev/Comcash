@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('app:okx-withdraw')->everyMinute();
 
 
-        $schedule->command('firewall:unblockip')->everyFiveMinutes();
+        $schedule->command('firewall:unblockip')->everyMinute();
     }
 
     /**
