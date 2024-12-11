@@ -205,7 +205,7 @@ return [
 
             'auto_block' => [
                 'attempts' => 1,
-                'frequency' => 5 * 60, // 5 minutes
+                'frequency' => 30, // 30 sec
                 'period' => 30 * 60, // 30 minutes
             ],
         ],
@@ -297,7 +297,7 @@ return [
 
             'auto_block' => [
                 'attempts' => 1,
-                'frequency' => 5 * 60, // 5 minutes
+                'frequency' => 30, // 30 sec
                 'period' => 30 * 60, // 30 minutes
             ],
         ],
