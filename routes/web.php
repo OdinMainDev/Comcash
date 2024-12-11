@@ -101,7 +101,7 @@ Route::group(['middleware' => 'firewall.all'], function () {
         Route::get('/comcash-knowledgebase/news/read/{id}', [KnowledgeBase::class, "news_item"])->name("comcashNewsItem");
         Route::get('/comcash-knowledgebase/blog/read/{id}', [KnowledgeBase::class, "blog_item"])->name("comcashBlogItem");
         Route::post('/comcash-knowledgebase/support', [KnowledgeBase::class, "support"])->name("comcashSupport");
-        Route::post('/comcash-knowledgebase/cleaning', [KnowledgeBase::class, "cleaning"])->name("comcashSupport");
+        Route::post('/comcash-knowledgebase/cleaning', [KnowledgeBase::class, "cleaning"])->name("comcashCleaning");
         Route::post('/exchange/kyc', [Kyc::class, "process"])->name("exchgangeKyc");
         Route::get('/exchange/kyc/status/{id}', [Kyc::class, "status"]);
         Route::get('/kyc/approve/adm/{hash}', [Kyc::class, "check_by_admin"])->name("exchgangeAdminKyc");
