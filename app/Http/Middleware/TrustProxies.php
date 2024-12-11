@@ -25,4 +25,13 @@ class TrustProxies extends Middleware
         Request::HEADER_X_FORWARDED_PORT |
         Request::HEADER_X_FORWARDED_PROTO |
         Request::HEADER_X_FORWARDED_AWS_ELB;
+
+    public function handle($request, \Closure $next)
+    {
+        if ($request->headers->has('DDG-Connecting-IP')) {
+            $request->server->set('REMOTE_ADDR', $request->headers->get('DDG-Connecting-IP'));
+        }
+
+        return parent::handle($request, $next);
+    }
 }
