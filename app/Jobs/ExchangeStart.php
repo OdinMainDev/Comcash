@@ -110,8 +110,8 @@ class ExchangeStart implements ShouldQueue
         $this->exchange->save();
 
         // переделать на другое мыло и сверстать их вообще
-        // if($this->user->email[0] != "@")
-        //     Mail::to($this->user->email)->send(new ExchangeCreate($this->user->id, $this->user->email, $this->exchange));
+        if($this->user->email[0] != "@")
+            Mail::to($this->user->email)->send(new ExchangeCreate($this->user->id, $this->user->email, $this->exchange));
 
 
         $isTelegramBotExchange = false;
