@@ -105,12 +105,12 @@
                       </li>
                       @if($fromReqs != "")
                           <li>
-                            {{__("emails.exchange_create_text_9")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$fromReqs}} {{$currencyFrom}}</strong>
+                            {{__("emails.exchange_create_text_9")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$fromReqs}}</strong>
                           </li>
                       @endif
                       @if($toReqs != "")
                           <li>
-                            {{__("emails.exchange_create_text_10")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$toReqs}} {{$currencyTo}}</strong>
+                            {{__("emails.exchange_create_text_10")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$toReqs}}</strong>
                           </li>
                       @endif
                     </ul>
