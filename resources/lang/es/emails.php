@@ -1,4 +1,6 @@
 <?php return array (
+  'exchange_create_text_9' => 'Requisitos para el envío',
+  'exchange_create_text_10' => 'Requisitos de recepción',
   'subject_register' => 'Gracias por inscribirse',
   'your_password' => 'Tu contraseña:',
   'register_text_1' => 'Confirme',

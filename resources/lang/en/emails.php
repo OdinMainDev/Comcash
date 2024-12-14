@@ -1,4 +1,6 @@
 <?php return array (
+  'exchange_create_text_9' => 'Requisites for sending',
+  'exchange_create_text_10' => 'Receipt requisites',
   'exchange_complete_text_3' => 'Direction of exchange',
   'exchange_complete_text_4' => 'Dispatch amount',
   'exchange_complete_text_5' => 'Receipt amount',

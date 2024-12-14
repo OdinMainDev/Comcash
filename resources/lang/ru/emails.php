@@ -30,6 +30,8 @@ return [
     "exchange_create_text_6" => "Спасибо что воспользовались нашим сервисом! Вы можете перейти к заявке нажав на кнопку ниже",
     "exchange_create_text_7" => "Перейти к заявке",
     "exchange_create_text_8" => "Если кнопка не активна то скопируйте ссылку ниже",
+    "exchange_create_text_9" => "Реквизиты для отправки",
+    "exchange_create_text_10" => "Реквизиты для получения",
     "subject_exchange_complete" => "Обмен успешно завершен!",
     "exchange_complete_text_1" => "Заявка на обмен",
     "exchange_complete_text_2" => "заврешена!",

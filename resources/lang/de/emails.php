@@ -1,4 +1,6 @@
 <?php return array (
+  'exchange_create_text_9' => 'Voraussetzungen für die Übermittlung',
+  'exchange_create_text_10' => 'Empfangsvoraussetzungen',
   'subject_register' => 'Vielen Dank für Ihre Anmeldung',
   'your_password' => 'Ihr Passwort:',
   'register_text_1' => 'Bestätigen Sie',

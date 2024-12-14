@@ -1,4 +1,6 @@
 <?php return array (
+  'exchange_create_text_9' => 'Conditions d\'envoi',
+  'exchange_create_text_10' => 'Exigences de réception',
   'subject_register' => 'Merci de vous inscrire',
   'your_password' => 'Votre mot de passe :',
   'register_text_1' => 'Confirmer',
