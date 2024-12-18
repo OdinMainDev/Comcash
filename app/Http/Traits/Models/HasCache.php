@@ -257,6 +257,9 @@ trait HasCache {
         if(in_array($currency, ["CARDUSD", "CASHUSD"])){
             $currency = "USD";
         }
+        if(in_array($currency, ["CASHEUR"])){
+            $currency = "EUR";
+        }
 
        return $currency;
     }

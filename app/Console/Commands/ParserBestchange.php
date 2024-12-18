@@ -30,7 +30,7 @@ class ParserBestchange extends Command
                 return;
             }
 
-            $request_currency = ["USD", "USDT", "RUB"];
+            $request_currency = ["USD", "USDT", "RUB", "EUR"];
             foreach($currencies as $currency){
                 $name = $currency->name;
                 if(in_array($name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB", "SBPRUB", "ACCRUB"])){
@@ -44,6 +44,9 @@ class ParserBestchange extends Command
                 }
                 if(in_array($name, ["CARDUSD", "CASHUSD"])){
                     $name = "USD";
+                }
+                if(in_array($name, ["CASHEUR"])){
+                    $name = "EUR";
                 }
                 if(!in_array($name, $request_currency))
                     $request_currency[] = $name;
