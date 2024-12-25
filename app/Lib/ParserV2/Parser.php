@@ -28,14 +28,24 @@ class Parser {
             sendTelegramNotification("Error on parse rates...", 4);
             return;
         }
-        $rubPrice = $this->getRubPriceGarantex();
+        $rubPrice = $this->getPriceGarantex("rub");
         if(!$rubPrice){
             sendTelegramNotification("Failed to fetch RUB price...", 4);
             return;
         }
+        $eurPrice = $this->getPriceGarantex("eur");
+        if(!$eurPrice){
+            sendTelegramNotification("Failed to fetch EUR price...", 4);
+            return;
+        }
         $response = $this->addRubValues($response, $rubPrice); 
-        $response = $this->completeCurrencyPairs($response, $rubPrice); 
+        $response = $this->addEurValues($response, $eurPrice); 
+        $response = $this->completeCurrencyPairs($response, $rubPrice, $eurPrice); 
         $response = $this->addRubOppositeConversion($response);
+        $response = $this->addEurOppositeConversion($response);
+
+
+        dd($response);
         return $response;
     }
 
@@ -131,7 +141,7 @@ class Parser {
         return (float)$data['askPrice'];
     }
 
-    private function getRubPriceGarantex() {
+    private function getPriceGarantex($currency) {
         // $url = 'https://garantex.org/api/v2/k?market=usdtrub';
         // response: 
         // [
@@ -140,7 +150,7 @@ class Parser {
         // ]
 
         
-        $url = $this->parserConfig["garantex_api"] . "api/v2/k?market=usdtrub";
+        $url = $this->parserConfig["garantex_api"] . "api/v2/k?market=usdt".$currency;
         $response = $this->doRequest($url);
         if (!$response) {
             sleep(1);
@@ -227,7 +237,21 @@ class Parser {
         return $response;
     }
 
-    private function completeCurrencyPairs($response, $rubPrice) {
+    private function addEurValues($response, $eurPrice) {
+        foreach ($response as $baseCurrency => $pairs) {
+            if(!isset($pairs['USDT'])){
+                continue;
+            }
+            $usdtRate = $pairs['USDT'];
+            // Calculate RUB value based on USDT rate and rub_price
+            $eurValue = $usdtRate * $eurPrice;
+            $pairs['EUR'] = $eurValue;
+            $response[$baseCurrency] = $pairs;
+        }
+        return $response;
+    }
+
+    private function completeCurrencyPairs($response, $rubPrice, $eurPrice) {
         foreach ($this->currencies as $currency) {
             if (!isset($response[$currency]) || isset($response[$currency]['USDT'])) {
                 continue;
@@ -241,6 +265,7 @@ class Parser {
         }
     
         $response['USDT']['RUB'] = $rubPrice;
+        $response['USDT']['EUR'] = $eurPrice;
         foreach ($response as $base => &$pairs) {
             foreach ($this->currencies as $targetCurrency) {
                 if (isset($pairs[$targetCurrency])) {
@@ -280,6 +305,33 @@ class Parser {
     
         // Now merge the rubConversions into kucoinData
         $response['RUB'] = $rubConversions;
+
+        return $response;
+    }
+
+    private function addEurOppositeConversion($response) {
+        // Create a separate array for EUR conversions
+        $eurConversions = array();
+    
+        // Iterate over all currencies in kucoinData
+        foreach ($response as $currency => $pairs) {
+            // Find the EUR conversion rate for the currency
+            if (array_key_exists('EUR', $pairs)) {
+                $eurToCurrencyRate = $pairs['EUR'];
+    
+                // The opposite conversion rate is 1 divided by the EUR to currency rate
+                $eurOppositeRate = 1 / $eurToCurrencyRate;
+    
+                // Add this rate to the eurConversions array
+                $eurConversions[$currency] = $eurOppositeRate;
+            }
+        }
+    
+        // Ensure EUR to EUR conversion is 1
+        $eurConversions['EUR'] = 1;
+    
+        // Now merge the eurConversions into kucoinData
+        $response['EUR'] = $eurConversions;
 
         return $response;
     }
