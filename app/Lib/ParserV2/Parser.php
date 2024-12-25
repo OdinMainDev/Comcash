@@ -208,6 +208,8 @@ class Parser {
             $curl_options[$k] = $v;
         }
         
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt_array($ch, $curl_options);
         $response = curl_exec($ch);
         $err = curl_error($ch);
