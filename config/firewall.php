@@ -36,7 +36,7 @@ return [
     'notifications' => [
 
         'mail' => [
-            'enabled' => env('FIREWALL_EMAIL_ENABLED', true),
+            'enabled' => env('FIREWALL_EMAIL_ENABLED', false),
             'name' => env('FIREWALL_EMAIL_NAME', 'EXCHANGER FIREWALL '.env("APP_NAME", "")),
             'from' => env('FIREWALL_EMAIL_FROM', env('MAIL_USERNAME')),
             'to' => env('FIREWALL_EMAIL_TO', 'alexey.ovchinnikov1989@gmail.com'),
@@ -204,7 +204,7 @@ return [
             ],
 
             'auto_block' => [
-                'attempts' => 1,
+                'attempts' => 3,
                 'frequency' => 30, // 30 sec
                 'period' => 30, // 30 sec
             ],
@@ -296,7 +296,7 @@ return [
             'exceptions' => [],
 
             'auto_block' => [
-                'attempts' => 1,
+                'attempts' => 3,
                 'frequency' => 30, // 30 sec
                 'period' => 30, // 30 sec
             ],
