@@ -23,6 +23,7 @@ class Parser {
     }
 
     public function handle(){
+        // $startTime = microtime(true);
         $response = $this->getKucoinData();
         if(!$response){
             sendTelegramNotification("Error on parse rates...", 4);
@@ -38,12 +39,17 @@ class Parser {
             sendTelegramNotification("Failed to fetch EUR price...", 4);
             return;
         }
-        $response = $this->addRubValues($response, $rubPrice); 
+
+        $response = $this->addRubValues($response, $rubPrice);
         $response = $this->addEurValues($response, $eurPrice); 
         $response = $this->completeCurrencyPairs($response, $rubPrice, $eurPrice); 
         $response = $this->addRubOppositeConversion($response);
         $response = $this->addEurOppositeConversion($response);
 
+
+        // $endTime = microtime(true);
+        // $executionTime = $endTime - $startTime;
+        // dd("Время выполнения скрипта: " . round($executionTime, 4) . " секунд.");
 
         return $response;
     }
@@ -181,13 +187,8 @@ class Parser {
         $options = array(
             CURLOPT_TIMEOUT => 5,
             CURLOPT_CONNECTTIMEOUT => 5,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_MAXREDIRS => 2,
-            CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1_2,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_SSL_VERIFYHOST => 0,
-            CURLOPT_AUTOREFERER => true,
             CURLOPT_HEADER => false,
             CURLOPT_HTTPHEADER => array(
                 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4',
@@ -230,7 +231,7 @@ class Parser {
                 continue;
             }
             $usdtRate = $pairs['USDT'];
-            // Calculate RUB value based on USDT rate and rub_price
+            // Calculate RUB value based on USDT rate and rubPrice
             $rubValue = $usdtRate * $rubPrice;
             $pairs['RUB'] = $rubValue;
             $response[$baseCurrency] = $pairs;
@@ -244,7 +245,7 @@ class Parser {
                 continue;
             }
             $usdtRate = $pairs['USDT'];
-            // Calculate RUB value based on USDT rate and rub_price
+            // Calculate EUR value based on USDT rate and eurPrice
             $eurValue = $usdtRate * $eurPrice;
             $pairs['EUR'] = $eurValue;
             $response[$baseCurrency] = $pairs;
