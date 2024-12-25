@@ -45,7 +45,6 @@ class Parser {
         $response = $this->addEurOppositeConversion($response);
 
 
-        dd($response);
         return $response;
     }
 
