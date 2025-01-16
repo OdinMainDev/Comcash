@@ -339,6 +339,10 @@
                         https://leetforums.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.16775/
                     </a>
 
+                    <a class="reviews__links-item" href="https://carders.us/threads/comcash-io-anonymous-cryptocurrency-exchanger-without-kyc-and-aml.131/">
+                        https://carders.us/threads/comcash-io-anonymous-cryptocurrency-exchanger-without-kyc-and-aml.131/
+                    </a>
+
                 </div>
 
             </div>
