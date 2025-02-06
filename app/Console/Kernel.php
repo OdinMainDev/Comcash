@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         if(!env("RATE_PARSER_BESTCHANGE", true)){
-            $schedule->command('app:rates-parser')->everyThirtySeconds();
+            $schedule->command('app:rates-parser')->everyMinute();
         }else{
             $schedule->command('app:parser-bestchange')->everyMinute();
         }
