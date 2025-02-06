@@ -272,7 +272,7 @@ trait ExchangePage {
                 }
             }
         }
-        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyFrom->units, $amountFrom, $direction->profit_percent);
+        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyTo->units, $amountFrom, $direction->profit_percent);
         if(!$amountTo) {
             return false;
         }
@@ -292,7 +292,6 @@ trait ExchangePage {
                 "user_agent" => "telegram",
                 "language" => $this->user->language,
                 "fid" => "",
-
             ],
             "amount_data" => [
                 "amount_send" => $amountFrom,
