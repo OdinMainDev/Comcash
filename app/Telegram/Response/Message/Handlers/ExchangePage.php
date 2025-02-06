@@ -24,6 +24,7 @@ trait ExchangePage {
         if($isReverse){
             $units = $direction->currencyFrom->units;
         }
+        $units = 8;
 
         $amount = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $textAmount, $direction->profit_percent, $isReverse);
         if(!$amount) {
