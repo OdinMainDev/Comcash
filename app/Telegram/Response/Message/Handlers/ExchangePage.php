@@ -20,11 +20,10 @@ trait ExchangePage {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_2");
         }
         $isReverse = $this->user->action == config("app.telegram_actions")['exchangeSumTo'];
-        $units = $direction->currencyTo->units;
+        $units = $direction->currencyFrom->units;
         if($isReverse){
-            $units = $direction->currencyFrom->units;
+            $units = $direction->currencyTo->units;
         }
-        $units = 8;
 
         $amount = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $textAmount, $direction->profit_percent, $isReverse);
         if(!$amount) {
@@ -127,7 +126,7 @@ trait ExchangePage {
                 }
             }
         }
-        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyFrom->units, $amountFrom, $direction->profit_percent);
+        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyTo->units, $amountFrom, $direction->profit_percent);
         if(!$amountTo) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_1");
         }
