@@ -29,12 +29,13 @@ class Parser {
             sendTelegramNotification("Error on parse rates...", 4);
             return;
         }
-        $rubPrice = $this->getPriceGarantex("rub");
+        $rubPrice = $this->getPriceCbr("usd");
+        // dd($rubPrice);
         if(!$rubPrice){
             sendTelegramNotification("Failed to fetch RUB price...", 4);
             return;
         }
-        $eurPrice = $this->getPriceGarantex("eur");
+        $eurPrice = $this->getPriceCbr("eur");
         if(!$eurPrice){
             sendTelegramNotification("Failed to fetch EUR price...", 4);
             return;
@@ -45,7 +46,6 @@ class Parser {
         $response = $this->completeCurrencyPairs($response, $rubPrice, $eurPrice); 
         $response = $this->addRubOppositeConversion($response);
         $response = $this->addEurOppositeConversion($response);
-
 
         // $endTime = microtime(true);
         // $executionTime = $endTime - $startTime;
@@ -337,4 +337,49 @@ class Parser {
 
         return $response;
     }
+
+    private function getPriceCbr($currency) {
+        // URL для получения XML с курсами валют Центробанка
+        $url = "https://www.cbr.ru/scripts/XML_daily.asp";
+        $response = $this->doRequest($url);
+        
+        if (!$response) {
+            sleep(1);
+            $response = $this->doRequest($url);
+        }
+    
+        if (!$response) {
+            info("CBR ERROR");
+            info($url);
+            info($response);
+            sendTelegramNotification("Error fetching data from CBR: url: " . $url, 4);
+            return false;
+        }
+        
+        // Преобразуем XML-ответ в объект SimpleXMLElement
+        $xml = simplexml_load_string($response);
+        if (!$xml) {
+            sendTelegramNotification("Error parsing XML from CBR: url: " . $url, 4);
+            return false;
+        }
+        
+        $rate = false;
+        // Ищем нужную валюту по символьному коду
+        foreach ($xml->Valute as $valute) {
+            if (strtoupper((string)$valute->CharCode) === strtoupper($currency)) {
+                // Значение курса может быть записано с запятой, заменяем на точку
+                $value = str_replace(',', '.', (string)$valute->Value);
+                $rate = (float)$value;
+                break;
+            }
+        }
+        
+        if ($rate === false) {
+            sendTelegramNotification("Error: Валюта {$currency} не найдена в данных ЦБ: url: " . $url, 4);
+            return false;
+        }
+        
+        return $rate;
+    }
+    
 }
