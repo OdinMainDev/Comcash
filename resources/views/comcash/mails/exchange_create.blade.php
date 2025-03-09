@@ -103,7 +103,7 @@
                       <li>
                         {{__("emails.exchange_create_text_5")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$amountTo}} {{$currencyTo}}</strong>
                       </li>
-                      @if($fromReqs != "")
+                      @if(isset($fromReqs) && $fromReqs != "")
                           <li>
                             {{__("emails.exchange_create_text_9")}} <strong style="color: #009c74; font-weight: 500; font-size: 18px;">{{$fromReqs}}</strong>
                           </li>
