@@ -9,6 +9,7 @@ class Parser {
     private $parserConfig = [];
     private $excluded_currencies = [];
     private $included_currencies = [];
+    private $cbrResponse = "";
 
 
     public function __construct($currencies = false, $excluded_currencies = [], $included_currencies = []) {
@@ -339,6 +340,9 @@ class Parser {
     }
 
     private function getPriceCbr($currency) {
+        if($this->cbrResponse != ""){
+            return $this->getPriceCbrByCurrency($currency);
+        }
         // URL для получения XML с курсами валют Центробанка
         $url = "https://www.cbr.ru/scripts/XML_daily.asp";
         $response = $this->doRequest($url);
@@ -356,13 +360,18 @@ class Parser {
             return false;
         }
         
+        $this->cbrResponse = $response;
+        return $this->getPriceCbrByCurrency($currency);
+    }
+    
+    private function getPriceCbrByCurrency($currency) {
         // Преобразуем XML-ответ в объект SimpleXMLElement
-        $xml = simplexml_load_string($response);
+        $xml = simplexml_load_string($this->cbrResponse);
         if (!$xml) {
-            sendTelegramNotification("Error parsing XML from CBR: url: " . $url, 4);
+            sendTelegramNotification("Error parsing XML from CBR", 4);
             return false;
         }
-        
+
         $rate = false;
         // Ищем нужную валюту по символьному коду
         foreach ($xml->Valute as $valute) {
@@ -373,12 +382,12 @@ class Parser {
                 break;
             }
         }
-        
+
         if ($rate === false) {
-            sendTelegramNotification("Error: Валюта {$currency} не найдена в данных ЦБ: url: " . $url, 4);
+            sendTelegramNotification("Error: Валюта {$currency} не найдена в данных ЦБ ", 4);
             return false;
         }
-        
+
         return $rate;
     }
     
