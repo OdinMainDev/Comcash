@@ -30,7 +30,7 @@ class Parser {
             sendTelegramNotification("Error on parse rates...", 4);
             return;
         }
-        $rubPrice = $this->getPriceCbr("usd");
+        $rubPrice = $this->getRubPriceRapira();
         // dd($rubPrice);
         if(!$rubPrice){
             sendTelegramNotification("Failed to fetch RUB price...", 4);
@@ -52,6 +52,7 @@ class Parser {
         // $executionTime = $endTime - $startTime;
         // dd("Время выполнения скрипта: " . round($executionTime, 4) . " секунд.");
 
+        // dd($response);
         return $response;
     }
 
@@ -389,6 +390,65 @@ class Parser {
         }
 
         return $rate;
+    }
+
+    private function getRubPriceRapira() {
+        // $url = 'https://api.rapira.net/market/symbol-thumb';
+        // response: 
+        // [{
+        //     "symbol": "USDT/RUB",
+        //     "open": 86.40000000,
+        //     "high": 88.17000000,
+        //     "low": 86.14000000,
+        //     "close": 87.89000000,
+        //     "chg": 0.01729742,
+        //     "change": 1.49000000,
+        //     "volume": 7403275.54398613,
+        //     "turnover": 3756601831.3774809245000000,
+        //     "fee": 0.0000,
+        //     "lastDayClose": 86.30000000,
+        //     "usdRate": 1,
+        //     "baseUsdRate": 0.01137785,
+        //     "zone": 0,
+        //     "baseCoinScale": 2,
+        //     "coinScale": 2,
+        //     "quoteCurrencyName": "Tether",
+        //     "baseCurrency": "RUB",
+        //     "quoteCurrency": "USDT",
+        //     "dailyPriceChangePercent": -1.72453700
+        // }]
+        
+        $url = "https://api.rapira.net/market/symbol-thumb";
+        $response = $this->doRequest($url);
+        // if (!$response) {
+        //     sleep(1);
+        //     $response = $this->doRequest($url);
+        // }
+
+        if (!$response) {
+            sendTelegramNotification("Error fetching data from Commex: url: ".$url, 4);
+            return [];
+        }
+        $data = json_decode($response, true);
+        foreach ($data as $item) {
+            if($item["symbol"] != "USDT/RUB") {
+                continue;
+            }
+            if(isset($item["high"])) {
+                return $item["high"];
+            }
+            if(isset($item["close"])) {
+                return $item["close"];
+            }
+            if(isset($item["open"])) {
+                return $item["open"];
+            }
+            if(isset($item["close"])) {
+                return $item["close"];
+            }
+            return false;
+        }
+        return false;
     }
     
 }
