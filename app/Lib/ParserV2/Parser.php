@@ -52,7 +52,7 @@ class Parser {
         // $executionTime = $endTime - $startTime;
         // dd("Время выполнения скрипта: " . round($executionTime, 4) . " секунд.");
 
-        dd($response);
+        // dd($response);
         return $response;
     }
 
