@@ -36,7 +36,7 @@ class Parser {
             sendTelegramNotification("Failed to fetch RUB price...", 4);
             return;
         }
-        $eurPrice = $this->getPriceCbr("eur");
+        $eurPrice = $this->getEurPrice($response);
         if(!$eurPrice){
             sendTelegramNotification("Failed to fetch EUR price...", 4);
             return;
@@ -52,7 +52,7 @@ class Parser {
         // $executionTime = $endTime - $startTime;
         // dd("Время выполнения скрипта: " . round($executionTime, 4) . " секунд.");
 
-        // dd($response);
+        dd($response);
         return $response;
     }
 
@@ -117,6 +117,9 @@ class Parser {
         }
         if (!isset($formattedData['USD'])) {
             $formattedData['USD'] = ['USDT' => 1.0];
+        }
+        if (!isset($formattedData['EUR']) && isset($formattedData['USDT']['EUR'])) {
+            $formattedData['USD']['EUR'] = $formattedData['USDT']['EUR'];
         }
     
         return $formattedData;
@@ -451,4 +454,10 @@ class Parser {
         return false;
     }
     
+    private function getEurPrice($response) {
+        if(isset($response["USD"]["EUR"])) {
+            return $response["USD"]["EUR"];
+        }
+        return $this->getPriceCbr("eur");
+    }
 }
