@@ -149,6 +149,9 @@
 							<li class="nav-item">
 								<a href="{{route("adminUserList")}}" class="nav-link">{{__("menu.list")}}</a>
 							</li>
+							<li class="nav-item">
+								<a href="{{route("adminUserCreate")}}" class="nav-link">{{__("menu.add")}}</a>
+							</li>
 						</ul>
 					</div>
 				</li>
