@@ -15,6 +15,29 @@ class Controller_User extends Controller{
     
     use HasImage;
 
+    public function create() {
+        return view("admin.pages.user.create");
+    }
+
+    public function create_process(Request $request){
+        $request->validate([
+            "email" => "required|string|max:255",
+            "password" => "required|string|max:255",
+            "repassword" => "required|string|max:255|same:password",
+        ]);
+
+        $model = User::where("email", $request->email)->first();
+        if($model){
+            return $this->responseErrorValidation(["email" => __("common.data_fail")]);
+        }
+        
+        $model = new User;
+        $model->email = $request->email;
+        $model->password = Hash::make($request->password);
+        $model->save();
+        return $this->responseSuccess();
+    }
+
     public function edit($lang, $id) {
         if(!is_numeric($id))
             return abort(404);
