@@ -93,6 +93,7 @@ class Install extends Command
             "handle-blog",
             "handle-feedback",
             "handle-exchanges",
+            "handle-exchanges-data",
             "handle-exchanger",
             "handle-users",
             "handle-user-role",

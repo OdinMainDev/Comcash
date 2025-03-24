@@ -221,7 +221,6 @@ Route::group(['middleware' => 'firewall.all'], function () {
             
 
             Route::get('/panel/exchanges/edit/{id}', [AdminExchange::class, "edit"])->name("adminExchangeEdit");
-            Route::post('/panel/exchanges/edit', [AdminExchange::class, "process"])->name("adminExchangeEditPost");
             Route::get('/panel/exchanges/edit/rewithdraw/{id}', [AdminExchange::class, "rewithdraw"])->name("adminExchangeRewithdraw");
             Route::get('/panel/exchanges/edit/setwithdraw/{id}', [AdminExchange::class, "set_withdraw"])->name("adminExchangeSetWithdraw");
             Route::get('/panel/exchanges/edit/setcompletewithdraw/{id}', [AdminExchange::class, "set_withdraw_complete"])->name("adminExchangeSetWithdrawComplete");
@@ -231,6 +230,10 @@ Route::group(['middleware' => 'firewall.all'], function () {
             Route::get('/panel/exchanges/edit/setcreated/{id}', [AdminExchange::class, "set_created"])->name("adminExchangeSetCreated");
 
             Route::get('/panel/exchanges/setclosedall', [AdminExchange::class, "set_closed_all"])->name("adminExchangeSetClosedAll");
+        });
+
+        Route::group( ['middleware' => ['auth', 'permission:handle-exchanges-data']], function() {
+            Route::post('/panel/exchanges/edit', [AdminExchange::class, "process"])->name("adminExchangeEditPost");
         });
 
         Route::group( ['middleware' => ['auth', 'permission:handle-exchanger|handle-seo']], function() {
