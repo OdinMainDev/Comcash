@@ -225,9 +225,10 @@ class ExchangeStart implements ShouldQueue
         
         $resp = sendTelegramNotification($text);
         if($resp) {
-            if(isset($resp['ok']) && $resp['ok']){
+            $resp = json_decode($resp, true);
+            if($resp && isset($resp['ok']) && $resp['ok']){
                 if(isset($resp['result'])){
-                    $message_id = $resp['message_id'];
+                    $message_id = $resp['result']['message_id'];
                     sendTelegramPinMessage($message_id);
                 }
             }
