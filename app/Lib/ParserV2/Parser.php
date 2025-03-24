@@ -429,10 +429,15 @@ class Parser {
         // }
 
         if (!$response) {
-            sendTelegramNotification("Error fetching data from Commex: url: ".$url, 4);
+            sendTelegramNotification("Error fetching data from Rapira: url: ".$url, 4);
             return [];
         }
         $data = json_decode($response, true);
+        if(!is_array($data)){
+            sendTelegramNotification("BAD RESPONSE FROM RAPIRA: url: ".$response, 0);
+            return [];
+        }
+
         foreach ($data as $item) {
             if($item["symbol"] != "USDT/RUB") {
                 continue;

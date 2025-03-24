@@ -223,7 +223,15 @@ class ExchangeStart implements ShouldQueue
             }
         }
         
-        sendTelegramNotification($text);
+        $resp = sendTelegramNotification($text);
+        if($resp) {
+            if(isset($resp['ok']) && $resp['ok']){
+                if(isset($resp['result'])){
+                    $message_id = $resp['message_id'];
+                    sendTelegramPinMessage($message_id);
+                }
+            }
+        }
 
         if($isTelegramBotExchange){
             if(!isset($this->exchange->data['merchant_from_data']['address']) || !$this->exchange->data['merchant_from_data']['address']){

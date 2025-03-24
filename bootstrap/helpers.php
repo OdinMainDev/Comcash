@@ -99,10 +99,10 @@ function sendTelegramNotification($text, $level = 1){
     if(!$bot_token || !$chat_id){
         logger()->error("TELEGRAM BOT НЕ НАСТРОЕН");
         logger()->error($text);
-        return;
+        return false;
     }
     if(env("NOTIFICATION_LEVEL", 1) < $level){
-        return;
+        return false;
     }
 
     $ch = curl_init('https://api.telegram.org/bot' . $bot_token . '/sendMessage');
@@ -114,8 +114,31 @@ function sendTelegramNotification($text, $level = 1){
     ));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HEADER, false);
-    curl_exec($ch);
+    $response = curl_exec($ch);
     curl_close($ch);
+    return $response;
+}
+
+
+function sendTelegramPinMessage($message_id){
+    $bot_token = env("TELEGRAM_TOKEN", false);
+    $chat_id = env("TELEGRAM_CHAT_ID", false);
+    if(!$bot_token || !$chat_id){
+        logger()->error("TELEGRAM BOT НЕ НАСТРОЕН");
+        return false;
+    }
+
+    $ch = curl_init('https://api.telegram.org/bot' . $bot_token . '/pinChatMessage');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        'chat_id' => $chat_id,
+        'message_id' => $message_id,
+    ));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
 }
 
 function generateRandomString($length = 12) {
