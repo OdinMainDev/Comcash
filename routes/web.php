@@ -270,7 +270,7 @@ Route::group(['middleware' => 'firewall.all'], function () {
 
 
             Route::get('/panel/users/create', [AdminUser::class, "create"])->name("adminUserCreate");
-            Route::post('/panel/users/create', [AdminUser::class, "create_process"])->name("adminUserCreateProcess");
+            Route::post('/panel/users/create/process', [AdminUser::class, "create_process"])->name("adminUserCreateProcess");
 
             Route::get('/panel/users/export', [AdminUser::class, "export"])->name("adminUserExport");
             Route::get('/panel/users/edit/{id}', [AdminUser::class, "edit"])->name("adminUserEdit");
