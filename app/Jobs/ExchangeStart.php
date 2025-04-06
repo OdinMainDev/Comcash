@@ -36,11 +36,13 @@ class ExchangeStart implements ShouldQueue
     public $user;
     public $exchange_id;
     public $language;
+    public $password;
     public function __construct($exchange_id, $language, $user = null)
     {
         $this->exchange_id = $exchange_id;
         $this->language = $language;
         $this->user = $user;
+        $this->password = generateRandomString();
     }
 
     /**
@@ -248,7 +250,7 @@ class ExchangeStart implements ShouldQueue
             if($this->user->email[0] != "@")
                 Mail::to($this->user->email)->send(new ExchangeCreate($this->user->id, $this->user->email, $this->exchange));
             if($this->user->email[0] != "@" && $isRegistered)
-                Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
+                Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $this->password));
         } catch (TransportException $th) {
             sendTelegramNotification("ОШИБКА ОТПРАВКИ EMAIL ПИСЬМА! ".$this->exchange->id."\n".$th->getMessage());
         }
@@ -261,11 +263,10 @@ class ExchangeStart implements ShouldQueue
            $this->exchange->user_id = $user->id;
            return false; 
         }
-
-        $password = generateRandomString();
+        
         $user = new User;
         $user->email = $user_email;
-        $user->password = Hash::make($password);
+        $user->password = Hash::make($this->password);
         $user->save();
         $this->user = $user;
         $this->exchange->user_id = $user->id;        
