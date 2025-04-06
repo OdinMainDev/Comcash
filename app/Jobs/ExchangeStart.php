@@ -49,6 +49,7 @@ class ExchangeStart implements ShouldQueue
     public function handle(): void
     {
         Lang::setLocale($this->language);
+        $isRegistered = false;
         $this->exchange = Exchange::with("merchantFrom")->where("id", $this->exchange_id)->first();
         if(!$this->exchange){
             return;
@@ -108,11 +109,6 @@ class ExchangeStart implements ShouldQueue
         }
         $this->exchange->data = $data;
         $this->exchange->save();
-
-        // переделать на другое мыло и сверстать их вообще
-        if($this->user->email[0] != "@")
-            Mail::to($this->user->email)->send(new ExchangeCreate($this->user->id, $this->user->email, $this->exchange));
-
 
         $isTelegramBotExchange = false;
         if(isset($this->exchange->data['isTelegramExchange']) && $this->exchange->data['isTelegramExchange']){
@@ -247,6 +243,15 @@ class ExchangeStart implements ShouldQueue
                 sendTelegramBotUserMessage($this->exchange->data['amount_data']['amount_send'], $botUser, $botUser->getBot);
             }
         }
+     // переделать на другое мыло и сверстать их вообще
+        try {
+            if($this->user->email[0] != "@")
+                Mail::to($this->user->email)->send(new ExchangeCreate($this->user->id, $this->user->email, $this->exchange));
+            if($this->user->email[0] != "@" && $isRegistered)
+                Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
+        } catch (TransportException $th) {
+            sendTelegramNotification("ОШИБКА ОТПРАВКИ EMAIL ПИСЬМА! ".$this->exchange->id."\n".$th->getMessage());
+        }
     }
 
     public function checkUser($user_email){
@@ -263,13 +268,7 @@ class ExchangeStart implements ShouldQueue
         $user->password = Hash::make($password);
         $user->save();
         $this->user = $user;
-        $this->exchange->user_id = $user->id;
-        try {
-            Mail::to($this->user->email)->send(new Register($this->user->id, $this->user->email, $password));
-        } catch (TransportException $th) {
-            sendTelegramNotification("ОШИБКА ОТПРАВКИ EMAIL ПИСЬМА! ".$this->exchange->id."\n".$th->getMessage());
-        }
-        
+        $this->exchange->user_id = $user->id;        
         return true;
     }
 
