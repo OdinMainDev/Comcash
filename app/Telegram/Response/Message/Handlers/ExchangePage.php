@@ -27,16 +27,16 @@ trait ExchangePage {
 
         $amount = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $textAmount, $direction->profit_percent, $isReverse);
         if(!$amount) {
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_3");
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "test_er1");
         }
 
         $finalAmount = $isReverse ? $amount : $textAmount;
         if(!$finalAmount) {
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_666");
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "test_er2");
         }
 
         if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $finalAmount){
-            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_4");
+            return $this->exchangeSetAmountErrorMessage($chat_id, $language, "test_er3");
         }
         if(!@$direction->data['max_amount'] || $direction->data['max_amount'] < $finalAmount){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_5");
