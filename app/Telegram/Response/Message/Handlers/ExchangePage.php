@@ -21,7 +21,7 @@ trait ExchangePage {
         }
         $isReverse = $this->user->action == config("app.telegram_actions")['exchangeSumTo'];
         $units = $direction->currencyFrom->units;
-        if($isReverse){
+        if($isReverse && $direction->currencyFrom->units < $direction->currencyTo->units){
             $units = $direction->currencyTo->units;
         }
 
