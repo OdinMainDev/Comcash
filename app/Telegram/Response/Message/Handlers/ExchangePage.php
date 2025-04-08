@@ -35,6 +35,11 @@ trait ExchangePage {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "test_er2");
         }
 
+        info($direction);
+        info($isReverse);
+        info($amount);
+        info($textAmount);
+        info($finalAmount);
         if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $finalAmount){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "test_er3");
         }
