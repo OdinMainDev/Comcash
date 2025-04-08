@@ -21,9 +21,9 @@ trait ExchangePage {
         }
         $isReverse = $this->user->action == config("app.telegram_actions")['exchangeSumTo'];
         $units = $direction->currencyFrom->units;
-        // if($isReverse && $direction->currencyFrom->units < $direction->currencyTo->units){
-        //     $units = $direction->currencyTo->units;
-        // }
+        if($isReverse && $direction->currencyFrom->units < $direction->currencyTo->units){
+            $units = $direction->currencyTo->units;
+        }
 
         $amount = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $textAmount, $direction->profit_percent, $isReverse);
         if(!$amount) {
@@ -31,9 +31,6 @@ trait ExchangePage {
         }
 
         $units = $direction->currencyFrom->units;
-        if($isReverse){
-            $units = $direction->currencyTo->units;
-        }
         $amount = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $textAmount, $direction->profit_percent, $isReverse);
 
         $finalAmount = $isReverse ? $amount : $textAmount;
