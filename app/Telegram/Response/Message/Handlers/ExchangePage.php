@@ -106,8 +106,12 @@ trait ExchangePage {
             $this->user->save();
             return;
         }
-        $this->user->action = 0;
-        $this->user->save();
+
+        // TODO: раскоментить
+        // $this->user->action = 0;
+        // $this->user->save();
+
+
         // это последний заполненный филд
         // выдаем сообщение подтверждения
 
@@ -141,6 +145,8 @@ trait ExchangePage {
         if ($isReverse) {
             $units = $direction->currencyFrom->units;
         }
+
+        return $this->exchangeSetAmountErrorMessage($chat_id, $language, $units);
         $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $amountFrom, $direction->profit_percent, $isReverse);
         if(!$amountTo) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_1");
