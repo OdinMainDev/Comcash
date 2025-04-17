@@ -157,9 +157,9 @@ trait ExchangePage {
         }
 
         if (!$isReverse) {
-            $amountTo = $this->estimateAmount($currencyFrom, $currencyTo, $units, $amountFrom, $direction->profit_percent);
+            $amountTo = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
         } else {
-            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $amountTo, $direction->profit_percent);
+            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
         }
 
         return $this->exchangeSetAmountErrorMessage($chat_id, $language, $units." ".$amountFrom." ".$amountTo);
