@@ -30,6 +30,7 @@ trait ExchangePage {
         }
 
         $amount = $this->estimateAmount($currencyFrom, $currencyTo, $units, $textAmount, $direction->profit_percent);
+        return $this->exchangeSetAmountErrorMessage($chat_id, $language, $amount);
         if(!$amount) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_3");
         }
