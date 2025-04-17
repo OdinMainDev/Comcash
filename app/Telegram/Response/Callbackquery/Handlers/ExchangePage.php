@@ -245,8 +245,10 @@ trait ExchangePage {
         if(count($data) <= 3) {
             return false;
         }
+        // $amountFrom = 0;
+        // $amountTo = 0;
         $directionId = $data[0];
-        $amountFrom = $data[1];
+        $finalAmount = $data[1];
         $isReverse = $data[2];
         $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
             return $row->id != $directionId;
@@ -264,7 +266,7 @@ trait ExchangePage {
                 continue;
             }
             if($key == 1){
-                $amountFrom = $value;
+                $finalAmount = $value;
                 continue;
             }
             if($key == 2){
@@ -278,10 +280,23 @@ trait ExchangePage {
             }
         }
         $units = $direction->currencyTo->units;
+        $amountFrom = $finalAmount;
+        $currencyFrom = $direction->currencyFrom->name;
+        $currencyTo = $direction->currencyTo->name;
         if($isReverse) {
             $units = $direction->currencyFrom->units;
+            $currencyFrom = $direction->currencyTo->name;
+            $currencyTo = $direction->currencyFrom->name;
+            $amountFrom = 0;
+            $amountTo = $finalAmount;
         }
-        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $amountFrom, $direction->profit_percent, $isReverse);
+
+        if (!$isReverse) {
+            $amountTo = $this->estimateAmount($currencyFrom, $currencyTo, $units, $amountFrom, $direction->profit_percent);
+        } else {
+            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $amountTo, $direction->profit_percent);
+        }
+
         if(!$amountTo) {
             return false;
         }
