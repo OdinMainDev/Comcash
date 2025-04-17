@@ -279,6 +279,7 @@ trait ExchangePage {
                 }
             }
         }
+        
         $units = $direction->currencyTo->units;
         $amountFrom = $finalAmount;
         $currencyFrom = $direction->currencyFrom->name;
@@ -292,9 +293,9 @@ trait ExchangePage {
         }
 
         if (!$isReverse) {
-            $amountTo = $this->estimateAmount($currencyFrom, $currencyTo, $units, $amountFrom, $direction->profit_percent);
+            $amountTo = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
         } else {
-            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $amountTo, $direction->profit_percent);
+            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
         }
 
         if(!$amountTo) {
