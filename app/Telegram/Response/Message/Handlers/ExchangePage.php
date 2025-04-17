@@ -48,7 +48,7 @@ trait ExchangePage {
         
         $isReverse = $isReverse ? 'true' : 'false';
         $this->user->action = config("app.telegram_actions")["exchangeSetFields"];
-        $this->user->action_data = $directionId."_".$checkAmount."_".$isReverse;
+        $this->user->action_data = $directionId."_".$textAmount."_".$isReverse;
         $this->user->save();
         $this->exchangeFieldMessage($chat_id, $language, 0, $direction);
     }
