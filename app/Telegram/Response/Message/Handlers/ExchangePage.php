@@ -35,6 +35,7 @@ trait ExchangePage {
         }
 
         $checkAmount = $isReverse ? $textAmount : $amount;
+        return $this->exchangeSetAmountErrorMessage($chat_id, $language, " ".$checkAmount);
         if(!$checkAmount) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_666");
         }
