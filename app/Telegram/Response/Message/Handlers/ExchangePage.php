@@ -112,6 +112,7 @@ trait ExchangePage {
         $text .= "\n\n";
 
         $amountFrom = 0;
+        $isReverse = false;
         $appendText = "";
         foreach($data as $key => $value) {
             if($key == 0){
@@ -121,15 +122,23 @@ trait ExchangePage {
                 $amountFrom = $value;
                 continue;
             }
+            if($key == 2){
+                $isReverse = $value == "true";
+                continue;
+            }
             foreach($fields as $key2 => $field){
-                if($key - 2 == $key2){
+                if($key - 3 == $key2){
                     $appendText .= __("telegram.exchange_check_field_".$field, [], $language);
                     $appendText .= " <b>".$value."</b>";
                     $appendText .= "\n";
                 }
             }
         }
-        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyTo->units, $amountFrom, $direction->profit_percent);
+        $units = $direction->currencyTo->units;
+        if ($isReverse) {
+            $units = $direction->currencyFrom->units;
+        }
+        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $amountFrom, $direction->profit_percent, $isReverse);
         if(!$amountTo) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_1");
         }
