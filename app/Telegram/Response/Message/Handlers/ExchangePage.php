@@ -105,10 +105,8 @@ trait ExchangePage {
             $this->user->save();
             return;
         }
-
-        // TODO: раскоментить
-        // $this->user->action = 0;
-        // $this->user->save();
+        $this->user->action = 0;
+        $this->user->save();
 
 
         // это последний заполненный филд

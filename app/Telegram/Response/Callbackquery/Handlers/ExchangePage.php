@@ -243,6 +243,7 @@ trait ExchangePage {
         $data = $this->user->action_data;
         $data = explode("_", $data);
         if(count($data) <= 3) {
+            info("TEST 1");
             return false;
         }
         // $amountFrom = 0;
@@ -254,11 +255,12 @@ trait ExchangePage {
             return $row->id != $directionId;
         })->first();
         if(!$directionId) {
+            info("TEST 2");
             return false;
         }
         $fields = $direction->getLayoutTelegramAttribute();
         if(count($data) - 3 != count($fields)){
-            info("TEST 1");
+            info("TEST 3");
             return false;
         }
         $requestData = [];
