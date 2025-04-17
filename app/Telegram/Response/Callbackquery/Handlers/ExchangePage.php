@@ -243,11 +243,10 @@ trait ExchangePage {
         $data = $this->user->action_data;
         $data = explode("_", $data);
         if(count($data) <= 3) {
-            info("TEST 1");
             return false;
         }
-        // $amountFrom = 0;
-        // $amountTo = 0;
+        $amountFrom = 0;
+        $amountTo = 0;
         $directionId = $data[0];
         $finalAmount = $data[1];
         $isReverse = false;
@@ -255,12 +254,10 @@ trait ExchangePage {
             return $row->id != $directionId;
         })->first();
         if(!$directionId) {
-            info("TEST 2");
             return false;
         }
         $fields = $direction->getLayoutTelegramAttribute();
         if(count($data) - 3 != count($fields)){
-            info("TEST 3");
             return false;
         }
         $requestData = [];
@@ -301,12 +298,9 @@ trait ExchangePage {
             $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
         }
 
-        info(1);
         if(!$amountTo) {
-            info($amountTo);
             return false;
         }
-        info(2);
         $exchange = new Exchange;
         $exchange->hash = hash("sha256", uniqid().time()."cmcshsaltbyvio");
         $exchange->direction_id = $direction->id;
