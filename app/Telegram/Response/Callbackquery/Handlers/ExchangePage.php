@@ -258,6 +258,7 @@ trait ExchangePage {
         }
         $fields = $direction->getLayoutTelegramAttribute();
         if(count($data) - 3 != count($fields)){
+            info("TEST 1");
             return false;
         }
         $requestData = [];
