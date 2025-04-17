@@ -163,7 +163,6 @@ trait ExchangePage {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_1");
         }
 
-        return $this->exchangeSetAmountErrorMessage($chat_id, $language, " ".$amountFrom." ".$amountTo);
         if(!@$direction->data['min_amount'] || $direction->data['min_amount'] > $amountFrom){
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_2");
         }
