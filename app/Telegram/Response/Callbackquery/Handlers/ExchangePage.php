@@ -298,9 +298,12 @@ trait ExchangePage {
             $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
         }
 
+        info(1);
         if(!$amountTo) {
+            info($amountTo);
             return false;
         }
+        info(2);
         $exchange = new Exchange;
         $exchange->hash = hash("sha256", uniqid().time()."cmcshsaltbyvio");
         $exchange->direction_id = $direction->id;
