@@ -46,7 +46,7 @@ trait ExchangePage {
         }
         
         $this->user->action = config("app.telegram_actions")["exchangeSetFields"];
-        $this->user->action_data = $directionId."_".$finalAmount;
+        $this->user->action_data = $directionId."_".$finalAmount."_".$isReverse;
         $this->user->save();
         $this->exchangeFieldMessage($chat_id, $language, 0, $direction);
     }
@@ -97,8 +97,8 @@ trait ExchangePage {
         $this->user->action_data = $this->user->action_data."_".$text;
         
         // вычитаем 2 так как есть directionid_amount
-        if(count($data) - 2 < count($fields)){
-            $fieldIndex = count($data) - 2;
+        if(count($data) - 3 < count($fields)){
+            $fieldIndex = count($data) - 3;
             $this->exchangeFieldMessage($chat_id, $language, $fieldIndex, $direction);
             $this->user->save();
             return;

@@ -242,11 +242,12 @@ trait ExchangePage {
     public function checkCanCreateExchange() {
         $data = $this->user->action_data;
         $data = explode("_", $data);
-        if(count($data) <= 2) {
+        if(count($data) <= 3) {
             return false;
         }
         $directionId = $data[0];
         $amountFrom = $data[1];
+        $isReverse = $data[2];
         $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
             return $row->id != $directionId;
         })->first();
@@ -254,7 +255,7 @@ trait ExchangePage {
             return false;
         }
         $fields = $direction->getLayoutTelegramAttribute();
-        if(count($data) - 2 != count($fields)){
+        if(count($data) - 3 != count($fields)){
             return false;
         }
         $requestData = [];
@@ -266,13 +267,21 @@ trait ExchangePage {
                 $amountFrom = $value;
                 continue;
             }
+            if($key == 2){
+                $isReverse = $value == "true";
+                continue;
+            }
             foreach($fields as $key2 => $field){
-                if($key - 2 == $key2){
+                if($key - 3 == $key2){
                     $requestData[$field] = $value;
                 }
             }
         }
-        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $direction->currencyTo->units, $amountFrom, $direction->profit_percent);
+        $units = $direction->currencyTo->units;
+        if($isReverse) {
+            $units = $direction->currencyFrom->units;
+        }
+        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $amountFrom, $direction->profit_percent, $isReverse);
         if(!$amountTo) {
             return false;
         }
