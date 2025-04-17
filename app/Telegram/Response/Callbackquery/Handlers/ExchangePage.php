@@ -249,7 +249,7 @@ trait ExchangePage {
         // $amountTo = 0;
         $directionId = $data[0];
         $finalAmount = $data[1];
-        $isReverse = $data[2];
+        $isReverse = false;
         $direction = $this->getCacheDirections()->reject(function ($row) use($directionId) {
             return $row->id != $directionId;
         })->first();

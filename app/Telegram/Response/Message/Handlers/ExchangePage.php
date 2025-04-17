@@ -118,7 +118,9 @@ trait ExchangePage {
         $text = __("telegram.exchange_check_1", [], $language);
         $text .= "\n\n";
 
+        $finalAmount = 0;
         $amountFrom = 0;
+        $amountTo = 0;
         $isReverse = false;
         $appendText = "";
         foreach($data as $key => $value) {
@@ -126,7 +128,7 @@ trait ExchangePage {
                 continue;
             }
             if($key == 1){
-                $amountFrom = $value;
+                $finalAmount = $value;
                 continue;
             }
             if($key == 2){
@@ -141,12 +143,26 @@ trait ExchangePage {
                 }
             }
         }
+
         $units = $direction->currencyTo->units;
-        if ($isReverse) {
+        $amountFrom = $finalAmount;
+        $currencyFrom = $direction->currencyFrom->name;
+        $currencyTo = $direction->currencyTo->name;
+        if($isReverse) {
             $units = $direction->currencyFrom->units;
+            $currencyFrom = $direction->currencyTo->name;
+            $currencyTo = $direction->currencyFrom->name;
+            $amountFrom = 0;
+            $amountTo = $finalAmount;
         }
 
-        return $this->exchangeSetAmountErrorMessage($chat_id, $language, $units);
+        if (!$isReverse) {
+            $amountTo = $this->estimateAmount($currencyFrom, $currencyTo, $units, $amountFrom, $direction->profit_percent);
+        } else {
+            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $amountTo, $direction->profit_percent);
+        }
+
+        return $this->exchangeSetAmountErrorMessage($chat_id, $language, $units." ".$amountFrom." ".$amountTo);
         $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $amountFrom, $direction->profit_percent, $isReverse);
         if(!$amountTo) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_1");
