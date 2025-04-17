@@ -161,8 +161,6 @@ trait ExchangePage {
             $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
         }
 
-        return $this->exchangeSetAmountErrorMessage($chat_id, $language, $units." ".$amountFrom." ".$amountTo);
-        $amountTo = $this->estimateAmount($direction->currencyFrom->name, $direction->currencyTo->name, $units, $amountFrom, $direction->profit_percent, $isReverse);
         if(!$amountTo) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_check_error_1");
         }
