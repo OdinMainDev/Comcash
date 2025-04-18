@@ -242,6 +242,7 @@ class ExchangeStart implements ShouldQueue
                 $text = $this->tgUserExchangeStartMessage($this->exchange, $language);
                 sendTelegramBotUserMessage($text, $botUser, $botUser->getBot, $this->exchange->id);
                 sendTelegramBotUserMessage($this->exchange->data['merchant_from_data']['address'], $botUser, $botUser->getBot);
+                sendTelegramBotUserQrCode($this->exchange->data['merchant_from_data']['address'], $botUser, $botUser->getBot);
                 sendTelegramBotUserMessage($this->exchange->data['amount_data']['amount_send'], $botUser, $botUser->getBot);
             }
         }

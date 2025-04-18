@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\URL;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 function echo_image_validation($additional = []){
     if(is_array($additional) && count($additional) > 0)
@@ -244,6 +245,44 @@ function sendTelegramBotUserMessage($text, $user, $bot, $exchangeId = false){
     curl_setopt($ch, CURLOPT_HEADER, false);
     curl_exec($ch);
     curl_close($ch);
+}
+
+function sendTelegramBotUserQrCode(string $text, $user, $bot, $exchangeId = false) {
+    $pngData = QrCode::format('png')
+        ->size(300)
+        ->margin(1)
+        ->generate($text);
+
+    $tmpPath = sys_get_temp_dir().'/qr_'.uniqid().'.png';
+    file_put_contents($tmpPath, $pngData);
+
+    $postData = [
+        'chat_id' => $user->telegram_id,
+        'photo'   => new \CURLFile($tmpPath, 'image/png', 'qr.png'),
+        'caption' => __('telegram.your_qr_code_caption', [], $user->language),
+    ];
+
+    if ($exchangeId) {
+        $postData['reply_markup'] = json_encode([
+            'inline_keyboard' => [
+                [[
+                    'text'          => __('telegram.i_paid_button', [], $user->language),
+                    'callback_data' => 'exchangeIPaidButton:;:'.$exchangeId,
+                ]],
+            ],
+        ]);
+    }
+
+    $ch = curl_init('https://api.telegram.org/bot'.$bot->token.'/sendPhoto');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // при необходимости:
+    // curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
+    curl_exec($ch);
+    curl_close($ch);
+
+    @unlink($tmpPath);
 }
 
 function sendTelegramNotificationAffiliate($text, $level = 1){
