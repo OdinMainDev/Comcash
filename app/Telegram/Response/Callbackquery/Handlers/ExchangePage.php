@@ -281,13 +281,13 @@ trait ExchangePage {
         }
         
         $units = $direction->currencyTo->units;
+        if($direction->currencyFrom->units > $units) {
+            $units = $direction->currencyFrom->units;
+        }
         $amountFrom = $finalAmount;
         $currencyFrom = $direction->currencyFrom->name;
         $currencyTo = $direction->currencyTo->name;
         if($isReverse) {
-            $units = $direction->currencyFrom->units;
-            $currencyFrom = $direction->currencyTo->name;
-            $currencyTo = $direction->currencyFrom->name;
             $amountFrom = 0;
             $amountTo = $finalAmount;
         }
@@ -295,7 +295,7 @@ trait ExchangePage {
         if (!$isReverse) {
             $amountTo = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
         } else {
-            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
+            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent, true);
         }
 
         if(!$amountTo) {

@@ -21,15 +21,13 @@ trait ExchangePage {
         }
         $isReverse = $this->user->action == config("app.telegram_actions")['exchangeSumTo'];
         $units = $direction->currencyTo->units;
+        if($direction->currencyFrom->units > $units) {
+            $units = $direction->currencyFrom->units;
+        }
         $currencyFrom = $direction->currencyFrom->name;
         $currencyTo = $direction->currencyTo->name;
-        if($isReverse){
-            $units = $direction->currencyFrom->units;
-            $currencyFrom = $direction->currencyTo->name;
-            $currencyTo = $direction->currencyFrom->name;
-        }
 
-        $amount = $this->estimateAmount($currencyFrom, $currencyTo, $units, $textAmount, $direction->profit_percent);
+        $amount = $this->estimateAmount($currencyFrom, $currencyTo, $units, $textAmount, $direction->profit_percent, $isReverse);
         if(!$amount) {
             return $this->exchangeSetAmountErrorMessage($chat_id, $language, "exchange_create_error_3");
         }
@@ -142,13 +140,13 @@ trait ExchangePage {
         }
 
         $units = $direction->currencyTo->units;
+        if($direction->currencyFrom->units > $units) {
+            $units = $direction->currencyFrom->units;
+        }
         $amountFrom = $finalAmount;
         $currencyFrom = $direction->currencyFrom->name;
         $currencyTo = $direction->currencyTo->name;
         if($isReverse) {
-            $units = $direction->currencyFrom->units;
-            $currencyFrom = $direction->currencyTo->name;
-            $currencyTo = $direction->currencyFrom->name;
             $amountFrom = 0;
             $amountTo = $finalAmount;
         }
@@ -156,7 +154,7 @@ trait ExchangePage {
         if (!$isReverse) {
             $amountTo = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
         } else {
-            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent);
+            $amountFrom = $this->estimateAmount($currencyFrom, $currencyTo, $units, $finalAmount, $direction->profit_percent, true);
         }
 
         if(!$amountTo) {
