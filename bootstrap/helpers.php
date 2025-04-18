@@ -1,8 +1,10 @@
 <?php
 
+
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\Writer\PngWriter;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\URL;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 function echo_image_validation($additional = []){
     if(is_array($additional) && count($additional) > 0)
@@ -248,11 +250,15 @@ function sendTelegramBotUserMessage($text, $user, $bot, $exchangeId = false){
 }
 
 function sendTelegramBotUserQrCode(string $text, $user, $bot, $exchangeId = false) {
-    $pngData = QrCode::format('png')
-        ->driver('gd')
+    $result = Builder::create()
+        ->writer(new PngWriter())
+        ->data($text)
+        ->encoding(new Encoding('UTF-8'))
         ->size(300)
-        ->margin(1)
-        ->generate($text);
+        ->margin(10)
+        ->build();
+
+    $pngData = $result->getString();
 
     $tmpPath = sys_get_temp_dir().'/qr_'.uniqid().'.png';
     file_put_contents($tmpPath, $pngData);
@@ -262,6 +268,7 @@ function sendTelegramBotUserQrCode(string $text, $user, $bot, $exchangeId = fals
         'photo'   => new \CURLFile($tmpPath, 'image/png', 'qr.png'),
         'caption' => __('telegram.your_qr_code_caption', [], $user->language),
     ];
+
 
     if ($exchangeId) {
         $postData['reply_markup'] = json_encode([
