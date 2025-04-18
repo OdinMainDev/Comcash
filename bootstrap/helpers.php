@@ -266,7 +266,6 @@ function sendTelegramBotUserQrCode(string $text, $user, $bot, $exchangeId = fals
     $postData = [
         'chat_id' => $user->telegram_id,
         'photo'   => new \CURLFile($tmpPath, 'image/png', 'qr.png'),
-        'caption' => __('telegram.your_qr_code_caption', [], $user->language),
     ];
 
 
