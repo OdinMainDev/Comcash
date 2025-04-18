@@ -31,7 +31,11 @@ class Kernel extends ConsoleKernel
 
 
         // РУЧНЫЕ ЗАЯВКИ
-        $schedule->command('app:check-manual-exchanges')->everyMinute();
+        if(env("THEME_NAME") == "comcash"){
+            $schedule->command('app:check-manual-exchanges')->everyMinute();
+        }else{
+            $schedule->command('app:check-manual-exchanges')->everyTenMinutes();
+        }
 
         // Кеширование данных
         $schedule->command('app:cache-directions')->everyFiveMinutes();
