@@ -248,7 +248,7 @@ function sendTelegramBotUserMessage($text, $user, $bot, $exchangeId = false){
 }
 
 function sendTelegramBotUserQrCode(string $text, $user, $bot, $exchangeId = false) {
-    $pngData = QrCode::format('png')
+    $pngData = QrCode::format('svg')
         ->size(300)
         ->margin(1)
         ->generate($text);
