@@ -248,7 +248,7 @@ trait HasCache {
         if(in_array($currency, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB", "SBPRUB", "ACCRUB"])){
             $currency = "RUB";
         }
-        if(in_array($currency, ["USDTTRC20", "USDTERC20", "USDTBEP20", "USDCERC20"])){
+        if(in_array($currency, ["USDTTRC20", "USDTERC20", "USDTBEP20", "USDCERC20", "USDCSOL"])){
             $currency = "USDT";
         }
         if(in_array($currency, ["TONCOIN"])){
