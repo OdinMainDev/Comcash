@@ -36,7 +36,7 @@ class ParserBestchange extends Command
                 if(in_array($name, ["SBERRUB", "TCSBRUB", "CASHRUB", "CARDRUB", "SBPRUB", "ACCRUB"])){
                     $name = "RUB";
                 }
-                if(in_array($name, ["USDTTRC20", "USDTERC20", "USDTTRC20"])){
+                if(in_array($name, ["USDTTRC20", "USDTERC20", "USDTBEP20", "USDCERC20"])){
                     $name = "USDT";
                 }
                 if(in_array($name, ["TONCOIN"])){
