@@ -57,6 +57,9 @@ class RatesParser extends Command{
             if(in_array($name, ["CASHEUR"])){
                 $name = "EUR";
             }
+            if(in_array($name, ["BNBBEP20"])){
+                $name = "BNB";
+            }
             if(!in_array($name, $request_currency))
                 $request_currency[] = $name;
         }

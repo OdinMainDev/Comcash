@@ -16,6 +16,8 @@ export const findRateByCurrency = (currencyFromName: string, currencyToName: str
     toName = "USD"
   } else if(["CASHEUR"].find(item => item === toName)) {
     toName = "EUR"
+  } else if(["BNBBEP20"].find(item => item === toName)) {
+    toName = "BNB"
   }
   
 
