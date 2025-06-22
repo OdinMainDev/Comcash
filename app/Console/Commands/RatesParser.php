@@ -62,7 +62,7 @@ class RatesParser extends Command{
         }
         $inserts = [];
         // $inserts = array_merge($inserts, $this->parseFromGarantex());
-        $inserts = array_merge($inserts, $this->parseFromParserV2($request_currency, count($inserts) == 0));
+        $inserts = array_merge($inserts, $this->parseFromParserV3($request_currency, count($inserts) == 0));
         if(count($inserts) == 0){
             sendTelegramNotification("ОШИБКА НОВОГО ПАРСЕРА!!", 4);
             return;
@@ -164,6 +164,42 @@ class RatesParser extends Command{
             return $inserts;
         }
         foreach($response as $from => $arr){
+            foreach($arr as $to => $rate){
+                if($from == $to){
+                    continue;
+                }
+
+                if($without_garantex_rates){
+                    if(in_array($from, ["BTC", "ETH", "USDT", "DAI"])){
+                        if(in_array($from, ["USD", "RUB"])){
+                            continue;
+                        }
+                    }
+                }
+                $inserts[] = [
+                    "from" => $from,
+                    "to" => $to,
+                    "rate" => (float)$rate,
+                ];
+            }
+        }
+
+        return $inserts;
+    }
+
+
+    public function parseFromParserV3($request_currency, $without_garantex_rates = false) {
+        $url = "https://compay.one/get-rates?apiKey=szxzLzUB6hvL2eJLBjqr5Qeeu5d7hAN1";
+        $response = Http::get($url);
+        if($response->clientError() || $response->status() != 200){
+            sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.", 4);
+            return [];
+        }
+        $inserts = [];
+        if(!isset($response['data']) || !is_array($response['data'])){
+            return $inserts;
+        }
+        foreach($response['data'] as $from => $arr){
             foreach($arr as $to => $rate){
                 if($from == $to){
                     continue;
