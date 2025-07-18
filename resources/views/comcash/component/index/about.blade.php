@@ -1,4 +1,3 @@
-
 <div class='about'>
     <div class='about__container'>
         <h2 class='about__title'>

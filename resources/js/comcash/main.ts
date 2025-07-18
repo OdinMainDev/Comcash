@@ -5,6 +5,7 @@ import '@/shared/scripts/modal';
 import '@/shared/scripts/modal/modal_auth'
 import '@/shared/scripts/input';
 import '@/shared/scripts/burger';
+import '@/shared/scripts/starfield';
 import '@/shared/scripts/select';
 import '@/shared/scripts/select/secondSelect';
 import '@/shared/scripts/tabs';

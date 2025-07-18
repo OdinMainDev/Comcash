@@ -1,0 +1,14 @@
+.star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.star-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}

@@ -217,12 +217,13 @@ return [
     "page_blog_desc_2" => "На странице новостей сайта Comcash.io вы найдете публикации о появлении новых криптовалют, важных событиях, влияющих на курсы популярных цифровых валют, технологических новинках и инновационных решениях. Вполне может быть так, что наши новости помогут вам определиться с важными шагами, сделать правильный выбор и, в итоге, обрести финансовый успех. Держите руку на пульсе вместе с нами!",
     "affiliate withdraw address" => "Адрес выплаты",
     "ClearYourCryptoMenu" => "Чистка Вашей крипты",
-    "headerClearExchangesTime1" => "Обработка заявок в течении",
-    "headerClearExchangesTime2" => "30 минут",
-    "headerWorkingTime1" => "Часы работы с",
+    "headerClearExchangesTime1" => "Обработка заявок",
+    "headerClearExchangesTime2" => "до 30 минут",
+    "headerWorkingTime1" => "Часы работы",
     "headerWorkingTime2" => "09:00",
     "headerWorkingTime3" => "до",
     "headerWorkingTime4" => "00:00",
+    "headerWorkingTime5" => "с",
     "deliveryFaqTitle" => "Список стран:",
     "deliveryFaqTitle1" => "Профиль",
     "deliveryFaqText1" => "Выгодные курсы, моментальная конвертация, круглосуточный доступ!",
@@ -524,4 +525,12 @@ return [
     "errorBadAmount" => "Ошибка! Сумма указана не верно",
     "errorBadAmountMin" => "Ошибка! Сумма меньше минимальной",
     "errorBadAmountMax" => "Ошибка! Сумма больше максимальной",
+
+
+
+
+    "telegramBotText" => "БОТ",
+    "reviewsMenu" => "Отзывы",
+    "companyMenu" => "Компания",
+
 ];
