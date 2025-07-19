@@ -31,10 +31,8 @@
 	@endif
 	@yield('css')
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 	<link rel="stylesheet" href="https://fonts.cloudflare.com/css2?family=Inter:wght@200,300,400;500,600;600&display=swap">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </head>
 
@@ -44,14 +42,16 @@
 	<div class="relative z-10 w-full max-w-[1440px] text-white">
 
 		@if (true)
-		@include('comcash.component.header_wedev_main')
-		@yield("content")
+			@include('comcash.component.header_wedev_main')
+			@yield("content")
+			@include('comcash.component.modal_auth')
+			@include('comcash.component.footer_wedev_main')
 		@else
-		@include('comcash.component.header_info')
-		@include('comcash.component.header_main')
-		@yield("content")
-		@include('comcash.component.modal_auth')
-		@include('comcash.component.footer_main')
+			@include('comcash.component.header_info')
+			@include('comcash.component.header_main')
+			@yield("content")
+			@include('comcash.component.modal_auth')
+			@include('comcash.component.footer_main')
 		@endif
 
 		@yield('js')
