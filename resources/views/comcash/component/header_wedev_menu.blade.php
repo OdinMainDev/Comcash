@@ -92,7 +92,7 @@
         <div
             class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all">
             <a
-                href='{{route("comcashPage", ["name" => "reviews"])}}'
+                href='{{route("comcashPage", ["name" => "reputation"])}}'
                 class="flex items-center gap-[8px] text-[16px] px-[17px] py-2 cursor-pointer h-[52px]">
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "

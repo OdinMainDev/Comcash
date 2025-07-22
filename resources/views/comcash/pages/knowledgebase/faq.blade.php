@@ -1,110 +1,95 @@
-@extends('comcash.layout.knowledgebase')
+@extends('comcash.layout.main')
 
 @section('content')
-<div class="info">
-    <div class="info__container">
-        @include("comcash.component.knowledge_menu")
-        <div class="faq__content">
-            <div class="faq__bg"></div>
-            <div class="faq__header">
-            <p class="faq__header-title">{{__("front.faqPageTitle")}}</p>
-            <div class="faq__title">{{__("front.faqPageText1")}}</div>
-            <div class="faq__subtitle">{{__("front.faqPageText2")}}</div>
-
-            <p class="faq__header-text">
-                {{__("front.faqPageText3")}}
-            </p>
-            <div class="faq__subtitle">{{__("front.faqPageText4")}}</div>
-            <p class="faq__header-text">
-                {{__("front.faqPageText5")}}
-            </p>
-            <div class="faq__title">{{__("front.faqPageText6")}}</div>
-            <div class="faq__subtitle">{{__("front.faqPageText7")}}</div>
-            <p class="faq__header-text">
-                {{__("front.faqPageText8")}}
-            </p>
-            <p class="faq__header-text">
-                {{__("front.faqPageText9")}}
-            </p>
-            <div class="faq__subtitle">{{__("front.faqPageText10")}}</div>
-            <p class="faq__header-text">
-                {{__("front.faqPageText11")}}
-            </p>
-            <div class="faq__subtitle">{{__("front.faqPageText12")}}</div>
-            <p class="faq__header-text">
-                {{__("front.faqPageText13")}}
-            </p>
-            <p class="faq__header-text">
-                {{__("front.faqPageText14")}}
-            </p>
-            <div class="faq__subtitle">{{__("front.faqPageText15")}}</div>
-            <p class="faq__header-text">
-                {{__("front.faqPageText16")}}
-            </p>
-            <div class="faq__title">{{__("front.faqPageText17")}}</div>
-            <div class="faq__subtitle">{{__("front.faqPageText18")}}</div>
-            <p class="faq__header-text">
-                {{__("front.faqPageText19")}}
+<section class="relative max-[720px]:mt-[1rem] mt-[2rem] mx-auto h-auto flex flex-col  w-full max-[400px]:px-[20px] max-[700px]:px-[40px] max-w-[600px] max-[720px]:max-w-[640px] ">
+    <span class="text-[#06AB6B] font-semibold uppercase text-[32px] leading-[140%] mb-4">
+        faq
+    </span>
+    <div>
+        <div class="flex items-center">
+            <span class="text-white uppercase text-[18px] leading-[140%] mr-4">
+                Наличные анонимно от 5000$ и чистка крипты
+            </span>
+            <div class="flex h-[1px] bg-[#06AB6B] max-w-[100px] min-w-[80px] w-full"></div>
+        </div>
+        <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-8">
+            <span class="text-white text-[18px] leading-[140%]">
+                Как получить анонимно от 5000 долларов США наличными через Comcash?
+            </span>
+            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
+                С помощью нашего сервиса вы можете легко обменять свою крипту на наличные денежные средства в американских долларах. Обратите внимание, что сумма сделки должна составлять от 5000 $. При этом мы гарантируем вам полную анонимность. Деньги будут доставлены курьером в удобное для вас место. Чтобы использовать эту опцию, просто напишите в службу поддержки нашего сервиса по контактам, указанным в шапке сайта. Более подробную информацию об услуге вы сможете найти на странице нашего сайта в разделе «Чистка вашей крипты».
             </p>
         </div>
-
-            <div class="faq__accordion accordion accordion--secondary">
-            <button class='accordion__button active'>
-                <span>{{__("front.faqPageFaqTitle")}}</span>
-            </button>
-            <div class='accordion__content active'>
-                <div class='accordion__text'>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText1")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText2")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText3")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText4")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText5")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText6")}}</p>
-                </div>
-            </div>
-
-            <button class='accordion__button active'>
-                <span>{{__("front.faqPageFaqTitle2")}}</span>
-            </button>
-            <div class='accordion__content'>
-                <div class='accordion__text'>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText7")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText8")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText9")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText10")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText11")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText12")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText13")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText14")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText15")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText16")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText17")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText18")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText19")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText20")}}</p>
-                </div>
-            </div>
-
-            <button class='accordion__button active'>
-                <span>{{__("front.faqPageFaqTitle3")}}</span>
-            </button>
-            <div class='accordion__content'>
-                <div class='accordion__text'>
-                    <a  href="{{route("comcashPage", ["rules"])}}" class="faq__accordion-title">{{__("front.faqPageFaqText21")}}</a>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText22")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText23")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText24")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText25")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText26")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText27")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText28")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText29")}}</p>
-                    <p class="faq__accordion-title">{{__("front.faqPageFaqText30")}}</p>
-                    <p class="faq__accordion-text">{{__("front.faqPageFaqText31")}}</p>
-                </div>
-            </div>
-            </div>
+        <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-2">
+            <span class="text-white text-[18px] leading-[140%]">
+                Могу ли я «почистить» свою криптовалюту при помощи Comcash?
+            </span>
+            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
+                Бывает так, что криптовалюта перестает соответствовать требованиям безопасности хранения или возникают иные проблемы. При помощи нашего сервиса вы сможете сделать вашу крипту чище, убрав следы ее происхождения. Для этого потребуется всего лишь создать сделку на обмен или связаться с менеджерами нашего сервиса по контактам, указанным в шапке сайта. В итоге мы вернем вам чистую криптовалюту без возможности отслеживания источников.
+            </p>
         </div>
-      </div>
-</div>
+    </div>
+    <div class="mt-4">
+        <div class="flex items-center">
+            <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4">
+                Процедуры KYC/AML
+            </span>
+            <div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
+        </div>
+        <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-8">
+            <span class="text-white text-[18px] leading-[140%]">
+                Что такое KYC?
+            </span>
+            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
+                KYC - это процесс аутентификации или подтверждения личности и адреса клиента, предваряющий использование каких-либо финансовых предложений. Финансовые учреждения устанавливают личность и адрес клиента на основе представленных подтверждающих документов. Существует два типа KYC – путем удаленной или личной верификации
+            </p>
+            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
+                Первый тип допускает электронную верификацию, что означает, что он позволяет вам воспользоваться удаленным и безбумажным процессом (так называемый eKYC). В остальных случаях вам придется лично посетить финансовое учреждение и предоставить необходимые документы.
+            </p>
+        </div>
+        <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-2">
+            <span class="text-white text-[18px] leading-[140%]">
+                Запрашивает ли сервис Comcash мой KYC?
+            </span>
+            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
+                В отличие от многих других сервисов в сфере криптовалют, наш портал никогда не запрашивает KYC в отношении своих клиентов. Это гарантируем вам полную анонимность и защиту от вмешательства в операции третьих лиц.
+            </p>
+        </div>
+        <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-2">
+            <span class="text-white text-[18px] leading-[140%]">
+                Что такое AML?
+            </span>
+            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
+                Борьба с отмыванием денег (AML) - это набор правил, принципов, законодательных актов, нормативно-правовых актов, процессов и инструментов, специфичных для финансового сектора, целью которых является пресечение действий по отмыванию средств, полученных незаконным путем преступными или террористическими организациями.
+                Процедура включает в себя мониторинг и отчетность о подозрительных клиентах и транзакциях. Финансовые учреждения и другие предприятия во многих странах по закону обязаны следовать правилам AML. Например, финансовые и страховые учреждения обязаны проверять своих клиентов в соответствии с принципом «Знай своего клиента» (KYC), включающим в себя легитимацию и проверку личности.
+            </p>
+        </div>
+        <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-2">
+            <span class="text-white text-[18px] leading-[140%]">
+                Comcash проверяет мой AML?
+            </span>
+            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
+                Главный принцип работы нашего сервиса заключается в том, чтобы не вмешиваться в дела клиентов, гарантируя им безопасность сделок и полную анонимность. Именно поэтому мы ни при каких условиях не проводим процедуры проверки AML в отношении любых транзакций в рамках нашего сервиса. Мы уверены, что наши клиенты смогут в полной мере оценить все преимущества такого подхода.
+            </p>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <div class="flex items-center">
+            <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4">
+                Для партнеров
+            </span>
+            <div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
+        </div>
+        <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-8">
+            <span class="text-white text-[18px] leading-[140%]">
+                Можно ли получить прибыль с Comcash?
+            </span>
+            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
+                Мы готовы предложить индивидуальные условия сотрудничества нашим партнерам. Для согласования условий партнерства, обсуждения деталей и получения инструкций вы можете связаться с нашими менеджерами по контактам, указанным в шапке сайта.
+            </p>
+        </div>
+    </div>
+
+</section>
 @endsection

@@ -1,136 +1,75 @@
-@extends('comcash.layout.knowledgebase')
+@extends('comcash.layout.main')
 
 @section('content')
-<div class="info">
-    <div class="info__container">
-        @include("comcash.component.knowledge_menu")
-        <div class="reviews__content">
-            <div class="reviews__header">
-                <p class="reviews__header-title">{{__("front.rulesPageTitle")}}</p>
-                <br>
-                <p class="reviews__header-text">
-                    {{__("front.rulesPageText")}}
-                </p>
-                <br>
-                <br>
-                <p class="reviews__header-title" style="font-size: 32px;">{{__("front.rulesPageTitle2")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText2")}}</p>
-                <p class="reviews__header-text">{{__("front.rulesPageText2_2")}}</p>
-                <p class="reviews__header-text">{{__("front.rulesPageText2_3")}}</p>
-                <p class="reviews__header-text">{{__("front.rulesPageText2_4")}}</p>
-                <p class="reviews__header-text">{{__("front.rulesPageText2_5")}}</p>
-                <p class="reviews__header-text">{{__("front.rulesPageText2_6")}}</p>
-                <br>
-                <br>
-
-
-
-                <p class="reviews__header-title" style="font-size: 32px;">{{__("front.rulesPageTitle3")}}</p>
-                <br>
-                    <p class="reviews__header-text">{{__("front.rulesPageText3")}}</p>
-                <br>
-                <br>
-
-
-                <p class="reviews__header-title" style="font-size: 32px;">{{__("front.rulesPageTitle4")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText4")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText4_2")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText4_3")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText4_4")}}</p>
-                <br>
-                <br>
-
-                <p class="reviews__header-title" style="font-size: 32px;">{{__("front.rulesPageTitle5")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText5")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText5_2")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText5_3")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText5_4")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText5_5")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText5_6")}}</p>
-                <br>
-                <br>
-
-                <p class="reviews__header-title" style="font-size: 32px;">{{__("front.rulesPageTitle6")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText6")}}</p>
-                <br>
-                <ul>
-                    <li>
-                        <p class="reviews__header-text">{{__("front.rulesPageText6_2")}}</p>
-                    </li>
-                    <li>
-                        <p class="reviews__header-text">{{__("front.rulesPageText6_3")}}</p>
-                    </li>
-                </ul>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText6_4")}}</p>
-                <br>
-                <br>
-                
-                <p class="reviews__header-title" style="font-size: 32px;">{{__("front.rulesPageTitle7")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText7")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText7_2")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText7_3")}}</p>
-                <br>
-                <br>
-
-                <p class="reviews__header-title" style="font-size: 32px;">{{__("front.rulesPageTitle8")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText8")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText8_2")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText8_3")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText8_4")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText8_5")}}</p>
-                <br>
-                <ul>
-                    <li>
-                        <p class="reviews__header-text">{{__("front.rulesPageText8_6")}}</p>
-                    </li>
-                    <li>
-                        <p class="reviews__header-text">{{__("front.rulesPageText8_7")}}</p>
-                    </li>
-                    <li>
-                        <p class="reviews__header-text">{{__("front.rulesPageText8_8")}}</p>
-                    </li>
-                    <li>
-                        <p class="reviews__header-text">{{__("front.rulesPageText8_9")}}</p>
-                    </li>
-                    <li>
-                        <p class="reviews__header-text">{{__("front.rulesPageText8_10")}}</p>
-                    </li>
-                </ul>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText8_11")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText8_12")}}</p>
-                <br>
-                <br>
-
-                <p class="reviews__header-title" style="font-size: 32px;">{{__("front.rulesPageTitle9")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText9")}}</p>
-                <br>
-                <p class="reviews__header-text">{{__("front.rulesPageText9_2")}}</p>
-            </div>
+<section class="relative max-[720px]:mt-[1rem] mt-[2rem] mx-auto h-auto flex flex-col  w-full max-[400px]:px-[20px] max-[700px]:px-[40px] max-w-[600px] max-[720px]:max-w-[640px] ">
+    <div class="text-white max-[400px]:text-[20px] gap-[24px] mb-4">
+        <span class="text-[#06AB6B] font-semibold uppercase text-[32px] leading-[140%]">Политика конфиденциальности ComCash</span>
+        <span class="flex text-[16px] text-white mt-6 leading-[180%]">Обменный сервис ComCash уважает и защищает конфиденциальность своих клиентов. В настоящей Политике конфиденциальности («Политика») мы объясняем, как мы обрабатываем информацию, которую получаем, предоставляя вам доступ к нашим услугам. Пожалуйста, найдите время и внимательно прочтите настоящую Политику конфиденциальности, прежде чем использовать любую из услуг ComCash.</span>
+    </div>
+    <div class="text-white max-[400px]:text-[20px] gap-[24px] mb-4">
+        <span class="text-[#06AB6B] font-semibold uppercase text-[24px] leading-[140%]">
+            Содержание документа
+        </span>
+        <ol class="text-[16px] text-white mt-6 leading-[180%] list-decimal pl-5">
+            <li>Какую информацию мы собираем?</li>
+            <li>Почему мы собираем вашу персональную информацию?</li>
+            <li>Правовые основания для обработки вашей персональной информации</li>
+            <li>Передача персональной информации другим сторонам</li>
+            <li>Защита персональной информации</li>
+            <li>Хранение данных</li>
+        </ol>
+    </div>
+    <div class="text-white max-[400px]:text-[20px] gap-[24px] mb-8">
+        <span class="text-[#06AB6B] font-semibold uppercase text-[24px] leading-[140%]">
+            Изменение Политики
+        </span>
+        <span class="flex text-[16px] text-white mt-6 leading-[180%]">
+            Политика представлена ​​в самой актуальной версии. Со временем ComCash может в одностороннем порядке вносить изменения в Политику, в том числе для приведения в соответствие с последними изменениями действующего законодательства и судебной практики. Все изменения вступают в силу с момента их публикации на данной странице, если в тексте изменений не указан иной срок. Мы приложим все усилия для организации дополнительных способов уведомления пользователей об изменениях в Политике, но просим вас самостоятельно регулярно проверять наличие актуальной версии на сайте.
+        </span>
+    </div>
+    <div class="text-white max-[400px]:text-[20px] gap-[24px] mb-8">
+        <span class="text-[#06AB6B] font-semibold uppercase text-[24px] leading-[140%]">
+            1. Какую информацию мы собираем?
+        </span>
+        <div class="text-white text-[16px] leading-[180%] space-y-8 mt-6">
+            <p>
+                В зависимости от услуги, которую вы хотите использовать, мы можем собирать следующие типы информации: адрес электронной почты, журналы транзакций, данные, собранные с помощью файлов cookie и аналогичных технологий.
+            </p>
+            <p>
+                Мы можем собирать информацию о вашем устройстве, включая, если возможно, ваш IP-адрес, операционную систему и тип браузера, для системного администрирования, решения проблем и улучшения обслуживания. Это статистические данные о действиях и шаблонах просмотра наших пользователей, которые не идентифицируют какую-либо личность.
+            </p>
+            <p>
+                Наш сайт также может использовать файлы cookie. Это помогает нам анализировать сеансы посещения наших сервисов и позволяет нам предоставлять лучший продукт.
+            </p>
+            <p>
+                Пользователь имеет право отказаться от применения файлов cookie или ограничить их использование. В этом случае мы будем использовать только те файлы cookie, которые необходимы для работы сайта (технические и сессионные файлы cookie). 
+            </p>
         </div>
-      </div>
-</div>
+    </div>
+    <div class="text-white max-[400px]:text-[20px] gap-[24px] mb-4">
+        <span class="text-[#06AB6B] font-semibold uppercase text-[24px] leading-[140%]">
+            2. Почему мы собираем вашу персональную информацию?
+        </span>
+        <div class="text-white text-[16px] leading-[180%] space-y-8 mt-6">
+            <p>
+                Мы собираем минимально необходимый объем персональных данных, поддерживая ваше право на конфиденциальность.
+            </p>
+            <p>
+                Принимая настоящую Политику конфиденциальности, вы разрешаете нам использовать ваш адрес электронной почты для связи с вами и передачи предложений по дальнейшему сотрудничеству. Вы всегда можете попросить прекратить передачу электронных писем от нас. Имейте в виду, что предоставленный вами адрес электронной почты не будет использоваться ComCash для вводящих в заблуждение целей и не будет предоставлен третьим лицам в маркетинговых целях.
+            </p>
+            <p>
+                Мы также можем использовать электронную почту в целях обеспечения поддержки пользователей.
+            </p>
+            <p>
+                Мы обрабатываем вашу техническую информацию и файлы cookie в статистических и аналитических целях, чтобы улучшить уровень услуг, которые вы получаете на веб-сайте ComCash.
+            </p>
+            <p>
+                Мы не используем автоматизированную обработку персональных данных для принятия решений, влекущих правовые последствия для субъекта персональных данных или иным образом затрагивающих его права и законные интересы.
+            </p>
+            <p>
+                Мы гарантируем, что никогда не передаем персональные данные Пользователей напрямую за денежное вознаграждение. ComCash не будет передавать, продавать, сдавать в аренду или одалживать какую-либо персональную информацию третьим лицам.
+            </p>
+        </div>
+    </div>
+</section>
 @endsection

@@ -85,7 +85,11 @@
 					@csrf
 					<div class="p-[24px] rounded-[20px] bg-white/5 flex flex-col gap-[14px]">
 						<p>Добавить новую рекламную компанию</p>
-						<input type="text" placeholder="Название компании"
+						<input 
+							type="text" 
+							placeholder="{{__("front.affiliate campaign name")}}" 
+							name="name" 
+							id="name"
 							class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded">
 						<div class="flex justify-start mt-2">
 							<button type="submit"
@@ -99,57 +103,49 @@
 					<div
 						class="grid sm:grid-cols-[0.4fr_0.8fr_0.8fr_1fr] text-white text-[14px] gap-y-3 border-t border-white/10 pt-4">
 
-						<!-- Заголовки (только sm+) -->
 						<div class="hidden sm:block text-white/40 text-[12px]">Компания</div>
 						<div class="hidden sm:block text-white/40 text-[12px]">Зарегистрировалось</div>
 						<div class="hidden sm:block text-white/40 text-[12px]">Сделок завершено</div>
 						<div class="hidden sm:block text-white/40 text-[12px]">Ссылка</div>
 
-						<!-- Строка 1 -->
-						<!-- Компания -->
-						<div class="flex justify-between items-center sm:block">
-							<span class="text-white/40 text-[12px] sm:hidden">Компания</span>
-							<span class="uppercase">name1</span>
-						</div>
-
-						<!-- Зарегистрировалось -->
-						<div class="flex justify-between items-center sm:block">
-							<span class="text-white/40 text-[12px] sm:hidden">Зарегистрировалось</span>
-							<span class="uppercase">12</span>
-						</div>
-
-						<!-- Сделок завершено -->
-						<div class="flex justify-between items-center sm:block">
-							<span class="text-white/40 text-[12px] sm:hidden">Сделок завершено</span>
-							<span class="uppercase">0</span>
-						</div>
-
-						<!-- Ссылка -->
-						<div
-							class="text-white text-[14px] flex justify-between items-center max-[450px]:flex-wrap max-[450px]:gap-2">
-							<span class="text-white/40 text-[12px] sm:hidden ">Ссылка</span>
-							<div class="flex items-center gap-2 max-[450px]:flex-wrap max-[450px]:min-w-0 relative group">
-								<a href="#" onclick="copyToClipboard(this)"
-									class="uppercase text-[14px] text-[#06AB6B] hover:opacity-70 max-[900px]:break-all max-[450px]:flex-1 relative">
-									https://comcash.io/ru/a9b2...6a3c917959
-									<span
-										class="tooltip absolute bottom-full mb-1 left-1/2 -translate-x-1/2 text-[12px] bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-										Скопировано
-									</span>
-								</a>
+						@foreach($campaigns as $campaign)
+							<div class="flex justify-between items-center sm:block">
+								<span class="text-white/40 text-[12px] sm:hidden">Компания</span>
+								<span class="uppercase">{{$campaign->name}}</span>
 							</div>
-						</div>
 
+							<div class="flex justify-between items-center sm:block">
+								<span class="text-white/40 text-[12px] sm:hidden">Зарегистрировалось</span>
+								<span class="uppercase">{{$campaign->registered_users}}</span>
+							</div>
+
+							<div class="flex justify-between items-center sm:block">
+								<span class="text-white/40 text-[12px] sm:hidden">Сделок завершено</span>
+								<span class="uppercase">{{$campaign->profitable_transactions}}</span>
+							</div>
+
+							<div
+								class="text-white text-[14px] flex justify-between items-center max-[450px]:flex-wrap max-[450px]:gap-2">
+								<span class="text-white/40 text-[12px] sm:hidden ">Ссылка</span>
+								<div class="copy-to-clipboard flex items-center gap-2 max-[450px]:flex-wrap max-[450px]:min-w-0 relative group">
+									<a href="#"
+										class="uppercase text-[14px] text-[#06AB6B] hover:opacity-70 max-[900px]:break-all max-[450px]:flex-1 relative">
+										{{route("checkAffiliate", ["hash" => $campaign->hash])}}
+										<span
+											class="hidden tooltip absolute bottom-full mb-1 left-1/2 -translate-x-1/2 text-[12px] bg-black text-white px-2 py-1 rounded group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+											Скопировано
+										</span>
+									</a>
+								</div>
+							</div>
+						@endforeach
 					</div>
-
-
 				</form>
 			</div>
 		</div>
 	</div>
 </section>
 @endsection
-
 
 @section('js')
 @if(isset($auth_modal) && $auth_modal)
@@ -158,6 +154,8 @@
 </script>
 @endif
 <script>
+   
+
 	document.addEventListener('DOMContentLoaded', function() {
 		const headerHeight = document.querySelector('header')?.offsetHeight;
 		const footerHeight = document.querySelector('footer')?.offsetHeight;

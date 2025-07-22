@@ -1,352 +1,606 @@
-@extends('comcash.layout.knowledgebase')
+@extends('comcash.layout.main')
 
 @section('content')
-<div class="info">
-    <div class="info__container">
-        @include("comcash.component.knowledge_menu")
-        <div class="reviews__content">
-            <div class="reviews__header">
-                <p class="reviews__header-title">{{__("front.reputationPageTitle")}}</p>
-            </div>
-            <div class="reviews__links">
-                <div class="reviews__links-title">
-                    {{__("front.reputationPageText")}}
-                </div>
-                <div class="reviews__links-list">
-                    <a class="reviews__links-item" href="https://kurs.expert/ru/obmennik/comcash-io/feedbacks.html#stat">
-                        https://kurs.expert/ru/obmennik/comcash-io/feedbacks.html#stat
-                    </a>
-                    <a class="reviews__links-item" href="https://antiswap.info/exchanger/ComCASH-otzyvy">
-                        https://antiswap.info/exchanger/ComCASH-otzyvy
-                    </a>
-                    <a class="reviews__links-item" href="https://change.pro/exchangers/comcash">
-                        https://change.pro/exchangers/comcash
-                    </a>
-                    <a class="reviews__links-item" href="https://www.okchanger.ru/exchangers/Comcash-io">
-                        https://www.okchanger.ru/exchangers/Comcash-io
-                    </a>
-                    <a class="reviews__links-item" href="https://pro-obmen.ru/comcash#comments">
-                        https://pro-obmen.ru/comcash#comments
-                    </a>
-                </div>
-            </div>
-            <div class="reviews__links">
-                <div class="reviews__links-title">
-                    {{__("front.reputationPageText2")}}
-                </div>
-                <div class="reviews__links-list">
-                    <a class="reviews__links-item" href="https://www.mywot.com/ru/user/8992061/ratings">
-                        https://www.mywot.com/ru/user/8992061/ratings
-                    </a>
-                    <a class="reviews__links-item" href="https://forum.bits.media/index.php?/topic/234739-comcashio-безопасный-и-анонимный-обмен-криптовалют/#comment-2382429">
-                        https://forum.bits.media/index.php?/topic/234739-comcashio-безопасный-и-анонимный-обмен-криптовалют/#comment-2382429
-                    </a>
-                    <a class="reviews__links-item" href="https://mmgp.com/threads/comcash-io-anonimnyj-obmennik.705047/">
-                        https://mmgp.com/threads/comcash-io-anonimnyj-obmennik.705047/
-                    </a>
-                    <a class="reviews__links-item" href="https://bitcointalk.org/index.php">
-                        https://bitcointalk.org/index.php
-                    </a>
-                    <a class="reviews__links-item" href="https://cryptotalk.org/topic/369354-comcashio-%D0%B0%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD%D0%BD%D0%B8%D0%BA/?tab=comments#comment-17731345">
-                        https://cryptotalk.org/topic/369354-comcashio-%D0%B0%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD%D0%BD%D0%B8%D0%BA/?tab=comments#comment-17731345
-                    </a>
-                </div>
-            </div>
-            <div class="reviews__links">
-                <div class="reviews__links-title">
-                    {{__("front.reputationPageText3")}}
-                </div>
-                <div class="reviews__links-list">
-                    <a class="reviews__links-item" href="https://zismo.biz/topic/1127812-comcashio-anonimnyj-obmen-i-chistka-kripty-bez-amlkyc/#entry19078800">
-                        https://zismo.biz/topic/1127812-comcashio-anonimnyj-obmen-i-chistka-kripty-bez-amlkyc/#entry19078800
-                    </a>
-                    <a class="reviews__links-item" href="https://at.dublikat.club/threads/anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.196065/">
-                        https://at.dublikat.club/threads/anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.196065/
-                    </a>
-                    <a class="reviews__links-item" href="https://cvvp.ro/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.32868/">
-                        https://cvvp.ro/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.32868/
-                    </a>
-                    <a class="reviews__links-item" href="https://www.legalizer.cc/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.573034/">
-                        https://www.legalizer.cc/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.573034/
-                    </a>
-                    <a class="reviews__links-item" href="https://zhyk.org/forum/showthread.php?p=6095627#post6095627">
-                        https://zhyk.org/forum/showthread.php?p=6095627#post6095627
-                    </a>
-                    <a class="reviews__links-item" href="https://gofuckbiz.com/showthread.php?p=1343704#post1343704">
-                        https://gofuckbiz.com/showthread.php?p=1343704#post1343704
-                    </a>
-                    <a class="reviews__links-item" href="https://itnull.info/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.3802/">
-                        https://itnull.info/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.3802/
-                    </a>
-                    <a class="reviews__links-item" href="https://mipped.com/f/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.273885/">
-                        https://mipped.com/f/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.273885/
-                    </a>
-                    <a class="reviews__links-item" href="https://wmasteru.org/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.33894/">
-                        https://wmasteru.org/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.33894/
-                    </a>
-                    <a class="reviews__links-item" href="https://hard-tm.su/threads/38189/">
-                        https://hard-tm.su/threads/38189/
-                    </a>
-                    <a class="reviews__links-item" href="https://instagramforum.ru/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.172423/">
-                        https://instagramforum.ru/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.172423/
-                    </a>
-                    <a class="reviews__links-item" href="https://s2.vsemmoney.com/topic/157730-comcashio-anonimnyy-obmen-i-chistka-kripty-bez-amlkyc/">
-                        https://s2.vsemmoney.com/topic/157730-comcashio-anonimnyy-obmen-i-chistka-kripty-bez-amlkyc/
-                    </a>
-                    <a class="reviews__links-item" href="https://megatop.biz/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.30077/">
-                        https://megatop.biz/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.30077/
-                    </a>
-                    <a class="reviews__links-item" href="https://blb.team/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.5302/">
-                        https://blb.team/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.5302/
-                    </a>
-                    <a class="reviews__links-item" href="https://cybhack.net/threads/2141/">
-                        https://cybhack.net/threads/2141/
-                    </a>
-                    <a class="reviews__links-item" href="https://mehack.su/threads/6627/">
-                        https://mehack.su/threads/6627/
-                    </a>
-                    <a class="reviews__links-item" href="https://h0t.cc/index.php?/topic/19991-comcashio-anonimnyy-obmen-i-chistka-kripty-bez-amlkyc/">
-                        https://h0t.cc/index.php?/topic/19991-comcashio-anonimnyy-obmen-i-chistka-kripty-bez-amlkyc/
-                    </a>
-                    <a class="reviews__links-item" href="https://www.mywot.com/ru/user/8992061/ratings">
-                        https://www.mywot.com/ru/user/8992061/ratings
-                    </a>
-
-                    <a class="reviews__links-item" href="https://forum.bits.media/index.php?/topic/234739-comcashio-безопасный-и-анонимный-обмен-криптовалют/#comment-2382429">
-                        https://forum.bits.media/index.php?/topic/234739-comcashio-безопасный-и-анонимный-обмен-криптовалют/#comment-2382429
-                    </a>
-
-                    <a class="reviews__links-item" href="https://mmgp.com/threads/comcash-io-anonimnyj-obmennik.705047/">
-                        https://mmgp.com/threads/comcash-io-anonimnyj-obmennik.705047/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://bitcointalk.org/index.php">
-                        https://bitcointalk.org/index.php
-                    </a>
-
-                    <a class="reviews__links-item" href="https://cryptotalk.org/topic/369354-comcashio-%D0%B0%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD%D0%BD%D0%B8%D0%BA/?tab=comments#comment-17731345">
-                        https://cryptotalk.org/topic/369354-comcashio-%D0%B0%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD%D0%BD%D0%B8%D0%BA/?tab=comments#comment-17731345
-                    </a>
-                    <a class="reviews__links-item" href="https://dwh.su/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.21770/">
-                        https://dwh.su/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.21770/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://skynetzone.pw/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.32445/">
-                        https://skynetzone.pw/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.32445/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://forumteam.men/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.57077/">
-                        https://forumteam.men/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.57077/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://prologic.su/topic/17077-comcashio-anonimnii-obmen-i-chistka-kripti-bez-amlkyc/">
-                        https://prologic.su/topic/17077-comcashio-anonimnii-obmen-i-chistka-kripti-bez-amlkyc/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://nohide.space/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.26421/">
-                        https://nohide.space/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.26421/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://zensam.to/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.3979/">
-                        https://zensam.to/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.3979/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://carder.market/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.140999/">
-                        https://carder.market/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.140999/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://neurons.biz/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.3032/">
-                        https://neurons.biz/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.3032/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://happy-hack.net/board/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.2593/">
-                        https://happy-hack.net/board/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.2593/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://reversing.center/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.5003/?isShowOverlayForCreator=">
-                        https://reversing.center/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.5003/?isShowOverlayForCreator=
-                    </a>
-
-                    <a class="reviews__links-item" href="https://comunity.xyz/viewtopic.php?t=1601">
-                        https://comunity.xyz/viewtopic.php?t=1601
-                    </a>
-
-                    <a class="reviews__links-item" href="https://alphv.ru/threads/6125/">
-                        https://alphv.ru/threads/6125/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://gmaii.ru/threads/515/">
-                        https://gmaii.ru/threads/515/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://carders.zone/showthread.php?t=45099">
-                        https://carders.zone/showthread.php?t=45099
-                    </a>
-
-                    <a class="reviews__links-item" href="https://s1.blackbiz.store/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.113123/">
-                        https://s1.blackbiz.store/threads/comcash-io-%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-aml-kyc.113123/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://www.cy-pr.com/forum/f75/t117998/">
-                        https://www.cy-pr.com/forum/f75/t117998/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://s2.hpc.name/showthread.php?p=562060#post562060">
-                        https://s2.hpc.name/showthread.php?p=562060#post562060
-                    </a>
-
-                    <a class="reviews__links-item" href="https://fb-killa.pro/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.22748/">
-                        https://fb-killa.pro/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.22748/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://mmo4me.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.480401/">
-                        https://mmo4me.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.480401/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://sinister.ly/Thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC">
-                        https://sinister.ly/Thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC
-                    </a>
-
-                    <a class="reviews__links-item" href="https://carigold.com/forum/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.775943/">
-                        https://carigold.com/forum/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.775943/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://homeidea.ru/index.php?topic=111162.new#new">
-                        https://homeidea.ru/index.php?topic=111162.new#new
-                    </a>
-
-                    <a class="reviews__links-item" href="http://forum.gold-forum.ru/index.php?showtopic=71146&st=0&gopid=549838&#entry549838">
-                        http://forum.gold-forum.ru/index.php?showtopic=71146&st=0&gopid=549838&#entry549838
-                    </a>
-
-                    <a class="reviews__links-item" href="https://smm-profi.ru/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.10859/">
-                        https://smm-profi.ru/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.10859/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://blackbones.net/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.14030/">
-                        https://blackbones.net/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.14030/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://crackingx.com/threads/27092/">
-                        https://crackingx.com/threads/27092/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://darknetarmy.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.6923/">
-                        https://darknetarmy.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.6923/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://dncforums.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.22243/">
-                        https://dncforums.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.22243/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://leakzone.net/Thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC">
-                        https://leakzone.net/Thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC
-                    </a>
-
-                    <a class="reviews__links-item" href="https://niflheim.world/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.77045/#post-240371">
-                        https://niflheim.world/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.77045/#post-240371
-                    </a>
-
-                    <a class="reviews__links-item" href="https://nulledbb.com/thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC">
-                        https://nulledbb.com/thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC
-                    </a>
-
-                    <a class="reviews__links-item" href="https://indexforum.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.18211/">
-                        https://indexforum.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.18211/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://rebreached.vc/Thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC">
-                        https://rebreached.vc/Thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC
-                    </a>
-
-                    <a class="reviews__links-item" href="https://patched.to/Thread-comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc?pid=1185776#pid1185776">
-                        https://patched.to/Thread-comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc?pid=1185776#pid1185776
-                    </a>
-
-                    <a class="reviews__links-item" href="https://validmarket.io/threads/exchange-and-clearing-crypto-without-aml-kyc.51627/">
-                        https://validmarket.io/threads/exchange-and-clearing-crypto-without-aml-kyc.51627/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://warriors.to/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.1776/">
-                        https://warriors.to/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.1776/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://dcturkiye.com/konular/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.10342/">
-                        https://dcturkiye.com/konular/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.10342/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://www.enclave.cc/index.php?/topic/6264-comcashio-anonymous-exchange-and-clearing-of-crypto-without-amlkyc/">
-                        https://www.enclave.cc/index.php?/topic/6264-comcashio-anonymous-exchange-and-clearing-of-crypto-without-amlkyc/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://www.forumkorner.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.275695/">
-                        https://www.forumkorner.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.275695/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://underground-economy.cc/index.php?/topic/248-comcashio-%D0%B0%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-amlkyc/">
-                        https://underground-economy.cc/index.php?/topic/248-comcashio-%D0%B0%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD-%D0%B8-%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0-%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D1%8B-%D0%B1%D0%B5%D0%B7-amlkyc/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://bigbosscarding.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.21418/">
-                        https://bigbosscarding.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.21418/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://s1.slivup.net/topic/214523-comcashio-anonimnyj-obmen-i-chistka-kripty-bez-amlkyc/#entry706399">
-                        https://s1.slivup.net/topic/214523-comcashio-anonimnyj-obmen-i-chistka-kripty-bez-amlkyc/#entry706399
-                    </a>
-
-                    <a class="reviews__links-item" href="https://kit-cappers.com/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.6524/">
-                        https://kit-cappers.com/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.6524/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://forum.market/ru/f/p/47386-anonimnyj-obmen-i-chistka-kripty-bez-aml--kyc">
-                        https://forum.market/ru/f/p/47386-anonimnyj-obmen-i-chistka-kripty-bez-aml--kyc
-                    </a>
-
-                    <a class="reviews__links-item" href="https://cybernulled.com/topic/20550-comcashio-anonymous-exchange-and-clearing-of-crypto-without-amlkyc/">
-                        https://cybernulled.com/topic/20550-comcashio-anonymous-exchange-and-clearing-of-crypto-without-amlkyc/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://maxcheaters.com/topic/249961-comcashio-anonymous-exchange-and-clearing-of-crypto-witho/">
-                        https://maxcheaters.com/topic/249961-comcashio-anonymous-exchange-and-clearing-of-crypto-witho/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://www.leaks.ro/topic/11053-comcashio-anonymous-exchange-and-clearing-of-crypto-without/">
-                        https://www.leaks.ro/topic/11053-comcashio-anonymous-exchange-and-clearing-of-crypto-without/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://ajanlar.org/konular/comcash-io-aml-kyc-olmadan-anonim-kripto-degisimi-ve-takasi.34279/">
-                        https://ajanlar.org/konular/comcash-io-aml-kyc-olmadan-anonim-kripto-degisimi-ve-takasi.34279/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://cardmine.cc/showthread.php?tid=184">
-                        https://cardmine.cc/showthread.php?tid=184
-                    </a>
-
-                    <a class="reviews__links-item" href="https://www.crdworld.biz/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.21432/">
-                        https://www.crdworld.biz/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.21432/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://drdark.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.23084/">
-                        https://drdark.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.23084/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://leet.lat/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.15553/">
-                        https://leet.lat/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.15553/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://leetforums.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.16775/">
-                        https://leetforums.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.16775/
-                    </a>
-
-                    <a class="reviews__links-item" href="https://carders.us/threads/comcash-io-anonymous-cryptocurrency-exchanger-without-kyc-and-aml.131/">
-                        https://carders.us/threads/comcash-io-anonymous-cryptocurrency-exchanger-without-kyc-and-aml.131/
-                    </a>
-
-                </div>
-
-            </div>
+<section class="relative max-[720px]:mt-[1rem] mt-[4rem] mx-auto h-auto flex flex-col  w-full max-[1040px]:px-[20px] max-w-[1018px] max-[720px]:max-w-[640px]">
+    <span class="text-[#06AB6B] font-semibold uppercase max-[600px]:text-[24px] text-[32px] leading-[140%] mb-7">
+        Мы на форумах и мониторингах
+    </span>
+    <div>
+        <div class="flex items-center mb-10 mt-10">
+            <span class="text-white uppercase max-[600px]:text-[16px] text-[18px] leading-[140%] mr-4 min-[720px]:whitespace-nowrap min-w-[60%]">
+                Мониторинги и отзывы о нас
+            </span>
+            <div class="flex h-[1px] bg-[#06AB6B] min-w-[80px] w-full"></div>
         </div>
-      </div>
-</div>
+
+        @php
+        $monitorings = [
+        (object)[
+        'icon' => '<svg width="180" height="38" viewBox="0 0 180 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.6116 27.4454C11.0605 26.4663 11.2047 25.1221 11.0442 23.4128C11.0418 23.3848 11.0452 23.3566 11.0543 23.33C11.0634 23.3034 11.0779 23.279 11.0969 23.2583C11.1159 23.2376 11.1391 23.2212 11.1648 23.2099C11.1906 23.1987 11.2184 23.1929 11.2465 23.193L16.3919 23.1965C16.5128 23.1965 16.5779 23.2558 16.5872 23.3744C16.8663 26.943 16.2314 31.2302 12.2442 32.3884C9.93838 33.0581 6.84419 33.0302 4.67791 32.3291C0.882564 31.1047 0.177913 27.2919 0.136052 23.7093C0.0965173 20.5419 0.0918661 17.3733 0.122099 14.2035C0.160471 9.89535 1.22442 5.8 6.21628 5.19652C13.0674 4.37326 16.8035 6.72442 16.4512 13.9209C16.4494 13.9586 16.4331 13.9941 16.4059 14.0201C16.3786 14.046 16.3423 14.0605 16.3047 14.0605L11.1558 14.0535C11.121 14.0536 11.0865 14.0465 11.0546 14.0326C11.0227 14.0187 10.994 13.9983 10.9704 13.9727C10.9468 13.9471 10.9287 13.9169 10.9174 13.884C10.9061 13.851 10.9018 13.8161 10.9047 13.7814C10.9954 12.7628 10.907 11.743 10.6395 10.7221C9.99419 8.25233 6.81628 8.65698 6.11512 10.8023C5.81047 11.7419 5.65814 12.7884 5.65814 13.9419C5.66047 17.1093 5.67326 20.2779 5.69652 23.4477C5.70582 24.6244 5.85698 25.7826 6.15 26.9221C6.71512 29.1093 9.64187 29.5802 10.6116 27.4454Z" fill="white" />
+            <path d="M87.6698 28.2861L87.6733 22.4221C87.6733 22.3969 87.6683 22.372 87.6586 22.3487C87.649 22.3254 87.6349 22.3043 87.6171 22.2864C87.5992 22.2686 87.5781 22.2545 87.5548 22.2448C87.5315 22.2352 87.5066 22.2302 87.4814 22.2302L85.2384 22.2163C85.15 22.214 85.1058 22.1686 85.1058 22.0802L85.1093 18.3791C85.1093 18.2535 85.1733 18.1907 85.3012 18.1907L93.0488 18.1872C93.1016 18.1872 93.1521 18.2082 93.1894 18.2455C93.2267 18.2827 93.2477 18.3333 93.2477 18.3861L93.2407 31.7221C93.2396 31.7642 93.2246 31.8048 93.1982 31.8376C93.1717 31.8704 93.1351 31.8936 93.0942 31.9035C90.8384 32.45 88.5279 32.7872 86.1628 32.9151C79.8802 33.2535 76.9186 31.2686 76.4756 24.8395C76.3895 23.6186 76.343 20.6256 76.336 15.8605C76.3291 11.0709 77.1035 6.34769 82.6744 5.33257C88.9988 4.18141 93.7919 6.6128 93.2023 13.7326C93.1997 13.7696 93.1831 13.8042 93.1559 13.8295C93.1287 13.8547 93.0929 13.8687 93.0558 13.8686L87.9174 13.8581C87.8866 13.8582 87.8561 13.8519 87.8278 13.8397C87.7995 13.8274 87.774 13.8093 87.7531 13.7867C87.7321 13.7641 87.716 13.7374 87.7059 13.7083C87.6958 13.6791 87.6918 13.6482 87.6942 13.6175C87.8337 11.4268 87.3663 8.74071 84.4186 9.19071C82.1198 9.54303 81.9802 12.0268 81.9453 13.8547C81.8721 17.9535 81.614 22.3593 82.1756 26.4163C82.5802 29.3221 85.343 29.1372 87.5128 28.4988C87.6174 28.4663 87.6698 28.3954 87.6698 28.2861Z" fill="white" />
+            <path d="M43.2384 26.8174L42.2093 32.2907C42.2004 32.336 42.176 32.3767 42.1404 32.406C42.1048 32.4353 42.0601 32.4512 42.0139 32.4512L37.057 32.4547C37.0271 32.4544 36.9978 32.4474 36.971 32.4343C36.9442 32.4211 36.9208 32.4021 36.9024 32.3787C36.8839 32.3552 36.871 32.3279 36.8646 32.2988C36.8581 32.2697 36.8583 32.2395 36.8651 32.2105L42.9174 5.55582C42.9276 5.51244 42.952 5.47373 42.9868 5.44589C43.0216 5.41806 43.0647 5.40272 43.1093 5.40233L49.3151 5.39884C49.3603 5.39844 49.4042 5.41343 49.4397 5.44132C49.4752 5.46922 49.5002 5.50837 49.5105 5.55233L55.5488 32.2174C55.5557 32.2468 55.5558 32.2773 55.5492 32.3066C55.5425 32.336 55.5293 32.3635 55.5105 32.387C55.4917 32.4105 55.4678 32.4295 55.4406 32.4424C55.4134 32.4553 55.3836 32.4619 55.3535 32.4616L50.393 32.4477C50.3464 32.4476 50.3013 32.4311 50.2656 32.4011C50.2299 32.3712 50.2058 32.3296 50.1977 32.2837L49.2105 26.8244C49.2023 26.7785 49.1782 26.737 49.1425 26.707C49.1068 26.677 49.0617 26.6606 49.0151 26.6605L43.4337 26.657C43.3876 26.6569 43.3429 26.6729 43.3073 26.7022C43.2716 26.7314 43.2473 26.7722 43.2384 26.8174ZM46.3395 10.8895C46.2907 10.6151 46.2407 10.6151 46.1895 10.8895L44.0337 22.4919C44.0306 22.506 44.0308 22.5206 44.0343 22.5347C44.0377 22.5488 44.0443 22.5619 44.0537 22.5733C44.063 22.5846 44.0748 22.5938 44.0883 22.6003C44.1017 22.6067 44.1164 22.6102 44.1314 22.6105H48.2337C48.3802 22.6105 48.4407 22.5384 48.4151 22.3942L46.3395 10.8895Z" fill="white" />
+            <path d="M62.3512 17.357L62.3616 32.1791C62.3616 32.3651 62.2686 32.4581 62.0826 32.4581L57.1221 32.4686C57.0657 32.4686 57.0115 32.4462 56.9716 32.4063C56.9317 32.3664 56.9093 32.3122 56.9093 32.2558L56.9372 5.58023C56.9372 5.53305 56.9563 5.48779 56.9903 5.45443C57.0244 5.42107 57.0705 5.40232 57.1186 5.40232L62.1698 5.39883C62.2213 5.39879 62.2718 5.41438 62.3147 5.4436C62.3576 5.47282 62.391 5.51433 62.4105 5.56279L68.5814 20.7791C68.686 21.0419 68.7384 21.0314 68.7384 20.7477L68.7419 5.65C68.7419 5.48488 68.8244 5.40232 68.9895 5.40232L73.9849 5.39883C74.0395 5.39883 74.0918 5.42015 74.1304 5.45809C74.169 5.49604 74.1907 5.5475 74.1907 5.60116L74.1942 32.193C74.1942 32.2637 74.1664 32.3315 74.1168 32.3817C74.0671 32.432 73.9997 32.4607 73.9291 32.4616L68.9023 32.4721C68.7983 32.4721 68.6964 32.4406 68.61 32.3815C68.5236 32.3224 68.4565 32.2385 68.4174 32.1407L62.4942 17.3291C62.3965 17.0849 62.3488 17.0942 62.3512 17.357Z" fill="white" />
+            <path d="M101.222 20.8453L101.233 28.2442C101.233 28.2923 101.252 28.3384 101.286 28.3724C101.32 28.4065 101.366 28.4256 101.414 28.4256L109.179 28.4151C109.227 28.4151 109.273 28.4342 109.307 28.4682C109.341 28.5023 109.36 28.5484 109.36 28.5965V32.2698C109.36 32.3179 109.341 32.364 109.307 32.398C109.273 32.432 109.227 32.4512 109.179 32.4512L95.8535 32.4546C95.8054 32.4546 95.7592 32.4355 95.7252 32.4015C95.6912 32.3675 95.6721 32.3214 95.6721 32.2733L95.6581 5.58023C95.6581 5.53212 95.6773 5.48598 95.7113 5.45196C95.7453 5.41795 95.7914 5.39883 95.8395 5.39883H109.033C109.081 5.39883 109.127 5.41795 109.161 5.45196C109.195 5.48598 109.214 5.53212 109.214 5.58023L109.21 9.25C109.21 9.29811 109.191 9.34424 109.157 9.37826C109.123 9.41228 109.077 9.43139 109.029 9.43139L101.403 9.43488C101.355 9.43488 101.309 9.45399 101.275 9.48801C101.241 9.52203 101.222 9.56817 101.222 9.61628L101.226 16.4081C101.226 16.432 101.23 16.4555 101.239 16.4776C101.249 16.4996 101.262 16.5196 101.279 16.5364C101.296 16.5532 101.316 16.5666 101.338 16.5757C101.36 16.5848 101.383 16.5895 101.407 16.5895L108.75 16.6105C108.798 16.6105 108.844 16.6296 108.878 16.6636C108.912 16.6976 108.931 16.7437 108.931 16.7919L108.928 20.4791C108.928 20.5272 108.909 20.5733 108.875 20.6073C108.841 20.6413 108.795 20.6605 108.747 20.6605L101.403 20.664C101.355 20.664 101.309 20.6831 101.275 20.7171C101.241 20.7511 101.222 20.7972 101.222 20.8453Z" fill="white" />
+            <path d="M122.006 21.857L122.009 32.1756C122.009 32.2487 121.981 32.3188 121.93 32.3704C121.879 32.4221 121.809 32.4512 121.737 32.4512H116.669C116.61 32.4512 116.554 32.4284 116.513 32.3878C116.472 32.3472 116.449 32.2922 116.449 32.2349V5.56278C116.449 5.52082 116.466 5.48053 116.496 5.45053C116.526 5.42054 116.566 5.40323 116.609 5.40232C119.721 5.39069 122.828 5.39534 125.93 5.41627C126.714 5.42092 127.701 5.62092 128.892 6.01627C132.973 7.36278 133.179 12.1628 132.705 15.7732C132.549 16.9477 132.285 17.9279 131.913 18.7139C130.514 21.6651 125.358 21.7523 122.281 21.5988C122.098 21.5895 122.006 21.6756 122.006 21.857ZM122.013 9.58139L121.999 17.4651C121.999 17.503 122.014 17.5394 122.041 17.5662C122.068 17.5931 122.104 17.6081 122.142 17.6081L124.381 17.6116C125.15 17.6125 125.888 17.3036 126.432 16.7527C126.976 16.2019 127.283 15.4543 127.284 14.6744L127.291 12.386C127.291 11.9999 127.217 11.6174 127.071 11.2604C126.926 10.9034 126.713 10.579 126.444 10.3056C126.175 10.0322 125.856 9.81521 125.504 9.66701C125.153 9.5188 124.776 9.4423 124.395 9.44185L122.156 9.43836C122.137 9.43836 122.118 9.44206 122.101 9.44925C122.084 9.45644 122.068 9.46697 122.055 9.48025C122.041 9.49354 122.031 9.5093 122.024 9.52665C122.017 9.54401 122.013 9.5626 122.013 9.58139Z" fill="white" />
+            <path d="M147.234 19.3279C149.992 19.7232 151.352 21.3337 151.315 24.1593C151.269 27.5639 151.321 30.2674 151.472 32.2697C151.481 32.3907 151.424 32.4511 151.301 32.4511H146.254C146.194 32.4509 146.136 32.4292 146.091 32.3901C146.046 32.3509 146.017 32.297 146.009 32.2383C145.664 29.643 145.807 26.8593 145.758 24.236C145.699 21.1209 143.072 21.3302 140.847 21.3267C140.797 21.3267 140.749 21.3466 140.713 21.3819C140.678 21.4172 140.658 21.4651 140.658 21.5151L140.662 32.2732C140.662 32.3223 140.642 32.3693 140.607 32.404C140.573 32.4386 140.526 32.4581 140.477 32.4581L135.453 32.4686C135.356 32.4686 135.263 32.4296 135.194 32.3603C135.126 32.2909 135.087 32.1969 135.087 32.0988L135.091 5.57324C135.091 5.52975 135.108 5.48805 135.139 5.4573C135.169 5.42656 135.211 5.40928 135.255 5.40928C137.983 5.39998 140.717 5.38486 143.459 5.36393C148.884 5.32207 151.381 7.38719 151.343 12.9895C151.336 14.3337 151.106 15.5256 150.652 16.5651C149.909 18.2709 148.734 18.6686 147.223 19.2267C147.095 19.2732 147.099 19.307 147.234 19.3279ZM140.637 9.60579L140.679 17.1546C140.679 17.1944 140.695 17.2326 140.723 17.2607C140.751 17.2888 140.789 17.3046 140.829 17.3046L143.013 17.2907C143.374 17.2889 143.732 17.2143 144.065 17.0712C144.398 16.928 144.701 16.7191 144.955 16.4564C145.209 16.1937 145.411 15.8823 145.547 15.5401C145.684 15.1978 145.753 14.8313 145.751 14.4616L145.737 12.243C145.733 11.4964 145.44 10.7819 144.921 10.2566C144.402 9.7313 143.701 9.43822 142.971 9.44184L140.787 9.45579C140.747 9.45579 140.709 9.4716 140.681 9.49973C140.653 9.52786 140.637 9.56601 140.637 9.60579Z" fill="white" />
+            <path d="M180 18.0895V19.7849C179.131 27.0372 173.512 32.7442 166.029 32.4651C152.215 31.9558 147.806 13.6628 159.973 7.02092C164.292 4.66627 169.465 4.90697 173.637 7.51278C177.298 9.79883 179.419 13.3244 180 18.0895ZM178.458 18.9232C178.458 15.7249 177.188 12.6576 174.926 10.396C172.664 8.13447 169.597 6.86394 166.399 6.86394C163.201 6.86394 160.133 8.13447 157.872 10.396C155.61 12.6576 154.34 15.7249 154.34 18.9232C154.34 22.1216 155.61 25.1889 157.872 27.4505C160.133 29.712 163.201 30.9825 166.399 30.9825C169.597 30.9825 172.664 29.712 174.926 27.4505C177.188 25.1889 178.458 22.1216 178.458 18.9232Z" fill="white" />
+            <path d="M24.1081 20.9326L24.1151 32.3744C24.1151 32.4216 24.0964 32.4669 24.063 32.5002C24.0297 32.5336 23.9844 32.5523 23.9372 32.5523H18.7326C18.6854 32.5523 18.6401 32.5336 18.6068 32.5002C18.5734 32.4669 18.5547 32.4216 18.5547 32.3744V5.66046C18.5547 5.6371 18.5593 5.61396 18.5682 5.59238C18.5771 5.57079 18.5902 5.55118 18.6068 5.53466C18.6233 5.51814 18.6429 5.50504 18.6645 5.4961C18.6861 5.48716 18.7092 5.48255 18.7326 5.48255H23.9372C23.9844 5.48255 24.0297 5.5013 24.063 5.53466C24.0964 5.56803 24.1151 5.61328 24.1151 5.66046L24.1116 16.5337C24.1116 16.5809 24.1304 16.6262 24.1637 16.6595C24.1971 16.6929 24.2424 16.7116 24.2895 16.7116L29.2012 16.7081C29.2484 16.7081 29.2936 16.6894 29.327 16.656C29.3603 16.6227 29.3791 16.5774 29.3791 16.5302V5.66395C29.3791 5.61677 29.3978 5.57151 29.4312 5.53815C29.4645 5.50479 29.5098 5.48604 29.557 5.48604L34.7616 5.47906C34.8088 5.47906 34.8541 5.49781 34.8874 5.53117C34.9208 5.56454 34.9395 5.60979 34.9395 5.65697V32.3744C34.9395 32.4216 34.9208 32.4669 34.8874 32.5002C34.8541 32.5336 34.8088 32.5523 34.7616 32.5523L29.557 32.5558C29.5098 32.5558 29.4645 32.5371 29.4312 32.5037C29.3978 32.4703 29.3791 32.4251 29.3791 32.3779V20.9326C29.3791 20.8854 29.3603 20.8401 29.327 20.8068C29.2936 20.7734 29.2484 20.7546 29.2012 20.7546H24.2861C24.2389 20.7546 24.1936 20.7734 24.1603 20.8068C24.1269 20.8401 24.1081 20.8854 24.1081 20.9326Z" fill="white" />
+            <path d="M166.448 29.9047C172.538 29.9047 177.474 24.9678 177.474 18.8779C177.474 12.788 172.538 7.85117 166.448 7.85117C160.358 7.85117 155.421 12.788 155.421 18.8779C155.421 24.9678 160.358 29.9047 166.448 29.9047Z" fill="#FF0000" />
+        </svg>',
+        'reviews' => 335,
+        'stars' => 5,
+        'link' => "https://change.pro/exchangers/comcash"
+        ],
+        (object)[
+        'icon' => '<svg width="141" height="33" viewBox="0 0 141 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M37.2821 4.02183C37.8075 4.01007 38.3329 4.00223 38.8583 3.99438C38.8583 5.81369 38.8544 7.63691 38.8662 9.46013C40.5796 7.64475 42.2734 5.81369 43.979 3.99438C44.7083 4.00223 45.4337 4.01007 46.163 4.02183C44.3006 6.10383 42.3675 8.11918 40.4737 10.1698C42.544 12.3185 44.7005 14.3887 46.7158 16.5923C45.9356 16.6119 45.1553 16.6236 44.375 16.6315C42.5401 14.773 40.7051 12.9105 38.8622 11.0559C38.8544 12.9066 38.8662 14.7573 38.8466 16.608C38.3251 16.6158 37.8075 16.6236 37.29 16.6276C37.2704 12.4283 37.2782 8.22505 37.2821 4.02183Z" fill="#4D99FF" />
+            <path d="M58.0825 8.26426C59.6901 7.60554 61.6897 7.39381 63.113 8.58185C65.5597 10.2639 65.5283 14.3299 63.0621 15.9806C61.5604 17.1804 59.4705 16.9216 57.8551 16.1061C57.8865 17.5058 57.8825 18.9056 57.8786 20.3054C57.5061 20.2975 56.7533 20.2858 56.3808 20.2818C56.3691 16.11 56.3534 11.9421 56.3848 7.77414C56.9533 7.93098 57.5179 8.09566 58.0825 8.26426ZM59.0627 9.64834C57.6434 10.1816 57.812 11.8989 57.8786 13.1183C57.8355 14.6318 59.6077 15.3729 60.8977 15.118C62.5876 14.969 63.7365 13.1419 63.2777 11.5343C62.9405 9.70715 60.6429 8.86808 59.0627 9.64834Z" fill="#4D99FF" />
+            <path d="M68.1593 8.61711C69.8962 7.24087 72.586 7.46044 74.1191 9.04841C74.0132 9.39345 73.8054 10.0835 73.6995 10.4286C72.6017 9.71105 71.3078 8.98176 69.9707 9.55029C67.975 10.0443 67.2378 12.8556 68.7592 14.2436C70.155 15.6434 72.3742 15.2591 73.774 14.0789C73.876 14.4318 74.0798 15.1376 74.1818 15.4865C72.3664 17.3176 69.0493 17.2588 67.4221 15.2199C65.7557 13.33 66.0969 10.0796 68.1593 8.61711Z" fill="#4D99FF" />
+            <path d="M46.1121 7.91529C46.7041 7.90745 47.3001 7.89961 47.8922 7.89569C48.7979 10.0287 49.6997 12.1656 50.6015 14.2985C51.4876 12.1656 52.3502 10.0247 53.2167 7.88785C53.801 7.90353 54.3852 7.92706 54.9694 7.95058C53.3069 12.0832 51.5582 16.1845 49.8604 20.3054C49.2684 20.2975 48.6724 20.2897 48.0804 20.2818C48.6214 18.9487 49.1704 17.6235 49.7115 16.2904C48.5117 13.4987 47.2962 10.7148 46.1121 7.91529Z" fill="#4D99FF" />
+            <path d="M37.7683 21.1602C38.0819 21.1602 38.7054 21.1602 39.0151 21.1602C39.5209 22.4972 40.0267 23.8303 40.5364 25.1673C41.0501 23.8342 41.5559 22.4972 42.0617 21.1602C42.3714 21.1602 42.9948 21.1602 43.3085 21.1602C43.5791 23.1755 43.8535 25.1909 44.1084 27.2062C43.7986 27.2062 43.187 27.2101 42.8772 27.2101C42.7204 26.0378 42.5635 24.8615 42.4067 23.6891C41.9832 24.8615 41.5598 26.0338 41.1363 27.2062C40.854 27.2101 40.2855 27.2101 40.0032 27.214C39.5758 26.0378 39.1523 24.8615 38.725 23.6891C38.5681 24.8615 38.4113 26.0378 38.2545 27.214C37.9329 27.2101 37.2899 27.2062 36.9645 27.2023C37.2272 25.1869 37.4977 23.1755 37.7683 21.1602Z" fill="#4D99FF" />
+            <path d="M114.269 22.948C114.814 21.4816 116.637 21.4777 117.884 21.0111C117.978 21.2856 118.171 21.8306 118.265 22.105C117.233 22.4422 116.194 22.7481 115.163 23.0892C116.292 23.1402 117.873 22.9206 118.394 24.2302C119.139 25.8417 117.527 27.7433 115.81 27.2532C113.932 26.8807 113.756 24.4341 114.269 22.948ZM115.23 25.1398C115.516 25.575 115.967 25.8534 116.367 26.1749C116.649 26.022 117.218 25.7162 117.504 25.5633C117.437 24.3164 115.665 23.893 115.23 25.1398Z" fill="#4D99FF" />
+            <path d="M45.7238 23.0069C47.2608 22.1168 49.3859 23.5009 49.088 25.281C48.9939 26.9552 46.8648 27.8727 45.5317 26.9199C44.1476 26.0456 44.2652 23.7401 45.7238 23.0069ZM46.1473 24.1988C45.022 24.9869 46.3747 26.5906 47.4137 25.8378C48.7312 25.1947 47.1942 23.246 46.1473 24.1988Z" fill="#4D99FF" />
+            <path d="M50.0878 22.8226C50.3818 22.8305 50.9621 22.8383 51.2523 22.8422C51.268 23.3363 51.2797 23.8342 51.2954 24.3322C51.86 24.3361 52.4246 24.34 52.9932 24.3439C52.9971 23.8381 53.001 23.3284 53.0049 22.8226C53.299 22.8305 53.8832 22.8422 54.1773 22.8501C54.1812 24.3008 54.1812 25.7555 54.1812 27.2101C53.8871 27.2101 53.299 27.2101 53.001 27.2101C53.001 26.669 52.9971 26.128 52.9971 25.5869C52.4207 25.5908 51.8483 25.5908 51.2758 25.5908C51.2719 26.1319 51.2719 26.669 51.2719 27.2101C50.9739 27.2101 50.3858 27.2101 50.0917 27.2101C50.0917 25.7476 50.0917 24.2851 50.0878 22.8226Z" fill="#4D99FF" />
+            <path d="M55.189 27.2141C55.189 25.7516 55.189 24.2891 55.1929 22.8226C55.483 22.8266 56.0594 22.8305 56.3496 22.8344C56.3535 23.6186 56.3535 24.3988 56.3574 25.183C56.9534 24.3988 57.5494 23.6107 58.1453 22.8226C58.4355 22.8266 59.0236 22.8422 59.3138 22.8462C59.3216 24.3008 59.3216 25.7555 59.3177 27.2101C59.0315 27.2101 58.4512 27.2062 58.161 27.2062C58.1571 26.4181 58.1493 25.6339 58.1453 24.8497C57.5572 25.6339 56.9691 26.4181 56.3809 27.2023C55.981 27.2062 55.585 27.2101 55.189 27.2141Z" fill="#4D99FF" />
+            <path d="M60.0979 22.8304C61.3644 22.8304 62.6308 22.8304 63.9012 22.8304C63.9012 23.1363 63.909 23.7519 63.9129 24.0616C63.5797 24.0695 62.921 24.0851 62.5877 24.093C62.5916 25.132 62.5916 26.1711 62.5955 27.2101C62.2975 27.2101 61.7055 27.2101 61.4075 27.2101C61.4075 26.1711 61.4075 25.1281 61.4114 24.0891C61.086 24.0812 60.4312 24.0695 60.1057 24.0616C60.1018 23.7558 60.0979 23.1363 60.0979 22.8304Z" fill="#4D99FF" />
+            <path d="M65.399 23.0774C66.932 22.0619 69.2258 23.4382 68.8847 25.2967C68.7945 27.0376 66.5047 27.9002 65.2068 26.8258C63.9874 25.9358 64.1011 23.8459 65.399 23.0774ZM66.0851 24.1243C65.348 24.4262 65.3323 25.677 66.1361 25.8887C66.787 26.2651 67.9554 25.7045 67.6888 24.8615C67.6574 24.1479 66.6654 23.7401 66.0851 24.1243Z" fill="#4D99FF" />
+            <path d="M69.8922 22.8422C70.9352 22.85 71.9938 22.6932 73.025 22.8892C74.6444 23.4381 74.9267 25.9358 73.5465 26.9042C72.8329 27.4767 71.888 27.1983 71.0685 27.1395C71.0685 27.7472 71.0724 28.355 71.0763 28.9666C70.7783 28.9666 70.1902 28.9627 69.8922 28.9627C69.8922 26.9238 69.8922 24.881 69.8922 22.8422ZM71.0489 24.2968C71.0489 24.6575 71.0489 25.3751 71.0489 25.7358C71.441 25.8456 71.837 25.9397 72.2369 26.0103C73.1074 26.1357 73.6445 24.7556 72.8956 24.289C72.3349 23.8459 71.6605 24.2027 71.0489 24.2968Z" fill="#4D99FF" />
+            <path d="M75.1855 22.8305C75.4757 22.8305 76.056 22.8305 76.3461 22.8305C76.3461 23.6147 76.3501 24.3988 76.354 25.183C76.95 24.3988 77.5459 23.6107 78.1419 22.8226C78.4321 22.8266 79.0202 22.8422 79.3103 22.8462C79.3182 24.3008 79.3143 25.7555 79.3143 27.2101C79.028 27.2101 78.4477 27.2062 78.1576 27.2062C78.1537 26.4181 78.1458 25.6339 78.1419 24.8497C77.5538 25.63 76.9656 26.4142 76.3814 27.1984C75.9815 27.2023 75.5816 27.2101 75.1855 27.2141C75.1855 25.7516 75.1855 24.293 75.1855 22.8305Z" fill="#4D99FF" />
+            <path d="M80.4788 22.8226C80.7728 22.8305 81.3531 22.8383 81.6433 22.8462C81.655 23.2186 81.6707 23.9675 81.6786 24.34C82.2471 24.34 82.8156 24.34 83.3842 24.34C83.3842 23.9597 83.3881 23.199 83.3881 22.8226C83.6821 22.8266 84.2703 22.8383 84.5644 22.8422C84.5683 24.2969 84.5683 25.7555 84.5683 27.2101C84.2742 27.2101 83.6821 27.2101 83.3881 27.2101C83.3842 26.669 83.3842 26.1319 83.3842 25.5908C82.8078 25.5908 82.2353 25.5908 81.6629 25.5908C81.659 26.1319 81.659 26.669 81.659 27.2101C81.3649 27.2101 80.7728 27.2101 80.4788 27.2101C80.4788 25.7476 80.4788 24.2851 80.4788 22.8226Z" fill="#4D99FF" />
+            <path d="M85.772 22.8265C86.7326 22.8304 87.6932 22.8304 88.6578 22.8382C88.6617 23.148 88.6695 23.7597 88.6734 24.0655C88.101 24.0733 87.5246 24.0812 86.9522 24.0851C86.9522 25.1281 86.9522 26.1671 86.9522 27.2101C86.6581 27.2101 86.066 27.2101 85.772 27.2101C85.772 25.7476 85.772 24.289 85.772 22.8265Z" fill="#4D99FF" />
+            <path d="M91.7632 26.9278C90.2811 25.9946 90.6026 23.3755 92.2964 22.8775C93.1512 22.505 93.9981 22.9951 94.7823 23.2931C94.7039 23.5911 94.5509 24.1832 94.4725 24.4812C94.0765 24.2812 93.6766 24.0773 93.2806 23.8734C92.8179 24.1597 92.2298 24.3361 91.9592 24.8458C91.92 25.6927 92.7552 25.8653 93.3629 26.1554C93.7707 25.9241 94.1785 25.6927 94.5901 25.4653C95.3508 27.2337 92.8453 27.7708 91.7632 26.9278Z" fill="#4D99FF" />
+            <path d="M97.9269 22.8226C98.217 22.8265 98.7973 22.8383 99.0875 22.8422C99.0992 23.1951 99.1228 23.8969 99.1345 24.2498C99.609 23.7754 100.079 23.297 100.554 22.8187C100.938 22.8304 101.714 22.85 102.103 22.8579C101.46 23.548 100.817 24.2341 100.174 24.9203C100.895 25.677 101.616 26.4337 102.33 27.2022C101.781 27.2022 101.232 27.2062 100.683 27.2101C100.158 26.669 99.6325 26.1318 99.1071 25.5947C99.1071 26.1318 99.1071 26.6729 99.1071 27.2101C98.813 27.2101 98.2209 27.2101 97.9269 27.2101C97.9269 25.7476 97.9269 24.2851 97.9269 22.8226Z" fill="#4D99FF" />
+            <path d="M103.338 27.0533C101.522 26.175 101.946 22.9481 104.047 22.7795C105.675 22.3443 106.521 24.0969 106.67 25.4222C105.549 25.4575 104.428 25.4653 103.314 25.579C104.165 26.2848 105.184 25.9868 106.129 25.6653C106.545 27.2885 104.4 27.6257 103.338 27.0533ZM103.781 24.1557C103.753 24.7125 104.714 24.6772 104.984 24.3439C105.008 23.7833 104.043 23.7989 103.781 24.1557Z" fill="#4D99FF" />
+            <path d="M107.337 22.8226C107.631 22.8266 108.219 22.8383 108.513 22.8462C108.517 23.8852 108.517 24.9242 108.521 25.9633C108.8 25.9633 109.36 25.9633 109.639 25.9633C109.639 24.9164 109.639 23.8695 109.643 22.8266C109.937 22.8305 110.521 22.8344 110.815 22.8383C110.819 23.8813 110.823 24.9242 110.827 25.9672C111.101 25.9633 111.65 25.9594 111.928 25.9594C111.932 24.9164 111.936 23.8695 111.94 22.8266C112.238 22.8266 112.826 22.8305 113.124 22.8305C113.124 24.2891 113.124 25.7516 113.116 27.2101C111.191 27.2101 109.262 27.2101 107.333 27.2101C107.337 25.7476 107.337 24.2851 107.337 22.8226Z" fill="#4D99FF" />
+            <path d="M119.17 23.3049C119.966 23.0147 120.813 22.505 121.68 22.85C123.421 23.3284 123.695 26.0181 122.213 26.9513C121.123 27.7276 118.872 27.3003 119.292 25.579C120.154 25.9162 121.08 26.1161 121.97 25.728C121.456 25.6456 120.943 25.5711 120.429 25.5045C120.429 25.2849 120.429 24.8379 120.425 24.6144C120.946 24.4498 121.46 24.2733 121.974 24.0812C121.123 24.0185 120.284 24.1675 119.464 24.3596C119.39 24.0969 119.245 23.5676 119.17 23.3049Z" fill="#4D99FF" />
+            <path d="M124.001 22.8226C124.295 22.8304 124.875 22.8422 125.169 22.8461C125.177 23.2029 125.189 23.9165 125.197 24.2694C125.679 23.7832 126.165 23.2931 126.647 22.8069C127.028 22.8186 127.788 22.85 128.165 22.8618C127.53 23.5519 126.887 24.238 126.248 24.9242C126.969 25.6809 127.69 26.4376 128.412 27.1983C127.863 27.2061 127.318 27.2101 126.773 27.214C126.244 26.6768 125.714 26.1397 125.185 25.6025C125.181 26.1397 125.181 26.6729 125.181 27.2101C124.887 27.2101 124.295 27.2101 124.001 27.2101C124.001 25.7476 124.001 24.2851 124.001 22.8226Z" fill="#4D99FF" />
+            <path d="M129.322 23.0735C130.843 22.0776 133.105 23.4146 132.799 25.2614C132.737 27.014 130.439 27.9041 129.126 26.8337C127.894 25.9397 128.008 23.8381 129.322 23.0735ZM130.008 24.1165C129.502 24.3439 129.235 25.0693 129.592 25.528C130.031 26.2847 131.513 26.1005 131.604 25.1947C131.835 24.3674 130.702 23.6538 130.008 24.1165Z" fill="#4D99FF" />
+            <path d="M134.046 22.8344C134.313 22.8305 134.85 22.8266 135.117 22.8226C135.497 23.6695 135.873 24.5204 136.254 25.3634C136.63 24.5204 137.007 23.6735 137.383 22.8305C137.669 22.8305 138.242 22.8305 138.528 22.8305C138.759 24.2851 138.987 25.7437 139.206 27.2062C138.908 27.2062 138.316 27.2101 138.022 27.2101C137.908 26.5436 137.795 25.8731 137.685 25.2065C137.387 25.8731 137.089 26.5397 136.795 27.2062C136.556 27.2101 136.07 27.2141 135.826 27.2141C135.528 26.5436 135.23 25.8692 134.932 25.1987C134.815 25.8692 134.701 26.5397 134.587 27.2141C134.286 27.2101 133.682 27.2062 133.376 27.2062C133.592 25.7476 133.819 24.2891 134.046 22.8344Z" fill="#4D99FF" />
+            <path d="M76.5108 4.04535C78.7614 4.02967 81.0081 4.03751 83.2587 4.03751C83.243 4.5786 83.2234 5.11969 83.2077 5.66077C81.4903 5.67253 79.773 5.66469 78.0556 5.66861C78.0517 6.88802 78.0478 8.11134 78.0517 9.33074C79.6083 9.33074 81.1688 9.33074 82.7254 9.33074C82.7254 9.87575 82.7254 10.4208 82.7254 10.9658C81.1727 10.9658 79.624 10.9658 78.0752 10.9658C78.0439 12.3067 78.0478 13.6477 78.0478 14.9925C79.7808 14.9925 81.5139 14.9925 83.2469 14.9925C83.2391 15.5336 83.2351 16.0747 83.2273 16.6158C80.9885 16.6315 78.7496 16.6236 76.5108 16.6236C76.499 12.4283 76.499 8.23681 76.5108 4.04535Z" fill="white" />
+            <path d="M113.536 14.4789C112.042 11.7343 113.987 7.49968 117.371 7.75062C120.009 7.6722 121.546 10.4286 121.378 12.8047C119.076 12.8243 116.775 12.7812 114.477 12.836C114.849 13.5614 115.163 14.4475 115.983 14.7847C117.457 15.5376 119.159 14.9377 120.401 14.0123C120.476 14.3809 120.633 15.118 120.707 15.4866C118.755 17.5686 114.771 17.1177 113.536 14.4789ZM114.575 11.2324C116.339 11.3069 118.104 11.299 119.872 11.252C119.335 10.3227 118.578 9.28762 117.371 9.37388C116.081 9.22489 115.167 10.2286 114.575 11.2324Z" fill="white" />
+            <path d="M125.122 8.3858C126.663 7.57809 128.686 7.4487 130.102 8.58968C132.482 10.1855 132.592 14.0476 130.333 15.8002C128.828 17.153 126.542 17.0392 124.883 16.0316C124.922 17.4549 124.911 18.8821 124.911 20.3054C124.542 20.3014 123.809 20.2897 123.44 20.2858C123.44 16.1218 123.417 11.9577 123.452 7.79374C124.024 7.93881 124.601 8.09565 125.122 8.3858ZM126.087 9.65225C124.55 10.2561 124.883 12.142 124.938 13.4477C125.142 14.9455 127.02 15.4513 128.294 15.0866C129.851 14.773 130.753 13.0282 130.345 11.5382C130.004 9.69146 127.675 8.86023 126.087 9.65225Z" fill="white" />
+            <path d="M85.4034 7.931C85.8857 7.93492 86.3758 7.94276 86.862 7.9506C86.8777 9.12296 86.8777 10.2992 86.8816 11.4755C88.1598 10.2914 89.4459 9.10727 90.7241 7.92316C91.4416 7.93492 92.1552 7.9506 92.8728 7.97021C91.4259 9.41702 89.8811 10.7619 88.3872 12.1577C90.0183 13.6438 91.7122 15.0631 93.2884 16.6119C92.4846 16.6197 91.6808 16.6237 90.8809 16.6237C89.5518 15.4043 88.2226 14.1927 86.8777 12.9968C86.8777 14.2045 86.8777 15.4121 86.8777 16.6237C86.513 16.6237 85.7759 16.6237 85.4113 16.6237C85.3956 13.7261 85.4074 10.8286 85.4034 7.931Z" fill="white" />
+            <path d="M95.2331 8.64853C96.9544 7.28797 99.6245 7.49186 101.138 9.07591C101.036 9.4131 100.84 10.0875 100.742 10.4247C99.5187 9.48368 97.8523 8.92299 96.4329 9.8052C94.496 10.7423 94.5156 13.8477 96.4564 14.7651C97.8993 15.6199 99.5932 15.1023 100.809 14.1143C100.907 14.4554 101.103 15.1376 101.205 15.4788C99.4207 17.3451 96.08 17.2392 94.4764 15.2004C92.8296 13.3183 93.1825 10.0953 95.2331 8.64853Z" fill="white" />
+            <path d="M103.447 16.6118C103.428 13.7221 103.444 10.8285 103.44 7.93488C105.914 7.93488 108.388 7.93488 110.866 7.93488C110.858 10.8324 110.882 13.73 110.85 16.6236C110.368 16.6236 109.882 16.6197 109.403 16.6197C109.376 14.2515 109.396 11.8832 109.388 9.515C107.898 9.515 106.404 9.515 104.914 9.515C104.914 11.8872 104.914 14.2593 104.914 16.6275C104.424 16.6236 103.938 16.6197 103.447 16.6118Z" fill="white" />
+            <path d="M133.191 7.93492C135.63 7.93884 138.065 7.92315 140.5 7.94668C140.496 8.46816 140.488 8.98572 140.484 9.5072C139.516 9.51504 138.551 9.51897 137.587 9.51897C137.583 11.8872 137.583 14.2554 137.587 16.6237C137.097 16.6237 136.61 16.6197 136.124 16.6197C136.097 14.2515 136.112 11.8833 136.109 9.51504C135.136 9.51504 134.164 9.51504 133.191 9.51504C133.191 9.12295 133.191 8.33093 133.191 7.93492Z" fill="white" />
+            <path d="M14.333 0.865549C18.5479 0.367593 22.9394 1.63797 26.1467 4.4375C29.7892 7.45268 31.9888 12.1695 31.7457 16.9178C31.7026 23.7088 26.5231 29.9352 19.9908 31.5663C16.415 32.4446 12.4941 32.1309 9.20833 30.4096C3.89158 27.7865 0.229447 21.9836 0.515673 16.0081C0.488227 8.46035 6.86363 1.61444 14.333 0.865549ZM12.7646 4.363C10.5297 4.97858 8.47512 6.24112 6.91852 7.95456C3.75042 11.2795 2.91919 16.3767 4.37385 20.6622C5.85595 24.8458 9.73373 28.1041 14.1448 28.7197C16.2424 28.9275 18.4264 28.904 20.4221 28.1551C24.4528 26.6926 27.6601 23.0305 28.3894 18.7802C28.609 17.3412 28.6051 15.8709 28.4443 14.428C27.9464 10.5188 25.3037 7.0449 21.8258 5.26481C19.0655 3.81407 15.7563 3.669 12.7646 4.363Z" fill="white" />
+            <path d="M8.15751 7.65265C8.80838 6.85279 9.98073 7.19391 10.8825 7.07236C10.8708 7.44876 10.8433 7.82125 10.8002 8.19766C8.89072 8.83677 8.05557 10.711 7.25178 12.3813C9.92584 12.7185 12.6979 12.3421 15.2857 13.2478C16.5051 13.7222 17.6971 12.938 18.8969 12.7851C20.8887 12.4989 22.9158 12.64 24.9155 12.4126C24.343 10.6169 23.4491 8.7309 21.4612 8.19374C21.4572 7.82909 21.4572 7.46837 21.4533 7.10765C22.4375 7.18214 23.7078 6.8175 24.3548 7.78988C25.8212 9.668 26.676 11.95 27.5425 14.1457C27.7699 15.6395 27.4249 17.3295 26.5662 18.5881C25.2801 19.533 23.5275 19.2468 22.0179 19.3487C20.6456 19.2938 18.9714 19.6075 17.9206 18.4979C17.0501 17.4314 16.7325 16.0473 16.1915 14.8083C15.4269 16.3492 15.1642 18.5841 13.2861 19.1684C11.6354 19.4977 9.92584 19.3174 8.25553 19.2978C7.25962 19.1919 5.90299 19.184 5.41287 18.1254C4.75416 16.4394 4.55419 14.4319 5.3619 12.7577C6.15 10.9893 6.85185 9.11907 8.15751 7.65265ZM18.0382 14.6436C18.4538 15.6788 18.4852 17.2197 19.7281 17.6431C21.6415 17.9764 23.5981 17.6353 25.5075 17.3922C25.6801 16.3335 25.8173 15.2671 25.9506 14.2006C23.3079 14.2437 20.6495 14.1692 18.0382 14.6436ZM6.38918 14.2241C6.52249 15.2827 6.68717 16.3375 6.87145 17.3883C8.75349 17.6314 10.6826 17.9686 12.5764 17.651C13.9605 17.3177 13.8899 15.6435 14.2349 14.5417C11.6314 14.2437 9.00443 14.2084 6.38918 14.2241Z" fill="white" />
+        </svg>',
+        'link' => "https://kurs.expert/ru/obmennik/comcash-io/feedbacks.html#stat",
+        'reviews' => 391,
+        'stars' => 5
+        ],
+        (object)[
+        'icon' => '<svg width="141" height="30" viewBox="0 0 141 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <rect x="0.5" y="0.0413818" width="140" height="29.717" fill="url(#pattern0_237_14234)" />
+            <defs>
+                <pattern id="pattern0_237_14234" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_237_14234" transform="scale(0.00471698 0.0222222)" />
+                </pattern>
+                <image id="image0_237_14234" width="212" height="45" preserveAspectRatio="none" xlink:href="data:image/png;base64,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" />
+            </defs>
+        </svg>',
+        'reviews' => 391,
+        'link' => 'https://www.okchanger.ru/exchangers/Comcash-io',
+        'stars' => 5
+        ],
+        (object)[
+        'icon' => '<svg width="141" height="25" viewBox="0 0 141 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M114.812 24.8252V6.15858H117.959V8.40353H118.144C118.309 8.07356 118.542 7.72297 118.843 7.35176C119.143 6.97466 119.55 6.65353 120.062 6.38838C120.575 6.11733 121.229 5.98181 122.025 5.98181C123.073 5.98181 124.019 6.24991 124.862 6.7861C125.71 7.31641 126.382 8.10302 126.877 9.14595C127.378 10.183 127.628 11.4557 127.628 12.9641C127.628 14.4549 127.384 15.7217 126.894 16.7646C126.405 17.8076 125.74 18.603 124.897 19.151C124.054 19.699 123.1 19.973 122.033 19.973C121.256 19.973 120.61 19.8433 120.098 19.5841C119.585 19.3248 119.173 19.0125 118.86 18.6472C118.554 18.276 118.315 17.9254 118.144 17.5954H118.012V24.8252H114.812ZM117.95 12.9465C117.95 13.8244 118.074 14.5933 118.321 15.2533C118.575 15.9132 118.937 16.4288 119.408 16.8C119.886 17.1653 120.463 17.348 121.141 17.348C121.848 17.348 122.44 17.1594 122.917 16.7823C123.394 16.3993 123.754 15.8779 123.995 15.2179C124.243 14.5521 124.367 13.7949 124.367 12.9465C124.367 12.1039 124.246 11.3555 124.004 10.7015C123.763 10.0475 123.403 9.53484 122.926 9.16363C122.449 8.79242 121.854 8.60681 121.141 8.60681C120.457 8.60681 119.877 8.78652 119.4 9.14595C118.922 9.50538 118.56 10.0092 118.312 10.6573C118.071 11.3055 117.95 12.0685 117.95 12.9465Z" fill="white" />
+            <path d="M104.427 20.0083C103.567 20.0083 102.792 19.8551 102.103 19.5487C101.419 19.2364 100.877 18.7768 100.476 18.1699C100.082 17.563 99.8843 16.8147 99.8843 15.925C99.8843 15.159 100.026 14.5256 100.309 14.0247C100.591 13.5239 100.977 13.1232 101.466 12.8227C101.955 12.5222 102.506 12.2954 103.119 12.1422C103.738 11.9831 104.377 11.8682 105.037 11.7975C105.833 11.715 106.478 11.6413 106.973 11.5765C107.468 11.5058 107.827 11.3997 108.051 11.2583C108.281 11.111 108.396 10.8842 108.396 10.5778V10.5247C108.396 9.85892 108.198 9.34334 107.803 8.97802C107.409 8.6127 106.84 8.43004 106.098 8.43004C105.314 8.43004 104.692 8.60092 104.233 8.94267C103.779 9.28442 103.473 9.68804 103.314 10.1535L100.326 9.72929C100.562 8.90437 100.951 8.21498 101.493 7.6611C102.035 7.10134 102.698 6.68299 103.481 6.40605C104.265 6.12323 105.131 5.98181 106.08 5.98181C106.734 5.98181 107.385 6.05841 108.033 6.21161C108.681 6.36481 109.274 6.61817 109.81 6.97171C110.346 7.31935 110.776 7.79368 111.1 8.39469C111.43 8.9957 111.595 9.74696 111.595 10.6485V19.7343H108.519V17.8694H108.413C108.219 18.2465 107.945 18.6001 107.591 18.93C107.244 19.2541 106.805 19.5163 106.274 19.7167C105.75 19.9111 105.134 20.0083 104.427 20.0083ZM105.258 17.6573C105.9 17.6573 106.457 17.5306 106.928 17.2773C107.4 17.018 107.762 16.6763 108.016 16.252C108.275 15.8278 108.404 15.3652 108.404 14.8644V13.2646C108.304 13.3471 108.133 13.4237 107.892 13.4944C107.656 13.5651 107.391 13.627 107.096 13.68C106.802 13.7331 106.51 13.7802 106.221 13.8215C105.933 13.8627 105.682 13.8981 105.47 13.9275C104.993 13.9923 104.566 14.0984 104.189 14.2457C103.811 14.393 103.514 14.5992 103.296 14.8644C103.078 15.1236 102.969 15.4595 102.969 15.872C102.969 16.4612 103.184 16.9061 103.614 17.2066C104.044 17.5071 104.592 17.6573 105.258 17.6573Z" fill="white" />
+            <path d="M82.4926 19.7343L78.6567 6.15857H81.9181L84.3045 15.704H84.4282L86.8676 6.15857H90.0936L92.533 15.651H92.6656L95.0166 6.15857H98.2868L94.4421 19.7343H91.11L88.5646 10.5601H88.379L85.8335 19.7343H82.4926Z" fill="white" />
+            <path d="M73.5061 6.60935C73.4236 5.83746 73.0759 5.23645 72.4631 4.80632C71.8562 4.37618 71.0667 4.16112 70.0944 4.16112C69.4109 4.16112 68.8247 4.26423 68.3356 4.47046C67.8465 4.67669 67.4724 4.95657 67.2131 5.31011C66.9539 5.66364 66.8213 6.06726 66.8154 6.52097C66.8154 6.89807 66.9008 7.22509 67.0717 7.50203C67.2485 7.77896 67.4871 8.01465 67.7876 8.2091C68.0881 8.39765 68.421 8.55674 68.7864 8.68637C69.1517 8.816 69.5199 8.92501 69.8912 9.01339L71.5881 9.43763C72.2716 9.59672 72.9286 9.81179 73.5591 10.0828C74.1955 10.3539 74.7641 10.6956 75.2649 11.1081C75.7716 11.5205 76.1723 12.0184 76.4669 12.6018C76.7615 13.1851 76.9088 13.8686 76.9088 14.6523C76.9088 15.7129 76.6378 16.6468 76.0957 17.454C75.5536 18.2554 74.7699 18.8829 73.7447 19.3366C72.7253 19.7844 71.4909 20.0083 70.0414 20.0083C68.6332 20.0083 67.4105 19.7903 66.3735 19.3543C65.3423 18.9183 64.5351 18.2819 63.9518 17.4452C63.3743 16.6085 63.062 15.5891 63.0149 14.3871H66.2409C66.288 15.0176 66.4825 15.542 66.8242 15.9604C67.166 16.3787 67.6109 16.691 68.1588 16.8972C68.7127 17.1035 69.3314 17.2066 70.0149 17.2066C70.7279 17.2066 71.3524 17.1005 71.8886 16.8884C72.4307 16.6704 72.855 16.3699 73.1614 15.9869C73.4678 15.598 73.6239 15.1443 73.6298 14.6258C73.6239 14.1544 73.4854 13.7655 73.2144 13.4591C72.9433 13.1468 72.5633 12.8875 72.0742 12.6813C71.5911 12.4692 71.0254 12.2806 70.3773 12.1157L68.3179 11.5854C66.8272 11.2024 65.6487 10.622 64.7826 9.8442C63.9223 9.06053 63.4922 8.02054 63.4922 6.72425C63.4922 5.65775 63.7809 4.72383 64.3583 3.92248C64.9417 3.12113 65.7342 2.4995 66.7359 2.05758C67.7375 1.60977 68.8718 1.38586 70.1386 1.38586C71.4231 1.38586 72.5486 1.60977 73.5149 2.05758C74.4871 2.4995 75.2502 3.11524 75.804 3.9048C76.3579 4.68847 76.6437 5.58999 76.6614 6.60935H73.5061Z" fill="white" />
+            <path d="M57.038 19.7343V6.15855H60.2375V19.7343H57.038ZM58.6466 4.23179C58.1399 4.23179 57.7038 4.06386 57.3385 3.728C56.9732 3.38625 56.7905 2.97673 56.7905 2.49946C56.7905 2.0163 56.9732 1.60679 57.3385 1.27093C57.7038 0.929176 58.1399 0.758301 58.6466 0.758301C59.1592 0.758301 59.5952 0.929176 59.9547 1.27093C60.32 1.60679 60.5026 2.0163 60.5026 2.49946C60.5026 2.97673 60.32 3.38625 59.9547 3.728C59.5952 4.06386 59.1592 4.23179 58.6466 4.23179Z" fill="white" />
+            <path d="M54.3622 6.15859V8.63334H46.5579V6.15859H54.3622ZM48.4846 2.90607H51.6841V15.651C51.6841 16.0812 51.7489 16.4111 51.8786 16.6409C52.0141 16.8648 52.1909 17.018 52.4089 17.1005C52.6269 17.183 52.8685 17.2242 53.1336 17.2242C53.334 17.2242 53.5166 17.2095 53.6816 17.1801C53.8525 17.1506 53.9821 17.1241 54.0705 17.1005L54.6096 19.6018C54.4388 19.6607 54.1942 19.7255 53.876 19.7962C53.5638 19.8669 53.1808 19.9082 52.7271 19.92C51.9257 19.9435 51.2039 19.8227 50.5616 19.5576C49.9194 19.2865 49.4097 18.8682 49.0326 18.3025C48.6614 17.7369 48.4787 17.0298 48.4846 16.1813V2.90607Z" fill="white" />
+            <path d="M35.616 11.7798V19.7343H32.4165V6.15858H35.4746V8.4654H35.6337C35.946 7.7053 36.4439 7.10134 37.1274 6.65353C37.8168 6.20572 38.6682 5.98181 39.6817 5.98181C40.6185 5.98181 41.4346 6.18215 42.1299 6.58282C42.8311 6.98349 43.3732 7.56388 43.7562 8.32398C44.145 9.08408 44.3365 10.0062 44.3306 11.0904V19.7343H41.1312V11.5853C41.1312 10.6779 40.8955 9.96792 40.4241 9.4553C39.9586 8.94267 39.3134 8.68636 38.4885 8.68636C37.9287 8.68636 37.4308 8.81009 36.9948 9.05757C36.5647 9.29915 36.2258 9.64974 35.9784 10.1093C35.7368 10.5689 35.616 11.1258 35.616 11.7798Z" fill="white" />
+            <path d="M16.8719 19.7343H13.3719L19.7444 1.6333H23.7924L30.1737 19.7343H26.6737L21.8391 5.34542H21.6977L16.8719 19.7343ZM16.9868 12.6371H26.5323V15.2709H16.9868V12.6371Z" fill="white" />
+        </svg>',
+        'link' => 'https://antiswap.info/exchanger/ComCASH-otzyvy',
+        'reviews' => 417,
+        'stars' => 5
+        ],
+        (object)[
+        'icon' => '<svg width="141" height="28" viewBox="0 0 141 28" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path d="M31.7514 21.3423V8.87472H33.4751V10.3446H33.6227C33.725 10.1557 33.8726 9.93729 34.0654 9.68936C34.2582 9.44143 34.5259 9.22498 34.8682 9.04001C35.2106 8.85111 35.6632 8.75666 36.226 8.75666C36.958 8.75666 37.6113 8.94162 38.1858 9.31156C38.7604 9.68149 39.211 10.2147 39.5377 10.9113C39.8682 11.6079 40.0335 12.4461 40.0335 13.4261C40.0335 14.406 39.8702 15.2462 39.5436 15.9467C39.2169 16.6433 38.7683 17.1805 38.1976 17.5583C37.627 17.9322 36.9757 18.1191 36.2437 18.1191C35.6927 18.1191 35.2421 18.0266 34.8919 17.8417C34.5455 17.6567 34.274 17.4402 34.0772 17.1923C33.8804 16.9444 33.7289 16.724 33.6227 16.5312H33.5164V21.3423H31.7514ZM33.481 13.4084C33.481 14.0459 33.5735 14.6047 33.7584 15.0849C33.9434 15.565 34.211 15.9408 34.5613 16.2124C34.9115 16.48 35.3405 16.6138 35.8482 16.6138C36.3755 16.6138 36.8163 16.4741 37.1705 16.1947C37.5247 15.9113 37.7923 15.5276 37.9733 15.0436C38.1583 14.5595 38.2508 14.0144 38.2508 13.4084C38.2508 12.8102 38.1603 12.273 37.9792 11.7968C37.8021 11.3206 37.5345 10.9448 37.1764 10.6693C36.8222 10.3938 36.3795 10.2561 35.8482 10.2561C35.3366 10.2561 34.9037 10.3879 34.5495 10.6516C34.1992 10.9153 33.9336 11.2832 33.7525 11.7555C33.5715 12.2277 33.481 12.7787 33.481 13.4084ZM42.0111 17.942V8.87472H43.7171V10.3151H43.8116C43.9769 9.8271 44.2681 9.44339 44.6852 9.16398C45.1063 8.88062 45.5825 8.73895 46.1138 8.73895C46.224 8.73895 46.3539 8.74288 46.5034 8.75075C46.6569 8.75862 46.7769 8.76846 46.8635 8.78027V10.4686C46.7927 10.4489 46.6667 10.4273 46.4857 10.4036C46.3047 10.3761 46.1237 10.3623 45.9426 10.3623C45.5255 10.3623 45.1536 10.4509 44.8269 10.628C44.5042 10.8011 44.2484 11.0432 44.0595 11.3541C43.8706 11.661 43.7762 12.0113 43.7762 12.4048V17.942H42.0111ZM51.8857 18.125C51.0356 18.125 50.2938 17.9302 49.6602 17.5406C49.0265 17.151 48.5346 16.6059 48.1844 15.9054C47.8341 15.2049 47.659 14.3863 47.659 13.4497C47.659 12.5091 47.8341 11.6866 48.1844 10.9822C48.5346 10.2777 49.0265 9.73068 49.6602 9.34107C50.2938 8.95146 51.0356 8.75666 51.8857 8.75666C52.7357 8.75666 53.4776 8.95146 54.1112 9.34107C54.7448 9.73068 55.2367 10.2777 55.587 10.9822C55.9372 11.6866 56.1123 12.5091 56.1123 13.4497C56.1123 14.3863 55.9372 15.2049 55.587 15.9054C55.2367 16.6059 54.7448 17.151 54.1112 17.5406C53.4776 17.9302 52.7357 18.125 51.8857 18.125ZM51.8916 16.6433C52.4425 16.6433 52.899 16.4977 53.2611 16.2065C53.6232 15.9153 53.8908 15.5276 54.0639 15.0436C54.241 14.5595 54.3296 14.0262 54.3296 13.4438C54.3296 12.8653 54.241 12.334 54.0639 11.8499C53.8908 11.3619 53.6232 10.9704 53.2611 10.6752C52.899 10.38 52.4425 10.2325 51.8916 10.2325C51.3367 10.2325 50.8762 10.38 50.5102 10.6752C50.1482 10.9704 49.8786 11.3619 49.7015 11.8499C49.5283 12.334 49.4417 12.8653 49.4417 13.4438C49.4417 14.0262 49.5283 14.5595 49.7015 15.0436C49.8786 15.5276 50.1482 15.9153 50.5102 16.2065C50.8762 16.4977 51.3367 16.6433 51.8916 16.6433ZM63.4249 12.0683V13.5973H58.0648V12.0683H63.4249ZM69.5967 18.125C68.7466 18.125 68.0048 17.9302 67.3712 17.5406C66.7376 17.151 66.2457 16.6059 65.8954 15.9054C65.5451 15.2049 65.37 14.3863 65.37 13.4497C65.37 12.5091 65.5451 11.6866 65.8954 10.9822C66.2457 10.2777 66.7376 9.73068 67.3712 9.34107C68.0048 8.95146 68.7466 8.75666 69.5967 8.75666C70.4468 8.75666 71.1886 8.95146 71.8222 9.34107C72.4558 9.73068 72.9477 10.2777 73.298 10.9822C73.6483 11.6866 73.8234 12.5091 73.8234 13.4497C73.8234 14.3863 73.6483 15.2049 73.298 15.9054C72.9477 16.6059 72.4558 17.151 71.8222 17.5406C71.1886 17.9302 70.4468 18.125 69.5967 18.125ZM69.6026 16.6433C70.1536 16.6433 70.6101 16.4977 70.9721 16.2065C71.3342 15.9153 71.6018 15.5276 71.775 15.0436C71.9521 14.5595 72.0406 14.0262 72.0406 13.4438C72.0406 12.8653 71.9521 12.334 71.775 11.8499C71.6018 11.3619 71.3342 10.9704 70.9721 10.6752C70.6101 10.38 70.1536 10.2325 69.6026 10.2325C69.0477 10.2325 68.5873 10.38 68.2213 10.6752C67.8592 10.9704 67.5896 11.3619 67.4125 11.8499C67.2394 12.334 67.1528 12.8653 67.1528 13.4438C67.1528 14.0262 67.2394 14.5595 67.4125 15.0436C67.5896 15.5276 67.8592 15.9153 68.2213 16.2065C68.5873 16.4977 69.0477 16.6433 69.6026 16.6433ZM75.9352 17.942V5.85229H77.7003V10.3446H77.8066C77.9089 10.1557 78.0565 9.93729 78.2493 9.68936C78.4421 9.44143 78.7097 9.22498 79.0521 9.04001C79.3945 8.85111 79.8471 8.75666 80.4099 8.75666C81.1419 8.75666 81.7951 8.94162 82.3697 9.31156C82.9443 9.68149 83.3949 10.2147 83.7215 10.9113C84.0521 11.6079 84.2174 12.4461 84.2174 13.4261C84.2174 14.406 84.0541 15.2462 83.7275 15.9467C83.4008 16.6433 82.9522 17.1805 82.3815 17.5583C81.8109 17.9322 81.1596 18.1191 80.4276 18.1191C79.8766 18.1191 79.426 18.0266 79.0757 17.8417C78.7294 17.6567 78.4579 17.4402 78.2611 17.1923C78.0643 16.9444 77.9128 16.724 77.8066 16.5312H77.659V17.942H75.9352ZM77.6649 13.4084C77.6649 14.0459 77.7574 14.6047 77.9423 15.0849C78.1273 15.565 78.3949 15.9408 78.7452 16.2124C79.0954 16.48 79.5244 16.6138 80.0321 16.6138C80.5594 16.6138 81.0002 16.4741 81.3544 16.1947C81.7086 15.9113 81.9762 15.5276 82.1572 15.0436C82.3422 14.5595 82.4347 14.0144 82.4347 13.4084C82.4347 12.8102 82.3441 12.273 82.1631 11.7968C81.986 11.3206 81.7184 10.9448 81.3603 10.6693C81.0061 10.3938 80.5633 10.2561 80.0321 10.2561C79.5204 10.2561 79.0875 10.3879 78.7334 10.6516C78.3831 10.9153 78.1175 11.2832 77.9364 11.7555C77.7554 12.2277 77.6649 12.7787 77.6649 13.4084ZM86.1994 17.942V8.87472H87.8936V10.3505H88.0058C88.1947 9.85071 88.5036 9.4611 88.9326 9.18169C89.3616 8.89833 89.8751 8.75666 90.4733 8.75666C91.0794 8.75666 91.5871 8.89833 91.9963 9.18169C92.4096 9.46504 92.7146 9.85465 92.9113 10.3505H93.0058C93.2222 9.86646 93.5666 9.48078 94.0388 9.19349C94.5111 8.90227 95.0739 8.75666 95.7272 8.75666C96.5497 8.75666 97.2207 9.01443 97.7401 9.52997C98.2636 10.0455 98.5253 10.8228 98.5253 11.8617V17.942H96.7602V12.027C96.7602 11.4131 96.593 10.9684 96.2584 10.6929C95.9239 10.4174 95.5245 10.2797 95.0601 10.2797C94.4855 10.2797 94.0388 10.4568 93.7201 10.811C93.4013 11.1612 93.2419 11.6118 93.2419 12.1628V17.942H91.4828V11.9149C91.4828 11.4229 91.3293 11.0274 91.0223 10.7283C90.7154 10.4292 90.3159 10.2797 89.824 10.2797C89.4895 10.2797 89.1805 10.3682 88.8972 10.5453C88.6178 10.7185 88.3915 10.9605 88.2183 11.2714C88.0491 11.5823 87.9645 11.9424 87.9645 12.3517V17.942H86.1994ZM104.799 18.125C103.906 18.125 103.136 17.9341 102.491 17.5524C101.849 17.1667 101.353 16.6256 101.003 15.929C100.657 15.2285 100.484 14.408 100.484 13.4674C100.484 12.5386 100.657 11.7201 101.003 11.0117C101.353 10.3033 101.841 9.75036 102.467 9.35288C103.097 8.9554 103.833 8.75666 104.675 8.75666C105.187 8.75666 105.682 8.84127 106.163 9.01049C106.643 9.17972 107.074 9.44536 107.455 9.80742C107.837 10.1695 108.138 10.6398 108.359 11.2183C108.579 11.7929 108.689 12.4914 108.689 13.3139V13.9397H101.481V12.6173H106.959C106.959 12.153 106.865 11.7417 106.676 11.3836C106.487 11.0215 106.222 10.7362 105.879 10.5276C105.541 10.319 105.143 10.2147 104.687 10.2147C104.191 10.2147 103.758 10.3367 103.388 10.5807C103.022 10.8208 102.739 11.1356 102.538 11.5253C102.341 11.9109 102.243 12.3301 102.243 12.7826V13.8157C102.243 14.4217 102.349 14.9373 102.562 15.3623C102.778 15.7874 103.079 16.112 103.465 16.3363C103.85 16.5567 104.301 16.6669 104.817 16.6669C105.151 16.6669 105.456 16.6197 105.732 16.5253C106.007 16.4269 106.245 16.2813 106.446 16.0884C106.647 15.8956 106.8 15.6575 106.906 15.3741L108.577 15.6752C108.443 16.1671 108.203 16.5981 107.857 16.968C107.514 17.334 107.083 17.6193 106.564 17.824C106.048 18.0247 105.46 18.125 104.799 18.125ZM112.413 12.5583V17.942H110.647V8.87472H112.342V10.3505H112.454C112.662 9.87039 112.989 9.48472 113.434 9.19349C113.882 8.90227 114.447 8.75666 115.128 8.75666C115.746 8.75666 116.287 8.88653 116.751 9.14627C117.216 9.40207 117.576 9.78381 117.832 10.2915C118.087 10.7992 118.215 11.4269 118.215 12.1746V17.942H116.45V12.3871C116.45 11.7299 116.279 11.2163 115.937 10.8464C115.594 10.4725 115.124 10.2856 114.526 10.2856C114.117 10.2856 113.753 10.3741 113.434 10.5512C113.119 10.7283 112.869 10.9881 112.684 11.3304C112.503 11.6689 112.413 12.0782 112.413 12.5583ZM121.745 18.0542C121.423 18.0542 121.145 17.94 120.913 17.7118C120.681 17.4796 120.565 17.2002 120.565 16.8735C120.565 16.5508 120.681 16.2753 120.913 16.0471C121.145 15.8149 121.423 15.6988 121.745 15.6988C122.068 15.6988 122.346 15.8149 122.578 16.0471C122.81 16.2753 122.926 16.5508 122.926 16.8735C122.926 17.09 122.871 17.2887 122.761 17.4698C122.655 17.6469 122.513 17.7885 122.336 17.8948C122.159 18.001 121.962 18.0542 121.745 18.0542ZM125.29 17.942V8.87472H126.996V10.3151H127.091C127.256 9.8271 127.547 9.44339 127.964 9.16398C128.386 8.88062 128.862 8.73895 129.393 8.73895C129.503 8.73895 129.633 8.74288 129.783 8.75075C129.936 8.75862 130.056 8.76846 130.143 8.78027V10.4686C130.072 10.4489 129.946 10.4273 129.765 10.4036C129.584 10.3761 129.403 10.3623 129.222 10.3623C128.805 10.3623 128.433 10.4509 128.106 10.628C127.783 10.8011 127.528 11.0432 127.339 11.3541C127.15 11.661 127.055 12.0113 127.055 12.4048V17.942H125.29ZM137.414 14.1817V8.87472H139.185V17.942H137.449V16.3718H137.355C137.146 16.8558 136.812 17.2592 136.351 17.5819C135.895 17.9007 135.326 18.0601 134.645 18.0601C134.063 18.0601 133.547 17.9322 133.099 17.6764C132.654 17.4166 132.304 17.0329 132.048 16.5253C131.796 16.0176 131.67 15.3899 131.67 14.6421V8.87472H133.435V14.4296C133.435 15.0475 133.606 15.5394 133.949 15.9054C134.291 16.2714 134.736 16.4544 135.283 16.4544C135.614 16.4544 135.942 16.3718 136.269 16.2065C136.599 16.0412 136.873 15.7913 137.089 15.4568C137.31 15.1223 137.418 14.6972 137.414 14.1817Z" fill="white" />
+            <rect x="0.435059" y="0.825195" width="24.4156" height="26.4935" fill="url(#pattern0_237_14269)" />
+            <defs>
+                <pattern id="pattern0_237_14269" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_237_14269" transform="scale(0.0212766 0.0196078)" />
+                </pattern>
+                <image id="image0_237_14269" width="47" height="51" preserveAspectRatio="none" xlink:href="data:image/png;base64,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" />
+            </defs>
+        </svg>',
+        'link' => 'https://pro-obmen.ru/comcash#comments',
+        'reviews' => 335,
+        'stars' => 5
+        ]
+        ];
+
+        $forums = [
+        (object)[
+        'icon' => '<svg width="94" height="42" viewBox="0 0 94 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50.956 0.640189C58.472 -1.04273 66.9178 1.32582 71.9925 7.22644C73.0885 8.47824 74.0806 9.82354 74.8442 11.3039C77.1036 15.7449 77.7218 21.0482 76.2622 25.8425C75.5765 28.398 74.1533 30.6523 72.9327 32.9689C70.8031 36.5737 67.1827 39.0929 63.3234 40.5732C63.5935 38.615 64.0714 36.6568 65.0946 34.9427C66.5334 33.0105 68.0865 31.0886 68.8552 28.7616C69.8889 25.4841 69.9305 21.9053 68.7981 18.6485C69.1046 16.7994 69.8214 15.0489 70.1174 13.1998C70.3096 12.3583 69.6811 11.6467 69.2188 11.0234C67.3801 8.84184 64.6843 7.63159 62.0664 6.67066C59.8849 5.84997 57.5007 5.8292 55.3192 5.02929C53.5427 3.93851 52.3429 2.1569 50.956 0.640189Z" fill="#75C977" />
+            <path d="M43.9854 3.64245C46.1566 2.31792 48.4784 1.24792 50.956 0.640198C52.3429 2.1569 53.5427 3.93852 55.3192 5.0293C57.5007 5.82921 59.8849 5.84998 62.0664 6.67067C64.6843 7.63159 67.3801 8.84184 69.2188 11.0234C69.6811 11.6467 70.3096 12.3583 70.1174 13.1998C69.8214 15.0489 69.1046 16.7994 68.7981 18.6485C67.4217 15.5787 65.3803 12.6856 62.3989 10.9974C60.851 10.1352 59.1057 9.74563 57.4176 9.25218C57.3345 8.50422 57.2462 7.75106 57.1683 7.0031C54.54 6.53562 51.6884 6.69144 49.4705 8.3432C47.5434 6.89921 45.767 5.25784 43.9854 3.64245Z" fill="#6AB66C" />
+            <path d="M39.2119 7.76665C40.5832 6.16164 42.1934 4.7644 43.9854 3.64246C45.767 5.25785 47.5434 6.89922 49.4704 8.34321C47.5642 10.2339 45.8397 12.4051 44.9255 14.9606C44.2866 16.7318 44.2555 18.6329 44.1464 20.4873C42.6089 18.8667 41.0454 17.2617 39.2483 15.9216C38.9418 17.7136 38.7288 19.5263 38.7756 21.3443C37.8978 20.5392 36.994 19.7549 36.0798 18.9913C35.7474 20.8093 35.3786 22.6221 35.0773 24.4452C33.8567 18.6121 35.4357 12.3635 39.2119 7.76665Z" fill="#63AA66" />
+            <path d="M0.333344 5.14876C2.76423 5.14876 5.20031 5.14357 7.63639 5.15395C9.12193 12.2388 10.888 19.2718 12.1086 26.4138C13.1319 19.2302 15.0797 12.2233 16.6691 5.15395C19.0065 5.14876 21.3491 5.14876 23.6917 5.14876C25.2499 12.2233 27.1095 19.2354 28.1795 26.4086C29.3378 19.2562 31.1557 12.2337 32.6517 5.15395C35.0929 5.14876 37.5342 5.14357 39.9755 5.15915C39.7573 6.03697 39.5444 6.91998 39.212 7.76664C35.4358 12.3635 33.8567 18.6121 35.0774 24.4452C35.0826 24.5024 35.0878 24.6166 35.0878 24.6738C34.4956 27.4734 33.7217 30.2264 33.0568 33.0105C30.0702 33.0157 27.0887 33.0105 24.102 33.0105C22.7879 26.7255 21.1102 20.5028 20.2064 14.1347C19.2195 20.4924 17.5729 26.7203 16.2328 33.0105C13.2461 33.0157 10.2595 33.0157 7.26761 33.0053C4.96657 23.718 2.63957 14.436 0.333344 5.14876Z" fill="#DD4F40" />
+            <path d="M71.9095 5.15395C79.1606 5.14875 86.4117 5.14356 93.6628 5.15395C93.668 7.20046 93.668 9.24698 93.6628 11.2987C91.3358 11.3195 89.0088 11.2987 86.6818 11.3195C86.6766 18.5498 86.6922 25.7801 86.6714 33.0105C84.0951 33.0156 81.5135 33.0156 78.932 33.0105C78.9268 25.7749 78.9372 18.5446 78.9268 11.3143C77.5659 11.3039 76.2051 11.3091 74.8442 11.3039C74.0806 9.82354 73.0885 8.47824 71.9926 7.22643C71.9614 6.53561 71.9354 5.84478 71.9095 5.15395Z" fill="#F19B3F" />
+            <path d="M49.4705 8.34316C51.6884 6.6914 54.54 6.53558 57.1683 7.00305C57.2462 7.75102 57.3345 8.50418 57.4176 9.25214C59.1057 9.74559 60.851 10.1352 62.3988 10.9974C65.3803 12.6855 67.4216 15.5787 68.7981 18.6485C69.9304 21.9052 69.8889 25.484 68.8552 28.7616C66.8035 27.5877 65.1985 25.8009 64.3363 23.5933C64.7206 20.9027 64.9648 17.9265 63.5468 15.48C62.6274 13.7295 61.2665 11.6986 59.0486 11.7298C53.5687 11.7038 48.307 16.1968 47.6265 21.6559C47.0811 26.1852 51.0755 30.2783 55.4854 30.5484C55.7191 31.2444 55.958 31.9404 56.1918 32.6416C53.1428 33.0987 50.0418 32.7403 47.0552 32.0599C42.5258 30.4601 39.134 26.1489 38.7756 21.3442C38.7289 19.5263 38.9418 17.7135 39.2483 15.9215C41.0455 17.2616 42.6089 18.8666 44.1464 20.4872C44.2555 18.6329 44.2867 16.7318 44.9255 14.9606C45.8397 12.405 47.5642 10.2338 49.4705 8.34316Z" fill="#58965A" />
+            <path d="M36.0798 18.9913C36.994 19.7548 37.8978 20.5391 38.7756 21.3442C39.134 26.1489 42.5258 30.4601 47.0552 32.0599C50.047 34.1064 52.8207 36.6412 54.8828 39.633C53.0025 39.6174 51.0703 39.4045 49.2523 40.0226C48.1927 39.15 46.8422 38.8175 45.6527 38.1787C40.3702 35.5296 36.4798 30.3925 35.0877 24.6737C35.0877 24.6166 35.0825 24.5023 35.0773 24.4452C35.3786 22.622 35.7474 20.8092 36.0798 18.9913Z" fill="#74C676" />
+            <path d="M64.3363 23.5934C65.1985 25.801 66.8035 27.5878 68.8552 28.7617C68.0865 31.0887 66.5334 33.0105 65.0946 34.9428C63.661 33.4988 62.2482 32.0236 60.612 30.803C59.1732 31.4886 57.7137 32.1535 56.1918 32.6417C55.958 31.9405 55.7191 31.2445 55.4854 30.5485C57.1527 30.481 58.872 30.1849 60.2848 29.2395C62.3884 28.0345 63.3494 25.6815 64.3363 23.5934Z" fill="#60A562" />
+            <path d="M56.1918 32.6417C57.7137 32.1534 59.1733 31.4886 60.612 30.8029C62.2482 32.0236 63.661 33.4987 65.0946 34.9427C64.0714 36.6568 63.5935 38.615 63.3234 40.5732C58.8045 42.064 53.5479 42.3237 49.2523 40.0226C51.0703 39.4045 53.0025 39.6175 54.8828 39.6331C52.8207 36.6412 50.047 34.1064 47.0552 32.0599C50.0418 32.7404 53.1428 33.0988 56.1918 32.6417Z" fill="#6BB86D" />
+        </svg>',
+        'link' => "https://www.mywot.com/ru/user/8992061/ratings",
+        ],
+        (object)[
+        'icon' => '<svg width="94" height="42" viewBox="0 0 94 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50.956 0.640189C58.472 -1.04273 66.9178 1.32582 71.9925 7.22644C73.0885 8.47824 74.0806 9.82354 74.8442 11.3039C77.1036 15.7449 77.7218 21.0482 76.2622 25.8425C75.5765 28.398 74.1533 30.6523 72.9327 32.9689C70.8031 36.5737 67.1827 39.0929 63.3234 40.5732C63.5935 38.615 64.0714 36.6568 65.0946 34.9427C66.5334 33.0105 68.0865 31.0886 68.8552 28.7616C69.8889 25.4841 69.9305 21.9053 68.7981 18.6485C69.1046 16.7994 69.8214 15.0489 70.1174 13.1998C70.3096 12.3583 69.6811 11.6467 69.2188 11.0234C67.3801 8.84184 64.6843 7.63159 62.0664 6.67066C59.8849 5.84997 57.5007 5.8292 55.3192 5.02929C53.5427 3.93851 52.3429 2.1569 50.956 0.640189Z" fill="#75C977" />
+            <path d="M43.9854 3.64245C46.1566 2.31792 48.4784 1.24792 50.956 0.640198C52.3429 2.1569 53.5427 3.93852 55.3192 5.0293C57.5007 5.82921 59.8849 5.84998 62.0664 6.67067C64.6843 7.63159 67.3801 8.84184 69.2188 11.0234C69.6811 11.6467 70.3096 12.3583 70.1174 13.1998C69.8214 15.0489 69.1046 16.7994 68.7981 18.6485C67.4217 15.5787 65.3803 12.6856 62.3989 10.9974C60.851 10.1352 59.1057 9.74563 57.4176 9.25218C57.3345 8.50422 57.2462 7.75106 57.1683 7.0031C54.54 6.53562 51.6884 6.69144 49.4705 8.3432C47.5434 6.89921 45.767 5.25784 43.9854 3.64245Z" fill="#6AB66C" />
+            <path d="M39.2119 7.76665C40.5832 6.16164 42.1934 4.7644 43.9854 3.64246C45.767 5.25785 47.5434 6.89922 49.4704 8.34321C47.5642 10.2339 45.8397 12.4051 44.9255 14.9606C44.2866 16.7318 44.2555 18.6329 44.1464 20.4873C42.6089 18.8667 41.0454 17.2617 39.2483 15.9216C38.9418 17.7136 38.7288 19.5263 38.7756 21.3443C37.8978 20.5392 36.994 19.7549 36.0798 18.9913C35.7474 20.8093 35.3786 22.6221 35.0773 24.4452C33.8567 18.6121 35.4357 12.3635 39.2119 7.76665Z" fill="#63AA66" />
+            <path d="M0.333344 5.14876C2.76423 5.14876 5.20031 5.14357 7.63639 5.15395C9.12193 12.2388 10.888 19.2718 12.1086 26.4138C13.1319 19.2302 15.0797 12.2233 16.6691 5.15395C19.0065 5.14876 21.3491 5.14876 23.6917 5.14876C25.2499 12.2233 27.1095 19.2354 28.1795 26.4086C29.3378 19.2562 31.1557 12.2337 32.6517 5.15395C35.0929 5.14876 37.5342 5.14357 39.9755 5.15915C39.7573 6.03697 39.5444 6.91998 39.212 7.76664C35.4358 12.3635 33.8567 18.6121 35.0774 24.4452C35.0826 24.5024 35.0878 24.6166 35.0878 24.6738C34.4956 27.4734 33.7217 30.2264 33.0568 33.0105C30.0702 33.0157 27.0887 33.0105 24.102 33.0105C22.7879 26.7255 21.1102 20.5028 20.2064 14.1347C19.2195 20.4924 17.5729 26.7203 16.2328 33.0105C13.2461 33.0157 10.2595 33.0157 7.26761 33.0053C4.96657 23.718 2.63957 14.436 0.333344 5.14876Z" fill="#DD4F40" />
+            <path d="M71.9095 5.15395C79.1606 5.14875 86.4117 5.14356 93.6628 5.15395C93.668 7.20046 93.668 9.24698 93.6628 11.2987C91.3358 11.3195 89.0088 11.2987 86.6818 11.3195C86.6766 18.5498 86.6922 25.7801 86.6714 33.0105C84.0951 33.0156 81.5135 33.0156 78.932 33.0105C78.9268 25.7749 78.9372 18.5446 78.9268 11.3143C77.5659 11.3039 76.2051 11.3091 74.8442 11.3039C74.0806 9.82354 73.0885 8.47824 71.9926 7.22643C71.9614 6.53561 71.9354 5.84478 71.9095 5.15395Z" fill="#F19B3F" />
+            <path d="M49.4705 8.34316C51.6884 6.6914 54.54 6.53558 57.1683 7.00305C57.2462 7.75102 57.3345 8.50418 57.4176 9.25214C59.1057 9.74559 60.851 10.1352 62.3988 10.9974C65.3803 12.6855 67.4216 15.5787 68.7981 18.6485C69.9304 21.9052 69.8889 25.484 68.8552 28.7616C66.8035 27.5877 65.1985 25.8009 64.3363 23.5933C64.7206 20.9027 64.9648 17.9265 63.5468 15.48C62.6274 13.7295 61.2665 11.6986 59.0486 11.7298C53.5687 11.7038 48.307 16.1968 47.6265 21.6559C47.0811 26.1852 51.0755 30.2783 55.4854 30.5484C55.7191 31.2444 55.958 31.9404 56.1918 32.6416C53.1428 33.0987 50.0418 32.7403 47.0552 32.0599C42.5258 30.4601 39.134 26.1489 38.7756 21.3442C38.7289 19.5263 38.9418 17.7135 39.2483 15.9215C41.0455 17.2616 42.6089 18.8666 44.1464 20.4872C44.2555 18.6329 44.2867 16.7318 44.9255 14.9606C45.8397 12.405 47.5642 10.2338 49.4705 8.34316Z" fill="#58965A" />
+            <path d="M36.0798 18.9913C36.994 19.7548 37.8978 20.5391 38.7756 21.3442C39.134 26.1489 42.5258 30.4601 47.0552 32.0599C50.047 34.1064 52.8207 36.6412 54.8828 39.633C53.0025 39.6174 51.0703 39.4045 49.2523 40.0226C48.1927 39.15 46.8422 38.8175 45.6527 38.1787C40.3702 35.5296 36.4798 30.3925 35.0877 24.6737C35.0877 24.6166 35.0825 24.5023 35.0773 24.4452C35.3786 22.622 35.7474 20.8092 36.0798 18.9913Z" fill="#74C676" />
+            <path d="M64.3363 23.5934C65.1985 25.801 66.8035 27.5878 68.8552 28.7617C68.0865 31.0887 66.5334 33.0105 65.0946 34.9428C63.661 33.4988 62.2482 32.0236 60.612 30.803C59.1732 31.4886 57.7137 32.1535 56.1918 32.6417C55.958 31.9405 55.7191 31.2445 55.4854 30.5485C57.1527 30.481 58.872 30.1849 60.2848 29.2395C62.3884 28.0345 63.3494 25.6815 64.3363 23.5934Z" fill="#60A562" />
+            <path d="M56.1918 32.6417C57.7137 32.1534 59.1733 31.4886 60.612 30.8029C62.2482 32.0236 63.661 33.4987 65.0946 34.9427C64.0714 36.6568 63.5935 38.615 63.3234 40.5732C58.8045 42.064 53.5479 42.3237 49.2523 40.0226C51.0703 39.4045 53.0025 39.6175 54.8828 39.6331C52.8207 36.6412 50.047 34.1064 47.0552 32.0599C50.0418 32.7404 53.1428 33.0988 56.1918 32.6417Z" fill="#6BB86D" />
+        </svg>',
+        'link' => "https://mmgp.com/threads/comcash-io-anonimnyj-obmennik.705047/",
+        ],
+        (object)[
+        'icon' => '<svg width="140" height="40" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_237_14817)">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.7544 17.7874C17.5346 17.7874 18.4185 17.5899 19.1049 17.1998C19.6925 16.8097 20.0826 16.3159 20.0826 15.4369C20.0826 14.6518 19.495 13.8667 18.616 13.6741C17.6334 13.3778 17.0458 13.3778 16.3594 13.3778C15.673 13.3778 14.8928 13.4766 14.8928 13.4766V17.8861C14.8928 17.7874 15.9693 17.7874 16.7544 17.7874Z" fill="#F89C1C" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9837 20.5329C19.5936 20.3354 18.6159 20.0391 17.5345 19.9453C16.458 19.8466 14.9915 19.9453 14.9915 19.9453V24.8437C14.9915 24.8437 16.458 24.8437 17.5345 24.8437C18.5171 24.745 19.5936 24.5475 20.0825 24.2512C20.5713 23.9599 21.2577 23.5698 21.2577 22.3896C21.1639 21.2144 20.3787 20.8243 19.9837 20.5329Z" fill="#F89C1C" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M33.3112 3.09201C22.433 -0.142325 10.8733 -0.142325 0 3.09201V20.5328V21.708C0 29.0556 6.36992 35.7169 16.6556 39.1438C26.9413 35.7169 33.3112 28.9569 33.3112 21.708V20.5328V3.09201ZM23.8057 26.1126C22.433 27.0953 20.9664 27.194 20.3788 27.2928C20.0825 27.2928 19.4949 27.3866 18.9073 27.3866V31.1098H16.6556V27.4854C16.2655 27.4854 15.5791 27.4854 14.8928 27.4854V31.1098H12.6361V27.4854C10.3845 27.4854 8.23152 27.4854 8.23152 27.4854L8.72037 24.7448C8.72037 24.7448 9.59932 24.7448 10.0931 24.7448C10.582 24.7448 10.7745 24.7448 10.9721 24.5473C11.1696 24.3498 11.1696 24.0584 11.1696 23.8609C11.1696 23.6634 11.1696 15.0467 11.1696 14.4591C11.1696 13.8666 11.1696 13.674 10.8733 13.3777C10.582 13.0864 9.99436 13.0864 9.59932 13.0864C9.20923 13.0864 8.23152 13.0864 8.23152 13.0864V10.7359C8.23152 10.7359 10.3845 10.7359 12.6361 10.7359V7.11148L14.8928 7.10655V10.7359C15.4804 10.7359 16.068 10.7359 16.6556 10.7359V7.10655H18.9073V10.8297C20.5714 10.9285 21.8454 11.2248 22.9268 12.1037C24.2946 13.1851 24.2946 14.948 24.2008 15.4368C24.2008 15.8269 24.0032 16.7108 23.6131 17.1997C23.2181 17.7873 22.3392 18.2761 22.3392 18.2761C22.3392 18.2761 23.4156 18.4736 24.2008 19.0613C24.981 19.6489 25.5686 20.6266 25.4698 22.1968C25.4698 23.7622 25.1785 25.2337 23.8057 26.1126Z" fill="#F89C1C" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M44.1844 15.8271C44.8708 15.8271 45.4584 15.9258 45.9473 16.2221C46.4361 16.5135 46.8312 16.8097 47.2213 17.1998C47.5175 17.5899 47.8089 18.0837 48.0064 18.6713C48.199 19.2589 48.199 19.8466 48.199 20.5329C48.199 21.5106 48.0064 22.4883 47.6114 23.3722C47.2213 24.2561 46.7324 25.0363 46.1448 25.7227C45.4584 26.4091 44.772 26.8979 43.8882 27.2929C43.0092 27.683 42.1253 27.8806 41.0489 27.8806C40.9501 27.8806 40.6588 27.8806 40.3625 27.8806C40.0711 27.8806 39.6761 27.8806 39.286 27.7818C38.8959 27.683 38.4021 27.683 37.9133 27.4855C37.4244 27.3868 37.0343 27.1942 36.5405 26.9967L40.2637 11.2249L43.5968 10.7361L42.2241 16.3159C42.5204 16.2221 42.8117 16.1234 43.108 16.0246C43.5968 15.9258 43.8882 15.8271 44.1844 15.8271ZM41.4389 25.1351C41.9327 25.1351 42.4216 25.0363 42.9104 24.745C43.3993 24.4487 43.7943 24.1574 44.0857 23.7623C44.3819 23.3722 44.6733 22.8834 44.8708 22.3945C45.0683 21.9007 45.1621 21.3131 45.1621 20.7255C45.1621 20.0391 45.0683 19.4515 44.772 19.0614C44.5745 18.6713 44.0857 18.4738 43.4981 18.4738C43.3005 18.4738 43.0092 18.4738 42.7129 18.5726C42.4216 18.6713 42.1253 18.7651 41.834 19.0614L40.3625 25.0363C40.4612 25.0363 40.56 25.0363 40.56 25.0363C40.6588 25.0363 40.6588 25.0363 40.7575 25.0363C40.8513 25.0363 40.9501 25.0363 41.0489 25.0363C41.1476 25.0363 41.2464 25.1351 41.4389 25.1351Z" fill="#F89C1C" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M51.9223 27.4855H48.6929L51.4334 16.0246H54.6678L51.9223 27.4855ZM53.4925 14.6519C53.0037 14.6519 52.6086 14.5531 52.3173 14.2618C51.9223 13.9655 51.7297 13.5754 51.7297 12.9878C51.7297 12.6915 51.8285 12.4002 51.9223 12.1039C52.021 11.8126 52.2185 11.615 52.4161 11.4175C52.6086 11.2249 52.8062 11.0274 53.0975 10.9287C53.3938 10.8299 53.69 10.7361 53.9814 10.7361C54.4702 10.7361 54.8653 10.8299 55.1566 11.1262C55.5467 11.4175 55.7442 11.8126 55.7442 12.4002C55.7442 12.6915 55.6455 12.9878 55.5467 13.2791C55.4529 13.5754 55.2554 13.7729 55.0579 13.9655C54.8653 14.163 54.6678 14.3605 54.3715 14.4543C54.0801 14.6519 53.8826 14.6519 53.4925 14.6519Z" fill="#F89C1C" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M57.8032 13.2791L61.1314 12.7902L60.3512 16.1233H63.9756L63.2892 18.77L59.7636 18.7651L58.7809 22.7846C58.6822 23.0759 58.6822 23.471 58.5834 23.7623C58.4896 24.0586 58.5834 24.3499 58.6822 24.5474C58.7809 24.7449 58.9784 24.9375 59.176 25.0363C59.3685 25.135 59.7636 25.2338 60.1537 25.2338C60.5438 25.2338 60.84 25.2338 61.1314 25.135C61.4276 25.0363 61.8177 24.9375 62.114 24.8437L62.3066 27.2929C61.9165 27.4855 61.4276 27.5842 60.9388 27.683C60.4499 27.7818 59.8574 27.8805 59.176 27.8805C58.1933 27.8805 57.4082 27.683 56.8206 27.3867C56.233 27.0954 55.8429 26.7053 55.6453 26.2115C55.4528 25.7226 55.354 25.135 55.354 24.4487C55.354 23.7623 55.4528 23.0759 55.6453 22.3945L57.8032 13.2791Z" fill="#F89C1C" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M68.0889 25.2338C68.874 25.2338 69.3629 25.1351 69.6542 24.9376C69.9505 24.745 70.0492 24.5475 70.0492 24.2561C70.0492 24.0586 70.0492 23.9598 69.9505 23.8611C69.8517 23.7623 69.8517 23.6685 69.6542 23.5697C69.5604 23.471 69.3629 23.3722 69.1654 23.2735C68.9728 23.1747 68.6765 23.0809 68.3852 22.8834C67.9901 22.6859 67.6988 22.5871 67.4025 22.3945C67.1112 22.197 66.8149 21.9995 66.5236 21.7082C66.326 21.4119 66.1285 21.1205 65.931 20.8243C65.8372 20.5329 65.7384 20.1379 65.7384 19.649C65.7384 18.4738 66.1285 17.5949 67.0124 16.9085C67.8914 16.2221 69.1654 15.9258 70.7356 15.9258C71.5158 15.9258 72.2022 16.0246 72.7898 16.2221C73.3774 16.4147 73.8663 16.6122 74.2613 16.8097L73.1848 19.2589C72.8885 19.0614 72.4984 18.9627 72.0096 18.7701C71.5158 18.6713 71.0269 18.5726 70.6369 18.5726C70.4393 18.5726 70.2418 18.5726 70.0492 18.5726C69.8517 18.5726 69.6542 18.6713 69.4616 18.6713C69.2641 18.7701 69.1654 18.8639 69.0666 18.9627C68.9678 19.0614 68.874 19.2589 68.874 19.4515C68.874 19.7478 68.9678 19.9453 69.1654 20.1379C69.3629 20.2366 69.753 20.4342 70.1431 20.6317C70.7356 20.923 71.2245 21.1205 71.5158 21.4119C71.9108 21.6094 72.2022 21.9007 72.3997 22.197C72.5972 22.4883 72.7898 22.7846 72.8885 23.0809C72.9873 23.3722 73.0861 23.7623 73.0861 24.2561C73.0861 24.745 72.9873 25.1351 72.7898 25.6239C72.5972 26.1177 72.3009 26.5078 71.9108 26.7991C71.5158 27.1942 70.9282 27.3917 70.3406 27.683C69.6542 27.8806 68.874 27.9793 67.9901 27.9793C67.4025 27.9793 66.9137 27.9793 66.4248 27.8806C65.931 27.7818 65.5409 27.683 65.2496 27.5843C64.8545 27.4855 64.5632 27.3868 64.3657 27.2929C64.1682 27.1942 63.9756 27.0954 63.7781 26.9967L64.8545 24.5475C65.1508 24.6462 65.4422 24.8437 66.0298 25.1351C66.7161 25.1351 67.4025 25.2338 68.0889 25.2338Z" fill="#F89C1C" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M82.8829 16.6122C83.1743 16.5134 83.3718 16.4146 83.6681 16.3159C83.9594 16.2221 84.2557 16.1233 84.6458 16.0245C85.0359 15.9258 85.4309 15.9258 85.821 15.827C86.3099 15.7283 86.8036 15.7283 87.3913 15.7283C88.0727 15.7283 88.6652 15.827 89.1541 16.0245C89.643 16.2221 90.033 16.4146 90.4281 16.8097C90.9169 16.5134 91.5045 16.2221 91.9934 16.0245C92.4823 15.827 93.1686 15.7283 93.855 15.7283C94.5414 15.7283 95.129 15.827 95.6178 16.0245C96.1067 16.2221 96.5017 16.5134 96.7931 16.8097C97.0893 17.101 97.3807 17.5899 97.4794 17.9849C97.5782 18.4738 97.677 18.9626 97.677 19.5502C97.677 19.8465 97.677 20.0391 97.5782 20.3354C97.5782 20.6267 97.4794 20.923 97.3807 21.2143L95.9141 27.3867H92.6798L94.1513 21.3131C94.1513 21.1205 94.2451 20.923 94.2451 20.6267C94.3439 20.3354 94.3439 20.1378 94.3439 19.8465C94.3439 19.4515 94.2451 19.0614 94.0525 18.77C93.855 18.4738 93.4649 18.2762 92.9761 18.2762C92.6798 18.2762 92.3835 18.375 92.0922 18.4738C91.7959 18.5725 91.6033 18.6713 91.307 18.77C91.307 18.8639 91.307 18.9626 91.307 19.0614C91.307 19.1601 91.307 19.2589 91.307 19.3576C91.307 19.649 91.307 19.8465 91.2083 20.1378C91.1145 20.4341 91.1145 20.7254 91.0157 21.0217L89.5442 27.1941H86.3099L87.7814 21.1205C87.7814 20.923 87.8801 20.7254 87.8801 20.4341C87.9789 20.1378 87.9789 19.9453 87.9789 19.649C87.9789 19.2589 87.8801 18.8639 87.6826 18.5725C87.4851 18.2762 87.095 18.0837 86.6061 18.0837C86.4086 18.0837 86.216 18.0837 86.0185 18.0837C85.821 18.0837 85.6235 18.1824 85.4309 18.1824L83.3718 26.9966H80.1375L82.8829 16.6122Z" fill="#9DB8CD" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M98.8521 23.0759C98.8521 22.1969 99.0496 21.2143 99.3409 20.4341C99.6372 19.5502 100.126 18.7651 100.714 18.0837C101.301 17.3973 101.988 16.9084 102.867 16.4146C103.75 16.0245 104.634 15.827 105.711 15.827C106.2 15.827 106.689 15.9258 107.084 16.0245C107.474 16.1233 107.864 16.4146 108.259 16.6122C108.55 16.9084 108.846 17.1998 109.039 17.5899C109.237 17.9849 109.335 18.4738 109.335 18.9626C109.335 19.7477 109.138 20.4341 108.748 21.0217C108.353 21.6093 107.864 21.9994 107.276 22.3945C106.59 22.7846 105.903 22.9821 105.024 23.1747C104.141 23.3722 103.163 23.3722 102.18 23.3722C102.279 23.9598 102.476 24.4486 102.867 24.6462C103.163 24.9424 103.75 25.0363 104.536 25.0363C105.024 25.0363 105.513 25.0363 105.903 24.9424C106.397 24.8437 106.787 24.7449 107.276 24.5474L107.474 27.0954C107.084 27.2929 106.59 27.3916 105.903 27.4855C105.316 27.5842 104.634 27.683 103.849 27.683C102.965 27.683 102.185 27.5842 101.593 27.2929C101.005 26.9966 100.516 26.7053 100.126 26.2164C99.731 25.8214 99.4397 25.2338 99.2421 24.6462C98.9508 24.3499 98.8521 23.6635 98.8521 23.0759ZM105.222 18.375C104.437 18.375 103.849 18.6713 103.262 19.1601C102.674 19.649 102.378 20.4341 102.185 21.2143C103.064 21.2143 103.849 21.1205 104.338 21.0217C104.926 20.923 105.316 20.7254 105.612 20.5329C105.903 20.3354 106.101 20.1378 106.2 19.9403C106.298 19.7477 106.397 19.5502 106.397 19.3527C106.397 18.6713 106.002 18.375 105.222 18.375Z" fill="#9DB8CD" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M113.937 27.7817C113.251 27.7817 112.565 27.683 112.076 27.3867C111.587 27.0954 111.098 26.7991 110.802 26.409C110.51 26.0189 110.214 25.5251 110.115 24.9375C109.923 24.3499 109.923 23.7623 109.923 23.0759C109.923 22.0982 110.115 21.1205 110.412 20.3353C110.802 19.4515 111.296 18.6713 111.883 18.0837C112.471 17.3973 113.251 16.9035 114.135 16.5134C115.014 16.1233 115.898 15.9258 116.974 15.9258C117.27 15.9258 117.463 15.9258 117.661 15.9258C117.858 15.9258 118.149 16.0245 118.347 16.0245L119.522 11.1261L122.855 10.6373L120.011 22.587C119.818 23.3722 119.72 24.2511 119.818 25.0363C119.912 25.8214 120.11 26.6065 120.307 27.2929L117.463 27.683C117.369 27.4855 117.27 27.3867 117.27 27.1941C117.172 26.9966 117.172 26.8978 117.073 26.6065C116.683 26.8978 116.189 27.1941 115.7 27.3867C115.113 27.683 114.624 27.7817 113.937 27.7817ZM117.759 18.6713C117.661 18.6713 117.562 18.6713 117.562 18.6713C117.463 18.6713 117.463 18.6713 117.369 18.6713C117.27 18.6713 117.172 18.6713 117.073 18.6713C116.974 18.6713 116.875 18.6713 116.683 18.6713C116.194 18.6713 115.7 18.7651 115.31 19.0614C114.92 19.2589 114.525 19.649 114.234 20.0391C113.937 20.4341 113.646 20.923 113.547 21.4118C113.35 21.9007 113.251 22.4883 113.251 22.9821C113.251 23.6635 113.35 24.2561 113.646 24.6462C113.839 25.0363 114.332 25.2338 114.92 25.2338C115.211 25.2338 115.508 25.135 115.799 25.0363C116.095 24.9375 116.387 24.6462 116.683 24.3499C116.683 23.9598 116.782 23.5697 116.782 23.1747C116.88 22.7846 116.88 22.3945 116.974 22.0982L117.759 18.6713Z" fill="#9DB8CD" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M125.107 27.4855H121.873L124.618 16.0245H127.853L125.107 27.4855ZM126.677 14.6518C126.184 14.6518 125.794 14.553 125.497 14.2617C125.107 13.9654 124.91 13.5753 124.91 12.9877C124.91 12.6914 125.008 12.4001 125.107 12.1038C125.206 11.8125 125.403 11.615 125.596 11.4175C125.794 11.2249 125.991 11.0274 126.282 10.9286C126.579 10.8298 126.87 10.736 127.166 10.736C127.655 10.736 128.045 10.8298 128.341 11.1261C128.732 11.4175 128.929 11.8125 128.929 12.4001C128.929 12.6914 128.83 12.9877 128.732 13.2791C128.633 13.5753 128.44 13.7728 128.243 13.9654C128.045 14.1629 127.853 14.3605 127.556 14.4543C127.265 14.6518 126.969 14.6518 126.677 14.6518Z" fill="#9DB8CD" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M138.528 22.5871C138.331 23.3722 138.237 24.2561 138.331 25.0363C138.43 25.8214 138.627 26.6065 138.825 27.2929L135.98 27.683C135.882 27.4855 135.788 27.3867 135.788 27.1941C135.689 26.9966 135.689 26.8979 135.59 26.6065C135.2 26.8979 134.706 27.1941 134.217 27.3867C133.729 27.5842 133.141 27.683 132.553 27.683C131.867 27.683 131.181 27.5842 130.692 27.2929C130.203 26.9966 129.709 26.7003 129.418 26.3103C129.122 25.9202 128.83 25.4313 128.731 24.8437C128.633 24.2511 128.534 23.6635 128.534 22.9821C128.534 21.9994 128.731 21.0217 129.028 20.1378C129.418 19.2589 129.907 18.4738 130.494 17.7874C131.082 17.101 131.867 16.6122 132.746 16.2221C133.63 15.827 134.514 15.6345 135.491 15.6345C135.59 15.6345 135.882 15.6345 136.178 15.6345C136.469 15.6345 136.864 15.6345 137.254 15.7283C137.644 15.827 138.138 15.827 138.627 16.0246C139.116 16.1233 139.506 16.3159 140 16.5134L138.528 22.5871ZM136.277 18.5725C136.079 18.5725 135.887 18.4738 135.788 18.4738C135.59 18.4738 135.491 18.4738 135.2 18.4738C134.706 18.4738 134.217 18.5725 133.827 18.8639C133.432 19.1601 133.042 19.4515 132.751 19.8465C132.455 20.2366 132.163 20.7255 131.966 21.2193C131.768 21.7081 131.67 22.2957 131.67 22.8833C131.67 23.5697 131.768 24.1573 132.065 24.5474C132.356 24.9375 132.751 25.135 133.339 25.135C133.63 25.135 133.926 25.0363 134.217 24.9375C134.514 24.8437 134.805 24.5474 135.101 24.2561C135.101 23.861 135.2 23.4709 135.2 23.0808C135.299 22.6858 135.299 22.2957 135.393 21.9994L136.277 18.5725Z" fill="#9DB8CD" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7717 0.741719C17.4407 0.939236 33.1137 3.67978 33.1137 23.3722C33.2125 22.8834 33.2125 22.2958 33.2125 21.8069V20.6267V3.19093C27.6277 1.42809 21.6528 0.642961 15.7717 0.741719Z" fill="white" fill-opacity="0.301961" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M76.7106 27.4855C76.2217 27.4855 75.8267 27.3868 75.5354 27.0954C75.1453 26.7992 74.9478 26.4091 74.9478 25.8215C74.9478 25.5252 75.0465 25.2338 75.1453 24.9376C75.2391 24.6462 75.4366 24.4487 75.6341 24.2561C75.8267 24.0586 76.0242 23.8611 76.3205 23.7623C76.6118 23.6636 76.9081 23.5698 77.1994 23.5698C77.6883 23.5698 78.0833 23.6636 78.3747 23.9599C78.7697 24.2512 78.9623 24.6462 78.9623 25.2338C78.9623 25.5252 78.8635 25.8215 78.7697 26.1128C78.6709 26.4091 78.4734 26.6066 78.2759 26.7992C78.0833 26.9967 77.8858 27.1942 77.5945 27.293C77.2982 27.4855 77.0069 27.4855 76.7106 27.4855Z" fill="#9DB8CD" />
+            </g>
+            <defs>
+                <clipPath id="clip0_237_14817">
+                    <rect width="140" height="38.4781" fill="white" transform="translate(0 0.666687)" />
+                </clipPath>
+            </defs>
+        </svg>',
+        'link' => "https://forum.bits.media/index.php?/topic/234739-comcashio-безопасный-и-анонимный-обмен-криптовалют/#comment-2382429",
+        ],
+        (object)[
+        'icon' => '<svg width="139" height="33" viewBox="0 0 139 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_237_14841)">
+                <path d="M31.4565 18.055C31.4565 26.1285 24.9108 32.6743 16.8373 32.6743C8.7633 32.6743 2.21802 26.1285 2.21802 18.055C2.21802 9.98107 8.7633 3.43579 16.8373 3.43579C24.9108 3.43579 31.4565 9.98107 31.4565 18.055Z" fill="#F39C12" />
+                <path d="M30.1274 16.7259C30.1274 24.0654 24.1767 30.0161 16.8372 30.0161C9.49733 30.0161 3.54712 24.0654 3.54712 16.7259C3.54712 9.386 9.49733 3.43579 16.8372 3.43579C24.1767 3.43579 30.1274 9.386 30.1274 16.7259Z" fill="#F39C12" />
+                <path d="M14.1792 6.09375V8.75179H11.5212H10.1921V11.4098H11.5212V20.713H10.1921V23.371H11.5212H14.1792V26.029H15.5082V23.371H16.8372H18.1662V26.029H19.4953V23.371H20.1598C22.7288 23.371 24.8113 21.5104 24.8113 19.3839C24.8113 17.6562 23.7747 15.9285 22.1533 15.3969C23.0132 14.5995 23.4823 13.935 23.4823 12.7388C23.4823 10.4795 21.6974 8.75179 19.4953 8.75179V6.09375H18.1662V8.75179H16.8372H15.5082V6.09375H14.1792ZM14.1792 11.4098H16.8372H19.4953C20.2289 11.4098 20.8243 11.9414 20.8243 12.7388C20.8243 13.4034 20.2289 14.0679 19.4953 14.0679H16.8372H14.1792V11.4098ZM14.1792 16.7259H16.8372H19.4953C20.9638 16.7259 22.1533 17.5233 22.1533 18.7194C22.1533 19.7826 20.9638 20.713 19.4953 20.713H16.8372H14.1792V16.7259Z" fill="#F1C40F" />
+                <path d="M16.8372 2.10675C8.7633 2.10675 2.21802 8.61894 2.21802 16.726C2.21802 24.7001 8.7633 31.3451 16.8372 31.3451C24.911 31.3451 31.4564 24.7001 31.4564 16.726C31.4564 8.61894 24.911 2.10675 16.8372 2.10675ZM16.8372 4.76479C23.4438 4.76479 28.7984 10.0809 28.7984 16.726C28.7984 23.2381 23.4438 28.6871 16.8372 28.6871C10.2312 28.6871 4.87605 23.2381 4.87605 16.726C4.87605 10.0809 10.2312 4.76479 16.8372 4.76479Z" fill="#F1C40F" />
+                <path d="M10.1921 10.0808V11.4098H11.5212V10.0808H10.1921ZM14.1792 10.0808V11.4098H16.8372H19.4953H19.6614C20.2967 11.5427 20.803 11.9415 20.8243 12.606C20.8535 12.2073 20.8243 11.5427 20.8243 11.4098C20.8243 10.6124 20.2289 10.0808 19.4953 10.0808H16.8372H14.1792ZM14.1792 15.3969V16.7259H16.8372H19.4953H19.9099C21.1286 16.8588 22.0775 17.6562 22.1533 18.5866C22.1905 18.1879 22.1533 17.5233 22.1533 17.3904C22.1533 16.1943 20.9638 15.3969 19.4953 15.3969H16.8372H14.1792ZM24.7289 18.5866C24.3714 20.5801 22.4749 22.042 20.1598 22.042H19.4953V23.371H20.1598C20.4814 23.371 20.8123 23.2381 21.1153 23.2381C23.2351 22.8394 24.8113 21.2446 24.8113 19.3839C24.8113 19.1181 24.7701 18.8524 24.7289 18.5866ZM10.1921 22.042V23.371H11.5212H14.1792V22.042H11.5212H10.1921ZM15.5082 22.042V23.371H16.8372H18.1662V22.042H16.8372H15.5082ZM14.1792 24.7V26.029H15.5082V24.7H14.1792ZM18.1662 24.7V26.029H19.4953V24.7H18.1662Z" fill="#E67E22" />
+            </g>
+            <path d="M38.5697 21.226V10.9161H42.3453C43.077 10.9161 43.6827 11.0369 44.1627 11.2785C44.6426 11.5168 45.0017 11.8407 45.24 12.2501C45.4782 12.6562 45.5974 13.1143 45.5974 13.6244C45.5974 14.054 45.5185 14.4165 45.3608 14.7118C45.203 15.0038 44.9916 15.2387 44.7265 15.4166C44.4647 15.5911 44.1761 15.7186 43.8606 15.7992V15.8999C44.2029 15.9167 44.5369 16.0274 44.8624 16.2321C45.1913 16.4335 45.4631 16.7204 45.6779 17.093C45.8927 17.4655 46.0001 17.9186 46.0001 18.4522C46.0001 18.9791 45.8759 19.4523 45.6276 19.8718C45.3826 20.288 45.0034 20.6186 44.4899 20.8636C43.9764 21.1052 43.3203 21.226 42.5215 21.226H38.5697ZM40.1253 19.892H42.3705C43.1155 19.892 43.6492 19.7476 43.9714 19.459C44.2935 19.1704 44.4546 18.8096 44.4546 18.3767C44.4546 18.0511 44.3724 17.7524 44.208 17.4806C44.0435 17.2088 43.8086 16.9923 43.5032 16.8312C43.2011 16.6701 42.842 16.5896 42.4259 16.5896H40.1253V19.892ZM40.1253 15.3763H42.2094C42.5584 15.3763 42.8722 15.3092 43.1508 15.175C43.4327 15.0407 43.6559 14.8528 43.8203 14.6111C43.9881 14.3661 44.072 14.0775 44.072 13.7452C44.072 13.319 43.9227 12.9616 43.624 12.673C43.3253 12.3843 42.8672 12.24 42.2497 12.24H40.1253V15.3763ZM47.7243 21.226V13.4935H49.2295V21.226H47.7243ZM48.4845 12.3004C48.2227 12.3004 47.9978 12.2132 47.8099 12.0387C47.6253 11.8608 47.533 11.6494 47.533 11.4044C47.533 11.156 47.6253 10.9446 47.8099 10.7701C47.9978 10.5922 48.2227 10.5032 48.4845 10.5032C48.7463 10.5032 48.9694 10.5922 49.154 10.7701C49.342 10.9446 49.4359 11.156 49.4359 11.4044C49.4359 11.6494 49.342 11.8608 49.154 12.0387C48.9694 12.2132 48.7463 12.3004 48.4845 12.3004ZM54.864 13.4935V14.7017H50.6404V13.4935H54.864ZM51.773 11.641H53.2783V18.9556C53.2783 19.2476 53.3219 19.4674 53.4091 19.6151C53.4964 19.7594 53.6088 19.8584 53.7464 19.9121C53.8874 19.9624 54.0401 19.9876 54.2045 19.9876C54.3254 19.9876 54.4311 19.9792 54.5217 19.9624C54.6123 19.9457 54.6828 19.9322 54.7331 19.9222L55.005 21.1656C54.9177 21.1992 54.7935 21.2327 54.6324 21.2663C54.4714 21.3032 54.27 21.3233 54.0283 21.3267C53.6323 21.3334 53.2632 21.2629 52.9208 21.1153C52.5785 20.9676 52.3016 20.7394 52.0902 20.4306C51.8788 20.1219 51.773 19.7342 51.773 19.2677V11.641ZM59.7031 21.3821C58.9547 21.3821 58.3103 21.2126 57.77 20.8736C57.233 20.5313 56.8202 20.0598 56.5316 19.459C56.243 18.8583 56.0986 18.1703 56.0986 17.395C56.0986 16.6097 56.2463 15.9167 56.5417 15.3159C56.837 14.7118 57.2531 14.2403 57.7901 13.9013C58.3271 13.5623 58.9597 13.3929 59.688 13.3929C60.2753 13.3929 60.7989 13.5019 61.2587 13.7201C61.7184 13.9349 62.0893 14.2369 62.3712 14.6262C62.6565 15.0155 62.826 15.4703 62.8797 15.9905H61.4147C61.3342 15.628 61.1496 15.3159 60.861 15.0541C60.5757 14.7924 60.1931 14.6615 59.7132 14.6615C59.2937 14.6615 58.9262 14.7722 58.6107 14.9937C58.2986 15.2119 58.0553 15.524 57.8807 15.9301C57.7062 16.3328 57.619 16.8094 57.619 17.3598C57.619 17.9236 57.7045 18.4102 57.8757 18.8197C58.0469 19.2291 58.2885 19.5463 58.6006 19.7711C58.9161 19.996 59.2869 20.1084 59.7132 20.1084C59.9984 20.1084 60.2569 20.0564 60.4884 19.9524C60.7234 19.845 60.9197 19.6923 61.0774 19.4943C61.2385 19.2963 61.351 19.058 61.4147 18.7794H62.8797C62.826 19.2795 62.6632 19.7258 62.3913 20.1185C62.1195 20.5112 61.7554 20.8199 61.2989 21.0448C60.8459 21.2696 60.3139 21.3821 59.7031 21.3821ZM67.7464 21.3821C67.0215 21.3821 66.3889 21.2159 65.8486 20.8837C65.3082 20.5514 64.8887 20.0866 64.59 19.4892C64.2913 18.8918 64.142 18.1938 64.142 17.395C64.142 16.5929 64.2913 15.8915 64.59 15.2907C64.8887 14.69 65.3082 14.2235 65.8486 13.8912C66.3889 13.559 67.0215 13.3929 67.7464 13.3929C68.4714 13.3929 69.104 13.559 69.6443 13.8912C70.1846 14.2235 70.6042 14.69 70.9029 15.2907C71.2016 15.8915 71.3509 16.5929 71.3509 17.395C71.3509 18.1938 71.2016 18.8918 70.9029 19.4892C70.6042 20.0866 70.1846 20.5514 69.6443 20.8837C69.104 21.2159 68.4714 21.3821 67.7464 21.3821ZM67.7515 20.1185C68.2213 20.1185 68.6106 19.9943 68.9194 19.746C69.2282 19.4976 69.4564 19.167 69.604 18.7542C69.7551 18.3414 69.8306 17.8867 69.8306 17.39C69.8306 16.8966 69.7551 16.4436 69.604 16.0308C69.4564 15.6146 69.2282 15.2807 68.9194 15.029C68.6106 14.7773 68.2213 14.6514 67.7515 14.6514C67.2783 14.6514 66.8856 14.7773 66.5735 15.029C66.2647 15.2807 66.0348 15.6146 65.8838 16.0308C65.7361 16.4436 65.6623 16.8966 65.6623 17.39C65.6623 17.8867 65.7361 18.3414 65.8838 18.7542C66.0348 19.167 66.2647 19.4976 66.5735 19.746C66.8856 19.9943 67.2783 20.1185 67.7515 20.1185ZM73.031 21.226V13.4935H74.5363V21.226H73.031ZM73.7912 12.3004C73.5294 12.3004 73.3046 12.2132 73.1166 12.0387C72.932 11.8608 72.8397 11.6494 72.8397 11.4044C72.8397 11.156 72.932 10.9446 73.1166 10.7701C73.3046 10.5922 73.5294 10.5032 73.7912 10.5032C74.053 10.5032 74.2762 10.5922 74.4607 10.7701C74.6487 10.9446 74.7427 11.156 74.7427 11.4044C74.7427 11.6494 74.6487 11.8608 74.4607 12.0387C74.2762 12.2132 74.053 12.3004 73.7912 12.3004ZM78.0665 16.6349V21.226H76.5613V13.4935H78.0061V14.7521H78.1017C78.2796 14.3426 78.5581 14.0137 78.9374 13.7654C79.32 13.517 79.8016 13.3929 80.3822 13.3929C80.9091 13.3929 81.3706 13.5036 81.7666 13.7251C82.1626 13.9433 82.4697 14.2688 82.6878 14.7017C82.906 15.1347 83.0151 15.67 83.0151 16.3076V21.226H81.5098V16.4889C81.5098 15.9284 81.3638 15.4904 81.0719 15.175C80.7799 14.8561 80.3788 14.6967 79.8687 14.6967C79.5197 14.6967 79.2092 14.7722 78.9374 14.9232C78.6689 15.0743 78.4558 15.2958 78.298 15.5878C78.1437 15.8764 78.0665 16.2254 78.0665 16.6349ZM83.9955 12.2551V10.9161H91.9746V12.2551H88.7578V21.226H87.2072V12.2551H83.9955ZM94.8151 21.3972C94.3251 21.3972 93.8821 21.3066 93.4861 21.1253C93.0901 20.9407 92.7763 20.6739 92.5447 20.3249C92.3165 19.9759 92.2024 19.548 92.2024 19.0412C92.2024 18.6049 92.2863 18.2458 92.4541 17.9639C92.6219 17.682 92.8484 17.4588 93.1337 17.2943C93.419 17.1299 93.7378 17.0057 94.0902 16.9218C94.4426 16.8379 94.8017 16.7741 95.1675 16.7305C95.6307 16.6768 96.0065 16.6332 96.2952 16.5996C96.5838 16.5627 96.7935 16.504 96.9244 16.4234C97.0553 16.3429 97.1208 16.212 97.1208 16.0308V15.9955C97.1208 15.5559 96.9966 15.2152 96.7482 14.9736C96.5032 14.7319 96.1374 14.6111 95.6508 14.6111C95.144 14.6111 94.7446 14.7236 94.4527 14.9484C94.164 15.1699 93.9643 15.4166 93.8536 15.6884L92.439 15.3662C92.6068 14.8964 92.8518 14.5172 93.174 14.2285C93.4995 13.9365 93.8737 13.7251 94.2966 13.5942C94.7195 13.46 95.1642 13.3929 95.6307 13.3929C95.9394 13.3929 96.2666 13.4298 96.6123 13.5036C96.9614 13.5741 97.2869 13.705 97.5889 13.8963C97.8944 14.0876 98.1444 14.3611 98.339 14.7168C98.5337 15.0692 98.631 15.5273 98.631 16.0912V21.226H97.161V20.1688H97.1006C97.0033 20.3635 96.8573 20.5548 96.6627 20.7427C96.468 20.9307 96.218 21.0867 95.9126 21.2109C95.6072 21.3351 95.2413 21.3972 94.8151 21.3972ZM95.1423 20.189C95.5585 20.189 95.9142 20.1068 96.2096 19.9423C96.5083 19.7779 96.7348 19.5631 96.8892 19.2979C97.0469 19.0294 97.1258 18.7425 97.1258 18.4371V17.4403C97.0721 17.494 96.9681 17.5444 96.8137 17.5913C96.6627 17.635 96.4898 17.6736 96.2952 17.7071C96.1005 17.7373 95.9109 17.7659 95.7263 17.7927C95.5417 17.8162 95.3873 17.8363 95.2632 17.8531C94.9712 17.89 94.7044 17.9521 94.4627 18.0394C94.2244 18.1266 94.0331 18.2525 93.8888 18.417C93.7479 18.578 93.6774 18.7928 93.6774 19.0613C93.6774 19.4339 93.815 19.7158 94.0902 19.9071C94.3654 20.095 94.7161 20.189 95.1423 20.189ZM102.141 10.9161V21.226H100.636V10.9161H102.141ZM105.55 18.6032L105.54 16.7657H105.802L108.883 13.4935H110.685L107.171 17.2188H106.935L105.55 18.6032ZM104.166 21.226V10.9161H105.671V21.226H104.166ZM109.049 21.226L106.28 17.5511L107.317 16.4989L110.897 21.226H109.049ZM113.049 21.3217C112.774 21.3217 112.537 21.2243 112.339 21.0297C112.141 20.8317 112.042 20.5934 112.042 20.3148C112.042 20.0396 112.141 19.8047 112.339 19.61C112.537 19.412 112.774 19.313 113.049 19.313C113.324 19.313 113.561 19.412 113.759 19.61C113.957 19.8047 114.056 20.0396 114.056 20.3148C114.056 20.4994 114.009 20.6689 113.915 20.8233C113.824 20.9743 113.703 21.0951 113.552 21.1857C113.401 21.2764 113.233 21.3217 113.049 21.3217ZM119.329 21.3821C118.604 21.3821 117.971 21.2159 117.431 20.8837C116.891 20.5514 116.471 20.0866 116.173 19.4892C115.874 18.8918 115.725 18.1938 115.725 17.395C115.725 16.5929 115.874 15.8915 116.173 15.2907C116.471 14.69 116.891 14.2235 117.431 13.8912C117.971 13.559 118.604 13.3929 119.329 13.3929C120.054 13.3929 120.687 13.559 121.227 13.8912C121.767 14.2235 122.187 14.69 122.485 15.2907C122.784 15.8915 122.933 16.5929 122.933 17.395C122.933 18.1938 122.784 18.8918 122.485 19.4892C122.187 20.0866 121.767 20.5514 121.227 20.8837C120.687 21.2159 120.054 21.3821 119.329 21.3821ZM119.334 20.1185C119.804 20.1185 120.193 19.9943 120.502 19.746C120.811 19.4976 121.039 19.167 121.187 18.7542C121.338 18.3414 121.413 17.8867 121.413 17.39C121.413 16.8966 121.338 16.4436 121.187 16.0308C121.039 15.6146 120.811 15.2807 120.502 15.029C120.193 14.7773 119.804 14.6514 119.334 14.6514C118.861 14.6514 118.468 14.7773 118.156 15.029C117.847 15.2807 117.617 15.6146 117.466 16.0308C117.319 16.4436 117.245 16.8966 117.245 17.39C117.245 17.8867 117.319 18.3414 117.466 18.7542C117.617 19.167 117.847 19.4976 118.156 19.746C118.468 19.9943 118.861 20.1185 119.334 20.1185ZM124.614 21.226V13.4935H126.068V14.7219H126.149C126.29 14.3057 126.538 13.9785 126.894 13.7402C127.253 13.4986 127.659 13.3778 128.112 13.3778C128.206 13.3778 128.317 13.3811 128.445 13.3878C128.575 13.3945 128.678 13.4029 128.752 13.413V14.8528C128.691 14.836 128.584 14.8175 128.429 14.7974C128.275 14.7739 128.121 14.7621 127.966 14.7621C127.611 14.7621 127.293 14.8377 127.015 14.9887C126.74 15.1364 126.522 15.3428 126.36 15.6079C126.199 15.8697 126.119 16.1684 126.119 16.504V21.226H124.614ZM133.019 24.2868C132.405 24.2868 131.877 24.2062 131.434 24.0451C130.994 23.8841 130.635 23.6709 130.356 23.4058C130.078 23.1407 129.87 22.8504 129.732 22.5349L131.026 22.0013C131.116 22.1489 131.237 22.305 131.388 22.4695C131.543 22.6373 131.751 22.7799 132.013 22.8974C132.278 23.0148 132.618 23.0736 133.034 23.0736C133.605 23.0736 134.077 22.9343 134.449 22.6557C134.822 22.3805 135.008 21.9409 135.008 21.3368V19.8164H134.912C134.822 19.9809 134.691 20.1638 134.52 20.3652C134.352 20.5665 134.12 20.7411 133.825 20.8887C133.529 21.0364 133.145 21.1102 132.672 21.1102C132.061 21.1102 131.511 20.9676 131.021 20.6823C130.534 20.3937 130.148 19.9692 129.863 19.4087C129.581 18.8449 129.44 18.1518 129.44 17.3296C129.44 16.5073 129.579 15.8025 129.858 15.2152C130.14 14.6279 130.526 14.1782 131.016 13.8661C131.506 13.5506 132.061 13.3929 132.682 13.3929C133.162 13.3929 133.55 13.4734 133.845 13.6345C134.14 13.7922 134.37 13.9768 134.535 14.1883C134.702 14.3997 134.832 14.586 134.922 14.747H135.033V13.4935H136.508V21.3972C136.508 22.0617 136.354 22.6071 136.045 23.0333C135.736 23.4595 135.318 23.775 134.791 23.9797C134.268 24.1844 133.677 24.2868 133.019 24.2868ZM133.004 19.8618C133.437 19.8618 133.803 19.7611 134.102 19.5597C134.404 19.355 134.632 19.063 134.786 18.6838C134.944 18.3012 135.023 17.8431 135.023 17.3094C135.023 16.7892 134.946 16.3311 134.791 15.9351C134.637 15.5391 134.41 15.2303 134.112 15.0088C133.813 14.784 133.444 14.6715 133.004 14.6715C132.551 14.6715 132.174 14.789 131.872 15.0239C131.57 15.2555 131.341 15.571 131.187 15.9703C131.036 16.3697 130.96 16.8161 130.96 17.3094C130.96 17.8162 131.038 18.2609 131.192 18.6435C131.346 19.0261 131.575 19.3248 131.877 19.5396C132.182 19.7544 132.558 19.8618 133.004 19.8618Z" fill="white" />
+            <defs>
+                <clipPath id="clip0_237_14841">
+                    <rect width="31.8964" height="31.8964" fill="white" transform="translate(0.888916 0.777771)" />
+                </clipPath>
+            </defs>
+        </svg>',
+        'link' => "https://bitcointalk.org/index.php",
+        ],
+        (object)[
+        'icon' => '<svg width="136" height="32" viewBox="0 0 136 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.5192 19.5794C17.9945 21.6977 14.4381 20.5511 13.2721 20.2596L14.2049 16.5088C15.3709 16.8003 19.0634 17.3639 18.5192 19.5794ZM15.4875 11.3783L14.6324 14.7792C15.6041 15.0124 18.5775 16.0035 19.0634 14.0796C19.5492 12.0779 16.4592 11.6115 15.4875 11.3783ZM30.6461 20.0847C28.5666 28.4024 20.1323 33.4747 11.7951 31.4147C3.47732 29.3353 -1.6144 20.9009 0.465042 12.5831C2.54448 4.246 10.9788 -0.806847 19.316 1.25316C27.6338 3.3326 32.7255 11.767 30.6461 20.0847ZM10.4541 18.9381C10.3764 19.1518 10.1626 19.4628 9.67677 19.3462C9.59903 19.3462 8.43299 19.0352 8.43299 19.0352L7.57789 20.9786L9.79337 21.5228C10.2209 21.6394 10.6096 21.7366 11.0177 21.8532L10.3181 24.6711L12.0088 25.0986L12.7085 22.3001C13.1749 22.4362 13.6219 22.5333 14.0689 22.65L13.3692 25.429L15.0794 25.8566L15.779 23.0386C18.6941 23.5828 20.8902 23.369 21.8036 20.726C22.5421 18.6077 21.7647 17.3833 20.2294 16.5865C21.3372 16.3339 22.1728 15.5954 22.406 14.0796C22.717 12.0196 21.1428 10.8924 18.9857 10.1734L19.6853 7.35544L17.9751 6.92789L17.2949 9.64865C16.8479 9.53205 16.3815 9.43488 15.9151 9.31827L16.5953 6.57808L14.9045 6.15053L14.2049 8.94903C13.8356 8.87129 13.4664 8.77412 13.1166 8.69639L10.7651 8.09393L10.3181 9.92073C10.3181 9.92073 11.5619 10.2122 11.5619 10.2317C12.2421 10.4066 12.3587 10.8536 12.3587 11.2228L10.4347 18.8992L10.4541 18.9381Z" fill="#4D99FF" />
+            <path d="M43.918 13.8762H42.3473C42.2869 13.5406 42.1745 13.2452 42.01 12.9902C41.8456 12.7351 41.6442 12.5186 41.4059 12.3407C41.1676 12.1629 40.9008 12.0286 40.6055 11.938C40.3135 11.8474 40.0031 11.8021 39.6742 11.8021C39.0801 11.8021 38.5482 11.9514 38.0783 12.2501C37.6118 12.5488 37.2427 12.9868 36.9708 13.564C36.7023 14.1413 36.5681 14.8461 36.5681 15.6784C36.5681 16.5174 36.7023 17.2256 36.9708 17.8028C37.2427 18.3801 37.6135 18.8164 38.0834 19.1117C38.5532 19.407 39.0818 19.5547 39.6691 19.5547C39.9947 19.5547 40.3034 19.5111 40.5954 19.4238C40.8908 19.3332 41.1576 19.2006 41.3958 19.0261C41.6341 18.8516 41.8355 18.6385 41.9999 18.3868C42.1678 18.1317 42.2835 17.8397 42.3473 17.5108L43.918 17.5159C43.8341 18.0226 43.6713 18.4891 43.4296 18.9154C43.1914 19.3382 42.8843 19.704 42.5084 20.0128C42.1359 20.3182 41.7096 20.5548 41.2297 20.7226C40.7498 20.8904 40.2262 20.9743 39.6591 20.9743C38.7663 20.9743 37.9709 20.7629 37.2729 20.34C36.5748 19.9138 36.0244 19.3047 35.6217 18.5126C35.2223 17.7206 35.0226 16.7758 35.0226 15.6784C35.0226 14.5776 35.224 13.6328 35.6267 12.8442C36.0294 12.0521 36.5798 11.4447 37.2779 11.0218C37.976 10.5956 38.7697 10.3825 39.6591 10.3825C40.2061 10.3825 40.7162 10.4613 41.1894 10.6191C41.666 10.7734 42.0939 11.0017 42.4732 11.3037C42.8524 11.6024 43.1662 11.9682 43.4145 12.4012C43.6629 12.8307 43.8307 13.3224 43.918 13.8762ZM45.6585 20.8334V13.1009H47.1134V14.3292H47.1939C47.3349 13.9131 47.5833 13.5859 47.939 13.3476C48.2981 13.1059 48.7042 12.9851 49.1573 12.9851C49.2512 12.9851 49.362 12.9885 49.4895 12.9952C49.6204 13.0019 49.7228 13.0103 49.7966 13.0204V14.4601C49.7362 14.4433 49.6288 14.4249 49.4744 14.4047C49.32 14.3813 49.1657 14.3695 49.0113 14.3695C48.6555 14.3695 48.3384 14.445 48.0598 14.596C47.7846 14.7437 47.5665 14.9501 47.4054 15.2152C47.2443 15.477 47.1637 15.7757 47.1637 16.1113V20.8334H45.6585ZM52.286 23.7331C52.0611 23.7331 51.8564 23.7146 51.6718 23.6777C51.4872 23.6441 51.3496 23.6072 51.259 23.5669L51.6215 22.3336C51.8967 22.4074 52.1417 22.4393 52.3565 22.4292C52.5713 22.4191 52.7609 22.3386 52.9253 22.1876C53.0931 22.0365 53.2408 21.7899 53.3683 21.4475L53.5546 20.9341L50.7254 13.1009H52.3363L54.2946 19.1016H54.3752L56.3335 13.1009H57.9494L54.7628 21.8654C54.6151 22.2681 54.4272 22.6088 54.199 22.8873C53.9708 23.1692 53.6989 23.3807 53.3834 23.5216C53.068 23.6626 52.7022 23.7331 52.286 23.7331ZM59.364 23.7331V13.1009H60.834V14.3544H60.9599C61.0471 14.1933 61.173 14.0071 61.3374 13.7956C61.5019 13.5842 61.7301 13.3996 62.0221 13.2419C62.314 13.0808 62.7 13.0002 63.1799 13.0002C63.8042 13.0002 64.3613 13.158 64.8513 13.4734C65.3413 13.7889 65.7255 14.2437 66.0041 14.8377C66.286 15.4317 66.427 16.1466 66.427 16.9822C66.427 17.8179 66.2877 18.5344 66.0091 19.1318C65.7306 19.7259 65.348 20.184 64.8613 20.5062C64.3747 20.825 63.8193 20.9844 63.195 20.9844C62.7252 20.9844 62.3409 20.9055 62.0422 20.7478C61.7469 20.5901 61.5153 20.4055 61.3475 20.194C61.1797 19.9826 61.0505 19.7947 60.9599 19.6302H60.8692V23.7331H59.364ZM60.839 16.9671C60.839 17.5108 60.9179 17.9874 61.0756 18.3968C61.2334 18.8063 61.4616 19.1268 61.7603 19.3584C62.059 19.5866 62.4248 19.7007 62.8577 19.7007C63.3075 19.7007 63.6833 19.5815 63.9854 19.3433C64.2874 19.1016 64.5157 18.7744 64.67 18.3616C64.8278 17.9488 64.9066 17.484 64.9066 16.9671C64.9066 16.457 64.8294 15.9989 64.6751 15.5928C64.524 15.1867 64.2958 14.8662 63.9904 14.6313C63.6884 14.3964 63.3108 14.2789 62.8577 14.2789C62.4214 14.2789 62.0523 14.3913 61.7502 14.6162C61.4515 14.841 61.225 15.1548 61.0706 15.5576C60.9162 15.9603 60.839 16.4302 60.839 16.9671ZM71.7229 13.1009V14.3091H67.4992V13.1009H71.7229ZM68.6319 11.2483H70.1371V18.563C70.1371 18.8549 70.1808 19.0748 70.268 19.2224C70.3553 19.3668 70.4677 19.4658 70.6053 19.5195C70.7463 19.5698 70.899 19.595 71.0634 19.595C71.1842 19.595 71.29 19.5866 71.3806 19.5698C71.4712 19.553 71.5417 19.5396 71.592 19.5295L71.8638 20.773C71.7766 20.8065 71.6524 20.8401 71.4913 20.8736C71.3302 20.9106 71.1289 20.9307 70.8872 20.9341C70.4912 20.9408 70.122 20.8703 69.7797 20.7226C69.4374 20.575 69.1605 20.3467 68.9491 20.038C68.7376 19.7292 68.6319 19.3416 68.6319 18.8751V11.2483ZM76.562 20.9894C75.8371 20.9894 75.2044 20.8233 74.6641 20.4911C74.1238 20.1588 73.7043 19.694 73.4056 19.0966C73.1069 18.4992 72.9575 17.8011 72.9575 17.0024C72.9575 16.2003 73.1069 15.4988 73.4056 14.8981C73.7043 14.2974 74.1238 13.8309 74.6641 13.4986C75.2044 13.1663 75.8371 13.0002 76.562 13.0002C77.2869 13.0002 77.9195 13.1663 78.4599 13.4986C79.0002 13.8309 79.4197 14.2974 79.7184 14.8981C80.0171 15.4988 80.1664 16.2003 80.1664 17.0024C80.1664 17.8011 80.0171 18.4992 79.7184 19.0966C79.4197 19.694 79.0002 20.1588 78.4599 20.4911C77.9195 20.8233 77.2869 20.9894 76.562 20.9894ZM76.567 19.7259C77.0369 19.7259 77.4262 19.6017 77.7349 19.3533C78.0437 19.105 78.2719 18.7744 78.4196 18.3616C78.5706 17.9488 78.6461 17.494 78.6461 16.9973C78.6461 16.504 78.5706 16.0509 78.4196 15.6381C78.2719 15.222 78.0437 14.888 77.7349 14.6363C77.4262 14.3846 77.0369 14.2588 76.567 14.2588C76.0938 14.2588 75.7011 14.3846 75.389 14.6363C75.0803 14.888 74.8504 15.222 74.6993 15.6381C74.5517 16.0509 74.4778 16.504 74.4778 16.9973C74.4778 17.494 74.5517 17.9488 74.6993 18.3616C74.8504 18.7744 75.0803 19.105 75.389 19.3533C75.7011 19.6017 76.0938 19.7259 76.567 19.7259ZM80.8914 11.8625V10.5234H88.8705V11.8625H85.6537V20.8334H84.1032V11.8625H80.8914ZM91.711 21.0045C91.221 21.0045 90.778 20.9139 90.382 20.7327C89.986 20.5481 89.6722 20.2813 89.4406 19.9323C89.2124 19.5832 89.0983 19.1553 89.0983 18.6485C89.0983 18.2123 89.1822 17.8532 89.35 17.5712C89.5178 17.2893 89.7444 17.0661 90.0296 16.9017C90.3149 16.7372 90.6337 16.6131 90.9861 16.5292C91.3385 16.4453 91.6976 16.3815 92.0634 16.3379C92.5266 16.2842 92.9024 16.2405 93.1911 16.207C93.4797 16.1701 93.6895 16.1113 93.8203 16.0308C93.9512 15.9502 94.0167 15.8193 94.0167 15.6381V15.6029C94.0167 15.1632 93.8925 14.8226 93.6441 14.5809C93.3992 14.3393 93.0333 14.2185 92.5467 14.2185C92.0399 14.2185 91.6406 14.3309 91.3486 14.5558C91.0599 14.7773 90.8603 15.024 90.7495 15.2958L89.3349 14.9736C89.5027 14.5038 89.7477 14.1245 90.0699 13.8359C90.3954 13.5439 90.7696 13.3325 91.1925 13.2016C91.6154 13.0673 92.0601 13.0002 92.5266 13.0002C92.8353 13.0002 93.1625 13.0371 93.5082 13.111C93.8573 13.1814 94.1828 13.3123 94.4849 13.5036C94.7903 13.6949 95.0403 13.9685 95.2349 14.3242C95.4296 14.6766 95.5269 15.1347 95.5269 15.6985V20.8334H94.057V19.7762H93.9965C93.8992 19.9709 93.7532 20.1622 93.5586 20.3501C93.3639 20.538 93.1139 20.6941 92.8085 20.8183C92.5031 20.9424 92.1373 21.0045 91.711 21.0045ZM92.0383 19.7963C92.4544 19.7963 92.8102 19.7141 93.1055 19.5497C93.4042 19.3852 93.6307 19.1704 93.7851 18.9053C93.9428 18.6368 94.0217 18.3499 94.0217 18.0444V17.0477C93.968 17.1014 93.864 17.1517 93.7096 17.1987C93.5586 17.2423 93.3857 17.2809 93.1911 17.3145C92.9964 17.3447 92.8068 17.3732 92.6222 17.4001C92.4376 17.4236 92.2832 17.4437 92.1591 17.4605C91.8671 17.4974 91.6003 17.5595 91.3586 17.6467C91.1204 17.734 90.9291 17.8599 90.7847 18.0243C90.6438 18.1854 90.5733 18.4002 90.5733 18.6687C90.5733 19.0412 90.7109 19.3231 90.9861 19.5144C91.2613 19.7024 91.612 19.7963 92.0383 19.7963ZM99.037 10.5234V20.8334H97.5318V10.5234H99.037ZM102.446 18.2106L102.436 16.3731H102.698L105.779 13.1009H107.581L104.067 16.8262H103.831L102.446 18.2106ZM101.062 20.8334V10.5234H102.567V20.8334H101.062ZM105.945 20.8334L103.176 17.1584L104.213 16.1063L107.793 20.8334H105.945ZM109.945 20.929C109.67 20.929 109.433 20.8317 109.235 20.637C109.037 20.439 108.938 20.2007 108.938 19.9222C108.938 19.647 109.037 19.4121 109.235 19.2174C109.433 19.0194 109.67 18.9204 109.945 18.9204C110.22 18.9204 110.457 19.0194 110.655 19.2174C110.853 19.4121 110.952 19.647 110.952 19.9222C110.952 20.1068 110.905 20.2763 110.811 20.4306C110.72 20.5817 110.599 20.7025 110.448 20.7931C110.297 20.8837 110.129 20.929 109.945 20.929ZM116.225 20.9894C115.5 20.9894 114.867 20.8233 114.327 20.4911C113.787 20.1588 113.367 19.694 113.068 19.0966C112.77 18.4992 112.62 17.8011 112.62 17.0024C112.62 16.2003 112.77 15.4988 113.068 14.8981C113.367 14.2974 113.787 13.8309 114.327 13.4986C114.867 13.1663 115.5 13.0002 116.225 13.0002C116.95 13.0002 117.582 13.1663 118.123 13.4986C118.663 13.8309 119.083 14.2974 119.381 14.8981C119.68 15.4988 119.829 16.2003 119.829 17.0024C119.829 17.8011 119.68 18.4992 119.381 19.0966C119.083 19.694 118.663 20.1588 118.123 20.4911C117.582 20.8233 116.95 20.9894 116.225 20.9894ZM116.23 19.7259C116.7 19.7259 117.089 19.6017 117.398 19.3533C117.707 19.105 117.935 18.7744 118.082 18.3616C118.234 17.9488 118.309 17.494 118.309 16.9973C118.309 16.504 118.234 16.0509 118.082 15.6381C117.935 15.222 117.707 14.888 117.398 14.6363C117.089 14.3846 116.7 14.2588 116.23 14.2588C115.757 14.2588 115.364 14.3846 115.052 14.6363C114.743 14.888 114.513 15.222 114.362 15.6381C114.215 16.0509 114.141 16.504 114.141 16.9973C114.141 17.494 114.215 17.9488 114.362 18.3616C114.513 18.7744 114.743 19.105 115.052 19.3533C115.364 19.6017 115.757 19.7259 116.23 19.7259ZM121.509 20.8334V13.1009H122.964V14.3292H123.045C123.186 13.9131 123.434 13.5859 123.79 13.3476C124.149 13.1059 124.555 12.9851 125.008 12.9851C125.102 12.9851 125.213 12.9885 125.34 12.9952C125.471 13.0019 125.574 13.0103 125.648 13.0204V14.4601C125.587 14.4433 125.48 14.4249 125.325 14.4047C125.171 14.3813 125.017 14.3695 124.862 14.3695C124.506 14.3695 124.189 14.445 123.911 14.596C123.636 14.7437 123.417 14.9501 123.256 15.2152C123.095 15.477 123.015 15.7757 123.015 16.1113V20.8334H121.509ZM129.915 23.8941C129.301 23.8941 128.773 23.8136 128.33 23.6525C127.89 23.4914 127.531 23.2783 127.252 23.0132C126.974 22.748 126.766 22.4577 126.628 22.1423L127.922 21.6086C128.012 21.7563 128.133 21.9124 128.284 22.0768C128.439 22.2446 128.647 22.3873 128.908 22.5047C129.174 22.6222 129.514 22.6809 129.93 22.6809C130.501 22.6809 130.972 22.5416 131.345 22.2631C131.718 21.9879 131.904 21.5482 131.904 20.9441V19.4238H131.808C131.718 19.5883 131.587 19.7712 131.415 19.9725C131.248 20.1739 131.016 20.3484 130.721 20.4961C130.425 20.6438 130.041 20.7176 129.568 20.7176C128.957 20.7176 128.407 20.575 127.917 20.2897C127.43 20.0011 127.044 19.5765 126.759 19.016C126.477 18.4522 126.336 17.7592 126.336 16.9369C126.336 16.1147 126.475 15.4099 126.754 14.8226C127.036 14.2353 127.422 13.7855 127.912 13.4734C128.402 13.158 128.957 13.0002 129.578 13.0002C130.058 13.0002 130.446 13.0808 130.741 13.2419C131.036 13.3996 131.266 13.5842 131.431 13.7956C131.598 14.0071 131.728 14.1933 131.818 14.3544H131.929V13.1009H133.404V21.0045C133.404 21.669 133.25 22.2144 132.941 22.6406C132.632 23.0669 132.214 23.3823 131.687 23.5871C131.164 23.7918 130.573 23.8941 129.915 23.8941ZM129.9 19.4691C130.333 19.4691 130.699 19.3684 130.998 19.1671C131.3 18.9623 131.528 18.6704 131.682 18.2911C131.84 17.9085 131.919 17.4504 131.919 16.9168C131.919 16.3966 131.842 15.9385 131.687 15.5425C131.533 15.1464 131.306 14.8377 131.008 14.6162C130.709 14.3913 130.34 14.2789 129.9 14.2789C129.447 14.2789 129.07 14.3964 128.767 14.6313C128.465 14.8629 128.237 15.1783 128.083 15.5777C127.932 15.9771 127.856 16.4234 127.856 16.9168C127.856 17.4236 127.933 17.8683 128.088 18.2508C128.242 18.6334 128.47 18.9321 128.773 19.1469C129.078 19.3617 129.454 19.4691 129.9 19.4691Z" fill="white" />
+        </svg>',
+        'link' => "https://cryptotalk.org/topic/369354-comcashio-%D0%B0%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B9-%D0%BE%D0%B1%D0%BC%D0%B5%D0%BD%D0%BD%D0%B8%D0%BA/?tab=comments#comment-17731345",
+        ],
+        ];
+
+        $links = [
+        (object)[
+        'link' => 'https://zismo.biz/topic/1127812-comcashio-anonimnyj-obmen-i-chistka-kripty-bez-amlkyc/#entry19078800',
+        'name' => 'Zismo.biz'
+        ],
+        (object)[
+        'link' => 'https://at.dublikat.club/threads/anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.196065/',
+        'name' => 'Dublikat.club'
+        ],
+        (object)[
+        'link' => 'https://cvvp.ro/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.32868/',
+        'name' => 'CVVP.ro'
+        ],
+        (object)[
+        'link' => 'https://www.legalizer.cc/threads/comcash-io-анонимный-обмен-и-чистка-крипты-без-aml-kyc.573034/',
+        'name' => 'Legalizer.cc'
+        ],
+        (object)[
+        'link' => 'https://zhyk.org/forum/showthread.php?p=6095627#post6095627',
+        'name' => 'Zhyk.org'
+        ],
+        (object)[
+        'link' => 'https://gofuckbiz.com/showthread.php?p=1343704#post1343704',
+        'name' => 'Gofuckbiz.com'
+        ],
+        (object)[
+        'link' => 'https://itnull.info/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.3802/',
+        'name' => 'Itnull.info'
+        ],
+        (object)[
+        'link' => 'https://mipped.com/f/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.273885/',
+        'name' => 'Mipped.com'
+        ],
+        (object)[
+        'link' => 'https://wmasteru.org/threads/comcash-io-анонимный-обмен-и-чистка-крипты-без-aml-kyc.33894/',
+        'name' => 'Wmasteru.org'
+        ],
+        (object)[
+        'link' => 'https://hard-tm.su/threads/38189/',
+        'name' => 'Hard-tm.su'
+        ],
+        (object)[
+        'link' => 'https://instagramforum.ru/threads/comcash-io-анонимный-обмен-и-чистка-крипты-без-aml-kyc.172423/',
+        'name' => 'Instagramforum.ru'
+        ],
+        (object)[
+        'link' => 'https://s2.vsemmoney.com/topic/157730-comcashio-anonimnyy-obmen-i-chistka-kripty-bez-amlkyc/',
+        'name' => 'Vsemmoney.com'
+        ],
+        (object)[
+        'link' => 'https://megatop.biz/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.30077/',
+        'name' => 'Megatop.biz'
+        ],
+        (object)[
+        'link' => 'https://blb.team/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.5302/',
+        'name' => 'Blb.team'
+        ],
+        (object)[
+        'link' => 'https://cybhack.net/threads/2141/',
+        'name' => 'Cybhack.net'
+        ],
+        (object)[
+        'link' => 'https://mehack.su/threads/6627/',
+        'name' => 'Mehack.su'
+        ],
+        (object)[
+        'link' => 'https://h0t.cc/index.php?/topic/19991-comcashio-anonimnyy-obmen-i-chistka-kripty-bez-amlkyc/',
+        'name' => 'H0t.cc'
+        ],
+        (object)[
+        'link' => 'https://www.mywot.com/ru/user/8992061/ratings',
+        'name' => 'MyWOT'
+        ],
+        (object)[
+        'link' => 'https://forum.bits.media/index.php?/topic/234739-comcashio-безопасный-и-анонимный-обмен-криптовалют/#comment-2382429',
+        'name' => 'Bits.media Forum'
+        ],
+        (object)[
+        'link' => 'https://mmgp.com/threads/comcash-io-anonimnyj-obmennik.705047/',
+        'name' => 'MMGP'
+        ],
+        (object)[
+        'link' => 'https://bitcointalk.org/index.php',
+        'name' => 'Bitcointalk'
+        ],
+        (object)[
+        'link' => 'https://cryptotalk.org/topic/369354-comcashio-анонимный-обменник/?tab=comments#comment-17731345',
+        'name' => 'Cryptotalk'
+        ],
+        (object)[
+        'link' => 'https://dwh.su/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.21770/',
+        'name' => 'DWH.su'
+        ],
+        (object)[
+        'link' => 'https://skynetzone.pw/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.32445/',
+        'name' => 'Skynetzone.pw'
+        ],
+        (object)[
+        'link' => 'https://forumteam.men/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.57077/',
+        'name' => 'Forumteam.men'
+        ],
+        (object)[
+        'link' => 'https://prologic.su/topic/17077-comcashio-anonimnii-obmen-i-chistka-kripti-bez-amlkyc/',
+        'name' => 'Prologic.su'
+        ],
+        (object)[
+        'link' => 'https://nohide.space/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.26421/',
+        'name' => 'Nohide.space'
+        ],
+        (object)[
+        'link' => 'https://zensam.to/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.3979/',
+        'name' => 'Zensam.to'
+        ],
+        (object)[
+        'link' => 'https://carder.market/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.140999/',
+        'name' => 'Carder.market'
+        ],
+        (object)[
+        'link' => 'https://neurons.biz/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.3032/',
+        'name' => 'Neurons.biz'
+        ],
+        (object)[
+        'link' => 'https://happy-hack.net/board/threads/comcash-io-анонимный-обмен-и-чистка-крипты-без-aml-kyc.2593/',
+        'name' => 'Happy-hack.net'
+        ],
+        (object)[
+        'link' => 'https://reversing.center/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.5003/?isShowOverlayForCreator=',
+        'name' => 'Reversing.center'
+        ],
+        (object)[
+        'link' => 'https://comunity.xyz/viewtopic.php?t=1601',
+        'name' => 'Comunity.xyz'
+        ],
+        (object)[
+        'link' => 'https://alphv.ru/threads/6125/',
+        'name' => 'Alphv.ru'
+        ],
+        (object)[
+        'link' => 'https://gmaii.ru/threads/515/',
+        'name' => 'Gmaii.ru'
+        ],
+        (object)[
+        'link' => 'https://carders.zone/showthread.php?t=45099',
+        'name' => 'Carders.zone'
+        ],
+        (object)[
+        'link' => 'https://s1.blackbiz.store/threads/comcash-io-анонимный-обмен-и-чистка-крипты-без-aml-kyc.113123/',
+        'name' => 'Blackbiz.store'
+        ],
+        (object)[
+        'link' => 'https://www.cy-pr.com/forum/f75/t117998/',
+        'name' => 'CY-PR.com'
+        ],
+        (object)[
+        'link' => 'https://s2.hpc.name/showthread.php?p=562060#post562060',
+        'name' => 'HPC.name'
+        ],
+        (object)[
+        'link' => 'https://fb-killa.pro/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.22748/',
+        'name' => 'FB-killa.pro'
+        ],
+        (object)[
+        'link' => 'https://mmo4me.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.480401/',
+        'name' => 'MMO4me'
+        ],
+        (object)[
+        'link' => 'https://sinister.ly/Thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC',
+        'name' => 'Sinister.ly'
+        ],
+        (object)[
+        'link' => 'https://carigold.com/forum/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.775943/',
+        'name' => 'Carigold.com'
+        ],
+        (object)[
+        'link' => 'https://homeidea.ru/index.php?topic=111162.new#new',
+        'name' => 'Homeidea.ru'
+        ],
+        (object)[
+        'link' => 'http://forum.gold-forum.ru/index.php?showtopic=71146&st=0&gopid=549838&#entry549838',
+        'name' => 'Gold-forum.ru'
+        ],
+        (object)[
+        'link' => 'https://smm-profi.ru/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.10859/',
+        'name' => 'SMM-profi.ru'
+        ],
+        (object)[
+        'link' => 'https://blackbones.net/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.14030/',
+        'name' => 'Blackbones.net'
+        ],
+        (object)[
+        'link' => 'https://crackingx.com/threads/27092/',
+        'name' => 'Crackingx.com'
+        ],
+        (object)[
+        'link' => 'https://darknetarmy.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.6923/',
+        'name' => 'Darknetarmy.com'
+        ],
+        (object)[
+        'link' => 'https://dncforums.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.22243/',
+        'name' => 'DNCforums.cc'
+        ],
+        (object)[
+        'link' => 'https://leakzone.net/Thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC',
+        'name' => 'Leakzone.net'
+        ],
+        (object)[
+        'link' => 'https://niflheim.world/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.77045/#post-240371',
+        'name' => 'Niflheim.world'
+        ],
+        (object)[
+        'link' => 'https://nulledbb.com/thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC',
+        'name' => 'NulledBB.com'
+        ],
+        (object)[
+        'link' => 'https://indexforum.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.18211/',
+        'name' => 'Indexforum.com'
+        ],
+        (object)[
+        'link' => 'https://rebreached.vc/Thread-Comcash-io-Anonymous-exchange-and-clearing-of-crypto-without-AML-KYC',
+        'name' => 'Rebreached.vc'
+        ],
+        (object)[
+        'link' => 'https://patched.to/Thread-comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc?pid=1185776#pid1185776',
+        'name' => 'Patched.to'
+        ],
+        (object)[
+        'link' => 'https://validmarket.io/threads/exchange-and-clearing-crypto-without-aml-kyc.51627/',
+        'name' => 'Validmarket.io'
+        ],
+        (object)[
+        'link' => 'https://warriors.to/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.1776/',
+        'name' => 'Warriors.to'
+        ],
+        (object)[
+        'link' => 'https://dcturkiye.com/konular/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.10342/',
+        'name' => 'DCTurkiye.com'
+        ],
+        (object)[
+        'link' => 'https://www.enclave.cc/index.php?/topic/6264-comcashio-anonymous-exchange-and-clearing-of-crypto-without-amlkyc/',
+        'name' => 'Enclave.cc'
+        ],
+        (object)[
+        'link' => 'https://www.forumkorner.com/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.275695/',
+        'name' => 'Forumkorner.com'
+        ],
+        (object)[
+        'link' => 'https://underground-economy.cc/index.php?/topic/248-comcashio-анонимный-обмен-и-чистка-крипты-без-amlkyc/',
+        'name' => 'Underground-economy.cc'
+        ],
+        (object)[
+        'link' => 'https://bigbosscarding.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.21418/',
+        'name' => 'Bigbosscarding.cc'
+        ],
+        (object)[
+        'link' => 'https://s1.slivup.net/topic/214523-comcashio-anonimnyj-obmen-i-chistka-kripty-bez-amlkyc/#entry706399',
+        'name' => 'Slivup.net'
+        ],
+        (object)[
+        'link' => 'https://kit-cappers.com/threads/comcash-io-anonimnyj-obmen-i-chistka-kripty-bez-aml-kyc.6524/',
+        'name' => 'Kit-cappers.com'
+        ],
+        (object)[
+        'link' => 'https://forum.market/ru/f/p/47386-anonimnyj-obmen-i-chistka-kripty-bez-aml--kyc',
+        'name' => 'Forum.market'
+        ],
+        (object)[
+        'link' => 'https://cybernulled.com/topic/20550-comcashio-anonymous-exchange-and-clearing-of-crypto-without-amlkyc/',
+        'name' => 'Cybernulled.com'
+        ],
+        (object)[
+        'link' => 'https://maxcheaters.com/topic/249961-comcashio-anonymous-exchange-and-clearing-of-crypto-witho/',
+        'name' => 'Maxcheaters.com'
+        ],
+        (object)[
+        'link' => 'https://www.leaks.ro/topic/11053-comcashio-anonymous-exchange-and-clearing-of-crypto-without/',
+        'name' => 'Leaks.ro'
+        ],
+        (object)[
+        'link' => 'https://ajanlar.org/konular/comcash-io-aml-kyc-olmadan-anonim-kripto-degisimi-ve-takasi.34279/',
+        'name' => 'Ajanlar.org'
+        ],
+        (object)[
+        'link' => 'https://cardmine.cc/showthread.php?tid=184',
+        'name' => 'Cardmine.cc'
+        ],
+        (object)[
+        'link' => 'https://www.crdworld.biz/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.21432/',
+        'name' => 'CRDWorld.biz'
+        ],
+        (object)[
+        'link' => 'https://drdark.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.23084/',
+        'name' => 'DrDark.cc'
+        ],
+        (object)[
+        'link' => 'https://leet.lat/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.15553/',
+        'name' => 'Leet.lat'
+        ],
+        (object)[
+        'link' => 'https://leetforums.cc/threads/comcash-io-anonymous-exchange-and-clearing-of-crypto-without-aml-kyc.16775/',
+        'name' => 'Leetforums.cc'
+        ],
+        (object)[
+        'link' => 'https://carders.us/threads/comcash-io-anonymous-cryptocurrency-exchanger-without-kyc-and-aml.131/',
+        'name' => 'Carders.us'
+        ]
+        ];
+        @endphp
+
+        @foreach ($monitorings as $monitoring)
+        <div class="max-w-[1018px] mx-auto
+                    min-h-[80px] flex flex-wrap items-center
+                    max-[700px]:justify-center justify-between p-6
+                    rounded-[10px] bg-white/5 mb-4 gap-[14px]">
+
+            <div class="flex items-center gap-3 shrink-0 w-[140px]">
+                {!! $monitoring->icon !!}
+            </div>
+
+            <div class="flex items-center gap-2 text-sm max-[500px]:[14px] text-[18px]">
+                <span class="text-white/30 ">Отзывы:</span>
+                <span>{{ $monitoring->reviews }}</span>
+                <ul class="flex">
+                    <div class="text-[#06AB6B]">
+                        {{ str_repeat('★', $monitoring->stars) }}
+                        {{ str_repeat('☆', 5 - $monitoring->stars) }}
+                    </div>
+                </ul>
+            </div>
+
+            <a href="{{ $monitoring->link }}" class="shrink-0 rounded-[100px] h-[40px] px-6 py-2
+                        bg-emerald-500/90 hover:bg-emerald-500
+                        text-[16px] font-medium uppercase min-w-[137px]">
+                Смотреть
+            </a>
+        </div>
+        @endforeach
+
+
+
+        <div class="flex items-center mb-10 mt-10">
+            <span class="text-white uppercase max-[600px]:text-[16px] text-[18px] leading-[140%] mr-4 whitespace-nowrap">
+                Генеральные форумы
+            </span>
+            <div class="flex h-[1px] bg-[#06AB6B] min-w-[80px] w-full"></div>
+        </div>
+        <div class="grid gap-[12px]
+                  grid-cols-1            <!-- < 640 px: одна карточка -->
+                  sm:grid-cols-2         <!-- ≥ 640 px: две -->
+                  md:grid-cols-3         <!-- ≥ 768 px: три -->
+                  lg:grid-cols-4         <!-- ≥ 1024 px: четыре -->
+                  xl:grid-cols-5">
+
+
+
+            @foreach ($forums as $forum)
+            <article class="flex flex-col items-center justify-end
+                        gap-[24px] p-[24px] min-h-[174px]
+                        rounded-[10px] bg-white/5">
+                <div class="flex items-center gap-3 shrink-0">
+                    {!! $forum->icon !!}
+                </div>
+
+                <!-- STYLE MARK -->
+                <a href="{{ $forum->link }}" class="w-full h-[40px] min-w-[137px]
+                        rounded-full bg-emerald-500/90 hover:bg-emerald-500
+                        text-[16px] font-medium uppercase max-w-[200px]">
+                    Читать
+                </a>
+                <!-- STYLE MARK -->
+            </article>
+            @endforeach
+
+        </div>
+        <div class="flex items-center mb-10 mt-10">
+            <span class="text-white uppercase max-[600px]:text-[16px] text-[18px] leading-[140%] mr-4 whitespace-nowrap">
+                Все форумы
+            </span>
+            <div class="flex h-[1px] bg-[#06AB6B] min-w-[80px] w-full"></div>
+        </div>
+        <div class="grid gap-4                   <!-- 24 px -->
+                  grid-cols-1                 <!-- < 640 px -->
+                  sm:grid-cols-3              <!-- ≥ 640 px -->
+                  md:grid-cols-4              <!-- ≥ 768 px -->
+                  lg:grid-cols-5              <!-- ≥ 1024 px -->
+                  xl:grid-cols-6">
+
+            @foreach ($links as $link)
+
+            <a href="{{ $link->link }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex w-full h-[63px] items-center justify-center
+                    rounded-[10px] bg-white/5 hover:bg-white/10 transition
+                    px-6 text-[14px] text-white/80">
+                {{ $link->name }}
+            </a>
+
+            @endforeach
+        </div>
+    </div>
+
+
+</section>
+
 @endsection

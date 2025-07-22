@@ -264,7 +264,7 @@
                         <a
                             href="{{route('myprofileAffiliate')}}"
                             class="tab-btn submenu-item py-2 transition-colors hover:opacity-70 data-[active=true]:text-[#06AB6B]"
-                            data-active="{{ $sub === 'companies' ? 'true' : 'false' }}"
+                            data-active="{{ isset($sub) && $sub === 'companies' ? 'true' : 'false' }}"
                             data-tab="companies">
                             {{__("front.affiliate my campaigns")}}
                         </a>
@@ -273,7 +273,7 @@
                         <a
                             href="{{route('myprofileAffiliateExchanges')}}"
                             class="tab-btn submenu-item py-2 transition-colors hover:opacity-70 data-[active=true]:text-[#06AB6B]"
-                            data-active="{{ $sub === 'affiliates' ? 'true' : 'false' }}"
+                            data-active="{{ isset($sub) && $sub === 'affiliates' ? 'true' : 'false' }}"
                             data-tab="affiliates">
                             {{__("front.affiliate my exchanges")}}
                         </a>
@@ -282,7 +282,7 @@
                         <a
                             href="{{route('myprofileAffiliateBalances')}}"
                             class="tab-btn submenu-item py-2 transition-colors hover:opacity-70 data-[active=true]:text-[#06AB6B]"
-                            data-active="{{ $sub === 'balance' ? 'true' : 'false' }}"
+                            data-active="{{ isset($sub) && $sub === 'balance' ? 'true' : 'false' }}"
                             data-tab="balance">
                             {{__("front.affiliate my balance")}}
                         </a>
@@ -530,7 +530,7 @@
                      data-[active=true]:bg-[#26A17B] data-[active=true]:rounded-[100px]
                      hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap" 
             data-tab="companies"
-            data-active="{{ $sub === 'companies' ? 'true' : 'false' }}"
+            data-active="{{ isset($sub) && $sub === 'companies' ? 'true' : 'false' }}"
             >
 
             {{__("front.affiliate my campaigns")}}
@@ -542,7 +542,7 @@
                      data-[active=true]:bg-[#26A17B] data-[active=true]:rounded-[100px]
                      hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap" 
                      data-tab="affiliates"
-                     data-active="{{ $sub === 'affiliates' ? 'true' : 'false' }}"
+                     data-active="{{ isset($sub) && $sub === 'affiliates' ? 'true' : 'false' }}"
 
                      >
 
@@ -554,7 +554,7 @@
             class="tab-btn submenu-item group flex-shrink-0 items-center gap-[12px] py-[8px] px-[12px] text-[16px] text-white transition-all
                      data-[active=true]:bg-[#26A17B] data-[active=true]:rounded-[100px]
                      hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap" 
-                    data-active="{{ $sub === 'balance' ? 'true' : 'false' }}"
+                    data-active="{{ isset($sub) && $sub === 'balance' ? 'true' : 'false' }}"
                     data-tab="balance">
 
             {{__("front.affiliate my balance")}}

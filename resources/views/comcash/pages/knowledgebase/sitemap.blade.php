@@ -1,28 +1,26 @@
-@extends('comcash.layout.knowledgebase')
+@extends('comcash.layout.main')
 @section('content')
-<div class="info">
-    <div class="info__container">
-        @include("comcash.component.knowledge_menu")
-        <div class="sitemap__content">
-            <div class="sitemap__header">
-                <p class="sitemap__header-title">{{__("front.sitemap_page_title")}}</p>
-            </div> 
-            <div class="sitemap__list">
-                <div class="sitemap__list-item">
-                    @foreach($directions as $direction)
-                        <a href="{{route("exchgangePage", [$direction->currencyFrom->name,$direction->currencyTo->name])}}" class="delivery__header-text">
-                            {{$direction->currencyFrom->name." -> ".$direction->currencyTo->name}}
+
+<section class="review-section relative max-[620px]:mt-[40px] mt-[80px] mx-auto max-w-[1018px] overflow-hidden flex flex-col max-[1024px]:px-[20px]">
+    <h1 class="text-left text-[#06AB6B] max-[500px]:text-[24px] font-bold text-[32px] mb-8">Карта сайта</h1>
+    @php
+        $chunks = collect($directions)->chunk(7 * 3); 
+    @endphp
+
+    <div class="flex gap-10">
+        <div class="flex flex-col space-y-10 text-white text-sm w-full">
+            @foreach($chunks as $chunk)
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-y-4">
+                    @foreach($chunk as $direction)
+                        <a href="{{ route('exchgangePage', [$direction->currencyFrom->name, $direction->currencyTo->name]) }}" class="underline">
+                            {{ $direction->currencyFrom->name }} → {{ $direction->currencyTo->name }}
                         </a>
                     @endforeach
                 </div>
-                <!-- <div class="sitemap__list-item">
-                    @foreach($availPages as $page)
-                        <a href="{{route("comcashPage", [$page])}}" class="delivery__header-text">
-                            {{$page}}
-                        </a>
-                    @endforeach
-                </div> -->
-            </div>   
-      </div>
-</div>
+            @endforeach
+        </div>
+    </div>
+
+</section>
+
 @endsection
