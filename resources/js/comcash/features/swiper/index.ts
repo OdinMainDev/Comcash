@@ -1,2 +1,3 @@
 import './feedback'
+import './reviews'
 

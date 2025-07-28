@@ -11,19 +11,28 @@ use Illuminate\Support\Facades\Hash;
 class Controller_Login extends Controller
 {
     public function view() {
-        if(Auth::check())
-            return abort(404);
+        if(Auth::check()) {
+            return redirect('/');  
+        }
         $this->setSeoData($this->constructSeoData("login", "login", $this->getCachedSeoData()));
-        return view($this->theme.".index")->with("auth_modal", true);
+        return view('comcash.pages.auth.login'); 
+    }
+    public function resetPassword() {
+        if(Auth::check()) {
+            return redirect('/');  
+        }
+        $this->setSeoData($this->constructSeoData("login", "login", $this->getCachedSeoData()));
+        return view('comcash.pages.auth.forgot'); 
     }
 
-    
-    
+
     public function view_register() {
         if(Auth::check())
-            return abort(404);
+            return redirect('/');  
+
         $this->setSeoData($this->constructSeoData("register", "register", $this->getCachedSeoData()));
-        return view($this->theme.".index")->with("auth_modal", true);
+
+        return view('comcash.pages.auth.register'); 
     }
 
     public function logout() {

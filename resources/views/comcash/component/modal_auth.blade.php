@@ -7,7 +7,12 @@
 				<form id='signin' class='auth__content auth__signin active' action="{{route("loginPost")}}">
 					<p class='auth__title'>{{__("front.sign in header")}}</p>
 					<p class='auth__subtitle'>
-						{{__("front.first time?")}} <a href='#'  onclick="window.setForm('signup')">{{__("front.sign up now!")}}</a>
+						{{__("front.first time?")}} 
+
+						<a href='#'  onclick="window.setForm('signup')">
+							{{__("front.sign up now!")}}
+						</a>
+
 					</p>
                     <div class="auth__input">
 					    <input type='text' class='input' name="email" placeholder='{{__("front.email_placeholder")}}'/>

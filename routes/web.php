@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Controller_Dashboard as AdminDashboard;
@@ -82,7 +84,7 @@ Route::group(['middleware' => 'firewall.all'], function () {
         Route::post('/auth/login', [Login::class, "process"])->name("loginPost");
         Route::get('/auth/register', [Login::class, "view_register"])->name("register");
         Route::post('/auth/register', [Register::class, "process"])->name("registerPost");
-        Route::get('/auth/reset-password', [Login::class, "view"])->name("resetPassword");
+        Route::get('/auth/reset-password', [Login::class, "resetPassword"])->name("resetPassword");
         Route::post('/auth/reset-password', [ResetPassword::class, "reset_process"])->name("resetPasswordPost");
         Route::post('/auth/reset-password/confirm', [ResetPassword::class, "confirm_process"])->name("resetPasswordConfirmPost");
         Route::get('/auth/email/confirm/{id}/{hash}', [Register::class, "confirm_email"])->name("verifyEmail"); 
@@ -133,7 +135,7 @@ Route::group(['middleware' => 'firewall.all'], function () {
             Route::post('/profile/affiliate/balances', [ProfileAffiliate::class, "withdraw_balance"])->name("myprofileAffiliateBalancesPost");
             Route::get('/profile/affiliate/withdraws', [ProfileAffiliate::class, "view_withdraws"])->name("myprofileAffiliateWithdraws");
         });
-        
+
     });
     /* PRIVATE ROUTES */
 

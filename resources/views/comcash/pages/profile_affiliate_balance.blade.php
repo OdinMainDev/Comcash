@@ -11,7 +11,7 @@
 
 		@include('comcash.component.profile_sidebar', [
 		'active' => 'affiliate',
-		'sub' => "affiliates"
+		'sub' => "balance"
 		])
 
 		<div class="flex-1">

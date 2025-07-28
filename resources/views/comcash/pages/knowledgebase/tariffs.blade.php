@@ -1,4 +1,4 @@
-@extends('comcash.layout.knowledgebase')
+@extends('comcash.layout.main')
 
 @section('content')
 <div class="info">

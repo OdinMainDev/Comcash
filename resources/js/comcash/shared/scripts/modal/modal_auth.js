@@ -20,30 +20,30 @@ window.setForm = function(type) {
     })
 };
 
-(function() {
-    if($('.open___signin').length){
-        $('.open___signin').magnificPopup({
-            type: 'inline',
-        });
-    }
+// (function() {
+//     if($('.open___signin').length){
+//         $('.open___signin').magnificPopup({
+//             type: 'inline',
+//         });
+//     }
 
-    if($('.open___signup').length){
-      $('.open___signup').magnificPopup({
-          type: 'inline',
-      });
-  }
+//     if($('.open___signup').length){
+//       $('.open___signup').magnificPopup({
+//           type: 'inline',
+//       });
+//   }
 
-    var elem = document.createElement('button');
-    elem.style.display = 'none';
-    elem.classList.add('magnificPopUpClassId');
-    elem.dataset.mfpSrc = '#auth-popup'
-    document.body.appendChild(elem)
-    $('.magnificPopUpClassId').magnificPopup({
-        type: 'inline',
-    });
+//     var elem = document.createElement('button');
+//     elem.style.display = 'none';
+//     elem.classList.add('magnificPopUpClassId');
+//     elem.dataset.mfpSrc = '#auth-popup'
+//     document.body.appendChild(elem)
+//     $('.magnificPopUpClassId').magnificPopup({
+//         type: 'inline',
+//     });
 
-    if(window.openAuthModal){
-        window.setForm('signin');
-        $('.magnificPopUpClassId')[0].click();
-    }
-})();
+//     if(window.openAuthModal){
+//         window.setForm('signin');
+//         $('.magnificPopUpClassId')[0].click();
+//     }
+// })();

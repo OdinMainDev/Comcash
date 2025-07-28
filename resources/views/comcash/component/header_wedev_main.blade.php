@@ -153,9 +153,8 @@
 
             @guest
             <a
-                type='submit'
-                data-mfp-src='#auth-popup'
-                class="open___signin cursor-pointer flex items-center px-4 py-1 rounded-full transition-all duration-300
+                href="{{route("login")}}"
+                class="cursor-pointer flex items-center px-4 py-1 rounded-full transition-all duration-300
                         bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488]
                         max-[620px]:bg-[rgba(255,255,255,0.05)] max-[620px]:from-transparent max-[620px]:to-transparent text-white font-medium gap-[8px] h-[40px] hover:opacity-90">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

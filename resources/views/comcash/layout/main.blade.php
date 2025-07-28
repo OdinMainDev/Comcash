@@ -44,7 +44,6 @@
 		@if (true)
 			@include('comcash.component.header_wedev_main')
 			@yield("content")
-			@include('comcash.component.modal_auth')
 			@include('comcash.component.footer_wedev_main')
 		@else
 			@include('comcash.component.header_info')
