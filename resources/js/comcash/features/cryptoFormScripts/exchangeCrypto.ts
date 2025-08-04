@@ -133,7 +133,6 @@ $(document).ready(function () {
   }
 
   async function reverseCurrency() {
-    debugger;
     swapCurrencies();
     getDefaultData();
   }
@@ -225,8 +224,6 @@ $(document).ready(function () {
       const data = await getSettings(cryptoYouSendCurrency.name, cryptoYouGetCurrency.name);
       currencyYouSendMin.text(data.min_amount);
       currencyYouSendMax.text(data.max_amount);
-      console.log(data);
-      
       changeYouSendValue(Number(data.min_amount));
     } catch (e) {
       loadingYouGetCurrency(false);

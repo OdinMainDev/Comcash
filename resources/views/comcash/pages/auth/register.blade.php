@@ -5,8 +5,8 @@
     <div class="flex flex-col items-center px-4 sm:px-6 md:px-10">
         <div class="w-full flex flex-col gap-[10px] text-[14px] text-white/40 transition-all duration-300 ease-in-out">
             <div data-form="register">
-                <h2 class="text-[32px] font-bold mx-auto text-[#06AB6B] uppercase text-center">Создайте аккаунт</h2>
-                <p class="text-[#FFFFFF] text-[16px] text-center mb-[60px] max-[720px]:mb-[30px]">Зарегистрируйтесь с помощью почты</p>
+                <h2 class="text-[32px] font-bold mx-auto text-[#06AB6B] uppercase text-center">{{ __('front.createAccount') }}</h2>
+                <p class="text-[#FFFFFF] text-[16px] text-center mb-[60px] max-[720px]:mb-[30px]">{{ __('front.registerWithEmail') }}</p>
 
                 <form id="signup" action="{{route("registerPost")}}" class="backdrop-blur-xl rounded-lg space-y-6 w-full mx-auto max-w-[600px]">
 
@@ -44,7 +44,7 @@
                                     peer-[&:not(:placeholder-shown)]:top-[8px]
                                     peer-[&:not(:placeholder-shown)]:text-sm
                                     peer-[&:not(:placeholder-shown)]:text-white">
-                            Пароль
+                            {{ __('front.password') }}
                         </label>
 
                         <button
@@ -88,7 +88,7 @@
                                     peer-[&:not(:placeholder-shown)]:top-[8px]
                                     peer-[&:not(:placeholder-shown)]:text-sm
                                     peer-[&:not(:placeholder-shown)]:text-white">
-                            Повторите пароль
+                            {{ __('front.repeatPassword') }}
                         </label>
 
                         <button
@@ -114,19 +114,19 @@
                         </button>
                     </div>
 
-                    <button type="submit" class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90" style="background:linear-gradient(0deg,#009C74,#009C74),linear-gradient(95.62deg,#06AB6B 70.57%,#009C74 383.64%);">Продолжить</button>
+                    <button type="submit" class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90" style="background:linear-gradient(0deg,#009C74,#009C74),linear-gradient(95.62deg,#06AB6B 70.57%,#009C74 383.64%);">{{ __('front.continue') }}</button>
                 </form>
                 <p class="text-center text-[12px] text-white/40 mt-3">
-                    Создавая аккаунт - Вы соглашаетесь с нашей
+                    {{ __('front.privacyPolicyAgreement') }}
                     <a href="?politic" class="text-[#FFFFFF] hover:opacity-70 transition-opacity ml-1 underline decoration-[1.3px] underline-offset-[2px]">
-                        Политикой Конфиденциальности!
+                        {{ __('front.privacyPolicy') }}!
                     </a>
                 </p>
             </div>
             <p class="text-center text-[16px] text-white mt-4">
-                Уже есть аккаунт?
+                {{ __('front.alreadyHaveAccount') }}
                 <a href="{{route("login")}}" class="text-[#06AB6B] hover:opacity-70 transition-opacity ml-1">
-                    Войти в аккаунт!
+                    {{ __('front.loginToAccount') }}
                 </a>
             </p>
         </div>

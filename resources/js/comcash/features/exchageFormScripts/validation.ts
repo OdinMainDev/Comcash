@@ -9,6 +9,10 @@ export const initializeValidationModal = (selectedCurrencyYouSend: ICurrency, se
   const validation = $(document).find('.validation');
   const validationYouGet = validation.find('#validation__you-get');
   const validationYouSend = validation.find('#validation__you-send');
+  const validationYouGetCurrency = validation.find('#validation__you-get-currency');
+  const validationYouSendCurrency = validationYouSend.find('#validation__you-send-currency');
+  const validationYouGetAmount = validation.find('#validation__you-get-amount');
+  const validationYouSendAmount = validationYouSend.find('#validation__you-send-amount');
   const validationBackButton = validation.find('#validation__back');
   const validationSendButton = validation.find('#validation__send');
   const validationCaptioSend = validation.find('.validation__caption_send');
@@ -17,13 +21,20 @@ export const initializeValidationModal = (selectedCurrencyYouSend: ICurrency, se
   const languagePattern = /\/(en|ru)\/?/;
 
   const match = url.match(languagePattern);
+
+  validationYouSendAmount.text(currencyYouSendAmount);
+  validationYouGetAmount.text(currencyYouGetAmount);
+
   if (match && (match[1] === 'en' || match[1] === 'ru')) {
     const languageAbbreviation: 'en' | 'ru' = match[1];
-    validationYouSend.html(`<span>${currencyYouSendAmount}</span>&ensp;<span>${selectedCurrencyYouSend.data.titles[languageAbbreviation]}</span>`);
-    validationYouGet.html(`<span>${currencyYouGetAmount}</span>&ensp;<span>${selectedCurrencyYouGet.data.titles[languageAbbreviation]}</span>`);
+
+    validationYouSendCurrency.text(selectedCurrencyYouSend.data.titles[languageAbbreviation]);
+    validationYouGetCurrency.text(selectedCurrencyYouGet.data.titles[languageAbbreviation]);
+
   } else {
-    validationYouSend.html(`<span>${currencyYouSendAmount}</span>&ensp;<span>${selectedCurrencyYouSend.data.titles.en}</span>`);
-    validationYouGet.html(`<span>${currencyYouGetAmount}</span>&ensp;<span>${selectedCurrencyYouGet.data.titles.en}</span>`);
+    validationYouSendCurrency.text(selectedCurrencyYouSend.data.titles.en);
+    validationYouGetCurrency.text(selectedCurrencyYouGet.data.titles.en);
+
   }
 
 
@@ -33,14 +44,21 @@ export const initializeValidationModal = (selectedCurrencyYouSend: ICurrency, se
     exchangeForm.find('.validation').addClass('hide')
   });
 
-  validationSendButton.on('click', function() {
-    const filtredArray = settingsLayouts.filter(item => {
-      return !layout.includes(item);
-    });
-    filtredArray.forEach(item => {
-      exchangeForm.find(`#exchange-${item} > input`).removeAttr('name');
-    })
-  })
+  exchangeForm.on('submit', function (e) {
+      e.preventDefault();
+
+      const filtredArray = settingsLayouts.filter(item => {
+          return !layout.includes(item);
+      });
+
+      filtredArray.forEach(item => {
+          exchangeForm.find(`#exchange-${item} > input`).removeAttr('name');
+      });
+
+        (this as HTMLFormElement).submit();
+
+
+  });
 
 
   async function getValidationCaptioSend () {

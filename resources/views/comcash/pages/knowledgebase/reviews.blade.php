@@ -4,8 +4,8 @@
 <section class="review-section relative max-[620px]:mt-[40px] mt-[80px] mx-auto max-w-[1018px] overflow-hidden flex flex-col max-[1024px]:px-[20px]">
     <div class="flex flex-wrap max-[480px]:flex-col justify-between items-end w-full gap-4 mb-8">
         <div class="review-header text-white">
-            <p class="text-[#06AB6B] font-semibold text-[32px]">ОТЗЫВЫ ПОЛЬЗОВАТЕЛЕЙ</p>
-            <p class="text-[18px] font-normal">ОБ ОБМЕННИКЕ КРИПТЫ COMCASH</p>
+            <p class="text-[#06AB6B] font-semibold text-[32px]">{{ __('front.Feedback Label') }}</p>
+            <p class="text-[18px] font-normal">{{ __('front.aboutExchangeFeedback') }}</p>
         </div>
     </div>
 

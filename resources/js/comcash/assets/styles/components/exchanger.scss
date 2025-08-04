@@ -35,7 +35,6 @@
   }
 
   &__main-form {
-    padding: 80px 40px 0;
     &.hide {
       display: none;
     }
@@ -908,7 +907,6 @@
     // }
 
     @media (max-width: 1100px) {
-      padding: 80px 40px 0;
       min-height: calc(100vh - var(--height-header-mobile));
       background: transparent;
 
@@ -1288,7 +1286,6 @@
     }
 
     @media (max-width: 1100px) {
-      padding: 80px 40px 0;
       min-height: calc(100vh - var(--height-header-mobile));
       background: transparent;
 

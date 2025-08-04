@@ -7,12 +7,12 @@
                  max-[620px]:pt-[90px]  max-[420px]:overflow-hidden">
 
         <div class="text-white flex-1 z-10 max-[420px]:max-w-[202px]">
-            <h2 class="text-[28px] lg:text-[32px] font-bold leading-tight mb-2 uppercase text-[#06AB6B]">Доставка Наличными</h2>
+            <h2 class="text-[28px] lg:text-[32px] font-bold leading-tight mb-2 uppercase text-[#06AB6B]">{{ __('front.page_delivery_title') }}</h2>
             <p class="text-[14px] leading-[160%] font-normal">
-                Обратившись в сервис Comcash.io, вы получаете возможность быстро и по выгодному курсу обменять свою цифровую валюту на <span class="text-[#06AB6B]">российские рубли, евро, американские доллары, японские иены</span> и многие другие национальные валюты в самых разных точках мира.
+                {{ __('front.exchangeIntro') }}<span class="text-[#06AB6B]">{{ __('front.exchangeCurrenciesList') }}</span> {{ __('front.exchangeOutro') }}
             </p>
             <p class="max-[610px]:absolute flex text-[14px] leading-[160%] font-normal mt-6 namespace-nowrap">
-                Мы работаем в множестве локаций по всему миру, обеспечивая удобство и доступность наших услуг для каждого клиента.
+                {{ __('front.exchangeGlobalPresence') }}
             </p>
         </div>
 
@@ -37,10 +37,10 @@
 
                 <div class="text-left">
                     <h3 class="min-[640px]:text-[20px] text-[18px] font-medium leading-[28px] min-[640px]:mb-2 uppercase">
-                        надежность И СКОРОСТЬ
+                        {{ __('front.reliabilityAndSpeed') }}
                     </h3>
                     <p class="text-[14px] font-normal text-white/40 leading-[18px]">
-                        Заказанные наличные деньги будут доставлены в полном объеме и в точный срок.
+                        {{ __('front.cashDeliveryGuarantee') }}
                     </p>
                 </div>
             </div>
@@ -52,10 +52,10 @@
 
                 <div class="text-left">
                     <h3 class="min-[640px]:text-[20px] text-[18px] font-medium leading-[28px] min-[640px]:mb-2 uppercase">
-                        ГАРАНТИЯ АНоНИМНОСТИ
+                        {{ __('front.guaranteeOfAnonymity') }}
                     </h3>
                     <p class="text-[14px] font-normal text-white/40 leading-[18px]">
-                        Мы не задаем лишних вопросов, заботясь о вашей конфиденциальности и анонимности.
+                        {{ __('front.anonymityPolicy') }}
                     </p>
                 </div>
             </div>
@@ -67,10 +67,10 @@
 
                 <div class="text-left">
                     <h3 class="min-[640px]:text-[20px] text-[18px] font-medium leading-[28px] min-[640px]:mb-2 uppercase">
-                        Актуальные и выгодые курсы
+                        {{ __('front.actualRates') }}
                     </h3>
                     <p class="text-[14px] font-normal text-white/40 leading-[18px]">
-                        Не теряйте деньги на комиссиях и разнице курсов. Получайте только актуальную информацию.
+                        {{ __('front.dontLoseMoney') }}
                     </p>
                 </div>
             </div>
@@ -80,14 +80,14 @@
     </div>
     <div class="text-white py-5 max-w-[1024px] mx-auto text-[14px] sm:text-[16px] leading-[160%] space-y-5 mt-10">
         <p>
-            Ниже вы можете ознакомиться с перечнем доступных в настоящий момент времени локаций для выдачи наличных.
+            {{ __('front.locationNotice') }}
         </p>
         <p>
-            <strong>Обратите внимание!</strong> Если в нужном городе нет упоминания <span class="italic">"Офис"</span>, значит там работу ведет курьер.
-            Если нет упоминания <span class="italic">"возможен приём"</span>, значит там работаем только на выдачу.
+            <strong>{{ __('front.noteAttention') }}!</strong>{{ __('front.noteNoOfficeMention') }} <span class="italic">"{{ __('front.noteOffice') }}"</span>, {{ __('front.noteCourierWorksThere') }}
+            {{ __('front.noteNoReceiveMention') }} <span class="italic">"{{ __('front.noteReceivePossible') }}"</span>, {{ __('front.noteOnlyCashOut') }}
         </p>
         <p>
-            По международным сделкам желательно иметь в виду срок минимум в <strong>24 часа</strong> на выдачу, но лучше всегда уточнять по факту.
+            {{ __('front.noteInternationalTime') }} <strong>{{ __('front.note24Hours') }}</strong> {{ __('front.noteRecommendClarify') }}
         </p>
     </div>
 </section>

@@ -5,8 +5,8 @@
     <div class="flex flex-col items-center px-4 sm:px-6 md:px-10">
         <div class="w-full flex flex-col gap-[10px] text-[14px] text-white/40 transition-all duration-300 ease-in-out">
             <div data-form="login">
-                <h2 class="text-[32px] font-bold mx-auto text-[#06AB6B] uppercase text-center">Рады вас видеть!</h2>
-                <p class="text-[#FFFFFF] text-[16px] text-center mb-3">Войдите в ваш аккаунт</p>
+                <h2 class="text-[32px] font-bold mx-auto text-[#06AB6B] uppercase text-center">{{ __('front.welcomeBack') }}!</h2>
+                <p class="text-[#FFFFFF] text-[16px] text-center mb-3">{{ __('front.loginPrompt') }}</p>
 
                 <form id="signin" action="{{route("loginPost")}}" class="backdrop-blur-xl rounded-lg space-y-6 w-full mx-auto max-w-[600px] mb-[60px] max-[720px]:mb-[30px]">
 
@@ -45,7 +45,7 @@
                                     peer-[&:not(:placeholder-shown)]:top-[8px]
                                     peer-[&:not(:placeholder-shown)]:text-sm
                                     peer-[&:not(:placeholder-shown)]:text-white">
-                            Пароль
+                            {{ __('front.password') }}
                         </label>
 
                         <button
@@ -87,7 +87,7 @@
                                 peer-[&:not(:placeholder-shown)]:top-[8px]
                                 peer-[&:not(:placeholder-shown)]:text-sm
                                 peer-[&:not(:placeholder-shown)]:text-white">
-                            Одноразовый пароль (необязательно)
+                            {{ __('front.otpOptional') }}
                         </label>
 
                         <button
@@ -115,16 +115,16 @@
                     <div class="flex justify-end">
                         <a href="{{route("resetPassword")}}" data-switch="forgot" class="font-inter font-normal text-[16px] leading-[2px] text-right underline decoration-[1.3px] underline-offset-[2px] decoration-white text-white hover:opacity-70 transition-opacity" href="?forgot">
                 
-                            Забыли пароль?
+                            {{ __('front.forgotPassword') }}
                         </a>
                     </div>
-                    <button type="submit" class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90" style="background:linear-gradient(0deg,#009C74,#009C74),linear-gradient(95.62deg,#06AB6B 70.57%,#009C74 383.64%);">Продолжить</button>
+                    <button type="submit" class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90" style="background:linear-gradient(0deg,#009C74,#009C74),linear-gradient(95.62deg,#06AB6B 70.57%,#009C74 383.64%);">{{ __('front.continue') }}</button>
                 </form>
 
                 <p class="text-center text-[16px] text-white mt-2">
-                    Нет аккаунта?
+                    {{ __('front.noAccount') }}
                     <a href="{{route("register")}}" class="text-[#06AB6B] hover:opacity-70 transition-opacity ml-1">
-                        Зарегистрироваться!
+                        {{ __('front.register') }}!
                     </a>
                 </p>
             </div>

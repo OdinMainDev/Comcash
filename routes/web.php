@@ -95,7 +95,7 @@ Route::group(['middleware' => 'firewall.all'], function () {
     Route::prefix('{locale}')->where(['locale' => '[a-zA-Z]{2}'])->group(function () {
         Route::get('/exchange/{currencyFrom}-{currencyTo}/create', [Exchange::class, "view"])->name("exchgangePage");
         Route::post('/exchange/redirect', [Exchange::class, "redirect"])->name("redirectToExchange");
-        Route::post('/exchange/create', [Exchange::class, "create"])->name("exchgangeCreate");
+        Route::post('/exchange/create', action: [Exchange::class, "create"])->name("exchgangeCreate");
         Route::get('/exchange/id/{hash}', [Exchange::class, "view_created"])->name("exchgangePage2");
         Route::get('/exchange/id/{hash}/set_ipaid', [Exchange::class, "set_ipaid"])->name("exchgangeIPaid");
 

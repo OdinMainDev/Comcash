@@ -10,7 +10,7 @@
             class="tab-btn group flex items-center gap-[12px] py-[8px] px-[12px] text-[16px] text-white transition-all whitespace-nowrap"
             data-tab="personal"
             data-active="{{ $active === 'personal' ? 'true' : 'false' }}">
-            <svg class="w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
+            <svg class="flex-shrink-0 w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M9.08999 10.1475C9.07499 10.1475 9.05249 10.1475 9.03749 10.1475C9.01499 10.1475 8.98499 10.1475 8.96249 10.1475C7.25999 10.095 5.98499 8.76749 5.98499 7.13249C5.98499 5.46749 7.34249 4.10999 9.00749 4.10999C10.6725 4.10999 12.03 5.46749 12.03 7.13249C12.0225 8.77499 10.74 10.095 9.11248 10.1475C9.09749 10.1475 9.09749 10.1475 9.08999 10.1475ZM8.99999 5.22749C7.94999 5.22749 7.10249 6.08249 7.10249 7.12499C7.10249 8.15249 7.90499 8.98499 8.92498 9.02249C8.94748 9.01499 9.02249 9.01499 9.09749 9.02249C10.1025 8.96999 10.89 8.14499 10.8975 7.12499C10.8975 6.08249 10.05 5.22749 8.99999 5.22749Z"
@@ -36,7 +36,7 @@
             class="tab-btn group flex items-center gap-[12px] py-[8px] px-[12px] text-[16px] text-white transition-all whitespace-nowrap"
             data-tab="history"
             data-active="{{ $active === 'history' ? 'true' : 'false' }}">
-            <svg class="w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
+            <svg class="flex-shrink-0 w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M9 13.3575H1.5C1.1925 13.3575 0.9375 13.1025 0.9375 12.795C0.9375 12.4875 1.1925 12.2325 1.5 12.2325H9C9.3075 12.2325 9.5625 12.4875 9.5625 12.795C9.5625 13.11 9.3075 13.3575 9 13.3575Z"
@@ -67,7 +67,7 @@
             href='{{route("myprofileAffiliate")}}'
             class="tab-btn group flex items-center gap-[12px] py-[8px] px-[12px] text-[16px] text-white transition-all whitespace-nowrap">
             <span class="flex items-center gap-[12px]">
-                <svg class="w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
+                <svg class="flex-shrink-0 w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M6.86968 8.715C6.84718 8.715 6.83218 8.715 6.80968 8.715C6.77218 8.7075 6.71968 8.7075 6.67468 8.715C4.49968 8.6475 2.85718 6.9375 2.85718 4.83C2.85718 2.685 4.60468 0.9375 6.74968 0.9375C8.89468 0.9375 10.6422 2.685 10.6422 4.83C10.6347 6.9375 8.98468 8.6475 6.89218 8.715C6.88468 8.715 6.87718 8.715 6.86968 8.715ZM6.74968 2.0625C5.22718 2.0625 3.98218 3.3075 3.98218 4.83C3.98218 6.33 5.15218 7.5375 6.64468 7.59C6.68968 7.5825 6.78718 7.5825 6.88468 7.59C8.35468 7.5225 9.50968 6.315 9.51718 4.83C9.51718 3.3075 8.27218 2.0625 6.74968 2.0625Z"
@@ -97,7 +97,7 @@
             class="tab-btn group flex items-center gap-[12px] py-[8px] px-[12px] text-[16px] text-white transition-all whitespace-nowrap"
             data-tab="security"
             data-active="{{ $active === 'security' ? 'true' : 'false' }}">
-            <svg class="w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
+            <svg class="flex-shrink-0 w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M8.99989 17.0625C8.81989 17.0625 8.63989 17.0401 8.46739 16.9876C4.57489 15.9151 1.75488 12.2775 1.75488 8.33253V5.04002C1.75488 4.20002 2.36239 3.29256 3.14239 2.97006L7.31989 1.26004C8.40739 0.817537 9.59988 0.817537 10.6799 1.26004L14.8574 2.97006C15.6374 3.29256 16.2449 4.20002 16.2449 5.04002V8.33253C16.2449 12.27 13.4174 15.9076 9.53238 16.9876C9.35988 17.0401 9.17989 17.0625 8.99989 17.0625ZM8.99989 2.06254C8.57239 2.06254 8.15238 2.14505 7.74738 2.31005L3.56989 4.02003C3.20989 4.17003 2.87988 4.65753 2.87988 5.04753V8.34004C2.87988 11.7825 5.35489 14.9626 8.76739 15.9076C8.91739 15.9526 9.08238 15.9526 9.23238 15.9076C12.6449 14.9626 15.1199 11.7825 15.1199 8.34004V5.04753C15.1199 4.65753 14.7899 4.17003 14.4299 4.02003L10.2524 2.31005C9.8474 2.14505 9.42739 2.06254 8.99989 2.06254Z"
@@ -124,7 +124,7 @@
             class="tab-btn group flex items-center gap-[12px] py-[8px] px-[12px] text-[16px] text-white transition-all whitespace-nowrap"
             data-tab="2fa"
             data-active="{{ $active === '2fa' ? 'true' : 'false' }}">
-            <svg class="w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
+            <svg class="flex-shrink-0 w-[18px] h-[18px] text-[#06AB6B]" viewBox="0 0 18 18" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M1.5 7.3125C1.1925 7.3125 0.9375 7.0575 0.9375 6.75V4.875C0.9375 2.7 2.7075 0.9375 4.875 0.9375H6.75C7.0575 0.9375 7.3125 1.1925 7.3125 1.5C7.3125 1.8075 7.0575 2.0625 6.75 2.0625H4.875C3.3225 2.0625 2.0625 3.3225 2.0625 4.875V6.75C2.0625 7.0575 1.8075 7.3125 1.5 7.3125Z"
@@ -171,7 +171,7 @@
                        data-[active=true]:bg-[#26A17B] data-[active=true]:rounded-[100px]
                        hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap" data-tab="personal"
                 data-active="{{ $active === 'personal' ? 'true' : 'false' }}">
-                <svg class="w-[18px] h-[18px] transition-colors text-[#666666]
+                <svg class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                        group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                     viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -197,7 +197,7 @@
                      hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap"
                 data-tab="history"
                 data-active="{{ $active === 'history' ? 'true' : 'false' }}">
-                <svg class="w-[18px] h-[18px] transition-colors text-[#666666]
+                <svg class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                        group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                     viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -226,10 +226,10 @@
                 href='{{route("myprofileAffiliate")}}'
                 id="partners-toggle" 
                 type="button" 
-                class="{{ $active === 'affiliate' ? "bg-white/5 rounded-[100px]" : ""}}tab-btn group flex items-center justify-between w-full gap-[12px] py-[8px] px-[12px] text-[16px] text-white transition-all
+                class="{{ $active === 'affiliate' ? "bg-white/5 rounded-[100px] " : ""}}tab-btn group flex items-center justify-between w-full gap-[12px] py-[8px] px-[12px] text-[16px] text-white transition-all
                    hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap">
                 <span class="flex items-center gap-[12px]">
-                    <svg id="partners-icon" class="w-[18px] h-[18px] transition-colors text-[#666666]
+                    <svg id="partners-icon" class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                        group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                         viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -249,7 +249,7 @@
                         {{__("front.profile affiliate")}}
                     </span>
                 </span>
-                <svg class="w-[12px] h-[12px] transform transition-transform duration-200" id="arrow-icon"
+                <svg class="flex-shrink-0 w-[12px] h-[12px] transform transition-transform duration-200" id="arrow-icon"
                     viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd"
                         d="M5.23 7.21a.75.75 0 011.06.02L10 11.293l3.71-4.06a.75.75 0 111.08 1.04l-4.25 4.65a.75.75 0 01-1.08 0l-4.25-4.65a.75.75 0 01.02-1.06z"
@@ -299,7 +299,7 @@
                      hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap"
                 data-tab="security"
                 data-active="{{ $active === 'security' ? 'true' : 'false' }}">
-                <svg class="w-[18px] h-[18px] transition-colors text-[#666666]
+                <svg class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                        group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                     viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -327,7 +327,7 @@
                         hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap"
                 data-tab="2fa"
                 data-active="{{ $active === '2fa' ? 'true' : 'false' }}">
-                <svg class="w-[18px] h-[18px] transition-colors text-[#666666]
+                <svg class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                         group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                     viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -375,7 +375,7 @@
                         hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap"
             data-tab="personal"
             data-active="{{ $active === 'personal' ? 'true' : 'false' }}">
-            <svg class="w-[18px] h-[18px] transition-colors text-[#666666]
+            <svg class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                         group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                 viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -399,7 +399,7 @@
                         hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap"
             data-tab="history"
             data-active="{{ $active === 'history' ? 'true' : 'false' }}">
-            <svg class="w-[18px] h-[18px] transition-colors text-[#666666]
+            <svg class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                         group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                 viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -428,7 +428,7 @@
             data-tab="partners"
             data-active="{{ $active === 'partners' ? 'true' : 'false' }}"
             id="partners-toggle-mobile">
-            <svg class="w-[18px] h-[18px] transition-colors text-[#666666]
+            <svg class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                    group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                 viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -455,7 +455,7 @@
                  hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap"
             data-tab="security"
             data-active="{{ $active === 'security' ? 'true' : 'false' }}">
-            <svg class="w-[18px] h-[18px] transition-colors text-[#666666]
+            <svg class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                    group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                 viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -481,7 +481,7 @@
                     hover:bg-white/5 hover:rounded-[100px] whitespace-nowrap"
             data-tab="2fa"
             data-active="{{ $active === '2fa' ? 'true' : 'false' }}">
-            <svg class="w-[18px] h-[18px] transition-colors text-[#666666]
+            <svg class="flex-shrink-0 w-[18px] h-[18px] transition-colors text-[#666666]
                     group-data-[active=true]:text-white group-hover:text-white duration-200 group-hover:scale-110"
                 viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path

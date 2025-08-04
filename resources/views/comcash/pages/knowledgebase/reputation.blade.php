@@ -3,12 +3,12 @@
 @section('content')
 <section class="relative max-[720px]:mt-[1rem] mt-[4rem] mx-auto h-auto flex flex-col  w-full max-[1040px]:px-[20px] max-w-[1018px] max-[720px]:max-w-[640px]">
     <span class="text-[#06AB6B] font-semibold uppercase max-[600px]:text-[24px] text-[32px] leading-[140%] mb-7">
-        Мы на форумах и мониторингах
+        {{ __('front.onForumsAndMonitoring') }}
     </span>
     <div>
         <div class="flex items-center mb-10 mt-10">
             <span class="text-white uppercase max-[600px]:text-[16px] text-[18px] leading-[140%] mr-4 min-[720px]:whitespace-nowrap min-w-[60%]">
-                Мониторинги и отзывы о нас
+                {{ __('front.monitoringAndReviews') }}
             </span>
             <div class="flex h-[1px] bg-[#06AB6B] min-w-[80px] w-full"></div>
         </div>
@@ -518,7 +518,7 @@
             </div>
 
             <div class="flex items-center gap-2 text-sm max-[500px]:[14px] text-[18px]">
-                <span class="text-white/30 ">Отзывы:</span>
+                <span class="text-white/30 ">{{ __('front.reviews') }}:</span>
                 <span>{{ $monitoring->reviews }}</span>
                 <ul class="flex">
                     <div class="text-[#06AB6B]">
@@ -531,7 +531,7 @@
             <a href="{{ $monitoring->link }}" class="shrink-0 rounded-[100px] h-[40px] px-6 py-2
                         bg-emerald-500/90 hover:bg-emerald-500
                         text-[16px] font-medium uppercase min-w-[137px]">
-                Смотреть
+                {{ __('front.view') }}
             </a>
         </div>
         @endforeach
@@ -540,7 +540,7 @@
 
         <div class="flex items-center mb-10 mt-10">
             <span class="text-white uppercase max-[600px]:text-[16px] text-[18px] leading-[140%] mr-4 whitespace-nowrap">
-                Генеральные форумы
+                {{ __('front.mainForums') }}
             </span>
             <div class="flex h-[1px] bg-[#06AB6B] min-w-[80px] w-full"></div>
         </div>
@@ -565,7 +565,7 @@
                 <a href="{{ $forum->link }}" class="w-full h-[40px] min-w-[137px]
                         rounded-full bg-emerald-500/90 hover:bg-emerald-500
                         text-[16px] font-medium uppercase max-w-[200px]">
-                    Читать
+                {{ __('front.read') }}
                 </a>
                 <!-- STYLE MARK -->
             </article>
@@ -574,7 +574,7 @@
         </div>
         <div class="flex items-center mb-10 mt-10">
             <span class="text-white uppercase max-[600px]:text-[16px] text-[18px] leading-[140%] mr-4 whitespace-nowrap">
-                Все форумы
+                {{ __('front.allForums') }}
             </span>
             <div class="flex h-[1px] bg-[#06AB6B] min-w-[80px] w-full"></div>
         </div>

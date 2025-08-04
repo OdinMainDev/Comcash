@@ -36,10 +36,10 @@
                     @csrf
                     <div
                         class="grid max-[900px]:grid-cols-[50%_50%] grid-cols-[60%_40%] max-[500px]:grid-cols-1 p-[24px] rounded-[20px] bg-white/5 items-center">
-                        <p class="mb-2 text-[16px] min-[500px]:hidden">QR-код для подключения двойной аутентификации</p>
+                        <p class="mb-2 text-[16px] min-[500px]:hidden">{{__("front.qr_code_double_auth")}}</p>
                         <div class="w-full max-[500px]:order-2 max-[500px]:mt-2 max-[500px]:self-stretch">
                             <p class="mb-2 text-[16px] max-[500px]:hidden">
-                                QR-код для подключения двойной аутентификации
+                                {{__("front.qr_code_double_auth")}}
                             </p>
                             <input 
                                 type="password" 
@@ -183,7 +183,7 @@
                         <button type="submit"
                             class="max-w-[362px] w-full text-white text-[18px] font-medium rounded-full h-[48px] transition hover:opacity-90"
                             style="background: linear-gradient(95.62deg, #06AB6B 70.57%, #009C74 383.64%);">
-                            СОХРАНИТЬ
+                            {{__("front.save")}}
                         </button>
                     </div>
                 </form>

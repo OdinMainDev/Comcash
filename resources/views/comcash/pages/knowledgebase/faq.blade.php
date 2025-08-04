@@ -3,73 +3,74 @@
 @section('content')
 <section class="relative max-[720px]:mt-[1rem] mt-[2rem] mx-auto h-auto flex flex-col  w-full max-[400px]:px-[20px] max-[700px]:px-[40px] max-w-[600px] max-[720px]:max-w-[640px] ">
     <span class="text-[#06AB6B] font-semibold uppercase text-[32px] leading-[140%] mb-4">
-        faq
+        {{ __('front.faqPageTitle') }}
     </span>
     <div>
         <div class="flex items-center">
             <span class="text-white uppercase text-[18px] leading-[140%] mr-4">
-                Наличные анонимно от 5000$ и чистка крипты
+                {{ __('front.faqPageText1') }}
             </span>
             <div class="flex h-[1px] bg-[#06AB6B] max-w-[100px] min-w-[80px] w-full"></div>
         </div>
         <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-8">
             <span class="text-white text-[18px] leading-[140%]">
-                Как получить анонимно от 5000 долларов США наличными через Comcash?
+                 {{ __('front.faqPageText2') }}
             </span>
             <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
-                С помощью нашего сервиса вы можете легко обменять свою крипту на наличные денежные средства в американских долларах. Обратите внимание, что сумма сделки должна составлять от 5000 $. При этом мы гарантируем вам полную анонимность. Деньги будут доставлены курьером в удобное для вас место. Чтобы использовать эту опцию, просто напишите в службу поддержки нашего сервиса по контактам, указанным в шапке сайта. Более подробную информацию об услуге вы сможете найти на странице нашего сайта в разделе «Чистка вашей крипты».
+                 {{ __('front.faqPageText3') }}
             </p>
         </div>
         <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-2">
             <span class="text-white text-[18px] leading-[140%]">
-                Могу ли я «почистить» свою криптовалюту при помощи Comcash?
+                 {{ __('front.faqPageText4') }}
             </span>
             <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
-                Бывает так, что криптовалюта перестает соответствовать требованиям безопасности хранения или возникают иные проблемы. При помощи нашего сервиса вы сможете сделать вашу крипту чище, убрав следы ее происхождения. Для этого потребуется всего лишь создать сделку на обмен или связаться с менеджерами нашего сервиса по контактам, указанным в шапке сайта. В итоге мы вернем вам чистую криптовалюту без возможности отслеживания источников.
+                 {{ __('front.faqPageText5') }}
             </p>
         </div>
     </div>
     <div class="mt-4">
         <div class="flex items-center">
             <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4">
-                Процедуры KYC/AML
+                 {{ __('front.faqPageText6') }}
             </span>
             <div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
         </div>
         <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-8">
             <span class="text-white text-[18px] leading-[140%]">
-                Что такое KYC?
+                 {{ __('front.faqPageText7') }}
             </span>
             <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
-                KYC - это процесс аутентификации или подтверждения личности и адреса клиента, предваряющий использование каких-либо финансовых предложений. Финансовые учреждения устанавливают личность и адрес клиента на основе представленных подтверждающих документов. Существует два типа KYC – путем удаленной или личной верификации
+                 {{ __('front.faqPageText8') }}
+
             </p>
             <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
-                Первый тип допускает электронную верификацию, что означает, что он позволяет вам воспользоваться удаленным и безбумажным процессом (так называемый eKYC). В остальных случаях вам придется лично посетить финансовое учреждение и предоставить необходимые документы.
-            </p>
-        </div>
-        <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-2">
-            <span class="text-white text-[18px] leading-[140%]">
-                Запрашивает ли сервис Comcash мой KYC?
-            </span>
-            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
-                В отличие от многих других сервисов в сфере криптовалют, наш портал никогда не запрашивает KYC в отношении своих клиентов. Это гарантируем вам полную анонимность и защиту от вмешательства в операции третьих лиц.
+                 {{ __('front.faqPageText9') }}
             </p>
         </div>
         <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-2">
             <span class="text-white text-[18px] leading-[140%]">
-                Что такое AML?
+                 {{ __('front.faqPageText10') }}
             </span>
             <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
-                Борьба с отмыванием денег (AML) - это набор правил, принципов, законодательных актов, нормативно-правовых актов, процессов и инструментов, специфичных для финансового сектора, целью которых является пресечение действий по отмыванию средств, полученных незаконным путем преступными или террористическими организациями.
-                Процедура включает в себя мониторинг и отчетность о подозрительных клиентах и транзакциях. Финансовые учреждения и другие предприятия во многих странах по закону обязаны следовать правилам AML. Например, финансовые и страховые учреждения обязаны проверять своих клиентов в соответствии с принципом «Знай своего клиента» (KYC), включающим в себя легитимацию и проверку личности.
+                 {{ __('front.faqPageText11') }}
             </p>
         </div>
         <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-2">
             <span class="text-white text-[18px] leading-[140%]">
-                Comcash проверяет мой AML?
+                 {{ __('front.faqPageText12') }}
             </span>
             <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
-                Главный принцип работы нашего сервиса заключается в том, чтобы не вмешиваться в дела клиентов, гарантируя им безопасность сделок и полную анонимность. Именно поэтому мы ни при каких условиях не проводим процедуры проверки AML в отношении любых транзакций в рамках нашего сервиса. Мы уверены, что наши клиенты смогут в полной мере оценить все преимущества такого подхода.
+                 {{ __('front.faqPageText13') }}
+                 {{ __('front.faqPageText14') }}
+            </p>
+        </div>
+        <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-2">
+            <span class="text-white text-[18px] leading-[140%]">
+                 {{ __('front.faqPageText15') }}
+            </span>
+            <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
+                 {{ __('front.faqPageText16') }}
             </p>
         </div>
     </div>
@@ -77,16 +78,16 @@
     <div class="mt-4">
         <div class="flex items-center">
             <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4">
-                Для партнеров
+                 {{ __('front.faqPageText17') }}
             </span>
             <div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
         </div>
         <div class="text-white max-[400px]:text-[20px] gap-[40px] mb-4 p-[24px] rounded-[10px] bg-[#FFFFFF0D]/5 backdrop-blur-[20px] mt-8">
             <span class="text-white text-[18px] leading-[140%]">
-                Можно ли получить прибыль с Comcash?
+                 {{ __('front.faqPageText18') }}
             </span>
             <p class="text-[#FFFFFFB2]/70 text-[14px] mt-6">
-                Мы готовы предложить индивидуальные условия сотрудничества нашим партнерам. Для согласования условий партнерства, обсуждения деталей и получения инструкций вы можете связаться с нашими менеджерами по контактам, указанным в шапке сайта.
+                 {{ __('front.faqPageText19') }}
             </p>
         </div>
     </div>

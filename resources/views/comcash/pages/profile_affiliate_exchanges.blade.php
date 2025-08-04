@@ -19,8 +19,7 @@
 
 			<div id="tab-affiliates" class="tab-content">
 				<div class="max-[400px]:hidden flex items-center mb-6">
-					<span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">Заявки
-						аффилейтов</span>
+					<span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">{{__("front.affiliate my exchanges")}}</span>
 					<div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
 				</div>
 				<div class="hidden max-[400px]:flex items-start justify-between mb-4">
@@ -44,21 +43,21 @@
 
 					<div
 						class="grid sm:grid-cols-[0.8fr_0.8fr_1.6fr_1.6fr_1fr] text-white text-[14px] gap-y-3 pt-4 border-b border-white/10">
-						<div class="hidden sm:block text-white/40 text-[12px]">Компания</div>
-						<div class="hidden sm:block text-white/40 text-[12px]">Дата</div>
-						<div class="hidden sm:block text-white/40 text-[12px]">Отправлено</div>
-						<div class="hidden sm:block text-white/40 text-[12px]">Получено</div>
-						<div class="hidden sm:block text-white/40 text-[12px]">Статус</div>
+						<div class="hidden sm:block text-white/40 text-[12px]">{{__("front.campaign")}}</div>
+						<div class="hidden sm:block text-white/40 text-[12px]">{{__("front.date")}}</div>
+						<div class="hidden sm:block text-white/40 text-[12px]">{{__("front.sent")}}</div>
+						<div class="hidden sm:block text-white/40 text-[12px]">{{__("front.received")}}</div>
+						<div class="hidden sm:block text-white/40 text-[12px]">{{__("front.status")}}</div>
 
 
 						@foreach($exchanges as $exchange)
 							<div class="flex justify-between items-center sm:block">
-								<span class="text-white/40 text-[12px] sm:hidden">Компания</span>
+								<span class="text-white/40 text-[12px] sm:hidden">{{__("front.campaign")}}</span>
 								<span class="uppercase">{{$exchange->user_credential}}</span>
 							</div>
 
 							<div class="flex justify-between items-center sm:block">
-								<span class="text-white/40 text-[12px] sm:hidden">Дата</span>
+								<span class="text-white/40 text-[12px] sm:hidden">{{__("front.date")}}</span>
 								<div class="flex flex-wrap break-all">
 									<span class="uppercase">12.12.2024</span>
 									<span class="uppercase">13:44:56</span>
@@ -67,7 +66,7 @@
 							</div>
 
 							<div class="text-white text-[14px]  flex justify-between items-center">
-								<span class="text-white/40 text-[12px] sm:hidden">Отправлено</span>
+								<span class="text-white/40 text-[12px] sm:hidden">{{__("front.sent")}}</span>
 								<div class="flex items-center gap-2">
 									<span class="bg-white/5 rounded-[12px] py-full px-[8px]">USDT</span>
 									<span>{{$exchange->amount}}</span>
@@ -75,7 +74,7 @@
 							</div>
 
 							<div class="text-white text-[14px]  flex justify-between items-center">
-								<span class="text-white/40 text-[12px] sm:hidden">Статус</span>
+								<span class="text-white/40 text-[12px] sm:hidden">{{__("front.status")}}</span>
 								<div class="flex items-center gap-2">
 									<span class="bg-white/5 rounded-[12px] py-full px-[8px]">EUR</span>
 									<span>{{sprintf("%.12f", $exchange->amount_earned)}}</span>
@@ -83,7 +82,7 @@
 							</div>
 
 							<div class="text-white text-[14px]  flex justify-between items-center">
-								<span class="text-white/40 text-[12px] sm:hidden">Получено</span>
+								<span class="text-white/40 text-[12px] sm:hidden">{{__("front.received")}}</span>
 								<div class="flex items-center gap-2">
 									<span class="uppercase text-[14px] text-[#06AB6B]">Успешно</span>
 								</div>

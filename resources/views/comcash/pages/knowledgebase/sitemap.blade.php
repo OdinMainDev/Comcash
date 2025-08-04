@@ -2,7 +2,7 @@
 @section('content')
 
 <section class="review-section relative max-[620px]:mt-[40px] mt-[80px] mx-auto max-w-[1018px] overflow-hidden flex flex-col max-[1024px]:px-[20px]">
-    <h1 class="text-left text-[#06AB6B] max-[500px]:text-[24px] font-bold text-[32px] mb-8">Карта сайта</h1>
+    <h1 class="text-left text-[#06AB6B] max-[500px]:text-[24px] font-bold text-[32px] mb-8">{{ __('front.sitemap_page_title') }}</h1>
     @php
         $chunks = collect($directions)->chunk(7 * 3); 
     @endphp

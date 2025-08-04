@@ -60,8 +60,7 @@
 
 			<div id="tab-companies" class=" tab-content">
 				<div class="max-[400px]:hidden flex items-center mb-6">
-					<span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">Мои
-						компании</span>
+					<span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">{{__("front.affiliate my campaigns")}}</span>
 					<div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
 				</div>
 				<div class="hidden max-[400px]:flex items-start justify-between mb-4">
@@ -84,7 +83,7 @@
 				<form action="{{route("myprofileAffiliatePost")}}" class="flex flex-col gap-[14px]">
 					@csrf
 					<div class="p-[24px] rounded-[20px] bg-white/5 flex flex-col gap-[14px]">
-						<p>Добавить новую рекламную компанию</p>
+						<p>{{__("front.add_new_campaign")}}</p>
 						<input 
 							type="text" 
 							placeholder="{{__("front.affiliate campaign name")}}" 
@@ -95,7 +94,7 @@
 							<button type="submit"
 								class="max-w-[362px] w-full text-white text-[18px] font-medium rounded-full h-[48px] transition hover:opacity-90"
 								style="background: linear-gradient(95.62deg, #06AB6B 70.57%, #009C74 383.64%);">
-								Создать
+								{{__("front.create")}}
 							</button>
 						</div>
 					</div>
@@ -103,37 +102,37 @@
 					<div
 						class="grid sm:grid-cols-[0.4fr_0.8fr_0.8fr_1fr] text-white text-[14px] gap-y-3 border-t border-white/10 pt-4">
 
-						<div class="hidden sm:block text-white/40 text-[12px]">Компания</div>
-						<div class="hidden sm:block text-white/40 text-[12px]">Зарегистрировалось</div>
-						<div class="hidden sm:block text-white/40 text-[12px]">Сделок завершено</div>
-						<div class="hidden sm:block text-white/40 text-[12px]">Ссылка</div>
+						<div class="hidden sm:block text-white/40 text-[12px]">{{__("front.campaign")}}</div>
+						<div class="hidden sm:block text-white/40 text-[12px]">{{__(key: "front.registered")}}</div>
+						<div class="hidden sm:block text-white/40 text-[12px]">{{__(key: "front.deals_completed")}}</div>
+						<div class="hidden sm:block text-white/40 text-[12px]">{{__("front.link")}}</div>
 
 						@foreach($campaigns as $campaign)
 							<div class="flex justify-between items-center sm:block">
-								<span class="text-white/40 text-[12px] sm:hidden">Компания</span>
+								<span class="text-white/40 text-[12px] sm:hidden">{{__("front.campaign")}}</span>
 								<span class="uppercase">{{$campaign->name}}</span>
 							</div>
 
 							<div class="flex justify-between items-center sm:block">
-								<span class="text-white/40 text-[12px] sm:hidden">Зарегистрировалось</span>
+								<span class="text-white/40 text-[12px] sm:hidden">{{__("front.registered")}}</span>
 								<span class="uppercase">{{$campaign->registered_users}}</span>
 							</div>
 
 							<div class="flex justify-between items-center sm:block">
-								<span class="text-white/40 text-[12px] sm:hidden">Сделок завершено</span>
+								<span class="text-white/40 text-[12px] sm:hidden">{{__("front.deals_completed")}}</span>
 								<span class="uppercase">{{$campaign->profitable_transactions}}</span>
 							</div>
 
 							<div
 								class="text-white text-[14px] flex justify-between items-center max-[450px]:flex-wrap max-[450px]:gap-2">
-								<span class="text-white/40 text-[12px] sm:hidden ">Ссылка</span>
+								<span class="text-white/40 text-[12px] sm:hidden ">{{__("front.link")}}</span>
 								<div class="copy-to-clipboard flex items-center gap-2 max-[450px]:flex-wrap max-[450px]:min-w-0 relative group">
 									<a href="#"
 										class="uppercase text-[14px] text-[#06AB6B] hover:opacity-70 max-[900px]:break-all max-[450px]:flex-1 relative">
 										{{route("checkAffiliate", ["hash" => $campaign->hash])}}
 										<span
 											class="hidden tooltip absolute bottom-full mb-1 left-1/2 -translate-x-1/2 text-[12px] bg-black text-white px-2 py-1 rounded group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-											Скопировано
+											{{__("front.copied")}}
 										</span>
 									</a>
 								</div>

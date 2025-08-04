@@ -6,8 +6,8 @@
         <div class="w-full flex flex-col gap-[10px] text-[14px] text-white/40 transition-all duration-300 ease-in-out">
             <div data-form="forgot">
                 <div id="forgot-step-form"> 
-                    <h2 class="text-[32px] font-bold mx-auto text-[#06AB6B] uppercase text-center">Восстановление пароля</h2>
-                    <p class="text-[#FFFFFF] max-[720px]:text-[14px] text-[16px] text-center mb-[60px] max-[720px]:mb-[30px]">Введите вашу почту</p>
+                    <h2 class="text-[32px] font-bold mx-auto text-[#06AB6B] uppercase text-center">{{ __('front.passwordRecovery') }}</h2>
+                    <p class="text-[#FFFFFF] max-[720px]:text-[14px] text-[16px] text-center mb-[60px] max-[720px]:mb-[30px]">{{ __('front.enterEmail') }}</p>
 
                     <form id="forgot-password" action="{{route("resetPasswordPost")}}" class="space-y-6 w-full mx-auto max-w-[600px]">
                         <div class="relative w-full">
@@ -27,12 +27,12 @@
                         <button type="submit"
                             class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90"
                             style="background:linear-gradient(0deg,#009C74,#009C74),linear-gradient(95.62deg,#06AB6B 70.57%,#009C74 383.64%);">
-                            Продолжить
+                            {{ __('front.continue') }}
                         </button>
                         <p class="text-center max-[720px]:text-[14px] text-[16px] text-white mt-2">
                             <a 
                                 href="{{route("login")}}"
-                                class="text-[#06AB6B] hover:opacity-70 transition-opacity ml-1">Вернуться назад</a>
+                                class="text-[#06AB6B] hover:opacity-70 transition-opacity ml-1">{{ __('front.goBack') }}</a>
                         </p>
                     </form>
                 </div>

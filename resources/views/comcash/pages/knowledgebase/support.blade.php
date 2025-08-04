@@ -5,8 +5,8 @@
     <div class="flex justify-between items-start gap-[24px] flex-nowrap mx-auto">
         <div class="flex flex-col gap-[24px] text-[14px] text-white/40 max-w-[640px] mb-6 transition-all duration-300 ease-in-out">
 
-            <h2 class="text-[32px] font-bold text-[#06AB6B] uppercase">Поддержка</h2>
-            <span class="text-[#FFFFFF] text-[16px]">Возникли вопросы? Свяжитесь с нами!</span>
+            <h2 class="text-[32px] font-bold text-[#06AB6B] uppercase">{{ __('front.supportTitle') }}</h2>
+            <span class="text-[#FFFFFF] text-[16px]">{{ __('front.supportSubtitle') }}</span>
 
             <div class="flex flex-nowrap
               text-[#F1F1F1] text-[14px]" style="font-size: clamp(10px, 2.7vw, 14px);">
@@ -18,8 +18,8 @@
                     </svg>
 
                     <span>
-                        Часы работы
-                        <span class="flex-wrap text-[#06AB6B]">с&nbsp;12:00&nbsp;до&nbsp;00:00</span>
+                        {{ __('front.headerWorkingTime1') }}
+                        <span class="flex-wrap text-[#06AB6B]">{{ __('front.headerWorkingTime5') }}&nbsp;12:00&nbsp;{{ __('front.headerWorkingTime3') }}&nbsp;00:00</span>
                     </span>
                 </p>
 
@@ -35,8 +35,8 @@
                     </svg>
 
                     <span>
-                        Обработка заявок
-                        <span class="flex-wrap text-[#06AB6B]">до&nbsp;30&nbsp;минут</span>
+                        {{ __('front.headerClearExchangesTime1') }}
+                        <span class="flex-wrap text-[#06AB6B]">{{ __('front.headerWorkingTime3') }}&nbsp;30&nbsp;{{ __('front.minutes') }}</span>
                     </span>
                 </p>
             </div>
@@ -68,7 +68,7 @@
                                 peer-[&amp;:not(:placeholder-shown)]:top-[8px]
                                 peer-[&amp;:not(:placeholder-shown)]:text-sm
                                 peer-[&amp;:not(:placeholder-shown)]:text-white">
-                            Ваше имя
+                            {{ __('front.your name') }}
                         </label>
                     </div>
 
@@ -84,7 +84,7 @@
                                 peer-[&amp;:not(:placeholder-shown)]:top-[8px]
                                 peer-[&amp;:not(:placeholder-shown)]:text-sm
                                 peer-[&amp;:not(:placeholder-shown)]:text-white">
-                            ID обмена
+                            {{ __('front.exchange id') }}
                         </label>
                     </div>
                 </div>
@@ -123,17 +123,17 @@
                             peer-[&amp;:not(:placeholder-shown)]:top-[6px]
                             peer-[&amp;:not(:placeholder-shown)]:text-sm
                             peer-[&amp;:not(:placeholder-shown)]:text-white">
-                        Сообщение
+                            {{ __('front.message') }}
                     </label>
                 </div>
 
                 <button type="submit" class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90" style="background:linear-gradient(0deg,#009C74,#009C74),linear-gradient(95.62deg,#06AB6B 70.57%,#009C74 383.64%);">
-                    ОТПРАВИТЬ СООБЩЕНИЕ
+                    {{ __('front.send message') }}
                 </button>
             </form>
             <div class="flex items-center justify-between rounded-lg text-white max-[400px]:mb-10">
                 <div class="w-full md:w-1/2 space-y-4">
-                    <h2 class="text-[#06AB6B] text-[24px] uppercase">Хотите связаться с нами напрямую?</h2>
+                    <h2 class="text-[#06AB6B] text-[24px] uppercase">{{ __('front.contactDirectlyQuestion') }}</h2>
                     <ul class="space-y-4 text-sm md:text-base">
                         <li class="flex items-center gap-2">
                             <span>

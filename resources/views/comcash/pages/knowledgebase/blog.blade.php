@@ -5,16 +5,16 @@
     <div id="mining-block" class="flex justify-between items-start gap-[24px] flex-nowrap">
         <div id="mining-text" class="flex flex-col gap-[24px] text-[14px] text-white/40 max-w-[900px] mb-6 transition-all duration-300 ease-in-out w-full">
 
-            <h2 class="text-[32px] font-bold text-[#06AB6B] uppercase">Майнинг</h2>
+            <h2 class="text-[32px] font-bold text-[#06AB6B] uppercase">{{__("front.mining")}}</h2>
 
             <p id="mining-paragraph" class="overflow-hidden text-ellipsis line-clamp-[6] max-[1000px]:line-clamp-[5]">
-                Быть в курсе последних новостей очень важно для каждого делового человека. Особенно, если речь идет про такую динамично развивающуюся сферу, как криптовалюты. На нашем сайте мы будем публиковать и анализировать самые интересные и важные новости из мира цифровых валют, а также проводить ознакомление клиентов с последними изменениями в работе нашего сервиса.
+                {{__("front.mining_intro")}}
                 <br><br>
-                На странице новостей сайта Comcash.io вы найдете публикации о появлении новых криптовалют, важных событиях, влияющих на курсы популярных цифровых валют, технологических новинках и инновационных решениях. Вполне может быть так, что наши новости помогут вам определиться с важными шагами, сделать правильный выбор и, в итоге, обрести финансовый успех. Держите руку на пульсе вместе с нами!
+                {{__("front.news_page_intro")}}
             </p>
 
             <a id="toggle-mining" href="javascript:void(0)" class="text-[#06AB6B] underline block w-fit hidden">
-                показать ещё
+                {{__("front.show_more")}}
             </a>
         </div>
 
@@ -30,31 +30,31 @@
             <button type="button"
                 class="bg-[#06AB6B] text-white px-6 py-2 rounded-full whitespace-nowrap
                     hover:opacity-90 active:scale-95 transition duration-150 focus:outline-none">
-                Все Новости
+                {{__("front.all_news")}}
             </button>
 
             <button type="button"
                 class="bg-[#2C2C2C] text-white px-6 py-2 rounded-full whitespace-nowrap
                     hover:bg-[#3a3a3a] active:scale-95 transition duration-150 focus:outline-none">
-                Майнинг
+                {{__("front.mining")}}
             </button>
 
             <button type="button"
                 class="bg-[#2C2C2C] text-white px-6 py-2 rounded-full whitespace-nowrap
                     hover:bg-[#3a3a3a] active:scale-95 transition duration-150 focus:outline-none">
-                Торговля
+                {{__("front.trading")}}
             </button>
 
             <button type="button"
                 class="bg-[#2C2C2C] text-white px-6 py-2 rounded-full whitespace-nowrap
                     hover:bg-[#3a3a3a] active:scale-95 transition duration-150 focus:outline-none">
-                Мир
+                {{__("front.world")}}
             </button>
 
             <button type="button"
                 class="bg-[#2C2C2C] text-white px-6 py-2 rounded-full whitespace-nowrap
                     hover:bg-[#3a3a3a] active:scale-95 transition duration-150 focus:outline-none">
-                Новости
+                {{__("front.news")}}
             </button>
 
         </div>
@@ -63,14 +63,14 @@
     @if(isset($news) && count($news) > 0)
         <div
             
-            class="w-full overflow-hidden max-[400px]:h-[1420px] max-[720px]:h-[1600px] max-h-[1074]  gap-[24px]">
+            class="grid max-[520px]:grid-cols-1 max-[800px]:grid-cols-2 grid-cols-3 w-full overflow-hidden max-h-[1074]  gap-[24px]">
             @foreach($news as $key => $item)
                 <a 
                     href="{{route('comcashNewsItem', [$item->id])}}"
                     class="review-card bg-[#FFFFFF]/5 rounded-[10px] p-[24px] w-full flex flex-col justify-between">
                     @if (false)
                         <div class="text-[#06AB6B] bg-[#06AB6B1A] text-[12px] font-normal leading-none rounded-full px-[12px] py-[4px] w-fit mb-3">
-                            Рынки
+                            {{__("front.markets")}}
                         </div>
                     @endif
                     <div class="text-white">

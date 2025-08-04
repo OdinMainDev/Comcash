@@ -582,7 +582,6 @@
                             class="max-w-[362px] w-full text-white text-[18px] font-medium rounded-full h-[48px] transition hover:opacity-90"
                             style="background: linear-gradient(95.62deg, #06AB6B 70.57%, #009C74 383.64%);">
                             {{__("front.save")}}
-                            СОХРАНИТЬ
                         </button>
                     </div>
                 </form>
@@ -620,7 +619,7 @@
                         <button type="submit"
                             class="max-w-[362px] w-full text-white text-[18px] font-medium rounded-full h-[48px] transition hover:opacity-90"
                             style="background: linear-gradient(95.62deg, #06AB6B 70.57%, #009C74 383.64%);">
-                            СОХРАНИТЬ
+                            {{__("front.save")}}
                         </button>
                     </div>
                 </form>
@@ -789,7 +788,7 @@
                         <button type="submit"
                             class="max-w-[362px] w-full text-white text-[18px] font-medium rounded-full h-[48px] transition hover:opacity-90"
                             style="background: linear-gradient(95.62deg, #06AB6B 70.57%, #009C74 383.64%);">
-                            СОХРАНИТЬ
+                            {{__("front.save")}}
                         </button>
                     </div>
                 </form>
@@ -798,8 +797,7 @@
 
             <div id="tab-history" class="hidden tab-content">
                 <div class="max-[400px]:hidden flex items-center mb-6">
-                    <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">История
-                        операций</span>
+                    <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1"> {{__("front.personOperationHistoryLabel")}}</span>
                     <div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
                 </div>
 
@@ -868,8 +866,7 @@
 
             <div id="tab-balance" class="hidden tab-content">
                 <div class="max-[400px]:hidden flex items-center mb-6">
-                    <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">Мой
-                        баланс</span>
+                    <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">{{__("front.affiliate my balance")}}</span>
                     <div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
                 </div>
                 <div class="hidden max-[400px]:flex items-start justify-between mb-4">
@@ -1011,7 +1008,7 @@
                 <form class="flex flex-col gap-[14px]">
                     <!-- Форма создания -->
                     <div class="p-[24px] rounded-[20px] bg-white/5 flex flex-col gap-[14px]">
-                        <p>Добавить новую рекламную компанию</p>
+                        <p>{{__("front.add_new_campaign")}}</p>
                         <input type="text" placeholder="Название компании"
                             class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded">
                         <div class="flex justify-start mt-2">
@@ -1075,8 +1072,7 @@
 
             <div id="tab-affiliates" class="hidden tab-content">
                 <div class="max-[400px]:hidden flex items-center mb-6">
-                    <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">Заявки
-                        аффилейтов</span>
+                    <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">{{__("front.affiliate my exchanges")}}</span>
                     <div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
                 </div>
                 <div class="hidden max-[400px]:flex items-start justify-between mb-4">

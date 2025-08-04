@@ -16,8 +16,7 @@
 
             <div id="tab-history" class="tab-content">
                 <div class="max-[400px]:hidden flex items-center mb-6">
-                    <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">История
-                        операций</span>
+                    <span class="text-white uppercase text-[18px] leading-[140%] whitespace-nowrap mr-4 ml-1">{{__("front.personOperationHistoryLabel")}}</span>
                     <div class="flex-1 h-[1px] bg-[#06AB6B]"></div>
                 </div>
 
@@ -36,11 +35,11 @@
 
 
                     <div class="hidden sm:grid grid-cols-[0.8fr_0.9fr_1.8fr_1.4fr_1fr] text-white/40 text-[12px] pl-4">
-                        <div>Дата</div>
-                        <div>Время</div>
-                        <div>Отправлено</div>
-                        <div>Получено</div>
-                        <div>Курс обмена</div>
+                        <div>{{__("front.date")}}</div>
+                        <div>{{__("front.time")}}</div>
+                        <div>{{__("front.sent")}}</div>
+                        <div>{{__("front.received")}}</div>
+                        <div>{{__("front.exchange_rate")}}</div>
                     </div>
 
                     @foreach($exchanges as $row)
@@ -51,12 +50,12 @@
                             <div class="text-white text-[14px] sm:block hidden">13:44:56</div>
 
                             <div class=" flex justify-between sm:hidden text-white text-[14px]">
-                                <span class="text-white/40 text-[12px]">Дата</span>
+                                <span class="text-white/40 text-[12px]">{{__("front.date")}}</span>
                                 <span>12.12.2024, 13:44:56</span>
                             </div>
 
                             <div class="text-white text-[14px]  flex justify-between items-center">
-                                <span class="text-white/40 text-[12px] sm:hidden">Отправлено</span>
+                                <span class="text-white/40 text-[12px] sm:hidden">{{__("front.time")}}</span>
                                 <div class="flex items-center gap-2">
                                     <span class="bg-white/5 rounded-[12px] py-full px-[8px]">{{$row->currencyFrom ? $row->currencyFrom->getTitle() : ""}}</span>
                                     <span>{{@$row->data['amount_data']['amount_send']}}</span>
@@ -64,7 +63,7 @@
                             </div>
 
                             <div class="text-white text-[14px]  flex justify-between items-center">
-                                <span class="text-white/40 text-[12px] sm:hidden">Получено</span>
+                                <span class="text-white/40 text-[12px] sm:hidden">{{__("front.received")}}</span>
                                 <div class="flex items-center gap-2">
                                     <span class="bg-white/5 rounded-[12px] py-full px-[8px]">{{$row->currencyFrom ? $row->currencyFrom->getTitle() : ""}}</span>
                                     <span>{{@$row->data['amount_data']['amount_receive']}}</span>
@@ -73,7 +72,7 @@
 
                             @if (false)
                                 <div class="text-white text-[14px] flex justify-between items-center">
-                                    <span class="text-white/40 text-[12px] sm:hidden">Курс обмена</span>
+                                    <span class="text-white/40 text-[12px] sm:hidden">{{__("front.exchange_rate")}}</span>
                                     <span>0.7824</span>
                                 </div>
                             @endif

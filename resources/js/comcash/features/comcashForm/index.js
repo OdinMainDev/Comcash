@@ -17,11 +17,11 @@ import { setForm } from '@/shared/scripts/modal';
             const redirect = element.dataset.redirect;
             const formData = new FormData(element);
             const submit = element.querySelectorAll('[type="submit"]');
-            const prevInner = submit[0].innerHTML;
-            submit.forEach(el => {
-                el.disabled = true;
-                el.innerHTML = `<div class="btn-loader"></div>${prevInner}`; 
-            });
+            // const prevInner = submit[0].innerHTML;
+            // submit.forEach(el => {
+            //     el.disabled = true;
+            //     el.innerHTML = `<div class="btn-loader"></div>${prevInner}`; 
+            // });
             let elems = element.querySelectorAll('.input--error');
             for(let i = 0; i < elems.length; i++){
                 elems[i].classList.remove('input--error');
@@ -38,15 +38,16 @@ import { setForm } from '@/shared/scripts/modal';
                 window.updateYMForm("fillFullForm");
             }
             const fpPromise = FingerprintJS.load()
-            fpPromise
             .then(fp => fp.get())
             .then(result => {
+                debugger;
                 formData.append('fid', result.visitorId)
                 axios.post(route, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
                 }).then(e => {
+                    debugger;
                     if(route.includes('/exchange/kyc')){
                         confirmCardStatus('ru', window.kycId);
                         // return;
@@ -56,10 +57,10 @@ import { setForm } from '@/shared/scripts/modal';
                     }else{
                         Toastr.success(e.data.title, e.data.message)
                     }
-                    submit.forEach(el => {
-                        el.innerHTML = prevInner
-                        el.disabled = false
-                    });
+                    // submit.forEach(el => {
+                    //     el.innerHTML = prevInner
+                    //     el.disabled = false
+                    // });
                     if(e.data.data?.refresh){
                         setTimeout(() => {
                             window.location.reload();
@@ -73,9 +74,9 @@ import { setForm } from '@/shared/scripts/modal';
                         return;
                     }
                     if (e.data.data?.open_modal_cashexchange) {
+
                         const exchangeForm = $('.exchange__form');
-                        exchangeForm.find('.exchange__main-form').addClass('hide');
-                        exchangeForm.find('.validation').addClass('hide');
+                        $('.default-form').addClass('hidden');
                         exchangeForm.find('.exchange__cash-modal').removeClass('hide');
 
                         return;
@@ -98,10 +99,11 @@ import { setForm } from '@/shared/scripts/modal';
                         return;
                     }
                 }).catch(error => {
-                    submit.forEach(el => {
-                        el.innerHTML = prevInner
-                        el.disabled = false
-                    });
+                    debugger;
+                    // submit.forEach(el => {
+                    //     el.innerHTML = prevInner
+                    //     el.disabled = false
+                    // });
                     if(!error.response){
                         Toastr.error('undefined error...')
                         return;

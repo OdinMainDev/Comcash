@@ -43,7 +43,7 @@
                         <div class="grid grid-cols-2 gap-4 max-[620px]:grid-cols-1">
                             <input 
                                 type="text" 
-                                placeholder="Ваше имя"
+                                placeholder="{{__("front.your name")}}"
                                 class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border-[#06AB6B] outline-none"
                                 name="first_name"
                                 value="{{auth()->user()->first_name}}"
@@ -52,13 +52,13 @@
                                 name="second_name"
                                 value="{{auth()->user()->second_name}}"
                                 type="text" 
-                                placeholder="Ваше отчество"
+                                placeholder="{{__("front.exchangePageInputSecondName")}}"
                                 class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border-[#06AB6B] outline-none">
                         </div>
                         <input 
                             name="last_name"
                             type="text" 
-                            placeholder="Ваша фамилия"
+                            placeholder="{{__("front.exchangePageInputLastName")}}"
                             value="{{auth()->user()->last_name}}"
                             class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border-[#06AB6B] outline-none"
                             >
@@ -88,7 +88,7 @@
                                 name="phone" 
                                 value="{{auth()->user()->phone}}"
                                 type="text" 
-                                placeholder="Номер телефона"
+                                placeholder="{{__("front.phone")}}"
                                 class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border-[#06AB6B] outline-none"
                                 >
                             <input 
@@ -102,7 +102,7 @@
                             name="passport" 
                             value="{{auth()->user()->passport}}"
                             type="text" 
-                            placeholder="Паспорт"
+                            placeholder="{{__("front.passport")}}"
                             class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border-[#06AB6B] outline-none">
                     </div>
 

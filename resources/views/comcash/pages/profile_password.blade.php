@@ -61,7 +61,7 @@
                             type="submit"
                             class="max-w-[362px] w-full text-white text-[18px] font-medium rounded-full h-[48px] transition hover:opacity-90"
                             style="background: linear-gradient(95.62deg, #06AB6B 70.57%, #009C74 383.64%);">
-                            СОХРАНИТЬ
+                            {{__("front.save")}}
                         </button>
                     </div>
                 </form>

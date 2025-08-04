@@ -36,10 +36,11 @@ $(document).ready(function () {
   const openModalButton = exchangeForm.find('.exchange__button')
   const timer = currencyYouGet.find('.exchange__timer');
 
-  const inputCurrencyYouSend = exchangeForm.find('#exchange-currency_from > .input');
-  const inputCurrencyYouGet = exchangeForm.find('#exchange-currency_to > div >.input');
-  const inputFromCardNumber = exchangeForm.find('#exchange-from_card > .input');
-  const inputToCardNumber = exchangeForm.find('#exchange-to_card > .input');
+  debugger;
+  const inputCurrencyYouSend = exchangeForm.find('#exchange-currency_from > input');
+  const inputCurrencyYouGet = exchangeForm.find('#exchange-currency_to > input');
+  const inputFromCardNumber = exchangeForm.find('#exchange-from_card > input');
+  const inputToCardNumber = exchangeForm.find('#exchange-to_card > input');
   const inputFirstName = exchangeForm.find('#exchange-first_name > input');
   const inputLastName = exchangeForm.find('#exchange-last_name > input');
   const inputSecondName = exchangeForm.find('#exchange-second_name > input');
@@ -322,14 +323,16 @@ $(document).ready(function () {
       loadingCurrencyYouGet(true);
       const res = await axios.get(getCurrenciesApi())
       const currenciesList:ICurrency[] = res.data;
+
       currenciesList.forEach(currency => {
         const $listItem = $(getHTMLListItem(currency));
-
         $listItem.on('click', function() {
+          debugger;
           selectListItem.call(this, currency);
         })
         $('.exchange__form').find('.custom-select__select-list').append($listItem);
       })
+
       loadingCurrencyYouSend(false)
       loadingCurrencyYouGet(false);
       return currenciesList;
@@ -344,7 +347,7 @@ $(document).ready(function () {
   async function selectListItem (this: HTMLElement, currency: ICurrency) {
     const parentSelect = $(this).closest('.custom-select__select-container');
     const isCurrencyYouSend = parentSelect.data('currency') === 'currencyYouSend';
-    select.find('.custom-select__select-list')?.toggleClass('hide');
+    // select.find('.custom-select__select-list')?.toggleClass('hide');
     select.toggleClass('active');
     hideAllLayouts();
     impossimbleExchange = false;
@@ -359,11 +362,12 @@ $(document).ready(function () {
     selectItem(parentSelect.find('.custom-select__select-label'), currency)
   }
 
-//   function swapCurrencies() {
-//     const tmp = selectedCurrencyYouGet;
-//     selectedCurrencyYouGet = selectedCurrencyYouSend;
-//     selectedCurrencyYouSend = tmp;
-//   }
+  // function swapCurrencies() {
+  //   const tmp = selectedCurrencyYouGet;
+  //   selectedCurrencyYouGet = selectedCurrencyYouSend;
+  //   selectedCurrencyYouSend = tmp;
+  // }
+
 
   function sendData (event: { preventDefault: () => void; }) {
     event.preventDefault();
@@ -420,6 +424,7 @@ $(document).ready(function () {
 
 
     if(!isError) {
+      $('.exchange-title').addClass('hidden');
       exchangeForm.find('.exchange__main-form').addClass('hide');
       exchangeForm.find('.validation').removeClass('hide')
       initializeValidationModal(selectedCurrencyYouSend, selectedCurrencyYouGet, currencyYouSendAmount, currencyYouGetAmount, settingsLayout)
