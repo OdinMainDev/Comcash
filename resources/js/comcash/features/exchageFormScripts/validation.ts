@@ -11,6 +11,8 @@ export const initializeValidationModal = (selectedCurrencyYouSend: ICurrency, se
   const validationYouSend = validation.find('#validation__you-send');
   const validationYouGetCurrency = validation.find('#validation__you-get-currency');
   const validationYouSendCurrency = validationYouSend.find('#validation__you-send-currency');
+  const validationYouGetCurrencyImg = validation.find('#validation__you-get-currency-img');
+  const validationYouSendCurrencyImg = validationYouSend.find('#validation__you-send-currency-img');
   const validationYouGetAmount = validation.find('#validation__you-get-amount');
   const validationYouSendAmount = validationYouSend.find('#validation__you-send-amount');
   const validationBackButton = validation.find('#validation__back');
@@ -24,6 +26,10 @@ export const initializeValidationModal = (selectedCurrencyYouSend: ICurrency, se
 
   validationYouSendAmount.text(currencyYouSendAmount);
   validationYouGetAmount.text(currencyYouGetAmount);
+
+
+  validationYouSendCurrencyImg.attr('src', selectedCurrencyYouSend.image);
+  validationYouGetCurrencyImg.attr('src', selectedCurrencyYouGet.image);
 
   if (match && (match[1] === 'en' || match[1] === 'ru')) {
     const languageAbbreviation: 'en' | 'ru' = match[1];

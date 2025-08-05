@@ -46,7 +46,7 @@
                 </div>
                 <div
                     class="relative bg-[#2A2A2A] rounded-xl min-[640px]:p-5 p-[14px] min-[640px]:h-[150px] h-[74px] lg:h-auto flex flex-row min-[640px]:flex-col items-center gap-[12px] min-[640px]:items-start min-[640px]:justify-between">
-                    <img src="./comcash/img/eth.webp" alt="Криптомонета"
+                    <img src="/comcash/img/eth.webp" alt="Криптомонета"
                         class="absolute max-[450px]:top-[-340px] max-[450px]:left-[65vw] max-[639px]:top-[-300px] max-[639px]:left-[70vw] max-[1023px]:left-[32vw]
                             left-[200px] top-[-50px] max-[400px]:w-[93px] max-[400px]:h-[93px] w-[103px] h-[103px] z-20 pointer-events-none">
                     <svg class="shrink-0 min-[640px]:hidden" width="24" height="24" viewBox="0 0 24 24" fill="none"

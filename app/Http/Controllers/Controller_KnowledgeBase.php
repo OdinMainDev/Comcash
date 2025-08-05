@@ -35,6 +35,9 @@ class Controller_KnowledgeBase extends Controller{
         if($name == "sitemap")
             $return = $return->with("directions", $this->getCacheDirections())->with("availPages", $availPages);
 
+        if($name == "cleaning")
+            $return = $return->with("feedbacks", $this->getCacheFeedbacks())->with("availPages", $availPages);
+
         $this->setSeoData($this->constructSeoData("comcashPage", $name, $this->getCachedSeoData()), [$name]);
         return $return;
     }

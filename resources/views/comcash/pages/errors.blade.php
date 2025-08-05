@@ -1,41 +1,30 @@
-<!DOCTYPE html>
-<html lang="{{app()->getLocale()}}">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap">
-  <title>Comcash</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
-  <script type="module" crossorigin src="/comcash/assets/exchageForm.c2228eef.js"></script>
-  <link rel="stylesheet" href="/comcash/assets/exchageForm.c2ee50f0.css">
+@extends('comcash.layout.main')
 
-  <link rel="apple-touch-icon" sizes="120x120" href="/comcash/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/comcash/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/comcash/favicon-16x16.png">
-  <link rel="manifest" href="/comcash/site.webmanifest">
-  <link rel="mask-icon" href="/comcash/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-</head>
 
-<body>
-  <div class="not-found">
-    <div class="not-found__container">
-      <p class="not-found__title">{{$status_code}}</p>
-      <p class="not-found__subtitle">{{__("front.page temporarily not working!")}}</p>
-      <a class='button' href="/ru">{{__("front.continue")}}</a>
+@section('content')
+
+  <div data-form="404">
+    <div
+    class="absolute top-[-10%] inset-0 bg-[url('/comcash/img/green_mesh.webp')] bg-center bg-no-repeat z-0 pointer-events-none max-[500px]:hidden">
     </div>
 
+    <section
+    class="relative max-[720px]:max-w-[500px] max-[720px]:mt-[2rem] mt-[8rem] mx-auto mx-4 w-full max-w-[1018px] h-auto flex flex-col justify-between gap-8 lg:gap-[36px] max-[1240px]:px-[20px] min-[1024px]:mb-[80px]">
+    <div class="relative flex items-center justify-center overflow-hidden">
+      <div class="relative flex flex-col items-center justify-center text-center px-4 z-10">
+      <img src="/comcash/img/404.webp" class="max-w-[460px] max-h-[273px] object-contain" />
+      <h2 class="text-[#06AB6B] max-[500px]:text-[24px] text-[32px] font-bold uppercase mt-6">ПРОИЗОШЛА ОШИБКА</h2>
+      <p class="text-white max-[500px]:text-[14px] text-[16px] mt-2">Вернитесь на главную страницу</p>
+      <div class="flex justify-start mt-2 max-w-[600px] w-full">
+        <a href="/"
+        class="w-full text-white text-[18px] font-medium rounded-full h-[62px] transition hover:opacity-90 uppercase flex items-center justify-center"
+        style="background: linear-gradient(95.62deg, #06AB6B 70.57%, #009C74 383.64%);">
+        На главную
+        </a>
+      </div>
+      </div>
+    </div>
+    </section>
   </div>
 
-
-</body>
-
-</html>
+@endsection

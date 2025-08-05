@@ -9,7 +9,7 @@
     <!-- STYLE MARK -->
 
     <!-- STYLE MARK -->
-    <div class="description__view" id="descriptionFullBlock">
+    <div class="hidden description__view" id="descriptionFullBlock">
         <p class="description__descr">
             <strong>{{ __("front.comcashTitleStrong") }}</strong>
             {{ __("front.comcashDescription") }}

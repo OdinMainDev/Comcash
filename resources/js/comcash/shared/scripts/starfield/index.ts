@@ -21,7 +21,9 @@ $(function () {
       h: Math.max($(document).height() || 0, $(window).height() || 0),
     };
   }
-
+  
+  
+  
   function farEnough(x: number, y: number): boolean {
     return placed.every(p => {
       const dx = x - p.x;

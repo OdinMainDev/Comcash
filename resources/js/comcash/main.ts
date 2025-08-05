@@ -27,6 +27,7 @@ import '@/features/aboutVideo'
 import '@/features/banner'
 import '@/features/description'
 import '@/features/swiper'
+import '@/shared/scripts/showMore'
 
 import '@/shared/scripts/checkChristmas'
 

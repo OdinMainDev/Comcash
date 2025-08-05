@@ -564,7 +564,7 @@
                 <!-- STYLE MARK -->
                 <a href="{{ $forum->link }}" class="w-full h-[40px] min-w-[137px]
                         rounded-full bg-emerald-500/90 hover:bg-emerald-500
-                        text-[16px] font-medium uppercase max-w-[200px]">
+                        text-[16px] font-medium uppercase max-w-[200px] flex items-center justify-center cursor-pointer">
                 {{ __('front.read') }}
                 </a>
                 <!-- STYLE MARK -->

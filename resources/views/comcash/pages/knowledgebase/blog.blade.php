@@ -7,17 +7,12 @@
 
             <h2 class="text-[32px] font-bold text-[#06AB6B] uppercase">{{__("front.mining")}}</h2>
 
-            <p id="mining-paragraph" class="overflow-hidden text-ellipsis line-clamp-[6] max-[1000px]:line-clamp-[5]">
+            <p id="mining-paragraph" class="overflow-hidden text-ellipsis max-[1000px]:line-clamp-[5]">
                 {{__("front.mining_intro")}}
                 <br><br>
                 {{__("front.news_page_intro")}}
             </p>
-
-            <a id="toggle-mining" href="javascript:void(0)" class="text-[#06AB6B] underline block w-fit hidden">
-                {{__("front.show_more")}}
-            </a>
         </div>
-
         <div id="mining-image" class="min-w-[260px] max-w-[280px]">
             <img src="/comcash/img/sandl_btc.webp" alt="Майнинг криптовалюты" class="w-full h-auto object-contain" />
         </div>
@@ -66,7 +61,7 @@
             class="grid max-[520px]:grid-cols-1 max-[800px]:grid-cols-2 grid-cols-3 w-full overflow-hidden max-h-[1074]  gap-[24px]">
             @foreach($news as $key => $item)
                 <a 
-                    href="{{route('comcashNewsItem', [$item->id])}}"
+                    href="{{route('comcashBlogItem', [$item->id])}}"
                     class="review-card bg-[#FFFFFF]/5 rounded-[10px] p-[24px] w-full flex flex-col justify-between">
                     @if (false)
                         <div class="text-[#06AB6B] bg-[#06AB6B1A] text-[12px] font-normal leading-none rounded-full px-[12px] py-[4px] w-fit mb-3">

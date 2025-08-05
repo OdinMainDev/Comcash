@@ -104,7 +104,7 @@
 										autocomplete="off" />
 
 									<div
-										class="custom-select__select-container  dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto min-[810px]:mt-1">
+										class="custom-select__select-container  dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto min-[810px]:mt-1" data-currency="currencyYouSend">
 
 										<input class="hidden" name="currency_from">
 										<button type="button" data-focus-target=".input-block"
@@ -146,7 +146,7 @@
 
 
 							<div
-								class="flex items-center justify-center max-[400px]:left-1/2 max-[400px]:-translate-x-1/2 max-[720px]:absolute max-[720px]:top-[44%] max-[720px]:left-10 max-[720px]:rotate-90 z-10 welcome-exchange__icon-reverse">
+								class="flex items-center justify-center max-[400px]:left-1/2 max-[400px]:-translate-x-1/2 max-[720px]:absolute max-[720px]:top-[44%] max-[720px]:left-10 max-[720px]:rotate-90 z-10 reverse">
 								<div id="switchButton" role="button" aria-label="Поменять направления" class="
 										transition-all duration-300
 										hover:scale-105 hover:drop-shadow-[0_0_12px_rgba(6,171,107,0.5)]
@@ -255,7 +255,7 @@
 										class="bg-transparent text-[32px] font-light outline-none min-w-[100px] max-w-full flex-1 w-0"
 										autocomplete="off" />
 									<div
-										class=" custom-select__select-container dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto  min-[810px]:mt-1">
+										class=" custom-select__select-container dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto  min-[810px]:mt-1" data-currency="currencyYouGet">
 										<input class="hidden" name="currency_to">
 										<button type="button" data-focus-target=".output-block"
 											class=" dropdown-toggle transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:opacity-90">
@@ -434,7 +434,7 @@
 				</div>
 
 				<section
-					class="validation hide relative max-[720px]:max-w-[500px] max-[720px]:mt-[2rem] mt-[8rem] mx-auto mx-4 w-full max-w-[1018px] h-auto lg:h-[334px] flex flex-col justify-between gap-8 lg:gap-[36px] max-[1240px]:px-[20px] min-[1024px]:mb-[200px]">
+					class="validation hide relative max-[720px]:max-w-[500px]  mx-auto mx-4 w-full max-w-[1018px] h-auto lg:h-[334px] flex flex-col justify-between gap-8 lg:gap-[36px] max-[1240px]:px-[20px] min-[1024px]:mb-[200px]">
 
 					<div class="overflow-x-hidden absolute inset-0
 												bg-[url('/comcash/img/green_mesh.webp')] bg-auto bg-center
@@ -458,7 +458,7 @@
 								<div class="flex items-center justify-between" id="validation__you-send">
 									<p id="validation__you-send-amount" class="text-[32px] leading-none"></p>
 									<div class="flex items-center gap-[12px] min-w-[180px]">
-										<div class="w-5 h-5 rounded-full bg-green-500"></div>
+										<img id="validation__you-send-currency-img" src="" class="w-5 h-5 rounded-full bg-green-500 " /></span>
 										<span id="validation__you-send-currency" class="text-sm leading-none">
 											<span class="text-[#FFFFFF66]/40">
 											</span>
@@ -473,7 +473,7 @@
 								<div class="flex items-center justify-between" id="validation__you-get">
 									<p id="validation__you-get-amount" class="text-[32px] leading-none"></p>
 									<div class="flex items-center gap-[12px] min-w-[180px]">
-										<div class="w-5 h-5 rounded-full bg-white"></div>
+										<img id="validation__you-get-currency-img" src="" class="w-5 h-5 rounded-full bg-green-500 " />
 										<span id="validation__you-get-currency" class="text-sm leading-none"><span
 												class="text-[#FFFFFF66]/40"></span></span>
 									</div>
@@ -568,31 +568,32 @@
 			</form>
 
 			<div
-				class="relative block max-[720px]:max-w-[500px] max-[720px]:mt-[2rem] mx-auto pt-10 mx-4 w-full max-w-[1018px] h-auto flex flex-col gap-6 max-[1240px]:px-[20px]">
+				
+				data-expandable
+				class=" relative block max-[720px]:max-w-[500px] max-[720px]:mt-[2rem] mx-auto pt-10 mx-4 w-full max-w-[1018px] h-auto flex flex-col gap-6 max-[1240px]:px-[20px]">
 
-				<div id="text-wrapper" class="overflow-hidden transition-all duration-700 ease-in-out max-h-[70px]">
-					<div id="text-inner" class="text-[#A5A5A5] text-[16px] leading-[24px]">
-						Обмен USDT (TRC-20) на рубли через Систему Быстрых Платежей (СБП): Быстро, безопасно и без AML/KYC
-						Преимущества обмена без AML и KYC. Обмен криптовалюты без AML и KYC проверок имеет множество
-						преимуществ. Во-первых, это экономия времени: пользователю не нужно проходить длительные процедуры
-						подтверждения личности. Во-вторых, это анонимность: данные экономия времени: пользователю не нужно
-						проходить длительные процедуры подтверждения личности. Во-вторых, это анонимность: данные экономия
-						времени: пользователю не нужно проходить длительные процедуры подтверждения личности. Во-вторых, это
-						анонимность: данные
+					<div id="text-wrapper"  data-wrapper class="overflow-hidden transition-all duration-700 ease-in-out max-h-[70px]">
+						<div  data-expandable-inner id="text-inner" class="text-[#A5A5A5] text-[16px] leading-[24px]">
+							Обмен USDT (TRC-20) на рубли через Систему Быстрых Платежей (СБП): Быстро, безопасно и без AML/KYC
+							Преимущества обмена без AML и KYC. Обмен криптовалюты без AML и KYC проверок имеет множество
+							преимуществ. Во-первых, это экономия времени: пользователю не нужно проходить длительные процедуры
+							подтверждения личности. Во-вторых, это анонимность: данные экономия времени: пользователю не нужно
+							проходить длительные процедуры подтверждения личности. Во-вторых, это анонимность: данные экономия
+							времени: пользователю не нужно проходить длительные процедуры подтверждения личности. Во-вторых, это
+							анонимность: данные
+						</div>
 					</div>
-				</div>
+					<button id="toggle-button"
+						data-expandable-toggle
+						class="flex items-center gap-2 text-[16px] uppercase text-white transition-all duration-300 w-fit border-b border-[#06AB6B]">
+						{{__("front.show_more")}}
+						<svg data-expandable-arrow id="toggle-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path d="M1 0.833334L5 5.5L9 0.833334" stroke="currentColor" stroke-linecap="round"
+								stroke-linejoin="round" />
+						</svg>
 
-				<!-- Кнопка -->
-				<button id="toggle-button"
-					class="flex items-center gap-2 text-[16px] uppercase text-white transition-all duration-300 w-fit border-b border-[#06AB6B]">
-					{{__("front.show_more")}}
-					<svg id="toggle-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"
-						xmlns="http://www.w3.org/2000/svg">
-						<path d="M1 0.833334L5 5.5L9 0.833334" stroke="currentColor" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-
-				</button>
+					</button>
 
 
 				<div
@@ -962,29 +963,6 @@
 		</section>
 	</div>
 
-	<script>
-		const wrapper = document.getElementById('text-wrapper');
-		const inner = document.getElementById('text-inner');
-		const toggleBtn = document.getElementById('toggle-button');
-		const arrow = document.getElementById('toggle-arrow');
-
-		let expanded = false;
-
-		toggleBtn.addEventListener('click', () => {
-			expanded = !expanded;
-
-			if (expanded) {
-				const fullHeight = inner.scrollHeight;
-				wrapper.style.maxHeight = `${fullHeight}px`;
-				arrow.classList.add('rotate-180');
-				toggleBtn.firstChild.textContent = 'Скрыть';
-			} else {
-				wrapper.style.maxHeight = '70px';
-				arrow.classList.remove('rotate-180');
-				toggleBtn.firstChild.textContent = 'Показать больше';
-			}
-		});
-	</script>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {

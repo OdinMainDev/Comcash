@@ -29,6 +29,8 @@ $(document).ready(function () {
   // const currencyYouGetMin = currencyYouGet.find('.exchange__min > span');
   const currencyYouSendMin = currencyYouSend.find('.exchange__min > span');
   const currencyYouSendMax = currencyYouSend.find('.exchange__max > span');
+  const courseFrom = $('.courseFrom');
+  const courseTo = $('.courseTo');
 
   // const currencyYouGetMin = currencyYouGet.find('.exchange__min > span');
   // const currencyYouGetMax = currencyYouGet.find('.exchange__max > span');
@@ -36,7 +38,6 @@ $(document).ready(function () {
   const openModalButton = exchangeForm.find('.exchange__button')
   const timer = currencyYouGet.find('.exchange__timer');
 
-  debugger;
   const inputCurrencyYouSend = exchangeForm.find('#exchange-currency_from > input');
   const inputCurrencyYouGet = exchangeForm.find('#exchange-currency_to > input');
   const inputFromCardNumber = exchangeForm.find('#exchange-from_card > input');
@@ -53,6 +54,8 @@ $(document).ready(function () {
   const inputCity = exchangeForm.find('#exchange-city > input');
   const inputBank = exchangeForm.find('#exchange-bank > input');
   const currencyLock = exchangeForm.find('.exchange__currency-lock');
+  const usdFromHint =  exchangeForm.find("#usdFromHint");
+  const usdToHint = exchangeForm.find("#usdToHint");
 
   let selectedCurrencyYouSend: ICurrency = defaultCurrencyYouSend;
   let selectedCurrencyYouGet: ICurrency = defaultCurrencyYouGet;
@@ -238,6 +241,12 @@ $(document).ready(function () {
 
   }
 
+  async function UpdateUsdHint(target: string, quantity: number) {
+      const esimate = await getEstimate(target, "USDTERC20", quantity);
+      usdFromHint.text(esimate .amount);
+      usdToHint.text(esimate .amount);
+  }
+
   async function changeYouGetValue(withSettings?: boolean) {
     loadingCurrencyYouSend(true);
     restartCurrencyTimer();
@@ -249,6 +258,7 @@ $(document).ready(function () {
       const data = await getEstimate(selectedCurrencyYouSend.name, selectedCurrencyYouGet.name, currencyYouGetAmount, 1);
       currencyYouSendAmount = data.amount;
       inputCurrencyYouSend.val(currencyYouSendAmount)
+
 
     } catch (e) {
       errorHandler(e);
@@ -265,8 +275,13 @@ $(document).ready(function () {
     }
     try {
       const data = await getEstimate(selectedCurrencyYouSend.name, selectedCurrencyYouGet.name, currencyYouSendAmount);
+      await UpdateUsdHint(selectedCurrencyYouSend.name, currencyYouSendAmount);
       currencyYouGetAmount = data.amount;
       inputCurrencyYouGet.val(currencyYouGetAmount)
+
+      courseFrom.text(`1 ${selectedCurrencyYouSend.name}`);
+      courseTo.text(`${data.amount} ${selectedCurrencyYouGet.name}`);
+
     } catch(e) {
       errorHandler(e);
     }
@@ -327,7 +342,6 @@ $(document).ready(function () {
       currenciesList.forEach(currency => {
         const $listItem = $(getHTMLListItem(currency));
         $listItem.on('click', function() {
-          debugger;
           selectListItem.call(this, currency);
         })
         $('.exchange__form').find('.custom-select__select-list').append($listItem);
@@ -362,11 +376,14 @@ $(document).ready(function () {
     selectItem(parentSelect.find('.custom-select__select-label'), currency)
   }
 
-  // function swapCurrencies() {
-  //   const tmp = selectedCurrencyYouGet;
-  //   selectedCurrencyYouGet = selectedCurrencyYouSend;
-  //   selectedCurrencyYouSend = tmp;
-  // }
+  $('.reverse').on('click', swapCurrencies);
+
+  async function swapCurrencies() {
+    const tmp = selectedCurrencyYouGet;
+    selectedCurrencyYouGet = selectedCurrencyYouSend;
+    selectedCurrencyYouSend = tmp;
+    // await selectListItem (selectedCurrencyYouGet)
+  }
 
 
   function sendData (event: { preventDefault: () => void; }) {

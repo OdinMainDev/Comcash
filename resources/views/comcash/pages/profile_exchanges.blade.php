@@ -65,7 +65,7 @@
                             <div class="text-white text-[14px]  flex justify-between items-center">
                                 <span class="text-white/40 text-[12px] sm:hidden">{{__("front.received")}}</span>
                                 <div class="flex items-center gap-2">
-                                    <span class="bg-white/5 rounded-[12px] py-full px-[8px]">{{$row->currencyFrom ? $row->currencyFrom->getTitle() : ""}}</span>
+                                    <span class="bg-white/5 rounded-[12px] py-full px-[8px]">{{$row->currencyTo ? $row->currencyTo->getTitle() : ""}}</span>
                                     <span>{{@$row->data['amount_data']['amount_receive']}}</span>
                                 </div>
                             </div>

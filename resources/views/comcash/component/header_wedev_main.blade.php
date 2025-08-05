@@ -4,13 +4,89 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-[49.99%] w-screen border border-[#FFFFFF]/5 z-0"></div>
         <div class="flex items-center space-x-2">
             <a href='{{route("index")}}'>
-                <img src='/comcash/img/logo.svg' alt='logo' />
+                <svg width="131" height="40" viewBox="0 0 131 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_74_2369)">
+                        <path
+                            d="M4.87952 33.7607C3.17284 33.7607 1.95296 33.3878 1.21989 32.642C0.48682 31.8963 0.103104 30.6628 0.0687407 28.9418C0.0458322 27.4044 0.0286509 25.8727 0.0171967 24.3467C0.00574239 22.8093 1.52588e-05 21.2775 1.52588e-05 19.7516C1.52588e-05 18.2141 0.00574239 16.6767 0.0171967 15.1393C0.0286509 13.6019 0.0458322 12.0644 0.0687407 10.527C0.103104 8.95506 0.492548 7.76759 1.23707 6.96445C1.98159 6.14984 3.18429 5.74253 4.84516 5.74253C6.52893 5.74253 7.74308 6.11542 8.48761 6.86119C9.24358 7.59549 9.65022 8.82315 9.70748 10.5442C9.71895 10.9687 9.72465 11.5022 9.72465 12.1447C9.72465 12.7757 9.71895 13.4068 9.70748 14.0379C9.70748 14.6688 9.70179 15.2024 9.69032 15.6384H7.04437C7.05583 15.0647 7.06155 14.4624 7.06155 13.8313C7.07301 13.2003 7.07873 12.5635 7.07873 11.921C7.07873 11.2785 7.07301 10.6761 7.06155 10.1139C7.0501 9.34519 6.86683 8.79447 6.51175 8.46173C6.16812 8.12901 5.61259 7.96264 4.84516 7.96264C4.12354 7.96264 3.59092 8.12901 3.24729 8.46173C2.91512 8.79447 2.73758 9.34519 2.71467 10.1139C2.6803 11.7661 2.65167 13.3896 2.62877 14.9844C2.61731 16.5677 2.61158 18.1511 2.61158 19.7344C2.61158 21.3177 2.61731 22.9068 2.62877 24.5016C2.65167 26.0964 2.6803 27.7142 2.71467 29.3549C2.73758 30.1236 2.91512 30.6801 3.24729 31.0243C3.59092 31.3684 4.135 31.5406 4.87952 31.5406C5.68131 31.5406 6.26548 31.3684 6.63202 31.0243C6.99855 30.6801 7.18755 30.1236 7.199 29.3549C7.21045 28.7583 7.21618 28.1214 7.21618 27.4445C7.21618 26.7676 7.21045 26.0964 7.199 25.431C7.199 24.754 7.19327 24.1173 7.18182 23.5206H9.81054C9.84495 24.4385 9.86212 25.3449 9.86212 26.2398C9.87359 27.1233 9.86781 28.0239 9.84496 28.9418C9.78769 30.6628 9.37527 31.8963 8.60788 32.642C7.84044 33.3878 6.59765 33.7607 4.87952 33.7607Z"
+                            fill="white"></path>
+                        <path
+                            d="M17.583 33.7607C15.8648 33.7607 14.6278 33.3935 13.8718 32.6592C13.1273 31.9134 12.7378 30.6858 12.7035 28.9763C12.6805 27.3929 12.6577 25.8383 12.6347 24.3123C12.6233 22.7863 12.6176 21.2603 12.6176 19.7344C12.6176 18.2084 12.6233 16.6825 12.6347 15.1565C12.6577 13.6306 12.6805 12.0759 12.7035 10.4925C12.7378 8.78298 13.1273 7.56107 13.8718 6.82677C14.6278 6.081 15.8648 5.70811 17.583 5.70811C19.2896 5.70811 20.5152 6.081 21.2598 6.82677C22.0158 7.56107 22.4053 8.78298 22.4281 10.4925C22.4625 12.0759 22.4854 13.6363 22.4968 15.1737C22.5198 16.7111 22.5312 18.2371 22.5312 19.7516C22.5312 21.2661 22.5198 22.7863 22.4968 24.3123C22.4854 25.8383 22.4625 27.3929 22.4281 28.9763C22.4053 30.6858 22.0158 31.9134 21.2598 32.6592C20.5152 33.3935 19.2896 33.7607 17.583 33.7607ZM17.583 31.5233C18.3619 31.5233 18.9231 31.3627 19.2668 31.0414C19.6104 30.7088 19.7879 30.1637 19.7994 29.4065C19.8452 27.7773 19.8738 26.1538 19.8853 24.536C19.9082 22.9068 19.9196 21.2833 19.9196 19.6655C19.9196 18.0478 19.9082 16.4415 19.8853 14.8467C19.8624 13.2404 19.8337 11.6456 19.7994 10.0623C19.7879 9.30502 19.6047 8.76008 19.2496 8.42732C18.9059 8.09459 18.3504 7.92822 17.583 7.92822C16.8156 7.92822 16.2543 8.09459 15.8992 8.42732C15.5556 8.76008 15.3723 9.30502 15.3494 10.0623C15.3036 11.6456 15.2692 13.2404 15.2463 14.8467C15.2234 16.4415 15.212 18.0478 15.212 19.6655C15.2234 21.2833 15.2406 22.9068 15.2635 24.536C15.2864 26.1538 15.315 27.7773 15.3494 29.4065C15.3723 30.1637 15.5556 30.7088 15.8992 31.0414C16.2543 31.3627 16.8156 31.5233 17.583 31.5233Z"
+                            fill="white"></path>
+                        <path
+                            d="M25.8112 33.5026V5.96627H30.5017L32.2371 17.1185L33.2507 31.0243H33.938L34.9174 17.1185L36.6698 5.96627H41.3604V33.5026H38.7144V25.4138L39.1955 8.34127H38.388L36.6183 25.5514L35.261 33.3992H31.8934L30.5705 25.5514L28.7836 8.34127H28.0104L28.4571 25.4138V33.5026H25.8112Z"
+                            fill="white"></path>
+                        <path
+                            d="M88.7984 33.7906C87.0914 33.7906 85.8714 33.4177 85.1381 32.6719C84.4053 31.9261 84.0216 30.6928 83.9872 28.9717C83.9643 27.4343 83.9471 25.9026 83.9357 24.3766C83.9242 22.8392 83.9185 21.3075 83.9185 19.7815C83.9185 18.2441 83.9242 16.7066 83.9357 15.1692C83.9471 13.6317 83.9643 12.0943 83.9872 10.5568C84.0216 8.98502 84.411 7.79751 85.156 6.99437C85.9002 6.17976 87.1025 5.77245 88.7635 5.77245C90.4475 5.77245 91.6616 6.14533 92.4059 6.89111C93.1621 7.62541 93.5691 8.8531 93.626 10.5741C93.6371 10.9986 93.643 11.5321 93.643 12.1746C93.643 12.8057 93.6371 13.4367 93.626 14.0677C93.626 14.6988 93.6201 15.2323 93.609 15.6683H90.9632C90.9743 15.0946 90.9802 14.4923 90.9802 13.8612C90.9913 13.2302 90.9972 12.5934 90.9972 11.9509C90.9972 11.3084 90.9913 10.706 90.9802 10.1438C90.9683 9.37515 90.7857 8.82442 90.4305 8.49166C90.0864 8.15893 89.5307 7.99256 88.7635 7.99256C88.0422 7.99256 87.5095 8.15893 87.1654 8.49166C86.834 8.82442 86.6564 9.37515 86.6335 10.1438C86.5986 11.796 86.5698 13.4195 86.5468 15.0143C86.5358 16.5976 86.5298 18.181 86.5298 19.7643C86.5298 21.3477 86.5358 22.9367 86.5468 24.5315C86.5698 26.1263 86.5986 27.7441 86.6335 29.3848C86.6564 30.1535 86.834 30.71 87.1654 31.0542C87.5095 31.3984 88.0532 31.5705 88.7984 31.5705C89.5996 31.5705 90.1841 31.3984 90.5503 31.0542C90.9174 30.71 91.106 30.1535 91.1179 29.3848C91.1289 28.7882 91.1349 28.1514 91.1349 27.4745C91.1349 26.7975 91.1289 26.1263 91.1179 25.4608C91.1179 24.7839 91.1119 24.1471 91.1 23.5506H93.7288C93.7637 24.4684 93.7806 25.3748 93.7806 26.2698C93.7917 27.1532 93.7866 28.0539 93.7637 28.9717C93.7059 30.6928 93.2938 31.9261 92.5266 32.6719C91.7585 33.4177 90.5163 33.7906 88.7984 33.7906Z"
+                            fill="url(#paint0_linear_74_2369)"></path>
+                        <path
+                            d="M95.6439 33.5324L98.6856 5.99619H103.427L106.468 33.5324H103.771L103.066 25.8223H99.0459L98.3415 33.5324H95.6439ZM99.3042 23.4473H102.826L102.276 17.4237L101.555 8.37119H100.592L99.8709 17.4237L99.3042 23.4473Z"
+                            fill="url(#paint1_linear_74_2369)"></path>
+                        <path
+                            d="M113.39 33.7906C111.695 33.7906 110.475 33.412 109.731 32.6547C108.998 31.8974 108.598 30.6584 108.529 28.9374C108.517 28.2718 108.506 27.658 108.494 27.0958C108.494 26.5222 108.5 25.9542 108.511 25.392C108.534 24.8184 108.557 24.1988 108.58 23.5334H111.106C111.06 24.5201 111.031 25.5068 111.02 26.4934C111.02 27.4802 111.048 28.4382 111.106 29.3676C111.14 30.1134 111.335 30.6641 111.689 31.0197C112.045 31.3754 112.606 31.5533 113.373 31.5533C114.13 31.5533 114.668 31.3754 114.989 31.0197C115.321 30.6641 115.515 30.1134 115.573 29.3676C115.607 28.748 115.63 28.1973 115.641 27.7154C115.653 27.222 115.647 26.7172 115.624 26.2009C115.613 25.6731 115.596 25.0765 115.573 24.4111C115.538 23.5964 115.412 22.9138 115.195 22.3631C114.977 21.8123 114.548 21.4509 113.906 21.2788L111.982 20.7797C111.066 20.5502 110.355 20.206 109.852 19.7471C109.359 19.2882 109.01 18.6916 108.803 17.9573C108.609 17.2115 108.494 16.3051 108.46 15.238C108.448 14.5267 108.448 13.758 108.46 12.9319C108.471 12.1058 108.483 11.3084 108.494 10.5397C108.529 9.39234 108.706 8.46871 109.027 7.76883C109.348 7.05748 109.863 6.54117 110.573 6.21991C111.283 5.89866 112.217 5.73803 113.373 5.73803C115.011 5.73803 116.192 6.11092 116.913 6.85669C117.646 7.60247 118.047 8.83583 118.115 10.5568C118.138 11.1764 118.144 11.9394 118.133 12.8459C118.121 13.7408 118.104 14.6701 118.081 15.6339H115.521C115.555 14.7275 115.578 13.8153 115.59 12.8974C115.601 11.9681 115.59 11.0502 115.555 10.1438C115.521 9.38655 115.327 8.83583 114.972 8.49166C114.616 8.13598 114.078 7.95814 113.356 7.95814C112.589 7.95814 112.039 8.13598 111.707 8.49166C111.375 8.83583 111.186 9.38655 111.14 10.1438C111.083 10.9814 111.054 11.8247 111.054 12.6737C111.066 13.5227 111.094 14.3775 111.14 15.238C111.163 16.1789 111.283 16.9017 111.501 17.4066C111.73 17.8999 112.182 18.2326 112.858 18.4047L114.645 18.835C115.596 19.0529 116.323 19.4029 116.827 19.8848C117.331 20.3552 117.68 20.969 117.875 21.7263C118.081 22.4721 118.202 23.367 118.236 24.4111C118.259 25.0535 118.27 25.61 118.27 26.0804C118.27 26.5394 118.265 26.9868 118.253 27.4228C118.242 27.8588 118.23 28.3637 118.219 28.9374C118.15 30.6584 117.743 31.8974 116.999 32.6547C116.266 33.412 115.063 33.7906 113.39 33.7906Z"
+                            fill="url(#paint2_linear_74_2369)"></path>
+                        <path
+                            d="M121.273 33.5324V5.99619H123.902V18.4563H128.198V5.99619H130.844V33.5324H128.198V20.8313H123.902V33.5324H121.273Z"
+                            fill="url(#paint3_linear_74_2369)"></path>
+                        <path
+                            d="M65.7974 25.7873C65.7974 25.4706 65.8112 25.0874 65.7951 24.7042C65.7768 24.2614 65.6211 24.0915 65.1515 24.0801C63.8548 24.0525 62.5559 24.0525 61.2593 24.0387C60.9157 24.0341 60.572 24.0387 60.2307 24.0135C59.8871 23.9883 59.7771 23.722 59.9902 23.4582C60.1345 23.2815 60.2902 23.1117 60.4552 22.9534C61.7106 21.7418 62.6063 20.2892 63.3485 18.722C63.8709 17.6182 64.0496 16.4663 63.9395 15.2638C63.9098 14.9266 63.8136 14.5869 63.6967 14.2657C63.2432 13.0289 62.1917 12.5309 60.9454 12.937C60.627 13.0403 60.3544 13.3523 59.9879 13.217C59.6167 13.0793 59.4037 12.7352 59.1563 12.4483C58.8264 12.065 58.886 11.7644 59.3396 11.5327C61.4701 10.4381 64.4573 10.9682 65.2637 14.1601C65.7218 15.9706 65.2866 17.6434 64.5833 19.2819C64.313 19.9106 63.9395 20.4957 63.6097 21.0969C63.4631 21.3654 63.2936 21.6202 63.1561 21.8932C62.9636 22.2764 63.0783 22.499 63.4906 22.5105C64.0999 22.5266 64.7116 22.5289 65.321 22.499C65.7997 22.4761 65.9784 22.2306 65.9303 21.728C65.8639 21.0052 65.7791 20.2869 65.7104 19.5641C65.676 19.1969 65.77 19.0914 66.1525 19.0753C66.4572 19.0615 66.7642 19.0661 67.0665 19.0822C67.353 19.0983 67.4767 19.2405 67.4263 19.5343C67.3071 20.2548 67.298 20.9822 67.3231 21.7073C67.3392 22.1548 67.511 22.3108 67.9738 22.3269C68.393 22.3407 68.8122 22.3131 69.2337 22.3108C69.5384 22.3085 69.8431 22.3085 70.1478 22.3315C70.3586 22.3476 70.4777 22.499 70.5281 22.7009C70.5372 22.7376 70.5395 22.7767 70.5418 22.8157C70.6014 24.337 70.606 24.337 69.1719 24.2751C68.7549 24.2568 68.3403 24.1603 67.9233 24.1374C67.5431 24.1168 67.3598 24.2889 67.3507 24.6836C67.3323 25.4087 67.4354 26.8566 67.4354 26.8566C67.4354 26.8566 67.5248 27.3844 67.5362 27.6506C67.5683 28.3115 67.4377 28.4376 66.7505 28.4583C65.6233 28.4951 65.5867 28.4445 65.7081 27.3454C65.7631 26.8474 65.7654 26.3495 65.7974 25.7873Z"
+                            fill="url(#paint4_linear_74_2369)"></path>
+                        <path
+                            d="M58.7186 0H62.3839V9.12094C57.2787 10.0329 53.4496 14.4666 53.4496 19.7343C53.4496 25.0021 57.2787 29.4358 62.3839 30.3477V39.4686H58.7186V35.2889C52.3077 32.9995 47.7226 26.8996 47.7226 19.7343C47.7226 12.569 52.3077 6.46914 58.7186 4.17974V0Z"
+                            fill="url(#paint5_linear_74_2369)"></path>
+                        <path
+                            d="M66.5075 39.4686H70.1728V35.2052C73.1765 34.0823 75.7664 32.1187 77.653 29.6026L73.0805 26.1464C71.5138 28.2448 69.1957 29.7646 66.5075 30.3043V39.4686Z"
+                            fill="url(#paint6_linear_74_2369)"></path>
+                        <path
+                            d="M66.5075 0H70.1728V4.26346C73.1182 5.36451 75.6657 7.27401 77.5423 9.72017L72.9698 13.1765C71.4056 11.1535 69.133 9.69149 66.5075 9.16443V0Z"
+                            fill="url(#paint7_linear_74_2369)"></path>
+                    </g>
+                    <defs>
+                        <linearGradient id="paint0_linear_74_2369" x1="103.484" y1="20.2232" x2="140.652" y2="21.6614"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#06AB6B"></stop>
+                            <stop offset="1" stop-color="#009C74"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear_74_2369" x1="103.484" y1="20.2232" x2="140.652" y2="21.6614"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#06AB6B"></stop>
+                            <stop offset="1" stop-color="#009C74"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint2_linear_74_2369" x1="103.484" y1="20.2232" x2="140.652" y2="21.6614"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#06AB6B"></stop>
+                            <stop offset="1" stop-color="#009C74"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint3_linear_74_2369" x1="103.484" y1="20.2232" x2="140.652" y2="21.6614"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#06AB6B"></stop>
+                            <stop offset="1" stop-color="#009C74"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint4_linear_74_2369" x1="57.8583" y1="20.6025" x2="97.5002" y2="21.2515"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#06AB6B"></stop>
+                            <stop offset="0.723958" stop-color="#009C74"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint5_linear_74_2369" x1="46.348" y1="21.6848" x2="96.4027" y2="22.1422"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#06AB6B"></stop>
+                            <stop offset="0.723958" stop-color="#009C74"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint6_linear_74_2369" x1="46.348" y1="21.6848" x2="96.4027" y2="22.1422"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#06AB6B"></stop>
+                            <stop offset="0.723958" stop-color="#009C74"></stop>
+                        </linearGradient>
+                        <linearGradient id="paint7_linear_74_2369" x1="46.348" y1="21.6848" x2="96.4026" y2="22.1422"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#06AB6B"></stop>
+                            <stop offset="0.723958" stop-color="#009C74"></stop>
+                        </linearGradient>
+                        <clipPath id="clip0_74_2369">
+                            <rect width="130.844" height="40" fill="white"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
             </a>
-            <!-- <a href='{{route("index")}}'>
-                <img src='/comcash/img/new_year_img/logo.png' alt='logo' />
-            </a> -->
-
-
         </div>
         <div class="flex flex-nowrap
              max-[719px]:absolute max-[719px]:top-0 max-[719px]:left-0 max-[719px]:z-50
@@ -67,8 +143,7 @@
 
 
         <div class="flex items-center space-x-3 text-sm pl-2">
-            <a
-                href='{{route("comcashPage", ["name" => "cleaning"])}}'
+            <a href='{{route("comcashPage", ["name" => "cleaning"])}}'
                 class="max-[620px]:hidden flex items-center px-3 py-1 bg-[#2A2A2A] rounded-full gap-[8px] h-[40px] whitespace-nowrap">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -80,8 +155,7 @@
                 </svg>
                 <span>{{__("front.anonymousMode")}}</span>
             </a>
-            <a
-                href="{{__("front.menuBotUrl")}}"
+            <a href="{{__("front.menuBotUrl")}}"
                 class="max-[620px]:hidden flex items-center px-3 py-1 bg-[#2A2A2A] rounded-full gap-[8px] h-[40px]">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -92,104 +166,95 @@
             </a>
 
             <div class="max-[400px]:hidden flex items-center px-2 py-1 bg-[#2A2A2A] rounded-full gap-[8px] h-[40px]">
-                <div class='select'>
-                    <div class='select__container'>
-                        <a class='select__option language_select' name="ru" href="/ru">
-                            <input type='radio' id='ru' name='locale' value='ru'
-                                @if(app()->getLocale() == "ru") checked @endif
-                            >
-                            <label for='ru'>
-                                <img src='/comcash/img/icons/locales/ru.png'
-                                    alt='Comcash - русский язык' />
-                            </label>
-                        </a>
-                        <a class='select__option language_select' name="en" href="/en">
-                            <input type='radio' id='en' name='locale' value='en'
-                                @if(app()->getLocale() == "en") checked @endif
-                            >
-                            <label for='en'>
-                                <img src='/comcash/img/icons/locales/en.png'
-                                    alt='Comcash - english language' />
-                            </label>
-                        </a>
-                        @if(in_array("fr", config("app.languages")))
-                        <a class='select__option language_select' name="fr" href="/fr">
-                            <input type='radio' id='fr' name='locale' value='fr'
-                                @if(app()->getLocale() == "fr") checked @endif
-                            >
-                            <label for='fr'>
-                                <img src='/comcash/img/icons/locales/fr.png'
-                                    alt='Comcash - langue française' />
-                            </label>
-                        </a>
-                        @endif
-                        @if(in_array("de", config("app.languages")))
-                        <a class='select__option language_select' name="de" href="/de">
-                            <input type='radio' id='de' name='locale' value='de'
-                                @if(app()->getLocale() == "de") checked @endif
-                            >
-                            <label for='de'>
-                                <img src='/comcash/img/icons/locales/de.png'
-                                    alt='Comcash - deutsche Sprache' />
-                            </label>
-                        </a>
+                <div class="select relative inline-flex items-center gap-1 group cursor-pointer">
+                    <div class="select__current flex items-center">
+                        <img src="/comcash/img/icons/locales/{{ app()->getLocale() }}.png"
+                            alt="{{ strtoupper(app()->getLocale()) }}"
+                            class="w-6 h-6 rounded-full object-cover border border-gray-500 hover:border-white transition">
+                    </div>
+                    <svg class="w-3 h-3 text-gray-400 transition-transform duration-200 group-[.active]:rotate-180"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+
+                    <div class="select__container absolute top-full mt-1 right-0 rounded-[8px] bg-[#1F1F1F]
+                            shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 max-h-[240px] overflow-y-auto
+                            p-2 hidden group-[.active]:block">
+
+                        @if(in_array("ru", haystack: config("app.languages")))
+                            <div
+                                class="select__option w-6 h-6 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-white mb-1">
+                                <input type="radio" name="language" id="lang-ru" value="ru" hidden>
+                                <label for="lang-ru" class="block w-full h-full">
+                                    <img src="/comcash/img/icons/locales/ru.png" alt="Русский"
+                                        class="w-full h-full object-cover">
+                                </label>
+                            </div>
                         @endif
 
-                        @if(in_array("es", config("app.languages")))
-                        <a class='select__option language_select' name="es" href="/es">
-                            <input type='radio' id='es' name='locale' value='es'
-                                @if(app()->getLocale() == "es") checked @endif
-                            >
-                            <label for='es'>
-                                <img src='/comcash/img/icons/locales/es.png'
-                                    alt='Comcash - lengua española' />
-                            </label>
-                        </a>
+                        @if(in_array("en", haystack: config("app.languages")))
+                            <div
+                                class="select__option w-6 h-6 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-white mb-1">
+                                <input type="radio" name="language" id="lang-en" value="en" hidden>
+                                <label for="lang-en" class="block w-full h-full">
+                                    <img src="/comcash/img/icons/locales/en.png" alt="English"
+                                        class="w-full h-full object-cover">
+                                </label>
+                            </div>
+                        @endif
+
+                        @if(in_array("es", haystack: config("app.languages")))
+                            <div
+                                class="select__option w-6 h-6 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-white">
+                                <input type="radio" name="language" id="lang-es" value="es" hidden>
+                                <label for="lang-es" class="block w-full h-full">
+                                    <img src="/comcash/img/icons/locales/es.png" alt="Español"
+                                        class="w-full h-full object-cover">
+                                </label>
+                            </div>
                         @endif
                     </div>
-                    <div class='select__current'></div>
                 </div>
+
             </div>
 
             @guest
-            <a
-                href="{{route("login")}}"
-                class="cursor-pointer flex items-center px-4 py-1 rounded-full transition-all duration-300
-                        bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488]
-                        max-[620px]:bg-[rgba(255,255,255,0.05)] max-[620px]:from-transparent max-[620px]:to-transparent text-white font-medium gap-[8px] h-[40px] hover:opacity-90">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M9 9.5625C6.6225 9.5625 4.6875 7.6275 4.6875 5.25C4.6875 2.8725 6.6225 0.9375 9 0.9375C11.3775 0.9375 13.3125 2.8725 13.3125 5.25C13.3125 7.6275 11.3775 9.5625 9 9.5625ZM9 2.0625C7.245 2.0625 5.8125 3.495 5.8125 5.25C5.8125 7.005 7.245 8.4375 9 8.4375C10.755 8.4375 12.1875 7.005 12.1875 5.25C12.1875 3.495 10.755 2.0625 9 2.0625Z"
-                        fill="white"></path>
-                    <path
-                        d="M15.4426 17.0625C15.1351 17.0625 14.8801 16.8075 14.8801 16.5C14.8801 13.9125 12.2401 11.8125 9.00011 11.8125C5.76011 11.8125 3.12012 13.9125 3.12012 16.5C3.12012 16.8075 2.86512 17.0625 2.55762 17.0625C2.25012 17.0625 1.99512 16.8075 1.99512 16.5C1.99512 13.2975 5.13761 10.6875 9.00011 10.6875C12.8626 10.6875 16.0051 13.2975 16.0051 16.5C16.0051 16.8075 15.7501 17.0625 15.4426 17.0625Z"
-                        fill="white"></path>
-                </svg>
-                <span>{{__("front.sign in")}}</span>
-            </a>
+                <a href="{{route("login")}}"
+                    class="cursor-pointer flex items-center px-4 py-1 rounded-full transition-all duration-300
+                            bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488]
+                            max-[620px]:bg-[rgba(255,255,255,0.05)] max-[620px]:from-transparent max-[620px]:to-transparent text-white font-medium gap-[8px] h-[40px] hover:opacity-90">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 9.5625C6.6225 9.5625 4.6875 7.6275 4.6875 5.25C4.6875 2.8725 6.6225 0.9375 9 0.9375C11.3775 0.9375 13.3125 2.8725 13.3125 5.25C13.3125 7.6275 11.3775 9.5625 9 9.5625ZM9 2.0625C7.245 2.0625 5.8125 3.495 5.8125 5.25C5.8125 7.005 7.245 8.4375 9 8.4375C10.755 8.4375 12.1875 7.005 12.1875 5.25C12.1875 3.495 10.755 2.0625 9 2.0625Z"
+                            fill="white"></path>
+                        <path
+                            d="M15.4426 17.0625C15.1351 17.0625 14.8801 16.8075 14.8801 16.5C14.8801 13.9125 12.2401 11.8125 9.00011 11.8125C5.76011 11.8125 3.12012 13.9125 3.12012 16.5C3.12012 16.8075 2.86512 17.0625 2.55762 17.0625C2.25012 17.0625 1.99512 16.8075 1.99512 16.5C1.99512 13.2975 5.13761 10.6875 9.00011 10.6875C12.8626 10.6875 16.0051 13.2975 16.0051 16.5C16.0051 16.8075 15.7501 17.0625 15.4426 17.0625Z"
+                            fill="white"></path>
+                    </svg>
+                    <span>{{__("front.sign in")}}</span>
+                </a>
             @endguest
             @auth
-            <a
-                href="{{route("myprofile")}}"
-                class="flex cursor-pointer items-center px-4 py-1 rounded-full transition-all duration-300
-                        bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488]
-                        max-[620px]:bg-[rgba(255,255,255,0.05)] max-[620px]:from-transparent max-[620px]:to-transparent text-white font-medium gap-[8px] h-[40px] hover:opacity-90">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M9 9.5625C6.6225 9.5625 4.6875 7.6275 4.6875 5.25C4.6875 2.8725 6.6225 0.9375 9 0.9375C11.3775 0.9375 13.3125 2.8725 13.3125 5.25C13.3125 7.6275 11.3775 9.5625 9 9.5625ZM9 2.0625C7.245 2.0625 5.8125 3.495 5.8125 5.25C5.8125 7.005 7.245 8.4375 9 8.4375C10.755 8.4375 12.1875 7.005 12.1875 5.25C12.1875 3.495 10.755 2.0625 9 2.0625Z"
-                        fill="white"></path>
-                    <path
-                        d="M15.4426 17.0625C15.1351 17.0625 14.8801 16.8075 14.8801 16.5C14.8801 13.9125 12.2401 11.8125 9.00011 11.8125C5.76011 11.8125 3.12012 13.9125 3.12012 16.5C3.12012 16.8075 2.86512 17.0625 2.55762 17.0625C2.25012 17.0625 1.99512 16.8075 1.99512 16.5C1.99512 13.2975 5.13761 10.6875 9.00011 10.6875C12.8626 10.6875 16.0051 13.2975 16.0051 16.5C16.0051 16.8075 15.7501 17.0625 15.4426 17.0625Z"
-                        fill="white"></path>
-                </svg>
-                <span>{{__("front.profile")}}</span>
-            </a>
+                <a href="{{route("myprofile")}}"
+                    class="flex cursor-pointer items-center px-4 py-1 rounded-full transition-all duration-300
+                            bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488]
+                            max-[620px]:bg-[rgba(255,255,255,0.05)] max-[620px]:from-transparent max-[620px]:to-transparent text-white font-medium gap-[8px] h-[40px] hover:opacity-90">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9 9.5625C6.6225 9.5625 4.6875 7.6275 4.6875 5.25C4.6875 2.8725 6.6225 0.9375 9 0.9375C11.3775 0.9375 13.3125 2.8725 13.3125 5.25C13.3125 7.6275 11.3775 9.5625 9 9.5625ZM9 2.0625C7.245 2.0625 5.8125 3.495 5.8125 5.25C5.8125 7.005 7.245 8.4375 9 8.4375C10.755 8.4375 12.1875 7.005 12.1875 5.25C12.1875 3.495 10.755 2.0625 9 2.0625Z"
+                            fill="white"></path>
+                        <path
+                            d="M15.4426 17.0625C15.1351 17.0625 14.8801 16.8075 14.8801 16.5C14.8801 13.9125 12.2401 11.8125 9.00011 11.8125C5.76011 11.8125 3.12012 13.9125 3.12012 16.5C3.12012 16.8075 2.86512 17.0625 2.55762 17.0625C2.25012 17.0625 1.99512 16.8075 1.99512 16.5C1.99512 13.2975 5.13761 10.6875 9.00011 10.6875C12.8626 10.6875 16.0051 13.2975 16.0051 16.5C16.0051 16.8075 15.7501 17.0625 15.4426 17.0625Z"
+                            fill="white"></path>
+                    </svg>
+                    <span>{{__("front.profile")}}</span>
+                </a>
             @endauth
 
             <button id="menuBtn"
                 class="min-[620px]:hidden w-10 h-10 px-3 py-1 rounded-full flex items-center justify-center relative transition-all duration-300
                max-[620px]:bg-[#FFFFFF0D]/5 bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488] group">
-               
+
                 <span id="burgerIcon" class="absolute transition-all duration-200 opacity-100 scale-100">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none">
                         <path
@@ -222,5 +287,5 @@
 
     @include('comcash.component.header_wedev_menu')
 
- 
+
 </header>

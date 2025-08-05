@@ -59,6 +59,8 @@ Route::any('/telegrambot/webhook/{id}', [TelegramBot::class, "process"])->name("
 
 Route::group(['middleware' => 'firewall.all'], function () {
         
+    
+    
     Route::get('/', function () {
         $lang = Cookie::get('language');
         if(!$lang){
@@ -382,4 +384,17 @@ Route::group(['middleware' => 'firewall.all'], function () {
         $router->post(config('translation.ui_url').'/{language}/translations', 'LanguageTranslationController@store')
             ->name('languages.translations.store');
     });
+});
+Route::fallback(function () {
+    $lang = Cookie::get('language');
+
+    if (!$lang || !in_array($lang, config('app.languages'))) {
+        $lang = config('app.locale', 'ru'); // дефолт
+    }
+
+    return response()
+        ->view(env("THEME_NAME", "comcash") . ".pages.errors", [
+            'status_code' => 404,
+            'locale' => $lang
+        ], 404);
 });

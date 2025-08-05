@@ -76,7 +76,7 @@
                         @if(auth()->user()->email_verified_at == 0)
                             <div class="mt-[15px] text-[#A4493B] text-[13px]">
                                 {{__("front.profileNotVerifiedEmail")}} 
-                                <a class="underline cursor-pointer">
+                                <a class="underline cursor-pointer hover:text-white">
                                     {{__("front.profileNotVerifiedEmailButton")}}
                                 </a>
                             </div>

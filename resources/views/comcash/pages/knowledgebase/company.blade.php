@@ -14,7 +14,7 @@
     class="review-section relative max-[620px]:mt-[40px] mt-[80px] mx-auto max-w-[1018px] overflow-hidden flex flex-col max-[1024px]:px-[20px]">
     <div class="mx-auto">
         <div class="flex max-[800px]:flex-col flex-row items-center items-start">
-            <div class="min-[801px]:w-1/2 min-[1050px]:max-w-[400px] text-[14px] mb-8">
+            <div class="min-[801px]:w-1/2 min-[1050px]:min-w-[400px] text-[14px] mb-8">
                 <h2 class="text-[#06AB6B] text-[32px] font-bold mb-4">
                     {{__("front.page_about_title")}}
                 </h2>
