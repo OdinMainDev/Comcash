@@ -150,8 +150,8 @@
 								<p class="text-white/40 text-[14px] mb-3">{{__("front.exchangePage2AmountSend")}}:</p>
 								<p class="text-[28px] flex items-center gap-2 mb-3">
 									{{$exchange->data['amount_data']['amount_send']}}
-									<button onclick="copyToxID(this)" class="relative hover:opacity-70" data-tox="138.024235342">
-										<div class="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none"
+									<button  class="copy-to-clipboard relative hover:opacity-70" data-copy-text="{{$exchange->data['amount_data']['amount_send']}}">
+										<div class="tooltip  absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none"
 											role="tooltip">{{__("front.copied")}}</div>
 
 										<svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -179,9 +179,9 @@
 									<p class="text-white/40 mb-3">{{__("front.exchangePage2CryptoAddress")}}:</p>
 									<p class="break-all text-white flex items-center gap-2 text-sm">
 										{{$exchange->data['merchant_from_data']['address']}}
-										<button onclick="copyToxID(this)" class="relative hover:opacity-70"
-											data-tox="TRWFSXS6CQHTEDDCEFHKQWKB8HJD1FLGY2">
-											<div class="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none whitespace-nowrap"
+										<button  class="copy-to-clipboard relative hover:opacity-70"
+											data-copy-text="{{$exchange->data['merchant_from_data']['address']}}">
+											<div class="tooltip absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none whitespace-nowrap"
 												role="tooltip">{{__("front.copied")}}</div>
 
 											<svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -336,8 +336,8 @@
 								<p class="text-white/40 text-[14px] mb-3">{{__("front.exchangePage2AmountSend")}}:</p>
 								<p class="text-[28px] flex items-center gap-2 mb-3">
 									{{$exchange->data['amount_data']['amount_send']}}
-									<button onclick="copyToxID(this)" class="relative hover:opacity-70" data-tox="138.024235342">
-										<div class="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none"
+									<button  class="copy-to-clipboard relative hover:opacity-70" data-copy-text="{{$exchange->data['amount_data']['amount_send']}}">
+										<div class="tooltip absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none"
 											role="tooltip">{{__("front.copied")}}</div>
 
 										<svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -365,9 +365,9 @@
 									<p class="text-white/40 mb-3">{{__("front.exchangePage2CryptoAddress")}}:</p>
 									<p class="break-all text-white flex items-center gap-2 text-sm">
 										{{$exchange->data['merchant_from_data']['address']}}
-										<button onclick="copyToxID(this)" class="relative hover:opacity-70"
-											data-tox="TRWFSXS6CQHTEDDCEFHKQWKB8HJD1FLGY2">
-											<div class="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none whitespace-nowrap"
+										<button  class="copy-to-clipboard relative hover:opacity-70"
+											data-copy-text="{{$exchange->data['merchant_from_data']['address']}}">
+											<div class="tooltip absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none whitespace-nowrap"
 												role="tooltip">{{__("front.copied")}}</div>
 
 											<svg width="18" height="18" viewBox="0 0 18 18" fill="none"

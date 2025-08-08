@@ -5,9 +5,9 @@ import { defaultCryptoYouGet, defaultCryptoYouSend } from './constants';
 import { getCurrencySettings } from '../exchageFormScripts/api/getCurrencySettings';
 import { getEstimate } from '@/shared/api/getEstimate';
 import { getCurrencies, getCurrenciesFrom } from './api/getDirectionApi';
-import { IEstimate } from '@/shared/models/interfaces/currency';
 
 $(document).ready(async function() {
+  return;
   const exchangePanelLeft = $('.exchnage-panel-left');
   const exchangePanelRight = $('.exchnage-panel-right');
 
@@ -61,29 +61,13 @@ $(document).ready(async function() {
   let leftSearchText = '';
 
   const generateSelectItem = (currency: ICurrency, is_active?: boolean) => {
-
-
     return `
-      <div class="${is_active ? "active" : ''} dropdown-item px-4 h-[40px] hover:bg-[#333] flex items-center gap-2 cursor-pointer" data-text="${currency.data.titles[lang]}" data-color="bg-white">
+      <div class="${is_active ? "hidden" : ''} dropdown-item px-4 h-[40px] hover:bg-[#333] flex items-center gap-2 cursor-pointer" data-text="${currency.data.titles[lang]}" data-color="bg-white">
         <img class="w-5 h-5 rounded-full bg-green-500 welcome-exchange__img" src="${currency.image}">
         <span class="text-sm">${currency.data.titles[lang]} 
           <span class="text-[#FFFFFF66]/40"></span>
         </span>
       </div>;
-    `;
-
-    return `
-      <div class="welcome-exchange__list-item ${is_active ? "active" : ''}">
-        <div class="flex items-center gap-[10px]">
-          <img src="${currency.image}" class="welcome-exchange__img"/>
-          <div class="welcome-exchange__name">${currency.data.titles[lang]}</div>
-        </div>
-        <div class="welcome-exchange__list-check">
-          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 28 28" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M14 28C21.732 28 28 21.732 28 14C28 6.26801 21.732 0 14 0C6.26801 0 0 6.26801 0 14C0 21.732 6.26801 28 14 28ZM20.9909 9.97352C21.3444 9.54924 21.2871 8.91868 20.8628 8.56511C20.4386 8.21155 19.808 8.26887 19.4544 8.69315L13.0787 16.344C12.732 16.7601 12.5371 16.9904 12.3815 17.132L12.3755 17.1374L12.3691 17.1325C12.2013 17.0057 11.9863 16.7939 11.6034 16.411L8.48532 13.2929C8.09479 12.9024 7.46163 12.9024 7.07111 13.2929C6.68058 13.6834 6.68058 14.3166 7.07111 14.7071L10.1892 17.8252L10.23 17.866L10.23 17.866C10.5565 18.1926 10.8706 18.5068 11.1628 18.7278C11.4902 18.9754 11.9189 19.2081 12.4683 19.1832C13.0177 19.1583 13.4236 18.8876 13.7272 18.6115C13.9982 18.365 14.2826 18.0236 14.5781 17.6688L14.5782 17.6688L14.6151 17.6244L20.9909 9.97352Z" fill="#009C74"/>
-          </svg>
-        </div>
-      </div>
     `;
   }
 
@@ -93,19 +77,18 @@ $(document).ready(async function() {
 
     $.each(list, (_, item) => {
       let listItem = $(generateSelectItem(item, item.name === currency.name));
-      selectList.find('.welcome-exchange__list').append(listItem);
 
       listItem.on('click', function() {
+        debugger;
         removeActive($(this));
         selectItem($(this), item, type);
-        $(this).addClass('active');
+        $(this).addClass('hidden');
         closeSelectModal();
       });
+
+      selectList.find('.welcome-exchange__list').append(listItem);
     });
   }
-
-
-
   const lang = window.language || 'en';
   let currencyFrom: ICurrency = currencyFromList[0] ?? defaultCryptoYouSend;
   let currencyTo: ICurrency = currenciesList[0] ?? defaultCryptoYouGet;
@@ -151,7 +134,6 @@ $(document).ready(async function() {
         if (currencyTo == "CASHRUB") {
           currencyTo = "CASH";
         }
-
 
         courseFrom.text(`1 ${currencyFrom}`);
         courseTo.text(`${initialData.amount} ${currencyTo}`);
@@ -425,7 +407,7 @@ $(document).ready(async function() {
 
 
   const removeActive = (element: JQuery) => {
-    $(element).closest('.welcome-exchange__select').find('.welcome-exchange__list-item').removeClass('active');
+    $(element).siblings('.hidden.dropdown-item').removeClass('hidden');
   }
 
 

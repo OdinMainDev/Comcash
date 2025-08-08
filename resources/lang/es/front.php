@@ -664,6 +664,8 @@ los siguientes lugares de retirada de efectivo:',
 "world" => "Mundo",
 "news" => "Noticias",
 "markets" => "Mercados",
+"lastNewsNews"      => "ÚLTIMAS NOTICIAS",
+"andTrendsNews"     => "Y TENDENCIAS DE CRIPTOMONEDAS EN COMCASH",
 
 
 

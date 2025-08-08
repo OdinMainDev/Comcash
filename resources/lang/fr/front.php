@@ -665,6 +665,8 @@ les points de retrait d\'argent suivants :',
 "world" => "Monde",
 "news" => "Actualités",
 "markets" => "Marchés",
+"lastNewsNews"      => "DERNIÈRES NOUVELLES",
+"andTrendsNews"     => "ET LES TENDANCES DES CRYPTOMONNAIES SUR COMCASH",
 
 
 

@@ -112,15 +112,10 @@
                 </div>
             </div>
 
-            <div class="w-full lg:w-[472px] h-auto max-h-[500px] lg:h-[320px] rounded-xl overflow-hidden relative">
-                <!-- <img src="./img/preview.webp" alt="Видео превью" class="w-full h-full object-cover" /> -->
-
-                <iframe id="about_video" class="w-full h-full object-cover video-js about__video" width="1000" height="500" src="https://www.youtube.com/embed/bAofntH1j-E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>
-
-
-                <!-- <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div class="transition-transform duration-300 cursor-pointer hover:scale-110">
+            <div id="video-container" class="w-full lg:w-[472px] h-auto max-h-[500px] lg:h-[320px] rounded-xl overflow-hidden relative">
+                <img src="/comcash/img/preview.webp" alt="Видео превью" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div class="play-btn transition-transform duration-300 cursor-pointer hover:scale-110">
                         <svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="58" cy="58" r="58" fill="white" fill-opacity="0.1" />
                             <circle cx="58" cy="58" r="40" fill="white" fill-opacity="0.1" />
@@ -129,7 +124,7 @@
                                 fill="white" />
                         </svg>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
 

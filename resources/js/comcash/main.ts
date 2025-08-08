@@ -18,8 +18,8 @@ import '@/shared/scripts/copyButton';
 import '@/shared/scripts/banner';
 
 import '@/features/cryptoFormScripts';
-import '@/features/exchageFormScripts';
-import '@/features/comcashForm';
+// import '@/features/exchageFormScripts';
+// import '@/features/comcashForm';
 import '@/features/kycForm';
 import '@/features/progressScript'
 import '@/features/scrollText'
@@ -28,6 +28,7 @@ import '@/features/banner'
 import '@/features/description'
 import '@/features/swiper'
 import '@/shared/scripts/showMore'
+import '@/features/exchange'
 
 import '@/shared/scripts/checkChristmas'
 

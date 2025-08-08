@@ -3,9 +3,14 @@
     <!-- REMOVE OLD STYLES BUTTON -->
     <button
         id="descriptionToggleButton"
-        class="text-white text-[14px] border-b border-[#06AB6B] hover:border-green-400 hover:opacity-80 transition">
-        {{__("front.findOutMore")}}
+        class="flex items-center gap-[6px] text-white text-[14px] border-b border-[#06AB6B] hover:border-green-400 hover:opacity-80 transition uppercase">
+        {{ __("front.findOutMore") }}
+        <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.33333 10.5L8 6.5L3.33333 2.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
     </button>
+
+
     <!-- STYLE MARK -->
 
     <!-- STYLE MARK -->

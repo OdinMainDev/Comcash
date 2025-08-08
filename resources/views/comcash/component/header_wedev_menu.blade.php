@@ -1,32 +1,33 @@
 <div class="max-w-[1200px] max-[620px]:hidden mx-auto rounded-[10px] flex items-center text-white">
 
     <div id="menu-items" class="flex flex-nowrap items-center w-full relative">
-        <div
-            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all">
-            <a
-                href='{{route("comcashPage", ["name" => "tariffs"])}}'
+        <div class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all
+        {{ request()->routeIs('comcashPage') && request()->route('name') == 'tariffs' ? 'active' : '' }}">
+            <a href='{{ route("comcashPage", ["name" => "tariffs"]) }}'
                 class="flex items-center gap-[8px] text-[16px] px-[17px] py-2 cursor-pointer h-[52px]">
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
+                    <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666]"
                         d="M8.00459 13.6125H5.16211C4.85461 13.6125 4.59961 13.3575 4.59961 13.05V9.21002C4.59961 8.43002 5.2371 7.79251 6.0171 7.79251H8.00459C8.31209 7.79251 8.56709 8.04751 8.56709 8.35501V13.0425C8.56709 13.3575 8.31209 13.6125 8.00459 13.6125ZM5.72461 12.4875H7.44209V8.92502H6.0171C5.8596 8.92502 5.72461 9.05248 5.72461 9.21748V12.4875Z"
                         fill="currentColor"></path>
-                    <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
+                    <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666]"
                         d="M10.8398 13.6125H7.99731C7.68981 13.6125 7.43481 13.3575 7.43481 13.05V5.80499C7.43481 5.02499 8.0723 4.38748 8.8523 4.38748H9.99232C10.7723 4.38748 11.4098 5.02499 11.4098 5.80499V13.05C11.4023 13.3575 11.1548 13.6125 10.8398 13.6125ZM8.5673 12.4875H10.2848V5.80499C10.2848 5.64749 10.1573 5.51248 9.99232 5.51248H8.8523C8.6948 5.51248 8.55981 5.63999 8.55981 5.80499V12.4875H8.5673Z"
                         fill="currentColor"></path>
-                    <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
+                    <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666]"
                         d="M13.6823 13.6125H10.8398C10.5323 13.6125 10.2773 13.3575 10.2773 13.05V9.63748C10.2773 9.32998 10.5323 9.07498 10.8398 9.07498H12.8273C13.6073 9.07498 14.2448 9.71249 14.2448 10.4925V13.05C14.2448 13.3575 13.9973 13.6125 13.6823 13.6125ZM11.4023 12.4875H13.1198V10.4925C13.1198 10.335 12.9923 10.2 12.8273 10.2H11.4023V12.4875Z"
                         fill="currentColor"></path>
-                    <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
+                    <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666]"
                         d="M11.6722 17.0625H7.17224C3.09974 17.0625 1.35974 15.3225 1.35974 11.25V6.75C1.35974 2.6775 3.09974 0.9375 7.17224 0.9375H11.6722C15.7447 0.9375 17.4847 2.6775 17.4847 6.75V11.25C17.4847 15.3225 15.7447 17.0625 11.6722 17.0625ZM7.17224 2.0625C3.71474 2.0625 2.48474 3.2925 2.48474 6.75V11.25C2.48474 14.7075 3.71474 15.9375 7.17224 15.9375H11.6722C15.1297 15.9375 16.3597 14.7075 16.3597 11.25V6.75C16.3597 3.2925 15.1297 2.0625 11.6722 2.0625H7.17224Z"
                         fill="currentColor"></path>
                 </svg>
-                <span>{{__("front.TariffsMenu")}}</span>
+                <span>{{ __("front.TariffsMenu") }}</span>
             </a>
         </div>
+
+
         <div
-            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all">
-            <a
-                href='{{route("comcashPage", ["name" => "delivery"])}}'
+            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all
+            {{ request()->routeIs('comcashPage') && request()->route('name') == 'delivery' ? 'active' : '' }}">
+            <a href='{{route("comcashPage", ["name" => "delivery"])}}'
                 class="flex items-center gap-[8px] text-[16px] px-[17px] py-2 cursor-pointer h-[52px]">
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
@@ -52,9 +53,9 @@
             </a>
         </div>
         <div
-            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all">
-            <a
-                href='{{route("comcashPage", ["name" => "reviews"])}}'
+            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all
+            {{ request()->routeIs('comcashPage') && request()->route('name') == 'reviews' ? 'active' : '' }}">
+            <a href='{{route("comcashPage", ["name" => "reviews"])}}'
                 class="flex items-center gap-[8px] text-[16px] px-[17px] py-2 cursor-pointer h-[52px]">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
@@ -68,9 +69,9 @@
             </a>
         </div>
         <div
-            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all">
-            <a
-                href='{{route("comcashPage", ["name" => "blog"])}}'
+            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all
+            {{ request()->routeIs('comcashPage') && request()->route('name') == 'blog' ? 'active' : '' }}">
+            <a href='{{route("comcashPage", ["name" => "blog"])}}'
                 class="flex items-center gap-[8px] text-[16px] px-[17px] py-2 cursor-pointer h-[52px]">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
@@ -90,9 +91,9 @@
             </a>
         </div>
         <div
-            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all">
-            <a
-                href='{{route("comcashPage", ["name" => "reputation"])}}'
+            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all
+            {{ request()->routeIs('comcashPage') && request()->route('name') == 'reputation' ? 'active' : '' }}">
+            <a href='{{route("comcashPage", ["name" => "reputation"])}}'
                 class="flex items-center gap-[8px] text-[16px] px-[17px] py-2 cursor-pointer h-[52px]">
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
@@ -109,9 +110,9 @@
             </a>
         </div>
         <div
-            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all">
-            <a
-                href='{{route("comcashPage", ["name" => "support"])}}'
+            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all
+            {{ request()->routeIs('comcashPage') && request()->route('name') == 'support' ? 'active' : '' }}">
+            <a href='{{route("comcashPage", ["name" => "support"])}}'
                 class="flex items-center gap-[8px] text-[16px] px-[17px] py-2 cursor-pointer h-[52px]">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
@@ -128,9 +129,9 @@
             </a>
         </div>
         <div
-            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all">
-            <a
-                href='{{route("comcashPage", ["name" => "company"])}}'
+            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all
+            {{ request()->routeIs('comcashPage') && request()->route('name') == 'company' ? 'active' : '' }}">
+            <a href='{{route("comcashPage", ["name" => "company"])}}'
                 class="flex items-center gap-[8px] text-[16px] px-[17px] py-2 cursor-pointer h-[52px]">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
@@ -156,9 +157,9 @@
             </a>
         </div>
         <div
-            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all">
-            <a
-                href='{{route("comcashPage", ["name" => "faq"])}}'
+            class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all
+            {{ request()->routeIs('comcashPage') && request()->route('name') == 'faq' ? 'active' : '' }}">
+            <a href='{{route("comcashPage", ["name" => "faq"])}}'
                 class="flex items-center gap-[8px] text-[16px] px-[17px] py-2 cursor-pointer h-[52px]">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="min-[620px]:group-hover:text-[#06AB6B] max-[620px]:text-[#06AB6B] text-[#666666] "
@@ -186,7 +187,8 @@
                 <span class="whitespace-nowrap text-[16px]">Ещё</span>
                 <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg"
                     class="dropdown-icon stroke-white transition-transform duration-300 ease-in-out transform">
-                    <path d="M1.42224 1.33333L5.42224 6L9.42224 1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M1.42224 1.33333L5.42224 6L9.42224 1.33333" stroke-linecap="round"
+                        stroke-linejoin="round" />
                 </svg>
             </div>
 

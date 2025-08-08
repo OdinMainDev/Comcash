@@ -68,34 +68,40 @@
                         data-focus-target=".input-block" 
                         type="text" placeholder="0.00" 
                         inputmode="decimal"
-                        class="welcome-exchange__input bg-transparent text-[32px] font-light outline-none min-w-[100px] max-w-full flex-1 w-0"
+                        class="amount-send__input welcome-exchange__input bg-transparent text-[32px] font-light outline-none min-w-[100px] max-w-full flex-1 w-0"
                         autocomplete="off" />
         
                     <div
-                        class=" welcome-exchange__select dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto min-[810px]:mt-1">
+                        class="welcome-exchange-send__select welcome-exchange__select dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto min-[810px]:mt-1">
 
                         <input class="hidden" name="currency_from">
                         <button type="button" data-focus-target=".input-block"
-                            class="welcome-exchange__select-selected dropdown-toggle transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:opacity-90">
+                            class="welcome-exchange__select-selected transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:opacity-90">
                             <div class="flex items-center gap-[12px] welcome-exchange__select-selected-value ">
                                 <img src="https://comcash.io/icons/Ethereum.png" class="w-5 h-5 rounded-full bg-green-500 welcome-exchange__img"/></span>
                                 <span class="text-sm " data-label="">
                                     <div class="welcome-exchange__name">---</div>
                                     <span class="text-[#FFFFFF66]/40">
-                                        
                                     </span>
                                 </span>
                             </div>
-                            <svg class="welcome-exchange__arrow dropdown-arrow w-[12px] h-[12px] transition-transform transform rotate-0 stroke-white"
+                            <svg class="welcome-exchange__arrow w-[12px] h-[12px] transition-transform transform stroke-white"
                                 viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 3.33333L6 8L10 3.33333" stroke="currentColor" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
                         </button>
-                        <div class="hidden welcome-exchange__select-list ">
+                        <div class="welcome-exchange__select-list " >
                             <div
-                                class="welcome-exchange__list dropdown-menu absolute top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 text-white max-h-[240px] overflow-y-scroll">
-
+                                class="welcome-exchange__list dropdown-menu absolute top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 text-white max-h-[240px] overflow-y-scroll" style="display:none">
+                                    <div class="p-2">
+                                        <input type="text" placeholder="Search..."
+                                            class="input-block w-full h-[36px] px-3 text-sm bg-[#2B2B2B] text-white rounded-[8px] focus:outline-none focus:border-[#06AB6B] focus:border placeholder:text-[#888]">
+                                    </div>
+                                    <div class="tab-list flex gap-2 px-2 pb-2">
+                                    </div>
+                                    <div class="list-items max-h-[200px] overflow-y-auto">
+                                    </div>
                             </div>
                         </div>
                         
@@ -192,13 +198,13 @@
                 <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">
                     <input id="outputAmount" data-focus-target=".output-block" type="text" inputmode="decimal"
                         placeholder="0.00"
-                        class="welcome-exchange__input bg-transparent text-[32px] font-light outline-none min-w-[100px] max-w-full flex-1 w-0"
+                        class="amount-get__input welcome-exchange__input bg-transparent text-[32px] font-light outline-none min-w-[100px] max-w-full flex-1 w-0"
                         autocomplete="off" />
                     <div
-                        class=" welcome-exchange__select dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto  min-[810px]:mt-1">
+                        class="welcome-exchange-get__select welcome-exchange__select dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto  min-[810px]:mt-1">
                         <input class="hidden" name="currency_to">
                         <button type="button" data-focus-target=".output-block"
-                            class="welcome-exchange__select-selected dropdown-toggle transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:opacity-90">
+                            class="welcome-exchange__select-selected  transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:opacity-90">
                             <div class="flex items-center gap-[12px] welcome-exchange__select-selected-value ">
                                 <img src="https://comcash.io/icons/Ethereum.png" class="w-5 h-5 rounded-full bg-green-500 welcome-exchange__img"/></span>
                                 <span class="text-sm " data-label="">
@@ -208,15 +214,23 @@
                                     </span>
                                 </span>
                             </div>
-                            <svg class="welcome-exchange__arrow dropdown-arrow w-[12px] h-[12px] transition-transform transform rotate-0 stroke-white"
+                            <svg class="welcome-exchange__arrow  w-[12px] h-[12px] transition-transform transform rotate-0 stroke-white"
                                 viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 3.33333L6 8L10 3.33333" stroke="currentColor" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
                         </button>
-                        <div class="hidden welcome-exchange__select-list ">
+                        <div class="welcome-exchange__select-list ">
                             <div
-                                class="welcome-exchange__list dropdown-menu absolute top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 text-white max-h-[240px] overflow-y-scroll">
+                                class="welcome-exchange__list dropdown-menu absolute top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 text-white max-h-[240px] overflow-y-scroll" style="display:none">
+                                    <div class="p-2">
+                                        <input type="text" placeholder="Search..."
+                                            class="input-block w-full h-[36px] px-3 text-sm bg-[#2B2B2B] text-white rounded-[8px] focus:outline-none focus:border-[#06AB6B] focus:border placeholder:text-[#888]">
+                                    </div>
+                                    <div class="tab-list flex gap-2 px-2 pb-2">
+                                    </div>
+                                    <div class="list-items max-h-[200px] overflow-y-auto">
+                                    </div>
                             </div>
                         </div>
                     </div>

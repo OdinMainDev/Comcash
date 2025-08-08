@@ -20,7 +20,7 @@ class Controller_Home extends Controller{
         $this->setSeoData($this->constructSeoData("index", "index", $this->getCachedSeoData()));
 
         return view($this->theme.".index")
-            ->with("news", $this->getCacheNews())
+            ->with("news", $this->getCacheNews(true))
             ->with("feedbacks", $this->getCacheFeedbacks())
             ->with("exchanges", $this->getCacheExchanges());
     }

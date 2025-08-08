@@ -26,18 +26,10 @@ $(document).ready(function () {
   const currencyYouGet = $('#currencyYouGet');
   const labelCurrencyYouSend = currencyYouSend.find('.custom-select__select-label');
   const labelCurrencyYouGet = currencyYouGet.find('.custom-select__select-label');
-  // const currencyYouGetMin = currencyYouGet.find('.exchange__min > span');
   const currencyYouSendMin = currencyYouSend.find('.exchange__min > span');
   const currencyYouSendMax = currencyYouSend.find('.exchange__max > span');
-  const courseFrom = $('.courseFrom');
-  const courseTo = $('.courseTo');
-
-  // const currencyYouGetMin = currencyYouGet.find('.exchange__min > span');
-  // const currencyYouGetMax = currencyYouGet.find('.exchange__max > span');
-
   const openModalButton = exchangeForm.find('.exchange__button')
   const timer = currencyYouGet.find('.exchange__timer');
-
   const inputCurrencyYouSend = exchangeForm.find('#exchange-currency_from > input');
   const inputCurrencyYouGet = exchangeForm.find('#exchange-currency_to > input');
   const inputFromCardNumber = exchangeForm.find('#exchange-from_card > input');
@@ -56,6 +48,10 @@ $(document).ready(function () {
   const currencyLock = exchangeForm.find('.exchange__currency-lock');
   const usdFromHint =  exchangeForm.find("#usdFromHint");
   const usdToHint = exchangeForm.find("#usdToHint");
+  const selectedCurrencyFrom = $("input[name='currency_from']")
+  const selectedCurrencyTo = $("input[name='currency_to']")
+  const courseFrom = $('._courseFrom');
+  const courseTo = $('._courseTo');
 
   let selectedCurrencyYouSend: ICurrency = defaultCurrencyYouSend;
   let selectedCurrencyYouGet: ICurrency = defaultCurrencyYouGet;
@@ -213,6 +209,9 @@ $(document).ready(function () {
         exchangeForm.find(`#exchange-${item}`).removeClass('hide')
       })
       changeYouSendValue()
+
+      $(`.custom-select__select-item[list-item-name="${selectedCurrencyYouSend.name}"]`).addClass('hidden');
+      $(`.custom-select__select-item[list-item-name="${selectedCurrencyYouGet.name}"]`).addClass('hidden');
     } catch (e) {
       console.log(e)
     }
@@ -246,6 +245,16 @@ $(document).ready(function () {
       usdFromHint.text(esimate .amount);
       usdToHint.text(esimate .amount);
   }
+  async function UpdateGlobalCourses() {
+    const dataMax = await getEstimate(selectedCurrencyYouSend.name, selectedCurrencyYouGet.name, 1);
+    courseFrom.text(`1 ${selectedCurrencyYouSend.name}`);
+    courseTo.text(`${dataMax .amount} ${selectedCurrencyYouGet.name}`);
+
+  }
+  function UpdateSelectedCurrencies() {
+      selectedCurrencyFrom.val(selectedCurrencyYouSend.name);
+      selectedCurrencyTo.val(selectedCurrencyYouGet.name);
+  }
 
   async function changeYouGetValue(withSettings?: boolean) {
     loadingCurrencyYouSend(true);
@@ -258,8 +267,6 @@ $(document).ready(function () {
       const data = await getEstimate(selectedCurrencyYouSend.name, selectedCurrencyYouGet.name, currencyYouGetAmount, 1);
       currencyYouSendAmount = data.amount;
       inputCurrencyYouSend.val(currencyYouSendAmount)
-
-
     } catch (e) {
       errorHandler(e);
     }
@@ -277,10 +284,10 @@ $(document).ready(function () {
       const data = await getEstimate(selectedCurrencyYouSend.name, selectedCurrencyYouGet.name, currencyYouSendAmount);
       await UpdateUsdHint(selectedCurrencyYouSend.name, currencyYouSendAmount);
       currencyYouGetAmount = data.amount;
+      UpdateSelectedCurrencies();
+      await UpdateGlobalCourses();
       inputCurrencyYouGet.val(currencyYouGetAmount)
 
-      courseFrom.text(`1 ${selectedCurrencyYouSend.name}`);
-      courseTo.text(`${data.amount} ${selectedCurrencyYouGet.name}`);
 
     } catch(e) {
       errorHandler(e);
@@ -341,6 +348,7 @@ $(document).ready(function () {
 
       currenciesList.forEach(currency => {
         const $listItem = $(getHTMLListItem(currency));
+        
         $listItem.on('click', function() {
           selectListItem.call(this, currency);
         })
@@ -359,9 +367,13 @@ $(document).ready(function () {
   }
 
   async function selectListItem (this: HTMLElement, currency: ICurrency) {
+
+    $(this).siblings(".hidden.custom-select__select-item").removeClass("hidden");
+    $(this).addClass("hidden");
+
     const parentSelect = $(this).closest('.custom-select__select-container');
     const isCurrencyYouSend = parentSelect.data('currency') === 'currencyYouSend';
-    // select.find('.custom-select__select-list')?.toggleClass('hide');
+    // select.find('.custom-select__select-list').find().toggleClass('hide');
     select.toggleClass('active');
     hideAllLayouts();
     impossimbleExchange = false;

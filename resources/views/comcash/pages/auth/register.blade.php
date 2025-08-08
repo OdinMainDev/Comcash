@@ -118,7 +118,7 @@
                 </form>
                 <p class="text-center text-[12px] text-white/40 mt-3">
                     {{ __('front.privacyPolicyAgreement') }}
-                    <a href="?politic" class="text-[#FFFFFF] hover:opacity-70 transition-opacity ml-1 underline decoration-[1.3px] underline-offset-[2px]">
+                    <a href='{{route("comcashPage", ["rules"])}}' class="text-[#FFFFFF] hover:opacity-70 transition-opacity ml-1 underline decoration-[1.3px] underline-offset-[2px]">
                         {{ __('front.privacyPolicy') }}!
                     </a>
                 </p>

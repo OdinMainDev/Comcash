@@ -142,88 +142,127 @@
         </div>
 
 
-        <div class="flex items-center space-x-3 text-sm pl-2">
+        <div class="flex items-center space-x-3 text-sm flex-shrink-0">
             <a href='{{route("comcashPage", ["name" => "cleaning"])}}'
-                class="max-[620px]:hidden flex items-center px-3 py-1 bg-[#2A2A2A] rounded-full gap-[8px] h-[40px] whitespace-nowrap">
+                class="max-[620px]:hidden flex items-center px-3 py-1 bg-[#2A2A2A] rounded-full gap-[8px] h-[40px] whitespace-nowrap cursor-pointer hover:bg-[#06AB6B0D] hover:text-[#06AB6B]">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M5.73894 1.80141C6.02862 1.42172 6.52011 1.20797 6.99577 1.25789C7.22007 1.27898 7.43804 1.35527 7.62823 1.47621C7.98999 1.70086 8.34999 1.92902 8.71175 2.15367C8.89456 2.26793 9.1396 2.26582 9.32101 2.15016C9.60331 1.97578 9.88351 1.79789 10.1655 1.62211C10.3268 1.52227 10.4843 1.41082 10.6647 1.34684C11.0563 1.19988 11.5119 1.24137 11.8712 1.45512C12.1578 1.62106 12.3764 1.89316 12.49 2.20289C12.9899 3.49981 13.4909 4.79637 14.0056 6.08801C14.6155 6.24094 15.2209 6.43148 15.7838 6.71625C16.1905 6.9293 16.5966 7.19402 16.8413 7.59375C17.0459 7.92281 17.0754 8.35734 16.8961 8.70363C16.681 9.13078 16.2746 9.41836 15.8657 9.64336C15.1555 10.0213 14.3747 10.2442 13.5925 10.4164C12.3262 10.6872 11.0324 10.8098 9.73937 10.8496C8.14257 10.8918 6.53804 10.8028 4.96339 10.5258C4.18011 10.382 3.39999 10.1946 2.66136 9.89262C2.24265 9.71649 1.83062 9.5052 1.49066 9.19934C1.26284 8.99297 1.06913 8.73035 1.00655 8.42414C0.944327 8.12355 1.01675 7.80328 1.1862 7.54981C1.40452 7.21617 1.73991 6.98203 2.08233 6.78973C2.6698 6.46734 3.31351 6.26414 3.96003 6.09715C4.45538 4.86035 4.94968 3.6232 5.44503 2.38606C5.52554 2.1832 5.60007 1.97332 5.73894 1.80141ZM6.46526 2.24613C6.35417 2.34668 6.31128 2.49504 6.25608 2.62934C5.58566 4.30313 4.91663 5.97797 4.24726 7.65246C4.19312 7.7966 4.13441 7.96043 3.98394 8.03039C3.75718 8.15766 3.44112 8.01633 3.38382 7.76356C3.32898 7.52168 3.49702 7.30863 3.56452 7.0868C3.07093 7.24887 2.56151 7.41305 2.14526 7.73438C1.96175 7.8757 1.78878 8.11195 1.8823 8.35348C1.9969 8.63367 2.27675 8.79293 2.52952 8.9325C3.19855 9.27141 3.93472 9.44895 4.66456 9.60398C6.40163 9.94184 8.17984 10.0649 9.94749 9.99422C11.3442 9.92988 12.7435 9.77555 14.0998 9.4282C14.5779 9.29918 15.0557 9.15188 15.4951 8.92055C15.6994 8.80734 15.9072 8.68078 16.0464 8.48813C16.1399 8.36227 16.1754 8.18824 16.1079 8.04234C16.0091 7.82438 15.8021 7.68305 15.6034 7.56316C15.2301 7.35047 14.8216 7.20774 14.413 7.07871C14.4735 7.23164 14.553 7.37648 14.6099 7.53082C14.6816 7.7407 14.5505 7.98855 14.3389 8.05219C14.1346 8.12531 13.8931 8.00859 13.8164 7.8075C13.0321 6.0416 12.381 4.22086 11.6684 2.42578C11.5401 2.12941 11.1382 2.00602 10.8654 2.18004C10.4878 2.41172 10.1162 2.65324 9.73796 2.88422C9.28901 3.15387 8.69171 3.14543 8.25155 2.86137C7.88312 2.63074 7.51503 2.39941 7.14554 2.1709C6.93566 2.03941 6.6421 2.07316 6.46526 2.24613Z"
-                        fill="white"></path>
+                        fill="currentColor"></path>
                     <path
                         d="M2.96825 11.5903C3.18129 11.5316 3.42141 11.6733 3.47379 11.8877C3.53321 12.1272 3.58102 12.3697 3.63692 12.6102C3.93997 12.2073 4.35903 11.8916 4.83399 11.7204C5.47489 11.4838 6.2086 11.5161 6.82665 11.8069C7.49989 12.1152 8.01985 12.7266 8.22762 13.4364C8.71489 13.2314 9.2809 13.2307 9.76852 13.4353C9.91231 12.9375 10.2045 12.4833 10.6042 12.1532C11.1379 11.7042 11.8582 11.4877 12.5511 11.5675C13.2648 11.6423 13.9349 12.0315 14.3589 12.6102C14.4137 12.369 14.464 12.1268 14.5209 11.8863C14.5628 11.6821 14.7716 11.5313 14.979 11.5604C15.2142 11.5801 15.396 11.8252 15.3443 12.0565C15.1945 12.7501 15.037 13.4423 14.8834 14.1353C14.8613 14.2379 14.8606 14.3434 14.8497 14.4475C14.7962 14.9393 14.5958 15.4132 14.2826 15.7957C13.9117 16.2545 13.3794 16.5793 12.8015 16.6989C12.1595 16.8349 11.4676 16.7172 10.9097 16.3712C10.2087 15.9476 9.73477 15.1759 9.67571 14.3585C9.28477 14.0667 8.71172 14.0674 8.32008 14.3578C8.27649 14.8894 8.06801 15.4065 7.72524 15.8154C7.32446 16.2995 6.74333 16.63 6.12141 16.7235C5.52938 16.8163 4.90676 16.6936 4.39348 16.3839C3.7568 16.0052 3.29661 15.3436 3.16969 14.613C3.13805 14.4636 3.14192 14.3096 3.11696 14.1599C2.96473 13.467 2.80688 12.7754 2.65641 12.0825C2.60684 11.8691 2.7545 11.6367 2.96825 11.5903ZM5.35782 12.4351C4.71481 12.5677 4.1734 13.0911 4.02258 13.7306C3.87422 14.3423 4.06864 15.0395 4.5436 15.4603C5.17184 16.0235 6.20544 16.0414 6.85688 15.5074C7.28684 15.1639 7.50024 14.6004 7.48196 14.059C7.4577 13.5506 7.19754 13.0605 6.79114 12.7547C6.39036 12.4457 5.85211 12.3265 5.35782 12.4351ZM11.8979 12.4351C11.2352 12.5708 10.6826 13.1231 10.5493 13.7872C10.4196 14.4176 10.6467 15.1281 11.1625 15.5264C11.8164 16.0414 12.8338 16.0165 13.4543 15.4582C13.8382 15.1207 14.0277 14.6014 14.0231 14.097C14.0101 13.5749 13.7472 13.0672 13.3299 12.754C12.9291 12.4453 12.3915 12.3268 11.8979 12.4351Z"
-                        fill="white"></path>
+                        fill="currentColor"></path>
                 </svg>
-                <span>{{__("front.anonymousMode")}}</span>
+                <span class="text-white">{{__("front.anonymousMode")}}</span>
             </a>
             <a href="{{__("front.menuBotUrl")}}"
-                class="max-[620px]:hidden flex items-center px-3 py-1 bg-[#2A2A2A] rounded-full gap-[8px] h-[40px]">
+                class="max-[620px]:hidden flex items-center px-3 py-1 bg-[#2A2A2A] cursor-pointer hover:bg-[#06AB6B0D] hover:text-[#06AB6B] rounded-full gap-[8px] h-[40px]">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M0.963705 6.20403C4.7202 4.58725 7.22574 3.52175 8.48017 3.0068C12.0624 1.5368 12.804 1.2812 13.2894 1.27277C13.3954 1.27106 13.6347 1.29724 13.7885 1.42078C13.9184 1.52542 13.9559 1.66631 13.9731 1.76539C13.9902 1.86455 14.0106 2.09021 13.9936 2.26652C13.7987 4.27888 12.9613 9.16252 12.534 11.4166C12.3529 12.3702 11.9974 12.69 11.6522 12.7216C11.0608 12.7751 10.5789 12.4377 10.0456 12.0615C9.90549 11.9628 9.76195 11.8616 9.61153 11.7637C9.0168 11.3803 8.55874 11.0728 8.10076 10.7641C7.68032 10.4814 7.25988 10.1984 6.73353 9.85592C5.63632 9.14305 6.0977 8.70697 6.70618 8.12484C6.8053 8.03083 6.91122 7.93249 7.01034 7.82875L7.588 7.29473C8.58609 6.37863 10.514 4.60836 10.5618 4.40374C10.5686 4.38475 10.5721 4.33755 10.5618 4.2878C10.5549 4.24853 10.5378 4.20762 10.5037 4.1785C10.4284 4.11271 10.3156 4.13505 10.2371 4.15321C10.1653 4.16843 9.47826 4.60623 8.16913 5.4667C7.31119 6.03025 6.18663 6.77511 4.79885 7.70136C4.48781 7.91097 4.19724 8.05612 3.92383 8.13621C3.74266 8.1898 3.56829 8.21468 3.40087 8.21132C2.93941 8.20118 2.05412 7.95442 1.39782 7.74317L1.11413 7.65456C0.444148 7.44658 -0.0446206 7.29432 0.00323271 6.90716C0.0339967 6.67767 0.35188 6.44359 0.963705 6.20403Z"
-                        fill="white"></path>
+                        fill="currentColor"></path>
                 </svg>
-                <span>{{__("front.telegramBotText")}}</span>
+                <span class="text-white">{{__("front.telegramBotText")}}</span>
             </a>
 
-            <div class="max-[400px]:hidden flex items-center px-2 py-1 bg-[#2A2A2A] rounded-full gap-[8px] h-[40px]">
-                <div class="select relative inline-flex items-center gap-1 group cursor-pointer">
-                    <div class="select__current flex items-center">
+            <div class="max-[400px]:hidden flex items-center px-2 py-1 bg-[#2A2A2A] group-[.active]:bg-[#06AB6B] rounded-full gap-[8px] h-[40px] max-w-[62px] w-full flex-shrink-0">
+                <div class="select group relative inline-flex items-center gap-1 group cursor-pointer w-full justify-center">
+                    <div class="select__current group-[.active]:bg-[#06AB6B] flex items-center [&>span]:hidden ">
                         <img src="/comcash/img/icons/locales/{{ app()->getLocale() }}.png"
                             alt="{{ strtoupper(app()->getLocale()) }}"
-                            class="w-6 h-6 rounded-full object-cover border border-gray-500 hover:border-white transition">
+                            class="w-[18px] h-[18px] rounded-full object-cover transition">
                     </div>
-                    <svg class="w-3 h-3 text-gray-400 transition-transform duration-200 group-[.active]:rotate-180"
+                    <svg class="w-[12px] h-[12px] text-gray-400 transition-transform duration-200 group-[.active]:rotate-180 flex-shrink-0"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="round" d="M19 9l-7 7-7-7" />
+                        
                     </svg>
 
-                    <div class="select__container absolute top-full mt-1 right-0 rounded-[8px] bg-[#1F1F1F]
-                            shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 max-h-[240px] overflow-y-auto
-                            p-2 hidden group-[.active]:block">
+                    <div class="select__container absolute top-7 left-0 rounded-[8px] bg-[#1F1F1F] flex-shrink-0
+                            shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 max-h-[200px] overflow-y-auto w-[115px]
+                            hidden group-[.active]:block">
 
                         @if(in_array("ru", haystack: config("app.languages")))
                             <div
-                                class="select__option w-6 h-6 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-white mb-1">
+                                class="select__option flex items-center cursor-pointer hover:bg-[#FFFFFF0D] mb-1 px-[12px] py-[4px] h-[40px]">
                                 <input type="radio" name="language" id="lang-ru" value="ru" hidden>
-                                <label for="lang-ru" class="block w-full h-full">
-                                    <img src="/comcash/img/icons/locales/ru.png" alt="Русский"
-                                        class="w-full h-full object-cover">
+                                <label for="lang-ru" class="flex items-center gap-[8px] cursor-pointer">
+                                    <div class="w-[18px] h-[18px] rounded-full overflow-hidden">
+                                        <img src="/comcash/img/icons/locales/ru.png" alt="Русский"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <span class="text-white text-[16px]">Русский</span>
                                 </label>
                             </div>
                         @endif
 
+
                         @if(in_array("en", haystack: config("app.languages")))
                             <div
-                                class="select__option w-6 h-6 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-white mb-1">
+                                class="select__option flex items-center cursor-pointer hover:bg-[#FFFFFF0D] mb-1 px-[12px] py-[4px] h-[40px]">
                                 <input type="radio" name="language" id="lang-en" value="en" hidden>
-                                <label for="lang-en" class="block w-full h-full">
-                                    <img src="/comcash/img/icons/locales/en.png" alt="English"
-                                        class="w-full h-full object-cover">
+                                <label for="lang-ru" class="flex items-center gap-[8px] cursor-pointer">
+                                    <div class="w-[18px] h-[18px] rounded-full overflow-hidden">
+                                        <img src="/comcash/img/icons/locales/en.png" alt="English"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <span class="text-white text-[16px]">English</span>
+                                </label>
+                            </div>
+                        @endif
+
+                        @if(in_array("fr", haystack: config("app.languages")))
+                            <div
+                                class="select__option flex items-center cursor-pointer hover:bg-[#FFFFFF0D] mb-1 px-[12px] py-[4px] h-[40px]">
+                                <input type="radio" name="language" id="lang-fr" value="fr" hidden>
+                                <label for="lang-ru" class="flex items-center gap-[8px] cursor-pointer">
+                                    <div class="w-[18px] h-[18px] rounded-full overflow-hidden">
+                                        <img src="/comcash/img/icons/locales/fr.png" alt="Français"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <span class="text-white text-[16px]">Français</span>
+                                </label>
+                            </div>
+                        @endif
+
+                        
+                        @if(in_array("de", haystack: config("app.languages")))
+                            <div
+                                class="select__option flex items-center cursor-pointer hover:bg-[#FFFFFF0D] mb-1 px-[12px] py-[4px] h-[40px]">
+                                <input type="radio" name="language" id="lang-de" value="de" hidden>
+                                <label for="lang-ru" class="flex items-center gap-[8px] cursor-pointer">
+                                    <div class="w-[18px] h-[18px] rounded-full overflow-hidden">
+                                        <img src="/comcash/img/icons/locales/de.png" alt="Deutsch"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <span class="text-white text-[16px]">Deutsch</span>
                                 </label>
                             </div>
                         @endif
 
                         @if(in_array("es", haystack: config("app.languages")))
                             <div
-                                class="select__option w-6 h-6 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-white">
+                                class="select__option flex items-center cursor-pointer hover:bg-[#FFFFFF0D] mb-1 px-[12px] py-[4px] h-[40px]">
                                 <input type="radio" name="language" id="lang-es" value="es" hidden>
-                                <label for="lang-es" class="block w-full h-full">
-                                    <img src="/comcash/img/icons/locales/es.png" alt="Español"
-                                        class="w-full h-full object-cover">
+                                <label for="lang-ru" class="flex items-center gap-[8px] cursor-pointer">
+                                    <div class="w-[18px] h-[18px] rounded-full overflow-hidden">
+                                        <img src="/comcash/img/icons/locales/es.png" alt="Español"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <span class="text-white text-[16px]">Español</span>
                                 </label>
                             </div>
                         @endif
                     </div>
                 </div>
-
             </div>
 
             @guest
                 <a href="{{route("login")}}"
-                    class="cursor-pointer flex items-center px-4 py-1 rounded-full transition-all duration-300
-                            bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488]
+                    class="cursor-pointer flex items-center px-4 py-1 rounded-full transition-all duration-300 flex-shrink-0
+                            bg-gradient-to-br bg-[#2A2A2A] hover:from-[#05c183] hover:to-[#00b488] uppercase
                             max-[620px]:bg-[rgba(255,255,255,0.05)] max-[620px]:from-transparent max-[620px]:to-transparent text-white font-medium gap-[8px] h-[40px] hover:opacity-90">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M9 9.5625C6.6225 9.5625 4.6875 7.6275 4.6875 5.25C4.6875 2.8725 6.6225 0.9375 9 0.9375C11.3775 0.9375 13.3125 2.8725 13.3125 5.25C13.3125 7.6275 11.3775 9.5625 9 9.5625ZM9 2.0625C7.245 2.0625 5.8125 3.495 5.8125 5.25C5.8125 7.005 7.245 8.4375 9 8.4375C10.755 8.4375 12.1875 7.005 12.1875 5.25C12.1875 3.495 10.755 2.0625 9 2.0625Z"
                             fill="white"></path>
@@ -237,7 +276,7 @@
             @auth
                 <a href="{{route("myprofile")}}"
                     class="flex cursor-pointer items-center px-4 py-1 rounded-full transition-all duration-300
-                            bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488]
+                            bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488] uppercase
                             max-[620px]:bg-[rgba(255,255,255,0.05)] max-[620px]:from-transparent max-[620px]:to-transparent text-white font-medium gap-[8px] h-[40px] hover:opacity-90">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -253,7 +292,7 @@
 
             <button id="menuBtn"
                 class="min-[620px]:hidden w-10 h-10 px-3 py-1 rounded-full flex items-center justify-center relative transition-all duration-300
-               max-[620px]:bg-[#FFFFFF0D]/5 bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488] group">
+               max-[620px]:bg-[#FFFFFF0D]/5 bg-gradient-to-br from-[#06AB6B] to-[#009C74] hover:from-[#05c183] hover:to-[#00b488] uppercase group flex-shrink-0">
 
                 <span id="burgerIcon" class="absolute transition-all duration-200 opacity-100 scale-100">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none">

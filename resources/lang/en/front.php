@@ -664,6 +664,8 @@ the following locations for cash withdrawal:',
 "world" => "World",
 "news" => "News",
 "markets" => "Markets",
+"lastNewsNews"      => "LATEST NEWS",
+"andTrendsNews"     => "AND CRYPTOCURRENCY TRENDS ON COMCASH",
 
 
 

@@ -659,6 +659,8 @@ die folgenden Stellen für die Bargeldabhebung:',
 "world" => "Welt",
 "news" => "Nachrichten",
 "markets" => "Märkte",
+"lastNewsNews"      => "NEUESTE NACHRICHTEN",
+"andTrendsNews"     => "UND KRYPTO-TRENDS AUF COMCASH",
 
 
 

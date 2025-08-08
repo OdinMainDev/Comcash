@@ -72,7 +72,7 @@ export function selectItem(label: JQuery<HTMLElement>, currency: ICurrency) {
 export function getHTMLListItem(currency: ICurrency): string {
   const lang = getCurrentLanguage();
   return `
-    <div class="custom-select__select-item dropdown-menu top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_rgba(0,0,0,0.25)] z-20 text-white max-h-[240px] overflow-y-scroll">
+    <div list-item-name="${currency.name}" class="custom-select__select-item dropdown-menu top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_rgba(0,0,0,0.25)] z-20 text-white max-h-[240px] overflow-y-scroll">
       <div class="active dropdown-item px-4 h-[40px] hover:bg-[#333] flex items-center gap-2 cursor-pointer">
         <img class="w-5 h-5 rounded-full bg-green-500 welcome-exchange__img" src="${currency.image}">
         <span class="text-sm">${currency.data.titles[lang]}</span>

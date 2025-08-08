@@ -11,9 +11,13 @@
             </p>
         </div>
         <a
-            href="{{route("comcashPage", ["news"])}}"
-            class="text-white max-[430px]:mt-3 text-[14px] border-b border-[#06AB6B] hover:border-green-400 hover:opacity-80 transition whitespace-nowrap">
-            {{__("front.read all news")}}
+            href="{{ route('comcashPage', ['blog']) }}"
+            class="flex items-center gap-[6px] text-white text-[14px] border-b border-[#06AB6B] hover:border-green-400 hover:opacity-80 transition whitespace-nowrap uppercase max-[430px]:mt-3"
+        >
+            {{ __("front.read all news") }}
+            <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.33333 10.5L8 6.5L3.33333 2.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </a>
     </div>
 
@@ -22,7 +26,7 @@
         @foreach($news as $key => $item)
         @if($key <= 3)
             <a
-            href="{{route('comcashNewsItem', [$item->id])}}"
+            href="{{route('comcashBlogItem', [$item->id])}}"
             class="bg-[#FFFFFF]/5 rounded-[10px] p-[24px] w-full flex flex-col justify-between">
             <div class="text-white">
                 <h3 class="font-medium text-[18px] leading-[140%] tracking-[0]">
