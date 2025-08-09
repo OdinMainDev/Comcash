@@ -1,10 +1,13 @@
-import { ICurrency } from "../cryptoFormScripts/models/interfaces";
+import { ISetting } from "@/shared/models/interfaces/settings";
 import { SelectedCurrency } from "./types";
+import { ICurrency } from "@/shared/models/interfaces/currency";
 
 export class ExchangeState {
     private selectedSend: SelectedCurrency | null = null;
     private selectedGet: SelectedCurrency | null = null;
     private currencies: ICurrency[] = [];
+    private settings: ISetting | null = null;
+    
 
     selectSendCurrency(currency: SelectedCurrency) {
         this.selectedSend = { ...currency };
@@ -25,8 +28,17 @@ export class ExchangeState {
     setCurrencies(currencies: ICurrency[]) {
         this.currencies = currencies;
     }
-
+    setSettings(settings: ISetting) {
+        this.settings = settings
+    }
     getCurrencies() {
         return this.currencies;
+    }
+    getSettings() {
+        return this.settings;
+    }
+    isCurrentSettings(from: SelectedCurrency, to: SelectedCurrency) {
+        return this.settings?.currency_from.name == from.currency.name
+        && this.settings?.currency_to.name == to.currency.name
     }
 }

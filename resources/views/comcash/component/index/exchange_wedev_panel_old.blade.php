@@ -95,7 +95,6 @@
                         <div class="hidden welcome-exchange__select-list ">
                             <div
                                 class="welcome-exchange__list dropdown-menu absolute top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 text-white max-h-[240px] overflow-y-scroll">
-
                             </div>
                         </div>
                         

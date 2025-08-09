@@ -60,21 +60,11 @@
                     <img src="/comcash/img/loader-gray.gif" alt="loader"/>
                 </div> -->
         
-                <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">
-                    <input 
-                        name="amount" 
-                        placeholder="0"
-                        id="inputAmount" 
-                        data-focus-target=".input-block" 
-                        type="text" placeholder="0.00" 
-                        inputmode="decimal"
-                        class="amount-send__input welcome-exchange__input bg-transparent text-[32px] font-light outline-none min-w-[100px] max-w-full flex-1 w-0"
-                        autocomplete="off" />
-        
+                <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">        
                     <div
-                        class="welcome-exchange-send__select welcome-exchange__select dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto min-[810px]:mt-1">
+                        class="welcome-exchange-send__select welcome-exchange__select dropdown relative inline-block min-w-[280px] max-w-full max-[410px]:w-full w-auto min-[810px]:mt-1">
 
-                        <input class="hidden" name="currency_from">
+                        <input class="hidden hidden-currency" name="currency_from">
                         <button type="button" data-focus-target=".input-block"
                             class="welcome-exchange__select-selected transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:opacity-90">
                             <div class="flex items-center gap-[12px] welcome-exchange__select-selected-value ">
@@ -91,9 +81,9 @@
                                     stroke-linejoin="round" />
                             </svg>
                         </button>
-                        <div class="welcome-exchange__select-list " >
+                        <div class="welcome-exchange__select-list ">
                             <div
-                                class="welcome-exchange__list dropdown-menu absolute top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 text-white max-h-[240px] overflow-y-scroll" style="display:none">
+                                class="welcome-exchange__list dropdown-menu absolute top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 text-white " style="display:none">
                                     <div class="p-2">
                                         <input type="text" placeholder="Search..."
                                             class="input-block w-full h-[36px] px-3 text-sm bg-[#2B2B2B] text-white rounded-[8px] focus:outline-none focus:border-[#06AB6B] focus:border placeholder:text-[#888]">
@@ -108,13 +98,23 @@
                         
                     </div>
                 </div>
-        
+            <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">
+                    <input 
+                        name="amount" 
+                        placeholder="0"
+                        id="inputAmount" 
+                        data-focus-target=".input-block" 
+                        type="text" placeholder="0.00" 
+                        inputmode="decimal"
+                        class="amount-send__input welcome-exchange__input bg-transparent text-[32px] font-light outline-none min-w-[100px] max-w-full flex-1 w-0"
+                        autocomplete="off" />
                 <p
-                    class="max-[410px]:absolute max-[410px]:right-4 top-1/2 -translate-y-1/2 text-[14px] text-white/30 max-[410px]:text-[16px] max-[410px]:pb-4 min-[410px]:mt-6">
+                    class="top-1/2 -translate-y-1/2 text-[14px] text-white/30 max-[410px]:text-[16px] mt-6">
                     ≈
                     <span id="usdFromHint">---</span>$
                 </p>
             </div>
+        </div>
         
         
             <div
@@ -196,13 +196,9 @@
                 <p class="text-sm mb-2">Вы получите:</p>
         
                 <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">
-                    <input id="outputAmount" data-focus-target=".output-block" type="text" inputmode="decimal"
-                        placeholder="0.00"
-                        class="amount-get__input welcome-exchange__input bg-transparent text-[32px] font-light outline-none min-w-[100px] max-w-full flex-1 w-0"
-                        autocomplete="off" />
                     <div
-                        class="welcome-exchange-get__select welcome-exchange__select dropdown relative inline-block max-[820px]:min-w-[180px] min-w-[220px] max-w-full max-[410px]:w-full w-auto  min-[810px]:mt-1">
-                        <input class="hidden" name="currency_to">
+                        class="welcome-exchange-get__select welcome-exchange__select dropdown relative inline-block min-w-[280px] max-w-full max-[410px]:w-full w-auto  min-[810px]:mt-1">
+                        <input class="hidden hidden-currency" name="currency_to">
                         <button type="button" data-focus-target=".output-block"
                             class="welcome-exchange__select-selected  transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:opacity-90">
                             <div class="flex items-center gap-[12px] welcome-exchange__select-selected-value ">
@@ -222,7 +218,7 @@
                         </button>
                         <div class="welcome-exchange__select-list ">
                             <div
-                                class="welcome-exchange__list dropdown-menu absolute top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 text-white max-h-[240px] overflow-y-scroll" style="display:none">
+                                class="welcome-exchange__list dropdown-menu absolute top-full w-full rounded-b-[8px] bg-[#1F1F1F] shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 text-white " style="display:none">
                                     <div class="p-2">
                                         <input type="text" placeholder="Search..."
                                             class="input-block w-full h-[36px] px-3 text-sm bg-[#2B2B2B] text-white rounded-[8px] focus:outline-none focus:border-[#06AB6B] focus:border placeholder:text-[#888]">
@@ -235,25 +231,29 @@
                         </div>
                     </div>
                 </div>
-                
-        
+                <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">
+                <input id="outputAmount" data-focus-target=".output-block" type="text" inputmode="decimal"
+                    placeholder="0.00"
+                    class="amount-get__input welcome-exchange__input bg-transparent text-[32px] font-light outline-none min-w-[100px] max-w-full flex-1 w-0"
+                    autocomplete="off" />
                 <p
-                    class="max-[410px]:absolute max-[410px]:right-4 top-1/2 -translate-y-1/2 text-[14px] text-white/30 max-[410px]:text-[16px] max-[410px]:pb-4 min-[410px]:mt-6">
+                    class="top-1/2 -translate-y-1/2 text-[14px] text-white/30 max-[410px]:text-[16px] mt-6">
                     ≈
                     <span id="usdToHint">---</span>$
                 </p>
+                </div>
             </div>
         </div>
         
-        <div class="flex flex-wrap justify-between items-center text-white text-sm">
+        <div class="flex relative flex-wrap justify-between items-center text-white text-sm">
             <div class="text-[24px] text-white">
-                <div id="course" class="flex gap-2">
+                <div id="course" class="flex max-[420px]:flex-col gap-2">
                     <div class="flex flex-col items-start">
                         <p class="courseFrom"></p>
                         <span class="courseTypeFrom text-[14px] text-white/40 pl-1 pt-1"></span>
                     </div>
                     <p>≈</p>
-                    <div class="flex flex-col items-start">
+                    <div class="flex flex-col items-start max-[420px]:pt-2">
                         <p class="courseTo"></p>
                         <span class="courseTypeTo text-[14px] text-white/40 pt-1"></span>
                     </div>
@@ -265,7 +265,7 @@
                 </p>
             </div>
         
-            <div class="flex items-center gap-[8px] ">
+            <div class="flex items-center gap-[8px] max-[420px]:mb-2">
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M11.7633 17.0625H6.9033C5.4858 17.0625 4.4508 16.47 4.0533 15.45C3.6408 14.385 4.0233 13.065 5.0133 12.1725L8.4933 9L5.0133 5.8275C4.0233 4.935 3.6408 3.615 4.0533 2.55C4.4508 1.5225 5.4858 0.9375 6.9033 0.9375H11.7633C13.1808 0.9375 14.2158 1.53 14.6133 2.55C15.0258 3.615 14.6433 4.935 13.6533 5.8275L10.1733 9L13.6608 12.1725C14.6433 13.065 15.0333 14.385 14.6208 15.45C14.2158 16.47 13.1808 17.0625 11.7633 17.0625ZM9.3333 9.7575L5.7708 12.9975C5.1408 13.575 4.8633 14.415 5.1033 15.0375C5.3283 15.615 5.9658 15.9375 6.9033 15.9375H11.7633C12.7008 15.9375 13.3383 15.6225 13.5633 15.0375C13.8033 14.415 13.5333 13.575 12.8958 12.9975L9.3333 9.7575ZM6.9033 2.0625C5.9658 2.0625 5.3283 2.3775 5.1033 2.9625C4.8633 3.585 5.1333 4.425 5.7708 5.0025L9.3333 8.2425L12.8958 5.0025C13.5258 4.425 13.8033 3.585 13.5633 2.9625C13.3383 2.385 12.7008 2.0625 11.7633 2.0625H6.9033Z"

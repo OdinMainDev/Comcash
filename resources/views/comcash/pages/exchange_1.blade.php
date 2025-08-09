@@ -17,7 +17,7 @@
 				<p>{{__("front.indexExchangePanelScrollText1")}}</p>
 			</div>
 
-			<form method="POST" class="exchange__form" action="{{route("exchgangeCreate")}}">
+			<form method="POST" class="crypto-form__exchange-form" action="{{route("exchgangeCreate")}}">
 				@csrf
 				<div class="exchange__main-form">
 					<div
@@ -248,7 +248,14 @@
 								</div>
 								<p class="text-sm mb-2">{{__("front.youreceive")}}:</p>
 
-								<div id="exchange-currency_to" class="flex flex-wrap items-start gap-2 min-w-0 w-full">
+								<div id="exchange-currency_to" class="flex flex-wrap items-start gap-2 min-w-0 w-full items-center">
+									<div class="cursor-pointer get-lock text-[#666666]">
+										<svg class="w-[18px] h-[18px]" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M12.75 17.0625H5.25C1.9425 17.0625 0.9375 16.0575 0.9375 12.75V11.25C0.9375 7.9425 1.9425 6.9375 5.25 6.9375H12.75C16.0575 6.9375 17.0625 7.9425 17.0625 11.25V12.75C17.0625 16.0575 16.0575 17.0625 12.75 17.0625ZM5.25 8.0625C2.565 8.0625 2.0625 8.5725 2.0625 11.25V12.75C2.0625 15.4275 2.565 15.9375 5.25 15.9375H12.75C15.435 15.9375 15.9375 15.4275 15.9375 12.75V11.25C15.9375 8.5725 15.435 8.0625 12.75 8.0625H5.25Z" fill="currentColor"></path>
+											<path d="M4.5 8.0625C4.1925 8.0625 3.9375 7.8075 3.9375 7.5V6C3.9375 3.825 4.4625 0.9375 9 0.9375C12.36 0.9375 14.0625 2.385 14.0625 5.25C14.0625 5.5575 13.8075 5.8125 13.5 5.8125C13.1925 5.8125 12.9375 5.5575 12.9375 5.25C12.9375 3.765 12.4875 2.0625 9 2.0625C5.73 2.0625 5.0625 3.6375 5.0625 6V7.5C5.0625 7.8075 4.8075 8.0625 4.5 8.0625Z" fill="currentColor"></path>
+											<path d="M9 14.4375C7.6575 14.4375 6.5625 13.3425 6.5625 12C6.5625 10.6575 7.6575 9.5625 9 9.5625C10.3425 9.5625 11.4375 10.6575 11.4375 12C11.4375 13.3425 10.3425 14.4375 9 14.4375ZM9 10.6875C8.28 10.6875 7.6875 11.28 7.6875 12C7.6875 12.72 8.28 13.3125 9 13.3125C9.72 13.3125 10.3125 12.72 10.3125 12C10.3125 11.28 9.72 10.6875 9 10.6875Z" fill="currentColor"></path>
+										</svg>
+									</div>
 									<input id="outputAmount" data-focus-target=".output-block" type="text"
 										name="amount_to"
 										inputmode="decimal" placeholder="0.00"
@@ -404,7 +411,7 @@
 						<div class="w-full min-[850px]:w-auto flex items-center px-2 flex-wrap justify-center">
 							<div>
 								<button class="exchange__button flex items-center justify-center h-[62px] max-[850px]:mt-6
-													w-full
+													w-full uppercase
 													min-[850px]:w-[362px] min-[850px]:grow
 													bg-[linear-gradient(95.62deg,_#06AB6B_0%,_#009C74_100%)]
 													text-white text-[18px] gap-[12px] px-6 py-2

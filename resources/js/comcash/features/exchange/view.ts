@@ -29,7 +29,13 @@ export class ExchangeView {
       const val = Number(this.elements.inputGet.val());
       if (!isNaN(val)) this.callbacks.onInputChange?.(val, false);
     });
-
+    this.elements.lock?.on("click", () => {
+       this.elements.lock
+        ?.toggleClass("text-[#06AB6B]")
+        .toggleClass("text-[#666666]");
+        const isReadonly = !!this.elements.inputGet.prop('readonly'); // гарантируем булевое
+        this.elements.inputGet.prop('readonly', !isReadonly);
+    });
     this.elements.selectorSend.selectedBlock.on("click", () => this.dropdownSend.toggle());
     this.elements.selectorGet.selectedBlock.on("click", () => this.dropdownGet.toggle());
 
@@ -45,6 +51,11 @@ export class ExchangeView {
 
     this.elements.reverseBtn.on("click", async () => {
       await this.callbacks.onReverse?.();
+    });
+
+    this.elements.form.on("submit", async (e) => {
+        e.preventDefault(); 
+        await this.callbacks.onSubmit?.(e)
     });
 
     $(document).on("click", (event) => {
@@ -63,11 +74,10 @@ export class ExchangeView {
 
   updateCurrencyList(currencies: ICurrency[], isSend: boolean) {
     const selector = isSend ? this.elements.selectorSend : this.elements.selectorGet;
-    debugger;
     const renderer = new CurrencyListRenderer(selector, async (currency) => {
       this.setSelected({ currency }, isSend);
-      await this.callbacks.onCurrencySelect?.(currency, isSend);
       (isSend ? this.dropdownSend : this.dropdownGet).close();
+      await this.callbacks.onCurrencySelect?.(currency, isSend);
     });
     renderer.render(currencies);
   }
@@ -90,15 +100,26 @@ export class ExchangeView {
   setSelected(selected: SelectedCurrency, isSend: boolean) {
     const input = isSend ? this.elements.inputSend : this.elements.inputGet;
     const selector = isSend ? this.elements.selectorSend : this.elements.selectorGet;
+  
     input.val(selected.amount ?? 0);
-    selector.selectedItem.html(this.getHTMLSelectedItem(selected.currency));
-    selector.selectedFormItem.val(selected.currency.name);
+  
+    const currentName = selector.selectedFormItem.val();
+  
+    if (currentName !== selected.currency.name) {
+      selector.selectedItem.html(this.getHTMLSelectedItem(selected.currency));
+      selector.selectedFormItem.val(selected.currency.name);
+    } else {
+      selector.selectedFormItem.val(selected.currency.name);
+      selector.selectedItem.find(".currency-name").text(selected.currency.name);
+    }
+  
     selector.list.elements.find(`[list-item-name="${selected.currency.name}"]`).hide();
     selector.list.elements.find(`[list-item-name]`)
       .not(`[list-item-name="${selected.currency.name}"]`)
       .filter(':hidden')
       .show();
   }
+  
 
   updateUSDTHint(value: number) {
     this.elements.usdHintGet.text(value);

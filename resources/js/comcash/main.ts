@@ -19,7 +19,7 @@ import '@/shared/scripts/banner';
 
 import '@/features/cryptoFormScripts';
 // import '@/features/exchageFormScripts';
-// import '@/features/comcashForm';
+import '@/features/comcashForm';
 import '@/features/kycForm';
 import '@/features/progressScript'
 import '@/features/scrollText'

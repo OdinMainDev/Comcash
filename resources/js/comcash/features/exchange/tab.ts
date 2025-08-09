@@ -18,7 +18,7 @@ export class TabController {
   
     private createTab(tag: string, active = false): JQuery<HTMLElement> {
       const $tab = $(`
-        <button class="tab-button text-sm font-medium px-3 py-1 rounded ${active ? "active-tab bg-[#06AB6B]" : "hover:bg-white hover:text-black"}"
+        <button class="tab-button first-letter:uppercase text-sm font-medium px-3 py-1 rounded ${active ? "active-tab bg-[#06AB6B]" : "hover:bg-white hover:text-black"}"
           data-tabname="${tag}">
           ${tag}
         </button>

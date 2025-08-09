@@ -66,7 +66,6 @@ export const initializeValidationModal = (selectedCurrencyYouSend: ICurrency, se
 
   });
 
-
   async function getValidationCaptioSend () {
     const data = await getEstimate(selectedCurrencyYouSend.name, selectedCurrencyYouGet.name, 1);
     validationCaptioSend.html(`1 ${selectedCurrencyYouSend.name}&ensp;≈&ensp;${data.amount} ${selectedCurrencyYouGet.name}`)

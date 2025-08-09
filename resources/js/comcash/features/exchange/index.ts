@@ -1,56 +1,119 @@
 import $ from 'jquery';
 import { ExchangeView } from './view';
 import { ExchangeController } from './controller';
-import { UIFormElements, UISelector } from './types';
+import { SelectedCurrency, UIFormElements, UISelector } from './types';
+import { ISetting } from '@/shared/models/interfaces/settings';
+import { ExchangeLayoutsManager } from './layout';
 
-function createSelector(container: JQuery<HTMLElement>): UISelector {
+const createSelector = (container: JQuery<HTMLElement>): UISelector => {
   const dropdownBlock = container.find('.welcome-exchange__list');
-
   return {
-    selectedItem:      container.find('.welcome-exchange__select-selected-value'),
-    selectedBlock:     container.find('.welcome-exchange__select-selected'),
-    selectedArrow:     container.find('.welcome-exchange__arrow'),
-    selectedFormItem:  container.find('input[name="currency_to"]'),
+    selectedItem:     container.find('.welcome-exchange__select-selected-value'),
+    selectedBlock:    container.find('.welcome-exchange__select-selected'),
+    selectedArrow:    container.find('.welcome-exchange__arrow'),
+    selectedFormItem: container.find('.hidden-currency'),
     list: {
-      block:     dropdownBlock,
-      input:     dropdownBlock.find('input'),
-      tabs:      dropdownBlock.find('.tab-list'),
-      elements:  dropdownBlock.find('.list-items'),
+      block:    dropdownBlock,
+      input:    dropdownBlock.find('input'),
+      tabs:     dropdownBlock.find('.tab-list'),
+      elements: dropdownBlock.find('.list-items'),
+    },
+  };
+};
+
+const getFormElements = (form: JQuery<HTMLElement>): UIFormElements => ({
+  form,
+  inputSend:        form.find('.amount-send__input'),
+  inputGet:         form.find('.amount-get__input'),
+  usdHintSend:      form.find('#usdFromHint'),
+  usdHintGet:       form.find('#usdToHint'),
+  reverseBtn:       form.find('.welcome-exchange__icon-reverse'),
+  selectorSend:     createSelector(form.find('.welcome-exchange-send__select')),
+  selectorGet:      createSelector(form.find('.welcome-exchange-get__select')),
+  timer:            form.find(".exchangeTimer"),
+  globalCourseFrom: form.find(".courseFrom"),
+  globalCourseTo:   form.find(".courseTo"),
+  lock:             form.find(".get-lock"),
+  errorDisplay:     null,
+});
+
+const initializeLayoutsManager = (controller: ExchangeController, form: JQuery<HTMLElement>) => {
+  if (!$(".validation").length) return;
+
+  const layoutsManager = new ExchangeLayoutsManager(form);
+
+  controller.on("updateSettings", (settings: ISetting) => {
+    layoutsManager.showLayouts(settings.layout);
+  });
+
+  const hideLayouts = () => layoutsManager.hideSavedLayouts();
+
+  controller.on("reverse", hideLayouts);
+  controller.on("currencySelect", hideLayouts);
+
+  controller.on("onSubmit", (e: JQuery.Event) => {
+    e.preventDefault();
+    layoutsManager.validate();
+  });
+
+  controller.on("onUpdateGlobalCourse", (from: string, to: string) => {
+    layoutsManager.updateCourse(from, to);
+  });
+
+  controller.on("onSelected", (selected: SelectedCurrency, isSend: boolean) => {
+    layoutsManager.updateSelected(selected, isSend);
+  });
+};
+
+const setupModal = () => {
+  const $openBtn = $("#openConverter");
+  const $closeBtn = $("#closeConverter");
+  const $modal = $("#converterModal");
+  const $inner = $("#converterInner");
+
+  if (!$openBtn.length || !$closeBtn.length || !$modal.length || !$inner.length) return;
+
+  const openModal = () => {
+    $modal.removeClass("hidden");
+    $("body").css({ overflow: "hidden", height: "100vh" });
+    setTimeout(() => $inner.removeClass("translate-y-full").addClass("translate-y-0"), 20);
+  };
+
+  const closeModal = () => {
+    $inner.removeClass("translate-y-0").addClass("translate-y-full");
+    setTimeout(() => {
+      $modal.addClass("hidden");
+      $("body").css({ overflow: "", height: "" });
+    }, 300);
+  };
+
+  $openBtn.on("click", openModal);
+  $closeBtn.on("click", closeModal);
+
+  $modal.on("click", e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+
+  $(window).on("resize", () => {
+    if (($(window).width() ?? 0) >= 760 && !$modal.hasClass("hidden")) {
+      closeModal();
     }
-  };
-}
+  });
+};
 
-function getFormElements(): UIFormElements {
+async function bootstrapForm(): Promise<void> {
   const form = $('.crypto-form__exchange-form');
-
-  return {
-    form:             form,
-    inputSend:        form.find('.amount-send__input'),
-    inputGet:         form.find('.amount-get__input'),
-    usdHintSend:      form.find('#usdFromHint'),
-    usdHintGet:       form.find('#usdToHint'),
-    reverseBtn:       form.find('.welcome-exchange__icon-reverse'),
-    selectorSend:     createSelector(form.find('.welcome-exchange-send__select')),
-    selectorGet:      createSelector(form.find('.welcome-exchange-get__select')),
-    timer:            form.find(".exchangeTimer"),
-    globalCourseFrom: form.find(".courseFrom"),
-    globalCourseTo:   form.find(".courseTo"),
-    errorDisplay:     null
-  };
-}
-
-async function bootstrap(): Promise<void> {
-  const elements = getFormElements();
+  const elements = getFormElements(form);
   const view = new ExchangeView(elements);
 
-  const controller = new ExchangeController(view, {
-    send: 'BTC',
-    get:  'ETH'
-  });
+  const controller = new ExchangeController(view, { send: 'BTC', get: 'ETH' });
+
+  initializeLayoutsManager(controller, form);
 
   await controller.init();
 }
 
 $(document).ready(() => {
-  bootstrap().catch(console.error);
+  bootstrapForm().catch(console.error);
+  setupModal();
 });
