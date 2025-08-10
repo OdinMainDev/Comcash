@@ -67,8 +67,13 @@ class RatesParser extends Command{
         // $inserts = array_merge($inserts, $this->parseFromGarantex());
         $inserts = array_merge($inserts, $this->parseFromParserV3($request_currency, count($inserts) == 0));
         if(count($inserts) == 0){
-            sendTelegramNotification("ОШИБКА НОВОГО ПАРСЕРА!!", 4);
+                sendTelegramNotification("ОШИБКА ПАРСЕРА 3 !!", 4);
+            $inserts = array_merge($inserts, $this->parseFromGarantex());
+            if(count($inserts) == 0){
+                sendTelegramNotification("ОШИБКА ПАРСЕРА 2 !!", 4);
+            }
             return;
+            sendTelegramNotification("ОШИБКА НОВОГО ПАРСЕРА 1 !!");
             $inserts = array_merge($inserts, $this->parseFromCryptocompare($request_currency, count($inserts) == 0));
         }
         
@@ -191,40 +196,41 @@ class RatesParser extends Command{
     }
 
 
-    public function parseFromParserV3($request_currency, $without_garantex_rates = false)
-    {
+    public function parseFromParserV3($request_currency, $without_garantex_rates = false) {
+        $parser = new Parser($request_currency);
+        $response = $parser->getV3Data();
+        if(!$response) {
+            return [];
+        }
+        $response = json_decode($response);
+        if(!$response) {
+            return [];
+        }
+        $inserts = [];
+
         $url = "https://compay.one/get-rates?apiKey=szxzLzUB6hvL2eJLBjqr5Qeeu5d7hAN1";
-    
-        $proxy = "http://45553765-zone-custom-sessid-KFtpUAZ1-sessTime-15:MK2z4rxv@na.proxys5.net:6200";
-    
-        $response = Http::withOptions([
-            'proxy' => $proxy
-        ])->get($url);
-    
-        if ($response->clientError() || $response->status() != 200) {
+        $response = Http::get($url);
+        if($response->clientError() || $response->status() != 200){
             sendTelegramNotification("<b>ОШИБКА!</b>\nОшибка при парсинге курсов, кривой ответ от сервера курсов валют.", 4);
             return [];
         }
-    
         $inserts = [];
-        if (!isset($response['data']) || !is_array($response['data'])) {
+        if(!isset($response['data']) || !is_array($response['data'])){
             return $inserts;
         }
-    
-        foreach ($response['data'] as $from => $arr) {
-            foreach ($arr as $to => $rate) {
-                if ($from == $to) {
+        foreach($response['data'] as $from => $arr){
+            foreach($arr as $to => $rate){
+                if($from == $to){
                     continue;
                 }
-    
-                if ($without_garantex_rates) {
-                    if (in_array($from, ["BTC", "ETH", "USDT", "DAI"])) {
-                        if (in_array($from, ["USD", "RUB"])) {
+
+                if($without_garantex_rates){
+                    if(in_array($from, ["BTC", "ETH", "USDT", "DAI"])){
+                        if(in_array($from, ["USD", "RUB"])){
                             continue;
                         }
                     }
                 }
-    
                 $inserts[] = [
                     "from" => $from,
                     "to" => $to,
@@ -232,7 +238,7 @@ class RatesParser extends Command{
                 ];
             }
         }
+
         return $inserts;
     }
-    
 }
