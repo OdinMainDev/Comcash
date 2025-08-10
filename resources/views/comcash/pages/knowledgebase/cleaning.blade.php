@@ -101,7 +101,7 @@
                     </div>
 
                     <button type="submit"
-                        class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90"
+                        class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90 uppercase"
                         style="background:linear-gradient(0deg,#009C74,#009C74),linear-gradient(95.62deg,#06AB6B 70.57%,#009C74 383.64%);">
                         ОТПРАВИТЬ СООБЩЕНИЕ
                     </button>

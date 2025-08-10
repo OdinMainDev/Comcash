@@ -1,4 +1,4 @@
-@extends('comcash.layout.main')
+@extends('comcash.layout.secure')
 
 @section('content')
 <section class="review-section relative max-[620px]:mt-[40px] mt-[80px] mx-auto max-w-[1018px] overflow-hidden flex flex-col max-[1024px]:px-[20px]">
@@ -118,7 +118,7 @@
                             {{ __('front.forgotPassword') }}
                         </a>
                     </div>
-                    <button type="submit" class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90" style="background:linear-gradient(0deg,#009C74,#009C74),linear-gradient(95.62deg,#06AB6B 70.57%,#009C74 383.64%);">{{ __('front.continue') }}</button>
+                    <button type="submit" class="w-full text-white py-3 rounded-full text-[18px] transition h-[62px] shadow-[0px_4px_20px_0px_#00000026] hover:opacity-90 uppercase" style="background:linear-gradient(0deg,#009C74,#009C74),linear-gradient(95.62deg,#06AB6B 70.57%,#009C74 383.64%);">{{ __('front.continue') }}</button>
                 </form>
 
                 <p class="text-center text-[16px] text-white mt-2">

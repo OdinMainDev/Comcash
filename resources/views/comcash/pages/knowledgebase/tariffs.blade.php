@@ -36,7 +36,7 @@
                     @csrf
                     <span
                         class="text-white uppercase max-[600px]:text-[16px] text-[18px] leading-[140%] uppercase mr-4 min-[720px]:whitespace-nowrap">
-                        Конвертер
+                        {{__("front.converter")}}
                     </span>
                     <div
                         class="welcome-exchange__block exchnage-panel-left input-block min-[720px]:flex-1 border rounded-[10px] p-[14px] gap-[8px] flex flex-col justify-between relative max-[720px]:mb-4 max-[720px]:w-full border-[#FFFFFF1A]/10 bg-[#1B1B1B]">
@@ -80,7 +80,7 @@
                                 <path d="M8.155 16.6579L0 25.0586L10.8653 26.2728L8.155 16.6579Z" fill="#24DE96"></path>
                             </svg>
                         </div>
-                        <p class="text-sm mb-2">Вы отправляете:</p>
+                        <p class="text-sm mb-2">{{__("front.yousend")}}:</p>
 
                         <div class="flex flex-wrap items-start gap-2 min-w-0 max-w-[280px] w-full">
                             <input name="amount" id="inputAmount" data-focus-target=".input-block" type="text"
@@ -208,7 +208,7 @@
                                 <path d="M8.155 16.6579L0 25.0586L10.8653 26.2728L8.155 16.6579Z" fill="#24DE96"></path>
                             </svg>
                         </div>
-                        <p class="text-sm mb-2">Вы получаете:</p>
+                        <p class="text-sm mb-2">{{__("front.youreceive")}}:</p>
 
                         <div class="flex flex-wrap items-start gap-2 min-w-0 max-w-[280px] w-full">
                             <input id="outputAmount" data-focus-target=".output-block" type="text" placeholder="0.00"
@@ -256,14 +256,15 @@
                     </div>
                     <div class="flex flex-wrap justify-between items-center text-white text-sm gap-[14px]">
                         <div class="w-full flex items-center px-2 flex-wrap justify-center">
-                            <button class="flex items-center justify-center h-[62px] max-[850px]:mt-6
+                            <button type="submit" class="flex items-center justify-center h-[62px] max-[850px]:mt-6
                                                          w-full
                                                          min-[850px]:grow
                                                          bg-[linear-gradient(95.62deg,_#06AB6B_0%,_#009C74_100%)]
                                                          text-white text-[18px] gap-[12px] px-6 py-2
                                                          rounded-full shadow-[0px_4px_20px_#00000026]
-                                                         hover:opacity-90">
-                                ОБМЕНЯТЬ
+                                                         hover:opacity-90 uppercase">
+                            <span class="relative flex content-loader">
+                                {{__("front.exchange")}}
                                 <svg class="ml-2" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -273,17 +274,17 @@
                                         d="M20.33 12.75H3.5C3.09 12.75 2.75 12.41 2.75 12C2.75 11.59 3.09 11.25 3.5 11.25H20.33C20.74 11.25 21.08 11.59 21.08 12C21.08 12.41 20.74 12.75 20.33 12.75Z"
                                         fill="currentColor"></path>
                                 </svg>
+                            </span>
                             </button>
                             <div class="flex justify-center">
                                 <p class="text-[12px] opacity-60 mt-4 min-[500px]:hidden whitespace-nowrap text-center">
-                                    Курс зафиксируется после создания заявки
+                                    {{__("front.homePagePanelRatesInfo")}}
                                 </p>
                             </div>
 
                         </div>
                         <div>
-                            <p class="text-[14px] opacity-60 max-[500px]:hidden max-w-[160px]">Курс зафиксируется после создания
-                                заявки</p>
+                            <p class="text-[14px] opacity-60 max-[500px]:hidden max-w-[160px]">{{__("front.homePagePanelRatesInfo")}}</p>
                         </div>
 
                         <div class="flex items-center gap-[14px]">
@@ -315,7 +316,7 @@
                             d="M16.8001 8.20806H3.2001C2.8721 8.20806 2.6001 7.93606 2.6001 7.60806C2.6001 7.28006 2.8721 7.00806 3.2001 7.00806H16.8001C17.1281 7.00806 17.4001 7.28006 17.4001 7.60806C17.4001 7.93606 17.1281 8.20806 16.8001 8.20806Z"
                             fill="white"></path>
                     </svg>
-                    <span>Конвертер</span>
+                    <span>{{__("front.converter")}}</span>
                 </button>
             </div>
 
@@ -333,9 +334,9 @@
                     @csrf
                     <div
                         class="absolute top-4 left-0 w-full h-14 bg-[#1E1E1E] rounded-t-[20px] flex items-center justify-between px-6 z-10">
-                        <span class="uppercase text-white text-[16px]">Конвертер</span>
+                        <span class="uppercase text-white text-[16px]">{{__("front.converter")}}</span>
                         <button id="closeConverter">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="hover:opactiy-90" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M18.8944 6.16636L6.16643 18.8943C5.87652 19.1842 5.39568 19.1842 5.10577 18.8943C4.81586 18.6044 4.81586 18.1235 5.10577 17.8336L17.8337 5.1057C18.1236 4.81579 18.6044 4.81579 18.8944 5.1057C19.1843 5.39561 19.1843 5.87645 18.8944 6.16636Z"
                                     fill="white"></path>
@@ -411,7 +412,7 @@
                                         <path d="M8.155 16.6579L0 25.0586L10.8653 26.2728L8.155 16.6579Z" fill="#24DE96"></path>
                                     </svg>
                                 </div>
-                                <p class="text-sm mb-2">Вы отправляете:</p>
+                                <p class="text-sm mb-2">{{__("front.yousend")}}:</p>
 
                                 <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">
 
@@ -419,7 +420,7 @@
                                         class="welcome-exchange__select welcome-exchange-send__select dropdown relative inline-block min-w-[262px] max-w-full max-[410px]:w-full w-auto min-[810px]:mt-1">
                                         <input class="hidden hidden-currency" name="currency_from">
                                         <button type="button" data-focus-target=".input-block"
-                                            class="welcome-exchange__select-selected  transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] text-white flex items-center justify-between hover:opacity-90 rounded-full bg-[#2A2A2A]">
+                                            class="welcome-exchange__select-selected  transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] text-white flex items-center justify-between hover:bg-[#06AB6B0D] rounded-full bg-[#2A2A2A]">
                                             <div class="welcome-exchange__select-selected-value flex items-center gap-[12px]">
                                                 <img src="https://comcash.io/icons/Ethereum.png"
                                                     class="w-5 h-5 rounded-full bg-green-500 welcome-exchange__img" /></span>
@@ -561,14 +562,14 @@
                                         <path d="M8.155 16.6579L0 25.0586L10.8653 26.2728L8.155 16.6579Z" fill="#24DE96"></path>
                                     </svg>
                                 </div>
-                                <p class="text-sm mb-2">Вы получите:</p>
+                                <p class="text-sm mb-2">{{__("front.youreceive")}}:</p>
 
                                 <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">
                                     <div
                                         class="welcome-exchange__select welcome-exchange-get__select dropdown relative inline-block  min-w-[262px] max-w-full max-[410px]:w-full w-auto min-[810px]:mt-1">
                                         <input class="hidden hidden-currency" name="currency_to">
                                         <button type="button" data-focus-target=".output-block"
-                                            class="welcome-exchange__select-selected welcome-exchange-get__select  transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] text-white flex items-center justify-between hover:opacity-90 rounded-full bg-[#2A2A2A]">
+                                            class="welcome-exchange__select-selected welcome-exchange-get__select  transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] text-white flex items-center justify-between hover:bg-[#06AB6B0D] rounded-full bg-[#2A2A2A]">
                                             <div class="flex items-center gap-[12px] welcome-exchange__select-selected-value">
                                                 <img src="https://comcash.io/icons/Ethereum.png"
                                                     class="w-5 h-5 rounded-full bg-green-500 welcome-exchange__img" /></span>
@@ -628,8 +629,7 @@
                                 </div>
                             </div>
                             <div>
-                                <p class="text-[14px] opacity-60 max-[500px]:hidden max-w-[160px]">Курс зафиксируется после
-                                    создания заявки</p>
+                                <p class="text-[14px] opacity-60 max-[500px]:hidden max-w-[160px]">{{__("front.homePagePanelRatesInfo")}}</p>
                             </div>
 
                             <div class="flex items-center gap-[8px] max-[420px]:mb-2">
@@ -642,14 +642,15 @@
                             </div>
 
                             <div class="w-full min-[850px]:w-auto flex items-center px-2 flex-wrap justify-center">
-                                <button class="flex items-center justify-center h-[62px] max-[850px]:mt-6
+                                <button type="submit" class="flex items-center justify-center h-[62px] max-[850px]:mt-6
                                                     w-full
                                                     min-[850px]:w-[362px] min-[850px]:grow
                                                     bg-[linear-gradient(95.62deg,_#06AB6B_0%,_#009C74_100%)]
                                                     text-white text-[18px] gap-[12px] px-6 py-2
                                                     rounded-full shadow-[0px_4px_20px_#00000026]
-                                                    hover:opacity-90">
-                                    ОБМЕНЯТЬ
+                                                    hover:opacity-90 uppercase">
+                                <span class="relative flex content-loader"></span>
+                                    {{__("front.exchange")}}
                                     <svg class="ml-2" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -659,10 +660,11 @@
                                             d="M20.33 12.75H3.5C3.09 12.75 2.75 12.41 2.75 12C2.75 11.59 3.09 11.25 3.5 11.25H20.33C20.74 11.25 21.08 11.59 21.08 12C21.08 12.41 20.74 12.75 20.33 12.75Z"
                                             fill="currentColor"></path>
                                     </svg>
+                                </span>
                                 </button>
                                 <div class="flex justify-center">
                                     <p class="text-[12px] opacity-60 mt-4 min-[500px]:hidden whitespace-nowrap text-center">
-                                        Курс зафиксируется после создания заявки
+                                        {{__("front.homePagePanelRatesInfo")}}
                                     </p>
                                 </div>
 

@@ -166,6 +166,7 @@ return [
     "exchangestatus3" => "Старт выплаты средств",
     "exchangestatus4" => "Подтверждение выплаты средств",
     "youreceive" => "Вы получите",
+    "yousend" => "Вы отправляете",
     "addressreceive" => "Адрес получения",
     "cardreceive" => "Карта на которую поступят средства",
     "idexchange" => "Хеш заявки",
@@ -700,7 +701,7 @@ return [
 "world" => "Мир",
 "news" => "Новости",
 "markets" => "Рынки",
-
+"converter" => "Конвертер",
 
 
 

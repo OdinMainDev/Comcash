@@ -63,6 +63,7 @@ The task will be accomplished, regardless of the amount, direction or risks.',
   'exchangestatus3' => 'Start of disbursement of funds',
   'exchangestatus4' => 'Confirmation of disbursement of funds',
   'youreceive' => 'You\'ll get',
+  "yousend" => "You send",
   'addressreceive' => 'Receipt Address',
   'cardreceive' => 'The card to which the funds will be deposited',
   'idexchange' => 'Exchange id',
@@ -666,7 +667,7 @@ the following locations for cash withdrawal:',
 "markets" => "Markets",
 "lastNewsNews"      => "LATEST NEWS",
 "andTrendsNews"     => "AND CRYPTOCURRENCY TRENDS ON COMCASH",
-
+"converter" => "Converter",
 
 
   

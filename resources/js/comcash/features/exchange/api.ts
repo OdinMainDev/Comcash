@@ -16,6 +16,11 @@ export class ExchangeApiService {
         return res.data;
     }
 
+    static async getSendCurrencies(): Promise<ICurrency[]> {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/get/directions/currencies/from`);
+        return res.data.data;
+    }
+
     static async getCurrencySettings(currencyFrom: string, currencyTo: string) {
         if (this.currencySettingsController) {
             this.currencySettingsController.abort();

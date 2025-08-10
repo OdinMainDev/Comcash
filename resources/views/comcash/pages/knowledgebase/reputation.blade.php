@@ -530,7 +530,7 @@
 
             <a href="{{ $monitoring->link }}" class="shrink-0 rounded-[100px] h-[40px] px-6 py-2
                         bg-emerald-500/90 hover:bg-emerald-500
-                        text-[16px] font-medium uppercase min-w-[137px]">
+                        text-[16px] font-medium uppercase min-w-[137px] text-center">
                 {{ __('front.view') }}
             </a>
         </div>
@@ -592,7 +592,7 @@
                 rel="noopener noreferrer"
                 class="flex w-full h-[63px] items-center justify-center
                     rounded-[10px] bg-white/5 hover:bg-white/10 transition
-                    px-6 text-[14px] text-white/80">
+                    px-6 text-[14px] text-white/80 text-center">
                 {{ $link->name }}
             </a>
 

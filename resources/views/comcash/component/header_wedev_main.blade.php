@@ -143,7 +143,7 @@
 
 
         <div class="flex items-center space-x-3 text-sm flex-shrink-0">
-            <a href='{{route("comcashPage", ["name" => "cleaning"])}}'
+            <a target="_blank" href='{{route("comcashPage", ["name" => "cleaning"])}}'
                 class="max-[620px]:hidden flex items-center px-3 py-1 bg-[#2A2A2A] rounded-full gap-[8px] h-[40px] whitespace-nowrap cursor-pointer hover:bg-[#06AB6B0D] hover:text-[#06AB6B]">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -155,7 +155,7 @@
                 </svg>
                 <span class="text-white">{{__("front.anonymousMode")}}</span>
             </a>
-            <a href="{{__("front.menuBotUrl")}}"
+            <a target="_blank" href="{{__("front.menuBotUrl")}}"
                 class="max-[620px]:hidden flex items-center px-3 py-1 bg-[#2A2A2A] cursor-pointer hover:bg-[#06AB6B0D] hover:text-[#06AB6B] rounded-full gap-[8px] h-[40px]">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -165,20 +165,18 @@
                 <span class="text-white">{{__("front.telegramBotText")}}</span>
             </a>
 
-            <div class="max-[400px]:hidden flex items-center px-2 py-1 bg-[#2A2A2A] group-[.active]:bg-[#06AB6B] rounded-full gap-[8px] h-[40px] max-w-[62px] w-full flex-shrink-0">
+            <div class="max-[400px]:hidden flex items-center px-2 py-1 bg-[#2A2A2A] hover:bg-[#06AB6B0D] rounded-full gap-[8px] h-[40px] max-w-[62px] w-full flex-shrink-0 select-none">
                 <div class="select group relative inline-flex items-center gap-1 group cursor-pointer w-full justify-center">
-                    <div class="select__current group-[.active]:bg-[#06AB6B] flex items-center [&>span]:hidden ">
+                    <div class="select__current flex items-center [&>span]:hidden ">
                         <img src="/comcash/img/icons/locales/{{ app()->getLocale() }}.png"
                             alt="{{ strtoupper(app()->getLocale()) }}"
                             class="w-[18px] h-[18px] rounded-full object-cover transition">
                     </div>
-                    <svg class="w-[12px] h-[12px] text-gray-400 transition-transform duration-200 group-[.active]:rotate-180 flex-shrink-0"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="round" d="M19 9l-7 7-7-7" />
-                        
+                    <svg class="flex-shrink-0 group-[.active]:rotate-180 duration-200" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3.33333L6 8L10 3.33333" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
 
-                    <div class="select__container absolute top-7 left-0 rounded-[8px] bg-[#1F1F1F] flex-shrink-0
+                    <div class="select__container absolute top-10 left-0 rounded-[8px] bg-[#1F1F1F] flex-shrink-0
                             shadow-[0px_4px_20px_0px_rgba(0,0,0,0.25)] z-20 max-h-[200px] overflow-y-auto w-[115px]
                             hidden group-[.active]:block">
 

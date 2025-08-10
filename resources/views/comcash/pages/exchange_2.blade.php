@@ -135,7 +135,7 @@
 					</div>
 					<div class="bg-white/5 rounded-[20px] p-[24px] flex flex-col min-[720px]:flex-row items-start gap-6">
 						<div
-							class="w-[160px] h-[160px] flex-shrink-0 rounded bg-white flex items-center justify-center overflow-hidden">
+							class="w-[160px] h-[160px] flex-shrink-0 rounded bg-white flex items-center justify-center overflow-hidden p-2 bg-white rounded-[10px]">
 
 							@if($exchange->currencyFrom->tag == "crypto")
 								<img src="https://api.qrserver.com/v1/create-qr-code/?data={{$exchange->data['merchant_from_data']['address']}}"
@@ -168,6 +168,7 @@
 								<div class="text-xs text-white/50 mt-1 flex items-center gap-3">
 									<span class="w-[24px] h-[24px] bg-green-500 rounded-full"></span>
 									<span class="flex items-baseline gap-2 text-white">
+										
 										<span class="text-[16px]">{{$exchange->data['amount_data']['currency_from_name']}}</span>
 										<span class="text-white/40 text-[14px]"></span>
 									</span>
@@ -321,7 +322,7 @@
 					</div>
 					<div class="bg-white/5 rounded-[20px] p-[24px] flex flex-col min-[720px]:flex-row items-start gap-6">
 						<div
-							class="w-[160px] h-[160px] flex-shrink-0 rounded bg-white flex items-center justify-center overflow-hidden">
+							class="w-[160px] h-[160px] flex-shrink-0 rounded bg-white flex items-center justify-center overflow-hidden p-2 bg-white rounded-[10px]">
 
 							@if($exchange->currencyFrom->tag == "crypto")
 								<img src="https://api.qrserver.com/v1/create-qr-code/?data={{$exchange->data['merchant_from_data']['address']}}"
@@ -330,44 +331,14 @@
 
 						</div>
 
-
-						<div class="flex-1 text-sm">
-							<div class="mb-4">
-								<p class="text-white/40 text-[14px] mb-3">{{__("front.exchangePage2AmountSend")}}:</p>
-								<p class="text-[28px] flex items-center gap-2 mb-3">
-									{{$exchange->data['amount_data']['amount_send']}}
-									<button  class="copy-to-clipboard relative hover:opacity-70" data-copy-text="{{$exchange->data['amount_data']['amount_send']}}">
-										<div class="tooltip absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none"
-											role="tooltip">{{__("front.copied")}}</div>
-
-										<svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-											xmlns="http://www.w3.org/2000/svg">
-											<path
-												d="M8.325 17.0625H5.175C2.2425 17.0625 0.9375 15.7575 0.9375 12.825V9.675C0.9375 6.7425 2.2425 5.4375 5.175 5.4375H8.325C11.2575 5.4375 12.5625 6.7425 12.5625 9.675V12.825C12.5625 15.7575 11.2575 17.0625 8.325 17.0625ZM5.175 6.5625C2.85 6.5625 2.0625 7.35 2.0625 9.675V12.825C2.0625 15.15 2.85 15.9375 5.175 15.9375H8.325C10.65 15.9375 11.4375 15.15 11.4375 12.825V9.675C11.4375 7.35 10.65 6.5625 8.325 6.5625H5.175Z"
-												fill="#06AB6B"></path>
-											<path
-												d="M12.825 12.5625H12C11.6925 12.5625 11.4375 12.3075 11.4375 12V9.675C11.4375 7.35 10.65 6.5625 8.325 6.5625H6C5.6925 6.5625 5.4375 6.3075 5.4375 6V5.175C5.4375 2.2425 6.7425 0.9375 9.675 0.9375H12.825C15.7575 0.9375 17.0625 2.2425 17.0625 5.175V8.325C17.0625 11.2575 15.7575 12.5625 12.825 12.5625ZM12.5625 11.4375H12.825C15.15 11.4375 15.9375 10.65 15.9375 8.325V5.175C15.9375 2.85 15.15 2.0625 12.825 2.0625H9.675C7.35 2.0625 6.5625 2.85 6.5625 5.175V5.4375H8.325C11.2575 5.4375 12.5625 6.7425 12.5625 9.675V11.4375Z"
-												fill="#06AB6B"></path>
-										</svg>
-									</button>
-								</p>
-								<div class="text-xs text-white/50 mt-1 flex items-center gap-3">
-									<span class="w-[24px] h-[24px] bg-green-500 rounded-full"></span>
-									<span class="flex items-baseline gap-2 text-white">
-										<span class="text-[16px]">{{$exchange->data['amount_data']['currency_from_name']}}</span>
-										<span class="text-white/40 text-[14px]"></span>
-									</span>
-								</div>
-							</div>
-
-							@if($exchange->currencyFrom->tag == "crypto")
-								<div>
-									<p class="text-white/40 mb-3">{{__("front.exchangePage2CryptoAddress")}}:</p>
-									<p class="break-all text-white flex items-center gap-2 text-sm">
-										{{$exchange->data['merchant_from_data']['address']}}
-										<button  class="copy-to-clipboard relative hover:opacity-70"
-											data-copy-text="{{$exchange->data['merchant_from_data']['address']}}">
-											<div class="tooltip absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none whitespace-nowrap"
+						<div class="w-full flex flex-col">
+							<div class="flex-1 text-sm">
+								<div class="mb-4">
+									<p class="text-white/40 text-[14px] mb-3">{{__("front.exchangePage2AmountSend")}}:</p>
+									<p class="text-[28px] flex items-center gap-2 mb-3">
+										{{$exchange->data['amount_data']['amount_send']}}
+										<button  class="copy-to-clipboard relative hover:opacity-70" data-copy-text="{{$exchange->data['amount_data']['amount_send']}}">
+											<div class="tooltip absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none"
 												role="tooltip">{{__("front.copied")}}</div>
 
 											<svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -381,25 +352,60 @@
 											</svg>
 										</button>
 									</p>
+									<div class="text-xs text-white/50 mt-1 flex items-center gap-3">
+										<span class="w-[24px] h-[24px] bg-green-500 rounded-full"></span>
+										<span class="flex items-baseline gap-2 text-white">
+											<span class="text-[16px]">{{$exchange->data['amount_data']['currency_from_name']}}</span>
+											<span class="text-white/40 text-[14px]"></span>
+										</span>
+									</div>
 								</div>
-							@else
-								<div>
 
-									<a class="text-white/40 mb-3"
-										href="{{$exchange->data['merchant_from_data']['url']}}">{{__("front.gotopay")}}</a>
-								</div>
-							@endif
-
-							@if($exchange->merchant_type_from == "manualcrypto" || $exchange->merchant_type_from == "manualfiat")
-								@if($exchange->status == 0)
-
-									<!-- STYLE MARK -->
+								@if($exchange->currencyFrom->tag == "crypto")
 									<div>
-										<a class="text-white/40 mb-3 exchange__button"
-											href="{{ route("exchgangeIPaid", [$exchange->hash])}}">{{__("front.ipaid")}}</a>
+										<p class="text-white/40 mb-3">{{__("front.exchangePage2CryptoAddress")}}:</p>
+										<p class="break-all text-white flex items-center gap-2 text-sm">
+											{{$exchange->data['merchant_from_data']['address']}}
+											<button  class="copy-to-clipboard relative hover:opacity-70"
+												data-copy-text="{{$exchange->data['merchant_from_data']['address']}}">
+												<div class="tooltip absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 transition-opacity pointer-events-none whitespace-nowrap"
+													role="tooltip">{{__("front.copied")}}</div>
+
+												<svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+													xmlns="http://www.w3.org/2000/svg">
+													<path
+														d="M8.325 17.0625H5.175C2.2425 17.0625 0.9375 15.7575 0.9375 12.825V9.675C0.9375 6.7425 2.2425 5.4375 5.175 5.4375H8.325C11.2575 5.4375 12.5625 6.7425 12.5625 9.675V12.825C12.5625 15.7575 11.2575 17.0625 8.325 17.0625ZM5.175 6.5625C2.85 6.5625 2.0625 7.35 2.0625 9.675V12.825C2.0625 15.15 2.85 15.9375 5.175 15.9375H8.325C10.65 15.9375 11.4375 15.15 11.4375 12.825V9.675C11.4375 7.35 10.65 6.5625 8.325 6.5625H5.175Z"
+														fill="#06AB6B"></path>
+													<path
+														d="M12.825 12.5625H12C11.6925 12.5625 11.4375 12.3075 11.4375 12V9.675C11.4375 7.35 10.65 6.5625 8.325 6.5625H6C5.6925 6.5625 5.4375 6.3075 5.4375 6V5.175C5.4375 2.2425 6.7425 0.9375 9.675 0.9375H12.825C15.7575 0.9375 17.0625 2.2425 17.0625 5.175V8.325C17.0625 11.2575 15.7575 12.5625 12.825 12.5625ZM12.5625 11.4375H12.825C15.15 11.4375 15.9375 10.65 15.9375 8.325V5.175C15.9375 2.85 15.15 2.0625 12.825 2.0625H9.675C7.35 2.0625 6.5625 2.85 6.5625 5.175V5.4375H8.325C11.2575 5.4375 12.5625 6.7425 12.5625 9.675V11.4375Z"
+														fill="#06AB6B"></path>
+												</svg>
+											</button>
+										</p>
+									</div>
+								@else
+									<div>
+										<a class="text-white/40 mb-3"
+											href="{{$exchange->data['merchant_from_data']['url']}}">{{__("front.gotopay")}}</a>
 									</div>
 								@endif
-							@endif
+
+								@if($exchange->merchant_type_from == "manualcrypto" || $exchange->merchant_type_from == "manualfiat")
+									@if($exchange->status == 0)
+
+										<!-- STYLE MARK -->
+										<div>
+											<a class="flex items-center max-w-[440px] justify-center h-[62px] max-[850px]:mt-6
+													w-full min-[850px]:grow cursor-point
+													bg-[linear-gradient(95.62deg,_#06AB6B_0%,_#009C74_100%)]
+													text-white text-[18px] gap-[12px] px-6 py-2
+													rounded-full shadow-[0px_4px_20px_#00000026]
+													hover:opacity-90 z-[19] uppercase mt-10 exchange__button"
+												href="{{ route("exchgangeIPaid", [$exchange->hash])}}">{{__("front.ipaid")}}</a>
+										</div>
+									@endif
+								@endif
+							</div>
 						</div>
 
 

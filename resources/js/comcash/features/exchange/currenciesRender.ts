@@ -24,7 +24,7 @@ export class CurrencyListRenderer {
     const lang = getCurrentLanguage();
     return `
       <div list-item-name="${currency.name}" class="dropdown-item px-4 h-[40px] hover:bg-[#333] flex items-center gap-2 cursor-pointer">
-        <img class="w-5 h-5 rounded-full bg-green-500" src="${currency.image}">
+        <img class="w-5 h-5 rounded-full " src="${currency.image}">
         <span class="text-sm">${currency.data.titles[lang]}</span>
       </div>
     `;

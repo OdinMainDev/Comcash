@@ -54,11 +54,7 @@
                         <path d="M8.155 16.6579L0 25.0586L10.8653 26.2728L8.155 16.6579Z" fill="#24DE96"></path>
                     </svg>
                 </div>
-                <p class="text-sm mb-2">Вы отправляете:</p>
-
-                <!-- <div class="welcome-exchange__loading">
-                    <img src="/comcash/img/loader-gray.gif" alt="loader"/>
-                </div> -->
+                <p class="text-sm mb-2">{{__("front.yousend")}}:</p>
         
                 <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">        
                     <div
@@ -66,7 +62,7 @@
 
                         <input class="hidden hidden-currency" name="currency_from">
                         <button type="button" data-focus-target=".input-block"
-                            class="welcome-exchange__select-selected transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:opacity-90">
+                            class="welcome-exchange__select-selected transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:bg-[#06AB6B0D]">
                             <div class="flex items-center gap-[12px] welcome-exchange__select-selected-value ">
                                 <img src="https://comcash.io/icons/Ethereum.png" class="w-5 h-5 rounded-full bg-green-500 welcome-exchange__img"/></span>
                                 <span class="text-sm " data-label="">
@@ -94,8 +90,6 @@
                                     </div>
                             </div>
                         </div>
-                        
-                        
                     </div>
                 </div>
             <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">
@@ -193,14 +187,14 @@
                         <path d="M8.155 16.6579L0 25.0586L10.8653 26.2728L8.155 16.6579Z" fill="#24DE96" />
                     </svg>
                 </div>
-                <p class="text-sm mb-2">Вы получите:</p>
+                <p class="text-sm mb-2">{{__("front.youreceive")}}:</p>
         
                 <div class="flex flex-wrap items-start gap-2 min-w-0 w-full">
                     <div
                         class="welcome-exchange-get__select welcome-exchange__select dropdown relative inline-block min-w-[280px] max-w-full max-[410px]:w-full w-auto  min-[810px]:mt-1">
                         <input class="hidden hidden-currency" name="currency_to">
                         <button type="button" data-focus-target=".output-block"
-                            class="welcome-exchange__select-selected  transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:opacity-90">
+                            class="welcome-exchange__select-selected  transition-all duration-200 ease-in-out w-full h-[40px] pr-[16px] pl-[12px] py-[8px] rounded-full bg-[#2A2A2A] text-white flex items-center justify-between hover:bg-[#06AB6B0D]">
                             <div class="flex items-center gap-[12px] welcome-exchange__select-selected-value ">
                                 <img src="https://comcash.io/icons/Ethereum.png" class="w-5 h-5 rounded-full bg-green-500 welcome-exchange__img"/></span>
                                 <span class="text-sm " data-label="">
@@ -282,16 +276,18 @@
                                     bg-[linear-gradient(95.62deg,_#06AB6B_0%,_#009C74_100%)]
                                     text-white text-[18px] gap-[12px] px-6 py-2
                                     rounded-full shadow-[0px_4px_20px_#00000026]
-                                    hover:opacity-90 z-[19]">
-                    {{__("front.exchange")}}
-                    <svg class="ml-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M14.43 18.82C14.24 18.82 14.05 18.75 13.9 18.6C13.61 18.31 13.61 17.83 13.9 17.54L19.44 12L13.9 6.46C13.61 6.17 13.61 5.69 13.9 5.4C14.19 5.11 14.67 5.11 14.96 5.4L21.03 11.47C21.32 11.76 21.32 12.24 21.03 12.53L14.96 18.6C14.81 18.75 14.62 18.82 14.43 18.82Z"
-                            fill="white" />
-                        <path
-                            d="M20.33 12.75H3.5C3.09 12.75 2.75 12.41 2.75 12C2.75 11.59 3.09 11.25 3.5 11.25H20.33C20.74 11.25 21.08 11.59 21.08 12C21.08 12.41 20.74 12.75 20.33 12.75Z"
-                            fill="currentColor" />
-                    </svg>
+                                    hover:opacity-90 z-[19] uppercase">
+                    <span class="relative flex content-loader">
+                        {{__("front.exchange")}}
+                        <svg class="ml-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.43 18.82C14.24 18.82 14.05 18.75 13.9 18.6C13.61 18.31 13.61 17.83 13.9 17.54L19.44 12L13.9 6.46C13.61 6.17 13.61 5.69 13.9 5.4C14.19 5.11 14.67 5.11 14.96 5.4L21.03 11.47C21.32 11.76 21.32 12.24 21.03 12.53L14.96 18.6C14.81 18.75 14.62 18.82 14.43 18.82Z"
+                                fill="white" />
+                            <path
+                                d="M20.33 12.75H3.5C3.09 12.75 2.75 12.41 2.75 12C2.75 11.59 3.09 11.25 3.5 11.25H20.33C20.74 11.25 21.08 11.59 21.08 12C21.08 12.41 20.74 12.75 20.33 12.75Z"
+                                fill="currentColor" />
+                        </svg>
+                    </span>
                 </button>
                 <div class="flex justify-center">
                     <p class="text-[12px] opacity-60 mt-4 min-[500px]:hidden whitespace-nowrap text-center">

@@ -79,7 +79,6 @@ $(document).ready(async function() {
       let listItem = $(generateSelectItem(item, item.name === currency.name));
 
       listItem.on('click', function() {
-        debugger;
         removeActive($(this));
         selectItem($(this), item, type);
         $(this).addClass('hidden');

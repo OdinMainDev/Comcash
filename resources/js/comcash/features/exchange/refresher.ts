@@ -29,7 +29,7 @@ export class RateRefresher {
       this.onUpdate(send, get).catch(err => {
         console.warn("Ошибка автообновления курса:", err);
       });
-      this.secondsLeft = Math.floor(this.intervalMs / 1000); // сброс таймера
+      this.secondsLeft = Math.floor(this.intervalMs / 1000); 
     }, this.intervalMs);
 
     this.tickTimerId = setInterval(() => {

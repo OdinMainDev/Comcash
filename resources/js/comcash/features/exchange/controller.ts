@@ -3,20 +3,15 @@ import { ExchangeApiService } from "./api";
 import { ExchangeView } from "./view";
 import { ExchangeState } from "./state";
 import {
-  DefaultPair,
-  getCurrentLanguage,
-  getDefaultCurrencies,
-  parseDefaultSelectionFromURL,
-  safeCall,
+    DefaultPair,
+    getCurrentLanguage,
+    getDefaultCurrencies,
+    parseDefaultSelectionFromURL,
+    safeCall,
 } from "./utils";
 import { RateRefresher } from "./refresher";
-import { SelectedCurrency } from "./types";
+import { SelectedCurrency, Side } from "./types";
 import { EventEmitter } from "./events";
-
-enum Side {
-  Send = "send",
-  Get = "get",
-}
 
 export class ExchangeController extends EventEmitter {
     private view: ExchangeView;
@@ -24,7 +19,7 @@ export class ExchangeController extends EventEmitter {
     private defaultPair?: DefaultPair;
     private refresher: RateRefresher;
     private lang = getCurrentLanguage();
-   
+
     constructor(view: ExchangeView, defaultPair?: DefaultPair) {
         super();
         this.view = view;
@@ -32,7 +27,7 @@ export class ExchangeController extends EventEmitter {
         this.refresher = new RateRefresher(
             5_000,
             async (send, get) => {
-                await this.updatePair(send, get, Side.Send, true);
+                await this.updatePair(send, get, this.state.isLocked() ? Side.Get : Side.Send, true);
             },
             (time) => {
                 this.view.updateTimer(time);
@@ -44,60 +39,61 @@ export class ExchangeController extends EventEmitter {
         try {
             this.registerCallbacks();
 
-            const currencies = await safeCall(
-                () => ExchangeApiService.getCurrencies(),
-                "Не удалось загрузить список валют",
-                () => this.view.showError("Не удалось загрузить список валют")
-            );
-            if (!currencies) return;
+            const currencies = await ExchangeApiService.getCurrencies();
+            var sendCurrencies = await ExchangeApiService.getSendCurrencies();
 
+            if (!currencies.length) return false;
+            if (!sendCurrencies.length) sendCurrencies = currencies;
             this.state.setCurrencies(currencies);
-
+            this.state.setSendCurrencies(sendCurrencies);
             const defaultSettings = parseDefaultSelectionFromURL();
             const { send, get } = getDefaultCurrencies(
                 currencies,
                 defaultSettings,
                 this.defaultPair
             );
-
-            await this.renderCurrencies(currencies);
+            await this.renderCurrencies(sendCurrencies, currencies);
             await this.updateSettings(send, get);
             await this.updatePair(send, get);
             await this.renderUSDTHint();
             await this.renderGlobalCourse();
             this.restartRefresher(send, get);
-            
+            return true;
         } catch (error) {
             this.view.showError("Ошибка инициализации");
         }
+        return false;
     }
     private registerCallbacks() {
-      this.view.setCallbacks({
-        onInputChange: async (val, isSend) => {
-          this.emit("inputChange", val, isSend);
-          await this.onInputChange(val, isSend);
-        },
-        onSubmit: async (e) => {
-          this.emit("onSubmit", e);
-          await this.onSubmit(e);
-        },
-        onInputSearchChange: async (query, isSend) => {
-          this.emit("inputSearchChange", query, isSend);
-          await this.onInputSearchChange(query, isSend);
-        },
-        onCurrencySelect: async (currency, isSend) => {
-          this.emit("currencySelect", currency, isSend);
-          await this.onCurrencySelect(currency, isSend);
-        },
-        onTabSelect: async (tab, isSend) => {
-          this.emit("tabSelect", tab, isSend);
-          await this.onTabSelect(tab, isSend);
-        },
-        onReverse: async () => {
-          this.emit("reverse");
-          await this.onReverse();
-        },
-      });
+        this.view.setCallbacks({
+            onInputChange: async (val, isSend) => {
+                this.emit("inputChange", val, isSend);
+                await this.onInputChange(val, isSend);
+            },
+            onSubmit: async (e) => {
+                await this.onSubmit(e);
+            },
+            onInputSearchChange: async (query, isSend) => {
+                await this.onInputSearchChange(query, isSend);
+                this.emit("inputSearchChange", query, isSend);
+            },
+            onCurrencySelect: async (currency, isSend) => {
+                await this.onCurrencySelect(currency, isSend);
+                this.emit("currencySelect", currency, isSend);
+            },
+            onLock: async (locked) => {
+                await this.onLock(locked);
+                this.emit("onLock", locked);
+            },
+            onTabSelect: async (tab, isSend) => {
+                await this.onTabSelect(tab, isSend);
+                this.emit("tabSelect", tab, isSend);
+            },
+            onReverse: async () => {
+                await this.onReverse();
+                this.emit("reverse");
+            },
+        });
     }
 
     private restartRefresher(send: SelectedCurrency, get: SelectedCurrency) {
@@ -149,16 +145,9 @@ export class ExchangeController extends EventEmitter {
             const fromString = `1 ${pair.send.currency.name}`;
             const toString = `${estimate.amount} ${pair.get.currency.name}`;
 
-            this.view.updateGlobalCourse(
-              fromString,
-              toString
-            );
+            this.view.updateGlobalCourse(fromString, toString);
 
-            this.emit(
-              "onUpdateGlobalCourse", 
-              fromString,
-              toString
-            )
+            this.emit("onUpdateGlobalCourse", fromString, toString);
         }
     }
 
@@ -168,101 +157,74 @@ export class ExchangeController extends EventEmitter {
         side: Side = Side.Send,
         renderOnlyTarget = false
     ) {
-
-        const { from, to, amountChanged } = await this.updateAmounts(send, get, side);
+        await this.updateSettings(send, get);
+        const { from, to } = await this.updateAmounts(send, get, side);
 
         this.state.selectSendCurrency(from);
         this.state.selectGetCurrency(to);
-        if (renderOnlyTarget && !amountChanged) {
+        if (renderOnlyTarget) {
             const isSend = side === Side.Send;
             this.setSelected(isSend ? to : from, !isSend);
+            this.emit("onSetSelected", isSend ? from : to, isSend);
         } else {
             this.renderSelected();
         }
     }
     private setSelected(selected: SelectedCurrency, isSend: boolean) {
-      this.view.setSelected(selected, !isSend);
-      this.emit("onSetSelected", selected, isSend);
+        this.view.setSelected(selected, isSend);
+        this.emit("onSetSelected", selected, isSend);
     }
     private async updateAmounts(
-      send: SelectedCurrency,
-      get: SelectedCurrency,
-      leadingSide?: Side
-  ) {
-      const activeSide = leadingSide ?? Side.Send;
-  
-      let from = { ...send };
-      let to = { ...get };
-      const settingsFrom = activeSide === Side.Send ? from : to;
-      const settingsTo = activeSide === Side.Send ? to : from;
-  
-      let requestAmount;
-      if (activeSide === Side.Send) {
-          requestAmount = from.amount;
-      } else {
-          requestAmount = to.amount;
-      }
-  
-      if (!requestAmount || !this.state.isCurrentSettings(settingsFrom, settingsTo)) {
-          await this.updateSettings(from, to);
-      }
-  
-      if (activeSide === Side.Send) {
-          from = this.validateAmount(from);
-          requestAmount = from.amount;
-      } else {
-          to = this.validateAmount(to);
-          requestAmount = to.amount;
-      }
-  
-      const originalAmount = activeSide === Side.Send ? send.amount : get.amount;
-      const amountChanged = originalAmount !== requestAmount;
-  
-      const estimate = await safeCall(
-          () =>
-              ExchangeApiService.getEstimate(
-                  from.currency.name,
-                  to.currency.name,
-                  requestAmount!,
-                  activeSide === Side.Send ? 0 : 1
-              ),
-          "Ошибка при получении курса обмена",
-          () => this.view.showError("Не удалось получить курс обмена")
-      );
-  
-      if (estimate) {
-          if (activeSide === Side.Send) {
-              to.amount = estimate.amount;
-          } else {
-              from.amount = estimate.amount;
-          }
-      } else {
-          from.amount = 0;
-          to.amount = 0;
-      }
-  
-      return { from, to, amountChanged };
-  }
-  
-    private validateAmount(from: SelectedCurrency): SelectedCurrency {
-        const settings = this.state.getSettings()?.data;
-        if (!settings) return from;
-
-        const min = settings.min_amount;
-        const max = settings.max_amount;
-
-        if (!from.amount) {
-            from.amount = min;
-        } else if (from.amount < min) {
-            from.amount = min;
-            this.view.showError(`Минимальная сумма для обмена: ${min}`);
-        } else if (from.amount > max) {
-            from.amount = max;
-            this.view.showError(`Максимальная сумма для обмена: ${max}`);
+        send: SelectedCurrency,
+        get: SelectedCurrency,
+        leadingSide: Side = Side.Send
+    ) {
+        const from = { ...send };
+        const to = { ...get };
+        const isSend = leadingSide === Side.Send;
+    
+        const getLeadingAmount = () => (isSend ? from.amount : to.amount);
+        const setLeadingAmount = (value: number) => {
+            if (isSend) from.amount = value;
+            else to.amount = value;
+        };
+        const setCounterAmount = (value: number) => {
+            if (isSend) to.amount = value;
+            else from.amount = value;
+        };
+    
+        let requestAmount = getLeadingAmount();
+    
+        if (!requestAmount) {
+            const settings = this.state.getSettings()?.data;
+            if (!settings) return { from, to }; 
+    
+            setLeadingAmount(settings.max_amount);  
+            requestAmount = settings.min_amount;   
         }
-        return from;
+    
+        const estimate = await safeCall(
+            () =>
+                ExchangeApiService.getEstimate(
+                    from.currency.name,
+                    to.currency.name,
+                    requestAmount!,
+                    isSend ? 0 : 1
+                ),
+            "Ошибка при получении курса обмена",
+            () => this.view.showError("Не удалось получить курс обмена")
+        );
+    
+        if (estimate) {
+            setCounterAmount(estimate.amount);
+        } else {
+            from.amount = 0;
+            to.amount = 0;
+        }
+    
+        return { from, to };
     }
-
+    
     private async updateSettings(from: SelectedCurrency, to: SelectedCurrency) {
         const settings = await safeCall(
             () =>
@@ -273,12 +235,11 @@ export class ExchangeController extends EventEmitter {
             "Ошибка при получении минимальной суммы"
         );
 
-        if (settings)  {
-          this.emit("updateSettings", settings);
-          this.state.setSettings(settings);
+        if (settings) {
+            this.emit("updateSettings", settings);
+            this.state.setSettings(settings);
         }
     }
-
 
     private async renderUSDTHint() {
         const send = this.state.getSelectedSend();
@@ -309,17 +270,17 @@ export class ExchangeController extends EventEmitter {
         });
     }
 
-    private async renderCurrencies(currencies: ICurrency[]) {
+    private async renderCurrencies(sendCurrencies: ICurrency[] ,currencies: ICurrency[]) {
         await Promise.all([
-            this.view.updateCurrencyList(currencies, true),
+            this.view.updateCurrencyList(sendCurrencies, true),
             this.view.updateCurrencyList(currencies, false),
-            this.view.updateTabList(currencies, true),
+            this.view.updateTabList(sendCurrencies, true),
             this.view.updateTabList(currencies, false),
         ]);
     }
 
     async onTabSelect(tab: string, isSend: boolean) {
-        const currencies = this.state.getCurrencies();
+        const currencies = isSend ? this.state.getSendCurrencies() : this.state.getCurrencies();
         const normalizedTab = tab?.toLowerCase();
 
         const filtered =
@@ -333,14 +294,15 @@ export class ExchangeController extends EventEmitter {
     }
 
     async onInputSearchChange(query: string, isSend: boolean) {
-        const currencies = this.state.getCurrencies();
+        const currencies = isSend ? this.state.getSendCurrencies() : this.state.getCurrencies();
+
         const filtered = currencies.filter((c) =>
             c.data.titles[this.lang].toLowerCase().includes(query.toLowerCase())
         );
 
         await this.view.updateCurrencyList(filtered, isSend);
-        await this.view.updateTabList(currencies, true);
-        await this.view.updateTabList(currencies, false);
+        await this.view.updateTabList(this.state.getSendCurrencies(), true);
+        await this.view.updateTabList(this.state.getCurrencies(), false);
     }
 
     async onInputChange(val: number, isSend: boolean) {
@@ -377,24 +339,52 @@ export class ExchangeController extends EventEmitter {
         await this.withRefresherRestart(async () => {
             const pair = this.getCurrentPair();
             if (!pair) return;
-
-            const newSend = { ...pair.get };
+    
+            const sendCurrencies = this.state.getSendCurrencies();
+            if (!sendCurrencies?.length) return;
+    
+            const potentialSend = { ...pair.get };
+    
+            const existsInSendList = sendCurrencies.some(
+                c => c.name === potentialSend.currency.name
+            );
+    
+            if (!existsInSendList) {
+                this.view.showError("Эта валюта недоступна для отправки.");
+                return;
+            }
+    
             const newGet = { ...pair.send };
-
-            await this.applyNewPair(newSend, newGet);
+    
+            await this.applyNewPair(potentialSend, newGet);
         });
     }
-    async onSubmit(e: JQuery.SubmitEvent<HTMLElement>) {
-      const send = this.state.getSelectedSend();
-      const get = this.state.getSelectedGet();
     
-      if (!send || !get || !send.amount || !get.amount) {
-        this.view.showError("Пожалуйста, заполните все необходимые поля.");
-        return false;
-      }
-    
-      this.emit("onSubmit", e, send, get);
-      return true;
+    async onSubmit(e: JQuery.ClickEvent<HTMLElement>) {
+        const send = this.state.getSelectedSend();
+        const get = this.state.getSelectedGet();
+        const settings = this.state.getSettings();
+        const settingsData = settings?.data;
+
+
+        if (!send || !get || send.amount == null || get.amount == null) {
+            this.view.showError("Пожалуйста, заполните все необходимые поля.");
+            return false;
+        }
+
+        if (
+            settingsData &&
+            (send.amount < settingsData.min_amount || send.amount > settingsData.max_amount)
+        ) {
+            this.view.showError("Сумма вне допустимого диапазона.");
+            return false;
+        }
+
+
+        this.emit("onSubmit", e, send, get);
+        return true;
     }
-    
+    async onLock(locked: boolean) {
+        this.state.setLocked(locked);
+    }
 }

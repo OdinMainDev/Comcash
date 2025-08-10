@@ -41,23 +41,40 @@
 				<div
 					class="rounded-[12px] h-[116px] max-[400px]:h-[92px] p-[24px] flex items-center justify-between text-white backdrop-blur-[20px]"
 					style="background: linear-gradient(95.5deg, rgba(15, 117, 78, 0.9) 28.46%, rgba(6, 171, 107, 0) 96%);">
+					@php
+						$foundBalance = null;
+						foreach($balances as $balance) {
+							if ($balance->getCurrency->name === "USDTTRC20") {
+								$foundBalance = $balance;
+								break;
+							}
+						}
+					@endphp
+
 					<div>
-						<p class="text-[14px] mb-1">{{__("front.your_balance")}}</p>
-						<p class="text-[32px] leading-none">5,924.12413</p>
+						<p class="text-[14px] mb-1">{{ __("front.your_balance") }}</p>
+						<p class="text-[32px] leading-none">{{ $foundBalance ? $foundBalance->currency : 0 }}</p>
 					</div>
 					<p class="text-white/30 text-[14px] mt-auto self-end">USDT</p>
+
 				</div>
 
-				<form class="flex flex-col gap-[14px] mt-[24px]">
+				<form action="{{route("myprofileAffiliateBalancesPost")}}" class="flex flex-col gap-[14px] mt-[24px]">
+					@csrf
 					<div class="p-[24px] rounded-[20px] bg-white/5 flex flex-col gap-[14px]">
 						<p class="text-[16px]">{{__("front.create_payout")}}</p>
 
 						<input type="text" placeholder="{{__("front.payout_amount_input")}}"
-							class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border-[#06AB6B] outline-none">
-						<input type="text" placeholder="{{__("front.payout_amount_input")}}"
-							class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border-[#06AB6B] outline-none">
+							name="amount"
+							class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border focus:border-[#06AB6B] outline-none">
+						<input type="text" 
+							name="currency"
+							value="USDTTRC20"
+							class="hidden">
+
 						<input type="text" placeholder="{{__("front.payout_address")}}"
-							class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border-[#06AB6B] outline-none">
+							name="address"
+							class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border focus:border-[#06AB6B] outline-none">
 						<div class="flex justify-start mt-2">
 							<button type="submit"
 								class="max-w-[362px] w-full text-white text-[18px] font-medium rounded-full h-[48px] transition hover:opacity-90 uppercase"
@@ -67,12 +84,12 @@
 						</div>
 					</div>
 
+					@if(false)
 					<h2 class="text-[18px] py-[24px] uppercase">
 						{{__("front.personOperationHistoryLabel")}}
 					</h2>
 					<form class="flex flex-col gap-4">
 
-						<!-- для >640px -->
 						<div class="hidden sm:grid grid-cols-[1fr_0.9fr_0.8fr_1fr_1fr] text-white/40 text-[12px]">
 							<div>{{__("front.date")}}</div>
 							<div>{{__("front.operation")}}</div>
@@ -129,6 +146,7 @@
 
 						</div>
 					</form>
+					@endif
 
 				</form>
 			</div>

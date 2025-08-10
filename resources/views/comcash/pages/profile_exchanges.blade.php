@@ -46,18 +46,24 @@
                         <div
                             class="pl-4 py-3 flex flex-col gap-3 sm:grid sm:grid-cols-[0.75fr_0.8fr_1.8fr_1.4fr_1fr] sm:items-center sm:gap-2 border-b border-white/10">
 
-                            <div class="text-white text-[14px] sm:block hidden">12.12.2024</div>
-                            <div class="text-white text-[14px] sm:block hidden">13:44:56</div>
+                            <div class="text-white text-[14px] sm:block hidden">{{ $row->created_at->format('d.m.Y') }}</div>
+                            <div class="text-white text-[14px] sm:block hidden">{{ $row->created_at->format('H:i:s') }}</div>
 
                             <div class=" flex justify-between sm:hidden text-white text-[14px]">
                                 <span class="text-white/40 text-[12px]">{{__("front.date")}}</span>
-                                <span>12.12.2024, 13:44:56</span>
+                                <span>{{ $row->created_at->format('d.m.Y, H:i:s') }}</span>
                             </div>
 
                             <div class="text-white text-[14px]  flex justify-between items-center">
                                 <span class="text-white/40 text-[12px] sm:hidden">{{__("front.time")}}</span>
                                 <div class="flex items-center gap-2">
-                                    <span class="bg-white/5 rounded-[12px] py-full px-[8px]">{{$row->currencyFrom ? $row->currencyFrom->getTitle() : ""}}</span>
+
+                                    @php
+                                        $title = $row->currencyFrom ? $row->currencyFrom->getTitle() : '';
+                                        $parts = explode(' ', $title);
+                                        $lastWord = count($parts) > 1 ? end($parts) : $title;
+                                    @endphp
+                                    <span class="bg-white/5 rounded-[12px] py-full px-[8px]">{{ $lastWord }}</span>
                                     <span>{{@$row->data['amount_data']['amount_send']}}</span>
                                 </div>
                             </div>
@@ -65,17 +71,20 @@
                             <div class="text-white text-[14px]  flex justify-between items-center">
                                 <span class="text-white/40 text-[12px] sm:hidden">{{__("front.received")}}</span>
                                 <div class="flex items-center gap-2">
-                                    <span class="bg-white/5 rounded-[12px] py-full px-[8px]">{{$row->currencyTo ? $row->currencyTo->getTitle() : ""}}</span>
+                                    @php
+                                        $title = $row->currencyTo ? $row->currencyTo->getTitle() : '';
+                                        $parts = explode(' ', $title);
+                                        $lastWord = count($parts) > 1 ? end($parts) : $title;
+                                    @endphp
+                                    <span class="bg-white/5 rounded-[12px] py-full px-[8px]">{{$lastWord}}</span>
                                     <span>{{@$row->data['amount_data']['amount_receive']}}</span>
                                 </div>
                             </div>
 
-                            @if (false)
-                                <div class="text-white text-[14px] flex justify-between items-center">
-                                    <span class="text-white/40 text-[12px] sm:hidden">{{__("front.exchange_rate")}}</span>
-                                    <span>0.7824</span>
-                                </div>
-                            @endif
+                            <div class="text-white text-[14px] flex justify-between items-center">
+                                <span class="text-white/40 text-[12px] sm:hidden">{{__("front.exchange_rate")}}</span>
+                                <span>{{ $row->data['amount_data']['exchange_rate'] }}</span>
+                            </div>
 
                         </div>
 

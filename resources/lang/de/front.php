@@ -213,6 +213,7 @@ die folgenden Stellen für die Bargeldabhebung:',
   'exchangestatus3' => 'Beginn der Auszahlung der Mittel',
   'exchangestatus4' => 'Bestätigung der Auszahlung der Mittel',
   'youreceive' => 'Sie erhalten',
+  "yousend" => "Sie senden",
   'addressreceive' => 'Empfangsadresse',
   'cardreceive' => 'Die Karte, auf der der Betrag gutgeschrieben werden soll',
   'idexchange' => 'Anwendungshash',
@@ -661,7 +662,7 @@ die folgenden Stellen für die Bargeldabhebung:',
 "markets" => "Märkte",
 "lastNewsNews"      => "NEUESTE NACHRICHTEN",
 "andTrendsNews"     => "UND KRYPTO-TRENDS AUF COMCASH",
-
+"converter" => "Umwandler",
 
 
 

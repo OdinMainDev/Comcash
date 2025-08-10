@@ -1,7 +1,7 @@
 <section
     class="relative max-[849px]:mt-[6rem] mt-[8rem] mx-auto max-w-[1018px] min-h-[334px] flex flex-col justify-between gap-[36px] px-[20px] overflow-hidden">
 
-    <div class="text-white gap-[4px]">
+    <div class="text-white gap-[4px] uppercase">
         <p class="text-[#06AB6B] font-semibold text-[32px] max-[639px]:flex-wrap">
             {{__("front.secure")}}
             <span class=" whitespace-nowrap max-[640px]:whitespace-normal">
@@ -59,7 +59,7 @@
                             fill="#06AB6B" />
                     </svg>
 
-                    <div class="text-left">
+                    <div class="text-left uppercase">
                         <h3 class="min-[640px]:text-[20px] text-[18px] font-medium leading-[28px] min-[640px]:mb-2">
                             {{__("front.reliabilityAndQualityAbout")}}
                         </h3>
@@ -80,7 +80,7 @@
                             fill="#06AB6B" />
                     </svg>
 
-                    <div class="text-left">
+                    <div class="text-left uppercase">
                         <h3 class="min-[640px]:text-[20px] text-[18px] font-medium leading-[28px] min-[640px]:mb-2">
                             {{__("front.guaranteeOfAnonymityAbout2")}}
                         </h3>

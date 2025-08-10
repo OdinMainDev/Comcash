@@ -30,15 +30,16 @@ export class ExchangeView {
       if (!isNaN(val)) this.callbacks.onInputChange?.(val, false);
     });
     this.elements.lock?.on("click", () => {
+      const isLocked = this.elements.lock?.hasClass("text-[#06AB6B]") ?? false;
+      const newState = !isLocked;
+
        this.elements.lock
         ?.toggleClass("text-[#06AB6B]")
         .toggleClass("text-[#666666]");
-        const isReadonly = !!this.elements.inputGet.prop('readonly'); // гарантируем булевое
-        this.elements.inputGet.prop('readonly', !isReadonly);
+        this.callbacks.onLock?.(newState);
     });
     this.elements.selectorSend.selectedBlock.on("click", () => this.dropdownSend.toggle());
     this.elements.selectorGet.selectedBlock.on("click", () => this.dropdownGet.toggle());
-
     this.elements.selectorSend.list.input.on("input", async () => {
       const query = this.elements.selectorSend.list.input.val()?.toString().toLowerCase() || "";
       await this.callbacks.onInputSearchChange?.(query, true);
@@ -53,7 +54,7 @@ export class ExchangeView {
       await this.callbacks.onReverse?.();
     });
 
-    this.elements.form.on("submit", async (e) => {
+    this.elements.submitBtn.on("click", async (e) => {
         e.preventDefault(); 
         await this.callbacks.onSubmit?.(e)
     });
@@ -142,7 +143,7 @@ export class ExchangeView {
     const lang = getCurrentLanguage();
     return `
       <div class="flex items-center gap-[12px] welcome-exchange__select-selected-value">
-        <img src="${currency.image}" class="w-5 h-5 rounded-full bg-green-500 welcome-exchange__img"/>
+        <img src="${currency.image}" class="w-5 h-5 rounded-full welcome-exchange__img"/>
         <span class="text-sm">
           <div class="welcome-exchange__name">${currency.data.titles[lang]}</div>
         </span>

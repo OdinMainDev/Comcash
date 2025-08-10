@@ -27,6 +27,9 @@ export type UIFormElements = {
   timer: JQuery<HTMLElement>;
   globalCourseFrom: JQuery<HTMLElement>;
   globalCourseTo: JQuery<HTMLElement>;
+  blockLeft: JQuery<HTMLElement>;
+  blockRight: JQuery<HTMLElement>;
+  submitBtn: JQuery<HTMLElement>;
   lock: JQuery<HTMLElement> | null;
   errorDisplay: JQuery<HTMLElement> | null;
 };
@@ -42,7 +45,8 @@ export type ExchangeViewCallbacks = {
   onInputChange?: (value: number, isSend: boolean) => void;
   onCurrencySelect?: (currency: ICurrency, isSend: boolean) => Promise<void>;
   onTabSelect?: (tab: string, isSend: boolean) => Promise<void>;
-  onSubmit?: (e: JQuery.SubmitEvent<HTMLElement, undefined, HTMLElement, HTMLElement>) => Promise<void>;
+  onLock?: (locked: boolean) => Promise<void>;
+  onSubmit?: (e: JQuery.ClickEvent<HTMLElement, undefined, HTMLElement, HTMLElement>) => Promise<void>;
   onReverse?: () => Promise<void>;
 };
 
@@ -54,3 +58,8 @@ export type ParsedURLDefaults = {
 
 
 export type EventCallback = (...args: any[]) => void;
+
+export enum Side {
+  Send = "send",
+  Get = "get",
+}

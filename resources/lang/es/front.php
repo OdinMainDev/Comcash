@@ -212,6 +212,7 @@ los siguientes lugares de retirada de efectivo:',
   'exchangestatus3' => 'Inicio del desembolso de fondos',
   'exchangestatus4' => 'Confirmación del desembolso de fondos',
   'youreceive' => 'Obtendrás',
+  "yousend" => "Usted envía",
   'addressreceive' => 'Dirección del recibo',
   'cardreceive' => 'La tarjeta en la que se abonarán los fondos',
   'idexchange' => 'Hash de aplicación',
@@ -666,7 +667,7 @@ los siguientes lugares de retirada de efectivo:',
 "markets" => "Mercados",
 "lastNewsNews"      => "ÚLTIMAS NOTICIAS",
 "andTrendsNews"     => "Y TENDENCIAS DE CRIPTOMONEDAS EN COMCASH",
-
+"converter" => "Convertidor",
 
 
 

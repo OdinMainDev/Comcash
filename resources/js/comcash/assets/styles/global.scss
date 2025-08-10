@@ -1,19 +1,9 @@
 @tailwind base;
 
-// @import './reset.scss';
-// @import './vars.scss';
-// @import './styles.scss';
-
 @import './components/header.scss';
-// @import './components/main.scss';
 @import './components/auth.scss';
-// @import './components/exchanger.scss';
-// @import './components/profile.scss';
-// @import './components/info.scss';
-// @import './components/scrollText.scss';
-// @import './components/main_banner.scss';
 @import './components/description.scss';
-
+@import './components/loading.scss';
 
 @import './custom.scss';
 @tailwind components;

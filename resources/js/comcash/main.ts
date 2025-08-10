@@ -7,6 +7,8 @@ import '@/shared/scripts/input';
 import '@/shared/scripts/burger';
 import '@/shared/scripts/clipboard';
 import '@/shared/scripts/starfield';
+import '@/shared/scripts/focusEffect';
+import '@/shared/scripts/eye';
 import '@/shared/scripts/select';
 import '@/shared/scripts/select/secondSelect';
 import '@/shared/scripts/tabs';
@@ -16,6 +18,7 @@ import '@/shared/scripts/theme';
 import '@/shared/scripts/languages';
 import '@/shared/scripts/copyButton';
 import '@/shared/scripts/banner';
+import '@/shared/scripts/bank-autocomplete';
 
 import '@/features/cryptoFormScripts';
 // import '@/features/exchageFormScripts';

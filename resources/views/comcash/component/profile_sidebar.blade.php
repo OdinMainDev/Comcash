@@ -358,7 +358,7 @@
         <li>
             <a
                 href='{{route("logout")}}'
-                class="tab-btn text-white/40 text-[16px] hover:text-white/70 pl-10"
+                class="tab-btn text-white/40 text-[16px] hover:text-white/70 pl-10 flex items-center"
                 data-tab="logout">
                 {{__("front.log out")}}
             </a>

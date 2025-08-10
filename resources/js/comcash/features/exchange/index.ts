@@ -30,9 +30,12 @@ const getFormElements = (form: JQuery<HTMLElement>): UIFormElements => ({
   reverseBtn:       form.find('.welcome-exchange__icon-reverse'),
   selectorSend:     createSelector(form.find('.welcome-exchange-send__select')),
   selectorGet:      createSelector(form.find('.welcome-exchange-get__select')),
+  blockLeft:        form.find('.exchnage-panel-left'),
+  blockRight:       form.find('.exchnage-panel-right'),
   timer:            form.find(".exchangeTimer"),
   globalCourseFrom: form.find(".courseFrom"),
   globalCourseTo:   form.find(".courseTo"),
+  submitBtn:        form.find(".submit-button"),
   lock:             form.find(".get-lock"),
   errorDisplay:     null,
 });
@@ -42,14 +45,15 @@ const initializeLayoutsManager = (controller: ExchangeController, form: JQuery<H
 
   const layoutsManager = new ExchangeLayoutsManager(form);
 
+  const hideLayouts = () => layoutsManager.hideSavedLayouts();
   controller.on("updateSettings", (settings: ISetting) => {
+    hideLayouts();
     layoutsManager.showLayouts(settings.layout);
   });
 
-  const hideLayouts = () => layoutsManager.hideSavedLayouts();
 
-  controller.on("reverse", hideLayouts);
-  controller.on("currencySelect", hideLayouts);
+  // controller.on("reverse", hideLayouts);
+  // controller.on("currencySelect", hideLayouts);
 
   controller.on("onSubmit", (e: JQuery.Event) => {
     e.preventDefault();
@@ -60,7 +64,7 @@ const initializeLayoutsManager = (controller: ExchangeController, form: JQuery<H
     layoutsManager.updateCourse(from, to);
   });
 
-  controller.on("onSelected", (selected: SelectedCurrency, isSend: boolean) => {
+  controller.on("onSetSelected", (selected: SelectedCurrency, isSend: boolean) => {
     layoutsManager.updateSelected(selected, isSend);
   });
 };
@@ -101,6 +105,13 @@ const setupModal = () => {
   });
 };
 
+async function initWithRetry(controller: any) {
+  while (true) {
+    const result = await controller.init();
+    if (result) break; 
+    await new Promise(resolve => setTimeout(resolve, 5000)); 
+  }
+}
 async function bootstrapForm(): Promise<void> {
   const form = $('.crypto-form__exchange-form');
   const elements = getFormElements(form);
@@ -110,7 +121,7 @@ async function bootstrapForm(): Promise<void> {
 
   initializeLayoutsManager(controller, form);
 
-  await controller.init();
+  await initWithRetry(controller);
 }
 
 $(document).ready(() => {

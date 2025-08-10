@@ -89,7 +89,7 @@
 							placeholder="{{__("front.affiliate campaign name")}}" 
 							name="name" 
 							id="name"
-							class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded">
+							class="w-full p-3 backdrop-blur-xl bg-[#1E1E1ECC]/80 border border-white/10 placeholder:text-white/40 text-white rounded focus:border-[#06AB6B] outline-none">
 						<div class="flex justify-start mt-2">
 							<button type="submit"
 								class="max-w-[362px] w-full text-white text-[18px] font-medium rounded-full h-[48px] transition hover:opacity-90"
@@ -128,7 +128,7 @@
 								<span class="text-white/40 text-[12px] sm:hidden ">{{__("front.link")}}</span>
 								<div class="copy-to-clipboard flex items-center gap-2 max-[450px]:flex-wrap max-[450px]:min-w-0 relative group">
 									<a href="#"
-										class="uppercase text-[14px] text-[#06AB6B] hover:opacity-70 max-[900px]:break-all max-[450px]:flex-1 relative">
+										class="uppercase text-[14px] text-[#06AB6B] hover:opacity-70 max-[900px]:break-all max-[450px]:flex-1 relative truncate w-64">
 										{{route("checkAffiliate", ["hash" => $campaign->hash])}}
 										<span
 											class="hidden tooltip absolute bottom-full mb-1 left-1/2 -translate-x-1/2 text-[12px] bg-black text-white px-2 py-1 rounded group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">

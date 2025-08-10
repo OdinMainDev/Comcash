@@ -213,6 +213,7 @@ les points de retrait d\'argent suivants :',
   'exchangestatus3' => 'Début du versement des fonds',
   'exchangestatus4' => 'Confirmation du versement des fonds',
   'youreceive' => 'Vous obtiendrez',
+  "yousend" => "Vous envoyez",
   'addressreceive' => 'Adresse de réception',
   'cardreceive' => 'La carte sur laquelle les fonds seront crédités',
   'idexchange' => 'Application hash',
@@ -667,7 +668,7 @@ les points de retrait d\'argent suivants :',
 "markets" => "Marchés",
 "lastNewsNews"      => "DERNIÈRES NOUVELLES",
 "andTrendsNews"     => "ET LES TENDANCES DES CRYPTOMONNAIES SUR COMCASH",
-
+"converter" => "Convertisseur",
 
 
 

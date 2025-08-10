@@ -1,6 +1,6 @@
 <div class="max-w-[1200px] max-[620px]:hidden mx-auto rounded-[10px] flex items-center text-white">
 
-    <div id="menu-items" class="flex flex-nowrap items-center w-full relative">
+    <div id="menu-items" class="flex flex-nowrap items-center w-full relative justify-center">
         <div class="group flex-shrink-0 min-w-fit border-b border-transparent hover:bg-[#06AB6B0D]/5 hover:border-[#06AB6B] transition-all
         {{ request()->routeIs('comcashPage') && request()->route('name') == 'tariffs' ? 'active' : '' }}">
             <a href='{{ route("comcashPage", ["name" => "tariffs"]) }}'

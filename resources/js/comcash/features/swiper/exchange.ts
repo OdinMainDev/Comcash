@@ -51,7 +51,7 @@ function initSlider(): void {
         thumb.style.transform = `translateX(${maxOffset}px)`;
         overlay.style.clipPath = `inset(0 0 0 100%)`;
   
-        const form = document.querySelector<HTMLFormElement>('.exchange__form');
+        const form = document.querySelector<HTMLFormElement>('.crypto-form__exchange-form');
         if (form) {
           setTimeout(() => form.requestSubmit(), 400);
         }
