@@ -28,11 +28,11 @@ import { setForm } from '@/shared/scripts/modal';
             const formData = new FormData(element);
             const submit = element.querySelectorAll('[type="submit"]');
             const prevInner = submit[0].innerHTML;
+
             submit.forEach(el => {
-                el.disabled = true;
                 el.innerHTML = `<div class="loader flex h-full items-center justify-center">
                                  <div data-glitch="Loading..." class="glitch">Loading...</div>
-                                </div>${prevInner}`; 
+                                </div>`; 
             });
             showLoader();
             let elems = element.querySelectorAll('.input--error');
@@ -68,10 +68,6 @@ import { setForm } from '@/shared/scripts/modal';
                     }else{
                         Toastr.success(e.data.title, e.data.message)
                     }
-                    // submit.forEach(el => {
-                    //     el.innerHTML = prevInner
-                    //     el.disabled = false
-                    // });
                     if(e.data.data?.refresh){
                         setTimeout(() => {
                             window.location.reload();
@@ -108,10 +104,6 @@ import { setForm } from '@/shared/scripts/modal';
                         return;
                     }
                 }).catch(error => {
-                    // submit.forEach(el => {
-                    //     el.innerHTML = prevInner
-                    //     el.disabled = false
-                    // });
                     if(!error.response){
                         Toastr.error('undefined error...')
                         return;
@@ -151,6 +143,10 @@ import { setForm } from '@/shared/scripts/modal';
                         Toastr.error('undefined error...')
                     }
                 }).finally(() => {
+                    submit.forEach(el => {
+                        el.innerHTML = prevInner
+                        el.disabled = false
+                    });
                     hideLoader();
                 })
             })
